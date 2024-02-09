@@ -6,6 +6,8 @@ To ensure consistency and quality in our development process, the following requ
 
 - **Conventional Commits:** We adopt Conventional Commits to facilitate automated semantic versioning and changelog generation. Commit messages should adhere to this specification.
 
+- **Readme File**: Add all the necessary steps in the readme.
+  
 - **Husky Integration:** Utilize Husky to enhance our Git hooks by enforcing the following actions:
   - Execute tests upon committing changes.
   - Automatically update the package version when commits are pushed to the main branch.
