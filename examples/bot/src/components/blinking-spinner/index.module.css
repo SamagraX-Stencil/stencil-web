@@ -1,0 +1,13 @@
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.spinner {
+  display: inline-block;
+  height: 15px;
+  width: 1px;
+  background-color: var(--secondarygreen);
+  /* border-radius: 50%; */
+  animation: blink .5s infinite;
+}
