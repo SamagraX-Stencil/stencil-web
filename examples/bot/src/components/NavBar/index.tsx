@@ -19,6 +19,7 @@ import flagsmith from 'flagsmith/isomorphic';
 import axios from 'axios';
 import React from 'react';
 import { useCookies } from 'react-cookie';
+import colorConfig from '../../../config/colors.json'
 
 function NavBar() {
   const t = useLocalization();
@@ -65,7 +66,7 @@ function NavBar() {
       <div className={styles.navbar + ' ' + styles.main}>
         <div
           style={{ width: '120px', display: 'flex', alignItems: 'flex-end' }}>
-          <Sidemenu bgColor='var(--secondarygreen)'/>
+          <Sidemenu bgColor={colorConfig.colors.secondary} color={colorConfig.colors.font}/>
           <div
             style={{
               paddingLeft: '15px',
@@ -133,7 +134,7 @@ function NavBar() {
                 alignItems: 'center',
               }}>
               {/* <div> */}
-              <Sidemenu bgColor='var(--secondarygreen)'/>
+              <Sidemenu bgColor={colorConfig.colors.secondary} color={colorConfig.colors.font}/>
               {/* </div> */}
               {router.pathname !== '/chat' &&
                 router.pathname !== '/' &&

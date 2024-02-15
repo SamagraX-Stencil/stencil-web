@@ -6,7 +6,7 @@ import {
   DrawerContent,
   useDisclosure,
 } from '@chakra-ui/react';
-import hamburgerIcon from '../../assets/icons/hamburger.svg';
+import HamburgerIcon from '../../assets/icons/hamburger-icon';
 import Image from 'next/image';
 import leftArrowIcon from '../../assets/icons/leftArrow.svg';
 import userCircleIcon from '../../assets/icons/user-circle.svg';
@@ -25,8 +25,9 @@ import router from 'next/router';
 import BhashiniImg from '../../assets/images/bhashinilogo.png';
 import darshanLogo from '../../assets/images/darshan-logo.png';
 import toast from 'react-hot-toast';
+import colorConfig from '../../../config/colors.json';
 
-export const Sidemenu = ({ bgColor }: { bgColor: string }) => {
+export const Sidemenu = ({ bgColor, color }: { bgColor: string; color: string; }) => {
   const t = useLocalization();
   const context = React.useContext(AppContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -78,21 +79,14 @@ export const Sidemenu = ({ bgColor }: { bgColor: string }) => {
 
   return (
     <>
-      <div>
-        <Image
-          src={hamburgerIcon}
-          alt=""
-          width={40}
-          height={40}
-          onClick={onOpen}
-          style={{ cursor: 'pointer' }}
-        />
+      <div onClick={onOpen} style={{cursor: 'pointer'}}>
+        <HamburgerIcon fill={colorConfig.colors.secondary} width={33} height={33} />
       </div>
       <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         {/* @ts-ignore */}
         <DrawerContent>
-          <div className={styles.sideMenu} style={{backgroundColor: bgColor}}>
+          <div className={styles.sideMenu} style={{ backgroundColor: bgColor, color: color }}>
             <div className={styles.closeButton}>
               <Image
                 src={leftArrowIcon}
@@ -208,7 +202,6 @@ export const Sidemenu = ({ bgColor }: { bgColor: string }) => {
                 <RightIcon width="24px" color="white" />
               </div>
             </div>
-            
           </div>
         </DrawerContent>
       </Drawer>

@@ -9,7 +9,6 @@
   top: 0px;
   bottom: auto;
   border: 18px solid;
-  border-color: var(--secondarygreen) transparent transparent transparent;
 }
 
 .messageTriangleLeft {
@@ -23,7 +22,6 @@
   top: 0px;
   bottom: auto;
   border: 18px solid;
-  border-color: #F9F9FE transparent transparent transparent;
 }
 
 .onHover {

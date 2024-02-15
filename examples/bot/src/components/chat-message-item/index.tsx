@@ -20,7 +20,7 @@ import React, {
 } from 'react';
 
 import { toast } from 'react-hot-toast';
-
+import colorConfig from '../../../config/colors.json';
 import styles from './index.module.css';
 // import { analytics } from '../../utils/firebase';
 // import { logEvent } from 'firebase/analytics';
@@ -37,7 +37,7 @@ import { useLocalization } from '../../hooks/useLocalization';
 import { getReactionUrl } from '../../utils/getUrls';
 import { useFlags } from 'flagsmith/react';
 import Image from 'next/image';
-import { Button } from '@chakra-ui/react';
+import { Button, color } from '@chakra-ui/react';
 import flagsmith from 'flagsmith/isomorphic';
 import Loader from '../loader';
 import { useCookies } from 'react-cookie';
@@ -277,33 +277,40 @@ const ChatMessageItem: FC<ChatMessageItemPropType> = ({ message, onSend }) => {
 
   //@ts-ignore
   const HyperlinkText = ({ content }: HyperlinkProps) => {
-    const URL_REGEX = /https?:\/\/[^\s]+/
+    const URL_REGEX = /https?:\/\/[^\s]+/;
     let words = content.split(' ');
-    if (words?.[0] == ":") {
-      words = words.slice(1)
+    if (words?.[0] == ':') {
+      words = words.slice(1);
     }
     return (
       <p>
         {words.map((word) => {
-          let href = word.match(URL_REGEX)?.[0]
+          let href = word.match(URL_REGEX)?.[0];
           if (href) {
             if (href[0] == '.') href = href.slice(1);
-            if (href[href.length - 1] == '.' || href[href.length - 1] == ',') href = href.slice(0, href.length - 1);
-            if (href[0] == "(") href = href.slice(1);
-            if (href[href.length - 1] == ')') href = href.slice(0, href.length - 1);
+            if (href[href.length - 1] == '.' || href[href.length - 1] == ',')
+              href = href.slice(0, href.length - 1);
+            if (href[0] == '(') href = href.slice(1);
+            if (href[href.length - 1] == ')')
+              href = href.slice(0, href.length - 1);
           }
           return word.match(URL_REGEX) ? (
             <>
-              <a href={href} target='_blank' style={{ color: '#4286f4' }} rel="noopener noreferrer" >{word}</a>{' '}
+              <a
+                href={href}
+                target="_blank"
+                style={{ color: '#4286f4' }}
+                rel="noopener noreferrer">
+                {word}
+              </a>{' '}
             </>
           ) : (
             word + ' '
           );
-
         })}
       </p>
     );
-  }
+  };
 
   // console.log('#-debug:', content);
   switch (type) {
@@ -323,8 +330,23 @@ const ChatMessageItem: FC<ChatMessageItemPropType> = ({ message, onSend }) => {
               content?.data?.position === 'right'
                 ? styles.messageTriangleRight
                 : styles.messageTriangleLeft
+            }
+            style={
+              content?.data?.position === 'right'
+                ? {
+                    borderColor: `${colorConfig.colors.secondary} transparent transparent transparent`,
+                  }
+                : {
+                    borderColor: `${colorConfig.colors.primary} transparent transparent transparent`,
+                  }
             }></div>
-          <Bubble type="text">
+          <Bubble
+            type="text"
+            style={
+              content?.data?.position === 'right'
+                ? { background: colorConfig.colors.secondary }
+                : { background: colorConfig.colors.primary }
+            }>
             <span
               className="onHover"
               style={{
@@ -333,7 +355,7 @@ const ChatMessageItem: FC<ChatMessageItemPropType> = ({ message, onSend }) => {
                 color:
                   content?.data?.position === 'right'
                     ? 'white'
-                    : 'var(--secondarygreen)',
+                    : colorConfig.colors.font,
               }}>
               {content?.data?.btns ? (
                 <>
@@ -381,12 +403,12 @@ const ChatMessageItem: FC<ChatMessageItemPropType> = ({ message, onSend }) => {
                   color:
                     content?.data?.position === 'right'
                       ? 'white'
-                      : 'var(--font)',
+                      : colorConfig.colors.font,
                   fontSize: '10px',
                 }}>
                 {getFormatedTime(
                   content?.data?.sentTimestamp ||
-                  content?.data?.repliedTimestamp
+                    content?.data?.repliedTimestamp
                 )}
               </span>
             </div>
@@ -455,7 +477,7 @@ const ChatMessageItem: FC<ChatMessageItemPropType> = ({ message, onSend }) => {
                     <p
                       style={{
                         fontSize: '11px',
-                        color: 'var(--font)',
+                        color: colorConfig.colors.font,
                         fontFamily: 'Mulish-bold',
                         display: 'flex',
                         alignItems: 'flex-end',
@@ -484,7 +506,7 @@ const ChatMessageItem: FC<ChatMessageItemPropType> = ({ message, onSend }) => {
                       <MsgThumbsUp
                         fill={reaction === 1}
                         width="20px"
-                        color="var(--secondarygreen)"
+                        color=colorConfig.colors.primary
                       />
                       <p
                         style={{ fontSize: '11px', fontFamily: 'Mulish-bold' }}>
@@ -523,7 +545,7 @@ const ChatMessageItem: FC<ChatMessageItemPropType> = ({ message, onSend }) => {
                     </div>
                   </div>
                   &nbsp; */}
-                  {/* <p>{t('message.helpful')}</p> */}
+                {/* <p>{t('message.helpful')}</p> */}
                 {/* </div> */}
               </div>
             )
@@ -577,7 +599,7 @@ const ChatMessageItem: FC<ChatMessageItemPropType> = ({ message, onSend }) => {
                     color:
                       content?.data?.position === 'right'
                         ? 'white'
-                        : 'var(--secondarygreen)',
+                        : colorConfig.colors.primary,
                   }}>
                   {content?.data?.btns ? (
                     <>
@@ -596,13 +618,13 @@ const ChatMessageItem: FC<ChatMessageItemPropType> = ({ message, onSend }) => {
                 </div>
                 <span
                   style={{
-                    color: 'var(--font)',
+                    color: colorConfig.colors.font,
                     fontSize: '10px',
                     marginLeft: 'auto',
                   }}>
                   {getFormatedTime(
                     content?.data?.sentTimestamp ||
-                    content?.data?.repliedTimestamp
+                      content?.data?.repliedTimestamp
                   )}
                 </span>
               </div>
@@ -638,19 +660,19 @@ const ChatMessageItem: FC<ChatMessageItemPropType> = ({ message, onSend }) => {
                 <div style={{ display: 'flex' }}>
                   <div
                     className={styles.msgSpeaker}
-                    onClick={!ttsLoader ? downloadAudio : () => { }}
+                    onClick={!ttsLoader ? downloadAudio : () => {}}
                     style={
                       !content?.data?.isEnd
                         ? {
-                          pointerEvents: 'none',
-                          filter: 'grayscale(100%)',
-                          opacity: '0.5',
-                        }
+                            pointerEvents: 'none',
+                            filter: 'grayscale(100%)',
+                            opacity: '0.5',
+                          }
                         : {
-                          pointerEvents: 'auto',
-                          opacity: '1',
-                          filter: 'grayscale(0%)',
-                        }
+                            pointerEvents: 'auto',
+                            opacity: '1',
+                            filter: 'grayscale(0%)',
+                          }
                     }>
                     {context?.clickedAudioUrl === content?.data?.audio_url ? (
                       <Image
@@ -671,7 +693,7 @@ const ChatMessageItem: FC<ChatMessageItemPropType> = ({ message, onSend }) => {
                     <p
                       style={{
                         fontSize: '11px',
-                        color: 'var(--font)',
+                        color: colorConfig.colors.font,
                         fontFamily: 'Mulish-bold',
                         display: 'flex',
                         alignItems: 'flex-end',
@@ -700,7 +722,7 @@ const ChatMessageItem: FC<ChatMessageItemPropType> = ({ message, onSend }) => {
                       <MsgThumbsUp
                         fill={reaction === 1}
                         width="20px"
-                        color="var(--secondarygreen)"
+                        color={colorConfig.colors.primary}
                       />
                       <p
                         style={{ fontSize: '11px', fontFamily: 'Mulish-bold' }}>
@@ -769,10 +791,11 @@ const ChatMessageItem: FC<ChatMessageItemPropType> = ({ message, onSend }) => {
                   justifyContent: 'space-between',
                   alignItems: 'self-end',
                 }}>
-                <span style={{ color: 'var(--font)', fontSize: '10px' }}>
+                <span
+                  style={{ color: colorConfig.colors.font, fontSize: '10px' }}>
                   {getFormatedTime(
                     content?.data?.sentTimestamp ||
-                    content?.data?.repliedTimestamp
+                      content?.data?.repliedTimestamp
                   )}
                 </span>
               </div>
@@ -807,10 +830,11 @@ const ChatMessageItem: FC<ChatMessageItemPropType> = ({ message, onSend }) => {
                   justifyContent: 'space-between',
                   alignItems: 'self-end',
                 }}>
-                <span style={{ color: 'var(--font)', fontSize: '10px' }}>
+                <span
+                  style={{ color: colorConfig.colors.font, fontSize: '10px' }}>
                   {getFormatedTime(
                     content?.data?.sentTimestamp ||
-                    content?.data?.repliedTimestamp
+                      content?.data?.repliedTimestamp
                   )}
                 </span>
               </div>

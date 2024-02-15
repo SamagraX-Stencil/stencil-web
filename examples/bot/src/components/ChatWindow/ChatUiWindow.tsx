@@ -23,6 +23,7 @@ import downloadIcon from '../../assets/icons/download.svg';
 import Image from 'next/image';
 import { useCookies } from 'react-cookie';
 import Loader from '../loader';
+import colorConfig from '../../../config/colors.json'
 
 const ChatUiWindow: React.FC = () => {
   const t = useLocalization();
@@ -250,8 +251,8 @@ const ChatUiWindow: React.FC = () => {
       <div style={{ height: '100%', width: '100%' }}>
         {/* @ts-ignore */}
         <Chat
-          btnColor="var(--secondarygreen)"
-          background="var(--bg-color)"
+          btnColor={colorConfig.colors.primary}
+          background={colorConfig.colors['bg-color']}
           disableSend={context?.isMsgReceiving}
           // translation={t}
           // showTransliteration={!(localStorage.getItem('locale') === 'en')}
