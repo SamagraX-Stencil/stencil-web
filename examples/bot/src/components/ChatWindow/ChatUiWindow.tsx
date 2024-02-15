@@ -215,7 +215,7 @@ const ChatUiWindow: React.FC = () => {
             .share({
               files: [file],
               title: 'Chat',
-              text: 'Check out my chat with UP-LIFT!',
+              text: 'Check out my chat with BOT!',
             })
             .catch((error) => {
               toast.error(`${t('message.share_cancelled')}`);
