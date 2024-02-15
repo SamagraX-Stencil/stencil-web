@@ -1,0 +1,8 @@
+{
+  "short_name": "BOT",
+  "name": "BOT",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "black",
+  "background_color": "white"
+}
