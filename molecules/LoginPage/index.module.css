@@ -1,7 +1,33 @@
 .main {
-  padding-top: 150px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.leftColumn {
+  margin: 0;
+  flex: 1;
+  background-color: #ffa500;
+}
+
+
+.logo {
+  padding: 40px;
+}
+
+.rightColumn {
+  display: flex;
   flex-direction: column;
+  align-items: center;
+  flex: 1;
+  padding: 220px 50px 50px 50px;
+}
+
+@media (max-width: 768px) {
+  .leftColumn {
+    display: none;
+  }
+  .rightColumn {
+    padding-top: 150px;
+  }
 }
