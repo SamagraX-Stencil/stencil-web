@@ -1,0 +1,48 @@
+body {
+	margin: auto;
+	overflow-x: hidden;
+}
+
+@font-face {
+	font-family: Mulish-bold;
+	src: url('../assets/fonts/Mulish-Bold.ttf');
+	font-display: swap;
+}
+@font-face {
+	font-family: Mulish-demi;
+	src: url('../assets/fonts/Mulish-Demi.ttf');
+	font-display: swap;
+}
+@font-face {
+	font-family: Mulish-medium;
+	src: url('../assets/fonts/Mulish-Medium.ttf');
+	font-display: swap;
+}
+@font-face {
+	font-family: Mulish-regular;
+	src: url('../assets/fonts/Mulish-Regular.ttf');
+	font-display: swap;
+}
+
+.font-bold {
+	font-family: Mulish-bold !important;
+}
+.font-demi {
+	font-family: Mulish-demi !important;
+}
+.font-medium {
+	font-family: Mulish-medium !important;
+}
+.font-regular {
+	font-family: Mulish-regular !important;
+}
+
+/* Toast CSS */
+
+.Toastify__toast-body {
+	font-family: Mulish-medium !important;
+}
+
+::placeholder {
+	font-family: Mulish-regular;
+}
