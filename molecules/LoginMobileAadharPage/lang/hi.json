@@ -1,0 +1,15 @@
+{
+  "welcome": "स्वागत है!",
+  "dontHaveAccount": "खाता नहीं है?",
+  "registerNow": "रजिस्टर करें",
+  "enterAadharNumber": "आधार नंबर दर्ज करें",
+  "enterPhoneNumber": "फ़ोन नंबर दर्ज करें",
+  "login": "लॉग इन करें",
+  "orLoginUsing": "या लॉग इन करें",
+  "aadharNumber": "आधार नंबर",
+  "phoneNumber": "फ़ोन नंबर",
+  "successfullySentOTP": "OTP सफलतापूर्वक भेजा गया",
+  "pleaseEnterValidInput": "कृपया एक मान्य इनपुट दर्ज करें",
+  "pleaseEnterValidAadhar": "कृपया एक मान्य आधार नंबर दर्ज करें",
+  "pleaseEnterValidMobile": "कृपया एक मान्य मोबाइल नंबर दर्ज करें"
+}

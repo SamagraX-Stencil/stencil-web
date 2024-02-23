@@ -1,0 +1,15 @@
+{
+  "welcome": "Welcome!",
+  "dontHaveAccount": "Don’t have an account?",
+  "registerNow": "Register Now",
+  "enterAadharNumber": "Enter Aadhar Number",
+  "enterPhoneNumber": "Enter Phone Number",
+  "login": "Login",
+  "orLoginUsing": "or Login using",
+  "aadharNumber": "Aadhar Number",
+  "phoneNumber": "Phone Number",
+  "successfullySentOTP": "Successfully sent OTP",
+  "pleaseEnterValidInput": "Please enter a valid input",
+  "pleaseEnterValidAadhar": "Please enter a valid Aadhar number",
+  "pleaseEnterValidMobile": "Please enter a valid mobile number"
+}
