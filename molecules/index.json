@@ -1,6 +1,7 @@
 {
     "molecules": [
       "Button",
-       "LoginMobileAadharPage"
+       "LoginMobileAadharPage",
+       "OtpPage"
     ]
   }

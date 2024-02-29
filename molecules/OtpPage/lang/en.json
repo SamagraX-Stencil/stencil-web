@@ -1,0 +1,7 @@
+{
+  "otpTitle": "OTP Verification",
+  "otpDescription": "Enter the verification code we just sent on your mobile number",
+  "login": "Login",
+  "successfullyLoggedIn": "Successfully logged in",
+  "pleaseEnterValidOtp": "Please enter correct OTP"
+}
