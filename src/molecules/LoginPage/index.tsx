@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './index.module.css';
-import Image from 'next/image';
+// import Image from 'next/image';
 import loginImg from './login.png';
 
 interface LoginPageProps {
@@ -24,7 +24,7 @@ const LoginPage: React.FC<LoginPageProps> = ({
       <div className={`${styles.main}`}>
         <div className={styles.subtitle}>Bot</div>
         <div className={styles.body}>
-          <Image src={loginImg} alt="" height={201} width={300} />
+          <img src={loginImg} alt="" height={201} width={300} />
           <form onSubmit={(event) => event?.preventDefault()}>
             <div className={styles.container}>
               <div className={styles.inputContainer}>
