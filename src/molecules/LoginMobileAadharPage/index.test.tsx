@@ -1,4 +1,4 @@
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 import LoginMobileAadharPage from './index';
 
 describe('LoginMobileAadharPage component', () => {
@@ -9,58 +9,83 @@ describe('LoginMobileAadharPage component', () => {
 
   test('renders correct input fields', () => {
     render(<LoginMobileAadharPage />);
-    const phoneInput = screen.getByLabelText('Enter Phone Number');
-    const aadharInput = screen.getByLabelText('Enter Aadhar Number');
+    const phoneInput = screen.getByText('Enter Phone Number');
 
     expect(phoneInput).toBeInTheDocument();
-    expect(aadharInput).toBeInTheDocument();
   });
 
   test('allows entering phone number', () => {
     render(<LoginMobileAadharPage />);
-    const phoneInput = screen.getByLabelText('Enter Phone Number');
+    const phoneInput = screen.getByLabelText('Enter Phone Number', {
+      exact: false,
+    }); // Need to use exact false here because of MUI
 
     fireEvent.change(phoneInput, { target: { value: '1234567890' } });
 
     expect(phoneInput).toHaveValue('1234567890');
   });
 
-  test('allows entering aadhar number', () => {
+  test('allows entering aadhar number', async () => {
     render(<LoginMobileAadharPage />);
-    const aadharInput = screen.getByLabelText('Enter Aadhar Number');
+    const aadhaarBtn = await screen.findByText('Aadhar Number');
+    fireEvent.click(aadhaarBtn); // Changing to aadhaar input method
+    const aadharInput = screen.getByLabelText('Enter Aadhar Number', {
+      exact: false,
+    });
 
     fireEvent.change(aadharInput, { target: { value: '123456789012' } });
 
     expect(aadharInput).toHaveValue('123456789012');
   });
 
-  test('displays error message for invalid phone number', () => {
+  test('displays error message for invalid phone number', async () => {
     render(<LoginMobileAadharPage />);
-    const phoneInput = screen.getByLabelText('Enter Phone Number');
-
+    const phoneInput = screen.getByLabelText('Enter Phone Number', {
+      exact: false,
+    });
     fireEvent.change(phoneInput, { target: { value: '123' } });
 
-    expect(screen.getByText('Please enter a valid mobile number')).toBeInTheDocument();
+    const loginBtn = await screen.findByText('Login');
+    fireEvent.click(loginBtn);
+
+    await waitFor(() => {
+      const toast = screen.findByText('Please enter a valid input');
+      expect(toast).toBeInTheDocument();
+    });
   });
 
-  test('displays error message for invalid aadhar number', () => {
+  test('displays error message for invalid aadhar number', async () => {
     render(<LoginMobileAadharPage />);
-    const aadharInput =  screen.getByLabelText('Enter Aadhar Number');
+    const aadhaarBtn = await screen.findByText('Aadhar Number');
+    fireEvent.click(aadhaarBtn);
+
+    const aadharInput = screen.getByLabelText('Enter Aadhar Number', {
+      exact: false,
+    });
 
     fireEvent.change(aadharInput, { target: { value: '123' } });
 
-    expect(screen.getByText('Please enter a valid Aadhar number')).toBeInTheDocument();
+    const loginBtn = await screen.findByText('Login');
+    fireEvent.click(loginBtn);
+
+    await waitFor(async () => {
+      expect(
+        await screen.findByText('Please enter a valid Aadhar number')
+      ).toBeInTheDocument();
+    });
   });
 
-  // test('handles login button click', async () => {
-  //   render(<LoginMobileAadharPage />);
-  //   const loginButton = screen.getByText('Login');
+  test('handles login button click', async () => {
+    render(<LoginMobileAadharPage />);
+    const phoneInput = screen.getByLabelText('Enter Phone Number', {
+      exact: false,
+    });
+    fireEvent.change(phoneInput, { target: { value: '9034350533' } });
+    const loginBtn = await screen.findByText('Login');
+    fireEvent.click(loginBtn);
 
-  //   fireEvent.click(loginButton);
-
-  //   // You may add more assertions here to test different scenarios after login button click
-  //   await waitFor(() => expect(screen.getByText('Successfully sent OTP')).toBeInTheDocument());
-  // });
-
-  // Add more tests as needed...
+    await waitFor(() =>
+      expect(screen.findByText('Successfully sent OTP')).toBeInTheDocument()
+    );
+  });
 });
