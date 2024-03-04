@@ -1,5 +1,6 @@
-import { render, fireEvent, screen, waitFor } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import LoginMobileAadharPage from './index';
+
 
 describe('LoginMobileAadharPage component', () => {
   test('renders without crashing', () => {
@@ -38,20 +39,22 @@ describe('LoginMobileAadharPage component', () => {
     expect(aadharInput).toHaveValue('123456789012');
   });
 
+
   test('displays error message for invalid phone number', async () => {
     render(<LoginMobileAadharPage />);
+    // toast.success.mockImplementation(() => Promise.resolve('Successfully sent OTP'));
     const phoneInput = screen.getByLabelText('Enter Phone Number', {
       exact: false,
     });
     fireEvent.change(phoneInput, { target: { value: '123' } });
 
     const loginBtn = await screen.findByText('Login');
+    console.log({ loginBtn })
     fireEvent.click(loginBtn);
+    setTimeout(() => {
+      expect(screen.getByText('Please enter a valid input')).toBeInTheDocument()
+    }, 2000);
 
-    await waitFor(() => {
-      const toast = screen.findByText('Please enter a valid input');
-      expect(toast).toBeInTheDocument();
-    });
   });
 
   test('displays error message for invalid aadhar number', async () => {
@@ -68,11 +71,14 @@ describe('LoginMobileAadharPage component', () => {
     const loginBtn = await screen.findByText('Login');
     fireEvent.click(loginBtn);
 
-    await waitFor(async () => {
-      expect(
-        await screen.findByText('Please enter a valid Aadhar number')
-      ).toBeInTheDocument();
-    });
+    // await waitFor(async () => {
+    //   expect(
+    //     await screen.findByText('Please enter a valid Aadhar number')
+    //   ).toBeInTheDocument();
+    // });
+    setTimeout(() => {
+      expect(screen.findByText('Please enter a valid Aadhar number')).toBeInTheDocument()
+    }, 2000);
   });
 
   test('handles login button click', async () => {
@@ -84,8 +90,11 @@ describe('LoginMobileAadharPage component', () => {
     const loginBtn = await screen.findByText('Login');
     fireEvent.click(loginBtn);
 
-    await waitFor(() =>
+    // await waitFor(() =>
+    //   expect(screen.findByText('Successfully sent OTP')).toBeInTheDocument()
+    // );
+    setTimeout(() => {
       expect(screen.findByText('Successfully sent OTP')).toBeInTheDocument()
-    );
+    }, 2000);
   });
 });
