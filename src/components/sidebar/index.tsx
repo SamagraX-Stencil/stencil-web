@@ -28,7 +28,7 @@ export const Sidebar: FC<{
                             {/* <ListItemIcon>
                               
                             </ListItemIcon> */}
-                            <ListItemText primary='Molecules' />
+                            <ListItemText primary='Pages' />
                         </ListItemButton>
                        
                     </ListItem>
@@ -46,6 +46,19 @@ export const Sidebar: FC<{
                 ))}
             </List>
             <Divider />
+            <List>
+            <ListItem  disablePadding>          
+                        <ListItemButton>
+                        <Link href={`/molecules`} underline="none">
+                            {/* <ListItemIcon>
+                              
+                            </ListItemIcon> */}
+                            <ListItemText primary='Molecules' />
+                            </Link>
+                        </ListItemButton>
+                       
+                    </ListItem>
+                    </List>
             
         </Box>
     );

@@ -1,4 +1,4 @@
-import { render, fireEvent, waitFor, screen } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import LoginMobileAadharPage from './index';
 
 describe('LoginMobileAadharPage component', () => {

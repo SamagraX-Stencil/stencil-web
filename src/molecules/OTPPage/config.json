@@ -1,0 +1,16 @@
+{
+  "theme": {
+    "primaryColor": {
+      "value": "#ffa500",
+      "allowOverride": true
+    },
+    "secondaryColor": {
+        "value": "#11e477",
+        "allowOverride": true
+      }
+  },
+  "component": {
+    "allowOverride": false,
+    "title": "Welcome!"
+  }
+}

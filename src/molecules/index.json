@@ -1,6 +1,7 @@
 {
     "molecules": [
-      "Button",
-      "LoginPage"
+      "LoginPage",
+      "OTPPage",
+      "OTPInput"
     ]
   }
