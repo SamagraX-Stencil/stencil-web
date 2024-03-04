@@ -4,15 +4,5 @@
       "allowOverride": false,
       "title": "Welcome!"
     }
-  },
-  "theme": {
-    "primaryColor": {
-      "allowOverride": true,
-      "value": "#D2F4E0"
-    },
-    "secondaryColor": {
-      "allowOverride": true,
-      "value": "#219653"
-    }
   }
 }

@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import logo from './logo.png';
 import CircularProgress from '@mui/material/CircularProgress';
 import { toast } from 'react-hot-toast';
+import config from './config.json'
 
 const LoginMobileAadharPage: React.FC = () => {
   const [isAadharClicked, setIsAadharClicked] = useState(false);
@@ -119,7 +120,7 @@ const LoginMobileAadharPage: React.FC = () => {
               textAlign="left"
               width="90%"
               color="#1E232C">
-              Welcome!
+              {config.component.loginPage.title}
             </Typography>
             <Box
               component="form"
