@@ -69,12 +69,7 @@ describe('LoginMobileAadharPage component', () => {
 
     const loginBtn = await screen.findByText('Login');
     fireEvent.click(loginBtn);
-
-    // await waitFor(async () => {
-    //   expect(
-    //     await screen.findByText('Please enter a valid Aadhar number')
-    //   ).toBeInTheDocument();
-    // });
+    
     setTimeout(() => {
       expect(screen.findByText('Please enter a valid Aadhar number')).toBeInTheDocument()
     }, 2000);
