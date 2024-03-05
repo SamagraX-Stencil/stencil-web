@@ -1,0 +1,7 @@
+{
+    "molecules": [
+      "LoginMobileAadharPage",
+      "OTPPage",
+      "OTPInput"
+    ]
+  }
