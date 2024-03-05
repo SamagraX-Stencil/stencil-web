@@ -1,4 +1,4 @@
-import { render, fireEvent, waitFor, getByTestId } from '@testing-library/react';
+import { render} from '@testing-library/react';
 import OtpPage from './index';
 
 describe('OtpPage component', () => {
