@@ -1,6 +1,6 @@
 {
     "molecules": [
-      "LoginPage",
+      "LoginMobileAadharPage",
       "OTPPage",
       "OTPInput"
     ]

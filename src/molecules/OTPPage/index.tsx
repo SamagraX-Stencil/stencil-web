@@ -1,47 +1,29 @@
 import React, { useCallback, useState } from 'react';
 import styles from './index.module.css';
 import Box from '@mui/material/Box';
-
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-// import Image from 'next/image';
 import logo from './assets/logo.png';
-import { OtpPageProps } from './otp-page';
-import { MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import { toast } from 'react-hot-toast';
-import { useTranslation } from 'react-i18next';
-// import i18n from './i18n';
 import { OTPInput } from '../OTPInput';
 import config from './config.json';
-const OtpPage: React.FC<OtpPageProps> = ({ handleSubmit }) => {
-  const { t } = useTranslation();
+const OtpPage: React.FC = () => {
   const [otp, setOtp] = useState('');
-  const [language, setLanguage] = useState('en');
   const [loading, setLoading] = useState(false);
 
-  const handleLanguage = useCallback((ev: SelectChangeEvent<string>) => {
-    const selectedLanguage = ev.target.value;
-    setLanguage(selectedLanguage);
-    // i18n.changeLanguage(selectedLanguage);
-  }, []);
-
-  const handleLogin = useCallback(() => {
+  const handleLogin = useCallback((e: any) => {
+    e.preventDefault();
     if (otp.length === 4) {
       setLoading(true);
       setTimeout(() => {
         setLoading(false);
-        toast.success(`${t('successfullyLoggedIn')}`);
+        toast.success(`Successfully logged in`);
       }, 2000);
     } else {
-      toast.error(`${t('pleaseEnterValidOtp')}`);
+      toast.error(`Please enter correct OTP`);
     }
-  },[otp.length, t]);
-
-  const onSubmit=useCallback((ev:React.FormEvent<HTMLFormElement>)=>{
-    ev.preventDefault();
-    handleSubmit && handleSubmit(ev)
-  },[handleSubmit]);
+  },[otp.length]);
 
   return (
     <>
@@ -55,19 +37,6 @@ const OtpPage: React.FC<OtpPageProps> = ({ handleSubmit }) => {
           </div>
         </div>
         <div className={styles.rightColumn}>
-          <div className={styles.topSection}>
-            <div className={styles.dropdown}>
-              <Select
-                size="small"
-                id="lang-select"
-                value={language}
-                label=""
-                onChange={handleLanguage}>
-                <MenuItem value="en">English</MenuItem>
-                <MenuItem value="hi">हिंदी</MenuItem>
-              </Select>
-            </div>
-          </div>
           <div className={styles.form}>
             {/* Form */}
             <Typography
@@ -76,18 +45,18 @@ const OtpPage: React.FC<OtpPageProps> = ({ handleSubmit }) => {
               width="90%"
               color="#1E232C"
               sx={{ m: 2 }}>
-              {t('otpTitle')}
+              OTP Verification
             </Typography>
             <Typography
               variant="body2"
               textAlign="left"
               width="90%"
               color="#838BA1">
-              {t('otpDescription')}
+              Enter the verification code we just sent on your mobile number
             </Typography>
             <Box
               component="form"
-              onSubmit={onSubmit}
+              onSubmit={handleLogin}
               sx={{ mt: 1, width: '90%' }}>
               <Box
                 sx={{
@@ -119,7 +88,7 @@ const OtpPage: React.FC<OtpPageProps> = ({ handleSubmit }) => {
                 {loading ? (
                   <CircularProgress size={24} color="inherit" />
                 ) : (
-                  t('login')
+                 "Login"
                 )}
               </Button>
             </Box>

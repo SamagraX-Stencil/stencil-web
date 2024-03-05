@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import logo from './logo.png';
+import logo from './assets/logo.png';
 import CircularProgress from '@mui/material/CircularProgress';
 import { toast } from 'react-hot-toast';
 import config from './config.json';
@@ -86,7 +86,7 @@ const LoginMobileAadharPage: React.FC = () => {
         name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"></meta>
       <div className={styles.main}>
-        <div className={styles.leftColumn}>
+        <div className={styles.leftColumn} style={{background: config.theme.secondaryColor.value}}>
           <div className={styles.logo}>
             <img src={logo} width={150} height={40} alt="" />
           </div>
