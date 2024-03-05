@@ -18,7 +18,6 @@ describe('OtpPage component', () => {
     expect(textElement).toBeInTheDocument();
   });
 
-
   // TODO: Fix these tests
   // test('displays error message when form is submitted with invalid OTP', async () => {
   //   const { getByText, getByTestId } = render(<OtpPage />);
