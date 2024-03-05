@@ -142,6 +142,7 @@ const LoginMobileAadharPage: React.FC = () => {
                 autoComplete={isAadharClicked ? 'aadhar' : 'phone'}
                 autoFocus
               />
+             
               <Button
                 type="submit"
                 fullWidth
@@ -169,7 +170,7 @@ const LoginMobileAadharPage: React.FC = () => {
               width="90%"
               color={config.theme.primaryColor.value}
               sx={{ mb: 1 }}>
-              or Login using{' '}
+              or Login using
             </Typography>
             <Typography
               onClick={handleAadharClick}

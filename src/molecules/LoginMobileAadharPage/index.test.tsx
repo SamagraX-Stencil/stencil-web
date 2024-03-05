@@ -1,4 +1,4 @@
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 import LoginMobileAadharPage from './index';
 
 
@@ -49,7 +49,6 @@ describe('LoginMobileAadharPage component', () => {
     fireEvent.change(phoneInput, { target: { value: '123' } });
 
     const loginBtn = await screen.findByText('Login');
-    console.log({ loginBtn })
     fireEvent.click(loginBtn);
     setTimeout(() => {
       expect(screen.getByText('Please enter a valid input')).toBeInTheDocument()
@@ -70,12 +69,7 @@ describe('LoginMobileAadharPage component', () => {
 
     const loginBtn = await screen.findByText('Login');
     fireEvent.click(loginBtn);
-
-    // await waitFor(async () => {
-    //   expect(
-    //     await screen.findByText('Please enter a valid Aadhar number')
-    //   ).toBeInTheDocument();
-    // });
+    
     setTimeout(() => {
       expect(screen.findByText('Please enter a valid Aadhar number')).toBeInTheDocument()
     }, 2000);
