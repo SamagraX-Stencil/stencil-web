@@ -6,7 +6,7 @@
     },
     "secondaryColor": {
       "allowOverride": true,
-      "value": ""
+      "value": "#ffa500"
     }
   },
   "component": {

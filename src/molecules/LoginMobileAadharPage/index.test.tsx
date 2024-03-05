@@ -49,7 +49,6 @@ describe('LoginMobileAadharPage component', () => {
     fireEvent.change(phoneInput, { target: { value: '123' } });
 
     const loginBtn = await screen.findByText('Login');
-    console.log({ loginBtn })
     fireEvent.click(loginBtn);
     setTimeout(() => {
       expect(screen.getByText('Please enter a valid input')).toBeInTheDocument()

@@ -23,25 +23,11 @@
     padding: 0px;
   }
   
-  .topSection {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex: 0.05;
-    width: 90%;
-  }
-  
-  .dropdown {
-    display: flex;
-    align-items: center;
-  }
-  
   .form {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex: 0.9;
     width: 60%;
   }
   
@@ -58,8 +44,5 @@
     }
     .form{
       width: 90%;
-    }
-    .topSection {
-      width: 95%;
     }
   }
