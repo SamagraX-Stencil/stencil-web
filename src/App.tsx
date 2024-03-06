@@ -4,6 +4,7 @@ import LoginPage from "./molecules/LoginMobileAadharPage";
 import { Toaster } from "react-hot-toast";
 import Components from "./components";
 import OtpPage from "./molecules/OTPPage";
+import DowntimePage from "./molecules/DowntimePage";
 
 
 function App() {
@@ -14,8 +15,9 @@ function App() {
       <>
         <Routes>
           <Route index element={<LoginPage />} /> 
-          <Route path="/LoginPage" element={<LoginPage />} />
+          <Route path="/LoginMobileAadharPage" element={<LoginPage />} />
           <Route path="/OTPPage" element={<OtpPage />} />
+          <Route path="/DowntimePage" element={<DowntimePage />} />
           <Route path="/molecules" element={<Components />}/>
         </Routes>
       </>

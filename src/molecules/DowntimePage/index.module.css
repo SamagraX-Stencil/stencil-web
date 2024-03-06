@@ -1,0 +1,59 @@
+.container{
+  min-width: 100vw;
+  text-align: center;
+  height: 100%;
+}
+
+.supportingText {
+  margin-top: 5vh;
+  margin-bottom: 1vh;
+  text-align: center;
+  font-family:  sans-serif;
+  font-size: 2.6vh;
+  font-weight: 700; 
+}
+
+.title{
+  margin: 12vh 2vh 1vh 2vh;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 2.6vh;
+  font-weight: 400; 
+}
+
+.imageContainer {
+  margin: auto;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  width: 357px;
+  height: 158px;
+  background: url('./assets/downTimeGIF.gif'), #F6FAFF;
+  background-size: contain; 
+  background-repeat: no-repeat; 
+  background-blend-mode:multiply;
+}
+
+.retryButton{
+  font-weight: 700 !important;
+  font-size: 2vh !important;
+  font-family: sans-serif;
+  border-radius: 40px !important;
+}
+
+.viewPrevChatsButton {
+  font-weight: 700 !important;
+  font-size: 2vh !important;
+  font-family: 'sans-serif';
+  border-radius: 40px !important;
+}
+
+.dialerBox {
+  margin: 2vh;
+  padding-bottom: 1vh;
+}
+
+.footerTitle {
+  font-family: sans-serif ;
+  font-size: 4vh !important;
+  font-weight: 700 !important; 
+}
