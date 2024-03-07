@@ -13,7 +13,9 @@ export function OTPInput({
   value: string;
   onChange: React.Dispatch<React.SetStateAction<string>>;
 }) {
-  const inputRefs = React.useRef<HTMLInputElement[]>(new Array(length).fill(null));
+  const inputRefs = React.useRef<HTMLInputElement[]>(
+    new Array(length).fill(null)
+  );
 
   const focusInput = (targetIndex: number) => {
     const targetInput = inputRefs.current[targetIndex];
@@ -27,7 +29,7 @@ export function OTPInput({
 
   const handleKeyDown = (
     event: React.KeyboardEvent<HTMLInputElement>,
-    currentIndex: number,
+    currentIndex: number
   ) => {
     switch (event.key) {
       case 'ArrowUp':
@@ -79,13 +81,16 @@ export function OTPInput({
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement>,
-    currentIndex: number,
+    currentIndex: number
   ) => {
     const currentValue = event.target.value;
     let indexToEnter = 0;
 
     while (indexToEnter <= currentIndex) {
-      if (inputRefs.current[indexToEnter].value && indexToEnter < currentIndex) {
+      if (
+        inputRefs.current[indexToEnter].value &&
+        indexToEnter < currentIndex
+      ) {
         indexToEnter += 1;
       } else {
         break;
@@ -106,14 +111,14 @@ export function OTPInput({
 
   const handleClick = (
     _event: React.MouseEvent<HTMLInputElement, MouseEvent>,
-    currentIndex: number,
+    currentIndex: number
   ) => {
     selectInput(currentIndex);
   };
 
   const handlePaste = (
     event: React.ClipboardEvent<HTMLInputElement>,
-    currentIndex: number,
+    currentIndex: number
   ) => {
     event.preventDefault();
     const clipboardData = event.clipboardData;
@@ -125,7 +130,10 @@ export function OTPInput({
       let indexToEnter = 0;
 
       while (indexToEnter <= currentIndex) {
-        if (inputRefs.current[indexToEnter].value && indexToEnter < currentIndex) {
+        if (
+          inputRefs.current[indexToEnter].value &&
+          indexToEnter < currentIndex
+        ) {
           indexToEnter += 1;
         } else {
           break;
@@ -217,12 +225,14 @@ const InputElement = styled('input')(
 
   &:focus {
     border-color: ${blue[400]};
-    box-shadow: 0 0 0 3px ${theme.palette.mode === 'dark' ? blue[600] : blue[200]};
+    box-shadow: 0 0 0 3px ${
+      theme.palette.mode === 'dark' ? blue[600] : blue[200]
+    };
   }
 
   // firefox
   &:focus-visible {
     outline: 0;
   }
-`,
+`
 );
