@@ -2,23 +2,21 @@
   "theme": {
     "primaryColor": {
       "allowOverride": true,
-      "value": "#1E232C"
+      "value": "#219653"
     },
     "secondaryColor": {
-      "allowOverride": true,
+      "allowOverride": true, 
       "value": "#828282"
-    },
-    "tertiaryColor": {
-      "allowOverride": true,
-      "value": "#219653"
     }
   },
   "component": {
       "allowOverride": false,
       "title": "We're under maintainance",
+      "downTimeImage": "",
       "supportingText": "Have an urgent query?",
-      "contactLink": "Call Us",
-      "refreshTextButton": "Try Again",
-      "previousPageButton": "Previous Page"
+      "callIcon": "",
+      "contactLink": "Call Ama Krushi",
+      "refreshText": "Try Again",
+      "previousPageText": "Previous Page"
   }
 }

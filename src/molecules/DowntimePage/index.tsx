@@ -1,51 +1,59 @@
 import React from 'react';
 import styles from './index.module.css';
-import { Box, Button} from '@mui/material';
+import { Box, Button, Typography} from '@mui/material';
 import config from './config.json';
 import CallIcon from './assets/call-icon.svg';
+import DowntimeGif from './assets/downTimeGIF.gif'
 
 const DowntimePage: React.FC = () => {
+  const handleRefreshClick = ()=>{
+    window?.location.reload()
+  }
+  const handlePreviousClick = ()=>{
+    console.log(config.component.previousPageText)
+            // router.push('/history');
+  }
+
+  const handleContactUserClick = ()=>{
+    console.log(config.component.contactLink)
+  }
   return (
     <>
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"></meta>
-      <Box className={styles.container}>
-        <Box className={styles.title} style={{color: config.theme.tertiaryColor.value}}>{config.component.title}</Box>
-        <Box className={styles.imageContainer}>
-        {/* Contains the down time gif in css */}
+      <Box className={styles.container} px={18} py={12}>
+        <Box><Typography variant='h5' sx={{color: config.theme.primaryColor.value, fontWeight: "500"}}>{config.component.title? config.component.title:"We're under maintainance"}</Typography></Box>
+        <Box my={4}>
+          <img src={config.component.downTimeImage?config.component.downTimeImage: DowntimeGif} alt='downtimeGif' className={styles.imageContainer}/>
         </Box>
-        <Box className={styles.supportingText} style={{color: config.theme.secondaryColor.value}}>{config.component.supportingText}</Box>
-        <Box className={styles.dialerBox}>
-          <Button variant={"text"} style={{gap:"12px", textTransform: 'none'}} onClick={()=>console.log(config.component.contactLink)}
-          // href={`tel:${flags.dialer_number.value}`}
-            >
-            <img src={CallIcon} width={50} height={50} alt="callIcon" />
-            <span className={styles.footerTitle} style={{color: config.theme.secondaryColor.value, textDecoration: 'underline'}}>{config.component.contactLink}</span>
+        <Box><Typography variant='h6' sx={{color: config.theme.secondaryColor.value, fontWeight:"600"}}>{config.component.supportingText ? config.component.supportingText:"Have an urgent query?"}</Typography></Box>
+        <Box  gap={1} display={'flex'} my={2}>
+          <Box><img src={config.component.callIcon?config.component.callIcon: CallIcon} className={styles.callImage} alt="callIcon" /></Box>
+          <Button variant={"text"} sx={{textTransform: 'none'}} onClick={handleContactUserClick}>
+            <Typography variant='h5' sx={{color: config.theme.secondaryColor.value, textDecoration: 'underline',fontWeight:"600"}}>{config.component.contactLink?config.component.contactLink:"Contact Us"}</Typography>
           </Button>
         </Box>
 
-        <Box display={"flex"} justifyContent={"space-around"} mx={30}>
+        <Box display={"flex"} justifyContent={"space-around"} width={"100%"} my={4}>
           <Button
-            className={styles.retryButton}
-            onClick={() => window?.location.reload()}
-            style={{ textTransform: 'none', backgroundColor: config.theme.secondaryColor.value, color:"white", padding: "1vh 2vh" }}
-            id='reloadButton'
-            >
-            {config.component.refreshTextButton}
+            className={styles.roundedButton}
+            onClick={handleRefreshClick}
+            variant='contained'
+            size='large'
+            sx={{ textTransform: 'none', backgroundColor: config.theme.secondaryColor.value }}>
+            <Typography variant='body1'>{config.component.refreshText?config.component.refreshText:"Try Again"}</Typography>
           </Button>
-           <Button
-          className={styles.viewPrevChatsButton}
-          style={{ textTransform: 'none', backgroundColor: config.theme.tertiaryColor.value, color:"white", padding: "1vh 2vh" }}
-          onClick={() => {
-            console.log(config.component.previousPageButton)
-            // router.push('/history');
-          }}
+          <Button
+          className={styles.roundedButton}
+          variant='contained'
+          size='large'
+          style={{ textTransform: 'none', backgroundColor: config.theme.primaryColor.value }}
+          onClick={handlePreviousClick}
           >
-          {config.component.previousPageButton}
+          <Typography variant='body1'>{config.component.previousPageText?config.component.previousPageText:"Previous Page"}</Typography>
         </Button>
         </Box>
-      {/* <Menu /> */}
     </Box>
     </>
   );
