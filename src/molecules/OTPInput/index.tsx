@@ -156,6 +156,7 @@ export function OTPInput({
       {new Array(length).fill(null).map((_, index) => (
         <React.Fragment key={index}>
           <BaseInput
+            type="number"
             slots={{
               input: InputElement,
             }}
