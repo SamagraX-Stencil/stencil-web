@@ -1,0 +1,19 @@
+{
+  "theme": {
+    "primaryColor": {
+      "value": "#219653",
+      "allowOverride": true
+    },
+    "secondaryColor": {
+        "value": "#000000B5",
+        "allowOverride": true
+      }
+  },
+  "component": {
+    "allowOverride": false,
+    "title": "Coming Soon!",
+    "description": "We are going to launch this feature very soon. Stay tuned!",
+    "backText": "Back",
+    "comingSoonImage": ""
+  }
+}
