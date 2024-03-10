@@ -41,7 +41,7 @@ const DowntimePage: React.FC = () => {
             onClick={handleRefreshClick}
             variant='contained'
             size='large'
-            sx={{ textTransform: 'none', backgroundColor: config.theme.secondaryColor.value }}>
+            style={{ textTransform: 'none', backgroundColor: config.theme.secondaryColor.value }}>
             <Typography variant='body1'>{config.component.refreshText?config.component.refreshText:"Try Again"}</Typography>
           </Button>
           <Button
