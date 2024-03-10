@@ -21,7 +21,7 @@ const ComingSoonPage: React.FC = () => {
           <Box mt={5}><Typography variant='h4' sx={{color: config.theme.primaryColor.value, fontWeight: "700"}}>{config.component.title?config.component.title:"Coming Soon!"}</Typography></Box>
           <Box><img src={config.component.comingSoonImage? config.component.comingSoonImage: hourGlassIcon} alt="hourGlass" className={styles.imageContainer}/></Box>
           <Box><Typography variant='body1' sx={{fontWeight:"600", color: config.theme.secondaryColor.value}}>{config.component.description?config.component.description:"We are going to launch this feature very soon. Stay tuned!"}</Typography></Box>
-          <Box my={5}><Button variant='contained' className={styles.backButton} size='large' sx={{backgroundColor: config.theme.primaryColor.value}} onClick={handleBack}>{config.component.backText?config.component.backText:"Back"}</Button></Box>
+          <Box my={5}><Button variant='contained' className={styles.backButton} size='large' style={{backgroundColor: config.theme.primaryColor.value}} onClick={handleBack}>{config.component.backText?config.component.backText:"Back"}</Button></Box>
         </Box>
     </>
   );
