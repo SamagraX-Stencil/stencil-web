@@ -1,4 +1,4 @@
-import { Navbar } from "./components/navbar";
+import Navbar from "./components/navbar";
 import { Route, Routes } from "react-router-dom";
 import LoginPage from "./molecules/LoginMobileAadharPage";
 import { Toaster } from "react-hot-toast";
