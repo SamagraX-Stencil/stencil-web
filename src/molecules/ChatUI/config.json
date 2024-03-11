@@ -1,0 +1,35 @@
+{
+  "theme": {
+    "primaryColor": {
+      "allowOverride": true,
+      "value": "#1E232C"
+    },
+    "secondaryColor": {
+      "allowOverride": true,
+      "value": "#ffa500"
+    }
+  },
+  "component": {
+      "allowOverride": false,
+      "helplineNumber": "155333",
+      "placeholder": "Ask Your Question",
+      "allowFeedback": true,
+      "positiveFeedbackText": "Helpful",
+      "negativeFeedbackText": "Not Helpful",
+      "allowTextToSpeech": true,
+      "textToSpeechLabel": "Click to hear",
+      "textToSpeechStartIcon": "",
+      "allowShareChat": true,
+      "shareIcon": "",
+      "shareChatText": "Share",
+      "allowDownloadChat": true,
+      "downloadIcon": "",
+      "downloadChatText": "Download",
+      "allowTransliteration": true,
+      "transliterationSourceLang": "en",
+      "transliterationTargetLang": "or",
+      "transliterationNumOfSuggestions": 5,
+      "rightAction": null,
+      "leftAction": null
+  }
+}

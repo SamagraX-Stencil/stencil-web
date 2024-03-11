@@ -2,6 +2,7 @@
     "molecules": [
       "LoginMobileAadharPage",
       "OTPPage",
-      "OTPInput"
+      "OTPInput",
+      "ChatUI"
     ]
   }
