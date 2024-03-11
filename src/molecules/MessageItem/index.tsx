@@ -94,7 +94,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message, config }) => {
 
   const { content, type } = message;
 
-  console.log("content:", content)
+  console.log("here", content)
 
   const handleAudio = useCallback((url: any) => {
     // console.log(url)

@@ -6,6 +6,7 @@ import Components from "./components";
 import OtpPage from "./molecules/OTPPage";
 import ChatUiWindow from "./molecules/ChatUI";
 import HistoryPage from "./pages/history-page";
+import ChatUiWindow from "./molecules/ChatUI";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/login-mobile-aadhar-page" element={<LoginPage />} />
           <Route path="/otp-page" element={<OtpPage />} />
           <Route path="/history-page" element={<HistoryPage />} />
+          <Route path="/ChatUI" element={<ChatUiWindow />} />
           <Route path="/molecules" element={<Components />}/>
         </Routes>
       </>
