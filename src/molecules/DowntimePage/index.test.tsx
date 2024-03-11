@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import DowntimePage from './index';
+import config from './config.json';
 
 describe('DowntimePage component', () => {
   test('renders without crashing', () => {
@@ -9,41 +10,40 @@ describe('DowntimePage component', () => {
 
   test('displays "Downtime Title" text', () => {
     const { getByText } = render(<DowntimePage />);
-    const textElement = getByText(/We're under maintainance/i);
+    const textElement = getByText(config.component.title);
     expect(textElement).toBeInTheDocument();
   });
 
   test('displays "Supporting text" text', () => {
     const { getByText } = render(<DowntimePage />);
-    const textElement = getByText(/Have an urgent query?/i);
+    const textElement = getByText(config.component.supportingText);
     expect(textElement).toBeInTheDocument();
   });
 
   test('renders contact button correctly', () => {
     render(<DowntimePage />);
-    const buttonElement = screen.getByText('Call Ama Krushi');
+    const buttonElement = screen.getByText(config.component.contactLink);
     expect(buttonElement).toBeInTheDocument();
   });
 
   test('renders refresh button correctly', () => {
     render(<DowntimePage />);
-    const buttonElement = screen.getByText('Try Again');
+    const buttonElement = screen.getByText(config.component.refreshText);
     expect(buttonElement).toBeInTheDocument();
   });
 
   test('renders previous button correctly', () => {
     render(<DowntimePage />);
-    const buttonElement = screen.getByText('Previous Page');
+    const buttonElement = screen.getByText(config.component.previousPageText);
     expect(buttonElement).toBeInTheDocument();
   });
 
-//   test('should reload the page when the button is clicked', () => {
+//   test('try again button reloads the page when clicked', () => {
 //   const reloadSpy = jest.spyOn(window.location, 'reload').mockImplementation(() => {});
 
-//   const { getByTestId } = render(<DowntimePage />);
+//   const { getByText } = render(<DowntimePage />);
 
-//   const reloadButton = getByTestId('reloadButton');
-//   reloadButton.click();
+//   fireEvent.click(getByText(config.component.refreshText));
 
 //   expect(reloadSpy).toHaveBeenCalled();
 

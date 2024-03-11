@@ -12,9 +12,9 @@
   "component": {
       "allowOverride": false,
       "title": "We're under maintainance",
-      "downTimeImage": "",
+      "downTimeImage": "/src/molecules/DowntimePage/assets/downTimeGIF.gif",
       "supportingText": "Have an urgent query?",
-      "callIcon": "",
+      "callIcon": "/src/molecules/DowntimePage/assets/call-icon.svg",
       "contactLink": "Call Ama Krushi",
       "refreshText": "Try Again",
       "previousPageText": "Previous Page"
