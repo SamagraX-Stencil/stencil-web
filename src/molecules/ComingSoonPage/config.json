@@ -14,6 +14,6 @@
     "title": "Coming Soon!",
     "description": "We are going to launch this feature very soon. Stay tuned!",
     "backText": "Back",
-    "comingSoonImage": ""
+    "comingSoonImage": "/src/molecules/ComingSoonPage/assets/hourglass.svg"
   }
 }
