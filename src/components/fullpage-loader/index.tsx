@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { Backdrop, Stack } from '@mui/material';
 import styles from './style.module.css';
 const FullPageLoader:  FC<{ loading: boolean,color?:string }> = ({ loading ,color ="#25b09b"}) => (
