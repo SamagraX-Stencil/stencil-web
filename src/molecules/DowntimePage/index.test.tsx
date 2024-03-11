@@ -38,6 +38,29 @@ describe('DowntimePage component', () => {
     expect(buttonElement).toBeInTheDocument();
   });
 
+  test('renders downtime image with correct src and alt text', () => {
+  const src = config.component.downTimeImage;
+  const alt = 'downtimeGif';
+
+  const { getByAltText } = render(<DowntimePage />);
+
+  const imageElement = getByAltText(alt);
+  expect(imageElement).toBeInTheDocument();
+  expect(imageElement).toHaveAttribute('src', src);
+});
+
+ test('renders downtime image with correct src and alt text', () => {
+  const src = config.component.callIcon;
+  const alt = 'callIcon';
+
+  const { getByAltText } = render(<DowntimePage />);
+
+  const imageElement = getByAltText(alt);
+  expect(imageElement).toBeInTheDocument();
+  expect(imageElement).toHaveAttribute('src', src);
+});
+
+
 //   test('try again button reloads the page when clicked', () => {
 //   const reloadSpy = jest.spyOn(window.location, 'reload').mockImplementation(() => {});
 
