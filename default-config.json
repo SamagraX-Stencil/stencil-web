@@ -1,0 +1,20 @@
+{
+  "title":"Stencil UI",
+ 
+  "theme": {
+      "primaryColor": {
+        "value": "#11e477",
+        "allowOverride": true
+      },
+      "secondaryColor": {
+        "value": "#11e477",
+        "allowOverride": true
+      }
+    },
+    "molecule": {
+      "navbar": {
+        "brandName": "test bot",
+        "allowOverride": true
+      }
+    }
+  }
