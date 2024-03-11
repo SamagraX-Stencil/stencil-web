@@ -1,8 +1,7 @@
 {
-    "molecules": [
-      "LoginMobileAadharPage",
-      "OTPPage",
-      "OTPInput",
-      "ChatUI"
+    "pages":["login-mobile-aadhar-page", "otp-page","history-page", "ChatUI"],
+    "molecules": [    
+      "otp-input",
+      "theme-provider"
     ]
-  }
+}

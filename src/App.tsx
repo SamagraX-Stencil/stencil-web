@@ -1,10 +1,11 @@
 import { Navbar } from "./components/navbar";
 import { Route, Routes } from "react-router-dom";
-import LoginPage from "./molecules/LoginMobileAadharPage";
+import LoginPage from "./molecules/login-mobile-aadhar-page";
 import { Toaster } from "react-hot-toast";
 import Components from "./components";
 import OtpPage from "./molecules/OTPPage";
 import ChatUiWindow from "./molecules/ChatUI";
+import HistoryPage from "./pages/history-page";
 
 
 function App() {
@@ -15,9 +16,10 @@ function App() {
       <>
         <Routes>
           <Route index element={<LoginPage />} /> 
-          <Route path="/LoginPage" element={<LoginPage />} />
           <Route path="/ChatUI" element={<ChatUiWindow />} />
-          <Route path="/OTPPage" element={<OtpPage />} />
+          <Route path="/login-mobile-aadhar-page" element={<LoginPage />} />
+          <Route path="/otp-page" element={<OtpPage />} />
+          <Route path="/history-page" element={<HistoryPage />} />
           <Route path="/molecules" element={<Components />}/>
         </Routes>
       </>

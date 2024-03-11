@@ -5,6 +5,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { useCallback, useState } from 'react';
 import { Sidebar } from '../sidebar';
+import ThemePicker from '../theme-picker';
+import { useColorPalates } from '../../molecules/theme-provider/hooks';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -49,15 +51,16 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 export const Navbar = () => {
-
+    
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const onDrawerToggle = useCallback(() => {
         setIsDrawerOpen(isOpen => !isOpen);
-    }, [])
+    }, []);
+    const theme =useColorPalates();
     return (
         <>
             <Box sx={{ flexGrow: 1 }}>
-                <AppBar position="static" className='bg-dark'>
+                <AppBar position="static" sx={{background:theme.primary.dark}}>
                     <Toolbar>
                         <IconButton
                             size="large"
@@ -86,6 +89,7 @@ export const Navbar = () => {
                                 inputProps={{ 'aria-label': 'search' }}
                             />
                         </Search>
+                        <ThemePicker />
                     </Toolbar>
                 </AppBar>
                 <Sidebar isOpen={isDrawerOpen} onToggle={onDrawerToggle} />
