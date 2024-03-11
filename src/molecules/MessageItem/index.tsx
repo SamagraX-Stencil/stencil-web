@@ -23,6 +23,7 @@ import { JsonToTable } from 'react-json-to-table';
 
 const MessageItem: FC<MessageItemPropType> = ({ message, config }) => {
   const [reaction, setReaction] = useState(message?.content?.data?.reaction);
+  // @ts-ignore
   const [optionDisabled, setOptionDisabled] = useState(
     message?.content?.data?.optionClicked || false
   );
@@ -93,7 +94,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message, config }) => {
 
   const { content, type } = message;
 
-  console.log("here", content)
+  console.log("content:", content)
 
   const handleAudio = useCallback((url: any) => {
     // console.log(url)
