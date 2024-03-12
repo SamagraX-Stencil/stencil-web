@@ -17,6 +17,7 @@ import { recordUserLocation } from './utils/location';
 import CircularProgress from '@mui/material/CircularProgress';
 import chatHistory from './chatHistory.json';
 import config from './config.json';
+import { Divider } from '@mui/material';
 
 const ChatUiWindow: React.FC = () => {
   const [messages, setMessages] = useState<any>([]);
@@ -155,7 +156,7 @@ const ChatUiWindow: React.FC = () => {
         locale="en-US"
         placeholder={placeholder}
       />
-      <div
+      {config.component.allowDownloadChat && config.component.allowShareChat && <div
         style={{
           position: 'absolute',
           right: 0,
@@ -166,7 +167,7 @@ const ChatUiWindow: React.FC = () => {
           boxShadow:
             'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px',
         }}>
-        <div
+        {config.component.allowShareChat && <div
           onClick={() => downloadShareHandler('share')}
           style={{
             display: 'flex',
@@ -200,18 +201,15 @@ const ChatUiWindow: React.FC = () => {
             style={{
               fontSize: '10px',
               margin: 0,
-              color: 'var(--font)',
+              // color: config.theme.primaryColor.value,
               fontFamily: 'Mulish-bold',
             }}>
-            Share
+            {config.component.shareChatText}
           </p>
-        </div>
-        <div
-          style={{
-            borderBottom: '1px solid var(--font)',
-            margin: '5px 0',
-          }}></div>
-        <div
+        </div>}
+        {/* Only render divider when both share and download allowed */}
+        {config.component.allowDownloadChat && config.component.allowShareChat && <Divider />}
+        {config.component.allowDownloadChat && <div
           onClick={() => downloadShareHandler('download')}
           style={{
             display: 'flex',
@@ -245,13 +243,13 @@ const ChatUiWindow: React.FC = () => {
             style={{
               fontSize: '10px',
               margin: 0,
-              color: 'var(--font)',
+              // color: config.theme.primaryColor.value,
               fontFamily: 'Mulish-bold',
             }}>
-            Download
+            {config.component.downloadChatText}
           </p>
-        </div>
-      </div>
+        </div>}
+      </div>}
     </div>
   );
 };

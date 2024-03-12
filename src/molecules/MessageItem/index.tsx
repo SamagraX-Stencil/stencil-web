@@ -18,7 +18,6 @@ import MsgThumbsDown from './assets/msg-thumbs-down.tsx';
 import { MessageItemPropType } from './index.d';
 import moment from 'moment';
 import { JsonToTable } from 'react-json-to-table';
-// import { getFormatedTime } from '../../utils/getUtcTime'; use moment.value(time, format);
 // import BlinkingSpinner from '../blinking-spinner/index';
 
 const MessageItem: FC<MessageItemPropType> = ({ message, config }) => {
@@ -34,7 +33,6 @@ const MessageItem: FC<MessageItemPropType> = ({ message, config }) => {
 
   const feedbackHandler = useCallback(
     ({ like }: { like: 0 | 1 | -1; msgId: string }) => {
-      console.log("here", {like, reaction})
       if (reaction === 0) {
         return setReaction(like);
       }
@@ -136,8 +134,8 @@ const MessageItem: FC<MessageItemPropType> = ({ message, config }) => {
             type="text"
             style={
               content?.data?.position === 'right'
-                ? { background: config.theme.secondaryColor.value }
-                : { background: config.theme.primaryColor.value }
+                ? { background: config.theme.secondaryColor.value, boxShadow: '0 3px 8px rgba(0,0,0,.24)' }
+                : { background: config.theme.primaryColor.value, boxShadow: '0 3px 8px rgba(0,0,0,.24)' }
             }>
             <span
               style={{
@@ -201,7 +199,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message, config }) => {
                   top: '-10px',
                   justifyContent: 'space-between',
                 }}>
-                <div style={{ display: 'flex' }}>
+                {config.component.allowTextToSpeech && <div style={{ display: 'flex' }}>
                   <div
                     className={styles.msgSpeaker}
                     onClick={handleAudio}
@@ -225,18 +223,18 @@ const MessageItem: FC<MessageItemPropType> = ({ message, config }) => {
                     <p
                       style={{
                         fontSize: '11px',
-                        color: config.theme.primaryColor.value,
+                        // color: config.theme.primaryColor.value,
                         fontFamily: 'Mulish-bold',
                         display: 'flex',
                         alignItems: 'flex-end',
                         marginRight: '1px',
                         padding: '0 5px',
                       }}>
-                      Click to hear
+                      {config.component.textToSpeechLabel}
                     </p>
                   </div>
-                </div>
-                <div className={styles.msgFeedback}>
+                </div>}
+                {config.component.allowFeedback && <div className={styles.msgFeedback}>
                   <div
                     className={styles.msgFeedbackIcons}
                     style={{
@@ -261,7 +259,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message, config }) => {
                       />
                       <p
                         style={{ fontSize: '11px', fontFamily: 'Mulish-bold' }}>
-                        Helpful
+                        {config.component.positiveFeedbackText}
                       </p>
                     </div>
                     <div
@@ -287,11 +285,11 @@ const MessageItem: FC<MessageItemPropType> = ({ message, config }) => {
                       <MsgThumbsDown fill={reaction === -1} width="20px" />
                       <p
                         style={{ fontSize: '11px', fontFamily: 'Mulish-bold' }}>
-                        Not Helpful
+                        {config.component.negativeFeedbackText}
                       </p>
                     </div>
                   </div>
-                </div>
+                </div>}
               </div>
             )
           )}

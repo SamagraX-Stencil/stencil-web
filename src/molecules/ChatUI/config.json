@@ -2,11 +2,11 @@
   "theme": {
     "primaryColor": {
       "allowOverride": true,
-      "value": "#1E232C"
+      "value": "#fff"
     },
     "secondaryColor": {
       "allowOverride": true,
-      "value": "#ffa500"
+      "value": "#219653"
     }
   },
   "component": {
@@ -18,12 +18,9 @@
       "negativeFeedbackText": "Not Helpful",
       "allowTextToSpeech": true,
       "textToSpeechLabel": "Click to hear",
-      "textToSpeechStartIcon": "",
       "allowShareChat": true,
-      "shareIcon": "",
       "shareChatText": "Share",
       "allowDownloadChat": true,
-      "downloadIcon": "",
       "downloadChatText": "Download",
       "allowTransliteration": true,
       "transliterationSourceLang": "en",
