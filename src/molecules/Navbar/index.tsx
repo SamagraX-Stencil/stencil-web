@@ -6,6 +6,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
 import Typography from '@mui/material/Typography';
 import { Sidebar } from '../../components/sidebar';
+import ThemePicker from '../../components/theme-picker'; 
+import { useColorPalates } from '../../molecules/theme-provider/hooks';  
 import config from './config.json';
 
 const Navbar: React.FC = () => {
@@ -15,7 +17,7 @@ const Navbar: React.FC = () => {
         brandName,
         showHamburgerMenu,
         showHomeIcon,
-        leftHomeIcon,   
+        leftHomeIcon,
         logos: {
           showCenterLogos,
           centerLogoIcons,
@@ -26,6 +28,7 @@ const Navbar: React.FC = () => {
     }
   } = config;
 
+  const theme = useColorPalates();  
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -34,7 +37,7 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <AppBar position="static" style={{ background: 'white', color: 'black' }}>
+      <AppBar position="static" sx={{ background: theme.primary.dark }}>
         <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             {showHamburgerMenu && (
@@ -77,12 +80,15 @@ const Navbar: React.FC = () => {
             ))}
 
             {brandName && (
-              <Typography variant="h6" color="inherit" sx={{ marginTop: 1, fontSize: '1rem' }}>
+              <Typography variant="h6" color="inherit" sx={{ marginTop: 1, fontSize: '1.5rem' }}>
                 {brandName}
               </Typography>
             )}
           </div>
 
+         
+        
+          
           {showRightLogos && (
             <div>
               {rightLogoIcons.map((logo) => (
@@ -90,6 +96,7 @@ const Navbar: React.FC = () => {
               ))}
             </div>
           )}
+            <ThemePicker />
         </Toolbar>
       </AppBar>
 
