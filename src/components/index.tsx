@@ -58,7 +58,7 @@ const Components = () => {
     [theme?.primary?.light]
   );
   return (
-<<<<<<< HEAD
+ 
     <Box
       minHeight="95vh" // Full viewport height
       style={{ background: "lightgray" }}
@@ -86,35 +86,9 @@ const Components = () => {
           <Navbar />
         </Container>
     </Box>
-=======
-    <>
-      <Box
-        minHeight="5vh" // Full viewport height
-        style={{ background: "lightgray" }}
-        className="bg-light"
-      >
-        <Container>
-          <Typography variant="h4" gutterBottom> OTP Input </Typography> 
-          <div className="mt-2 p-5 border">
-            <OTPInput separator="-" length={4} value="" onChange={() => null} />
-          </div>
-        </Container>
-      </Box>
-
-      <Box
-      minHeight= "5vh"
-        style={{ background: "lightgray" }}
-        className="bg-light"
-      >
-        <Container>
-          <Typography variant="h4" gutterBottom>
-            Navbar  
-          </Typography>
-          <Navbar />
-        </Container>
-      </Box>
-    </>
->>>>>>> dc3179e (merged the branches)
+ 
+ 
+ 
   );
 };
 
