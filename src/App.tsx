@@ -3,10 +3,9 @@ import { Route, Routes } from "react-router-dom";
 import LoginPage from "./molecules/login-mobile-aadhar-page";
 import { Toaster } from "react-hot-toast";
 import Components from "./components";
-import OtpPage from "./molecules/OTPPage";
+import OtpPage from "./molecules/otp-page";
 import ChatUiWindow from "./molecules/ChatUI";
 import HistoryPage from "./pages/history-page";
-import ChatUiWindow from "./molecules/ChatUI";
 
 
 function App() {
