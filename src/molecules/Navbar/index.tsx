@@ -12,16 +12,15 @@ const Navbar: React.FC = () => {
   const {
     component: {
       navbar: {
-        features: {
-          brandName,
-          showHamburgerMenu,
-          showHomeIcon,
-          logos: {
-            showCenterLogos,
-            centerLogoIcons,
-            showRightLogos,
-            rightLogoIcons
-          }
+        brandName,
+        showHamburgerMenu,
+        showHomeIcon,
+        leftHomeIcon,   
+        logos: {
+          showCenterLogos,
+          centerLogoIcons,
+          showRightLogos,
+          rightLogoIcons
         }
       }
     }
@@ -37,29 +36,46 @@ const Navbar: React.FC = () => {
     <>
       <AppBar position="static" style={{ background: 'white', color: 'black' }}>
         <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
-     
           <div style={{ display: 'flex', alignItems: 'center' }}>
             {showHamburgerMenu && (
-              <IconButton edge="start" color="inherit" aria-label="menu" style={{ fontSize: '2rem', height: '48px' }} onClick={toggleSidebar}>
+              <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="open drawer"
+                sx={{ mr: 2 }}
+                onClick={toggleSidebar}
+              >
                 <MenuIcon />
               </IconButton>
             )}
-            
             {showHomeIcon && (
-              <IconButton color="inherit" aria-label="home" style={{ fontSize: '2rem', height: '48px' }}>
-                <HomeIcon />
-              </IconButton>
+              <div>
+                <IconButton
+                  color="inherit"
+                  size="large"
+                  edge="start"
+                  aria-label="home"
+                  style={{ fontSize: '2rem', height: '48px' }}
+                >
+                  <HomeIcon />
+                </IconButton>
+                {leftHomeIcon && (
+                  <img
+                    src={leftHomeIcon.src}
+                    alt={`Left Home Icon ${leftHomeIcon.id}`}
+                    style={{ maxHeight: '48px' }}
+                  />
+                )}
+              </div>
             )}
           </div>
 
-       
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
             {showCenterLogos && centerLogoIcons.map((logo) => (
               <img key={logo.id} src={logo.src} alt={`Logo ${logo.id}`} style={{ maxHeight: '48px' }} />
             ))}
 
-           
             {brandName && (
               <Typography variant="h6" color="inherit" sx={{ marginTop: 1, fontSize: '1rem' }}>
                 {brandName}
@@ -67,7 +83,6 @@ const Navbar: React.FC = () => {
             )}
           </div>
 
-        
           {showRightLogos && (
             <div>
               {rightLogoIcons.map((logo) => (
@@ -78,7 +93,6 @@ const Navbar: React.FC = () => {
         </Toolbar>
       </AppBar>
 
- 
       <Sidebar isOpen={isSidebarOpen} onToggle={toggleSidebar} />
     </>
   );
