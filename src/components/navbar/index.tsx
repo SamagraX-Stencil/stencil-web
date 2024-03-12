@@ -1,83 +1,94 @@
-import React, { useState } from 'react';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
+import { AppBar, Box, IconButton, InputBase, Toolbar, Typography, alpha, styled } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
-import HomeIcon from '@mui/icons-material/Home';
-import Typography from '@mui/material/Typography';
+import SearchIcon from '@mui/icons-material/Search';
+import { useCallback, useState } from 'react';
 import { Sidebar } from '../sidebar';
-import config from './config.json';
 
-const Navbar: React.FC = () => {
-  const {
-    features: {
-      brandName,
-      showHamburgerMenu,
-      showHomeIcon,
-      logos: {
-        showCenterLogos,
-        centerLogoIcons,
-        showRightLogos,
-        rightLogoIcons
-      }
-    }
-  } = config;
 
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
+const Search = styled('div')(({ theme }) => ({
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    '&:hover': {
+        backgroundColor: alpha(theme.palette.common.white, 0.25),
+    },
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+        marginLeft: theme.spacing(1),
+        width: 'auto',
+    },
+}));
 
-  const toggleSidebar = () => {
-    setSidebarOpen(!isSidebarOpen);
-  };
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+    padding: theme.spacing(0, 2),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+}));
 
-  return (
-    <>
-      <AppBar position="static" style={{ background: 'white', color: 'black' }}>
-        <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
-     
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            {showHamburgerMenu && (
-              <IconButton edge="start" color="inherit" aria-label="menu" style={{ fontSize: '2rem', height: '48px' }} onClick={toggleSidebar}>
-                <MenuIcon />
-              </IconButton>
-            )}
-            
-            {showHomeIcon && (
-              <IconButton color="inherit" aria-label="home" style={{ fontSize: '2rem', height: '48px' }}>
-                <HomeIcon />
-              </IconButton>
-            )}
-          </div>
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+    color: 'inherit',
+    width: '100%',
+    '& .MuiInputBase-input': {
+        padding: theme.spacing(1, 1, 1, 0),
+        // vertical padding + font size from searchIcon
+        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+        transition: theme.transitions.create('width'),
+        [theme.breakpoints.up('sm')]: {
+            width: '12ch',
+            '&:focus': {
+                width: '20ch',
+            },
+        },
+    },
+}));
+export const Navbar = () => {
 
-       
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      
-            {showCenterLogos && centerLogoIcons.map((logo, index) => (
-              <img key={index} src={logo} alt={`Logo ${index}`} style={{ maxHeight: '48px' }} />
-            ))}
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const onDrawerToggle = useCallback(() => {
+        setIsDrawerOpen(isOpen => !isOpen);
+    }, [])
+    return (
+        <>
+            <Box sx={{ flexGrow: 1 }}>
+                <AppBar position="static" className='bg-dark'>
+                    <Toolbar>
+                        <IconButton
+                            size="large"
+                            edge="start"
+                            color="inherit"
+                            aria-label="open drawer"
+                            sx={{ mr: 2 }}
+                            onClick={onDrawerToggle}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                        <Typography
+                            variant="h6"
+                            noWrap
+                            component="div"
+                            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+                        >
+                            Stencil
+                        </Typography>
+                        <Search>
+                            <SearchIconWrapper>
+                                <SearchIcon />
+                            </SearchIconWrapper>
+                            <StyledInputBase
+                                placeholder="Search…"
+                                inputProps={{ 'aria-label': 'search' }}
+                            />
+                        </Search>
+                    </Toolbar>
+                </AppBar>
+                <Sidebar isOpen={isDrawerOpen} onToggle={onDrawerToggle} />
+            </Box>
+        </>
+    )
+}
 
-           
-            {brandName && (
-              <Typography variant="h6" color="inherit" sx={{ marginTop: 1, fontSize: '1rem' }}>
-                {brandName}
-              </Typography>
-            )}
-          </div>
-
-        
-          {showRightLogos && (
-            <div>
-              {rightLogoIcons.map((logo, index) => (
-                <img key={index} src={logo} alt={`Right Logo ${index}`} style={{ maxHeight: '48px' }} />
-              ))}
-            </div>
-          )}
-        </Toolbar>
-      </AppBar>
-
- 
-      <Sidebar isOpen={isSidebarOpen} onToggle={toggleSidebar} />
-    </>
-  );
-};
-
-export default Navbar;

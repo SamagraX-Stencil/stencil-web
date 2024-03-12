@@ -1,0 +1,32 @@
+{
+  "component": {
+    "navbar": {
+      "features": {
+        "brandName": "Bot",
+        "showHamburgerMenu": true,
+        "showHomeIcon": true,
+          
+        "logos": {
+          "showCenterLogos": true,
+          "centerLogoIcons": [
+            {
+              "id": "logo1",
+              "src": "https://www.amakrushi.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo-green.db3a25d1.png&w=64&q=75"
+            }
+          ],
+          "showRightLogos": true,
+          "rightLogoIcons": [
+            {
+              "id": "logo2",
+              "src": "https://www.amakrushi.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fkrushak_odisha.ebf64370.png&w=64&q=75"
+            },
+            {
+              "id": "logo3",
+              "src": "https://www.amakrushi.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fphone.50753eec.png&w=64&q=75"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
