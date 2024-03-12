@@ -1,7 +1,7 @@
 
 import { Box, Container, Typography } from "@mui/material";
 import { OTPInput } from "../molecules/OTPInput";
-import Navbar from "./newnavbar/index";  
+import Navbar from "../molecules/Navbar/index";  
 
 const Components = () => {
   return (
@@ -26,7 +26,7 @@ const Components = () => {
       >
         <Container>
           <Typography variant="h4" gutterBottom>
-            New Navbar  
+            Navbar  
           </Typography>
           <Navbar />
         </Container>

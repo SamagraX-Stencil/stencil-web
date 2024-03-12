@@ -5,7 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
 import Typography from '@mui/material/Typography';
-import { Sidebar } from '../sidebar';
+import { Sidebar } from '../../components/sidebar';
 import config from './config.json';
 
 const Navbar: React.FC = () => {
