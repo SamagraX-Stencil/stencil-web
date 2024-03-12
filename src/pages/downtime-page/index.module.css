@@ -15,11 +15,6 @@
   background-blend-mode:multiply;
 }
 
-.callImage{
-  width: 7vh;
-  height: 7vh;
-}
-
 .roundedButton{
   border-radius: 40px !important;
 }
