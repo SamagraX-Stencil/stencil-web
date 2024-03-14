@@ -1,9 +1,10 @@
 import { Box, Container } from "@mui/material";
 import { OTPInput } from "../molecules/OTPInput";
 import VoiceRecorder from '../molecules/VoiceRecorder'
-import { useState } from 'react'
 const Components = () => {
-  const [inputMsg, setInputMsg] = useState('')
+  function setInputMsg (){
+    //message to be passed to VoiceRecorders
+  }
   return (
     <Box
       minHeight="95vh" // Full viewport height
