@@ -3,11 +3,12 @@
     "navbar": {
      
         "brandName": "Bot",
-        "showHamburgerMenu": true,
-        "showHomeIcon": true,
+        "showHamburgerMenu": true, 
+        "showHomeIcon": true, 
+
         "leftHomeIcon": {
           "id": "logo4",
-          "src": "https://www.amakrushi.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo-green.db3a25d1.png&w=64&q=75"
+          "src": "https://www.amakrushi.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fphone.50753eec.png&w=64&q=75 "
         }
           ,
         "logos": {
@@ -15,7 +16,7 @@
           "centerLogoIcons": [
             {
               "id": "logo1",
-              "src": "https://www.amakrushi.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo-green.db3a25d1.png&w=64&q=75"
+              "src": " https://www.amakrushi.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fphone.50753eec.png&w=64&q=75"
             }
           ],
           "showRightLogos": true,
@@ -27,10 +28,14 @@
             {
               "id": "logo3",
               "src": "https://www.amakrushi.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fphone.50753eec.png&w=64&q=75"
+            },
+            {
+              "id": "logo5",
+              "src": "https://www.amakrushi.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fphone.50753eec.png&w=64&q=75"
             }
           ]
         }
-      
+     
     }
   }
 }

@@ -38,13 +38,13 @@ const Navbar: React.FC = () => {
   return (
     <>
       <AppBar position="static" sx={{ background: theme.primary.dark }}>
-        <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Toolbar style={{ display: 'flex-start', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             {showHamburgerMenu && (
               <IconButton
                 size="large"
                 edge="start"
-                color="inherit"
+                color="primary"
                 aria-label="open drawer"
                 sx={{ mr: 2 }}
                 onClick={toggleSidebar}
@@ -55,7 +55,7 @@ const Navbar: React.FC = () => {
             {showHomeIcon && (
               <div>
                 <IconButton
-                  color="inherit"
+                  color="primary"
                   size="large"
                   edge="start"
                   aria-label="home"
