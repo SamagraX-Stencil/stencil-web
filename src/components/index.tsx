@@ -1,7 +1,9 @@
 import { Box, Container } from "@mui/material";
 import { OTPInput } from "../molecules/OTPInput";
-
+import VoiceRecorder from '../molecules/VoiceRecorder'
+import { useState } from 'react'
 const Components = () => {
+  const [inputMsg, setInputMsg] = useState('')
   return (
     <Box
       minHeight="95vh" // Full viewport height
@@ -12,6 +14,13 @@ const Components = () => {
         <h4>OTP Input</h4>
         <div className="mt-2 p-5 border">
           <OTPInput separator="-" length={4} value="" onChange={() => null} />
+        </div>
+        <div className='mt-2 p-5 border'>
+          <VoiceRecorder
+            setInputMsg={setInputMsg}
+            tapToSpeak={false}
+            includeDiv={false}
+          />
         </div>
       </Container>
     </Box>
