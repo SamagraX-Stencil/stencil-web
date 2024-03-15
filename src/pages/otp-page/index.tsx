@@ -6,13 +6,16 @@ import Typography from '@mui/material/Typography';
 import logo from './assets/logo.png';
 import CircularProgress from '@mui/material/CircularProgress';
 import { toast } from 'react-hot-toast';
-import { OTPInput } from '../OTPInput';
-import config from './config.json';
+import { useColorPalates } from '../../molecules/theme-provider/hooks';
+import { OTPInput } from '../../molecules/otp-input';
+
 const OtpPage: React.FC = () => {
   const [otp, setOtp] = useState('');
   const [loading, setLoading] = useState(false);
+  const theme = useColorPalates();
+ 
 
-  const handleLogin = useCallback((e: any) => {
+  const handleLogin = useCallback((e: React.FormEvent) => {
     e.preventDefault();
     if (otp.length === 4) {
       setLoading(true);
@@ -31,7 +34,7 @@ const OtpPage: React.FC = () => {
         name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"></meta>
       <div className={styles.main}>
-        <div className={styles.leftColumn} style={{background: config.theme.primaryColor.value}}>
+        <div className={styles.leftColumn} style={{background: theme?.primary?.main}}>
           <div className={styles.logo}>
             <img src={logo} width={150} height={40} alt="" />
           </div>
@@ -47,6 +50,7 @@ const OtpPage: React.FC = () => {
               sx={{ m: 2 }}>
               OTP Verification
             </Typography>
+
             <Typography
               variant="body2"
               textAlign="left"
@@ -54,6 +58,7 @@ const OtpPage: React.FC = () => {
               color="#838BA1">
               Enter the verification code we just sent on your mobile number
             </Typography>
+
             <Box
               component="form"
               onSubmit={handleLogin}
@@ -71,6 +76,7 @@ const OtpPage: React.FC = () => {
                   length={4}
                 />
               </Box>
+
               <Button
                 type="submit"
                 variant="contained"
@@ -79,7 +85,8 @@ const OtpPage: React.FC = () => {
                   mt: 3,
                   mb: 4,
                   p: 1,
-                  background: config.theme.secondaryColor.value,
+                  // background: config.theme.secondaryColor.value,
+                  background: theme.primary.dark,
                   borderRadius: '10px',
                   width: '50%'
                 }}
