@@ -2,6 +2,7 @@ import { Navbar } from "./components/navbar";
 import { Route, Routes } from "react-router-dom";
 import LoginPage from "./molecules/LoginMobileAadharPage";
 import { Toaster } from "react-hot-toast";
+// @ts-ignore 
 import Components from "./components";
 import OtpPage from "./molecules/OTPPage";
 import FeedbackPage from "./molecules/FeedbackPage";

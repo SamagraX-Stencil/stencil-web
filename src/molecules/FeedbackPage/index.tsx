@@ -74,6 +74,7 @@ const FeedbackPage: React.FC = () => {
               name="simple-controlled"
               value={star}
               max={config.component.ratingMaxStars}
+              // @ts-ignore 
               onChange={(event, newValue) => {
                 setStar(() => {
                   return newValue === null ? 1 : newValue;
