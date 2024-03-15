@@ -1,14 +1,4 @@
 {
-  "theme": {
-    "primaryColor": {
-      "value": "#219653",
-      "allowOverride": true
-    },
-    "secondaryColor": {
-        "value": "#000000B5",
-        "allowOverride": true
-      }
-  },
   "component": {
     "allowOverride": false,
     "title": "Coming Soon!",
