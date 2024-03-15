@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import config from "./config.json";
 import { toast } from "react-hot-toast";
 
-const Feedbackpage: React.FC = () => {
+const FeedbackPage: React.FC = () => {
   const [star, setStar] = useState(1);
   const [review, setReview] = useState("");
 
@@ -46,6 +46,19 @@ const Feedbackpage: React.FC = () => {
 
   return (
     <div className={styles.container}>
+
+      <Typography
+              sx={{
+                fontSize: "5vh",
+                fontWeight: 'bold',
+                m: 2,
+                p: 2,
+                display: 'fixed'
+              }}
+            >
+        {config.component.Title}
+      </Typography>
+
       <Box className={styles.main}>
         {config.component.ratingBox === true ? (
           <Box className={styles.section}>
@@ -59,16 +72,15 @@ const Feedbackpage: React.FC = () => {
             </Typography>
 
             <Rating
+              id="ratingComponent"
               name="simple-controlled"
               value={star}
-<<<<<<< HEAD
               max={config.component.ratingMaxStars}
-              // @ts-ignore 
-=======
->>>>>>> parent of 82f1831 (Implementation completed)
+              
+              // @ts-ignore
               onChange={(event, newValue) => {
                 setStar(() => {
-                  return newValue === null ? 0 : newValue;
+                  return newValue === null ? 1 : newValue;
                 });
               }}
               defaultValue={1}
@@ -79,8 +91,7 @@ const Feedbackpage: React.FC = () => {
             <Typography
               sx={{
                 textAlign: "center",
-                fontSize: "2vh",
-                color: `${config.theme.textColor.value}`,
+                fontSize: "2vh"
               }}
             >
               {config.component.ratingStarDescription}
@@ -89,13 +100,13 @@ const Feedbackpage: React.FC = () => {
               variant="contained"
               sx={{
                 mt: 2,
-                backgroundColor: `${config.theme.buttonColor.value}`,
+                backgroundColor: `${config.theme.primaryColor.value}`,
                 fontWeight: "bold",
                 borderRadius: "10rem",
                 fontSize: "10px",
                 p: 1.5,
                 "&:hover": {
-                  backgroundColor: `${config.theme.buttonHoverColor.value}`,
+                  backgroundColor: `${config.theme.secondaryColor.value}`,
                 },
               }}
               onClick={handleFeedback}
@@ -129,13 +140,13 @@ const Feedbackpage: React.FC = () => {
               variant="contained"
               sx={{
                 mt: 2,
-                backgroundColor: `${config.theme.buttonColor.value}`,
+                backgroundColor: `${config.theme.primaryColor.value}`,
                 fontWeight: "bold",
                 borderRadius: "10rem",
                 fontSize: "10px",
                 p: 1.5,
                 "&:hover": {
-                  backgroundColor: `${config.theme.buttonHoverColor.value}`,
+                  backgroundColor: `${config.theme.secondaryColor.value}`,
                 },
               }}
               onClick={handleFeedback}
@@ -149,4 +160,4 @@ const Feedbackpage: React.FC = () => {
   );
 };
 
-export default Feedbackpage;
+export default FeedbackPage;
