@@ -1,29 +1,19 @@
 {
     "theme": {
       "primaryColor": {
-        "value": "#ffa500",
-        "allowOverride": true
-      },
-      "secondaryColor": {
-          "value": "#1E232C",
-          "allowOverride": true
-      },
-      "textColor": {
-          "value": "#838BA1",
-          "allowOverride": true
-      },
-      "buttonColor": {
         "value": "#1e6231",
         "allowOverride": true
       },
-      "buttonHoverColor": {
-        "value": "#34a755",
-        "allowOverride": true
+      "secondaryColor": {
+          "value": "#34a755",
+          "allowOverride": true
       }
     },
     "component": {
       "allowOverride": false,
+      "Title": "Feedback",
       "ratingBox": true,
+      "ratingMaxStars": 7,
       "ratingBoxTitle": "Did you find this useful?",
       "ratingStarDescription": "Tap a star to rate",
       "ratingButtonText": "Submit Review",
