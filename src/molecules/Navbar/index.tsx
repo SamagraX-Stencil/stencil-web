@@ -5,12 +5,11 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
 import Typography from '@mui/material/Typography';
-import { Sidebar } from '../../components/sidebar';
+import { Sidebar } from '../sidebar/index';
 import ThemePicker from '../../components/theme-picker'; 
 import { useColorPalates } from '../../molecules/theme-provider/hooks';  
 import config from './config.json';
-
-const Navbar: React.FC = () => {
+ const Navbar: React.FC = () => {
   const {
     component: {
       navbar: {
@@ -32,7 +31,7 @@ const Navbar: React.FC = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
-    setSidebarOpen(!isSidebarOpen);
+    setSidebarOpen(!isSidebarOpen); // Toggle sidebar state
   };
 
   return (
@@ -47,7 +46,7 @@ const Navbar: React.FC = () => {
                 color="primary"
                 aria-label="open drawer"
                 sx={{ mr: 2 }}
-                onClick={toggleSidebar}
+                onClick={toggleSidebar}  
               >
                 <MenuIcon />
               </IconButton>
@@ -86,9 +85,6 @@ const Navbar: React.FC = () => {
             )}
           </div>
 
-         
-        
-          
           {showRightLogos && (
             <div>
               {rightLogoIcons.map((logo) => (
@@ -96,7 +92,7 @@ const Navbar: React.FC = () => {
               ))}
             </div>
           )}
-            <ThemePicker />
+          <ThemePicker />
         </Toolbar>
       </AppBar>
 
