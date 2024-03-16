@@ -116,58 +116,24 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
       setApiCallStatus('processing')
       console.log('base', blob)
       toast.success(`${config.component.messageRecorderWait}`)
+      // Define the API endpoint and make api call here 
 
-      // Define the API endpoint
-      const apiEndpoint = process.env.REACT_APP_BASE_URL
+      //set api result in setInputMsg 
+      setInputMsg('')
 
-      // Create a FormData object
-      const formData = new FormData()
-      // Append the WAV file to the FormData object
-      formData.append('file', blob, 'audio.wav')
-      formData.append('phoneNumber', localStorage.getItem('phoneNumber') || '')
-
-      // Send the WAV data to the API
-      const resp = await fetch(apiEndpoint + '/aitools/asr', {
-        method: 'POST',
-        body: formData,
-      })
-
-      if (resp.ok) {
-        const rsp_data = await resp.json()
-        console.log('hi', rsp_data)
-        if (rsp_data.text === '')
-          throw new Error('Unexpected end of JSON input')
-        setInputMsg(rsp_data.text)
-        sessionStorage.setItem('asrId', rsp_data.id)
-      } else {
-        toast.error(`${config.component.recorderErrorMessage}`)
-        console.log(resp)
-        // Set userClickedError to true when an error occurs
-        setUserClickedError(false)
-
-        // Automatically change back to startIcon after 3 seconds
-        setTimeout(() => {
-          // Check if the user has not clicked the error icon again
-          if (!userClickedError) {
-            setApiCallStatus('idle')
-          }
-        }, 2500)
-      }
-      setApiCallStatus('idle')
     } catch (error) {
       console.error(error)
       setApiCallStatus('error')
       toast.error(`${config.component.recorderErrorMessage}`)
       // Set userClickedError to true when an error occurs
       setUserClickedError(false)
-
-      // Automatically change back to startIcon after 3 seconds
       setTimeout(() => {
         // Check if the user has not clicked the error icon again
         if (!userClickedError) {
           setApiCallStatus('idle')
         }
       }, 2500)
+    
     }
   }
 
