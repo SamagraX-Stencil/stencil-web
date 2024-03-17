@@ -6,6 +6,8 @@ import Components from "./components";
 import OtpPage from "./molecules/otp-page";
 import HistoryPage from "./pages/history-page";
 import ComingSoonPage from "./pages/coming-soon-page";
+import DowntimePage from "./pages/downtime-page";
+
 
 
 function App() {
@@ -20,6 +22,7 @@ function App() {
           <Route path="/otp-page" element={<OtpPage />} />
           <Route path="/history-page" element={<HistoryPage />} />
           <Route path="/coming-soon-page" element={<ComingSoonPage />} />
+          <Route path="/downtime-page" element={<DowntimePage />} />
           <Route path="/molecules" element={<Components />}/>
         </Routes>
       </>

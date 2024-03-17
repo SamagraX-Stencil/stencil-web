@@ -1,5 +1,6 @@
 {
-    "pages":["login-mobile-aadhar-page", "otp-page","history-page","coming-soon-page"],
+
+    "pages":["login-mobile-aadhar-page", "otp-page","history-page","coming-soon-page","downtime-page"],
     "molecules": [    
       "otp-input",
       "theme-provider"
