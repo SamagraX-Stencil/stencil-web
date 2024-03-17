@@ -1,0 +1,38 @@
+{
+  "component": {
+    "sidebar": {
+      "showLangSwitcher": true,
+      "languages": [
+        {
+          "code": "en",
+          "label": "ENG"
+        },
+        {
+          "code": "or",
+          "label": "ଓଡ଼ିଆ"
+        }
+      ],
+      "showProfileIcon": true,
+      "profileText": "Welcome, User",
+      "links": [
+        {
+          "label": "FAQ Page",
+          "icon": "HelpIcon",
+          "route": ""
+        },
+        {
+          "label": "Chat Page",
+          "icon": "HistoryIcon",
+          "route": ""
+        },
+        {
+          "label": "Feedback",
+          "icon": "FeedbackIcon",
+          "route": ""
+        }
+      ],
+      "showLogoutButton": true,
+      "logoutButtonLabel": "Logout"
+    }
+  }
+}
