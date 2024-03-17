@@ -1,4 +1,5 @@
 {
+ 
     "pages":["login-mobile-aadhar-page", "otp-page","history-page"],
     "molecules": [    
       "otp-input",
@@ -8,5 +9,11 @@
       "OTPPage",
       "OTPInput",
       "Navbar"
+ 
+    "pages":["login-mobile-aadhar-page", "otp-page","history-page","coming-soon-page","downtime-page","faq-page"],
+    "molecules": [    
+      "otp-input",
+      "theme-provider"
+ 
     ]
 }
