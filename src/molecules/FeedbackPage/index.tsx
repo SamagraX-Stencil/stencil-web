@@ -72,7 +72,7 @@ const FeedbackPage: React.FC = () => {
             </Typography>
 
             <Rating
-              id="ratingComponent"
+              data-testid= "ratingComponent"
               name="simple-controlled"
               value={star}
               max={config.component.ratingMaxStars}
@@ -97,7 +97,9 @@ const FeedbackPage: React.FC = () => {
               {config.component.ratingStarDescription}
             </Typography>
             <Button
+              id="ratingBtn"
               variant="contained"
+              data-testid="ratingBtn"
               sx={{
                 mt: 2,
                 backgroundColor: `${config.theme.primaryColor.value}`,
@@ -137,7 +139,9 @@ const FeedbackPage: React.FC = () => {
             />
 
             <Button
+              id="reviewBtn"
               variant="contained"
+              data-testid="reviewBtn"
               sx={{
                 mt: 2,
                 backgroundColor: `${config.theme.primaryColor.value}`,
