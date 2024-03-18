@@ -12,6 +12,7 @@ import FAQPage from "./pages/faq-page";
  
 
 
+
 function App() {
   return (
     <>
@@ -23,6 +24,9 @@ function App() {
           <Route path="/login-mobile-aadhar-page" element={<LoginPage />} />
           <Route path="/otp-page" element={<OtpPage />} />
           <Route path="/history-page" element={<HistoryPage />} />
+ 
+ 
+         
  
           <Route path="/coming-soon-page" element={<ComingSoonPage />} />
           <Route path="/downtime-page" element={<DowntimePage />} />
