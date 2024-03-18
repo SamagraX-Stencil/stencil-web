@@ -1,0 +1,27 @@
+{
+    "theme": {
+      "primaryColor": {
+        "value": "#1e6231",
+        "allowOverride": true
+      },
+      "secondaryColor": {
+          "value": "#34a755",
+          "allowOverride": true
+      }
+    },
+    "component": {
+      "allowOverride": false,
+      "Title": "Feedback",
+      "ratingBox": true,
+      "ratingMaxStars": 5,
+      "ratingBoxTitle": "Did you find this useful?",
+      "ratingStarDescription": "Tap a star to rate",
+      "ratingButtonText": "Submit Review",
+
+      "reviewBox": true,
+      "reviewBoxTitle": "Write your review (optional)",
+      "reviewButtonText": "Submit Review",
+      "reviewPlaceholder": "Give positive/negative feedback for advisory"
+    }
+  }
+  
