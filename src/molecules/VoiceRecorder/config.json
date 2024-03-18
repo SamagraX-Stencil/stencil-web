@@ -20,6 +20,6 @@
     "dialogMaxLength":60000,
     "isRecording":false,
     "recorderErrorMessage": "Your question was not recognised. Pls try speaking more clearly.",
-    "messageRecorderWait": "Please wait while we process your request..."
+    "waitMessage": "Please wait while we process your request..."
   }
 }

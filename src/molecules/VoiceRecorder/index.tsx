@@ -23,16 +23,19 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
   const dialogMaxLength: number = config.component.dialogMaxLength
   let isRecording: boolean = config.component.isRecording
 
-  const startRecording = async () => {
-    isRecording = true
-    record()
+  const startRecording =  () => {
+    if(!isRecording){
+      isRecording = true
+      record()
+    }
   }
 
   const stopRecording = () => {
-    isRecording = false
-    if (mediaRecorder !== null) {
-      mediaRecorder.stop()
-      setMediaRecorder(null)
+    if(isRecording){
+      if (mediaRecorder !== null) {
+        mediaRecorder.stop()
+        setMediaRecorder(null)
+      }
     }
   }
 
@@ -95,9 +98,9 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
           }
 
         //continue the loop:
-        window.requestAnimationFrame(detectSound)
+        window?.requestAnimationFrame(detectSound)
       }
-      window.requestAnimationFrame(detectSound)
+      window?.requestAnimationFrame(detectSound)
 
       //stop event:
       recorder.addEventListener('stop', () => {
@@ -114,8 +117,7 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
   const makeComputeAPICall = async (blob: Blob) => {
     try {
       setRecorderStatus('processing')
-      console.log('base', blob)
-      toast.success(`${config.component.messageRecorderWait}`)
+      toast.success(`${config.component.waitMessage}`)
       // Define the API endpoint and make api call here 
 
       //set api result in setInputMsg 
