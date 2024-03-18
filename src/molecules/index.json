@@ -1,8 +1,13 @@
 {
-    "molecules": [
+ 
+    "pages":["login-mobile-aadhar-page", "otp-page","history-page"],
+    "molecules": [    
+      "otp-input",
+      "theme-provider",
       "LoginMobileAadharPage",
       "OTPPage",
       "OTPInput",
-      "VoiceRecorder"
+      "VoiceRecorder",
+      "Navbar"
     ]
-  }
+}

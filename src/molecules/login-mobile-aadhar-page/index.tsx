@@ -17,7 +17,7 @@ const LoginMobileAadharPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
 
   const handleInput = useCallback(
-    (e: any) => {
+    (e: React.ChangeEvent<HTMLInputElement>) => {
       let reg;
       let maxLength;
       let errorMessage = '';
@@ -64,7 +64,7 @@ const LoginMobileAadharPage: React.FC = () => {
     // Register User
   };
 
-  const handleLogin = (e: any) => {
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (
       (isAadharClicked && input.length === 12) ||
@@ -134,7 +134,7 @@ const LoginMobileAadharPage: React.FC = () => {
                 fullWidth
                 value={input}
                 helperText={!valid ? errorMessage : ''}
-                onChange={(e) => handleInput(e)}
+                onChange={handleInput}
                 label={
                   isAadharClicked ? `Enter Aadhar Number` : `Enter Phone Number`
                 }
@@ -142,7 +142,9 @@ const LoginMobileAadharPage: React.FC = () => {
                 autoComplete={isAadharClicked ? 'aadhar' : 'phone'}
                 autoFocus
               />
-             
+             {
+             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+             //@ts-ignore
               <Button
                 type="submit"
                 fullWidth
@@ -162,7 +164,7 @@ const LoginMobileAadharPage: React.FC = () => {
                 ) : (
                   'Login'
                 )}
-              </Button>
+              </Button>}
             </Box>
             <Typography
               variant="caption"
