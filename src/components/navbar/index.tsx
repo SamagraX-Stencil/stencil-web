@@ -1,5 +1,3 @@
-
-
 import { AppBar, Box, IconButton, InputBase, Toolbar, Typography, alpha, styled } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
@@ -97,5 +95,4 @@ export const Navbar = () => {
         </>
     )
 }
-
 
