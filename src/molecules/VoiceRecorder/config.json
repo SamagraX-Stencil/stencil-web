@@ -15,7 +15,10 @@
     "stopIcon": "src/molecules/VoiceRecorder/assets/stop.gif",
     "errorIcon": "src/molecules/VoiceRecorder/assets/error.gif",
     "processingIcon": "src/molecules/VoiceRecorder/assets/process.gif",
+    "voiceMinDecibels":-35,
     "delayBetweenDialogs": 2500,
+    "dialogMaxLength":60000,
+    "isRecording":false,
     "recorderErrorMessage": "Your question was not recognised. Pls try speaking more clearly.",
     "messageRecorderWait": "Please wait while we process your request..."
   }

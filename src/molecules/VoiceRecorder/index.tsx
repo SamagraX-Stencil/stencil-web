@@ -15,21 +15,21 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
   includeDiv = false,
 }) => {
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null)
-  const [userClickedError, setUserClickedError] = useState(false)
-  const [apiCallStatus, setApiCallStatus] = useState('idle')
+  const [isErrorClicked, setIsErrorClicked] = useState(false)
+  const [recorderStatus, setRecorderStatus] = useState('idle')
 
-  const VOICE_MIN_DECIBELS: number = -35
+  const voiceMinDecibels: number = config.component.delayBetweenDialogs
   const delayBetweenDialogs: number = config.component.delayBetweenDialogs
-  const DIALOG_MAX_LENGTH: number = 60 * 1000
-  let IS_RECORDING: boolean = false
+  const dialogMaxLength: number = config.component.dialogMaxLength
+  let isRecording: boolean = config.component.isRecording
 
   const startRecording = async () => {
-    IS_RECORDING = true
+    isRecording = true
     record()
   }
 
   const stopRecording = () => {
-    IS_RECORDING = false
+    isRecording = false
     if (mediaRecorder !== null) {
       mediaRecorder.stop()
       setMediaRecorder(null)
@@ -53,7 +53,7 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
       const audioContext = new AudioContext()
       const audioStreamSource = audioContext.createMediaStreamSource(stream)
       const analyser = audioContext.createAnalyser()
-      analyser.minDecibels = VOICE_MIN_DECIBELS
+      analyser.minDecibels = voiceMinDecibels
       audioStreamSource.connect(analyser)
       const bufferLength = analyser.frequencyBinCount
       const domainData = new Uint8Array(bufferLength)
@@ -65,13 +65,13 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
       let anySoundDetected: boolean = false
       const detectSound = () => {
         //recording stopped by user:
-        if (!IS_RECORDING) return
+        if (!isRecording) return
 
         time = new Date()
         const currentTime = time.getTime()
 
         //time out:
-        if (currentTime > startTime + DIALOG_MAX_LENGTH) {
+        if (currentTime > startTime + dialogMaxLength) {
           recorder.stop()
           return
         }
@@ -113,7 +113,7 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
   }
   const makeComputeAPICall = async (blob: Blob) => {
     try {
-      setApiCallStatus('processing')
+      setRecorderStatus('processing')
       console.log('base', blob)
       toast.success(`${config.component.messageRecorderWait}`)
       // Define the API endpoint and make api call here 
@@ -123,14 +123,14 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
 
     } catch (error) {
       console.error(error)
-      setApiCallStatus('error')
+      setRecorderStatus('error')
       toast.error(`${config.component.recorderErrorMessage}`)
-      // Set userClickedError to true when an error occurs
-      setUserClickedError(false)
+      // Set isErrorClicked to true when an error occurs
+      setIsErrorClicked(false)
       setTimeout(() => {
         // Check if the user has not clicked the error icon again
-        if (!userClickedError) {
-          setApiCallStatus('idle')
+        if (!isErrorClicked) {
+          setRecorderStatus('idle')
         }
       }, 2500)
     
@@ -166,7 +166,7 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
           </div>
         ) : (
           <div className={styles.center}>
-            {apiCallStatus === 'processing' ? (
+            {recorderStatus === 'processing' ? (
               includeDiv ? (
                 <div className={styles.imgContainer}>
                   <img
@@ -182,14 +182,14 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
                   style={{ cursor: 'pointer', height: '40px', width: '40px' }}
                 />
               )
-            ) : apiCallStatus === 'error' ? (
+            ) : recorderStatus === 'error' ? (
               includeDiv ? (
                 <div className={styles.imgContainer}>
                   <img
                     src={config.component.errorIcon}
                     alt='errorIcon'
                     onClick={() => {
-                      setUserClickedError(true)
+                      setIsErrorClicked(true)
                       startRecording()
                     }}
                     style={{ cursor: 'pointer', height: '40px', width: '40px' }}
@@ -200,7 +200,7 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
                   src={config.component.errorIcon}
                   alt='errorIcon'
                   onClick={() => {
-                    setUserClickedError(true)
+                    setIsErrorClicked(true)
                     startRecording()
                   }}
                   style={{ cursor: 'pointer', height: '40px', width: '40px' }}
@@ -214,7 +214,7 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
                       src={config.component.startIcon}
                       alt='startIcon'
                       onClick={() => {
-                        setUserClickedError(true)
+                        setIsErrorClicked(true)
                         startRecording()
                       }}
                       style={{
@@ -231,7 +231,7 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
                     alt='startIcon'
                     onClick={() => {
                       // if (context?.kaliaClicked) return
-                      setUserClickedError(true)
+                      setIsErrorClicked(true)
                       startRecording()
                     }}
                     // style={{
