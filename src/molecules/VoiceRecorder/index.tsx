@@ -18,14 +18,14 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
   const [isErrorClicked, setIsErrorClicked] = useState(false)
   const [recorderStatus, setRecorderStatus] = useState('idle')
 
-  const voiceMinDecibels: number = config.component.delayBetweenDialogs
+  const voiceMinDecibels: number = config.component.voiceMinDecibels
   const delayBetweenDialogs: number = config.component.delayBetweenDialogs
   const dialogMaxLength: number = config.component.dialogMaxLength
-  let isRecording: boolean = config.component.isRecording
+  const [isRecording,setIsRecording] = useState(config.component.isRecording)
 
   const startRecording =  () => {
     if(!isRecording){
-      isRecording = true
+      setIsRecording(true)
       record()
     }
   }
@@ -34,6 +34,7 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
     if(isRecording){
       if (mediaRecorder !== null) {
         mediaRecorder.stop()
+      setIsRecording(false)
         setMediaRecorder(null)
       }
     }
@@ -119,9 +120,10 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
       setRecorderStatus('processing')
       toast.success(`${config.component.waitMessage}`)
       // Define the API endpoint and make api call here 
-
-      //set api result in setInputMsg 
-      setInputMsg('')
+      if(blob){
+        //set api result in setInputMsg 
+        setInputMsg('')
+      }
 
     } catch (error) {
       console.error(error)
@@ -144,128 +146,80 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
       <div>
         {mediaRecorder && mediaRecorder.state === 'recording' ? (
           <div className={styles.center}>
-            {includeDiv ? (
-              <div className={styles.imgContainer}>
-                <img
-                  src={config.component.stopIcon}
-                  alt='stopIcon'
-                  onClick={() => {
-                    stopRecording()
-                  }}
-                  style={{ cursor: 'pointer', height: '40px', width: '40px' }}
-                />
-              </div>
-            ) : (
-              <img
-                src={config.component.stopIcon}
-                alt='stopIcon'
-                onClick={() => {
-                  stopRecording()
-                }}
-                style={{ cursor: 'pointer', height: '40px', width: '40px' }}
-              />
-            )}
+            <RecorderControl
+              icon={config.component.stopIcon}
+              onClick={stopRecording}
+              includeDiv={includeDiv}
+            />
           </div>
         ) : (
           <div className={styles.center}>
             {recorderStatus === 'processing' ? (
-              includeDiv ? (
-                <div className={styles.imgContainer}>
-                  <img
-                    src={config.component.processingIcon}
-                    alt='processingIcon'
-                    style={{ cursor: 'pointer', height: '40px', width: '40px' }}
-                  />
-                </div>
-              ) : (
-                <img
-                  src={config.component.processingIcon}
-                  alt='processingIcon'
-                  style={{ cursor: 'pointer', height: '40px', width: '40px' }}
-                />
-              )
+              <RecorderControl icon={config.component.processingIcon} onClick={()=>{}} />
             ) : recorderStatus === 'error' ? (
-              includeDiv ? (
-                <div className={styles.imgContainer}>
-                  <img
-                    src={config.component.errorIcon}
-                    alt='errorIcon'
-                    onClick={() => {
-                      setIsErrorClicked(true)
-                      startRecording()
-                    }}
-                    style={{ cursor: 'pointer', height: '40px', width: '40px' }}
-                  />
-                </div>
-              ) : (
-                <img
-                  src={config.component.errorIcon}
-                  alt='errorIcon'
-                  onClick={() => {
-                    setIsErrorClicked(true)
-                    startRecording()
-                  }}
-                  style={{ cursor: 'pointer', height: '40px', width: '40px' }}
-                />
-              )
+              <RecorderControl
+                icon={config.component.errorIcon}
+                onClick={() => {
+                  setIsErrorClicked(true);
+                  startRecording();
+                }}
+                includeDiv={includeDiv}
+              />
             ) : (
-              <>
-                {includeDiv ? (
-                  <div className={styles.imgContainer}>
-                    <img
-                      src={config.component.startIcon}
-                      alt='startIcon'
-                      onClick={() => {
-                        setIsErrorClicked(true)
-                        startRecording()
-                      }}
-                      style={{
-                        cursor: 'pointer',
-                        height: '40px',
-                        width: '40px',
-                      }}
-                    />
-                  </div>
-                ) : (
-                  <img
-                    // src={context?.kaliaClicked ? disabledStart : start}
-                    src={config.component.startIcon}
-                    alt='startIcon'
-                    onClick={() => {
-                      // if (context?.kaliaClicked) return
-                      setIsErrorClicked(true)
-                      startRecording()
-                    }}
-                    // style={{
-                    //   cursor: context?.kaliaClicked ? 'not-allowed' : 'pointer',
-                    // }}
-                    style={{
-                      cursor: 'pointer',
-                      height: '40px',
-                      width: '40px',
-                    }}
-                  />
-                )}
-                {tapToSpeak ? (
-                  <p
-                    style={{
-                      color: 'black',
-                      fontSize: '12px',
-                      marginTop: '4px',
-                    }}
-                  >
-                    {'label.tap_to_speak'}
-                  </p>
-                ) : (
-                  <></>
-                )}
-              </>
+              <div className={styles.center}>
+                <RecorderControl
+                  icon={config.component.startIcon}
+                  onClick={() => {
+                    setIsErrorClicked(true);
+                    startRecording();
+                  }}
+                  includeDiv={includeDiv}
+                  tapToSpeak={tapToSpeak}
+                />
+              </div>
             )}
           </div>
         )}
       </div>
     </div>
-  )
+  );
 }
+
+// includeDiv is being checked in render Function
+const RecorderControl: React.FC<{
+  icon: string;
+  onClick?: () => void;
+  includeDiv?: boolean;
+  tapToSpeak?: boolean;
+}> = ({ icon, onClick, includeDiv = true, tapToSpeak= false }) => {
+  const handleClick = () => {
+    if(onClick){
+      onClick();
+    }
+  };
+
+  return includeDiv ? (
+    <div className={styles.imgContainer}>
+      <img
+        src={icon}
+        alt='icon'
+        onClick={handleClick}
+        style={{ cursor: 'pointer', height: '40px', width: '40px' }}
+      />
+      {tapToSpeak && (
+        <p style={{ color: 'black', fontSize: '12px', marginTop: '4px' }}>
+          {'label.tap_to_speak'}
+        </p>
+      )}
+    </div>
+  ) : (
+    <img
+      src={icon}
+      alt='icon'
+      onClick={handleClick}
+      style={{ cursor: 'pointer', height: '40px', width: '40px' }}
+    />
+  );
+};
 
 export default VoiceRecorder
