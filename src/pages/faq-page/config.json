@@ -1,20 +1,9 @@
 {
-  "theme": {
-    "primaryColor": {
-      "allowOverride": true,
-      "value": "#219653"
-    },
-    "secondaryColor": {
-      "allowOverride": true,
-      "value": "#000000"
-    }
-  },
   "component": {
       "allowOverride": false,
       "title": "FAQs",
       "userManualText": "User Manual - For VAWs",
       "contactDescriptionText":"To connect with call centre",
-      "contactText": "Dial 155333",
-      "contactIcon":"/src/molecules/FAQPage/assets/call-icon.svg"
+      "contactText": "Dial 155333"
   }
 }
