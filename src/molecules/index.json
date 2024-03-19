@@ -3,18 +3,14 @@
     "pages":["login-mobile-aadhar-page", "otp-page","history-page"],
     "molecules": [    
       "otp-input",
-      "theme-provider"
-  ,
+      "theme-provider",
       "LoginMobileAadharPage",
       "OTPPage",
       "OTPInput",
       "Navbar",
       "FeedbackPage"
-<<<<<<< HEAD
-=======
  
  
  
->>>>>>> 05ebdc1726f05a30c5971fbedce5c4f059f34386
     ]
 }
