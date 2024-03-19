@@ -19,6 +19,8 @@ function App() {
           <Route path="/LoginPage" element={<LoginPage />} />
           <Route path="/OTPPage" element={<OtpPage />} />
           <Route path="/FeedbackPage" element={<FeedbackPage />}/>
+
+          <Route path="/molecules" element={<Components />}/>
         </Routes>
       </>
     </>

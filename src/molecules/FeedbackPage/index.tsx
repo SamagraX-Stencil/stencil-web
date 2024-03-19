@@ -15,32 +15,23 @@ const FeedbackPage: React.FC = () => {
     const rateBox = config.component.ratingBox;
     const reviewContainer = config.component.reviewBox;
 
+    const sendReviewSuccess = () => {
+      setTimeout(() => {
+        toast.success(`Review sent successfully`);
+        setReview("");
+      }, 2000);
+    }
+
+    const sendReviewError = () => {
+      toast.error(`Please provide valid review`);
+    }
+
     if (rateBox && reviewContainer) {
-      if (star == 0) {
-        toast.error(`Please provide valid review`);
-      } else {
-        setTimeout(() => {
-          toast.success(`Review sent successfully`);
-          setReview("");
-        }, 2000);
-      }
+      star === 0 ? sendReviewError() : sendReviewSuccess()
     } else if (rateBox && !reviewContainer) {
-      if (star === 0) {
-        toast.error(`Please provide valid review`);
-      } else {
-        setTimeout(() => {
-          toast.success(`Review sent successfully`);
-        }, 2000);
-      }
+      star === 0 ? sendReviewError() : sendReviewSuccess()
     } else if (!rateBox && reviewContainer) {
-      if (review === "") {
-        toast.error(`Please provide valid review`);
-      } else {
-        setTimeout(() => {
-          toast.success(`Review sent successfully`);
-          setReview("");
-        }, 2000);
-      }
+      review === "" ? sendReviewError() : sendReviewSuccess()
     }
   };
 
@@ -60,7 +51,7 @@ const FeedbackPage: React.FC = () => {
       </Typography>
 
       <Box className={styles.main}>
-        {config.component.ratingBox === true ? (
+        {config.component.ratingBox === true && (
           <Box className={styles.section}>
             <Typography
               sx={{
@@ -116,9 +107,9 @@ const FeedbackPage: React.FC = () => {
               {config.component.ratingButtonText}
             </Button>
           </Box>
-        ) : null}
+        )}
 
-        {config.component.reviewBox === true ? (
+        {config.component.reviewBox === true && (
           <Box className={styles.section}>
             <Typography
               sx={{
@@ -158,7 +149,7 @@ const FeedbackPage: React.FC = () => {
               {config.component.reviewButtonText}
             </Button>
           </Box>
-        ) : null}
+        )}
       </Box>
     </div>
   );

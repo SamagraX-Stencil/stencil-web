@@ -3,6 +3,7 @@
       "LoginMobileAadharPage",
       "OTPPage",
       "OTPInput",
+      "Navbar",
       "FeedbackPage"
     ]
   }
