@@ -147,6 +147,14 @@ const ChatUiWindow: React.FC = () => {
         btnColor={config.theme.secondaryColor.value}
         background="white"
         disableSend={false}
+        showTransliteration={config.component.allowTransliteration}
+        transliterationConfig={{
+          transliterationApi: config.component.transliterationApi,
+          transliterationInputLanguage: config.component.transliterationInputLanguage,
+          transliterationOutputLanguage: config.component.transliterationOutputLanguage,
+          transliterationProvider: config.component.transliterationProvider,
+          transliterationSuggestions: config.component.transliterationSuggestions
+        }}
         //@ts-ignore
         messages={msgToRender}
         renderMessageContent={(props): ReactElement => (

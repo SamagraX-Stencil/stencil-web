@@ -183,12 +183,6 @@ const MessageItem: FC<MessageItemPropType> = ({ message, config }) => {
                 }}>
                 Refresh
               </button>
-              <button
-                style={{
-                  border: `2px solid ${config.theme.secondaryColor.value}`,
-                }}>
-                <a href={`tel:${config.component.helplineNumber}`}>Call us</a>
-              </button>
             </div>
           ) : (
             content?.data?.position === 'left' && (

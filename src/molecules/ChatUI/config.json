@@ -11,7 +11,6 @@
   },
   "component": {
       "allowOverride": false,
-      "helplineNumber": "155333",
       "placeholder": "Ask Your Question",
       "allowFeedback": true,
       "positiveFeedbackText": "Helpful",
@@ -23,9 +22,11 @@
       "allowDownloadChat": true,
       "downloadChatText": "Download",
       "allowTransliteration": true,
-      "transliterationSourceLang": "en",
-      "transliterationTargetLang": "or",
-      "transliterationNumOfSuggestions": 5,
+      "transliterationApi": "",
+      "transliterationInputLanguage": "",
+      "transliterationOutputLanguage": "",
+      "transliterationProvider": "",
+      "transliterationSuggestions": 3,
       "rightAction": null,
       "leftAction": null
   }
