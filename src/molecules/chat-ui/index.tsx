@@ -9,7 +9,7 @@ import React, {
 } from 'react';
 import styles from './index.module.css'
 import { getMsgType } from './utils/getMsgType';
-import MessageItem from '../MessageItem';
+import MessageItem from '../message-item';
 import toast from 'react-hot-toast';
 import shareIcon from './assets/share.svg';
 import downloadIcon from './assets/download.svg';

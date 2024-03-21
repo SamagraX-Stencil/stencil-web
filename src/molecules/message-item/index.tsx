@@ -15,7 +15,7 @@ import RightIcon from './assets/right.tsx';
 import SpeakerIcon from './assets/speaker.svg';
 import MsgThumbsUp from './assets/msg-thumbs-up.tsx';
 import MsgThumbsDown from './assets/msg-thumbs-down.tsx';
-import { MessageItemPropType } from './index.d';
+import { MessageItemPropType } from './index';
 import moment from 'moment';
 import { JsonToTable } from 'react-json-to-table';
 // import BlinkingSpinner from '../blinking-spinner/index';
