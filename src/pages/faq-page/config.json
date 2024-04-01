@@ -1,14 +1,4 @@
 {
-  "theme": {
-    "primaryColor": {
-      "allowOverride": true,
-      "value": "#219653"
-    },
-    "secondaryColor": {
-      "allowOverride": true,
-      "value": "#000000"
-    }
-  },
   "component": {
       "allowOverride": false,
       "title": "FAQs",
