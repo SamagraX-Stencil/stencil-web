@@ -15,6 +15,6 @@
       "userManualText": "User Manual - For VAWs",
       "contactDescriptionText":"To connect with call centre",
       "contactText": "Dial 155333",
-      "contactIcon":"/src/molecules/FAQPage/assets/call-icon.svg"
+      "contactIcon":""
   }
 }

@@ -1,0 +1,21 @@
+{
+  "theme": {
+    "primaryColor": {
+      "allowOverride": true,
+      "value": "#1e6231"
+    }
+  },
+  "component": {
+      "allowOverride": false,
+      "title": "Ask me anything about farming",
+      "showBtns": true,
+      "btns": [
+        {
+          "title": "Weather Advisory",
+          "image": ""
+        }
+      ],
+      "showMic": true,
+      "placeholder": "Ask your question"
+  }
+}
