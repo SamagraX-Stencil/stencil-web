@@ -1,5 +1,3 @@
-
-
 import { AppBar, Box, IconButton, InputBase, Toolbar, Typography, alpha, styled } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
@@ -57,6 +55,7 @@ export const Navbar = () => {
         setIsDrawerOpen(isOpen => !isOpen);
     }, []);
     const theme =useColorPalates();
+    
     return (
         <>
             <Box sx={{ flexGrow: 1 }}>
@@ -97,5 +96,4 @@ export const Navbar = () => {
         </>
     )
 }
-
 

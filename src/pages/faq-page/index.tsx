@@ -8,6 +8,8 @@ import CallRoundedIcon from '@mui/icons-material/Call';
 import { useColorPalates } from '../../molecules/theme-provider/hooks';
 import { Avatar } from '@mui/material';
 
+
+
 const FAQPage: React.FC = () => {
   const theme = useColorPalates(); 
   const downloadPDFHandler=useCallback(()=>{

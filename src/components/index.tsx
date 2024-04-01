@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { Box, Container, IconButton } from "@mui/material";
 import { OTPInput } from "../molecules/otp-input";
 import { List } from "../molecules/list";
@@ -5,6 +6,9 @@ import { useMemo } from "react";
 import ForumIcon from "@mui/icons-material/Forum";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useColorPalates } from "../molecules/theme-provider/hooks";
+import VoiceRecorder from '../molecules/VoiceRecorder'
+import Navbar from "../molecules/Navbar/index";
+
 const Components = () => {
   const theme = useColorPalates();
   const sampleList = useMemo(
@@ -56,7 +60,12 @@ const Components = () => {
     ],
     [theme?.primary?.light]
   );
+  const setInputMsg = useCallback(()=>{
+    //message to be passed to VoiceRecorders
+  },[])
   return (
+ 
+
     <Box
       minHeight="95vh" // Full viewport height
       style={{ background: "lightgray" }}
@@ -66,6 +75,13 @@ const Components = () => {
         <h4>OTP Input</h4>
         <div className="mt-2 p-5 border">
           <OTPInput separator="-" length={4} value="" onChange={() => null} />
+        </div>
+        <div className='mt-2 p-5 border'>
+          <VoiceRecorder
+            setInputMsg={setInputMsg}
+            tapToSpeak={false}
+            includeDiv={false}
+          />
         </div>
       </Container>
 
@@ -79,7 +95,16 @@ const Components = () => {
           <List items={sampleList} />}
         </div>
       </Container>
+
+      <Container>
+           <h4>Navbar</h4>
+          <Navbar />
+        </Container>
+
     </Box>
+ 
+ 
+ 
   );
 };
 

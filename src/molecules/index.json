@@ -1,7 +1,19 @@
 {
-    "pages":["login-mobile-aadhar-page", "otp-page","history-page","coming-soon-page","downtime-page","faq-page"],
-    "molecules": [    
-      "otp-input",
-      "theme-provider"
-    ]
+  "pages": [
+    "login-mobile-aadhar-page",
+    "otp-page",
+    "history-page",
+    "faq-page",
+    "coming-soon-page",
+    "downtime-page",
+    "home-page"
+  ],
+  "molecules": [
+    "otp-input",
+    "theme-provider",
+    "LoginMobileAadharPage",
+    "OTPPage",
+    "OTPInput",
+    "Navbar"
+  ]
 }
