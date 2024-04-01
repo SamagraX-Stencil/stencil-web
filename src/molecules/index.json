@@ -7,15 +7,11 @@
     "faq-page",
     "coming-soon-page",
     "downtime-page",
-    "home-page"
+    "home-page",
+    "feedback-page"
   ],
   "molecules": [
-    "otp-input",
-    "theme-provider",
-    "LoginMobileAadharPage",
-    "OTPPage",
-    "OTPInput",
-    "Navbar"
+    "otp-input"
   ]
 }
 
