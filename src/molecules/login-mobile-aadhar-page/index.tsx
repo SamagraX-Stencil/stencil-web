@@ -97,7 +97,7 @@ const LoginMobileAadharPage: React.FC = () => {
             <div className={styles.register}>
               <Typography
                 variant="body2"
-                color={config.theme.primaryColor.value}
+                color={theme.primary?.main}
                 className={styles.registerText}>
                 Don’t have an account?
               </Typography>
@@ -106,7 +106,7 @@ const LoginMobileAadharPage: React.FC = () => {
                 variant="button"
                 sx={{
                   textTransform: 'none',
-                  color: config.theme.primaryColor.value,
+                  color: theme.primary?.main,
                   fontWeight: 'bold',
                   cursor: 'pointer',
                 }}>
@@ -121,7 +121,7 @@ const LoginMobileAadharPage: React.FC = () => {
               variant="h4"
               textAlign="left"
               width="90%"
-              color={config.theme.primaryColor.value}>
+              color={theme.primary?.main}>
               {config.component.title}
             </Typography>
             <Box
@@ -155,7 +155,7 @@ const LoginMobileAadharPage: React.FC = () => {
                   mt: 3,
                   mb: 4,
                   p: 1,
-                  background: config.theme.primaryColor.value,
+                  background:theme.primary?.main,
                   borderRadius: '10px',
                 }}
                 onClick={handleLogin}
@@ -171,7 +171,7 @@ const LoginMobileAadharPage: React.FC = () => {
               variant="caption"
               textAlign="center"
               width="90%"
-              color={config.theme.primaryColor.value}
+              color={theme.primary?.main}
               sx={{ mb: 1 }}>
               or Login using
             </Typography>
@@ -183,7 +183,7 @@ const LoginMobileAadharPage: React.FC = () => {
               sx={{
                 textTransform: 'none',
                 textDecoration: 'underline',
-                color: config.theme.primaryColor.value,
+                color: theme.primary?.main,
                 fontWeight: 'bold',
                 cursor: 'pointer',
               }}>
