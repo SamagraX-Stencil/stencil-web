@@ -6,9 +6,15 @@ import { useMemo } from "react";
 import ForumIcon from "@mui/icons-material/Forum";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useColorPalates } from "../molecules/theme-provider/hooks";
+ 
+ 
+ 
 import VoiceRecorder from '../molecules/VoiceRecorder'
+ 
 import Navbar from "../molecules/Navbar/index";
-
+ 
+ 
+ 
 const Components = () => {
   const theme = useColorPalates();
   const sampleList = useMemo(
@@ -95,12 +101,14 @@ const Components = () => {
           <List items={sampleList} />}
         </div>
       </Container>
-
+ 
+ 
+ 
       <Container>
            <h4>Navbar</h4>
           <Navbar />
         </Container>
-
+ 
     </Box>
  
  
