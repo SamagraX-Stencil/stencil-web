@@ -9,7 +9,7 @@ import ListItemText from "@mui/material/ListItemText";
 import { FC } from "react";
 import { pages } from "../../molecules/index.json";
 import { Link } from "@mui/material";
-import { capitalize } from "lodash";
+import { capitalize, toUpper } from "lodash";
 import LoginIcon from "@mui/icons-material/Login";
 import PinIcon from "@mui/icons-material/Pin";
 import ChatIcon from "@mui/icons-material/Chat";
@@ -22,7 +22,7 @@ import GridViewIcon from '@mui/icons-material/GridView';
 const getLabel = (label: string) =>
   label
     .split("-")
-    .map((subText) => capitalize(subText))
+    .map((subText) => subText==='page' ? null:  ["otp","faq"].includes( subText) ? toUpper( subText) : capitalize(subText))
     .join(" ");
 
 const getIcon = (label: string) => {

@@ -9,9 +9,10 @@ import HistoryPage from "./pages/history-page";
 import ComingSoonPage from "./pages/coming-soon-page";
 import DowntimePage from "./pages/downtime-page";
 import FAQPage from "./pages/faq-page";
-import FeedbackPage from './molecules/feedback-page'
+
 import LaunchPage from "./pages/launch-page";
 import HomePage from "./pages/home-page";
+import FeedbackPage from "./molecules/FeedbackPage";
  
 
 
@@ -26,9 +27,6 @@ function App() {
           <Route path="/login-mobile-aadhar-page" element={<LoginPage />} />
           <Route path="/otp-page" element={<OtpPage />} />
           <Route path="/history-page" element={<HistoryPage />} />
- 
- 
-         
  
           <Route path="/coming-soon-page" element={<ComingSoonPage />} />
           <Route path="/downtime-page" element={<DowntimePage />} />
