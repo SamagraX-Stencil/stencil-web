@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.main {
+    width: 80vw;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.section {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0.5rem;
+    text-align: center;
+    width: 90vw;
+}
+
+.textBlock {
+    border: 2px solid #f5952e;
+    resize: vertical;
+    overflow: auto;
+    height: 10rem;
+    padding: 10px;
+    margin: auto;
+    display: flex;
+    border-radius: 10px;
+    width: 75vw;
+}
+
+@media (max-width: 601px) {
+    .textBlock {
+        width: 85vw;
+    }
+}

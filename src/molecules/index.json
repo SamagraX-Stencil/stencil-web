@@ -1,4 +1,5 @@
 {
+
   "pages": [
     "login-mobile-aadhar-page",
     "otp-page",
@@ -17,3 +18,4 @@
     "Navbar"
   ]
 }
+
