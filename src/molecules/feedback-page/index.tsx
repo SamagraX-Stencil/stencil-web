@@ -69,6 +69,7 @@ const FeedbackPage: React.FC = () => {
               max={config.component.ratingMaxStars}
           
               onChange={(event, newValue) => {
+                console.log(event)
                 setStar(() => {
                   return newValue === null ? 1 : newValue;
                 });

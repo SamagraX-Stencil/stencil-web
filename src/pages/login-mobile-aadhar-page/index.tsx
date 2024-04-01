@@ -8,7 +8,6 @@ import logo from './assets/logo.png';
 import CircularProgress from '@mui/material/CircularProgress';
 import { toast } from 'react-hot-toast';
 import config from './config.json';
-import { useColorPalates } from '../../molecules/theme-provider/hooks';
 
 const LoginMobileAadharPage: React.FC = () => {
   const [isAadharClicked, setIsAadharClicked] = useState(false);
@@ -16,7 +15,7 @@ const LoginMobileAadharPage: React.FC = () => {
   const [valid, setValid] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false);
-  const theme = useColorPalates();
+
   const handleInput = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       let reg;
