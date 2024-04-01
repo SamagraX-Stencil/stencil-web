@@ -47,7 +47,7 @@ const ThemePicker=() =>{
   };
 
 const onThemeClick=React.useCallback((selectedColor:Color)=>()=>{
-console.log({selectedColor})
+
 modifyPaletes(selectedColor);
 },[modifyPaletes]);
 

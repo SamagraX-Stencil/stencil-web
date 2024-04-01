@@ -1,0 +1,18 @@
+.container{
+  background-color: var(--primarygreen);
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.container span {
+  font-family: Mulish-bold;
+  font-size: 36px;
+  font-weight: 700; 
+  color: var(--tertiarygreen);
+}
+
