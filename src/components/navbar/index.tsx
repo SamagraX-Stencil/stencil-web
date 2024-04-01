@@ -55,6 +55,7 @@ export const Navbar = () => {
         setIsDrawerOpen(isOpen => !isOpen);
     }, []);
     const theme =useColorPalates();
+    
     return (
         <>
             <Box sx={{ flexGrow: 1 }}>

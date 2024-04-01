@@ -16,10 +16,12 @@ export const Sidebar: FC<{
   isOpen: boolean;
   onToggle: (arg: boolean) => void;
 }> = ({ isOpen, onToggle }) => {
-
-    const getLabel =useCallback((label:string)=>{
-      return  label.split('-').map(subText=>capitalize(subText)).join(" ")
-    },[])
+  const getLabel = useCallback((label: string) => {
+    return label
+      .split("-")
+      .map((subText) => capitalize(subText))
+      .join(" ");
+  }, []);
   const DrawerList = (
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
@@ -49,34 +51,32 @@ export const Sidebar: FC<{
       <Divider />
       <List>
         <ListItem disablePadding>
-          <ListItemButton>     
-            
-              <ListItemText primary="Molecules" />
-     
+          <ListItemButton>
+            <ListItemText primary="Molecules" />
           </ListItemButton>
         </ListItem>
-        <ListItem  disablePadding>
-                <Link href={`/molecules`} underline="none">
-                  <ListItemButton>
-                    <ListItemIcon>
-                      <MailIcon />
-                    </ListItemIcon>
-                    <ListItemText primary={'Molecules'} />
-                  </ListItemButton>
-                </Link>
-              </ListItem>
+        <ListItem disablePadding>
+          <Link href={`/molecules`} underline="none">
+            <ListItemButton>
+              <ListItemIcon>
+                <MailIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Molecules"} />
+            </ListItemButton>
+          </Link>
+        </ListItem>
         {molecules.map((molecule, index) => (
-              <ListItem key={molecule} disablePadding>
-                <Link href={`/${molecule}`} underline="none">
-                  <ListItemButton>
-                    <ListItemIcon>
-                      {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                    </ListItemIcon>
-                    <ListItemText primary={getLabel(molecule)} />
-                  </ListItemButton>
-                </Link>
-              </ListItem>
-            ))}
+          <ListItem key={molecule} disablePadding>
+            <Link href={`/${molecule}`} underline="none">
+              <ListItemButton>
+                <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+                <ListItemText primary={getLabel(molecule)} />
+              </ListItemButton>
+            </Link>
+          </ListItem>
+        ))}
       </List>
     </Box>
   );

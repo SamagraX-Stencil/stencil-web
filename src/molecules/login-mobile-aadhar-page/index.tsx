@@ -8,6 +8,7 @@ import logo from './assets/logo.png';
 import CircularProgress from '@mui/material/CircularProgress';
 import { toast } from 'react-hot-toast';
 import config from './config.json';
+import { useColorPalates } from '../theme-provider/hooks';
 
 const LoginMobileAadharPage: React.FC = () => {
   const [isAadharClicked, setIsAadharClicked] = useState(false);
@@ -15,7 +16,7 @@ const LoginMobileAadharPage: React.FC = () => {
   const [valid, setValid] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false);
-
+  const theme = useColorPalates();
   const handleInput = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       let reg;
@@ -86,7 +87,7 @@ const LoginMobileAadharPage: React.FC = () => {
         name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"></meta>
       <div className={styles.main}>
-        <div className={styles.leftColumn} style={{background: config.theme.secondaryColor.value}}>
+        <div className={styles.leftColumn} style={{ background: theme?.primary?.main }}>
           <div className={styles.logo}>
             <img src={logo} width={150} height={40} alt="" />
           </div>
