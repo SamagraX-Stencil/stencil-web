@@ -8,6 +8,7 @@ import logo from './assets/logo.png';
 import CircularProgress from '@mui/material/CircularProgress';
 import { toast } from 'react-hot-toast';
 import config from './config.json';
+import { useColorPalates } from '../theme-provider/hooks';
 
 const LoginMobileAadharPage: React.FC = () => {
   const [isAadharClicked, setIsAadharClicked] = useState(false);
@@ -15,7 +16,7 @@ const LoginMobileAadharPage: React.FC = () => {
   const [valid, setValid] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false);
-
+  const theme = useColorPalates();
   const handleInput = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       let reg;
@@ -86,7 +87,7 @@ const LoginMobileAadharPage: React.FC = () => {
         name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"></meta>
       <div className={styles.main}>
-        <div className={styles.leftColumn} style={{background: config.theme.secondaryColor.value}}>
+        <div className={styles.leftColumn} style={{ background: theme?.primary?.main }}>
           <div className={styles.logo}>
             <img src={logo} width={150} height={40} alt="" />
           </div>
@@ -96,7 +97,7 @@ const LoginMobileAadharPage: React.FC = () => {
             <div className={styles.register}>
               <Typography
                 variant="body2"
-                color={config.theme.primaryColor.value}
+                color={theme.primary?.main}
                 className={styles.registerText}>
                 Don’t have an account?
               </Typography>
@@ -105,7 +106,7 @@ const LoginMobileAadharPage: React.FC = () => {
                 variant="button"
                 sx={{
                   textTransform: 'none',
-                  color: config.theme.primaryColor.value,
+                  color: theme.primary?.main,
                   fontWeight: 'bold',
                   cursor: 'pointer',
                 }}>
@@ -120,7 +121,7 @@ const LoginMobileAadharPage: React.FC = () => {
               variant="h4"
               textAlign="left"
               width="90%"
-              color={config.theme.primaryColor.value}>
+              color={theme.primary?.main}>
               {config.component.title}
             </Typography>
             <Box
@@ -154,7 +155,7 @@ const LoginMobileAadharPage: React.FC = () => {
                   mt: 3,
                   mb: 4,
                   p: 1,
-                  background: config.theme.primaryColor.value,
+                  background:theme.primary?.main,
                   borderRadius: '10px',
                 }}
                 onClick={handleLogin}
@@ -170,7 +171,7 @@ const LoginMobileAadharPage: React.FC = () => {
               variant="caption"
               textAlign="center"
               width="90%"
-              color={config.theme.primaryColor.value}
+              color={theme.primary?.main}
               sx={{ mb: 1 }}>
               or Login using
             </Typography>
@@ -182,7 +183,7 @@ const LoginMobileAadharPage: React.FC = () => {
               sx={{
                 textTransform: 'none',
                 textDecoration: 'underline',
-                color: config.theme.primaryColor.value,
+                color: theme.primary?.main,
                 fontWeight: 'bold',
                 cursor: 'pointer',
               }}>
