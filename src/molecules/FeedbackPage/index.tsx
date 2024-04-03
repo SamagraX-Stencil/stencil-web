@@ -6,10 +6,13 @@ import Rating from "@mui/material/Rating";
 import Button from "@mui/material/Button";
 import config from "./config.json";
 import { toast } from "react-hot-toast";
+import { useColorPalates } from "../theme-provider/hooks";
 
 const FeedbackPage: React.FC = () => {
   const [star, setStar] = useState(1);
   const [review, setReview] = useState("");
+
+  const theme = useColorPalates()
 
   const handleFeedback = () => {
     const rateBox = config.component.ratingBox;
@@ -93,13 +96,13 @@ const FeedbackPage: React.FC = () => {
               data-testid="ratingBtn"
               sx={{
                 mt: 2,
-                backgroundColor: `${config.theme.primaryColor.value}`,
+                backgroundColor: `${theme.primary?.dark}`,
                 fontWeight: "bold",
                 borderRadius: "10rem",
                 fontSize: "10px",
                 p: 1.5,
                 "&:hover": {
-                  backgroundColor: `${config.theme.secondaryColor.value}`,
+                  backgroundColor: `${theme.primary?.main}`,
                 },
               }}
               onClick={handleFeedback}
@@ -135,13 +138,13 @@ const FeedbackPage: React.FC = () => {
               data-testid="reviewBtn"
               sx={{
                 mt: 2,
-                backgroundColor: `${config.theme.primaryColor.value}`,
+                backgroundColor: `${theme.primary?.dark}`,
                 fontWeight: "bold",
                 borderRadius: "10rem",
                 fontSize: "10px",
                 p: 1.5,
                 "&:hover": {
-                  backgroundColor: `${config.theme.secondaryColor.value}`,
+                  backgroundColor: `${theme.primary?.main}`,
                 },
               }}
               onClick={handleFeedback}
