@@ -8,7 +8,8 @@
     "coming-soon-page",
     "downtime-page",
     "home-page",
-    "feedback-page"
+    "feedback-page",
+    "share-buttons"
   ],
   "molecules": [
     "otp-input"
