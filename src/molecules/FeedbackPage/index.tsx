@@ -131,6 +131,9 @@ const FeedbackPage: React.FC = () => {
               placeholder={config.component.reviewPlaceholder}
               value={review}
               className={styles.textBlock}
+              style={{
+                border: `2px solid ${theme?.primary?.light}`
+              }}
               onChange={(e) => {
                 setReview(e.target.value);
               }}
