@@ -1,3 +1,4 @@
+// @ts-ignore
 import React, { useMemo, useState } from 'react';
 import ShareIcon from './assets/share';
 import DownloadIcon from './assets/download';
@@ -9,9 +10,12 @@ import config from './config.json';
 const ShareButtons = () => {
 
   const theme = useColorPalates();
+
+  // @ts-ignore
   const secondaryColor = useMemo(() => {
     return theme?.primary?.light;
   }, [theme?.primary?.light]);
+
   const primaryColor = useMemo(() => {
     return theme?.primary?.main
   }, [theme?.primary?.main])
@@ -19,6 +23,7 @@ const ShareButtons = () => {
   const [shareLoader, setShareLoader] = useState(false);
   const [downloadLoader, setDownloadLoader] = useState(false);
 
+  // @ts-ignore
   const downloadChat = async (type: string) => {
     // perform your download chat logic here
   };
