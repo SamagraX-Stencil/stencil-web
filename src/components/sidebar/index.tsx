@@ -18,11 +18,18 @@ import UpcomingIcon from "@mui/icons-material/Upcoming";
 import MobiledataOffIcon from "@mui/icons-material/MobiledataOff";
 import HomeIcon from "@mui/icons-material/Home";
 import ThumbsUpDownIcon from "@mui/icons-material/ThumbsUpDown";
-import GridViewIcon from '@mui/icons-material/GridView';
+import GridViewIcon from "@mui/icons-material/GridView";
+import { useColorPalates } from "../../molecules/theme-provider/hooks";
 const getLabel = (label: string) =>
   label
     .split("-")
-    .map((subText) => subText==='page' ? null:  ["otp","faq"].includes( subText) ? toUpper( subText) : capitalize(subText))
+    .map((subText) =>
+      subText === "page"
+        ? null
+        : ["otp", "faq"].includes(subText)
+        ? toUpper(subText)
+        : capitalize(subText)
+    )
     .join(" ");
 
 const getIcon = (label: string) => {
@@ -58,10 +65,12 @@ export const Sidebar: FC<{
   isOpen: boolean;
   onToggle: (arg: boolean) => void;
 }> = ({ isOpen, onToggle }) => {
+  const theme =useColorPalates();
+  console.log({_theme:theme})
   const DrawerList = (
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
-    <Box sx={{ width: 250 }} role="presentation" onClick={onToggle}>
+    <Box sx={{ width: 250 ,height:'100vh' ,background:theme?.primary?.dark}} role="presentation" onClick={onToggle}>
       <List>
         <ListItem disablePadding>
           <ListItemButton>
@@ -75,8 +84,8 @@ export const Sidebar: FC<{
           <ListItem key={page.label} disablePadding>
             <Link href={page.path} underline="none">
               <ListItemButton>
-                <ListItemIcon>{page.icon}</ListItemIcon>
-                <ListItemText primary={page?.label} />
+                <ListItemIcon style={{color:theme?.primary?.light}}>{page.icon}</ListItemIcon>
+                <ListItemText primary={page?.label} style={{color:theme?.primary?.light}}/>
               </ListItemButton>
             </Link>
           </ListItem>
@@ -92,10 +101,10 @@ export const Sidebar: FC<{
         <ListItem disablePadding>
           <Link href={`/molecules`} underline="none">
             <ListItemButton>
-              <ListItemIcon>
+              <ListItemIcon style={{color:theme?.primary?.light}}>
                 <GridViewIcon />
               </ListItemIcon>
-              <ListItemText primary={"Molecules"} />
+              <ListItemText primary={"Molecules"} style={{color:theme?.primary?.light}}/>
             </ListItemButton>
           </Link>
         </ListItem>
@@ -117,7 +126,7 @@ export const Sidebar: FC<{
 
   return (
     <div>
-      <Drawer open={isOpen} onClose={onToggle}>
+      <Drawer open={isOpen} onClose={onToggle} >
         {DrawerList}
       </Drawer>
     </div>

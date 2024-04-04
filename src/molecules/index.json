@@ -8,10 +8,12 @@
     "coming-soon-page",
     "downtime-page",
     "home-page",
-    "feedback-page"
+    "feedback-page",
+    "chat-ui"
   ],
   "molecules": [
-    "otp-input"
+    "otp-input",
+    "chat-ui"
   ]
 }
 
