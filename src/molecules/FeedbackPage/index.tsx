@@ -47,7 +47,8 @@ const FeedbackPage: React.FC = () => {
                 fontWeight: 'bold',
                 m: 2,
                 p: 2,
-                display: 'fixed'
+                display: 'fixed',
+                color: theme?.primary?.main
               }}
             >
         {config.component.Title}
@@ -60,6 +61,7 @@ const FeedbackPage: React.FC = () => {
               sx={{
                 fontWeight: "bold",
                 fontSize: "3vh",
+                color: theme?.primary?.main
               }}
             >
               {config.component.ratingBoxTitle}
@@ -85,7 +87,8 @@ const FeedbackPage: React.FC = () => {
             <Typography
               sx={{
                 textAlign: "center",
-                fontSize: "2vh"
+                fontSize: "2vh",
+                color: theme?.primary?.main
               }}
             >
               {config.component.ratingStarDescription}
@@ -119,6 +122,7 @@ const FeedbackPage: React.FC = () => {
                 m: "1rem",
                 fontWeight: "bold",
                 fontSize: "3vh",
+                color: theme?.primary?.main
               }}
             >
               {config.component.reviewBoxTitle}
@@ -127,6 +131,9 @@ const FeedbackPage: React.FC = () => {
               placeholder={config.component.reviewPlaceholder}
               value={review}
               className={styles.textBlock}
+              style={{
+                border: `2px solid ${theme?.primary?.light}`
+              }}
               onChange={(e) => {
                 setReview(e.target.value);
               }}

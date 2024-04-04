@@ -150,11 +150,6 @@ const LoginMobileAadharPage: React.FC = () => {
                 name={isAadharClicked ? 'aadhar' : 'phone'}
                 autoComplete={isAadharClicked ? 'aadhar' : 'phone'}
                 autoFocus
-                
-                inputProps={{
-                  inputMode: 'numeric',
-                  pattern: '\\d*'
-                }}
               />
              {
              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
