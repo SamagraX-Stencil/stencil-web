@@ -1,7 +1,7 @@
 // @ts-ignore
 import React, { useMemo, useState } from 'react';
-import ShareIcon from './assets/share';
-import DownloadIcon from './assets/download';
+import ShareIcon from '@mui/icons-material/Share';
+import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import { toast } from 'react-hot-toast';
 import { CircularProgress, Divider } from '@mui/material';
 import { useColorPalates } from '../theme-provider/hooks';
@@ -108,7 +108,7 @@ const ShareButtons = () => {
                     justifyContent: 'center',
                     alignItems: 'center',
                   }}>
-                  <ShareIcon color={primaryColor} />
+                  <ShareIcon sx={{ color: primaryColor }} />
                 </div>
               )}
               <p
@@ -152,7 +152,7 @@ const ShareButtons = () => {
                     justifyContent: 'center',
                     alignItems: 'center',
                   }}>
-                  <DownloadIcon color={primaryColor} />
+                  <FileDownloadOutlinedIcon sx={{ color: primaryColor }} />
                 </div>
               )}
               <p
