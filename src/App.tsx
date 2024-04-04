@@ -13,6 +13,7 @@ import FAQPage from "./pages/faq-page";
 import LaunchPage from "./pages/launch-page";
 import HomePage from "./pages/home-page";
 import FeedbackPage from "./molecules/FeedbackPage";
+import { ChatUI } from "./molecules/chat-ui";
  
 
 
@@ -39,6 +40,7 @@ function App() {
           <Route path="/faq-page" element={<FAQPage />} />
           <Route path="/feedback-page" element={<FeedbackPage />}/>
           <Route path="/launch-page" element={<LaunchPage />} />
+          <Route path="/chat-ui" element={<ChatUI />} />
  
           <Route path="/molecules" element={<Components />}/>
         </Routes>
