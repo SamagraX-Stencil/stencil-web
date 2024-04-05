@@ -3,12 +3,12 @@ import styles from "./index.module.css";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import logo from "./assets/logo.png";
 import CircularProgress from "@mui/material/CircularProgress";
 import { toast } from "react-hot-toast";
 import { OTPInput } from "../otp-input";
-// import config from './config.json';
 import { useColorPalates } from "../theme-provider/hooks";
+import config from './config.json';
+
 const OtpPage: React.FC = () => {
   const [otp, setOtp] = useState("");
   const [loading, setLoading] = useState(false);
@@ -17,7 +17,7 @@ const OtpPage: React.FC = () => {
   const handleLogin = useCallback(
     (e: React.FormEvent) => {
       e.preventDefault();
-      if (otp.length === 4) {
+      if (otp.length === config.component.otpPage.otpLength) {
         setLoading(true);
         setTimeout(() => {
           setLoading(false);
@@ -37,14 +37,18 @@ const OtpPage: React.FC = () => {
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
       ></meta>
       <div className={styles.main}>
-        <div
-          className={styles.leftColumn}
-          style={{ background: theme?.primary?.main }}
-        >
-          <div className={styles.logo}>
-            <img src={logo} width={150} height={40} alt="" />
+        {config.component.otpPage.showSplitedView && (
+          <div
+            className={styles.leftColumn}
+            style={{ background: theme?.primary?.main }}
+          >
+            {config.component.otpPage.showLogo && (
+              <div className={styles.logo}>
+                <img src={config.component.otpPage.logo} width={150} height={40} alt="" />
+              </div>
+            )}
           </div>
-        </div>
+        )}
         <div className={styles.rightColumn}>
           <div className={styles.form}>
             {/* Form */}
@@ -55,7 +59,7 @@ const OtpPage: React.FC = () => {
               color="#1E232C"
               sx={{ m: 2 }}
             >
-              OTP Verification
+              {config.component.otpPage.title}
             </Typography>
             <Typography
               variant="body2"
@@ -81,7 +85,7 @@ const OtpPage: React.FC = () => {
                   separator={<></>}
                   value={otp}
                   onChange={setOtp}
-                  length={4}
+                  length={config.component.otpPage.otpLength}
                 />
               </Box>
               <Button
