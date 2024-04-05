@@ -26,8 +26,8 @@ const DowntimePage: React.FC = () => {
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"></meta>
-      <Box className={styles.container} px={18} py={12}>
-        <Box><Typography variant='h5' fontWeight={600} color={theme?.primary?.main}>{component.title ?? "Downtime"}</Typography></Box>
+      <Box className={styles.container}>
+        <Box><Typography fontSize='1.5rem' fontWeight={600} color={theme?.primary?.main}>{component.title ?? "Downtime"}</Typography></Box>
         <Box my={4}>
           <img src={component.downTimeImage??"/src/pages/downtime-page/assets/downTimeGIF.gif"} alt='downtimeGif' className={styles.imageContainer}/>
         </Box>
