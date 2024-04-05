@@ -32,8 +32,6 @@ function App() {
           <Route path="/coming-soon-page" element={<ComingSoonPage />} />
           <Route path="/downtime-page" element={<DowntimePage />} />
           <Route path="/faq-page" element={<FAQPage />} />
- 
- 
           <Route path="/home-page" element={<HomePage />} />
           <Route path="/coming-soon-page" element={<ComingSoonPage />} />
           <Route path="/downtime-page" element={<DowntimePage />} />
