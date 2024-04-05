@@ -4,11 +4,10 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import logo from './assets/logo.png';
 import CircularProgress from '@mui/material/CircularProgress';
 import { toast } from 'react-hot-toast';
-import config from './config.json';
 import { useColorPalates } from '../theme-provider/hooks';
+import config from './config.json';
 
 const LoginMobileAadharPage: React.FC = () => {
   const [isAadharClicked, setIsAadharClicked] = useState(false);
@@ -17,6 +16,7 @@ const LoginMobileAadharPage: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const theme = useColorPalates();
+
   const handleInput = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       let reg;
@@ -96,7 +96,7 @@ const LoginMobileAadharPage: React.FC = () => {
       <div className={styles.main}>
         <div className={styles.leftColumn} style={{ background: theme?.primary?.main }}>
           <div className={styles.logo}>
-            <img src={logo} width={150} height={40} alt="" />
+            <img src={config.component.loginMobileAadharPage.logo} width={150} height={40} alt="" />
           </div>
         </div>
         <div className={styles.rightColumn}>
@@ -108,17 +108,19 @@ const LoginMobileAadharPage: React.FC = () => {
                 className={styles.registerText}>
                 Don’t have an account?
               </Typography>
-              <Typography
-                onClick={handleRegistration}
-                variant="button"
-                sx={{
-                  textTransform: 'none',
-                  color: theme.primary?.main,
-                  fontWeight: 'bold',
-                  cursor: 'pointer',
-                }}>
-                Register Now
-              </Typography>
+              {config.component.loginMobileAadharPage.showSignUp && (
+                <Typography
+                  onClick={handleRegistration}
+                  variant="button"
+                  sx={{
+                    textTransform: 'none',
+                    color: theme.primary?.main,
+                    fontWeight: 'bold',
+                    cursor: 'pointer',
+                  }}>
+                  Register Now
+                </Typography>
+              )}
             </div>
           </div>
           <div className={styles.form}>
@@ -129,7 +131,7 @@ const LoginMobileAadharPage: React.FC = () => {
               textAlign="left"
               width="90%"
               color={theme.primary?.main}>
-              {config.component.title}
+              {config.component.loginMobileAadharPage.title}
             </Typography>
             <Box
               component="form"
@@ -163,7 +165,7 @@ const LoginMobileAadharPage: React.FC = () => {
                   mt: 3,
                   mb: 4,
                   p: 1,
-                  background:theme.primary?.main,
+                  background: theme.primary?.main,
                   borderRadius: '10px',
                 }}
                 onClick={handleLogin}
