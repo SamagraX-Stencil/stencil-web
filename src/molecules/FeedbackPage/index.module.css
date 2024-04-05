@@ -27,7 +27,6 @@
 }
 
 .textBlock {
-    border: 2px solid #f5952e;
     resize: vertical;
     overflow: auto;
     height: 10rem;
