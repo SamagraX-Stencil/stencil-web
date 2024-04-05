@@ -9,10 +9,12 @@
     "downtime-page",
     "home-page",
     "feedback-page",
-    "share-buttons"
+    "share-buttons",
+    "chat-ui"
   ],
   "molecules": [
-    "otp-input"
+    "otp-input",
+    "chat-ui"
   ]
 }
 

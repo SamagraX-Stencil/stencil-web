@@ -6,15 +6,16 @@ import { useMemo } from "react";
 import ForumIcon from "@mui/icons-material/Forum";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useColorPalates } from "../molecules/theme-provider/hooks";
- 
- 
- 
+
+
+
 import VoiceRecorder from '../molecules/VoiceRecorder'
- 
+
 import Navbar from "../molecules/Navbar/index";
- 
- 
- 
+import { JsonToTable } from "../molecules/json-to-table";
+
+
+
 const Components = () => {
   const theme = useColorPalates();
   const sampleList = useMemo(
@@ -66,15 +67,16 @@ const Components = () => {
     ],
     [theme?.primary?.light]
   );
-  const setInputMsg = useCallback(()=>{
+  const setInputMsg = useCallback(() => {
     //message to be passed to VoiceRecorders
-  },[])
+  }, [])
   return (
- 
+
 
     <Box
+
       minHeight="95vh" // Full viewport height
-      style={{ background: "lightgray" }}
+      style={{ background: "lightgray", height: "100%", overflow: 'scroll' }}
       className="bg-light"
     >
       <Container>
@@ -94,25 +96,31 @@ const Components = () => {
       <Container>
         <h4>List</h4>
         <div className="mt-2 p-5 border">
-      
-        {  
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        //@ts-ignore
-          <List items={sampleList} />}
+
+          {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            //@ts-ignore
+            <List items={sampleList} />}
         </div>
       </Container>
- 
- 
- 
+
+
+
       <Container>
-           <h4>Navbar</h4>
-          <Navbar />
+        <h4>Navbar</h4>
+        <Navbar />
+      </Container>
+
+      <Box sx={{ height: '100%' ,marginTop:'50px'}}>
+        <Container>
+          <h4>JSON To Table</h4>
+          <JsonToTable json={{ "personalDetails": { "Aadhaar Card No": "5592****6433", "Farmer Category": "SMF", "Applicant Name": "MALAR GARNAYAK", "Father Name": "ISWAR GARNAYAK", "District": "ANGUL", "Block": "KANIHA", "GP": "KUILEI", "Village": "Kulei" }, "buttons": [{ "id": 0, "type": "kalia_grievance_status", "aadhar": "Aadhar number - 559207276433", "textInEnglish": "Grievance Status", "text": "Grievance Status" }, { "id": 1, "type": "kalia_eligibility_criteria", "aadhar": "Aadhar number - 559207276433", "textInEnglish": "Eligibility Criteria", "text": "Eligibility Criteria" }, { "id": 2, "type": "kalia_benefit_disbursal_history", "aadhar": "Aadhar number - 559207276433", "textInEnglish": "Benefit Disbursal History", "text": "Benefit Disbursal History" }] }} />
         </Container>
- 
+      </Box>
     </Box>
- 
- 
- 
+
+
+
   );
 };
 
