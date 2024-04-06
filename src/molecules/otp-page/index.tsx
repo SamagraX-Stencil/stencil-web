@@ -123,7 +123,7 @@ const OtpPage: React.FC = () => {
                     align='center'
                     color="#838BA1">
                       Didn't receive the OTP? &nbsp;
-                    <p onClick={resendOtp} style={{color:'#3da156',fontWeight:'bold', cursor: 'pointer'}}>Resend again</p>
+                    <p onClick={resendOtp} style={{color:theme.primary.main,fontWeight:'bold', cursor: 'pointer'}}>Resend again</p>
                     </Typography>
                   </>
                   )}
