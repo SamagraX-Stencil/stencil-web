@@ -162,6 +162,7 @@ export function OTPInput({
             aria-label={`Digit ${index + 1} of OTP`}
             slotProps={{
               input: {
+                // @ts-ignore
                 ref: (ele) => {
                   inputRefs.current[index] = ele!;
                 },
