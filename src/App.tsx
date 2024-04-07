@@ -44,6 +44,7 @@ function App() {
           <Route path="/launch-page" element={<LaunchPage />} />
           <Route path="/share-buttons" element={<ShareButtons />} />
           <Route path="/chat-ui" element={<ChatUI />} />
+          {/* @ts-ignore */}
           <Route path="/VoiceRecorder" element={<VoiceRecorder />} />
  
           <Route path="/molecules" element={<Components />}/>

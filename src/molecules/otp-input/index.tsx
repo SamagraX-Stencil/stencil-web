@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Input as BaseInput } from '@mui/base/Input';
-import { Box, styled } from '@mui/system';
+import { Box, styled, Input } from '@mui/material';
 
 export function OTPInput({
   separator,
@@ -155,7 +154,7 @@ export function OTPInput({
     <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
       {new Array(length).fill(null).map((_, index) => (
         <React.Fragment key={index}>
-          <BaseInput
+          <Input
             type="number"
             slots={{
               input: InputElement,
@@ -163,6 +162,7 @@ export function OTPInput({
             aria-label={`Digit ${index + 1} of OTP`}
             slotProps={{
               input: {
+                // @ts-ignore
                 ref: (ele) => {
                   inputRefs.current[index] = ele!;
                 },

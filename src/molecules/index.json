@@ -1,5 +1,4 @@
 {
-
   "pages": [
     "login-mobile-aadhar-page",
     "otp-page",
@@ -11,12 +10,8 @@
     "feedback-page",
     "share-buttons",
     "chat-ui",
-    "VoiceRecorder"
+    "VoiceRecorder",
+    "launch-page"
   ],
-  "molecules": [
-    "otp-input",
-    "chat-ui"
-  ]
+  "molecules": ["otp-input", "chat-ui", "share-buttons"]
 }
-
- 
