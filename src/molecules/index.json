@@ -9,7 +9,8 @@
     "downtime-page",
     "home-page",
     "feedback-page",
-    "chat-ui"
+    "chat-ui",
+    "launch-page"
   ],
   "molecules": [
     "otp-input",
