@@ -8,9 +8,14 @@
     "downtime-page",
     "home-page",
     "feedback-page",
-    "share-buttons",
     "chat-ui",
     "launch-page"
   ],
-  "molecules": ["otp-input", "chat-ui", "share-buttons","VoiceRecorder"]
+  "molecules": [
+    "otp-input",
+    "chat-ui",
+    "share-buttons",
+    "VoiceRecorder",
+    "json-to-table"
+  ]
 }
