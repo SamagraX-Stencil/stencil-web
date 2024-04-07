@@ -17,7 +17,7 @@
       "showLogo": true,
       "showSplitedView": true,
       "otpLength": 4,
-      "resendOtpTimer": 60
+      "resendOtpTimer": 30
     }
   }
 }

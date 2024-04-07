@@ -14,7 +14,8 @@
   ],
   "molecules": [
     "otp-input",
-    "chat-ui"
+    "chat-ui",
+    "share-buttons"
   ]
 }
 

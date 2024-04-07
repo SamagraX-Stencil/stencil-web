@@ -1,0 +1,22 @@
+{
+    "theme": {
+      "primaryColor": {
+        "value": "#1e6231",
+        "allowOverride": true
+      },
+      "secondaryColor": {
+          "value": "#34a755",
+          "allowOverride": true
+      }
+    },
+    "component": {
+      "allowOverride": false,
+      "allowDownloadChat": true,
+      "allowShareChat": true,
+      "noLink": "Link is not valid",
+      "downloading": "Downloading...",
+      "noShare": "Your system doesn't support sharing this file.",
+      "shareText": "Share",
+      "downloadText": "Download"
+    }
+  }

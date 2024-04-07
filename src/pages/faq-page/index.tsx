@@ -19,10 +19,9 @@ const FAQPage: React.FC = () => {
   }, []);
 
   return (
-    <>
-     
+    <>    
       <Box className={styles.main}>
-        <Box m={3}>
+        <Box>
           <Typography
             variant="h4"
             sx={{ fontWeight: "600", color: theme?.primary?.main }}
@@ -30,9 +29,8 @@ const FAQPage: React.FC = () => {
             {component.title ?? "Faq"}
           </Typography>
         </Box>
-        <Box>
           {component?.userManualText && (
-            <Box className={styles.manualButtons} m={3}>
+            <Box className={styles.manualButtons}>
               <Button
                 onClick={downloadPDFHandler}
                 variant="contained"
@@ -47,7 +45,7 @@ const FAQPage: React.FC = () => {
             </Box>
           )}
           {component?.contactText && (
-            <Box className={styles.dialerBox} m={3}>
+            <Box className={styles.dialerBox}>
               <Box p={1.5}>
                 <Typography variant="body1" sx={{ fontWeight: "bold" }}>
                   {component.contactDescriptionText ?? "contact description"}
@@ -83,7 +81,6 @@ const FAQPage: React.FC = () => {
               </Box>
             </Box>
           )}
-        </Box>
       </Box>
     </>
   );

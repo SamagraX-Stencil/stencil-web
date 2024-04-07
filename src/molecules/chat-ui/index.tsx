@@ -11,19 +11,14 @@ import styles from './index.module.css'
 import { getMsgType } from './utils/getMsgType';
 import MessageItem from '../message-item';
 import toast from 'react-hot-toast';
-import shareIcon from './assets/share.svg';
-import downloadIcon from './assets/download.svg';
 import { recordUserLocation } from './utils/location';
-import CircularProgress from '@mui/material/CircularProgress';
 import chatHistory from './chatHistory.json';
 import config from './config.json';
-import { Divider } from '@mui/material';
+import ShareButtons from '../share-buttons';
 
 export const ChatUI: React.FC = () => {
   const [messages, setMessages] = useState<any>([]);
   const [loading, setLoading] = useState(false);
-  const [shareLoader, setShareLoader] = useState(false);
-  const [downloadLoader, setDownloadLoader] = useState(false);
 
   useEffect(() => {
     const fetchHistory = () => {
@@ -122,25 +117,6 @@ export const ChatUI: React.FC = () => {
 
   const placeholder = useMemo(() => config?.component?.placeholder ?? "Ask Your Question", [config]);
 
-  const downloadShareHandler = async (type: string) => {
-    if(type === 'share'){
-      toast.loading("Sharing chat", {duration: 1500});
-      setShareLoader(true);
-    }else if(type === 'download'){
-      toast.loading("Downloading chat", {duration: 1500});
-      setDownloadLoader(true);
-    }
-    setTimeout(() => {
-      if(type === 'share'){
-        toast.success("Chat shared successfully");
-        setShareLoader(false);
-      }else if(type === 'download'){
-        toast.success("Chat downloaded successfully");
-        setDownloadLoader(false);
-      }
-    }, 2000);
-  };
-
   return (
     <div className={styles.container}>
       <Chat
@@ -164,100 +140,9 @@ export const ChatUI: React.FC = () => {
         locale="en-US"
         placeholder={placeholder}
       />
-      {config.component.allowDownloadChat && config.component.allowShareChat && <div
-        style={{
-          position: 'absolute',
-          right: 0,
-          top: '40%',
-          background: 'white',
-          padding: '5px',
-          borderRadius: '5px 0 0 5px',
-          boxShadow:
-            'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px',
-        }}>
-        {config.component.allowShareChat && <div
-          onClick={() => downloadShareHandler('share')}
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}>
-          {/* Share */}
-          {shareLoader ? (
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '24px',
-                height: '24px',
-              }}>
-              <CircularProgress size="20px" />
-            </div>
-          ) : (
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <img src={shareIcon} alt="" width={22} height={22} />{' '}
-            </div>
-          )}
-          <p
-            style={{
-              fontSize: '10px',
-              margin: 0,
-              // color: config.theme.primaryColor.value,
-              fontFamily: 'Mulish-bold',
-            }}>
-            {config.component.shareChatText}
-          </p>
-        </div>}
-        {/* Only render divider when both share and download allowed */}
-        {config.component.allowDownloadChat && config.component.allowShareChat && <Divider />}
-        {config.component.allowDownloadChat && <div
-          onClick={() => downloadShareHandler('download')}
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}>
-          {/* Download */}
-          {downloadLoader ? (
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '24px',
-                height: '24px',
-              }}>
-              <CircularProgress size="20px" />
-            </div>
-          ) : (
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <img src={downloadIcon} alt="" width={24} height={24} />
-            </div>
-          )}
-          <p
-            style={{
-              fontSize: '10px',
-              margin: 0,
-              // color: config.theme.primaryColor.value,
-              fontFamily: 'Mulish-bold',
-            }}>
-            {config.component.downloadChatText}
-          </p>
-        </div>}
-      </div>}
+      
+      <ShareButtons />
+      
     </div>
   );
 };
