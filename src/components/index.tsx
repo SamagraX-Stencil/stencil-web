@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { Box, Container, IconButton } from '@mui/material';
 import { OTPInput } from '../molecules/otp-input';
 import { List } from '../molecules/list';
@@ -12,6 +12,7 @@ import { JsonToTable } from '../molecules/json-to-table';
 import ShareButtons from '../molecules/share-buttons';
 
 const Components = () => {
+  const [otp, setOtp] = useState('');
   const theme = useColorPalates();
   const sampleList = useMemo(
     () => [
@@ -72,7 +73,7 @@ const Components = () => {
       <Container style={{ marginTop: '50px' }}>
         <h4>OTP Input</h4>
         <div className="mt-2 p-5 border">
-          <OTPInput separator="-" length={4} value="" onChange={() => null} />
+          <OTPInput separator="-" length={4} value={otp} onChange={setOtp} />
         </div>
       </Container>
 
