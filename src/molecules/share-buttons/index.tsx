@@ -71,7 +71,8 @@ const ShareButtons = () => {
       {(config?.component?.allowDownloadChat || config?.component?.allowShareChat) && (
         <div
           style={{
-            position: 'absolute',
+            // position: 'absolute',
+            position: 'relative', // just to show them on website, ideally should keep absolute to stick them to right side
             right: 0,
             top: '40%',
             background: 'white',
