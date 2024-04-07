@@ -88,6 +88,7 @@ const ShareButtons = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
+                cursor: 'pointer'
               }}>
 
               {shareLoader ? (
@@ -132,6 +133,7 @@ const ShareButtons = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
+                cursor: 'pointer'
               }}>
               {/* Download */}
               {downloadLoader ? (
