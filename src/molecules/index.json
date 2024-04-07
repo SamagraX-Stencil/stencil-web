@@ -10,7 +10,8 @@
     "home-page",
     "feedback-page",
     "share-buttons",
-    "chat-ui"
+    "chat-ui",
+    "VoiceRecorder"
   ],
   "molecules": [
     "otp-input",

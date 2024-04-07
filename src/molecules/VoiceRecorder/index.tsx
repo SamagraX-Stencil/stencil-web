@@ -2,6 +2,8 @@ import { useState } from 'react'
 import styles from './styles.module.css'
 import toast from 'react-hot-toast'
 import config from './config.json'
+import MicIcon from '@mui/icons-material/Mic';
+import { useColorPalates } from '../theme-provider/hooks';
 
 interface VoiceRecorder {
   setInputMsg: (msg: string) => void
@@ -22,6 +24,8 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
   const delayBetweenDialogs: number = config.component.delayBetweenDialogs
   const dialogMaxLength: number = config.component.dialogMaxLength
   const [isRecording,setIsRecording] = useState(config.component.isRecording)
+
+  
 
   const startRecording =  () => {
     if(!isRecording){
@@ -147,7 +151,7 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
         {mediaRecorder && mediaRecorder.state === 'recording' ? (
           <div className={styles.center}>
             <RecorderControl
-              icon={config.component.stopIcon}
+              status={'recording'}
               onClick={stopRecording}
               includeDiv={includeDiv}
             />
@@ -155,10 +159,10 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
         ) : (
           <div className={styles.center}>
             {recorderStatus === 'processing' ? (
-              <RecorderControl icon={config.component.processingIcon} onClick={()=>{}} />
+              <RecorderControl status={'processing'} onClick={()=>{}} />
             ) : recorderStatus === 'error' ? (
               <RecorderControl
-                icon={config.component.errorIcon}
+                status={'error'}
                 onClick={() => {
                   setIsErrorClicked(true);
                   startRecording();
@@ -168,7 +172,7 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
             ) : (
               <div className={styles.center}>
                 <RecorderControl
-                  icon={config.component.startIcon}
+                  status={'start'}
                   onClick={() => {
                     setIsErrorClicked(true);
                     startRecording();
@@ -187,25 +191,78 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
 
 // includeDiv is being checked in render Function
 const RecorderControl: React.FC<{
-  icon: string;
+  status: string;
   onClick?: () => void;
   includeDiv?: boolean;
   tapToSpeak?: boolean;
-}> = ({ icon, onClick, includeDiv = true, tapToSpeak= false }) => {
+}> = ({ status, onClick, includeDiv = true, tapToSpeak= false }) => {
   const handleClick = () => {
     if(onClick){
       onClick();
     }
   };
+  const theme = useColorPalates()
+  let customStylesPulse = null;
+  let customStylesProcess = null;
+  let classPulse = "";
+  let classProcess = "";
+  
+  if(status === 'error') {
+    customStylesPulse = {
+      background: 'red',
+      border: '5px solid red'
+    }
+    classPulse = styles.pulseRing
+  }
+  else if(status === 'recording') {
+    customStylesPulse = {
+      background: `${theme?.primary?.main}`,
+      border: `5px solid ${theme?.primary?.main}`
+    }
+    classPulse = styles.pulseRing
+    
+  }
+  else if(status === 'processing'){
+    // processing
+    customStylesProcess = {
+      borderColor: `transparent transparent ${theme?.primary?.dark} ${theme?.primary?.dark}`
+    }
+    classProcess = styles.loader
+  }
 
   return includeDiv ? (
-    <div className={styles.imgContainer}>
-      <img
-        src={icon}
-        alt='icon'
+    <div className={styles.container}>
+      <button
         onClick={handleClick}
-        style={{ cursor: 'pointer', height: '40px', width: '40px' }}
-      />
+        className={styles.btn}
+        style={{ 
+          cursor: 'pointer', 
+          backgroundColor: theme?.primary?.main,
+          border: `1px solid ${theme?.primary?.main}`,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+      >
+        
+        <div 
+          className={`${classPulse}`}
+          style={{
+            ...customStylesPulse
+          }}  
+        ></div>
+        <MicIcon sx={{
+          color: 'white',
+          display: 'block'
+        }}/>
+        <div 
+          className={`${classProcess}`}
+          style={{
+            ...customStylesProcess
+          }}  
+        ></div>
+        
+      </button>
       {tapToSpeak && (
         <p style={{ color: 'black', fontSize: '12px', marginTop: '4px' }}>
           {'label.tap_to_speak'}
@@ -213,12 +270,38 @@ const RecorderControl: React.FC<{
       )}
     </div>
   ) : (
-    <img
-      src={icon}
-      alt='icon'
+
+    <button
       onClick={handleClick}
-      style={{ cursor: 'pointer', height: '40px', width: '40px' }}
-    />
+      className={styles.btn}
+      style={{ 
+        cursor: 'pointer', 
+        background: theme?.primary?.main,
+        border: `1px solid ${theme?.primary?.main}`,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}
+    >
+      
+      <div 
+        className={`${classPulse}`}
+        style={{
+          ...customStylesPulse,
+        }} 
+      ></div>
+      <MicIcon sx={{
+          color: 'white',
+          display: 'block'
+        }}
+      />
+      <div 
+        className={`${classProcess}`}
+        style={{
+          ...customStylesProcess
+        }} 
+      ></div>
+    </button>
   );
 };
 

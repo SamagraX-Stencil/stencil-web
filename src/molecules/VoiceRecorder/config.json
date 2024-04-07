@@ -11,10 +11,6 @@
   },
   "component": {
     "allowOverride": false,
-    "startIcon": "src/molecules/VoiceRecorder/assets/startIcon.png",
-    "stopIcon": "src/molecules/VoiceRecorder/assets/stop.gif",
-    "errorIcon": "src/molecules/VoiceRecorder/assets/error.gif",
-    "processingIcon": "src/molecules/VoiceRecorder/assets/process.gif",
     "voiceMinDecibels":-35,
     "delayBetweenDialogs": 2500,
     "dialogMaxLength":60000,

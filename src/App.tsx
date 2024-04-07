@@ -15,6 +15,7 @@ import HomePage from "./pages/home-page";
 import FeedbackPage from "./molecules/FeedbackPage";
 import ShareButtons from "./molecules/share-buttons";
 import { ChatUI } from "./molecules/chat-ui";
+import VoiceRecorder from "./molecules/VoiceRecorder";
  
 
 
@@ -43,6 +44,7 @@ function App() {
           <Route path="/launch-page" element={<LaunchPage />} />
           <Route path="/share-buttons" element={<ShareButtons />} />
           <Route path="/chat-ui" element={<ChatUI />} />
+          <Route path="/VoiceRecorder" element={<VoiceRecorder />} />
  
           <Route path="/molecules" element={<Components />}/>
         </Routes>
