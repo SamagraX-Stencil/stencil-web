@@ -10,8 +10,7 @@
     "feedback-page",
     "share-buttons",
     "chat-ui",
-    "VoiceRecorder",
     "launch-page"
   ],
-  "molecules": ["otp-input", "chat-ui", "share-buttons"]
+  "molecules": ["otp-input", "chat-ui", "share-buttons","VoiceRecorder"]
 }
