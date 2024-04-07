@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Box, styled, Input } from '@mui/material';
-
+import { Box, styled  } from '@mui/material';
+import { Input as BaseInput } from '@mui/base/Input';
 export function OTPInput({
   separator,
   length,
@@ -154,7 +154,7 @@ export function OTPInput({
     <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
       {new Array(length).fill(null).map((_, index) => (
         <React.Fragment key={index}>
-          <Input
+          <BaseInput
             type="number"
             slots={{
               input: InputElement,
