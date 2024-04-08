@@ -1,16 +1,23 @@
 {
   "theme": {
-    "primaryColor": {
-      "value": "#ffa500",
+    "primary": {
+      "main": "#ffa500",
       "allowOverride": true
     },
-    "secondaryColor": {
-        "value": "#1E232C",
-        "allowOverride": true
-      }
+    "secondary": {
+      "main": "#1E232C",
+      "allowOverride": true
+    }
   },
   "component": {
-    "allowOverride": false,
-    "title": "Welcome!"
+    "otpPage": {
+      "allowOverride": false,
+      "title": "Welcome!",
+     "logo": "https://seeklogo.com/images/C/corporate-company-logo-749CEE6ADC-seeklogo.com.png",
+      "showLogo": true,
+      "showSplitedView": true,
+      "otpLength": 4,
+      "resendOtpTimer": 30
+    }
   }
 }

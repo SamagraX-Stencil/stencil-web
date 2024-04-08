@@ -1,8 +1,10 @@
 {
-   
-    "component": {
+  "component": {
       "allowOverride": false,
-      "title": "History"
+      "title": "History",
+      "noItemsText": "No items found",
+      "allowDelete": true,
+      "showTimestamp": true
     }
   }
-  
+

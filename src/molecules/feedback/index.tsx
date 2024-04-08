@@ -6,10 +6,13 @@ import Rating from "@mui/material/Rating";
 import Button from "@mui/material/Button";
 import config from "./config.json";
 import { toast } from "react-hot-toast";
+import { useColorPalates } from "../theme-provider/hooks";
 
 const FeedbackPage: React.FC = () => {
   const [star, setStar] = useState(1);
   const [review, setReview] = useState("");
+
+  const theme = useColorPalates()
 
   const handleFeedback = () => {
     const rateBox = config.component.ratingBox;
@@ -44,7 +47,8 @@ const FeedbackPage: React.FC = () => {
                 fontWeight: 'bold',
                 m: 2,
                 p: 2,
-                display: 'fixed'
+                display: 'fixed',
+                color: theme?.primary?.main
               }}
             >
         {config.component.Title}
@@ -57,6 +61,7 @@ const FeedbackPage: React.FC = () => {
               sx={{
                 fontWeight: "bold",
                 fontSize: "3vh",
+                color: theme?.primary?.main
               }}
             >
               {config.component.ratingBoxTitle}
@@ -82,7 +87,8 @@ const FeedbackPage: React.FC = () => {
             <Typography
               sx={{
                 textAlign: "center",
-                fontSize: "2vh"
+                fontSize: "2vh",
+                color: theme?.primary?.main
               }}
             >
               {config.component.ratingStarDescription}
@@ -93,13 +99,13 @@ const FeedbackPage: React.FC = () => {
               data-testid="ratingBtn"
               sx={{
                 mt: 2,
-                backgroundColor: `${config.theme.primaryColor.value}`,
+                backgroundColor: `${theme.primary?.dark}`,
                 fontWeight: "bold",
                 borderRadius: "10rem",
                 fontSize: "10px",
                 p: 1.5,
                 "&:hover": {
-                  backgroundColor: `${config.theme.secondaryColor.value}`,
+                  backgroundColor: `${theme.primary?.main}`,
                 },
               }}
               onClick={handleFeedback}
@@ -116,6 +122,7 @@ const FeedbackPage: React.FC = () => {
                 m: "1rem",
                 fontWeight: "bold",
                 fontSize: "3vh",
+                color: theme?.primary?.main
               }}
             >
               {config.component.reviewBoxTitle}
@@ -124,6 +131,9 @@ const FeedbackPage: React.FC = () => {
               placeholder={config.component.reviewPlaceholder}
               value={review}
               className={styles.textBlock}
+              style={{
+                border: `2px solid ${theme?.primary?.light}`
+              }}
               onChange={(e) => {
                 setReview(e.target.value);
               }}
@@ -135,13 +145,13 @@ const FeedbackPage: React.FC = () => {
               data-testid="reviewBtn"
               sx={{
                 mt: 2,
-                backgroundColor: `${config.theme.primaryColor.value}`,
+                backgroundColor: `${theme.primary?.dark}`,
                 fontWeight: "bold",
                 borderRadius: "10rem",
                 fontSize: "10px",
                 p: 1.5,
                 "&:hover": {
-                  backgroundColor: `${config.theme.secondaryColor.value}`,
+                  backgroundColor: `${theme.primary?.main}`,
                 },
               }}
               onClick={handleFeedback}

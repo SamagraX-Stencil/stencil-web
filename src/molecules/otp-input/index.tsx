@@ -1,7 +1,6 @@
 import * as React from 'react';
+import { Box, styled  } from '@mui/material';
 import { Input as BaseInput } from '@mui/base/Input';
-import { Box, styled } from '@mui/system';
-
 export function OTPInput({
   separator,
   length,
@@ -163,6 +162,7 @@ export function OTPInput({
             aria-label={`Digit ${index + 1} of OTP`}
             slotProps={{
               input: {
+                // @ts-ignore
                 ref: (ele) => {
                   inputRefs.current[index] = ele!;
                 },

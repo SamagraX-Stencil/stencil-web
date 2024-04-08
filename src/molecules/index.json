@@ -1,5 +1,4 @@
 {
-
   "pages": [
     "otp-page",
     "downtime-page",
@@ -9,12 +8,14 @@
     "chat-ui",
     "login-mobile-aadhar-page",
     "coming-soon-page",
-    "home-page"
+    "home-page",
+    "launch-page"
   ],
   "molecules": [
     "otp-input",
-    "chat-ui"
+    "chat-ui",
+    "share-buttons",
+    "voice-recorder",
+    "json-to-table"
   ]
 }
-
- 

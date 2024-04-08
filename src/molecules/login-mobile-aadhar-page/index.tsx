@@ -4,11 +4,10 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import logo from './assets/logo.png';
 import CircularProgress from '@mui/material/CircularProgress';
 import { toast } from 'react-hot-toast';
-import config from './config.json';
 import { useColorPalates } from '../theme-provider/hooks';
+import config from './config.json';
 
 const LoginMobileAadharPage: React.FC = () => {
   const [isAadharClicked, setIsAadharClicked] = useState(false);
@@ -17,11 +16,18 @@ const LoginMobileAadharPage: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const theme = useColorPalates();
+
   const handleInput = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       let reg;
       let maxLength;
       let errorMessage = '';
+
+      const inputValue = e.target.value;
+      const numericInput = inputValue.replace(/[^0-9]/g, '');
+
+      // Update the input value with the numeric value
+      setInput(numericInput);
 
       if (isAadharClicked) {
         reg = /^\d{0,12}$/; // Allow up to 12 digits for Aadhar
@@ -33,20 +39,20 @@ const LoginMobileAadharPage: React.FC = () => {
         errorMessage = 'Please enter a valid mobile number';
       }
 
-      const isValid = reg.test(e.target.value);
+      const isValid = reg.test(numericInput);
       setValid(isValid);
 
-      if (isValid || e.target.value === '') {
-        setInput(e.target.value);
+      if (isValid || numericInput === '') {
+        setInput(numericInput);
       } else {
         // Truncate input if it exceeds maximum length
-        setInput(e.target.value.slice(0, maxLength));
+        setInput(numericInput.slice(0, maxLength));
       }
 
-      if (e.target.value.length > maxLength) {
+      if (numericInput.length > maxLength) {
         // If input length exceeds maximum allowed digits
         setValid(false);
-        setInput(e.target.value.slice(0, maxLength));
+        setInput(numericInput.slice(0, maxLength));
         errorMessage = isAadharClicked
           ? `Please enter a valid Aadhar number`
           : `Please enter a valid mobile number`;
@@ -77,6 +83,7 @@ const LoginMobileAadharPage: React.FC = () => {
         toast.success(`Successfully sent OTP`);
       }, 2000);
     } else {
+      console.log(input.length)
       toast.error(`Please enter a valid input`);
     }
   };
@@ -89,7 +96,7 @@ const LoginMobileAadharPage: React.FC = () => {
       <div className={styles.main}>
         <div className={styles.leftColumn} style={{ background: theme?.primary?.main }}>
           <div className={styles.logo}>
-            <img src={logo} width={150} height={40} alt="" />
+            <img src={config.component.loginMobileAadharPage.logo} width={150} height={40} alt="" />
           </div>
         </div>
         <div className={styles.rightColumn}>
@@ -101,17 +108,19 @@ const LoginMobileAadharPage: React.FC = () => {
                 className={styles.registerText}>
                 Don’t have an account?
               </Typography>
-              <Typography
-                onClick={handleRegistration}
-                variant="button"
-                sx={{
-                  textTransform: 'none',
-                  color: theme.primary?.main,
-                  fontWeight: 'bold',
-                  cursor: 'pointer',
-                }}>
-                Register Now
-              </Typography>
+              {config.component.loginMobileAadharPage.showSignUp && (
+                <Typography
+                  onClick={handleRegistration}
+                  variant="button"
+                  sx={{
+                    textTransform: 'none',
+                    color: theme.primary?.main,
+                    fontWeight: 'bold',
+                    cursor: 'pointer',
+                  }}>
+                  Register Now
+                </Typography>
+              )}
             </div>
           </div>
           <div className={styles.form}>
@@ -122,13 +131,14 @@ const LoginMobileAadharPage: React.FC = () => {
               textAlign="left"
               width="90%"
               color={theme.primary?.main}>
-              {config.component.title}
+              {config.component.loginMobileAadharPage.title}
             </Typography>
             <Box
               component="form"
               onSubmit={handleLogin}
               sx={{ mt: 1, width: '90%' }}>
               <TextField
+                type="text"
                 margin="normal"
                 error={!valid}
                 required
@@ -155,7 +165,7 @@ const LoginMobileAadharPage: React.FC = () => {
                   mt: 3,
                   mb: 4,
                   p: 1,
-                  background:theme.primary?.main,
+                  background: theme.primary?.main,
                   borderRadius: '10px',
                 }}
                 onClick={handleLogin}

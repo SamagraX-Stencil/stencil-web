@@ -18,10 +18,14 @@ import MsgThumbsDown from './assets/msg-thumbs-down.tsx';
 import { MessageItemPropType } from './index.d';
 import moment from 'moment';
 import { JsonToTable } from '../json-to-table/index.tsx';
+import { useColorPalates } from '../theme-provider/hooks.ts';
 
 // import BlinkingSpinner from '../blinking-spinner/index';
 
 const MessageItem: FC<MessageItemPropType> = ({ message, config }) => {
+
+  const theme = useColorPalates()
+
   const [reaction, setReaction] = useState(message?.content?.data?.reaction);
   // @ts-ignore
   const [optionDisabled, setOptionDisabled] = useState(
@@ -68,10 +72,10 @@ const MessageItem: FC<MessageItemPropType> = ({ message, config }) => {
                 alignItems: 'center',
                 color:
                   content?.data?.position === 'right'
-                    ? config.theme.secondaryColor.value
+                    ? theme?.primary?.main
                     : optionDisabled
                     ? config.theme.primaryColor.value
-                    : config.theme.secondaryColor.value,
+                    : theme?.primary?.main,
               }}>
               <div>{choice}</div>
               <div style={{ marginLeft: 'auto' }}>
@@ -80,7 +84,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message, config }) => {
                   color={
                     optionDisabled
                       ? config.theme.primaryColor.value
-                      : config.theme.secondaryColor.value
+                      : theme?.primary?.main
                   }
                 />
               </div>
@@ -125,7 +129,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message, config }) => {
             style={
               content?.data?.position === 'right'
                 ? {
-                    borderColor: `${config.theme.secondaryColor.value} transparent transparent transparent`,
+                    borderColor: `${theme?.primary?.main} transparent transparent transparent`,
                   }
                 : {
                     borderColor: `${config.theme.primaryColor.value} transparent transparent transparent`,
@@ -135,7 +139,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message, config }) => {
             type="text"
             style={
               content?.data?.position === 'right'
-                ? { background: config.theme.secondaryColor.value, boxShadow: '0 3px 8px rgba(0,0,0,.24)' }
+                ? { background: theme?.primary?.main, boxShadow: '0 3px 8px rgba(0,0,0,.24)' }
                 : { background: config.theme.primaryColor.value, boxShadow: '0 3px 8px rgba(0,0,0,.24)' }
             }>
             <span
@@ -145,7 +149,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message, config }) => {
                 color:
                   content?.data?.position === 'right'
                     ? config.theme.primaryColor.value
-                    : config.theme.secondaryColor.value,
+                    : theme?.primary?.main,
               }}>
               {content?.text}{' '}
               {/* {
@@ -165,7 +169,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message, config }) => {
                   color:
                     content?.data?.position === 'right'
                       ? config.theme.primaryColor.value
-                      : config.theme.secondaryColor.value,
+                      : theme?.primary?.main,
                   fontSize: '10px',
                 }}>
                 {moment(
@@ -180,7 +184,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message, config }) => {
               <button
                 onClick={() => window?.location?.reload()}
                 style={{
-                  border: `2px solid ${config.theme.secondaryColor.value}`,
+                  border: `2px solid ${theme?.primary?.main}`,
                 }}>
                 Refresh
               </button>
@@ -204,13 +208,13 @@ const MessageItem: FC<MessageItemPropType> = ({ message, config }) => {
                             pointerEvents: 'none',
                             filter: 'grayscale(100%)',
                             opacity: '0.5',
-                            border: `1px solid ${config.theme.secondaryColor.value}`,
+                            border: `1px solid ${theme?.primary?.main}`,
                           }
                         : {
                             pointerEvents: 'auto',
                             opacity: '1',
                             filter: 'grayscale(0%)',
-                            border: `1px solid ${config.theme.secondaryColor.value}`,
+                            border: `1px solid ${theme?.primary?.main}`,
                           }
                     }>
                     <img src={SpeakerIcon} width={15} height={15} alt="" />
@@ -224,6 +228,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message, config }) => {
                         alignItems: 'flex-end',
                         marginRight: '1px',
                         padding: '0 5px',
+                        color: `${theme?.primary?.dark}`
                       }}>
                       {config.component.textToSpeechLabel}
                     </p>
@@ -233,7 +238,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message, config }) => {
                   <div
                     className={styles.msgFeedbackIcons}
                     style={{
-                      border: `1px solid ${config.theme.secondaryColor.value}`,
+                      border: `1px solid ${theme?.primary?.main}`,
                     }}>
                     <div
                       style={{
@@ -253,7 +258,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message, config }) => {
                         width="20px"
                       />
                       <p
-                        style={{ fontSize: '11px', fontFamily: 'Mulish-bold' }}>
+                        style={{ fontSize: '11px', fontFamily: 'Mulish-bold', color: `${theme?.primary?.dark}` }}>
                         {config.component.positiveFeedbackText}
                       </p>
                     </div>
@@ -261,7 +266,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message, config }) => {
                       style={{
                         height: '32px',
                         width: '1px',
-                        backgroundColor: config.theme.secondaryColor.value,
+                        backgroundColor: theme?.primary?.main,
                         margin: '6px 0',
                       }}></div>
 
@@ -279,7 +284,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message, config }) => {
                       }>
                       <MsgThumbsDown fill={reaction === -1} width="20px" />
                       <p
-                        style={{ fontSize: '11px', fontFamily: 'Mulish-bold' }}>
+                        style={{ fontSize: '11px', fontFamily: 'Mulish-bold', color: `${theme?.primary?.dark}` }}>
                         {config.component.negativeFeedbackText}
                       </p>
                     </div>
@@ -446,7 +451,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message, config }) => {
                 fontSize: '1rem',
                 color:
                   content?.data?.position === 'right'
-                    ? config.theme.secondaryColor.value
+                    ? theme?.primary?.main
                     : config.theme.primaryColor.value,
               }}>
               {`\n` +

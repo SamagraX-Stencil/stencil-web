@@ -12,7 +12,8 @@ import { component } from "./config.json";
 import { ChatItem, HistoryItem } from "./index.d";
 import { map } from "lodash";
 import sample from "./sample.json";
-
+ 
+const { title, noItemsText, allowDelete, showTimestamp } = component;
 
 const HistoryPage: FC = () => {
     const [isFetching, setIsFetching] = useState(true);
@@ -34,7 +35,7 @@ const HistoryPage: FC = () => {
         []
     );
 
-
+    
     useEffect(() => {
         setIsFetching(true);
         const historyList = map(sample, (chatItem: ChatItem) => ({
@@ -42,9 +43,9 @@ const HistoryPage: FC = () => {
             label: chatItem?.query,
             conversationId: chatItem?.conversationId,
             userId: chatItem?.userId,
-            secondaryLabel: moment(chatItem?.updatedAt).format("hh:mm A DD/MM/YYYY"),
+            secondaryLabel: showTimestamp ? moment(chatItem?.updatedAt).format("hh:mm A DD/MM/YYYY") : '',
             icon: <ForumIcon style={{ color: theme?.primary?.light }} />,
-            secondaryAction: (
+            secondaryAction: allowDelete && (
                 <IconButton
                     edge="end"
                     aria-label="comments"
@@ -57,24 +58,23 @@ const HistoryPage: FC = () => {
             isDivider: true,
         }));
         setTimeout(() => {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             //@ts-expect-error
             setList(historyList);
             setIsFetching(false);
         }, 2000)
 
-    }, [handleClick, onSecondaryActionClick, theme?.primary?.light])
-
+    }, [handleClick, onSecondaryActionClick, showTimestamp, allowDelete, theme?.primary?.light])
 
     return (
         <>
             <div className={styles.main}>
                 <FullPageLoader loading={isFetching} color={theme?.primary?.main} />
                 <div className={styles.title} style={{ color: theme?.primary?.main }}>
-                    {component?.title ?? "No Label Provided"}
+                    {title ?? "No Label Provided"}
                 </div>
                 <div className={styles.chatList}>
-                    <List items={list} noItem={{label:"No History Found" ,icon:<ForumIcon style={{ color: theme?.primary?.light }} />}} />
+                    <List items={list} noItem={{ label: noItemsText, icon: <ForumIcon style={{ color: theme?.primary?.light }} /> }} />
                 </div>
             </div>
         </>

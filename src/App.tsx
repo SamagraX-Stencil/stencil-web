@@ -1,4 +1,4 @@
-import {Navbar} from "./components/navbar";
+import { Navbar } from "./components/navbar";
 import { Route, Routes } from "react-router-dom";
 import LoginPage from "./molecules/login-mobile-aadhar-page";
 import { Toaster } from "react-hot-toast";
@@ -13,6 +13,7 @@ import FAQPage from "./molecules/faq-page";
 import LaunchPage from "./molecules/launch-page";
 import HomePage from "./molecules/home-page";
 import FeedbackPage from "./molecules/FeedbackPage";
+import ShareButtons from "./molecules/share-buttons";
 import { ChatUI } from "./molecules/chat-ui";
 
 
@@ -37,6 +38,7 @@ function App() {
           <Route path="/faq-page" element={<FAQPage />} />
           <Route path="/feedback-page" element={<FeedbackPage />}/>
           <Route path="/launch-page" element={<LaunchPage />} />
+          <Route path="/share-buttons" element={<ShareButtons />} />
           <Route path="/chat-ui" element={<ChatUI />} />
           <Route path="/molecules" element={<Components />}/>
         </Routes>
