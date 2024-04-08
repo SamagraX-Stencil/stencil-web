@@ -1,0 +1,166 @@
+{
+  "theme": {
+    "palette": {
+      "primary": {
+        "main": "#1e6231",
+        "light": "#219653",
+        "dark": "#f6faff",
+        "contrastText": "#ffffff"
+      }
+    }
+  },
+  "component": {
+    "botDetails": {
+      "logo": "http://cdn-api.staging.bhasai.samagra.io:443/deployer/favicon.ico",
+      "botName": "Ama Krushi AI Chatbot",
+      "allowOverride": false
+    },
+    "homePage": {
+      "allowOverride": false,
+      "title": "Ask me anything about farming",
+      "showKalia": false,
+      "showWeatherAdvisory": true,
+      "showPlantProtection": true,
+      "weatherAdvisoryImg": "",
+      "plantProtectionImg": "",
+      "kaliaStatusImg": "",
+      "showMic": true
+    },
+    "navbar": {
+      "brandName": "",
+      "showHamburgerMenu": true,
+      "showHomeIcon": true,
+      "logos": {
+        "showCenterLogos": false,
+        "centerLogoIcons": [
+          {
+            "id": "logo1",
+            "src": " https://www.amakrushi.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fphone.50753eec.png&w=64&q=75"
+          }
+        ],
+        "showRightLogos": true,
+        "rightLogoIcons": [
+          {
+            "id": "logo2",
+            "src": "https://app.staging.akai.samagra.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo-green.db3a25d1.png&w=128&q=75"
+          },
+          {
+            "id": "logo3",
+            "src": "https://app.staging.akai.samagra.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fkrushak_odisha.ebf64370.png&w=128&q=75"
+          },
+          {
+            "id": "logo5",
+            "src": "https://app.staging.akai.samagra.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fphone.50753eec.png&w=128&q=75"
+          }
+        ]
+      }
+    },
+    "sidebar": {
+      "showLangSwitcher": true,
+      "languages": [
+        {
+          "code": "en",
+          "label": "ENG"
+        },
+        {
+          "code": "or",
+          "label": "ଓଡ଼ିଆ"
+        }
+      ],
+      "showProfileIcon": true,
+      "profileText": "Welcome, User",
+      "links": [
+        {
+          "label": "chats",
+          "icon": "HistoryIcon",
+          "route": "history"
+        },
+        {
+          "label": "faqs",
+          "icon": "HelpIcon",
+          "route": "faq"
+        },
+        {
+          "label": "feedback",
+          "icon": "FeedbackIcon",
+          "route": "feedback"
+        }
+      ],
+      "showLogoutButton": true,
+      "logoutButtonLabel": "Logout"
+    },
+    "otpPage": {
+      "allowOverride": false,
+      "showLogo": false,
+      "showSplitedView": true,
+      "otpLength": 4,
+      "logo": "https://seeklogo.com/images/C/corporate-company-logo-749CEE6ADC-seeklogo.com.png",
+      "title": "OTP Verification",
+      "resendOtpTimer":"30"
+    },
+    "comingSoon": {
+      "allowOverride": false,
+      "title": "Coming Soon!",
+      "description": "We are going to launch this feature very soon. Stay tuned!",
+      "backText": "Back"
+    },
+    "downtime": {
+      "allowOverride": false,
+      "title": "We're under maintainance",
+      "downTimeImage": "",
+      "supportingText": "Have an urgent query?",
+      "contactLink": "Call Ama Krushi",
+      "refreshText": "Try Again",
+      "previousPageText": "Previous Page"
+    },
+    "faqs": {
+      "allowOverride": false,
+      "title": "FAQs",
+      "userManualText": "User Manual - For VAWs",
+      "contactDescriptionText": "To connect with call centre",
+      "contactText": "Dial"
+    },
+    "voiceRecorder": {
+      "allowOverride": false,
+      "startIcon": "",
+      "stopIcon": "",
+      "errorIcon": "",
+      "processingIcon": "",
+      "delayBetweenDialogs": 2500
+    },
+    "feedbackPage": {
+      "ratingBox": true,
+      "reviewBox": true,
+      "Title": "Feedback",
+      "ratingBoxTitle": "Rate your experience",
+      "ratingMaxStars": 5,
+      "ratingStarDescription": "Click on the stars to rate",
+      "ratingButtonText": "Submit Rating",
+      "reviewBoxTitle": "Write a review",
+      "reviewPlaceholder": "Enter your review here",
+      "reviewButtonText": "Submit Review"
+    },
+    "loginMobileAadharPage": {
+      "allowOverride": false,
+      "loginWithAadhaar": false,
+      "showSignUp": false,
+      "showAlternateSignIn": false,
+      "showLogo": false,
+      "showSplitedView": true,
+      "logo":"https://seeklogo.com/images/C/corporate-company-logo-749CEE6ADC-seeklogo.com.png",
+      "title": "Welcome!"
+  },
+  "historyPage": {
+    "allowOverride": false,
+    "title": "History",
+    "noItemsText": "No items found",
+    "allowDelete": true,
+    "showTimestamp": true
+  },
+  "launchPage": {
+    "allowOverride": false,
+    "logo": "src/pages/launch-page/krushak_odisha.png",
+    "label":"ଆମ କୃଷି ଏ ଆଇ ଚାଟ୍ ବୋଟ୍"
+  }
+  }
+}

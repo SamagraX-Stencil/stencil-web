@@ -4,18 +4,18 @@ import LoginPage from "./molecules/login-mobile-aadhar-page";
 import { Toaster } from "react-hot-toast";
 import Components from "./components";
 import OtpPage from "./molecules/otp-page";
-import HistoryPage from "./pages/history-page";
+import HistoryPage from "./molecules/history-page";
  
-import ComingSoonPage from "./pages/coming-soon-page";
-import DowntimePage from "./pages/downtime-page";
-import FAQPage from "./pages/faq-page";
+import ComingSoonPage from "./molecules/coming-soon-page";
+import DowntimePage from "./molecules/downtime-page";
+import FAQPage from "./molecules/faq-page";
 
-import LaunchPage from "./pages/launch-page";
-import HomePage from "./pages/home-page";
-import FeedbackPage from "./molecules/FeedbackPage";
+import LaunchPage from "./molecules/launch-page";
+import HomePage from "./molecules/home-page";
+import FeedbackPage from "./molecules/feedback";
 import ShareButtons from "./molecules/share-buttons";
 import { ChatUI } from "./molecules/chat-ui";
- 
+
 
 
 function App() {
@@ -29,12 +29,9 @@ function App() {
           <Route path="/login-mobile-aadhar-page" element={<LoginPage />} />
           <Route path="/otp-page" element={<OtpPage />} />
           <Route path="/history-page" element={<HistoryPage />} />
- 
           <Route path="/coming-soon-page" element={<ComingSoonPage />} />
           <Route path="/downtime-page" element={<DowntimePage />} />
           <Route path="/faq-page" element={<FAQPage />} />
- 
- 
           <Route path="/home-page" element={<HomePage />} />
           <Route path="/coming-soon-page" element={<ComingSoonPage />} />
           <Route path="/downtime-page" element={<DowntimePage />} />
@@ -43,7 +40,6 @@ function App() {
           <Route path="/launch-page" element={<LaunchPage />} />
           <Route path="/share-buttons" element={<ShareButtons />} />
           <Route path="/chat-ui" element={<ChatUI />} />
- 
           <Route path="/molecules" element={<Components />}/>
         </Routes>
       </>

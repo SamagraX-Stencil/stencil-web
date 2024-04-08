@@ -1,14 +1,14 @@
-import { useCallback, useState } from 'react';
-import { Box, Container, IconButton } from '@mui/material';
-import { OTPInput } from '../molecules/otp-input';
-import { List } from '../molecules/list';
-import { useMemo } from 'react';
-import ForumIcon from '@mui/icons-material/Forum';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import { useColorPalates } from '../molecules/theme-provider/hooks';
-import VoiceRecorder from '../molecules/VoiceRecorder';
-import Navbar from '../molecules/Navbar/index';
-import { JsonToTable } from '../molecules/json-to-table';
+import { useCallback, useState } from "react";
+import { Box, Container, IconButton } from "@mui/material";
+import { OTPInput } from "../molecules/otp-input";
+import { List } from "../molecules/list";
+import { useMemo } from "react";
+import ForumIcon from "@mui/icons-material/Forum";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import { useColorPalates } from "../molecules/theme-provider/hooks";
+import VoiceRecorder from '../molecules/voice-recorder'
+import Navbar from "../molecules/navbar";
+import { JsonToTable } from "../molecules/json-to-table";
 import ShareButtons from '../molecules/share-buttons';
 
 const Components = () => {

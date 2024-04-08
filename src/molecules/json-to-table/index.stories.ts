@@ -59,4 +59,4 @@ type Story = StoryObj<typeof meta>;
 //   },
 // };
 
-export const LoggedOut: Story = {};
+export const JsonTable: Story = {};
