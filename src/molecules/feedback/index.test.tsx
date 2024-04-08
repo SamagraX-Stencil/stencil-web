@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { render, fireEvent, screen, waitFor } from '@testing-library/react'
 import FeedbackPage from './index'
 

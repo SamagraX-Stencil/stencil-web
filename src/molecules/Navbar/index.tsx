@@ -7,7 +7,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import Typography from '@mui/material/Typography';
 import { Sidebar } from '../sidebar/index';
 import ThemePicker from '../../components/theme-picker'; 
-import { useColorPalates } from '../../molecules/theme-provider/hooks';  
+import { useColorPalates } from '../theme-provider/hooks';  
 import config from './config.json';
  const Navbar: React.FC = () => {
   const {

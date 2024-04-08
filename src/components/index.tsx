@@ -11,7 +11,7 @@ import { useColorPalates } from "../molecules/theme-provider/hooks";
 
 import VoiceRecorder from '../molecules/VoiceRecorder'
 
-import Navbar from "../molecules/Navbar/index";
+import Navbar from "../molecules/navbar/index";
 import { JsonToTable } from "../molecules/json-to-table";
 
 
