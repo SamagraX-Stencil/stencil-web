@@ -40,7 +40,7 @@ const ShareButtons = () => {
         setDownloadLoader(false);
 
         setTimeout(() => {
-          toast.success(`${config?.component?.downloading}`);
+          toast.success("Downloading...");
         }, 2000)
         
 
@@ -52,7 +52,7 @@ const ShareButtons = () => {
           }, 2000)
 
         } else {
-          toast.error(`${config?.component?.noShare}`);
+          toast.error("Your system doesn't support sharing this file.");
           setDownloadLoader(false);
           setShareLoader(false);
         }
@@ -120,7 +120,7 @@ const ShareButtons = () => {
                   color: theme?.primary?.dark,
                   fontFamily: 'Mulish-bold',
                 }}>
-                {config?.component?.shareText}
+                  Share
               </p>
             </div>
           )}
@@ -165,7 +165,7 @@ const ShareButtons = () => {
                   color: theme?.primary?.dark,
                   fontFamily: 'Mulish-bold',
                 }}>
-                {config?.component?.downloadText}
+                  Download
               </p>
             </div>
           )}

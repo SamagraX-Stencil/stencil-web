@@ -12,11 +12,6 @@
     "component": {
       "allowOverride": false,
       "allowDownloadChat": true,
-      "allowShareChat": true,
-      "noLink": "Link is not valid",
-      "downloading": "Downloading...",
-      "noShare": "Your system doesn't support sharing this file.",
-      "shareText": "Share",
-      "downloadText": "Download"
+      "allowShareChat": true
     }
   }
