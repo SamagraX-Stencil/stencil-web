@@ -12,7 +12,7 @@ import FAQPage from "./molecules/faq-page";
 
 import LaunchPage from "./molecules/launch-page";
 import HomePage from "./molecules/home-page";
-import FeedbackPage from "./molecules/FeedbackPage";
+import FeedbackPage from "./molecules/feedback";
 import ShareButtons from "./molecules/share-buttons";
 import { ChatUI } from "./molecules/chat-ui";
 
