@@ -1,15 +1,15 @@
 {
 
   "pages": [
-    "login-mobile-aadhar-page",
     "otp-page",
+    "downtime-page",
+    "feedback-page",
     "history-page",
     "faq-page",
+    "chat-ui",
+    "login-mobile-aadhar-page",
     "coming-soon-page",
-    "downtime-page",
-    "home-page",
-    "feedback-page",
-    "chat-ui"
+    "home-page"
   ],
   "molecules": [
     "otp-input",
