@@ -29,7 +29,7 @@ const DowntimePage: React.FC = () => {
       <Box className={styles.container}>
         <Box><Typography fontSize='1.5rem' fontWeight={600} color={theme?.primary?.main}>{component.title ?? "Downtime"}</Typography></Box>
         <Box my={4}>
-          <img src={component.downTimeImage??"/src/pages/downtime-page/assets/downTimeGIF.gif"} alt='downtimeGif' className={styles.imageContainer}/>
+          <img src={component.downTimeImage??"src/molecules/downtime-page/assets/downTimeGIF.gif"} alt='downtimeGif' className={styles.imageContainer}/>
         </Box>
         <Box><Typography variant='h6' fontWeight={600} color={theme?.grey?.[600]}>{component.supportingText ?? "Description"}</Typography></Box>
         <Box  gap={1} display={'flex'} my={2}>
