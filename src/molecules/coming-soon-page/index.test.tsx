@@ -2,16 +2,11 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import ComingSoonPage from './index'
 import { component } from './../../../app.config.json'
 import { vi } from 'vitest'
-import CustomThemeProvider from '../theme-provider'
 const { comingSoon } = component
 
 describe('Coming Soon component', () => {
   test('renders without crashing', () => {
-    render(
-      <CustomThemeProvider>
-        <ComingSoonPage />
-      </CustomThemeProvider>
-    )
+    render(<ComingSoonPage />)
   })
 
   test('displays "Coming Soon Title" text', () => {
