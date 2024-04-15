@@ -1,74 +1,67 @@
 // @ts-ignore
-import React, { useMemo, useState } from 'react';
-import ShareIcon from '@mui/icons-material/Share';
-import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
-import { toast } from 'react-hot-toast';
-import { CircularProgress, Divider } from '@mui/material';
-import { useColorPalates } from '../theme-provider/hooks';
-import config from './config.json';
-
+import React, { useMemo, useState } from 'react'
+import ShareIcon from '@mui/icons-material/Share'
+import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined'
+import { toast } from 'react-hot-toast'
+import { CircularProgress, Divider } from '@mui/material'
+import { useColorPalates } from '../theme-provider/hooks'
+import { component } from './../../../app.config.json'
+const { shareButton } = component
 const ShareButtons = () => {
-
-  const theme = useColorPalates();
+  const theme = useColorPalates()
 
   // @ts-ignore
   const secondaryColor = useMemo(() => {
-    return theme?.primary?.light;
-  }, [theme?.primary?.light]);
+    return theme?.primary?.light
+  }, [theme?.primary?.light])
 
   const primaryColor = useMemo(() => {
     return theme?.primary?.main
   }, [theme?.primary?.main])
 
-  const [shareLoader, setShareLoader] = useState(false);
-  const [downloadLoader, setDownloadLoader] = useState(false);
+  const [shareLoader, setShareLoader] = useState(false)
+  const [downloadLoader, setDownloadLoader] = useState(false)
 
   // @ts-ignore
   const downloadChat = async (type: string) => {
     // perform your download chat logic here
-  };
+  }
 
   const downloadShareHandler = async (type: string) => {
     try {
       if (type === 'download') {
-        setDownloadLoader(true);
+        setDownloadLoader(true)
       } else {
-        setShareLoader(true);
+        setShareLoader(true)
       }
 
       if (type === 'download') {
-        setDownloadLoader(false);
+        setDownloadLoader(false)
 
         setTimeout(() => {
-          toast.success("Downloading...");
+          toast.success('Downloading...')
         }, 2000)
-        
-
       } else if (type === 'share') {
-        
-          setShareLoader(false);
-          setTimeout(() => {
-            toast.success("Share successful")
-          }, 2000)
-
-        } else {
-          toast.error("Your system doesn't support sharing this file.");
-          setDownloadLoader(false);
-          setShareLoader(false);
-        }
+        setShareLoader(false)
+        setTimeout(() => {
+          toast.success('Share successful')
+        }, 2000)
+      } else {
+        toast.error("Your system doesn't support sharing this file.")
+        setDownloadLoader(false)
+        setShareLoader(false)
+      }
     } catch (error: any) {
-      setDownloadLoader(false);
-      setShareLoader(false);
-      
-      toast.error("Error while performing")
-      
-    }
-  };
+      setDownloadLoader(false)
+      setShareLoader(false)
 
+      toast.error('Error while performing')
+    }
+  }
 
   return (
     <>
-      {(config?.component?.allowDownloadChat || config?.component?.allowShareChat) && (
+      {(shareButton?.allowDownloadChat || shareButton?.allowShareChat) && (
         <div
           style={{
             // position: 'absolute',
@@ -80,17 +73,18 @@ const ShareButtons = () => {
             borderRadius: '5px 0 0 5px',
             boxShadow:
               'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px',
-          }}>
-          {config?.component?.allowShareChat && (
+          }}
+        >
+          {shareButton?.allowShareChat && (
             <div
               onClick={() => downloadShareHandler('share')}
               style={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                cursor: 'pointer'
-              }}>
-
+                cursor: 'pointer',
+              }}
+            >
               {shareLoader ? (
                 <div
                   style={{
@@ -99,7 +93,8 @@ const ShareButtons = () => {
                     alignItems: 'center',
                     width: '24px',
                     height: '24px',
-                  }}>
+                  }}
+                >
                   <CircularProgress size="20px" />
                 </div>
               ) : (
@@ -109,7 +104,8 @@ const ShareButtons = () => {
                     flexDirection: 'column',
                     justifyContent: 'center',
                     alignItems: 'center',
-                  }}>
+                  }}
+                >
                   <ShareIcon sx={{ color: primaryColor }} />
                 </div>
               )}
@@ -119,22 +115,26 @@ const ShareButtons = () => {
                   margin: 0,
                   color: theme?.primary?.dark,
                   fontFamily: 'Mulish-bold',
-                }}>
-                  Share
+                }}
+              >
+                Share
               </p>
             </div>
           )}
           {/* Only render divider when both share and download allowed */}
-          {config?.component?.allowDownloadChat && config?.component?.allowShareChat && <Divider />}
-          {config?.component?.allowDownloadChat && (
+          {shareButton?.allowDownloadChat && shareButton?.allowShareChat && (
+            <Divider />
+          )}
+          {shareButton?.allowDownloadChat && (
             <div
               onClick={() => downloadShareHandler('download')}
               style={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                cursor: 'pointer'
-              }}>
+                cursor: 'pointer',
+              }}
+            >
               {/* Download */}
               {downloadLoader ? (
                 <div
@@ -144,7 +144,8 @@ const ShareButtons = () => {
                     alignItems: 'center',
                     width: '24px',
                     height: '24px',
-                  }}>
+                  }}
+                >
                   <CircularProgress size="20px" />
                 </div>
               ) : (
@@ -154,7 +155,8 @@ const ShareButtons = () => {
                     flexDirection: 'column',
                     justifyContent: 'center',
                     alignItems: 'center',
-                  }}>
+                  }}
+                >
                   <FileDownloadOutlinedIcon sx={{ color: primaryColor }} />
                 </div>
               )}
@@ -164,15 +166,16 @@ const ShareButtons = () => {
                   margin: 0,
                   color: theme?.primary?.dark,
                   fontFamily: 'Mulish-bold',
-                }}>
-                  Download
+                }}
+              >
+                Download
               </p>
             </div>
           )}
         </div>
       )}
     </>
-  );
-};
+  )
+}
 
-export default ShareButtons;
+export default ShareButtons

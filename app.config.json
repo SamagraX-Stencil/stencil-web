@@ -7,6 +7,14 @@
         "dark": "#f6faff",
         "contrastText": "#ffffff"
       }
+    },
+    "primaryColor": {
+      "allowOverride": true,
+      "value": "#fff"
+    },
+    "secondaryColor": {
+      "allowOverride": true,
+      "value": "#219653"
     }
   },
   "component": {
@@ -18,13 +26,15 @@
     "homePage": {
       "allowOverride": false,
       "title": "Ask me anything about farming",
-      "showKalia": false,
-      "showWeatherAdvisory": true,
-      "showPlantProtection": true,
-      "weatherAdvisoryImg": "",
-      "plantProtectionImg": "",
-      "kaliaStatusImg": "",
-      "showMic": true
+      "showBtns": true,
+      "btns": [
+        {
+          "title": "Weather Advisory",
+          "image": ""
+        }
+      ],
+      "showMic": true,
+      "placeholder": "Ask your question"
     },
     "navbar": {
       "brandName": "",
@@ -71,19 +81,19 @@
       "profileText": "Welcome, User",
       "links": [
         {
-          "label": "chats",
-          "icon": "HistoryIcon",
-          "route": "history"
-        },
-        {
-          "label": "faqs",
+          "label": "FAQ Page",
           "icon": "HelpIcon",
-          "route": "faq"
+          "route": ""
         },
         {
-          "label": "feedback",
+          "label": "Chat Page",
+          "icon": "HistoryIcon",
+          "route": ""
+        },
+        {
+          "label": "Feedback",
           "icon": "FeedbackIcon",
-          "route": "feedback"
+          "route": ""
         }
       ],
       "showLogoutButton": true,
@@ -96,7 +106,7 @@
       "otpLength": 4,
       "logo": "https://seeklogo.com/images/C/corporate-company-logo-749CEE6ADC-seeklogo.com.png",
       "title": "OTP Verification",
-      "resendOtpTimer":"30"
+      "resendOtpTimer": 30
     },
     "comingSoon": {
       "allowOverride": false,
@@ -122,11 +132,12 @@
     },
     "voiceRecorder": {
       "allowOverride": false,
-      "startIcon": "",
-      "stopIcon": "",
-      "errorIcon": "",
-      "processingIcon": "",
-      "delayBetweenDialogs": 2500
+      "voiceMinDecibels": -35,
+      "delayBetweenDialogs": 2500,
+      "dialogMaxLength": 60000,
+      "isRecording": false,
+      "recorderErrorMessage": "Your question was not recognised. Pls try speaking more clearly.",
+      "waitMessage": "Please wait while we process your request..."
     },
     "feedbackPage": {
       "ratingBox": true,
@@ -147,20 +158,42 @@
       "showAlternateSignIn": false,
       "showLogo": false,
       "showSplitedView": true,
-      "logo":"https://seeklogo.com/images/C/corporate-company-logo-749CEE6ADC-seeklogo.com.png",
+      "logo": "https://seeklogo.com/images/C/corporate-company-logo-749CEE6ADC-seeklogo.com.png",
       "title": "Welcome!"
-  },
-  "historyPage": {
-    "allowOverride": false,
-    "title": "History",
-    "noItemsText": "No items found",
-    "allowDelete": true,
-    "showTimestamp": true
-  },
-  "launchPage": {
-    "allowOverride": false,
-    "logo": "src/pages/launch-page/krushak_odisha.png",
-    "label":"ଆମ କୃଷି ଏ ଆଇ ଚାଟ୍ ବୋଟ୍"
-  }
+    },
+    "historyPage": {
+      "allowOverride": false,
+      "title": "History",
+      "noItemsText": "No items found",
+      "allowDelete": true,
+      "showTimestamp": true
+    },
+    "launchPage": {
+      "allowOverride": false,
+      "logo": "src/pages/launch-page/krushak_odisha.png",
+      "label": "ଆମ କୃଷି ଏ ଆଇ ଚାଟ୍ ବୋଟ୍"
+    },
+    "chatUi": {
+      "allowOverride": false,
+      "placeholder": "Ask Your Question",
+      "allowFeedback": true,
+      "positiveFeedbackText": "Helpful",
+      "negativeFeedbackText": "Not Helpful",
+      "allowTextToSpeech": true,
+      "textToSpeechLabel": "Click to hear",
+      "allowTransliteration": true,
+      "transliterationApi": "",
+      "transliterationInputLanguage": "",
+      "transliterationOutputLanguage": "",
+      "transliterationProvider": "",
+      "transliterationSuggestions": 3,
+      "rightAction": null,
+      "leftAction": null
+    },
+    "shareButton": {
+      "allowOverride": false,
+      "allowDownloadChat": true,
+      "allowShareChat": true
+    }
   }
 }
