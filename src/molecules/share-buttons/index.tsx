@@ -5,9 +5,11 @@ import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined'
 import { toast } from 'react-hot-toast'
 import { CircularProgress, Divider } from '@mui/material'
 import { useColorPalates } from '../theme-provider/hooks'
-import { component } from './../../../app.config.json'
-const { shareButton } = component
+import { useConfig } from '../../hook/useConfig'
+
 const ShareButtons = () => {
+  const config = useConfig('component', 'shareButton')
+
   const theme = useColorPalates()
 
   // @ts-ignore
@@ -61,7 +63,7 @@ const ShareButtons = () => {
 
   return (
     <>
-      {(shareButton?.allowDownloadChat || shareButton?.allowShareChat) && (
+      {(config?.allowDownloadChat || config?.allowShareChat) && (
         <div
           style={{
             // position: 'absolute',
@@ -75,7 +77,7 @@ const ShareButtons = () => {
               'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px',
           }}
         >
-          {shareButton?.allowShareChat && (
+          {config?.allowShareChat && (
             <div
               onClick={() => downloadShareHandler('share')}
               style={{
@@ -122,10 +124,8 @@ const ShareButtons = () => {
             </div>
           )}
           {/* Only render divider when both share and download allowed */}
-          {shareButton?.allowDownloadChat && shareButton?.allowShareChat && (
-            <Divider />
-          )}
-          {shareButton?.allowDownloadChat && (
+          {config?.allowDownloadChat && config?.allowShareChat && <Divider />}
+          {config?.allowDownloadChat && (
             <div
               onClick={() => downloadShareHandler('download')}
               style={{

@@ -13,13 +13,15 @@ import MessageItem from '../message-item'
 import toast from 'react-hot-toast'
 import { recordUserLocation } from './utils/location'
 import chatHistory from './chatHistory.json'
-import { component, theme } from './../../../app.config.json'
-const { chatUi } = component
 import ShareButtons from '../share-buttons'
+import { useConfig, useThmeeConfig } from '../../hook/useConfig'
 
 export const ChatUI: React.FC = () => {
   const [messages, setMessages] = useState<any>([])
   const [loading, setLoading] = useState(false)
+
+  const config = useConfig('component', 'chatUi')
+  const theme = useThmeeConfig('theme')
 
   useEffect(() => {
     const fetchHistory = () => {
@@ -116,7 +118,7 @@ export const ChatUI: React.FC = () => {
   }, [loading, normalizeMsgs])
 
   const placeholder = useMemo(
-    () => chatUi.placeholder ?? 'Ask Your Question',
+    () => config.placeholder ?? 'Ask Your Question',
     []
   )
 
@@ -126,18 +128,18 @@ export const ChatUI: React.FC = () => {
         btnColor={theme.secondaryColor.value}
         background="white"
         disableSend={false}
-        showTransliteration={chatUi.allowTransliteration}
+        showTransliteration={config.allowTransliteration}
         transliterationConfig={{
-          transliterationApi: chatUi.transliterationApi,
-          transliterationInputLanguage: chatUi.transliterationInputLanguage,
-          transliterationOutputLanguage: chatUi.transliterationOutputLanguage,
-          transliterationProvider: chatUi.transliterationProvider,
-          transliterationSuggestions: chatUi.transliterationSuggestions,
+          transliterationApi: config.transliterationApi,
+          transliterationInputLanguage: config.transliterationInputLanguage,
+          transliterationOutputLanguage: config.transliterationOutputLanguage,
+          transliterationProvider: config.transliterationProvider,
+          transliterationSuggestions: config.transliterationSuggestions,
         }}
         //@ts-ignore
         messages={msgToRender}
         renderMessageContent={(props): ReactElement => (
-          <MessageItem message={props} themeColor={theme} chatUi={chatUi} />
+          <MessageItem message={props} themeColor={theme} chatUi={config} />
         )}
         onSend={handleSend}
         locale="en-US"

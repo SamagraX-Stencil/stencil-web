@@ -8,14 +8,14 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import moment from 'moment'
 import FullPageLoader from '../../components/fullpage-loader'
 import { useColorPalates } from '../../molecules/theme-provider/hooks'
-import { component } from './../../../app.config.json'
 import { ChatItem, HistoryItem } from './index.d'
 import { map } from 'lodash'
 import sample from './sample.json'
-
-const { historyPage } = component
+import { useConfig } from '../../hook/useConfig'
 
 const HistoryPage: FC = () => {
+  const config = useConfig('component', 'historyPage')
+
   const [isFetching, setIsFetching] = useState(true)
   const [list, setList] = useState([])
   const theme = useColorPalates()
@@ -47,11 +47,11 @@ const HistoryPage: FC = () => {
       label: chatItem?.query,
       conversationId: chatItem?.conversationId,
       userId: chatItem?.userId,
-      secondaryLabel: historyPage.showTimestamp
+      secondaryLabel: config.showTimestamp
         ? moment(chatItem?.updatedAt).format('hh:mm A DD/MM/YYYY')
         : '',
       icon: <ForumIcon style={{ color: theme?.primary?.light }} />,
-      secondaryAction: historyPage.allowDelete && (
+      secondaryAction: config.allowDelete && (
         <IconButton
           edge="end"
           aria-label="comments"
@@ -72,8 +72,8 @@ const HistoryPage: FC = () => {
   }, [
     handleClick,
     onSecondaryActionClick,
-    historyPage.showTimestamp,
-    historyPage.allowDelete,
+    config.showTimestamp,
+    config.allowDelete,
     theme?.primary?.light,
   ])
 
@@ -82,13 +82,13 @@ const HistoryPage: FC = () => {
       <div className={styles.main}>
         <FullPageLoader loading={isFetching} color={theme?.primary?.main} />
         <div className={styles.title} style={{ color: theme?.primary?.main }}>
-          {historyPage.title ?? 'No Label Provided'}
+          {config.title ?? 'No Label Provided'}
         </div>
         <div className={styles.chatList}>
           <List
             items={list}
             noItem={{
-              label: historyPage.noItemsText,
+              label: config.noItemsText,
               icon: <ForumIcon style={{ color: theme?.primary?.light }} />,
             }}
           />

@@ -2,24 +2,24 @@ import React, { useCallback } from 'react'
 import styles from './index.module.css'
 import { Avatar, Box, Button, Typography } from '@mui/material'
 import CallRoundedIcon from '@mui/icons-material/Call'
-import { component } from './../../../app.config.json'
 import { useColorPalates } from '../../molecules/theme-provider/hooks'
+import { useConfig } from '../../hook/useConfig'
 
 const DowntimePage: React.FC = () => {
-  const { downtime } = component
+  const config = useConfig('component', 'downtime')
 
   const theme = useColorPalates()
   const handleRefreshClick = useCallback(() => {
     // window?.location.reload()
-    console.log(downtime.refreshText ?? 'Contact Details')
+    console.log(config.refreshText ?? 'Contact Details')
   }, [])
   const handlePreviousClick = useCallback(() => {
     // window?.history.back();
-    console.log(downtime.previousPageText ?? 'Contact Details')
+    console.log(config.previousPageText ?? 'Contact Details')
   }, [])
 
   const handleContactUserClick = useCallback(() => {
-    console.log(downtime.contactLink ?? 'Contact Details')
+    console.log(config.contactLink ?? 'Contact Details')
   }, [])
 
   return (
@@ -35,13 +35,13 @@ const DowntimePage: React.FC = () => {
             fontWeight={600}
             color={theme?.primary?.main}
           >
-            {downtime.title ?? 'Downtime'}
+            {config.title ?? 'Downtime'}
           </Typography>
         </Box>
         <Box my={4}>
           <img
             src={
-              downtime.downTimeImage ??
+              config.downTimeImage ??
               'src/molecules/downtime-page/assets/downTimeGIF.gif'
             }
             alt="downtimeGif"
@@ -50,7 +50,7 @@ const DowntimePage: React.FC = () => {
         </Box>
         <Box>
           <Typography variant="h6" fontWeight={600} color={theme?.grey?.[600]}>
-            {downtime.supportingText ?? 'Description'}
+            {config.supportingText ?? 'Description'}
           </Typography>
         </Box>
         <Box gap={1} display={'flex'} my={2}>
@@ -73,7 +73,7 @@ const DowntimePage: React.FC = () => {
               fontWeight={600}
               sx={{ textDecoration: 'underline' }}
             >
-              {downtime.contactLink ?? 'Contact Details'}
+              {config.contactLink ?? 'Contact Details'}
             </Typography>
           </Button>
         </Box>
@@ -95,7 +95,7 @@ const DowntimePage: React.FC = () => {
             }}
           >
             <Typography variant="body1">
-              {downtime.refreshText ?? 'Reload Page'}
+              {config.refreshText ?? 'Reload Page'}
             </Typography>
           </Button>
           <Button
@@ -109,7 +109,7 @@ const DowntimePage: React.FC = () => {
             onClick={handlePreviousClick}
           >
             <Typography variant="body1">
-              {downtime.previousPageText ?? 'Previous Page'}
+              {config.previousPageText ?? 'Previous Page'}
             </Typography>
           </Button>
         </Box>

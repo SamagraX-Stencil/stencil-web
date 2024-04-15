@@ -1,10 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import DowntimePage from './index'
-import { component } from './../../../app.config.json'
 import { vi } from 'vitest'
-const { downtime } = component
+import { useConfig } from '../../hook/useConfig'
 
 describe('DowntimePage component', () => {
+  const config = useConfig('component', 'downtime')
   test('renders without crashing', () => {
     render(<DowntimePage />)
     // Test that the component renders without crashing
@@ -12,13 +12,13 @@ describe('DowntimePage component', () => {
 
   test('displays "Downtime Title" text', () => {
     const { getByText } = render(<DowntimePage />)
-    const textElement = getByText(downtime.title ?? 'Downtime')
+    const textElement = getByText(config.title ?? 'Downtime')
     expect(textElement).toBeInTheDocument()
   })
 
   test('displays "Supporting text" text', () => {
     const { getByText } = render(<DowntimePage />)
-    const textElement = getByText(downtime.supportingText ?? 'Description')
+    const textElement = getByText(config.supportingText ?? 'Description')
     expect(textElement).toBeInTheDocument()
   })
 
@@ -26,7 +26,7 @@ describe('DowntimePage component', () => {
     const consoleSpy = vi.spyOn(console, 'log')
     render(<DowntimePage />)
     const buttonElement = screen.getByText(
-      downtime.contactLink ?? 'Contact Details'
+      config.contactLink ?? 'Contact Details'
     )
     // expect(buttonElement).toBeInTheDocument();
 
@@ -35,7 +35,7 @@ describe('DowntimePage component', () => {
 
     // Expect the console.log to be called with the expected value
     expect(consoleSpy).toHaveBeenCalledWith(
-      downtime.contactLink ?? 'Contact Details'
+      config.contactLink ?? 'Contact Details'
     )
   })
 
@@ -44,13 +44,9 @@ describe('DowntimePage component', () => {
     // const reloadSpy = vi.spyOn(DowntimePage.prototype, 'handleRefreshClick')
     const consoleSpy = vi.spyOn(console, 'log')
     render(<DowntimePage />)
-    const buttonElement = screen.getByText(
-      downtime.refreshText ?? 'Reload Page'
-    )
+    const buttonElement = screen.getByText(config.refreshText ?? 'Reload Page')
     await fireEvent.click(buttonElement)
-    expect(consoleSpy).toHaveBeenCalledWith(
-      downtime.refreshText ?? 'Reload Page'
-    )
+    expect(consoleSpy).toHaveBeenCalledWith(config.refreshText ?? 'Reload Page')
     // expect(reloadSpy).toHaveBeenCalled();
   })
 
@@ -58,16 +54,16 @@ describe('DowntimePage component', () => {
     const consoleSpy = vi.spyOn(console, 'log')
     render(<DowntimePage />)
     const buttonElement = screen.getByText(
-      downtime.previousPageText ?? 'Previous Page'
+      config.previousPageText ?? 'Previous Page'
     )
     fireEvent.click(buttonElement)
     expect(consoleSpy).toHaveBeenCalledWith(
-      downtime.previousPageText ?? 'Previous Page'
+      config.previousPageText ?? 'Previous Page'
     )
   })
 
   test('renders downtime image with correct src and alt text', () => {
-    const src = downtime.downTimeImage
+    const src = config.downTimeImage
     const alt = 'downtimeGif'
 
     const { getByAltText } = render(<DowntimePage />)

@@ -8,10 +8,11 @@ import Typography from '@mui/material/Typography'
 import { Sidebar } from '../sidebar/index'
 import ThemePicker from '../../components/theme-picker'
 import { useColorPalates } from '../theme-provider/hooks'
-import { component } from './../../../app.config.json'
-const { navbar } = component
+import { useConfig } from '../../hook/useConfig'
 
 const Navbar: React.FC = () => {
+  const config = useConfig('component', 'navbar')
+
   const theme = useColorPalates()
   const [isSidebarOpen, setSidebarOpen] = useState(false)
 
@@ -26,7 +27,7 @@ const Navbar: React.FC = () => {
           style={{ display: 'flex-start', justifyContent: 'space-between' }}
         >
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            {navbar.showHamburgerMenu && (
+            {config.showHamburgerMenu && (
               <IconButton
                 size="large"
                 edge="start"
@@ -38,7 +39,7 @@ const Navbar: React.FC = () => {
                 <MenuIcon />
               </IconButton>
             )}
-            {navbar.showHomeIcon && (
+            {config.showHomeIcon && (
               <div>
                 <IconButton
                   color="primary"
@@ -49,10 +50,10 @@ const Navbar: React.FC = () => {
                 >
                   <HomeIcon />
                 </IconButton>
-                {navbar.leftHomeIcon && (
+                {config.leftHomeIcon && (
                   <img
-                    src={navbar.leftHomeIcon.src}
-                    alt={`Left Home Icon ${navbar.leftHomeIcon.id}`}
+                    src={config.leftHomeIcon.src}
+                    alt={`Left Home Icon ${config.leftHomeIcon.id}`}
                     style={{ maxHeight: '48px' }}
                   />
                 )}
@@ -68,8 +69,8 @@ const Navbar: React.FC = () => {
               flex: 1,
             }}
           >
-            {navbar.logos.showCenterLogos &&
-              navbar.logos.centerLogoIcons.map((logo) => (
+            {config.logos.showCenterLogos &&
+              config.logos.centerLogoIcons.map((logo) => (
                 <img
                   key={logo.id}
                   src={logo.src}
@@ -78,20 +79,20 @@ const Navbar: React.FC = () => {
                 />
               ))}
 
-            {navbar.brandName && (
+            {config.brandName && (
               <Typography
                 variant="h6"
                 color="inherit"
                 sx={{ marginTop: 1, fontSize: '1.5rem' }}
               >
-                {navbar.brandName}
+                {config.brandName}
               </Typography>
             )}
           </div>
 
-          {navbar.logos.showRightLogos && (
+          {config.logos.showRightLogos && (
             <div>
-              {navbar.logos.rightLogoIcons.map((logo) => (
+              {config.logos.rightLogoIcons.map((logo) => (
                 <img
                   key={logo.id}
                   src={logo.src}

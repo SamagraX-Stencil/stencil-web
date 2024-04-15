@@ -3,12 +3,13 @@ import { useCallback, useRef, useState } from 'react'
 import SendIcon from './assets/sendButton.png'
 import WeatherIcon from './assets/weather_advisory.png'
 import toast from 'react-hot-toast'
-import { component } from './../../../app.config.json'
-const { homePage } = component
 
 import { useColorPalates } from '../../molecules/theme-provider/hooks'
+import { useConfig } from '../../hook/useConfig'
 
 const HomePage = () => {
+  const config = useConfig('component', 'homePage')
+
   const theme = useColorPalates()
   const inputRef = useRef(null)
   const [inputMsg, setInputMsg] = useState('')
@@ -39,10 +40,10 @@ const HomePage = () => {
     <>
       <div className={styles.main} style={{ color: theme?.primary?.main }}>
         <>
-          <div className={styles.title}>{homePage?.title}</div>
-          {homePage?.showBtns && (
+          <div className={styles.title}>{config?.title}</div>
+          {config?.showBtns && (
             <div className={styles.imgButtons}>
-              {homePage?.btns?.map((btn: any, index: number) => (
+              {config?.btns?.map((btn: any, index: number) => (
                 <div
                   className={styles.imgBtn}
                   key={index}
@@ -54,7 +55,7 @@ const HomePage = () => {
               ))}
             </div>
           )}
-          {homePage?.showMic && (
+          {config?.showMic && (
             <div className={styles.voiceRecorder}>
               {/* Render a recorder component here */}
             </div>
@@ -68,7 +69,7 @@ const HomePage = () => {
               rows={1}
               value={inputMsg}
               onChange={handleInputChange}
-              placeholder={homePage?.placeholder}
+              placeholder={config?.placeholder}
             />
             <button type="submit" className={styles.sendButton}>
               <img

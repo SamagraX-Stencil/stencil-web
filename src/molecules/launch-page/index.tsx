@@ -1,11 +1,12 @@
+import { useConfig } from '../../hook/useConfig'
 import { useColorPalates } from '../../molecules/theme-provider/hooks'
 import styles from './index.module.css'
-import { component } from './../../../app.config.json'
-const { launchPage } = component
 
 // import Image from 'next/image';
 
 const LaunchPage = () => {
+  const config = useConfig('component', 'launchPage')
+
   const theme = useColorPalates()
   return (
     <div
@@ -14,12 +15,12 @@ const LaunchPage = () => {
     >
       <img
         className={styles.loginImage}
-        src={launchPage?.logo}
+        src={config?.logo}
         alt="KrushakOdisha"
         width={220}
         height={233}
       />
-      <span>{launchPage?.label}</span>
+      <span>{config?.label}</span>
     </div>
   )
 }

@@ -1,10 +1,11 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import FAQPage from './index'
-import { component } from './../../../app.config.json'
 import { vi } from 'vitest'
-const { faqs } = component
+import { useConfig } from '../../hook/useConfig'
 
 describe('FAQ component', () => {
+  const config = useConfig('component', 'faqs')
+
   test('renders without crashing', () => {
     render(<FAQPage />)
     // Test that the component renders without crashing
@@ -12,14 +13,14 @@ describe('FAQ component', () => {
 
   test('displays "FAQ Title" text', () => {
     const { getByText } = render(<FAQPage />)
-    const textElement = getByText(faqs.title ?? 'Faq')
+    const textElement = getByText(config.title ?? 'Faq')
     expect(textElement).toBeInTheDocument()
   })
 
   test('displays "Contact description" text', () => {
     const { getByText } = render(<FAQPage />)
     const textElement = getByText(
-      faqs.contactDescriptionText ?? 'contact description'
+      config.contactDescriptionText ?? 'contact description'
     )
     expect(textElement).toBeInTheDocument()
   })
@@ -27,24 +28,28 @@ describe('FAQ component', () => {
   test('renders contact button correctly', () => {
     const consoleSpy = vi.spyOn(console, 'log')
     render(<FAQPage />)
-    const buttonElement = screen.getByText(faqs.contactText ?? 'Contact User')
+    const buttonElement = screen.getByText(config.contactText ?? 'Contact User')
 
     // Simulate a button click
     fireEvent.click(buttonElement)
 
     // Expect the console.log to be called with the expected value
-    expect(consoleSpy).toHaveBeenCalledWith(faqs.contactText ?? 'Contact User')
+    expect(consoleSpy).toHaveBeenCalledWith(
+      config.contactText ?? 'Contact User'
+    )
   })
 
   test('renders Manual User button correctly', () => {
     const consoleSpy = vi.spyOn(console, 'log')
     render(<FAQPage />)
-    const buttonElement = screen.getByText(faqs.userManualText ?? 'User Manual')
+    const buttonElement = screen.getByText(
+      config.userManualText ?? 'User Manual'
+    )
     fireEvent.click(buttonElement)
 
     // Expect the console.log to be called with the expected value
     expect(consoleSpy).toHaveBeenCalledWith(
-      faqs.userManualText ?? 'User Manual'
+      config.userManualText ?? 'User Manual'
     )
   })
 })

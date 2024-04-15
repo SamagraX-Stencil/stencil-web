@@ -1,10 +1,9 @@
 import { useState } from 'react'
 import styles from './styles.module.css'
 import toast from 'react-hot-toast'
-import { component } from './../../../app.config.json'
-const { voiceRecorder } = component
 import MicIcon from '@mui/icons-material/Mic'
 import { useColorPalates } from '../theme-provider/hooks'
+import { useConfig } from '../../hook/useConfig'
 
 interface VoiceRecorder {
   setInputMsg: (msg: string) => void
@@ -17,14 +16,16 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
   tapToSpeak,
   includeDiv = false,
 }) => {
+  const config = useConfig('component', 'voiceRecorder')
+
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null)
   const [isErrorClicked, setIsErrorClicked] = useState(false)
   const [recorderStatus, setRecorderStatus] = useState('idle')
 
-  const voiceMinDecibels: number = voiceRecorder.voiceMinDecibels
-  const delayBetweenDialogs: number = voiceRecorder.delayBetweenDialogs
-  const dialogMaxLength: number = voiceRecorder.dialogMaxLength
-  const [isRecording, setIsRecording] = useState(voiceRecorder.isRecording)
+  const voiceMinDecibels: number = config.voiceMinDecibels
+  const delayBetweenDialogs: number = config.delayBetweenDialogs
+  const dialogMaxLength: number = config.dialogMaxLength
+  const [isRecording, setIsRecording] = useState(config.isRecording)
 
   const startRecording = () => {
     if (!isRecording) {
@@ -121,7 +122,7 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
   const makeComputeAPICall = async (blob: Blob) => {
     try {
       setRecorderStatus('processing')
-      toast.success(`${voiceRecorder.waitMessage}`)
+      toast.success(`${config.waitMessage}`)
       // Define the API endpoint and make api call here
       if (blob) {
         //set api result in setInputMsg
@@ -130,7 +131,7 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
     } catch (error) {
       console.error(error)
       setRecorderStatus('error')
-      toast.error(`${voiceRecorder.recorderErrorMessage}`)
+      toast.error(`${config.recorderErrorMessage}`)
       // Set isErrorClicked to true when an error occurs
       setIsErrorClicked(false)
       setTimeout(() => {

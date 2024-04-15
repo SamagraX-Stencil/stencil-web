@@ -1,24 +1,25 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import ComingSoonPage from './index'
-import { component } from './../../../app.config.json'
 import { vi } from 'vitest'
-const { comingSoon } = component
+import { useConfig } from '../../hook/useConfig'
 
 describe('Coming Soon component', () => {
+  const config = useConfig('component', 'comingSoon')
+
   test('renders without crashing', () => {
     render(<ComingSoonPage />)
   })
 
   test('displays "Coming Soon Title" text', () => {
     const { getByText } = render(<ComingSoonPage />)
-    const textElement = getByText(comingSoon.title ?? 'Coming Soon')
+    const textElement = getByText(config.title ?? 'Coming Soon')
     expect(textElement).toBeInTheDocument()
   })
 
   test('displays "Description" text', () => {
     const { getByText } = render(<ComingSoonPage />)
     const textElement = getByText(
-      comingSoon.description ?? 'Coming Soon Description'
+      config.description ?? 'Coming Soon Description'
     )
     expect(textElement).toBeInTheDocument()
   })
@@ -26,10 +27,8 @@ describe('Coming Soon component', () => {
   test('renders back button correctly', () => {
     const consoleSpy = vi.spyOn(console, 'log')
     render(<ComingSoonPage />)
-    const buttonElement = screen.getByText(comingSoon.backText ?? 'Back Button')
+    const buttonElement = screen.getByText(config.backText ?? 'Back Button')
     fireEvent.click(buttonElement)
-    expect(consoleSpy).toHaveBeenCalledWith(
-      comingSoon.backText ?? 'Back Button'
-    )
+    expect(consoleSpy).toHaveBeenCalledWith(config.backText ?? 'Back Button')
   })
 })

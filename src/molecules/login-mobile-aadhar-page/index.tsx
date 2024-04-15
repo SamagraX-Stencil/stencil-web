@@ -7,8 +7,7 @@ import Typography from '@mui/material/Typography'
 import CircularProgress from '@mui/material/CircularProgress'
 import { toast } from 'react-hot-toast'
 import { useColorPalates } from '../theme-provider/hooks'
-import { component } from './../../../app.config.json'
-const { loginMobileAadharPage } = component
+import { useConfig } from '../../hook/useConfig'
 
 const LoginMobileAadharPage: React.FC = () => {
   const [isAadharClicked, setIsAadharClicked] = useState(false)
@@ -17,6 +16,7 @@ const LoginMobileAadharPage: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState('')
   const [loading, setLoading] = useState(false)
   const theme = useColorPalates()
+  const config = useConfig('component', 'loginMobileAadharPage')
 
   const handleInput = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -101,12 +101,7 @@ const LoginMobileAadharPage: React.FC = () => {
           style={{ background: theme?.primary?.main }}
         >
           <div className={styles.logo}>
-            <img
-              src={loginMobileAadharPage.logo}
-              width={150}
-              height={40}
-              alt=""
-            />
+            <img src={config.logo} width={150} height={40} alt="" />
           </div>
         </div>
         <div className={styles.rightColumn}>
@@ -119,7 +114,7 @@ const LoginMobileAadharPage: React.FC = () => {
               >
                 Don’t have an account?
               </Typography>
-              {loginMobileAadharPage.showSignUp && (
+              {config.showSignUp && (
                 <Typography
                   onClick={handleRegistration}
                   variant="button"
@@ -144,7 +139,7 @@ const LoginMobileAadharPage: React.FC = () => {
               width="90%"
               color={theme.primary?.main}
             >
-              {loginMobileAadharPage.title}
+              {config.title}
             </Typography>
             <Box
               component="form"

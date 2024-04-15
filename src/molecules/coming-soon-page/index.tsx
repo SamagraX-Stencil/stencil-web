@@ -3,16 +3,16 @@ import styles from './index.module.css'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import { component } from './../../../app.config.json'
 import Hourglass from './hourglass'
 import { useColorPalates } from '../../molecules/theme-provider/hooks'
+import { useConfig } from '../../hook/useConfig'
 
 const ComingSoonPage: React.FC = () => {
   const theme = useColorPalates()
-  const { comingSoon } = component
+  const config = useConfig('component', 'comingSoon')
   const handleBack = useCallback(() => {
     // window?.history?.back()
-    console.log(comingSoon.backText ?? 'Back Button')
+    console.log(config.backText ?? 'Back Button')
   }, [])
 
   return (
@@ -27,7 +27,7 @@ const ComingSoonPage: React.FC = () => {
             variant="h4"
             sx={{ color: theme?.primary?.main, fontWeight: '700' }}
           >
-            {comingSoon.title ?? 'Coming Soon'}
+            {config.title ?? 'Coming Soon'}
           </Typography>
         </Box>
         <Box>
@@ -38,7 +38,7 @@ const ComingSoonPage: React.FC = () => {
             variant="body1"
             sx={{ fontWeight: '600', textAlign: 'center' }}
           >
-            {comingSoon.description ?? 'Coming Soon Description'}
+            {config.description ?? 'Coming Soon Description'}
           </Typography>
         </Box>
         <Box>
@@ -49,7 +49,7 @@ const ComingSoonPage: React.FC = () => {
             style={{ backgroundColor: theme?.primary?.main }}
             onClick={handleBack}
           >
-            {comingSoon.backText ?? 'Back Button'}
+            {config.backText ?? 'Back Button'}
           </Button>
         </Box>
       </Box>

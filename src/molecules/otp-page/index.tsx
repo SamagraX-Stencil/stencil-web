@@ -7,10 +7,11 @@ import CircularProgress from '@mui/material/CircularProgress'
 import { toast } from 'react-hot-toast'
 import { OTPInput } from '../otp-input'
 import { useColorPalates } from '../theme-provider/hooks'
-import { component } from './../../../app.config.json'
-const { otpPage } = component
+import { useConfig } from '../../hook/useConfig'
 
 const OtpPage: React.FC = () => {
+  const config = useConfig('component', 'otpPage')
+
   const [otp, setOtp] = useState('')
   const [loading, setLoading] = useState(false)
   const [countdown, setCountdown] = useState(0)
@@ -19,7 +20,7 @@ const OtpPage: React.FC = () => {
   const handleLogin = useCallback(
     (e: React.FormEvent) => {
       e.preventDefault()
-      if (otp.length === otpPage.otpLength) {
+      if (otp.length === config.otpLength) {
         setLoading(true)
         setTimeout(() => {
           setLoading(false)
@@ -36,7 +37,7 @@ const OtpPage: React.FC = () => {
       setLoading(true)
       // Add api to resend otp here
       setLoading(false)
-      setCountdown(otpPage.resendOtpTimer)
+      setCountdown(config.resendOtpTimer)
       toast.success('Otp Sent Again')
     } catch (error) {
       setLoading(false)
@@ -53,7 +54,7 @@ const OtpPage: React.FC = () => {
       return () => clearTimeout(timer)
     }
   }, [countdown])
-  useEffect(() => setCountdown(otpPage.resendOtpTimer), [])
+  useEffect(() => setCountdown(config.resendOtpTimer), [])
   return (
     <>
       <meta
@@ -61,14 +62,14 @@ const OtpPage: React.FC = () => {
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
       ></meta>
       <div className={styles.main}>
-        {otpPage.showSplitedView && (
+        {config.showSplitedView && (
           <div
             className={styles.leftColumn}
             style={{ background: theme?.primary?.main }}
           >
-            {otpPage.showLogo && (
+            {config.showLogo && (
               <div className={styles.logo}>
-                <img src={otpPage.logo} width={150} height={40} alt="" />
+                <img src={config.logo} width={150} height={40} alt="" />
               </div>
             )}
           </div>
@@ -83,7 +84,7 @@ const OtpPage: React.FC = () => {
               color="#1E232C"
               sx={{ m: 2 }}
             >
-              {otpPage.title}
+              {config.title}
             </Typography>
             <Typography
               variant="body2"
@@ -118,7 +119,7 @@ const OtpPage: React.FC = () => {
                   separator={<></>}
                   value={otp}
                   onChange={setOtp}
-                  length={otpPage.otpLength}
+                  length={config.otpLength}
                 />
               </Box>
               <div style={{ marginTop: '10px' }}>

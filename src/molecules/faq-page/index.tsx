@@ -3,20 +3,21 @@ import styles from './index.module.css'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import { component } from './../../../app.config.json'
 import CallRoundedIcon from '@mui/icons-material/Call'
 import { useColorPalates } from '../../molecules/theme-provider/hooks'
 import { Avatar } from '@mui/material'
-const { faqs } = component
+import { useConfig } from '../../hook/useConfig'
 
 const FAQPage: React.FC = () => {
+  const config = useConfig('component', 'faqs')
+
   const theme = useColorPalates()
   const downloadPDFHandler = useCallback(() => {
-    console.log(faqs.userManualText ?? 'User Manual')
+    console.log(config.userManualText ?? 'User Manual')
   }, [])
 
   const handleContactClick = useCallback(() => {
-    console.log(faqs.contactText ?? 'Contact User')
+    console.log(config.contactText ?? 'Contact User')
   }, [])
 
   return (
@@ -27,10 +28,10 @@ const FAQPage: React.FC = () => {
             variant="h4"
             sx={{ fontWeight: '600', color: theme?.primary?.main }}
           >
-            {faqs.title ?? 'Faq'}
+            {config.title ?? 'Faq'}
           </Typography>
         </Box>
-        {faqs?.userManualText && (
+        {config?.userManualText && (
           <Box className={styles.manualButtons}>
             <Button
               onClick={downloadPDFHandler}
@@ -41,15 +42,15 @@ const FAQPage: React.FC = () => {
                 '&:hover': { backgroundColor: theme?.primary?.main },
               }}
             >
-              {faqs.userManualText ?? 'User Manual'}
+              {config.userManualText ?? 'User Manual'}
             </Button>
           </Box>
         )}
-        {faqs?.contactText && (
+        {config?.contactText && (
           <Box className={styles.dialerBox}>
             <Box p={1.5}>
               <Typography variant="body1" sx={{ fontWeight: 'bold' }}>
-                {faqs.contactDescriptionText ?? 'contact description'}
+                {config.contactDescriptionText ?? 'contact description'}
               </Typography>
             </Box>
             <Box px={2} display={'flex'} alignItems={'center'}>
@@ -76,7 +77,7 @@ const FAQPage: React.FC = () => {
                 }}
               >
                 <Typography variant="h5" fontWeight={600}>
-                  {faqs.contactText ?? 'Contact User'}
+                  {config.contactText ?? 'Contact User'}
                 </Typography>
               </Button>
             </Box>
