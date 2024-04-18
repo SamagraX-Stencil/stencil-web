@@ -1,4 +1,4 @@
-import { Box } from '@mui/material'
+import { Box, Button } from '@mui/material'
 import LogInPage from './logInPage'
 import CommingSoonPage from './commingSoonPage'
 import DownTimePage from './downTimePage'
@@ -27,6 +27,23 @@ const AdminRoute = () => {
       <OtpPageInput />
       <SidebarInput />
       <VoiceRecorderInput />
+      <Box
+        sx={{
+          marginBottom: '40px',
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'flex-end',
+        }}
+      >
+        <Button variant="outlined" sx={{ width: '120px' }}>
+          Reset
+        </Button>
+        <Box sx={{ width: '10px' }} />
+        <Button variant="contained" sx={{ width: '120px' }}>
+          Save
+        </Button>
+        <Box sx={{ width: '20px' }} />
+      </Box>
     </Box>
   )
 }

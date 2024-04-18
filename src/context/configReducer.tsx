@@ -1,4 +1,15 @@
-export const configReducer = (state: any, action: any) => {
+import AppConfig from '../types/types'
+
+interface UpdateConfigAction {
+  type: 'UPDATE_CONFIG'
+  payload: {
+    where: keyof AppConfig['component']
+    which: string
+    newValue: string | boolean
+  }
+}
+
+export const configReducer = (state: AppConfig, action: UpdateConfigAction) => {
   console.log(JSON.stringify(state))
   const { where, which, newValue } = action.payload
   switch (action.type) {

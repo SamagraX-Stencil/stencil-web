@@ -1,18 +1,19 @@
 import { createContext, useContext, useReducer } from 'react'
 import configObj from '../../app.config.json'
 import { configReducer } from './configReducer'
+import AppConfig, { Component } from '../types/types'
 
 interface ConfigContextValue {
-  config: any
+  config: AppConfig
   handleChange: (
     newValue: string | boolean,
-    where: string,
+    where: keyof Component,
     which: string
   ) => void
 }
 
 const ConfigProvider = createContext<ConfigContextValue>({
-  config: {},
+  config: {} as AppConfig,
   handleChange: () => {},
 })
 
@@ -21,7 +22,7 @@ const ConfigContext = ({ children }: { children: React.ReactElement }) => {
 
   const handleChange = (
     newValue: string | boolean,
-    where: string,
+    where: keyof Component,
     which: string
   ) => {
     dispatch({

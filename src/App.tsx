@@ -29,12 +29,9 @@ function App() {
           <Route path="/otp-page" element={<OtpPage />} />
           <Route path="/history-page" element={<HistoryPage />} />
           <Route path="/coming-soon-page" element={<ComingSoonPage />} />
-          <Route path="/downtime-page" element={<DowntimePage />} />
           <Route path="/faq-page" element={<FAQPage />} />
           <Route path="/home-page" element={<HomePage />} />
-          <Route path="/coming-soon-page" element={<ComingSoonPage />} />
           <Route path="/downtime-page" element={<DowntimePage />} />
-          <Route path="/faq-page" element={<FAQPage />} />
           <Route path="/feedback-page" element={<FeedbackPage />} />
           <Route path="/launch-page" element={<LaunchPage />} />
           <Route path="/share-buttons" element={<ShareButtons />} />
