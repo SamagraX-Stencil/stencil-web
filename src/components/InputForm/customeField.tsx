@@ -67,3 +67,34 @@ export const CheckBoxOption = ({
     </div>
   )
 }
+
+export const InputNumberField = ({
+  label,
+  defaultValue,
+  onChange,
+}: {
+  label: string
+  defaultValue: number
+  onChange: (value: number) => void
+}) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // Remove any non-numeric characters from the input value
+    const numericValue = event.target.value.replace(/[^0-9]/g, '')
+    onChange(numericValue)
+  }
+
+  return (
+    <TextField
+      sx={{ width: 300 }}
+      label={label}
+      id="outlined-size-small"
+      defaultValue={defaultValue}
+      size="small"
+      onChange={handleChange}
+      inputProps={{
+        inputMode: 'numeric', // Set input mode to numeric to show numeric keypad on mobile devices
+        pattern: '[0-9]*', // Only allow numeric characters
+      }}
+    />
+  )
+}

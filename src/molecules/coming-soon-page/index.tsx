@@ -5,11 +5,11 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Hourglass from './hourglass'
 import { useColorPalates } from '../../molecules/theme-provider/hooks'
-import { useConfig } from '../../hook/useConfig'
+import { useUiConfig } from '../../hook/useConfig'
 
 const ComingSoonPage: React.FC = () => {
   const theme = useColorPalates()
-  const config = useConfig('component', 'comingSoon')
+  const config = useUiConfig('component', 'comingSoon')
   const handleBack = useCallback(() => {
     // window?.history?.back()
     console.log(config.backText ?? 'Back Button')

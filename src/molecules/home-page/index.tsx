@@ -5,10 +5,10 @@ import WeatherIcon from './assets/weather_advisory.png'
 import toast from 'react-hot-toast'
 
 import { useColorPalates } from '../../molecules/theme-provider/hooks'
-import { useConfig } from '../../hook/useConfig'
+import { useUiConfig } from '../../hook/useConfig'
 
 const HomePage = () => {
-  const config = useConfig('component', 'homePage')
+  const config = useUiConfig('component', 'homePage')
 
   const theme = useColorPalates()
   const inputRef = useRef(null)

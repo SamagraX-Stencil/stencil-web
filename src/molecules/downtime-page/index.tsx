@@ -3,10 +3,10 @@ import styles from './index.module.css'
 import { Avatar, Box, Button, Typography } from '@mui/material'
 import CallRoundedIcon from '@mui/icons-material/Call'
 import { useColorPalates } from '../../molecules/theme-provider/hooks'
-import { useConfig } from '../../hook/useConfig'
+import { useUiConfig } from '../../hook/useConfig'
 
 const DowntimePage: React.FC = () => {
-  const config = useConfig('component', 'downtime')
+  const config = useUiConfig('component', 'downtime')
 
   const theme = useColorPalates()
   const handleRefreshClick = useCallback(() => {

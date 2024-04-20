@@ -6,10 +6,10 @@ import Typography from '@mui/material/Typography'
 import CallRoundedIcon from '@mui/icons-material/Call'
 import { useColorPalates } from '../../molecules/theme-provider/hooks'
 import { Avatar } from '@mui/material'
-import { useConfig } from '../../hook/useConfig'
+import { useUiConfig } from '../../hook/useConfig'
 
 const FAQPage: React.FC = () => {
-  const config = useConfig('component', 'faqs')
+  const config = useUiConfig('component', 'faqs')
 
   const theme = useColorPalates()
   const downloadPDFHandler = useCallback(() => {

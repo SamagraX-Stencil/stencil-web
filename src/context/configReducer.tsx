@@ -1,7 +1,8 @@
 import AppConfig from '../types/types'
+import configObj from '../../app.config.json'
 
 interface UpdateConfigAction {
-  type: 'UPDATE_CONFIG'
+  type: 'UPDATE_CONFIG' | 'RESET_VALUE'
   payload: {
     where: keyof AppConfig['component']
     which: string
@@ -10,8 +11,9 @@ interface UpdateConfigAction {
 }
 
 export const configReducer = (state: AppConfig, action: UpdateConfigAction) => {
-  console.log(JSON.stringify(state))
+  console.log(JSON.stringify(action))
   const { where, which, newValue } = action.payload
+
   switch (action.type) {
     case 'UPDATE_CONFIG':
       return {
@@ -24,6 +26,8 @@ export const configReducer = (state: AppConfig, action: UpdateConfigAction) => {
           },
         },
       }
+    case 'RESET_VALUE':
+      return configObj
     default:
       return state
   }

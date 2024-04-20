@@ -11,8 +11,10 @@ import NavbarInput from './navbar'
 import OtpPageInput from './otpPage'
 import SidebarInput from './sidebarInput'
 import VoiceRecorderInput from './voiceRecorderInput'
+import { useConfigContext } from '../../context/configContext'
 
 const AdminRoute = () => {
+  const { handleSaveButton, handleResetButton } = useConfigContext()
   return (
     <Box sx={{ margin: 10, overflow: 'auto', height: '90vh' }}>
       <LogInPage />
@@ -35,11 +37,19 @@ const AdminRoute = () => {
           justifyContent: 'flex-end',
         }}
       >
-        <Button variant="outlined" sx={{ width: '120px' }}>
+        <Button
+          variant="outlined"
+          sx={{ width: '120px' }}
+          onClick={() => handleResetButton()}
+        >
           Reset
         </Button>
         <Box sx={{ width: '10px' }} />
-        <Button variant="contained" sx={{ width: '120px' }}>
+        <Button
+          variant="contained"
+          sx={{ width: '120px' }}
+          onClick={() => handleSaveButton()}
+        >
           Save
         </Button>
         <Box sx={{ width: '20px' }} />
