@@ -42,15 +42,15 @@ const FeedbackPage: React.FC = () => {
     <div className={styles.container}>
 
       <Typography
-              sx={{
-                fontSize: "5vh",
-                fontWeight: 'bold',
-                m: 2,
-                p: 2,
-                display: 'fixed',
-                color: theme?.primary?.main
-              }}
-            >
+        sx={{
+          fontSize: "5vh",
+          fontWeight: 'bold',
+          m: 2,
+          p: 2,
+          display: 'fixed',
+          color: theme?.primary?.main
+        }}
+      >
         {config.component.Title}
       </Typography>
 
@@ -68,11 +68,11 @@ const FeedbackPage: React.FC = () => {
             </Typography>
 
             <Rating
-              data-testid= "ratingComponent"
+              data-testid="ratingComponent"
               name="simple-controlled"
               value={star}
               max={config.component.ratingMaxStars}
-          
+
               onChange={(event, newValue) => {
                 console.log(event)
                 setStar(() => {
@@ -98,7 +98,7 @@ const FeedbackPage: React.FC = () => {
               variant="contained"
               data-testid="ratingBtn"
               sx={{
-                mt: 2,
+                mt: '10px',
                 backgroundColor: `${theme.primary?.dark}`,
                 fontWeight: "bold",
                 borderRadius: "10rem",
@@ -109,6 +109,7 @@ const FeedbackPage: React.FC = () => {
                 },
               }}
               onClick={handleFeedback}
+              style={{marginTop:'20px'}}
             >
               {config.component.ratingButtonText}
             </Button>
@@ -154,6 +155,7 @@ const FeedbackPage: React.FC = () => {
                   backgroundColor: `${theme.primary?.main}`,
                 },
               }}
+              style={{marginTop:'20px'}}
               onClick={handleFeedback}
             >
               {config.component.reviewButtonText}
