@@ -1,62 +1,65 @@
-import Chat from '@samagra-x/chatui';
-import '@samagra-x/chatui/dist/index.css';
+import Chat from '@samagra-x/chatui'
+import '@samagra-x/chatui/dist/index.css'
 import React, {
   ReactElement,
   useCallback,
   useEffect,
   useMemo,
   useState,
-} from 'react';
+} from 'react'
 import styles from './index.module.css'
-import { getMsgType } from './utils/getMsgType';
-import MessageItem from '../message-item';
-import toast from 'react-hot-toast';
-import { recordUserLocation } from './utils/location';
-import chatHistory from './chatHistory.json';
-import config from './config.json';
-import ShareButtons from '../share-buttons';
+import { getMsgType } from './utils/getMsgType'
+import MessageItem from '../message-item'
+import toast from 'react-hot-toast'
+import { recordUserLocation } from './utils/location'
+import chatHistory from './chatHistory.json'
+import ShareButtons from '../share-buttons'
+import { useConfig, useThmeeConfig } from '../../hook/useConfig'
 
 export const ChatUI: React.FC = () => {
-  const [messages, setMessages] = useState<any>([]);
-  const [loading, setLoading] = useState(false);
+  const [messages, setMessages] = useState<any>([])
+  const [loading, setLoading] = useState(false)
+
+  const config = useConfig('component', 'chatUi')
+  const theme = useThmeeConfig('theme')
 
   useEffect(() => {
     const fetchHistory = () => {
-      const normalizedChats = normalizedChat(chatHistory);
+      const normalizedChats = normalizedChat(chatHistory)
       if (normalizedChats.length > 0) {
-        setMessages(normalizedChats);
+        setMessages(normalizedChats)
       }
-    };
-    fetchHistory();
-    recordUserLocation();
-  }, []);
+    }
+    fetchHistory()
+    recordUserLocation()
+  }, [])
 
   const normalizedChat = (chats: any): any => {
-    console.log('in normalized', chats);
+    console.log('in normalized', chats)
     const history = chats.flatMap((item: any) =>
-        [
-          item.query?.length && {
-            text: item.query,
-            position: 'right',
-            repliedTimestamp: item.createdAt,
-            // messageId: uuidv4(),
-          },
-          {
-            text: item.response,
-            position: 'left',
-            sentTimestamp: item.createdAt,
-            reaction: item.reaction,
-            msgId: item.id,
-            messageId: item.id,
-            audio_url: item.audioURL,
-            isEnd: true,
-            optionClicked: true,
-          },
-        ].filter(Boolean)
-      );
+      [
+        item.query?.length && {
+          text: item.query,
+          position: 'right',
+          repliedTimestamp: item.createdAt,
+          // messageId: uuidv4(),
+        },
+        {
+          text: item.response,
+          position: 'left',
+          sentTimestamp: item.createdAt,
+          reaction: item.reaction,
+          msgId: item.id,
+          messageId: item.id,
+          audio_url: item.audioURL,
+          isEnd: true,
+          optionClicked: true,
+        },
+      ].filter(Boolean)
+    )
 
-    return history;
-  };
+    return history
+  }
   const sendMessage = (text: string) => {
     setMessages((prev: any) => [
       ...prev,
@@ -64,34 +67,33 @@ export const ChatUI: React.FC = () => {
         text,
         position: 'right',
       },
-    ]);
-    setLoading(true);
+    ])
+    setLoading(true)
 
     // dummy response
     setTimeout(() => {
       setMessages((prev: any) => [
         ...prev,
         {
-          text: "This is a dummy response.",
+          text: 'This is a dummy response.',
           position: 'left',
           reaction: 0,
-          isEnd: true // Used to determine whether a streaming response has ended
+          isEnd: true, // Used to determine whether a streaming response has ended
         },
-      ]);
-      setLoading(false);
-    }, 1000);
-  };
+      ])
+      setLoading(false)
+    }, 1000)
+  }
 
   const handleSend = useCallback(async (type: string, msg: any) => {
     if (msg.length === 0) {
-      toast.error('Please enter message');
-      return;
+      toast.error('Please enter message')
+      return
     }
     if (type === 'text' && msg.trim()) {
-      sendMessage(msg.trim());
+      sendMessage(msg.trim())
     }
-  }, []);
-
+  }, [])
 
   const normalizeMsgs = useMemo(
     () =>
@@ -101,7 +103,7 @@ export const ChatUI: React.FC = () => {
         position: msg?.position ?? 'right',
       })),
     [messages]
-  );
+  )
 
   const msgToRender = useMemo(() => {
     return loading
@@ -112,39 +114,39 @@ export const ChatUI: React.FC = () => {
             position: 'left',
           },
         ]
-      : normalizeMsgs;
-  }, [loading, normalizeMsgs]);
+      : normalizeMsgs
+  }, [loading, normalizeMsgs])
 
-  const placeholder = useMemo(() => config?.component?.placeholder ?? "Ask Your Question", [config]);
+  const placeholder = useMemo(
+    () => config.placeholder ?? 'Ask Your Question',
+    []
+  )
 
   return (
     <div className={styles.container}>
       <Chat
-        btnColor={config.theme.secondaryColor.value}
+        btnColor={theme.secondaryColor.value}
         background="white"
         disableSend={false}
-        showTransliteration={config.component.allowTransliteration}
+        showTransliteration={config.allowTransliteration}
         transliterationConfig={{
-          transliterationApi: config.component.transliterationApi,
-          transliterationInputLanguage: config.component.transliterationInputLanguage,
-          transliterationOutputLanguage: config.component.transliterationOutputLanguage,
-          transliterationProvider: config.component.transliterationProvider,
-          transliterationSuggestions: config.component.transliterationSuggestions
+          transliterationApi: config.transliterationApi,
+          transliterationInputLanguage: config.transliterationInputLanguage,
+          transliterationOutputLanguage: config.transliterationOutputLanguage,
+          transliterationProvider: config.transliterationProvider,
+          transliterationSuggestions: config.transliterationSuggestions,
         }}
         //@ts-ignore
         messages={msgToRender}
         renderMessageContent={(props): ReactElement => (
-          <MessageItem message={props} config={config} />
+          <MessageItem message={props} themeColor={theme} chatUi={config} />
         )}
         onSend={handleSend}
         locale="en-US"
         placeholder={placeholder}
       />
-      
+
       <ShareButtons />
-      
     </div>
-  );
-};
-
-
+  )
+}

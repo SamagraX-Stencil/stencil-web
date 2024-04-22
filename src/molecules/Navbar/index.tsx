@@ -1,57 +1,45 @@
-import React, { useState } from 'react';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import HomeIcon from '@mui/icons-material/Home';
-import Typography from '@mui/material/Typography';
-import { Sidebar } from '../sidebar/index';
-import ThemePicker from '../../components/theme-picker'; 
-import { useColorPalates } from '../theme-provider/hooks';  
-import config from './config.json';
- const Navbar: React.FC = () => {
-  const {
-    component: {
-      navbar: {
-        brandName,
-        showHamburgerMenu,
-        showHomeIcon,
-        leftHomeIcon,
-        logos: {
-          showCenterLogos,
-          centerLogoIcons,
-          showRightLogos,
-          rightLogoIcons
-        }
-      }
-    }
-  } = config;
+import React, { useState } from 'react'
+import AppBar from '@mui/material/AppBar'
+import Toolbar from '@mui/material/Toolbar'
+import IconButton from '@mui/material/IconButton'
+import MenuIcon from '@mui/icons-material/Menu'
+import HomeIcon from '@mui/icons-material/Home'
+import Typography from '@mui/material/Typography'
+import { Sidebar } from '../sidebar/index'
+import ThemePicker from '../../components/theme-picker'
+import { useColorPalates } from '../theme-provider/hooks'
+import { useConfig } from '../../hook/useConfig'
 
-  const theme = useColorPalates();  
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
+const Navbar: React.FC = () => {
+  const config = useConfig('component', 'navbar')
+
+  const theme = useColorPalates()
+  const [isSidebarOpen, setSidebarOpen] = useState(false)
 
   const toggleSidebar = () => {
-    setSidebarOpen(!isSidebarOpen); // Toggle sidebar state
-  };
+    setSidebarOpen(!isSidebarOpen) // Toggle sidebar state
+  }
 
   return (
     <>
       <AppBar position="static" sx={{ background: theme.primary.dark }}>
-        <Toolbar style={{ display: 'flex-start', justifyContent: 'space-between' }}>
+        <Toolbar
+          style={{ display: 'flex-start', justifyContent: 'space-between' }}
+        >
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            {showHamburgerMenu && (
+            {config.showHamburgerMenu && (
               <IconButton
                 size="large"
                 edge="start"
                 color="primary"
                 aria-label="open drawer"
                 sx={{ mr: 2 }}
-                onClick={toggleSidebar}  
+                onClick={toggleSidebar}
               >
                 <MenuIcon />
               </IconButton>
             )}
-            {showHomeIcon && (
+            {config.showHomeIcon && (
               <div>
                 <IconButton
                   color="primary"
@@ -62,10 +50,10 @@ import config from './config.json';
                 >
                   <HomeIcon />
                 </IconButton>
-                {leftHomeIcon && (
+                {config.leftHomeIcon && (
                   <img
-                    src={leftHomeIcon.src}
-                    alt={`Left Home Icon ${leftHomeIcon.id}`}
+                    src={config.leftHomeIcon.src}
+                    alt={`Left Home Icon ${config.leftHomeIcon.id}`}
                     style={{ maxHeight: '48px' }}
                   />
                 )}
@@ -73,23 +61,49 @@ import config from './config.json';
             )}
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
-            {showCenterLogos && centerLogoIcons.map((logo) => (
-              <img key={logo.id} src={logo.src} alt={`Logo ${logo.id}`} style={{ maxHeight: '48px' }} />
-            ))}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              flex: 1,
+            }}
+          >
+            {config.logos.showCenterLogos &&
+              config.logos.centerLogoIcons.map(
+                (logo: { id: string; src: string }) => (
+                  <img
+                    key={logo.id}
+                    src={logo.src}
+                    alt={`Logo ${logo.id}`}
+                    style={{ maxHeight: '48px' }}
+                  />
+                )
+              )}
 
-            {brandName && (
-              <Typography variant="h6" color="inherit" sx={{ marginTop: 1, fontSize: '1.5rem' }}>
-                {brandName}
+            {config.brandName && (
+              <Typography
+                variant="h6"
+                color="inherit"
+                sx={{ marginTop: 1, fontSize: '1.5rem' }}
+              >
+                {config.brandName}
               </Typography>
             )}
           </div>
 
-          {showRightLogos && (
+          {config.logos.showRightLogos && (
             <div>
-              {rightLogoIcons.map((logo) => (
-                <img key={logo.id} src={logo.src} alt={`Right Logo ${logo.id}`} style={{ maxHeight: '48px' }} />
-              ))}
+              {config.logos.rightLogoIcons.map(
+                (logo: { id: string; src: string }) => (
+                  <img
+                    key={logo.id}
+                    src={logo.src}
+                    alt={`Right Logo ${logo.id}`}
+                    style={{ maxHeight: '48px' }}
+                  />
+                )
+              )}
             </div>
           )}
           <ThemePicker />
@@ -98,7 +112,7 @@ import config from './config.json';
 
       <Sidebar isOpen={isSidebarOpen} onToggle={toggleSidebar} />
     </>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
