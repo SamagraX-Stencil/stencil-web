@@ -1,93 +1,93 @@
-import React, { useCallback, useState } from 'react'
-import styles from './index.module.css'
-import Box from '@mui/material/Box'
-import TextField from '@mui/material/TextField'
-import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography'
-import CircularProgress from '@mui/material/CircularProgress'
-import { toast } from 'react-hot-toast'
-import { useColorPalates } from '../theme-provider/hooks'
-import { useConfig } from '../../hook/useConfig'
+import React, { useCallback, useState } from "react";
+import styles from "./index.module.css";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import CircularProgress from "@mui/material/CircularProgress";
+import { toast } from "react-hot-toast";
+import { useColorPalates } from "../theme-provider/hooks";
+import { useConfig } from "../../hook/useConfig";
 
 const LoginMobileAadharPage: React.FC = () => {
-  const [isAadharClicked, setIsAadharClicked] = useState(false)
-  const [input, setInput] = useState('')
-  const [valid, setValid] = useState(true)
-  const [errorMessage, setErrorMessage] = useState('')
-  const [loading, setLoading] = useState(false)
-  const theme = useColorPalates()
-  const config = useConfig('component', 'loginMobileAadharPage')
+  const [isAadharClicked, setIsAadharClicked] = useState(false);
+  const [input, setInput] = useState("");
+  const [valid, setValid] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const theme = useColorPalates();
+  const config = useConfig("component", "loginMobileAadharPage");
 
   const handleInput = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      let reg
-      let maxLength
-      let errorMessage = ''
+      let reg;
+      let maxLength;
+      let errorMessage = "";
 
-      const inputValue = e.target.value
-      const numericInput = inputValue.replace(/[^0-9]/g, '')
+      const inputValue = e.target.value;
+      const numericInput = inputValue.replace(/[^0-9]/g, "");
 
       // Update the input value with the numeric value
-      setInput(numericInput)
+      setInput(numericInput);
 
       if (isAadharClicked) {
-        reg = /^\d{0,12}$/ // Allow up to 12 digits for Aadhar
-        maxLength = 12
-        errorMessage = 'Please enter a valid Aadhar number'
+        reg = /^\d{0,12}$/; // Allow up to 12 digits for Aadhar
+        maxLength = 12;
+        errorMessage = "Please enter a valid Aadhar number";
       } else {
-        reg = /^\d{0,10}$/ // Allow up to 10 digits for Phone Number
-        maxLength = 10
-        errorMessage = 'Please enter a valid mobile number'
+        reg = /^\d{0,10}$/; // Allow up to 10 digits for Phone Number
+        maxLength = 10;
+        errorMessage = "Please enter a valid mobile number";
       }
 
-      const isValid = reg.test(numericInput)
-      setValid(isValid)
+      const isValid = reg.test(numericInput);
+      setValid(isValid);
 
-      if (isValid || numericInput === '') {
-        setInput(numericInput)
+      if (isValid || numericInput === "") {
+        setInput(numericInput);
       } else {
         // Truncate input if it exceeds maximum length
-        setInput(numericInput.slice(0, maxLength))
+        setInput(numericInput.slice(0, maxLength));
       }
 
       if (numericInput.length > maxLength) {
         // If input length exceeds maximum allowed digits
-        setValid(false)
-        setInput(numericInput.slice(0, maxLength))
+        setValid(false);
+        setInput(numericInput.slice(0, maxLength));
         errorMessage = isAadharClicked
           ? `Please enter a valid Aadhar number`
-          : `Please enter a valid mobile number`
+          : `Please enter a valid mobile number`;
       }
 
-      setErrorMessage(errorMessage)
+      setErrorMessage(errorMessage);
     },
     [isAadharClicked]
-  )
+  );
 
   const handleAadharClick = useCallback(() => {
-    setIsAadharClicked((prop) => !prop)
-  }, [])
+    setIsAadharClicked((prop) => !prop);
+  }, []);
 
   const handleRegistration = () => {
     // Register User
-  }
+  };
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
     if (
       (isAadharClicked && input.length === 12) ||
       (!isAadharClicked && input.length === 10)
     ) {
-      setLoading(true)
+      setLoading(true);
       setTimeout(() => {
-        setLoading(false)
-        toast.success(`Successfully sent OTP`)
-      }, 2000)
+        setLoading(false);
+        toast.success(`Successfully sent OTP`);
+      }, 2000);
     } else {
-      console.log(input.length)
-      toast.error(`Please enter a valid input`)
+      console.log(input.length);
+      toast.error(`Please enter a valid input`);
     }
-  }
+  };
 
   return (
     <>
@@ -101,7 +101,7 @@ const LoginMobileAadharPage: React.FC = () => {
           style={{ background: theme?.primary?.main }}
         >
           <div className={styles.logo}>
-            <img src={config.logo} width={150} height={40} alt="" />
+            <img src={config.logo} width={200} height={200} alt="" />
           </div>
         </div>
         <div className={styles.rightColumn}>
@@ -119,10 +119,10 @@ const LoginMobileAadharPage: React.FC = () => {
                   onClick={handleRegistration}
                   variant="button"
                   sx={{
-                    textTransform: 'none',
+                    textTransform: "none",
                     color: theme.primary?.main,
-                    fontWeight: 'bold',
-                    cursor: 'pointer',
+                    fontWeight: "bold",
+                    cursor: "pointer",
                   }}
                 >
                   Register Now
@@ -144,7 +144,7 @@ const LoginMobileAadharPage: React.FC = () => {
             <Box
               component="form"
               onSubmit={handleLogin}
-              sx={{ mt: 1, width: '90%' }}
+              sx={{ mt: 1, width: "90%" }}
             >
               <TextField
                 type="text"
@@ -153,13 +153,13 @@ const LoginMobileAadharPage: React.FC = () => {
                 required
                 fullWidth
                 value={input}
-                helperText={!valid ? errorMessage : ''}
+                helperText={!valid ? errorMessage : ""}
                 onChange={handleInput}
                 label={
                   isAadharClicked ? `Enter Aadhar Number` : `Enter Phone Number`
                 }
-                name={isAadharClicked ? 'aadhar' : 'phone'}
-                autoComplete={isAadharClicked ? 'aadhar' : 'phone'}
+                name={isAadharClicked ? "aadhar" : "phone"}
+                autoComplete={isAadharClicked ? "aadhar" : "phone"}
                 autoFocus
               />
               {
@@ -170,12 +170,12 @@ const LoginMobileAadharPage: React.FC = () => {
                   fullWidth
                   variant="contained"
                   sx={{
-                    textTransform: 'none',
+                    textTransform: "none",
                     mt: 3,
                     mb: 4,
                     p: 1,
                     background: theme.primary?.main,
-                    borderRadius: '10px',
+                    borderRadius: "10px",
                   }}
                   onClick={handleLogin}
                   disabled={!valid || loading}
@@ -183,7 +183,7 @@ const LoginMobileAadharPage: React.FC = () => {
                   {loading ? (
                     <CircularProgress size={24} color="inherit" />
                   ) : (
-                    'Login'
+                    "Login"
                   )}
                 </Button>
               }
@@ -203,11 +203,11 @@ const LoginMobileAadharPage: React.FC = () => {
               textAlign="center"
               variant="button"
               sx={{
-                textTransform: 'none',
-                textDecoration: 'underline',
+                textTransform: "none",
+                textDecoration: "underline",
                 color: theme.primary?.main,
-                fontWeight: 'bold',
-                cursor: 'pointer',
+                fontWeight: "bold",
+                cursor: "pointer",
               }}
             >
               {!isAadharClicked ? `Aadhar Number` : `Phone Number`}
@@ -216,7 +216,7 @@ const LoginMobileAadharPage: React.FC = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default LoginMobileAadharPage
+export default LoginMobileAadharPage;

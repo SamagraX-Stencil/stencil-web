@@ -11,6 +11,10 @@
 
 .logo {
   padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .rightColumn {
@@ -59,7 +63,7 @@
     justify-content: center;
     flex: 1;
   }
-  .form{
+  .form {
     width: 90%;
   }
   .register {
