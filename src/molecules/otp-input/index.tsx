@@ -220,9 +220,9 @@ const InputElement = styled('input')(
     theme.palette.mode === 'dark' ? 'rgba(0,0,0, 0.5)' : 'rgba(0,0,0, 0.05)'
   };
 
-  // &:hover {
-  //   border-color: ${blue[400]};
-  // }
+  &:hover {
+    border-color: ${blue[400]};
+  }
 
   &:focus {
     border-color: ${blue[400]};
