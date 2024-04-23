@@ -159,7 +159,8 @@ const OtpPage: React.FC = () => {
                   type="button"
                   sx={{
                     textTransform: 'none',
-
+                    mt: 5,
+                    mb: 4,
                     p: 1,
 
                     // background: config?.theme.secondaryColor.value,
