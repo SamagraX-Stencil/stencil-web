@@ -144,7 +144,7 @@ const FeedbackPage: React.FC = () => {
               variant="contained"
               data-testid="reviewBtn"
               sx={{
-                mt: 2,
+                marginTop: 10,
                 backgroundColor: `${theme.primary?.dark}`,
                 fontWeight: 'bold',
                 borderRadius: '10rem',
