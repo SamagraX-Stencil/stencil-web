@@ -11,7 +11,7 @@ import { useUiConfig } from '../../hook/useConfig'
 const FeedbackPage: React.FC = () => {
   const config = useUiConfig('component', 'feedbackPage')
 
-  const [star, setStar] = useState(1)
+  const [star, setStar] = useState(0)
   const [review, setReview] = useState('')
 
   const theme = useColorPalates()
@@ -76,7 +76,7 @@ const FeedbackPage: React.FC = () => {
               onChange={(event, newValue) => {
                 console.log(event)
                 setStar(() => {
-                  return newValue === null ? 1 : newValue
+                  return newValue === null ? 0 : newValue
                 })
               }}
               defaultValue={1}
