@@ -8,10 +8,10 @@ import Typography from '@mui/material/Typography'
 import { Sidebar } from '../sidebar/index'
 import ThemePicker from '../../components/theme-picker'
 import { useColorPalates } from '../theme-provider/hooks'
-import { useConfig } from '../../hook/useConfig'
+import { useUiConfig } from '../../hook/useConfig'
 
 const Navbar: React.FC = () => {
-  const config = useConfig('component', 'navbar')
+  const config = useUiConfig('component', 'navbar')
 
   const theme = useColorPalates()
   const [isSidebarOpen, setSidebarOpen] = useState(false)

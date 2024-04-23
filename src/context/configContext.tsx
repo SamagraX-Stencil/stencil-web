@@ -1,29 +1,84 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useReducer, useState } from 'react'
 import configObj from '../../app.config.json'
+import { configReducer } from './configReducer'
+import AppConfig, { Component } from '../types/types'
+import toast from 'react-hot-toast'
 
 interface ConfigContextValue {
-  config: any
+  config: AppConfig
+  handleChange: (
+    newValue: string | boolean | number,
+    where: keyof Component,
+    which: string
+  ) => void
+  uiConfig: AppConfig
+  handleSaveButton: () => void
+  handleResetButton: () => void
 }
 
 const ConfigProvider = createContext<ConfigContextValue>({
-  config: {},
+  config: {} as AppConfig,
+  handleChange: () => {},
+  uiConfig: {} as AppConfig,
+  handleSaveButton: () => {},
+  handleResetButton: () => {},
 })
-
-// const WpcasProvider = createContext('');
+const getConfigFromLocalStorage = () => {
+  const storedConfig = localStorage.getItem('config')
+  return storedConfig ? JSON.parse(storedConfig) : configObj
+}
 
 const ConfigContext = ({ children }: { children: React.ReactElement }) => {
-  const [config, setConfig] = useState<any>(configObj)
+  const [config, dispatch] = useReducer(
+    configReducer,
+    getConfigFromLocalStorage()
+  )
+  const [uiConfig, setUiConfig] = useState(getConfigFromLocalStorage())
 
-  useEffect(() => {
-    setConfig(() => {
-      return configObj
+  const handleSaveButton = () => {
+    const configString = JSON.stringify(config)
+    localStorage.setItem('config', configString)
+    setUiConfig(config)
+    toast.success('Data is saved successfully')
+  }
+  const handleResetButton = () => {
+    const configString = JSON.stringify(configObj)
+    localStorage.setItem('config', configString)
+    setUiConfig(configObj)
+    dispatch({
+      type: 'RESET_VALUE',
+      payload: {
+        newValue: '',
+        where: 'homePage',
+        which: '',
+      },
     })
-  }, [configObj])
+    toast.success('Data is reset successfully')
+  }
+
+  const handleChange = (
+    newValue: string | boolean | number,
+    where: keyof Component,
+    which: string
+  ) => {
+    dispatch({
+      type: 'UPDATE_CONFIG',
+      payload: {
+        where,
+        which,
+        newValue,
+      },
+    })
+  }
 
   return (
     <ConfigProvider.Provider
       value={{
         config,
+        uiConfig,
+        handleChange,
+        handleSaveButton,
+        handleResetButton,
       }}
     >
       {children}

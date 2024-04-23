@@ -1,10 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import FAQPage from './index'
 import { vi } from 'vitest'
-import { useConfig } from '../../hook/useConfig'
+import { useUiConfig } from '../../hook/useConfig'
 
 describe('FAQ component', () => {
-  const config = useConfig('component', 'faqs')
+  const config = useUiConfig('component', 'faqs')
 
   test('renders without crashing', () => {
     render(<FAQPage />)

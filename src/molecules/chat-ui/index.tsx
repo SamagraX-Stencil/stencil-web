@@ -14,14 +14,14 @@ import toast from 'react-hot-toast'
 import { recordUserLocation } from './utils/location'
 import chatHistory from './chatHistory.json'
 import ShareButtons from '../share-buttons'
-import { useConfig, useThmeeConfig } from '../../hook/useConfig'
+import { useUiConfig, useThemeConfig } from '../../hook/useConfig'
 
 export const ChatUI: React.FC = () => {
   const [messages, setMessages] = useState<any>([])
   const [loading, setLoading] = useState(false)
 
-  const config = useConfig('component', 'chatUi')
-  const theme = useThmeeConfig('theme')
+  const config = useUiConfig('component', 'chatUi')
+  const theme = useThemeConfig('theme')
 
   useEffect(() => {
     const fetchHistory = () => {

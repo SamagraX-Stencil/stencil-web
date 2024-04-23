@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography'
 import CircularProgress from '@mui/material/CircularProgress'
 import { toast } from 'react-hot-toast'
 import { useColorPalates } from '../theme-provider/hooks'
-import { useConfig } from '../../hook/useConfig'
+import { useUiConfig } from '../../hook/useConfig'
 
 const LoginMobileAadharPage: React.FC = () => {
   const [isAadharClicked, setIsAadharClicked] = useState(false)
@@ -16,7 +16,7 @@ const LoginMobileAadharPage: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState('')
   const [loading, setLoading] = useState(false)
   const theme = useColorPalates()
-  const config = useConfig('component', 'loginMobileAadharPage')
+  const config = useUiConfig('component', 'loginMobileAadharPage')
 
   const handleInput = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {

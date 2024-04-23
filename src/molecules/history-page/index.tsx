@@ -11,10 +11,10 @@ import { useColorPalates } from '../../molecules/theme-provider/hooks'
 import { ChatItem, HistoryItem } from './index.d'
 import { map } from 'lodash'
 import sample from './sample.json'
-import { useConfig } from '../../hook/useConfig'
+import { useUiConfig } from '../../hook/useConfig'
 
 const HistoryPage: FC = () => {
-  const config = useConfig('component', 'historyPage')
+  const config = useUiConfig('component', 'historyPage')
 
   const [isFetching, setIsFetching] = useState(true)
   const [list, setList] = useState([])

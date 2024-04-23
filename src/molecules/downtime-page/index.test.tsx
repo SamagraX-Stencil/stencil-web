@@ -1,10 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import DowntimePage from './index'
 import { vi } from 'vitest'
-import { useConfig } from '../../hook/useConfig'
+import { useUiConfig } from '../../hook/useConfig'
 
 describe('DowntimePage component', () => {
-  const config = useConfig('component', 'downtime')
+  const config = useUiConfig('component', 'downtime')
   test('renders without crashing', () => {
     render(<DowntimePage />)
     // Test that the component renders without crashing
