@@ -3,6 +3,7 @@ import { CheckBoxOption, InputField, PageTitle } from './customeField'
 import { gap, marginBotton } from './constant'
 import { useConfig } from '../../hook/useConfig'
 import { useConfigContext } from '../../context/configContext'
+import UploadFile from './indexDb'
 
 const LaunchPage = () => {
   const config = useConfig('component', 'launchPage')
@@ -40,6 +41,11 @@ const LaunchPage = () => {
           onChange={(newValue) =>
             updateLaunchPageObjValue(newValue, 'allowOverride')
           }
+        />
+        <UploadFile
+          selectedValue={config.logo}
+          title="Logo"
+          onChange={(newValue) => updateLaunchPageObjValue(newValue, 'logo')}
         />
       </Box>
     </Box>

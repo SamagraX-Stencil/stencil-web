@@ -7,7 +7,7 @@ import toast from 'react-hot-toast'
 interface ConfigContextValue {
   config: AppConfig
   handleChange: (
-    newValue: string | boolean,
+    newValue: string | boolean | number,
     where: keyof Component,
     which: string
   ) => void
@@ -57,7 +57,7 @@ const ConfigContext = ({ children }: { children: React.ReactElement }) => {
   }
 
   const handleChange = (
-    newValue: string | boolean,
+    newValue: string | boolean | number,
     where: keyof Component,
     which: string
   ) => {

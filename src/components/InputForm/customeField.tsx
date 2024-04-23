@@ -5,6 +5,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
+import { useState } from 'react'
 
 export const InputField = ({
   label,
@@ -15,17 +16,24 @@ export const InputField = ({
   defaultValue: string
   onChange: (value: string) => void
 }) => {
+  const [text, setText] = useState(defaultValue)
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(event.target.value)
+    setText(event.target.value)
+    // onChange(event.target.value)
   }
+  const handleBlur = () => {
+    onChange(text)
+  }
+
   return (
     <TextField
       sx={{ width: 300 }}
       label={label}
       id="outlined-size-small"
-      defaultValue={defaultValue}
+      defaultValue={text}
       size="small"
       onChange={handleChange}
+      onBlur={handleBlur}
     />
   )
 }
@@ -72,15 +80,38 @@ export const InputNumberField = ({
   label,
   defaultValue,
   onChange,
+  isNegative = false,
 }: {
   label: string
   defaultValue: number
   onChange: (value: number) => void
+  isNegative?: boolean
 }) => {
+  const storeDefaultValue = defaultValue
+  const [num, setNum] = useState<number | string>(defaultValue)
+
+  // const isNumeric = (value: string): boolean => {
+  //   if (isNegative) {
+  //     return /^-?\d+$/.test(value)
+  //   } else {
+  //     return /^\d+$/.test(value)
+  //   }
+  // }
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // Remove any non-numeric characters from the input value
-    const numericValue = event.target.value.replace(/[^0-9]/g, '')
-    onChange(numericValue)
+    const inputValue = event.target.value
+    const numericValue =
+      inputValue.match(isNegative ? /^-?\d*/ : /^\d*/)?.[0] || ''
+    setNum(numericValue)
+  }
+
+  const handleBlur = () => {
+    if (num === '' || num === '-') {
+      setNum(storeDefaultValue)
+      onChange(storeDefaultValue)
+    } else {
+      onChange(parseInt(num.toString()))
+    }
   }
 
   return (
@@ -91,10 +122,11 @@ export const InputNumberField = ({
       defaultValue={defaultValue}
       size="small"
       onChange={handleChange}
-      inputProps={{
-        inputMode: 'numeric', // Set input mode to numeric to show numeric keypad on mobile devices
-        pattern: '[0-9]*', // Only allow numeric characters
-      }}
+      type="text"
+      required
+      fullWidth
+      value={num}
+      onBlur={handleBlur}
     />
   )
 }

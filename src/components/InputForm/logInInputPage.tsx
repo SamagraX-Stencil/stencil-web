@@ -3,8 +3,9 @@ import { CheckBoxOption, InputField, PageTitle } from './customeField'
 import { useConfig } from '../../hook/useConfig'
 import { useConfigContext } from '../../context/configContext'
 import { gap, marginBotton } from './constant'
+import UploadFile from './indexDb'
 
-const LogInPage = () => {
+const LogInInputPage = () => {
   const config = useConfig('component', 'loginMobileAadharPage')
   const { handleChange } = useConfigContext()
   const updateLoginPage = (newValue: string | boolean, which: string) => {
@@ -61,9 +62,14 @@ const LogInPage = () => {
           title="Show Splited View Option"
           onChange={(newValue) => updateLoginPage(newValue, 'showSplitedView')}
         />
+        <UploadFile
+          selectedValue={config.logo}
+          title="Logo"
+          onChange={(newValue) => updateLoginPage(newValue, 'logo')}
+        />
       </Box>
     </Box>
   )
 }
 
-export default LogInPage
+export default LogInInputPage

@@ -1,32 +1,48 @@
 import { Box, Button } from '@mui/material'
-import LogInPage from './logInPage'
 import CommingSoonPage from './commingSoonPage'
 import DownTimePage from './downTimePage'
 import FaqPage from './faqPage'
-import FeedBackPage from './feedbackPage'
 import HistoryPage from './historyPage'
 import HomePage from './homePage'
 import LaunchPage from './launchPage'
 import NavbarInput from './navbar'
-import OtpPageInput from './otpPage'
 import SidebarInput from './sidebarInput'
 import VoiceRecorderInput from './voiceRecorderInput'
 import { useConfigContext } from '../../context/configContext'
+import LogInInputPage from './logInInputPage'
+import FeedBackInputPage from './feedbackInputPage'
+import OtpInputPage from './otpInputPage'
+import { useState } from 'react'
 
 const AdminRoute = () => {
   const { handleSaveButton, handleResetButton } = useConfigContext()
+  const [shouldRerender, setShouldRerender] = useState(false)
+
+  const handleSave = () => {
+    handleSaveButton()
+    setShouldRerender(!shouldRerender) // Toggle the value of shouldRerender
+  }
+
+  const handleReset = () => {
+    handleResetButton()
+    setShouldRerender(!shouldRerender) // Toggle the value of shouldRerender
+  }
+
   return (
-    <Box sx={{ margin: 10, overflow: 'auto', height: '90vh' }}>
-      <LogInPage />
+    <Box
+      key={shouldRerender ? 1 : 0}
+      sx={{ margin: 10, overflow: 'auto', height: '90vh' }}
+    >
+      <LogInInputPage />
       <CommingSoonPage />
       <DownTimePage />
       <FaqPage />
-      <FeedBackPage />
+      <FeedBackInputPage />
       <HistoryPage />
       <HomePage />
       <LaunchPage />
       <NavbarInput />
-      <OtpPageInput />
+      <OtpInputPage />
       <SidebarInput />
       <VoiceRecorderInput />
       <Box
@@ -40,7 +56,7 @@ const AdminRoute = () => {
         <Button
           variant="outlined"
           sx={{ width: '120px' }}
-          onClick={() => handleResetButton()}
+          onClick={() => handleReset()}
         >
           Reset
         </Button>
@@ -48,7 +64,7 @@ const AdminRoute = () => {
         <Button
           variant="contained"
           sx={{ width: '120px' }}
-          onClick={() => handleSaveButton()}
+          onClick={() => handleSave()}
         >
           Save
         </Button>

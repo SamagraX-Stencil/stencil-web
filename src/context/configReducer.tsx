@@ -6,7 +6,7 @@ interface UpdateConfigAction {
   payload: {
     where: keyof AppConfig['component']
     which: string
-    newValue: string | boolean
+    newValue: string | boolean | number
   }
 }
 

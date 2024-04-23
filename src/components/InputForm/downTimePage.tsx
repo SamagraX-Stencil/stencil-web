@@ -3,6 +3,7 @@ import { CheckBoxOption, InputField, PageTitle } from './customeField'
 import { gap, marginBotton } from './constant'
 import { useConfig } from '../../hook/useConfig'
 import { useConfigContext } from '../../context/configContext'
+import UploadFile from './indexDb'
 
 const DownTimePage = () => {
   const config = useConfig('component', 'downtime')
@@ -66,6 +67,13 @@ const DownTimePage = () => {
           title="Allow Override Option"
           onChange={(newValue) =>
             updateDownTimeObjValue(newValue, 'allowOverride')
+          }
+        />
+        <UploadFile
+          selectedValue={config.downTimeImage}
+          title="Down Time Image"
+          onChange={(newValue) =>
+            updateDownTimeObjValue(newValue, 'downTimeImage')
           }
         />
       </Box>

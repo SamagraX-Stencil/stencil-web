@@ -1,5 +1,5 @@
 import { Box } from '@mui/material'
-import { CheckBoxOption, InputField, PageTitle } from './customeField'
+import { CheckBoxOption, InputField, InputNumberField, PageTitle } from './customeField'
 import { gap, marginBotton } from './constant'
 import { useConfig } from '../../hook/useConfig'
 import { useConfigContext } from '../../context/configContext'
@@ -9,15 +9,13 @@ const VoiceRecorderInput = () => {
   const { handleChange } = useConfigContext()
 
   const updateVoiceRecorderObjValue = (
-    newValue: string | boolean,
+    newValue: string | boolean | number,
     which: string
   ) => {
     handleChange(newValue, 'voiceRecorder', which)
   }
 
-  //   "voiceMinDecibels": -35,
-  //   "delayBetweenDialogs": 2500,
-  //   "dialogMaxLength": 60000,
+
   return (
     <Box sx={{ marginBottom: marginBotton }}>
       <Box sx={{ marginBottom: marginBotton }}>
@@ -44,6 +42,30 @@ const VoiceRecorderInput = () => {
           onChange={(newValue) =>
             updateVoiceRecorderObjValue(newValue, 'waitMessage')
           }
+        />
+        <InputNumberField
+          defaultValue={config.voiceMinDecibels}
+          label="Voice Min Decibels"
+          onChange={(newValue) =>
+            updateVoiceRecorderObjValue(newValue, 'voiceMinDecibels')
+          }
+          isNegative={true}
+        />
+        <InputNumberField
+          defaultValue={config.delayBetweenDialogs}
+          label="Delay Between Dialogs"
+          onChange={(newValue) =>
+            updateVoiceRecorderObjValue(newValue, 'delayBetweenDialogs')
+          }
+          isNegative={true}
+        />
+        <InputNumberField
+          defaultValue={config.dialogMaxLength}
+          label="Dialog Maximum Length"
+          onChange={(newValue) =>
+            updateVoiceRecorderObjValue(newValue, 'dialogMaxLength')
+          }
+          isNegative={true}
         />
         <CheckBoxOption
           selectedValue={config.allowOverride}

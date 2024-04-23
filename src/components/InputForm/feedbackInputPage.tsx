@@ -1,23 +1,24 @@
-import { CheckBoxOption, InputField, PageTitle } from './customeField'
+import {
+  CheckBoxOption,
+  InputField,
+  InputNumberField,
+  PageTitle,
+} from './customeField'
 import { Box } from '@mui/material'
 import { gap, marginBotton } from './constant'
 import { useConfig } from '../../hook/useConfig'
 import { useConfigContext } from '../../context/configContext'
 
-const FeedBackPage = () => {
+const FeedBackInputPage = () => {
   const config = useConfig('component', 'feedbackPage')
   const { handleChange } = useConfigContext()
 
   const updateFeedbackObjValue = (
-    newValue: string | boolean,
+    newValue: string | boolean | number,
     which: string
   ) => {
     handleChange(newValue, 'feedbackPage', which)
   }
-
-  //  "": {
-  //     "ratingMaxStars": 5,
-  //   },
 
   return (
     <Box sx={{ marginBottom: marginBotton }}>
@@ -79,6 +80,13 @@ const FeedBackPage = () => {
             updateFeedbackObjValue(newValue, 'reviewButtonText')
           }
         />
+        <InputNumberField
+          defaultValue={config.ratingMaxStars}
+          label="Maximum Rating Stars"
+          onChange={(newValue) =>
+            updateFeedbackObjValue(newValue, 'ratingMaxStars')
+          }
+        />
         <CheckBoxOption
           selectedValue={config.reviewBox}
           title="Review Box Option"
@@ -94,4 +102,4 @@ const FeedBackPage = () => {
   )
 }
 
-export default FeedBackPage
+export default FeedBackInputPage
