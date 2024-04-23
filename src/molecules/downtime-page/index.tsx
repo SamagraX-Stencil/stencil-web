@@ -4,10 +4,11 @@ import { Avatar, Box, Button, Typography } from '@mui/material'
 import CallRoundedIcon from '@mui/icons-material/Call'
 import { useColorPalates } from '../../molecules/theme-provider/hooks'
 import { useUiConfig } from '../../hook/useConfig'
+import downTimeGif from "./assets/downTimeGIF.gif"
 
 const DowntimePage: React.FC = () => {
   const config = useUiConfig('component', 'downtime')
-
+  console.log(config,"config")
   const theme = useColorPalates()
   const handleRefreshClick = useCallback(() => {
     // window?.location.reload()
@@ -41,8 +42,8 @@ const DowntimePage: React.FC = () => {
         <Box my={4}>
           <img
             src={
-              config.downTimeImage ??
-              'src/molecules/downtime-page/assets/downTimeGIF.gif'
+              config.downTimeImage=="" ?
+              downTimeGif:config.downTimeImage
             }
             alt="downtimeGif"
             className={styles.imageContainer}
