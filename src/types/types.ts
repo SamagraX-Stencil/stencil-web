@@ -192,6 +192,7 @@ export interface Component {
 interface AppConfig {
   theme: Theme
   component: Component
+  [key: string]: any // Add this line
 }
 
 export default AppConfig
