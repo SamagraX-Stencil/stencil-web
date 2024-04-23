@@ -87,14 +87,14 @@ const OtpPage: React.FC = () => {
               {config.title}
             </Typography>
             <Typography
+              textAlign="center"
               variant="body2"
-              textAlign="left"
               width="90%"
               color="#838BA1"
             >
               Enter the verification code we just sent on your mobile number
             </Typography>
-            <Typography fontWeight="bold" textAlign="center">
+            <Typography fontWeight="bold" textAlign="center" padding={10}>
               +91-{phNo}
             </Typography>
             <Box
