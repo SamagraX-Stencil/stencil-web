@@ -76,7 +76,7 @@ export const Sidebar: FC<{
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
     <Box
-      sx={{ width: 250, height: '100vh', background: theme?.primary?.dark }}
+      sx={{ width: 250, background: theme?.primary?.dark }}
       role="presentation"
       onClick={onToggle}
     >
@@ -160,11 +160,9 @@ export const Sidebar: FC<{
     </Box>
   )
 
-  return (
-    <div>
+  return ( 
       <Drawer open={isOpen} onClose={onToggle}>
         {DrawerList}
-      </Drawer>
-    </div>
+      </Drawer> 
   )
 }
