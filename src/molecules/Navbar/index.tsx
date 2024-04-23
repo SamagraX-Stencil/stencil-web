@@ -70,14 +70,16 @@ const Navbar: React.FC = () => {
             }}
           >
             {config.logos.showCenterLogos &&
-              config.logos.centerLogoIcons.map((logo) => (
-                <img
-                  key={logo.id}
-                  src={logo.src}
-                  alt={`Logo ${logo.id}`}
-                  style={{ maxHeight: '48px' }}
-                />
-              ))}
+              config.logos.centerLogoIcons.map(
+                (logo: { id: string; src: string }) => (
+                  <img
+                    key={logo.id}
+                    src={logo.src}
+                    alt={`Logo ${logo.id}`}
+                    style={{ maxHeight: '48px' }}
+                  />
+                )
+              )}
 
             {config.brandName && (
               <Typography
@@ -92,14 +94,16 @@ const Navbar: React.FC = () => {
 
           {config.logos.showRightLogos && (
             <div>
-              {config.logos.rightLogoIcons.map((logo) => (
-                <img
-                  key={logo.id}
-                  src={logo.src}
-                  alt={`Right Logo ${logo.id}`}
-                  style={{ maxHeight: '48px' }}
-                />
-              ))}
+              {config.logos.rightLogoIcons.map(
+                (logo: { id: string; src: string }) => (
+                  <img
+                    key={logo.id}
+                    src={logo.src}
+                    alt={`Right Logo ${logo.id}`}
+                    style={{ maxHeight: '48px' }}
+                  />
+                )
+              )}
             </div>
           )}
           <ThemePicker />
