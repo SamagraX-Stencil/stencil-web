@@ -21,14 +21,14 @@ const meta = {
   ],
   args: {
     config: {
-        component: {
-            title: "We're under maintainance",
-            downTimeImage: "/src/pages/downtime-page/assets/downTimeGIF.gif",
-            supportingText: "Have an urgent query?",
-            contactLink: "Call Ama Krushi",
-            refreshText: "Try Again",
-            previousPageText: "Previous Page"
-        },
+      component: {
+        title: "We're under maintainance",
+        downTimeImage: "/src/molecules/downtime-page/assets/downTimeGIF.gif",
+        supportingText: "Have an urgent query?",
+        contactLink: "Call Ama Krushi",
+        refreshText: "Try Again",
+        previousPageText: "Previous Page",
+      },
     },
   },
 } satisfies Meta<typeof DowntimePage>;
