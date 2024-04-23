@@ -1,8 +1,8 @@
 import { Box } from '@mui/material'
-import { CheckBoxOption, InputField, PageTitle } from './customeField'
-import { gap, marginBotton } from './constant'
 import { useConfig } from '../../hook/useConfig'
 import { useConfigContext } from '../../context/configContext'
+import { gap, marginBotton } from './constant'
+import { CheckBoxOption, InputField, PageTitle } from './customeField'
 
 const HistoryPage = () => {
   const config = useConfig('component', 'historyPage')

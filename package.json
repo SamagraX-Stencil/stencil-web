@@ -3,6 +3,17 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
+  "workspaces": {
+    "packages": [
+      "./packages/molecules",
+      "./packages/pages",
+      "./packages/hooks",
+      "./packages/providers",
+      "./packages/configAdmin",
+      "./packages/configManager",
+      "./packages/cli"
+    ]
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
