@@ -8,7 +8,6 @@ import downTimeGif from "./assets/downTimeGIF.gif"
 
 const DowntimePage: React.FC = () => {
   const config = useUiConfig('component', 'downtime')
-  console.log(config,"config")
   const theme = useColorPalates()
   const handleRefreshClick = useCallback(() => {
     // window?.location.reload()
