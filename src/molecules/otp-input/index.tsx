@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { Box, styled  } from '@mui/material';
-import { Input as BaseInput } from '@mui/base/Input';
+import * as React from "react";
+import { Box, styled } from "@mui/material";
+import { Input as BaseInput } from "@mui/material";
 export function OTPInput({
   separator,
   length,
@@ -31,26 +31,26 @@ export function OTPInput({
     currentIndex: number
   ) => {
     switch (event.key) {
-      case 'ArrowUp':
-      case 'ArrowDown':
-      case ' ':
+      case "ArrowUp":
+      case "ArrowDown":
+      case " ":
         event.preventDefault();
         break;
-      case 'ArrowLeft':
+      case "ArrowLeft":
         event.preventDefault();
         if (currentIndex > 0) {
           focusInput(currentIndex - 1);
           selectInput(currentIndex - 1);
         }
         break;
-      case 'ArrowRight':
+      case "ArrowRight":
         event.preventDefault();
         if (currentIndex < length - 1) {
           focusInput(currentIndex + 1);
           selectInput(currentIndex + 1);
         }
         break;
-      case 'Delete':
+      case "Delete":
         event.preventDefault();
         onChange((prevOtp) => {
           const otp =
@@ -59,7 +59,7 @@ export function OTPInput({
         });
 
         break;
-      case 'Backspace':
+      case "Backspace":
         event.preventDefault();
         if (currentIndex > 0) {
           focusInput(currentIndex - 1);
@@ -96,12 +96,12 @@ export function OTPInput({
       }
     }
     onChange((prev) => {
-      const otpArray = prev.split('');
+      const otpArray = prev.split("");
       const lastValue = currentValue[currentValue.length - 1];
       otpArray[indexToEnter] = lastValue;
-      return otpArray.join('');
+      return otpArray.join("");
     });
-    if (currentValue !== '') {
+    if (currentValue !== "") {
       if (currentIndex < length - 1) {
         focusInput(currentIndex + 1);
       }
@@ -123,8 +123,8 @@ export function OTPInput({
     const clipboardData = event.clipboardData;
 
     // Check if there is text data in the clipboard
-    if (clipboardData.types.includes('text/plain')) {
-      let pastedText = clipboardData.getData('text/plain');
+    if (clipboardData.types.includes("text/plain")) {
+      let pastedText = clipboardData.getData("text/plain");
       pastedText = pastedText.substring(0, length).trim();
       let indexToEnter = 0;
 
@@ -139,19 +139,19 @@ export function OTPInput({
         }
       }
 
-      const otpArray = value.split('');
+      const otpArray = value.split("");
 
       for (let i = indexToEnter; i < length; i += 1) {
-        const lastValue = pastedText[i - indexToEnter] ?? ' ';
+        const lastValue = pastedText[i - indexToEnter] ?? " ";
         otpArray[i] = lastValue;
       }
 
-      onChange(otpArray.join(''));
+      onChange(otpArray.join(""));
     }
   };
 
   return (
-    <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+    <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
       {new Array(length).fill(null).map((_, index) => (
         <React.Fragment key={index}>
           <BaseInput
@@ -170,7 +170,7 @@ export function OTPInput({
                 onChange: (event) => handleChange(event, index),
                 onClick: (event) => handleClick(event, index),
                 onPaste: (event) => handlePaste(event, index),
-                value: value[index] ?? '',
+                value: value[index] ?? "",
               },
             }}
           />
@@ -182,28 +182,28 @@ export function OTPInput({
 }
 
 const blue = {
-  100: '#DAECFF',
-  200: '#80BFFF',
-  400: '#3399FF',
-  500: '#007FFF',
-  600: '#0072E5',
-  700: '#0059B2',
+  100: "#DAECFF",
+  200: "#80BFFF",
+  400: "#3399FF",
+  500: "#007FFF",
+  600: "#0072E5",
+  700: "#0059B2",
 };
 
 const grey = {
-  50: '#F3F6F9',
-  100: '#E5EAF2',
-  200: '#DAE2ED',
-  300: '#C7D0DD',
-  400: '#B0B8C4',
-  500: '#9DA8B7',
-  600: '#6B7A90',
-  700: '#434D5B',
-  800: '#303740',
-  900: '#1C2025',
+  50: "#F3F6F9",
+  100: "#E5EAF2",
+  200: "#DAE2ED",
+  300: "#C7D0DD",
+  400: "#B0B8C4",
+  500: "#9DA8B7",
+  600: "#6B7A90",
+  700: "#434D5B",
+  800: "#303740",
+  900: "#1C2025",
 };
 
-const InputElement = styled('input')(
+const InputElement = styled("input")(
   ({ theme }) => `
   width: 40px;
   font-family: 'IBM Plex Sans', sans-serif;
@@ -213,11 +213,11 @@ const InputElement = styled('input')(
   padding: 8px 0px;
   border-radius: 8px;
   text-align: center;
-  color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
-  background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
-  border: 1px solid ${theme.palette.mode === 'dark' ? grey[700] : grey[200]};
+  color: ${theme.palette.mode === "dark" ? grey[300] : grey[900]};
+  background: ${theme.palette.mode === "dark" ? grey[900] : "#fff"};
+  border: 1px solid ${theme.palette.mode === "dark" ? grey[700] : grey[200]};
   box-shadow: 0px 2px 4px ${
-    theme.palette.mode === 'dark' ? 'rgba(0,0,0, 0.5)' : 'rgba(0,0,0, 0.05)'
+    theme.palette.mode === "dark" ? "rgba(0,0,0, 0.5)" : "rgba(0,0,0, 0.05)"
   };
 
   &:hover {
@@ -227,7 +227,7 @@ const InputElement = styled('input')(
   &:focus {
     border-color: ${blue[400]};
     box-shadow: 0 0 0 3px ${
-      theme.palette.mode === 'dark' ? blue[600] : blue[200]
+      theme.palette.mode === "dark" ? blue[600] : blue[200]
     };
   }
 
