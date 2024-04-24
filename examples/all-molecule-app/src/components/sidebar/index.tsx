@@ -1,18 +1,3 @@
-import Box from '@mui/material/Box'
-import Drawer from '@mui/material/Drawer'
-import List from '@mui/material/List'
-import Divider from '@mui/material/Divider'
-import ListItem from '@mui/material/ListItem'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import pageList from '../../utils/pageList.json'
-const pages = pageList.pages
-
-import ListItemText from '@mui/material/ListItemText'
-import { FC } from 'react'
-import { capitalize, toUpper } from 'lodash'
-import LoginIcon from '@mui/icons-material/Login'
-import PinIcon from '@mui/icons-material/Pin'
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark'
 import UpcomingIcon from '@mui/icons-material/Upcoming'
 import MobiledataOffIcon from '@mui/icons-material/MobiledataOff'
@@ -23,6 +8,21 @@ import { useColorPalates } from '@stencil/hooks'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import { ChatBubble, HistoryOutlined } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
+import { FC } from 'react'
+import { capitalize, toUpper } from 'lodash'
+import LoginIcon from '@mui/icons-material/Login'
+import PinIcon from '@mui/icons-material/Pin'
+import ListItemText from '@mui/material/ListItemText'
+import Box from '@mui/material/Box'
+import Drawer from '@mui/material/Drawer'
+import List from '@mui/material/List'
+import Divider from '@mui/material/Divider'
+import ListItem from '@mui/material/ListItem'
+import ListItemButton from '@mui/material/ListItemButton'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import pageList from '../../utils/pageList.json'
+const pages = pageList.pages
+
 const getLabel = (label: string) =>
   label
     .split('-')

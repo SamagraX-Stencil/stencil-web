@@ -6,6 +6,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import { useColorPalates } from '@stencil/hooks'
 import {
   JsonToTable,
+  List,
   OTPInput,
   ShareButtons,
   VoiceRecorder,
