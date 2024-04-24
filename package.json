@@ -12,7 +12,8 @@
       "./packages/component",
       "./packages/config-manager",
       "./packages/cli",
-      "./examples/all-molecule-app"
+      "./examples/all-molecule-app",
+      "./examples/bot-app"
     ]
   },
   "scripts": {
