@@ -6,9 +6,8 @@ import MenuIcon from '@mui/icons-material/Menu'
 import HomeIcon from '@mui/icons-material/Home'
 import Typography from '@mui/material/Typography'
 import { Sidebar } from '../sidebar/index'
-import ThemePicker from '../../components/theme-picker'
-import { useColorPalates } from '../theme-provider/hooks'
-import { useUiConfig } from '../../hook/useConfig'
+// import ThemePicker from '../../components/theme-picker'
+import { useColorPalates, useUiConfig } from '@stencil/hooks'
 
 const Navbar: React.FC = () => {
   const config = useUiConfig('component', 'navbar')
@@ -106,7 +105,7 @@ const Navbar: React.FC = () => {
               )}
             </div>
           )}
-          <ThemePicker />
+          {/* <ThemePicker /> */}
         </Toolbar>
       </AppBar>
 

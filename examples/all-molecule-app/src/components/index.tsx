@@ -11,7 +11,7 @@ import {
   ShareButtons,
   VoiceRecorder,
 } from '@stencil/molecules'
-import { Navbar } from './navbar'
+import { Navbar } from '@stencil/molecules'
 
 const Components = () => {
   const [otp, setOtp] = useState('')

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Box from '@mui/material/Box'
 import Drawer from '@mui/material/Drawer'
 import List from '@mui/material/List'
@@ -14,6 +14,7 @@ import HistoryIcon from '@mui/icons-material/History'
 import HelpIcon from '@mui/icons-material/Help'
 import FeedbackIcon from '@mui/icons-material/Feedback'
 import LogoutIcon from '@mui/icons-material/Logout'
+import configObj from '@stencil/configmanager'
 
 export const Sidebar = ({
   isOpen,
@@ -33,9 +34,9 @@ export const Sidebar = ({
   } | null>(null)
   const [activeLanguage, setActiveLanguage] = useState<string>('en')
   useEffect(() => {
-    import('./../../../app.config.json').then((data) => {
-      setConfig(data.component.sidebar)
-    })
+    if (configObj && configObj.component && configObj.component.sidebar) {
+      setConfig(configObj.component.sidebar)
+    }
   }, [])
 
   const handleLanguageClick = (langCode: string) => {

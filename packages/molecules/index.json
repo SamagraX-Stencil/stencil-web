@@ -1,0 +1,12 @@
+{
+  "molecules": [
+    "chat-ui",
+    "fullpage-loader",
+    "json-to-table",
+    "list",
+    "navbar",
+    "sidebar",
+    "share-buttons",
+    "voice-recorder"
+  ]
+}
