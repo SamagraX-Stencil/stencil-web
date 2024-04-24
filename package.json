@@ -9,9 +9,10 @@
       "./packages/pages",
       "./packages/hooks",
       "./packages/providers",
-      "./packages/configAdmin",
-      "./packages/configManager",
-      "./packages/cli"
+      "./packages/component",
+      "./packages/config-manager",
+      "./packages/cli",
+      "./examples/all-molecule-app"
     ]
   },
   "scripts": {

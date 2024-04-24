@@ -1,8 +1,9 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme } from '@mui/material/styles'
 
-import {theme} from '../../../default-config.json';
+import defaultConfig from '../../../default-config.json'
+const { theme } = defaultConfig
 
-console.log({theme})
+console.log({ theme })
 export const initialTheme = createTheme({
   palette: {
     // background: { paper: green[500], default: green[500] },
@@ -21,6 +22,4 @@ export const initialTheme = createTheme({
       contrastText: '#000',
     },
   },
-});
-
-
+})
