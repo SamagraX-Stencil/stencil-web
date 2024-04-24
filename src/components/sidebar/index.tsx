@@ -77,6 +77,7 @@ export const Sidebar: FC<{
     //@ts-ignore
     <Box
       sx={{ width: 250, background: theme?.primary?.dark }}
+      className="css-4t3x6l-MuiPaper-root-MuiDrawer-paper"
       role="presentation"
       onClick={onToggle}
     >
@@ -91,8 +92,8 @@ export const Sidebar: FC<{
         </ListItem>
         {sidebar.map((page) => (
           <ListItem key={page.label} disablePadding>
-            <Link to={page.path} style={{ textDecoration: 'none' }}>
-              {' '}
+            <Link to={page.path} style={{ textDecoration: "none" }}>
+              {" "}
               {/* <Link href={page.path} underline="none"> */}
               <ListItemButton>
                 <ListItemIcon style={{ color: theme?.primary?.light }}>
@@ -118,27 +119,27 @@ export const Sidebar: FC<{
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <Link to={'/molecules'} style={{ textDecoration: 'none' }}>
+          <Link to={"/molecules"} style={{ textDecoration: "none" }}>
             {/* <Link href={`/molecules`} underline="none"> */}
             <ListItemButton>
               <ListItemIcon style={{ color: theme?.primary?.light }}>
                 <GridViewIcon />
               </ListItemIcon>
               <ListItemText
-                primary={'Molecules'}
+                primary={"Molecules"}
                 style={{ color: theme?.primary?.light }}
               />
             </ListItemButton>
           </Link>
         </ListItem>
         <ListItem disablePadding>
-          <Link to={'/admin'} style={{ textDecoration: 'none' }}>
+          <Link to={"/admin"} style={{ textDecoration: "none" }}>
             <ListItemButton>
               <ListItemIcon style={{ color: theme?.primary?.light }}>
-                {getIcon('admin')}
+                {getIcon("admin")}
               </ListItemIcon>
               <ListItemText
-                primary={'Admin'}
+                primary={"Admin"}
                 style={{ color: theme?.primary?.light }}
               />
             </ListItemButton>
@@ -158,7 +159,7 @@ export const Sidebar: FC<{
         ))} */}
       </List>
     </Box>
-  )
+  );
 
   return (
     <div>
