@@ -13,6 +13,7 @@ import { ComponentPicker } from './componentPicker';
 import { TranslationInput } from "./translationInput";
 
 const BotUICreate = (props: any) => {
+  const botName = window?.location?.href?.split('/')?.[window?.location?.href?.split('/')?.length - 1];
   const [state, setState] = React.useState({});
   const [deploymentStatus, setDeploymentStatus] = React.useState();
   const [isLoading,setIsLoading] = React.useState(true);
@@ -28,11 +29,13 @@ const BotUICreate = (props: any) => {
   }, []);
 
   const fetchConfig = async () => {
+    console.log({botName})
+    if(!botName) return {};
     try {
       let config = {
         method: 'get',
         maxBodyLength: Infinity,
-        url: `${process.env.NEXT_PUBLIC_PWA_DEPLOYER_URL}/deployment/config/${sessionStorage.getItem('botId')}`,
+        url: `${process.env.NEXT_PUBLIC_PWA_DEPLOYER_URL}/deployment/config/${botName}`,
         headers: {
           accept: 'application/json',
         },
@@ -62,13 +65,9 @@ const BotUICreate = (props: any) => {
     try {
       let config = {
         method: 'post',
-        url: `${process.env.NEXT_PUBLIC_PWA_DEPLOYER_URL}/deployment/config/${sessionStorage.getItem('botId')}`,
+        url: `${process.env.NEXT_PUBLIC_PWA_DEPLOYER_URL}/deployment/config/${botName}`,
         headers: {
           accept: 'application/json',
-          Authorization: `${
-            //@ts-ignore
-            JSON.parse(localStorage.getItem('loginData' || '{}'))?.result?.token || ''
-          }`,
         },
         data: {
           config: JSON.parse(jsonString),

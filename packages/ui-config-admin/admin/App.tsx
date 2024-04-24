@@ -6,11 +6,16 @@ import { Toaster } from 'react-hot-toast';
 import botUIConfig from './resources/botUIConfig';
 
 const App = () => {
-  const option = {
-    name: 'Bot UI Config',
+  const options = [{
+    name: 'allMoleculesApp',
     resource: 'botUIConfig',
-    props: botUIConfig,
-  };
+    props: botUIConfig
+  },
+  {
+    name: 'bot',
+    resource: 'botUIConfig',
+    props: botUIConfig
+  }];
 
   return (
     <>
@@ -19,7 +24,13 @@ const App = () => {
         layout={Layout}
         theme={lightTheme}
         defaultTheme="light">
-        <Resource key="1" name={option?.resource} {...option?.props} />
+        {options.map((option) => (
+          <Resource
+            key={option.name}
+            name={option.name}
+            {...option.props}
+          />
+        ))}
       </Admin>
       <style>
         {`

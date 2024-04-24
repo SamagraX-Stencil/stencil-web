@@ -6,10 +6,17 @@ const MyMenu = () => {
   return (
     <Menu>
       <Menu.Item
-        key="botUIConfig"
-        to="/botUIConfig"
+        key="allMoleculesApp"
+        to="/allMoleculesApp"
         state={{ _scrollToTop: true }}
-        primaryText="Bot UI Config"
+        primaryText="All Molecules App"
+        leftIcon={<SmartToyIcon />}
+      />
+      <Menu.Item
+        key="Bot"
+        to="/bot"
+        state={{ _scrollToTop: true }}
+        primaryText="Bot"
         leftIcon={<SmartToyIcon />}
       />
     </Menu>

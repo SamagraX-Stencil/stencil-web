@@ -24,14 +24,14 @@ export const ComponentPicker = ({ value, onChange,state }: any) => {
   
     const getFormElement = React.useCallback(
       (option: any, changeHandler: any, value: any) => {
-      if(value?.props?.keyName === 'faqs')  console.log("hola2:",{ keyname:option.keyName, defaultValue: option.defaultValue, value,vv:state.component?.[value?.props?.keyName]?.[option.keyName],state });
+      if(value?.props?.keyName === 'faqs')  console.log("hola2:",{ keyname:option.keyName, defaultValue: option.defaultValue, value,vv:state?.component?.[value?.props?.keyName]?.[option.keyName],state });
         switch (option.componentType) { 
           case 'textInput':
             return (
               <TextInput
-                key={`${state.component?.[value?.props?.keyName]}-${option.keyName}`}
+                key={`${state?.component?.[value?.props?.keyName]}-${option.keyName}`}
                 label={option.componentName}
-                defaultValue={state.component?.[value?.props?.keyName]?.[option.keyName] ?? option.defaultValue}
+                defaultValue={state?.component?.[value?.props?.keyName]?.[option.keyName] ?? option.defaultValue}
                 source={option.keyName}
                 onChange={(e) => changeHandler(e, value)}
                 style={{ width: '35vw' }}
@@ -41,7 +41,7 @@ export const ComponentPicker = ({ value, onChange,state }: any) => {
             return (
               <NumberInput
                 label={option.componentName}
-                defaultValue={state.component?.[value?.props?.keyName]?.[option.keyName] ?? option.defaultValue}
+                defaultValue={state?.component?.[value?.props?.keyName]?.[option.keyName] ?? option.defaultValue}
                 source={option.keyName}
                 onChange={(e) => changeHandler(e, value)}
               />
