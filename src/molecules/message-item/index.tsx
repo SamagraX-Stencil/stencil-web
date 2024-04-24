@@ -126,32 +126,18 @@ const MessageItem: FC<MessageItemPropType> = ({
             maxWidth: '90vw',
           }}
         >
-          <div
-            className={
-              content?.data?.position === 'right'
-                ? styles.messageTriangleRight
-                : styles.messageTriangleLeft
-            }
-            style={
-              content?.data?.position === 'right'
-                ? {
-                    borderColor: `${theme?.primary?.main} transparent transparent transparent`,
-                  }
-                : {
-                    borderColor: `${themeColor.primaryColor.value} transparent transparent transparent`,
-                  }
-            }
-          ></div>
           <Bubble
             type="text"
             style={
               content?.data?.position === 'right'
                 ? {
                     background: theme?.primary?.main,
+                    borderRadius: '10px 10px 0 25px',
                     boxShadow: '0 3px 8px rgba(0,0,0,.24)',
                   }
                 : {
                     background: themeColor.primaryColor.value,
+                    borderRadius: '10px 10px 10px 0',
                     boxShadow: '0 3px 8px rgba(0,0,0,.24)',
                   }
             }
