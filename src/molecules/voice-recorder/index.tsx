@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import styles from './styles.module.css'
 import toast from 'react-hot-toast'
-import config from './config.json'
-import MicIcon from '@mui/icons-material/Mic';
-import { useColorPalates } from '../theme-provider/hooks';
+import MicIcon from '@mui/icons-material/Mic'
+import { useColorPalates } from '../theme-provider/hooks'
+import { useUiConfig } from '../../hook/useConfig'
 
 interface VoiceRecorder {
   setInputMsg: (msg: string) => void
@@ -16,29 +16,29 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
   tapToSpeak,
   includeDiv = false,
 }) => {
+  const config = useUiConfig('component', 'voiceRecorder')
+
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null)
   const [isErrorClicked, setIsErrorClicked] = useState(false)
   const [recorderStatus, setRecorderStatus] = useState('idle')
 
-  const voiceMinDecibels: number = config.component.voiceMinDecibels
-  const delayBetweenDialogs: number = config.component.delayBetweenDialogs
-  const dialogMaxLength: number = config.component.dialogMaxLength
-  const [isRecording,setIsRecording] = useState(config.component.isRecording)
+  const voiceMinDecibels: number = config.voiceMinDecibels
+  const delayBetweenDialogs: number = config.delayBetweenDialogs
+  const dialogMaxLength: number = config.dialogMaxLength
+  const [isRecording, setIsRecording] = useState(config.isRecording)
 
-  
-
-  const startRecording =  () => {
-    if(!isRecording){
+  const startRecording = () => {
+    if (!isRecording) {
       setIsRecording(true)
       record()
     }
   }
 
   const stopRecording = () => {
-    if(isRecording){
+    if (isRecording) {
       if (mediaRecorder !== null) {
         mediaRecorder.stop()
-      setIsRecording(false)
+        setIsRecording(false)
         setMediaRecorder(null)
       }
     }
@@ -122,17 +122,16 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
   const makeComputeAPICall = async (blob: Blob) => {
     try {
       setRecorderStatus('processing')
-      toast.success(`${config.component.waitMessage}`)
-      // Define the API endpoint and make api call here 
-      if(blob){
-        //set api result in setInputMsg 
+      toast.success(`${config.waitMessage}`)
+      // Define the API endpoint and make api call here
+      if (blob) {
+        //set api result in setInputMsg
         setInputMsg('')
       }
-
     } catch (error) {
       console.error(error)
       setRecorderStatus('error')
-      toast.error(`${config.component.recorderErrorMessage}`)
+      toast.error(`${config.recorderErrorMessage}`)
       // Set isErrorClicked to true when an error occurs
       setIsErrorClicked(false)
       setTimeout(() => {
@@ -141,7 +140,6 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
           setRecorderStatus('idle')
         }
       }, 2500)
-    
     }
   }
 
@@ -159,13 +157,13 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
         ) : (
           <div className={styles.center}>
             {recorderStatus === 'processing' ? (
-              <RecorderControl status={'processing'} onClick={()=>{}} />
+              <RecorderControl status={'processing'} onClick={() => {}} />
             ) : recorderStatus === 'error' ? (
               <RecorderControl
                 status={'error'}
                 onClick={() => {
-                  setIsErrorClicked(true);
-                  startRecording();
+                  setIsErrorClicked(true)
+                  startRecording()
                 }}
                 includeDiv={includeDiv}
               />
@@ -174,8 +172,8 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
                 <RecorderControl
                   status={'start'}
                   onClick={() => {
-                    setIsErrorClicked(true);
-                    startRecording();
+                    setIsErrorClicked(true)
+                    startRecording()
                   }}
                   includeDiv={includeDiv}
                   tapToSpeak={tapToSpeak}
@@ -186,46 +184,43 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
         )}
       </div>
     </div>
-  );
+  )
 }
 
 // includeDiv is being checked in render Function
 const RecorderControl: React.FC<{
-  status: string;
-  onClick?: () => void;
-  includeDiv?: boolean;
-  tapToSpeak?: boolean;
-}> = ({ status, onClick, includeDiv = true, tapToSpeak= false }) => {
+  status: string
+  onClick?: () => void
+  includeDiv?: boolean
+  tapToSpeak?: boolean
+}> = ({ status, onClick, includeDiv = true, tapToSpeak = false }) => {
   const handleClick = () => {
-    if(onClick){
-      onClick();
+    if (onClick) {
+      onClick()
     }
-  };
+  }
   const theme = useColorPalates()
-  let customStylesPulse = null;
-  let customStylesProcess = null;
-  let classPulse = "";
-  let classProcess = "";
-  
-  if(status === 'error') {
+  let customStylesPulse = null
+  let customStylesProcess = null
+  let classPulse = ''
+  let classProcess = ''
+
+  if (status === 'error') {
     customStylesPulse = {
       background: 'red',
-      border: '5px solid red'
+      border: '5px solid red',
     }
     classPulse = styles.pulseRing
-  }
-  else if(status === 'recording') {
+  } else if (status === 'recording') {
     customStylesPulse = {
       background: `${theme?.primary?.main}`,
-      border: `5px solid ${theme?.primary?.main}`
+      border: `5px solid ${theme?.primary?.main}`,
     }
     classPulse = styles.pulseRing
-    
-  }
-  else if(status === 'processing'){
+  } else if (status === 'processing') {
     // processing
     customStylesProcess = {
-      borderColor: `transparent transparent ${theme?.primary?.dark} ${theme?.primary?.dark}`
+      borderColor: `transparent transparent ${theme?.primary?.dark} ${theme?.primary?.dark}`,
     }
     classProcess = styles.loader
   }
@@ -235,33 +230,33 @@ const RecorderControl: React.FC<{
       <button
         onClick={handleClick}
         className={styles.btn}
-        style={{ 
-          cursor: 'pointer', 
+        style={{
+          cursor: 'pointer',
           backgroundColor: theme?.primary?.main,
           border: `1px solid ${theme?.primary?.main}`,
           display: 'flex',
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'center',
         }}
       >
-        
-        <div 
+        <div
           className={`${classPulse}`}
           style={{
-            ...customStylesPulse
-          }}  
+            ...customStylesPulse,
+          }}
         ></div>
-        <MicIcon sx={{
-          color: 'white',
-          display: 'block'
-        }}/>
-        <div 
+        <MicIcon
+          sx={{
+            color: 'white',
+            display: 'block',
+          }}
+        />
+        <div
           className={`${classProcess}`}
           style={{
-            ...customStylesProcess
-          }}  
+            ...customStylesProcess,
+          }}
         ></div>
-        
       </button>
       {tapToSpeak && (
         <p style={{ color: 'black', fontSize: '12px', marginTop: '4px' }}>
@@ -270,39 +265,38 @@ const RecorderControl: React.FC<{
       )}
     </div>
   ) : (
-
     <button
       onClick={handleClick}
       className={styles.btn}
-      style={{ 
-        cursor: 'pointer', 
+      style={{
+        cursor: 'pointer',
         background: theme?.primary?.main,
         border: `1px solid ${theme?.primary?.main}`,
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
       }}
     >
-      
-      <div 
+      <div
         className={`${classPulse}`}
         style={{
           ...customStylesPulse,
-        }} 
+        }}
       ></div>
-      <MicIcon sx={{
+      <MicIcon
+        sx={{
           color: 'white',
-          display: 'block'
+          display: 'block',
         }}
       />
-      <div 
+      <div
         className={`${classProcess}`}
         style={{
-          ...customStylesProcess
-        }} 
+          ...customStylesProcess,
+        }}
       ></div>
     </button>
-  );
-};
+  )
+}
 
 export default VoiceRecorder

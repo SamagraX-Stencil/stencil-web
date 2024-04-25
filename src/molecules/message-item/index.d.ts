@@ -1,4 +1,5 @@
 export type MessageItemPropType = {
-  message: any;
-  config: any;
-};
+  message: any
+  themeColor: any
+  chatUi: any
+}
