@@ -1,22 +1,25 @@
-import React, { useCallback, useState } from "react";
-import styles from "./index.module.css";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import CircularProgress from "@mui/material/CircularProgress";
-import { toast } from "react-hot-toast";
-import { useColorPalates } from "../theme-provider/hooks";
-import { useConfig } from "../../hook/useConfig";
+
+
+import React, { useCallback, useState } from 'react'
+import styles from './index.module.css'
+import Box from '@mui/material/Box'
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
+import CircularProgress from '@mui/material/CircularProgress'
+import { toast } from 'react-hot-toast'
+import { useColorPalates } from '../theme-provider/hooks'
+import { useUiConfig } from '../../hook/useConfig'
 
 const LoginMobileAadharPage: React.FC = () => {
-  const [isAadharClicked, setIsAadharClicked] = useState(false);
-  const [input, setInput] = useState("");
-  const [valid, setValid] = useState(true);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [loading, setLoading] = useState(false);
-  const theme = useColorPalates();
-  const config = useConfig("component", "loginMobileAadharPage");
+  const [isAadharClicked, setIsAadharClicked] = useState(false)
+  const [input, setInput] = useState('')
+  const [valid, setValid] = useState(true)
+  const [errorMessage, setErrorMessage] = useState('')
+  const [loading, setLoading] = useState(false)
+  const theme = useColorPalates()
+  const config = useUiConfig('component', 'loginMobileAadharPage')
+
 
   const handleInput = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {

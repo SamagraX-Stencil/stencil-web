@@ -6,10 +6,10 @@ import Rating from '@mui/material/Rating'
 import Button from '@mui/material/Button'
 import { toast } from 'react-hot-toast'
 import { useColorPalates } from '../theme-provider/hooks'
-import { useConfig } from '../../hook/useConfig'
+import { useUiConfig } from '../../hook/useConfig'
 
 const FeedbackPage: React.FC = () => {
-  const config = useConfig('component', 'feedbackPage')
+  const config = useUiConfig('component', 'feedbackPage')
 
   const [star, setStar] = useState(1)
   const [review, setReview] = useState('')
