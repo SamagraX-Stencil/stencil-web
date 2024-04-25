@@ -5,10 +5,10 @@ import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined'
 import { toast } from 'react-hot-toast'
 import { CircularProgress, Divider } from '@mui/material'
 import { useColorPalates } from '../theme-provider/hooks'
-import { useConfig } from '../../hook/useConfig'
+import { useUiConfig } from '../../hook/useConfig'
 
 const ShareButtons = () => {
-  const config = useConfig('component', 'shareButton')
+  const config = useUiConfig('component', 'shareButton')
 
   const theme = useColorPalates()
 

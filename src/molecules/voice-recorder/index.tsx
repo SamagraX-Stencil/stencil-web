@@ -3,7 +3,7 @@ import styles from './styles.module.css'
 import toast from 'react-hot-toast'
 import MicIcon from '@mui/icons-material/Mic'
 import { useColorPalates } from '../theme-provider/hooks'
-import { useConfig } from '../../hook/useConfig'
+import { useUiConfig } from '../../hook/useConfig'
 
 interface VoiceRecorder {
   setInputMsg: (msg: string) => void
@@ -16,7 +16,7 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
   tapToSpeak,
   includeDiv = false,
 }) => {
-  const config = useConfig('component', 'voiceRecorder')
+  const config = useUiConfig('component', 'voiceRecorder')
 
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null)
   const [isErrorClicked, setIsErrorClicked] = useState(false)

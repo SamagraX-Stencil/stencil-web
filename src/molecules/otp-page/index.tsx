@@ -7,10 +7,10 @@ import CircularProgress from '@mui/material/CircularProgress'
 import { toast } from 'react-hot-toast'
 import { OTPInput } from '../otp-input'
 import { useColorPalates } from '../theme-provider/hooks'
-import { useConfig } from '../../hook/useConfig'
+import { useUiConfig } from '../../hook/useConfig'
 
 const OtpPage: React.FC = () => {
-  const config = useConfig('component', 'otpPage')
+  const config = useUiConfig('component', 'otpPage')
 
   const [otp, setOtp] = useState('')
   const [loading, setLoading] = useState(false)

@@ -1,10 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import ComingSoonPage from './index'
 import { vi } from 'vitest'
-import { useConfig } from '../../hook/useConfig'
+import { useUiConfig } from '../../hook/useConfig'
 
 describe('Coming Soon component', () => {
-  const config = useConfig('component', 'comingSoon')
+  const config = useUiConfig('component', 'comingSoon')
 
   test('renders without crashing', () => {
     render(<ComingSoonPage />)
