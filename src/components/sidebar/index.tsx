@@ -76,7 +76,7 @@ export const Sidebar: FC<{
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
     <Box
-      sx={{ width: 250, background: theme?.primary?.dark }}
+      sx={{ width: 250, height:"100vh", background: theme?.primary?.dark }}
       className="css-4t3x6l-MuiPaper-root-MuiDrawer-paper"
       role="presentation"
       onClick={onToggle}
