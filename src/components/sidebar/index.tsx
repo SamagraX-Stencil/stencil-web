@@ -76,6 +76,7 @@ export const Sidebar: FC<{
   console.log({ _theme: theme })
 
   return (
+    <div>
       <Drawer
         open={isOpen}
         onClose={onToggle}
@@ -84,7 +85,7 @@ export const Sidebar: FC<{
         <Box
           sx={{ width: 250, height: "100vh" }}
           role="presentation"
-          onClick={onToggle}
+          onClick={() => onToggle(!isOpen)}
         >
           <List>
             <ListItem disablePadding>
@@ -150,5 +151,6 @@ export const Sidebar: FC<{
           </List>
         </Box>
       </Drawer>
+    </div>
   )
 }
