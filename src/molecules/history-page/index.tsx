@@ -40,6 +40,10 @@ const HistoryPage: FC = () => {
     []
   )
 
+  const demoFunction = () => {
+    console.log('hello')
+  }
+
   useEffect(() => {
     setIsFetching(true)
     const historyList = map(sample, (chatItem: ChatItem) => ({
