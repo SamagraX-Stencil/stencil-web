@@ -125,7 +125,7 @@ export const Sidebar = ({
                     <ListItemIcon sx={{color: theme.primary.light}}>
                       <AccountCircleIcon sx={{color: theme.primary.light}}/>
                     </ListItemIcon>
-                    <ListItemText primary={config.profileText} />
+                    <ListItemText primary={config.profileText} sx={{color: theme.primary.light}} />
                   </ListItemButton>
                 </ListItem>
               )}
@@ -152,7 +152,7 @@ export const Sidebar = ({
                     <ListItemIcon>
                       <LogoutIcon sx={{color: theme.primary.light}} />
                     </ListItemIcon>
-                    <ListItemText primary={config.logoutButtonLabel} />
+                    <ListItemText primary={config.logoutButtonLabel} sx={{color: theme.primary.light}} />
                     <ChevronRightIcon sx={{color: theme.primary.light}} />
                   </ListItemButton>
                 </ListItem>
