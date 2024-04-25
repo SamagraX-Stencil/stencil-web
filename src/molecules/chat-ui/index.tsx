@@ -142,6 +142,7 @@ const ChatUI: React.FC = () => {
           transliterationProvider: config.transliterationProvider,
           transliterationSuggestions: config.transliterationSuggestions,
         }}
+        // @ts-ignore
         messages={msgToRender}
         renderMessageContent={(props) => (
           <MessageItem message={props} themeColor={theme} chatUi={config} />
