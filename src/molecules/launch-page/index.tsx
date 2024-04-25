@@ -1,23 +1,28 @@
-import { useColorPalates } from '../../molecules/theme-provider/hooks';
-import styles from './index.module.css';
-import config from './config.json';
+import { useUiConfig } from '../../hook/useConfig'
+import { useColorPalates } from '../../molecules/theme-provider/hooks'
+import styles from './index.module.css'
+
 // import Image from 'next/image';
 
- const LaunchPage=()=> {
-  const theme = useColorPalates();
+const LaunchPage = () => {
+  const config = useUiConfig('component', 'launchPage')
+
+  const theme = useColorPalates()
   return (
-    <div className={`${styles.container}`} style={{background: theme?.primary?.main}}>
+    <div
+      className={`${styles.container}`}
+      style={{ background: theme?.primary?.main }}
+    >
       <img
         className={styles.loginImage}
-        src={config?.component?.logo}
+        src={config?.logo}
         alt="KrushakOdisha"
         width={220}
         height={233}
       />
-      <span>{config?.component?.label}</span>
+      <span>{config?.label}</span>
     </div>
-  );
+  )
 }
-
 
 export default LaunchPage
