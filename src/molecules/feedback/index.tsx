@@ -98,12 +98,12 @@ const FeedbackPage: React.FC = () => {
               variant="contained"
               data-testid="ratingBtn"
               sx={{
-                mt: 2,
+                marginTop:10,
                 backgroundColor: `${theme.primary?.dark}`,
                 fontWeight: 'bold',
                 borderRadius: '10rem',
-                fontSize: '10px',
-                p: 1.5,
+                fontSize: '12px',
+                p: 2.5,
                 '&:hover': {
                   backgroundColor: `${theme.primary?.main}`,
                 },
@@ -148,8 +148,8 @@ const FeedbackPage: React.FC = () => {
                 backgroundColor: `${theme.primary?.dark}`,
                 fontWeight: 'bold',
                 borderRadius: '10rem',
-                fontSize: '10px',
-                p: 1.5,
+                fontSize: '12px',
+                p: 2.5,
                 '&:hover': {
                   backgroundColor: `${theme.primary?.main}`,
                 },
