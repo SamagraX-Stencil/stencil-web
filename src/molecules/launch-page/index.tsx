@@ -1,13 +1,10 @@
-import { useUiConfig } from '../../hook/useConfig'; // Updated import statement
+import { useUiConfig } from '../../hook/useConfig'; 
 import { useColorPalates } from '../../molecules/theme-provider/hooks';
 import styles from './index.module.css';
-import krushakOdishaImage from './krushak_odisha.png';
 
-// Inside the component:
 const LaunchPage = () => {
   const config = useUiConfig('component', 'launchPage');
-      
-      
+
   const theme = useColorPalates();
   return (
     <div
@@ -15,7 +12,7 @@ const LaunchPage = () => {
       style={{ background: theme?.primary?.main }}
     >
       <img
-        src={krushakOdishaImage}
+        src={config.logo}
         alt="KrushakOdisha"
         width={220}
         height={233}
