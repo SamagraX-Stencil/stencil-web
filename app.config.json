@@ -175,7 +175,7 @@
     },
     "launchPage": {
       "allowOverride": false,
-      "logo": "src/pages/launch-page/krushak_odisha.png",
+      "logo": "src/molecules/launch-page/krushak_odisha.png",
       "label": "ଆମ କୃଷି ଏ ଆଇ ଚାଟ୍ ବୋଟ୍"
     },
     "chatUi": {

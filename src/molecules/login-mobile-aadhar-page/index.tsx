@@ -101,7 +101,7 @@ const LoginMobileAadharPage: React.FC = () => {
           style={{ background: theme?.primary?.main }}
         >
           <div className={styles.logo}>
-            <img src={config.logo} width={150} height={40} alt="" />
+            <img src={config.logo} width={90} height={90} alt="" />
           </div>
         </div>
         <div className={styles.rightColumn}>
