@@ -1,4 +1,4 @@
-.container{
+.container {
   background-color: var(--primarygreen);
   min-height: 100vh;
   min-width: 100vw;
@@ -12,7 +12,7 @@
 .container span {
   font-family: Mulish-bold;
   font-size: 36px;
-  font-weight: 700; 
+  font-weight: 700;
   color: var(--tertiarygreen);
+  margin: 0 1.5rem;
 }
-
