@@ -1,21 +1,21 @@
-import { Navbar } from './components/navbar'
-import { Route, Routes } from 'react-router-dom'
-import LoginPage from './molecules/login-mobile-aadhar-page'
-import { Toaster } from 'react-hot-toast'
-import Components from './components'
-import OtpPage from './molecules/otp-page'
-import HistoryPage from './molecules/history-page'
+import { Navbar } from "./components/navbar";
+import { Route, Routes } from "react-router-dom";
+import LoginPage from "./molecules/login-mobile-aadhar-page";
+import { Toaster } from "react-hot-toast";
+import Components from "./components";
+import OtpPage from "./molecules/otp-page";
+import HistoryPage from "./molecules/history-page";
 
-import ComingSoonPage from './molecules/coming-soon-page'
-import DowntimePage from './molecules/downtime-page'
-import FAQPage from './molecules/faq-page'
+import ComingSoonPage from "./molecules/coming-soon-page";
+import DowntimePage from "./molecules/downtime-page";
+import FAQPage from "./molecules/faq-page";
 
-import LaunchPage from './molecules/launch-page'
-import HomePage from './molecules/home-page'
-import FeedbackPage from './molecules/feedback'
-import ShareButtons from './molecules/share-buttons'
-import { ChatUI } from './molecules/chat-ui'
-import AdminRoute from './components/InputForm'
+import LaunchPage from "./molecules/launch-page";
+import HomePage from "./molecules/home-page";
+import FeedbackPage from "./molecules/feedback";
+import ShareButtons from "./molecules/share-buttons";
+import ChatUI from "./molecules/chat-ui";
+import AdminRoute from "./components/InputForm";
 
 function App() {
   return (
@@ -41,6 +41,6 @@ function App() {
         </Routes>
       </>
     </>
-  )
+  );
 }
-export default App
+export default App;
