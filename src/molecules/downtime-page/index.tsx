@@ -67,7 +67,7 @@ const DowntimePage: React.FC = () => {
         </Button>
       </Box>
 
-      <Box display="flex" justifyContent="center" marginTop={10}>
+      <Box display="flex" justifyContent="center" marginTop={3}>
         <Button
           className={styles.roundedButton}
           onClick={handleRefreshClick}
