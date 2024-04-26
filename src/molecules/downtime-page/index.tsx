@@ -1,115 +1,97 @@
-import React, { useCallback } from 'react'
-import styles from './index.module.css'
-import { Avatar, Box, Button, Typography } from '@mui/material'
-import CallRoundedIcon from '@mui/icons-material/Call'
-import { useColorPalates } from '../../molecules/theme-provider/hooks'
-import { useUiConfig } from '../../hook/useConfig'
+import React, { useCallback } from "react";
+import { Box, Button, Typography, Avatar } from "@mui/material";
+import CallRoundedIcon from "@mui/icons-material/Call";
+import { useColorPalates } from "../../molecules/theme-provider/hooks";
+import { useUiConfig } from "../../hook/useConfig";
+import styles from "./index.module.css";
 
 const DowntimePage: React.FC = () => {
-  const config = useUiConfig('component', 'downtime')
+  const config = useUiConfig("component", "downtime");
+  const theme = useColorPalates();
 
-  const theme = useColorPalates()
   const handleRefreshClick = useCallback(() => {
-    // window?.location.reload()
-    console.log(config.refreshText ?? 'Contact Details')
-  }, [])
+    console.log(config.refreshText ?? "Reload Page");
+  }, [config.refreshText]);
+
   const handlePreviousClick = useCallback(() => {
-    // window?.history.back();
-    console.log(config.previousPageText ?? 'Contact Details')
-  }, [])
+    console.log(config.previousPageText ?? "Previous Page");
+  }, [config.previousPageText]);
 
   const handleContactUserClick = useCallback(() => {
-    console.log(config.contactLink ?? 'Contact Details')
-  }, [])
+    console.log(config.contactLink ?? "Contact Details");
+  }, [config.contactLink]);
 
   return (
-    <>
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-      ></meta>
-      <Box className={styles.container}>
-        <Box>
-          <Typography
-            fontSize="1.5rem"
-            fontWeight={600}
-            color={theme?.primary?.main}
-          >
-            {config.title ?? 'Downtime'}
-          </Typography>
-        </Box>
-        <Box my={4}>
-          <img
-            src={
-              config.downTimeImage ??
-              'src/molecules/downtime-page/assets/downTimeGIF.gif'
-            }
-            alt="downtimeGif"
-            className={styles.imageContainer}
-          />
-        </Box>
-        <Box>
-          <Typography variant="h6" fontWeight={600} color={theme?.grey?.[600]}>
-            {config.supportingText ?? 'Description'}
-          </Typography>
-        </Box>
-        <Box gap={1} display={'flex'} my={2}>
-          <Box>
-            <Avatar
-              sx={{ bgcolor: theme.primary.main, width: '7vh', height: '7vh' }}
-              alt="Call Icon"
-            >
-              <CallRoundedIcon fontSize="large" />
-            </Avatar>
-          </Box>
-          <Button
-            variant={'text'}
-            sx={{ textTransform: 'none' }}
-            onClick={handleContactUserClick}
-          >
-            <Typography
-              variant="h5"
-              color={theme?.grey?.[600]}
-              fontWeight={600}
-              sx={{ textDecoration: 'underline' }}
-            >
-              {config.contactLink ?? 'Contact Details'}
-            </Typography>
-          </Button>
-        </Box>
-        <Box display={"flex"} justifyContent={"space-around"} width={"75%"} my={4}>
-          <Button
-            className={styles.roundedButton}
-            onClick={handleRefreshClick}
-            variant="contained"
-            size="large"
-            style={{
-              textTransform: 'none',
-              backgroundColor: theme?.grey?.[600],
-            }}
-          >
-            <Typography variant="body1">
-              {config.refreshText ?? 'Reload Page'}
-            </Typography>
-          </Button>
-          <Button
-            className={styles.roundedButton}
-            variant="contained"
-            size="large"
-            style={{
-              textTransform: 'none',
-              backgroundColor: theme?.primary?.main,
-            }}
-            onClick={handlePreviousClick}
-          >
-            <Typography variant="body1">
-              {config.previousPageText ?? 'Previous Page'}
-            </Typography>
-          </Button>
-        </Box>
-      </Box>
-    </>
-  )
-}
+    <Box className={styles.container}>
+      <Typography
+        variant="h4"
+        fontWeight={600}
+        textAlign="center"
+        color={theme?.primary?.main}
+      >
+        {config.title ?? "Downtime"}
+      </Typography>
 
-export default DowntimePage
+      <Box my={4} textAlign="center">
+        <img
+          src={config.downTimeImage}
+          alt="downtimeGif"
+          className={styles.imageContainer}
+          style={{ maxWidth: "100%", height: "auto" }}
+        />
+      </Box>
+
+      <Typography
+        fontWeight={600}
+        fontSize={18}
+        color={theme?.grey?.[600]}
+        textAlign="center"
+        mb={2}
+      >
+        {config.supportingText ?? "Description"}
+      </Typography>
+
+      <Box display="flex" alignItems="center" justifyContent="center" mb={4}>
+        <Avatar sx={{ bgcolor: theme.primary.main, }}>
+          <CallRoundedIcon fontSize="small" />
+        </Avatar>
+        <Button
+          variant="text"
+          sx={{ textTransform: "none", ml: 1 }}
+          onClick={handleContactUserClick}
+        >
+          <Typography fontSize={17} fontWeight={600}>
+            {config.contactLink ?? "Contact Details"}
+          </Typography>
+        </Button>
+      </Box>
+
+      <Box display="flex" justifyContent="center" marginTop={10}>
+        <Button
+          className={styles.roundedButton}
+          onClick={handleRefreshClick}
+          variant="contained"
+          size="large"
+          style={{ backgroundColor: theme?.grey?.[600], marginRight: "10px" }}
+        >
+          <Typography variant="body1" fontWeight={"bold"}>
+            {config.refreshText ?? "Reload Page"}
+          </Typography>
+        </Button>
+        <Button
+          className={styles.roundedButton}
+          variant="contained"
+          size="medium"
+          style={{ backgroundColor: theme?.primary?.main }}
+          onClick={handlePreviousClick}
+        >
+          <Typography variant="body1" fontWeight={"bold"}>
+            {config.previousPageText ?? "Previous Page"}
+          </Typography>
+        </Button>
+      </Box>
+    </Box>
+  );
+};
+
+export default DowntimePage;
