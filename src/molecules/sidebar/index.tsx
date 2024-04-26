@@ -14,6 +14,8 @@ import HistoryIcon from '@mui/icons-material/History'
 import HelpIcon from '@mui/icons-material/Help'
 import FeedbackIcon from '@mui/icons-material/Feedback'
 import LogoutIcon from '@mui/icons-material/Logout'
+import { useColorPalates } from '../theme-provider/hooks'
+
 
 export const Sidebar = ({
   isOpen,
@@ -46,10 +48,24 @@ export const Sidebar = ({
   const handleItemClick = () => {
     onToggle()
   }
+  const theme = useColorPalates()
 
   return (
     <div>
-      <Drawer open={isOpen} onClose={onToggle}>
+      <Drawer
+        open={isOpen}
+        onClose={onToggle}
+        PaperProps={{
+          sx: {
+            backgroundColor: theme.primary.dark,
+            color: 'white',
+            '& .MuiDrawer-paper': {
+              backgroundColor: theme.primary.dark,
+              color: 'white',
+            },
+          },
+        }}
+      >
         <Box sx={{ width: 250 }} role="presentation">
           {config && (
             <List>
@@ -57,7 +73,7 @@ export const Sidebar = ({
                 <ListItem disablePadding>
                   <ListItemButton onClick={handleItemClick}>
                     <ListItemIcon>
-                      <ArrowBackIcon />
+                      <ArrowBackIcon sx={{color: theme.primary.light}}/>
                     </ListItemIcon>
                     <div
                       style={{
@@ -106,10 +122,10 @@ export const Sidebar = ({
               {config.showProfileIcon && (
                 <ListItem disablePadding>
                   <ListItemButton>
-                    <ListItemIcon>
-                      <AccountCircleIcon />
+                    <ListItemIcon sx={{color: theme.primary.light}}>
+                      <AccountCircleIcon sx={{color: theme.primary.light}}/>
                     </ListItemIcon>
-                    <ListItemText primary={config.profileText} />
+                    <ListItemText primary={config.profileText} sx={{color: theme.primary.light}} />
                   </ListItemButton>
                 </ListItem>
               )}
@@ -121,9 +137,9 @@ export const Sidebar = ({
                     sx={{ paddingTop: '10px', paddingBottom: '10px' }}
                   >
                     <ListItemButton>
-                      <ListItemIcon>{getIconComponent(link.icon)}</ListItemIcon>
-                      <ListItemText primary={link.label} />
-                      <ChevronRightIcon />
+                      <ListItemIcon sx={{color: theme.primary.light}}>{getIconComponent(link.icon)}</ListItemIcon>
+                      <ListItemText primary={link.label} sx={{color: theme.primary.light}} />
+                      <ChevronRightIcon sx={{color: theme.primary.light}} />
                     </ListItemButton>
                   </ListItem>
                   <Divider />
@@ -134,10 +150,10 @@ export const Sidebar = ({
                 <ListItem disablePadding>
                   <ListItemButton>
                     <ListItemIcon>
-                      <LogoutIcon />
+                      <LogoutIcon sx={{color: theme.primary.light}} />
                     </ListItemIcon>
-                    <ListItemText primary={config.logoutButtonLabel} />
-                    <ChevronRightIcon />
+                    <ListItemText primary={config.logoutButtonLabel} sx={{color: theme.primary.light}} />
+                    <ChevronRightIcon sx={{color: theme.primary.light}} />
                   </ListItemButton>
                 </ListItem>
               )}
@@ -150,13 +166,14 @@ export const Sidebar = ({
 }
 
 const getIconComponent = (iconName: string) => {
+  const theme = useColorPalates()
   switch (iconName) {
     case 'HistoryIcon':
-      return <HistoryIcon />
+      return <HistoryIcon sx={{color: theme.primary.light}} />
     case 'HelpIcon':
-      return <HelpIcon />
+      return <HelpIcon sx={{color: theme.primary.light}} />
     case 'FeedbackIcon':
-      return <FeedbackIcon />
+      return <FeedbackIcon sx={{color: theme.primary.light}}/>
     default:
       return null
   }
