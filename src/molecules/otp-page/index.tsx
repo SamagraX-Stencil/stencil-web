@@ -1,60 +1,60 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import styles from './index.module.css'
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography'
-import CircularProgress from '@mui/material/CircularProgress'
-import { toast } from 'react-hot-toast'
-import { OTPInput } from '../otp-input'
-import { useColorPalates } from '../theme-provider/hooks'
-import { useUiConfig } from '../../hook/useConfig'
+import React, { useCallback, useEffect, useState } from "react";
+import styles from "./index.module.css";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import CircularProgress from "@mui/material/CircularProgress";
+import { toast } from "react-hot-toast";
+import { OTPInput } from "../otp-input";
+import { useColorPalates } from "../theme-provider/hooks";
+import { useUiConfig } from "../../hook/useConfig";
 
 const OtpPage: React.FC = () => {
-  const config = useUiConfig('component', 'otpPage')
+  const config = useUiConfig("component", "otpPage");
 
-  const [otp, setOtp] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [countdown, setCountdown] = useState(0)
-  const theme = useColorPalates()
-  const phNo = 9999999999 // update number here
+  const [otp, setOtp] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [countdown, setCountdown] = useState(0);
+  const theme = useColorPalates();
+  const phNo = 9999999999; // update number here
   const handleLogin = useCallback(
     (e: React.FormEvent) => {
-      e.preventDefault()
+      e.preventDefault();
       if (otp.length === config.otpLength) {
-        setLoading(true)
+        setLoading(true);
         setTimeout(() => {
-          setLoading(false)
-          toast.success(`Successfully logged in`)
-        }, 2000)
+          setLoading(false);
+          toast.success(`Successfully logged in`);
+        }, 2000);
       } else {
-        toast.error(`Please enter correct OTP`)
+        toast.error(`Please enter correct OTP`);
       }
     },
     [otp.length]
-  )
+  );
   const resendOtp = async () => {
     try {
-      setLoading(true)
+      setLoading(true);
       // Add api to resend otp here
-      setLoading(false)
-      setCountdown(config.resendOtpTimer)
-      toast.success('Otp Sent Again')
+      setLoading(false);
+      setCountdown(config.resendOtpTimer);
+      toast.success("Otp Sent Again");
     } catch (error) {
-      setLoading(false)
-      toast.error('Error Sending OTP')
+      setLoading(false);
+      toast.error("Error Sending OTP");
     }
-  }
+  };
 
   useEffect(() => {
     if (countdown > 0) {
       const timer = setTimeout(
         () => setCountdown((prevCountdown) => prevCountdown - 1),
         1000
-      )
-      return () => clearTimeout(timer)
+      );
+      return () => clearTimeout(timer);
     }
-  }, [countdown])
-  useEffect(() => setCountdown(config.resendOtpTimer), [])
+  }, [countdown]);
+  useEffect(() => setCountdown(config.resendOtpTimer), []);
   return (
     <>
       <meta
@@ -102,16 +102,16 @@ const OtpPage: React.FC = () => {
               onSubmit={handleLogin}
               sx={{
                 mt: 1,
-                width: '90%',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
+                width: "90%",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
               }}
             >
               <Box
                 sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
+                  display: "flex",
+                  flexDirection: "column",
                   gap: 2,
                 }}
               >
@@ -122,12 +122,12 @@ const OtpPage: React.FC = () => {
                   length={config.otpLength}
                 />
               </Box>
-              <div style={{ marginTop: '10px' }}>
+              <div style={{ marginTop: "10px" }}>
                 {countdown > 0 ? (
-
-                <Typography textAlign='center'>Please wait {countdown} seconds before resending OTP</Typography>
-                  ):(
-
+                  <Typography textAlign="center">
+                    Please wait {countdown} seconds before resending OTP
+                  </Typography>
+                ) : (
                   <>
                     <Typography variant="body2" align="center" color="#838BA1">
                       Didn't receive the OTP? &nbsp;
@@ -135,8 +135,8 @@ const OtpPage: React.FC = () => {
                         onClick={resendOtp}
                         style={{
                           color: theme.primary.main,
-                          fontWeight: 'bold',
-                          cursor: 'pointer',
+                          fontWeight: "bold",
+                          cursor: "pointer",
                         }}
                       >
                         Resend again
@@ -147,25 +147,25 @@ const OtpPage: React.FC = () => {
               </div>
               <div
                 style={{
-                  marginTop: '10px',
-                  marginBottom: '10px',
-                  display: 'flex',
-                  gap: '10px',
-                  width: '100%',
+                  marginTop: "10px",
+                  marginBottom: "10px",
+                  display: "flex",
+                  gap: "10px",
+                  width: "100%",
                 }}
               >
                 <Button
                   variant="contained"
                   type="button"
                   sx={{
-                    textTransform: 'none',
+                    textTransform: "none",
 
                     p: 1,
 
                     // background: config?.theme.secondaryColor.value,
-                    background: '#000',
-                    borderRadius: '10px',
-                    width: '50%',
+                    background: "#000",
+                    borderRadius: "10px",
+                    width: "50%",
                   }}
                 >
                   Back
@@ -174,14 +174,14 @@ const OtpPage: React.FC = () => {
                   type="submit"
                   variant="contained"
                   sx={{
-                    textTransform: 'none',
+                    textTransform: "none",
                     mt: 5,
                     mb: 4,
                     p: 1,
 
                     background: theme.primary.main,
-                    borderRadius: '10px',
-                    width: '50%',
+                    borderRadius: "10px",
+                    width: "50%",
                   }}
                   onClick={handleLogin}
                   disabled={loading}
@@ -189,7 +189,7 @@ const OtpPage: React.FC = () => {
                   {loading ? (
                     <CircularProgress size={24} color="inherit" />
                   ) : (
-                    'Login'
+                    "Login"
                   )}
                 </Button>
               </div>
@@ -198,7 +198,7 @@ const OtpPage: React.FC = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default OtpPage
+export default OtpPage;

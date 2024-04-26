@@ -41,7 +41,7 @@ const DowntimePage: React.FC = () => {
         </Box>
         <Box my={4}>
           <img
-            src={downtimeImage}
+            src={config.downTimeImage || downtimeImage}
             alt="downtimeGif"
             className={styles.imageContainer}
           />
