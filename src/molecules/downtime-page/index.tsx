@@ -11,15 +11,15 @@ const DowntimePage: React.FC = () => {
 
   const handleRefreshClick = useCallback(() => {
     console.log(config.refreshText ?? "Reload Page");
-  }, [config.refreshText]);
+  }, []);
 
   const handlePreviousClick = useCallback(() => {
     console.log(config.previousPageText ?? "Previous Page");
-  }, [config.previousPageText]);
+  }, []);
 
   const handleContactUserClick = useCallback(() => {
     console.log(config.contactLink ?? "Contact Details");
-  }, [config.contactLink]);
+  }, []);
 
   return (
     <Box className={styles.container}>
