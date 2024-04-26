@@ -4,6 +4,7 @@ import CallRoundedIcon from "@mui/icons-material/Call";
 import { useColorPalates } from "../../molecules/theme-provider/hooks";
 import { useUiConfig } from "../../hook/useConfig";
 import styles from "./index.module.css";
+import DowntimeGif from "./assets/downTimeGIF.gif";
 
 const DowntimePage: React.FC = () => {
   const config = useUiConfig("component", "downtime");
@@ -34,7 +35,7 @@ const DowntimePage: React.FC = () => {
 
       <Box my={4} textAlign="center">
         <img
-          src={config.downTimeImage}
+          src={DowntimeGif}
           alt="downtimeGif"
           className={styles.imageContainer}
           style={{ maxWidth: "100%", height: "auto" }}
@@ -52,7 +53,7 @@ const DowntimePage: React.FC = () => {
       </Typography>
 
       <Box display="flex" alignItems="center" justifyContent="center" mb={4}>
-        <Avatar sx={{ bgcolor: theme.primary.main, }}>
+        <Avatar sx={{ bgcolor: theme.primary.main }}>
           <CallRoundedIcon fontSize="small" />
         </Avatar>
         <Button
