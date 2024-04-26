@@ -1,0 +1,19 @@
+backend:
+  name: git-gateway
+  branch: integrate_cms
+
+load_config_file: false
+
+# Make the collections for all the molecules
+# and need to refactor the currect structure of the code make each coponent 
+# having its own md_file(cofig)
+
+collections:
+  - name: "molecules"
+    label: "Molecules"
+    folder: "src/molecules"
+    create: true
+    fields:
+      - {name: "title", label: "Title", widget: "string"}
+      - {name: "description", label: "Description", widget: "text"}
+      - {name: "config", label: "Config", widget: "json"}
