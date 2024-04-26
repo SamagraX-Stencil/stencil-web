@@ -122,7 +122,7 @@
     "downtime": {
       "allowOverride": false,
       "title": "We're under maintainance",
-      "downTimeImage": "assets/downTimeGIF.gif",
+      "downTimeImage": "/public/assets/downTimeGIF.gif",
       "supportingText": "Have an urgent query?",
       "contactLink": "Call Ama Krushi",
       "refreshText": "Try Again",
