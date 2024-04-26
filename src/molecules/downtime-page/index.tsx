@@ -4,6 +4,7 @@ import { Avatar, Box, Button, Typography } from "@mui/material";
 import CallRoundedIcon from "@mui/icons-material/Call";
 import { useColorPalates } from "../../molecules/theme-provider/hooks";
 import { useUiConfig } from "../../hook/useConfig";
+import downtimeImage from ".././downtime-page/assets/downTimeGIF.gif";
 
 const DowntimePage: React.FC = () => {
   const config = useUiConfig("component", "downtime");
@@ -40,7 +41,7 @@ const DowntimePage: React.FC = () => {
         </Box>
         <Box my={4}>
           <img
-            src={config?.downTimeImage}
+            src={downtimeImage}
             alt="downtimeGif"
             className={styles.imageContainer}
           />
