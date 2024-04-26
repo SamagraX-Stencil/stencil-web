@@ -1,5 +1,4 @@
 import { Box } from '@mui/material'
-import React from 'react'
 import { CheckBoxOption, InputField, PageTitle } from './customeField'
 import { gap, marginBotton } from './constant'
 import { useConfig } from '../../hook/useConfig'
