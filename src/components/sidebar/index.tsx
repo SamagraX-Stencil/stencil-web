@@ -21,6 +21,7 @@ import { useColorPalates } from '../../molecules/theme-provider/hooks'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import { ChatBubble, HistoryOutlined } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
+
 const getLabel = (label: string) =>
   label
     .split('-')
@@ -60,6 +61,7 @@ const getIcon = (label: string) => {
       return <GridViewIcon />
   }
 }
+
 const sidebar = pages.map((item: string) => ({
   label: getLabel(item),
   icon: getIcon(item),
@@ -72,101 +74,83 @@ export const Sidebar: FC<{
 }> = ({ isOpen, onToggle }) => {
   const theme = useColorPalates()
   console.log({ _theme: theme })
-  const DrawerList = (
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //@ts-ignore
-    <Box
-      sx={{ width: 250, height:"100", background: theme?.primary?.dark }}
-      role="presentation"
-      onClick={onToggle}
-    >
-      <List>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemText
-              primary="Pages"
-              style={{ color: theme?.primary?.light }}
-            />
-          </ListItemButton>
-        </ListItem>
-        {sidebar.map((page) => (
-          <ListItem key={page.label} disablePadding>
-            <Link to={page.path} style={{ textDecoration: 'none' }}>
-              {' '}
-              {/* <Link href={page.path} underline="none"> */}
+
+  return (
+    <div>
+      <Drawer
+        open={isOpen}
+        onClose={onToggle}
+        sx={{ '& .MuiPaper-root': { background: theme?.primary?.dark } }}
+      >
+        <Box
+          sx={{ width: 250, height: "100vh" }}
+          role="presentation"
+          onClick={() => onToggle(!isOpen)}
+        >
+          <List>
+            <ListItem disablePadding>
               <ListItemButton>
-                <ListItemIcon style={{ color: theme?.primary?.light }}>
-                  {page.icon}
-                </ListItemIcon>
                 <ListItemText
-                  primary={page?.label}
+                  primary="Pages"
                   style={{ color: theme?.primary?.light }}
                 />
               </ListItemButton>
-            </Link>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemText
-              primary="Molecules"
-              style={{ color: theme?.primary?.light }}
-            />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <Link to={'/molecules'} style={{ textDecoration: 'none' }}>
-            {/* <Link href={`/molecules`} underline="none"> */}
-            <ListItemButton>
-              <ListItemIcon style={{ color: theme?.primary?.light }}>
-                <GridViewIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary={'Molecules'}
-                style={{ color: theme?.primary?.light }}
-              />
-            </ListItemButton>
-          </Link>
-        </ListItem>
-        <ListItem disablePadding>
-          <Link to={'/admin'} style={{ textDecoration: 'none' }}>
-            <ListItemButton>
-              <ListItemIcon style={{ color: theme?.primary?.light }}>
-                {getIcon('admin')}
-              </ListItemIcon>
-              <ListItemText
-                primary={'Admin'}
-                style={{ color: theme?.primary?.light }}
-              />
-            </ListItemButton>
-          </Link>
-        </ListItem>
-        {/* {molecules.map((molecule, index) => (
-          <ListItem key={molecule} disablePadding>
-            <Link href={`/${molecule}`} underline="none">
+            </ListItem>
+            {sidebar.map((page) => (
+              <ListItem key={page.label} disablePadding>
+                <Link to={page.path} style={{ textDecoration: "none" }}>
+                  <ListItemButton>
+                    <ListItemIcon style={{ color: theme?.primary?.light }}>
+                      {page.icon}
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={page?.label}
+                      style={{ color: theme?.primary?.light }}
+                    />
+                  </ListItemButton>
+                </Link>
+              </ListItem>
+            ))}
+          </List>
+          <Divider />
+          <List>
+            <ListItem disablePadding>
               <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={getLabel(molecule)} />
+                <ListItemText
+                  primary="Molecules"
+                  style={{ color: theme?.primary?.light }}
+                />
               </ListItemButton>
-            </Link>
-          </ListItem>
-        ))} */}
-      </List>
-    </Box>
-  )
-
-  return ( 
-    
-      <Drawer open={isOpen} 
-      onClose={onToggle}>
-        <div style={{width: 250, height:"100vh", background: theme?.primary?.dark }}>
-        {DrawerList}
-        </div>
-      </Drawer> 
+            </ListItem>
+            <ListItem disablePadding>
+              <Link to={"/molecules"} style={{ textDecoration: "none" }}>
+                <ListItemButton>
+                  <ListItemIcon style={{ color: theme?.primary?.light }}>
+                    <GridViewIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={"Molecules"}
+                    style={{ color: theme?.primary?.light }}
+                  />
+                </ListItemButton>
+              </Link>
+            </ListItem>
+            <ListItem disablePadding>
+              <Link to={"/admin"} style={{ textDecoration: "none" }}>
+                <ListItemButton>
+                  <ListItemIcon style={{ color: theme?.primary?.light }}>
+                    {getIcon("admin")}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={"Admin"}
+                    style={{ color: theme?.primary?.light }}
+                  />
+                </ListItemButton>
+              </Link>
+            </ListItem>
+          </List>
+        </Box>
+      </Drawer>
+    </div>
   )
 }

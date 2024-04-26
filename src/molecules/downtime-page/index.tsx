@@ -77,13 +77,7 @@ const DowntimePage: React.FC = () => {
             </Typography>
           </Button>
         </Box>
-
-        <Box
-          display={'flex'}
-          justifyContent={'space-around'}
-          width={'100%'}
-          my={4}
-        >
+        <Box display={"flex"} justifyContent={"space-around"} width={"75%"} my={4}>
           <Button
             className={styles.roundedButton}
             onClick={handleRefreshClick}

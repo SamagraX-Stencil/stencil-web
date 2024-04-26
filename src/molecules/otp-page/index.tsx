@@ -88,7 +88,7 @@ const OtpPage: React.FC = () => {
             </Typography>
             <Typography
               variant="body2"
-              textAlign="left"
+              textAlign="center"
               width="90%"
               color="#838BA1"
             >
@@ -124,10 +124,10 @@ const OtpPage: React.FC = () => {
               </Box>
               <div style={{ marginTop: '10px' }}>
                 {countdown > 0 ? (
-                  <Typography>
-                    Please wait {countdown} seconds before resending OTP
-                  </Typography>
-                ) : (
+
+                <Typography textAlign='center'>Please wait {countdown} seconds before resending OTP</Typography>
+                  ):(
+
                   <>
                     <Typography variant="body2" align="center" color="#838BA1">
                       Didn't receive the OTP? &nbsp;

@@ -11,7 +11,7 @@ import { useUiConfig } from '../../hook/useConfig'
 const FeedbackPage: React.FC = () => {
   const config = useUiConfig('component', 'feedbackPage')
 
-  const [star, setStar] = useState(1)
+  const [star, setStar] = useState(0)
   const [review, setReview] = useState('')
 
   const theme = useColorPalates()
@@ -76,7 +76,7 @@ const FeedbackPage: React.FC = () => {
               onChange={(event, newValue) => {
                 console.log(event)
                 setStar(() => {
-                  return newValue === null ? 1 : newValue
+                  return newValue === null ? 0 : newValue
                 })
               }}
               defaultValue={1}
@@ -98,12 +98,12 @@ const FeedbackPage: React.FC = () => {
               variant="contained"
               data-testid="ratingBtn"
               sx={{
-                mt: 2,
+                marginTop:10,
                 backgroundColor: `${theme.primary?.dark}`,
                 fontWeight: 'bold',
                 borderRadius: '10rem',
-                fontSize: '10px',
-                p: 1.5,
+                fontSize: '12px',
+                p: 2.5,
                 '&:hover': {
                   backgroundColor: `${theme.primary?.main}`,
                 },
@@ -144,12 +144,12 @@ const FeedbackPage: React.FC = () => {
               variant="contained"
               data-testid="reviewBtn"
               sx={{
-                mt: 2,
+                marginTop: 10,
                 backgroundColor: `${theme.primary?.dark}`,
                 fontWeight: 'bold',
                 borderRadius: '10rem',
-                fontSize: '10px',
-                p: 1.5,
+                fontSize: '12px',
+                p: 2.5,
                 '&:hover': {
                   backgroundColor: `${theme.primary?.main}`,
                 },
