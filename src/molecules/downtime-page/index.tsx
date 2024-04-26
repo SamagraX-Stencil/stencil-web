@@ -33,7 +33,7 @@ const DowntimePage: React.FC = () => {
         {config.title ?? "Downtime"}
       </Typography>
 
-      <Box my={4} textAlign="center">
+      <Box textAlign="center">
         <img
           src={DowntimeGif}
           alt="downtimeGif"
@@ -52,7 +52,7 @@ const DowntimePage: React.FC = () => {
         {config.supportingText ?? "Description"}
       </Typography>
 
-      <Box display="flex" alignItems="center" justifyContent="center" mb={4}>
+      <Box display="flex" alignItems="center" justifyContent="center">
         <Avatar sx={{ bgcolor: theme.primary.main }}>
           <CallRoundedIcon fontSize="small" />
         </Avatar>
