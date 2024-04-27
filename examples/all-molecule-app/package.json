@@ -25,8 +25,9 @@
     "react-app-rewire-babel-loader": "0.1.1"
   },
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "dev": "yarn run build:shared && react-scripts dev",
+    "build:shared": "cd ../../packages/pages && yarn run build && cd ../../packages/hooks && yarn run build && cd ../../packages/molecules && yarn run build && cd ../../packages/providers && yarn run build",
+    "build": "react-scripts build",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject"
   },

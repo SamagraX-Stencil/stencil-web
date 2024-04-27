@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "main": "./index.ts",
+  "scripts": {
+    "build": "tsc"
+  },
   "dependencies": {
     "@stencil/hooks": "*",
     "@mui/icons-material": "^5.15.11",

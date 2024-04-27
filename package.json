@@ -3,22 +3,17 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
-  "workspaces": {
-    "packages": [
-      "./packages/molecules",
-      "./packages/pages",
-      "./packages/hooks",
-      "./packages/providers",
-      "./packages/component",
-      "./packages/config-manager",
-      "./packages/cli",
-      "./examples/all-molecule-app",
-      "./examples/bot-app"
-    ]
-  },
+  "workspaces": [
+    "/packages/*",
+    "/examples/*"
+  ],
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
+    "dev": "turbo run dev",
+    "build:molecules": "turbo run build --filter=./packages/molecules...",
+    "build:pages": "turbo run build --filter=./packages/pages...",
+    "build:providers": "turbo run build --filter=./packages/providers...",
+    "build:hooks": "turbo run build --filter=./packages/hooks...",
+    "build": "turbo run build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "test": "vitest",
