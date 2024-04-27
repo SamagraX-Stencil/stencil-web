@@ -8,7 +8,7 @@
     "/examples/*"
   ],
   "scripts": {
-    "dev": "turbo run dev",
+    "dev": "turbo run dev --parallel --filter=@stencil/all-molecule-app",
     "build:molecules": "turbo run build --filter=./packages/molecules...",
     "build:pages": "turbo run build --filter=./packages/pages...",
     "build:providers": "turbo run build --filter=./packages/providers...",
@@ -71,7 +71,7 @@
     "jsdom": "^24.0.0",
     "react-test-renderer": "^18.2.0",
     "storybook": "^8.0.5",
-    "typescript": "^5.2.2",
+    "typescript": "^5.4.5",
     "vite": "^5.1.4",
     "vitest": "^1.3.1"
   }
