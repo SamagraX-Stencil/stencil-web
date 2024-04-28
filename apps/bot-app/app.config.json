@@ -1,0 +1,132 @@
+{
+  "theme": {
+    "palette": {
+      "primary": {
+        "main": "#1e6231",
+        "light": "#219653",
+        "dark": "#f6faff",
+        "contrastText": "#ffffff"
+      }
+    }
+  },
+  "component": {
+    "botDetails": {
+      "favicon": "http://cdn-api.staging.bhasai.samagra.io:443/deployer/favicon.ico"
+    },
+    "homePage": {
+      "showKalia": false,
+      "showWeatherAdvisory": true,
+      "showPlantProtection": true,
+      "weatherAdvisoryImg": "",
+      "plantProtectionImg": "",
+      "kaliaStatusImg": "",
+      "showMic": true,
+      "micHeight": "18vh",
+      "micWidth": "18vh"
+    },
+    "chatUI": {
+      "allowFeedback": true,
+      "allowTextToSpeech": true,
+      "transliterationApi": "https://ai-tools-proxy.staging.bhasai.samagra.io",
+      "allowTransliteration": true,
+      "transliterationProvider": "bhashini",
+      "transliterationSuggestions": "3",
+      "transliterationInputLanguage": "en",
+      "transliterationOutputLanguage": "or"
+    },
+    "navbar": {
+      "showNavbar": true,
+      "showLanguageToggle": true,
+      "languageCode1": "en",
+      "languageLabel1": "English",
+      "languageLabel2": "Hindi",
+      "languageCode2": "hi",
+      "showHamburgerMenu": true,
+      "showHomeIcon": true,
+      "showCenterLogo": false,
+      "centerLogoSrc": "https://www.amakrushi.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fphone.50753eec.png&w=64&q=75",
+      "showRightLogo1": true,
+      "rightLogo1Src": "https://app.staging.akai.samagra.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo-green.db3a25d1.png&w=128&q=75",
+      "showRightLogo2": true,
+      "rightLogo2Src": "https://app.staging.akai.samagra.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fphone.50753eec.png&w=128&q=75",
+      "showRightLogo3": true,
+      "rightLogo3Src": "https://app.staging.akai.samagra.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fkrushak_odisha.ebf64370.png&w=128&q=75",
+      "centerLogoSize": "60px",
+      "logoTitleColor": "green",
+      "textColor": "orange"
+    }
+  },
+  "sidebar": {
+    "mobileNumber": "1234567890",
+    "activeLanguageColor": "orange",
+    "nonActiveLanguageColor": "whilte",
+    "backgroudColor": "green",
+    "showLangSwitcher": true,
+    "background": "#1D6231",
+    "faqPage": true,
+    "feedbackPage": true,
+    "historyPage": true,
+    "languageCode1": "en",
+    "languageCode2": "or",
+    "languageName1": "ENG",
+    "languageName2": "ଓଡିଆ",
+    "showProfileIcon": true,
+    "showLogoutButton": true
+  },
+  "otpPage": {
+    "showLogo": false,
+    "showSplitedView": true,
+    "otpLength": 4,
+    "logo": "https://seeklogo.com/images/C/corporate-company-logo-749CEE6ADC-seeklogo.com.png",
+    "title": "OTP Verification",
+    "resendOtpTimer": "30"
+  },
+  "downtimePage": {
+    "downTimeImage": ""
+  },
+  "voiceRecorder": {
+    "showVoiceRecorder": true,
+    "delayBetweenDialogs": 2500
+  },
+  "feedbackPage": {
+    "reviewBox": true,
+    "ratingBox": true,
+    "ratingMaxStars": 5
+  },
+  "loginMobileAadharPage": {
+    "loginWithAadhaar": false,
+    "showSignUp": false,
+    "showAlternateSignIn": false,
+    "showSplitedView": true,
+    "logowidth": "350px",
+    "logoheight": "270px",
+    "logo": "https://seeklogo.com/images/C/corporate-company-logo-749CEE6ADC-seeklogo.com.png",
+    "title": "Welcome!",
+    "inputBoxWidth": "100%"
+  },
+  "historyPage": {
+    "allowOverride": false,
+    "title": "History",
+    "noItemsText": "No items found",
+    "allowDelete": true,
+    "showTimestamp": true
+  },
+  "launchPage": {
+    "allowOverride": false,
+    "logo": "src/pages/launch-page/krushak_odisha.png",
+    "label": "ଆମ କୃଷି ଏ ଆଇ ଚାଟ୍ ବୋଟ୍",
+    "showLaunchPage": true
+  },
+  "share-buttons": {
+    "allowOverride": false,
+    "allowDownloadChat": true,
+    "allowShareChat": true,
+    "shareButtonColor": "orange",
+    "downloadButtonColor": "orange"
+  },
+  "chatUI": {
+    "iconBorderColor": "orange",
+    "showLogo": false,
+    "logo": "https://seeklogo.com/images/C/corporate-company-logo-749CEE6ADC-seeklogo.com.png"
+  }
+}

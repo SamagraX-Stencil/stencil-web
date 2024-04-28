@@ -5,10 +5,10 @@
   "type": "module",
   "workspaces": [
     "/packages/*",
-    "/examples/*"
+    "/apps/*"
   ],
   "scripts": {
-    "dev": "turbo run dev --parallel --filter=@stencil/all-molecule-app",
+    "dev": "turbo run dev",
     "build:molecules": "turbo run build --filter=./packages/molecules...",
     "build:pages": "turbo run build --filter=./packages/pages...",
     "build:providers": "turbo run build --filter=./packages/providers...",
