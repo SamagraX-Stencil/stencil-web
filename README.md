@@ -1,1 +1,0 @@
-### This repo will store all the possible templates for the different Apps - web/bot/admin.
