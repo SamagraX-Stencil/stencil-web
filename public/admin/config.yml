@@ -1,19 +1,17 @@
 backend:
   name: git-gateway
-  branch: integrate_cms
+  branch: cmstest
 
-load_config_file: false
-
-# Make the collections for all the molecules
-# and need to refactor the currect structure of the code make each coponent 
-# having its own md_file(cofig)
-
+media_folder: "static/images/uploads"  
 collections:
-  - name: "molecules"
+  - name: "config"
     label: "Molecules"
-    folder: "src/molecules"
-    create: true
-    fields:
-      - {name: "title", label: "Title", widget: "string"}
-      - {name: "description", label: "Description", widget: "text"}
-      - {name: "config", label: "Config", widget: "json"}
+    files:
+      - name: "navbar"
+        label: "Navbar Configuration"
+        file: "src/cms_molecules/Navbar/config.md"
+        fields:
+          - {label: "Button Color", name: "buttonConfig.color", widget: "string"}
+          - {label: "Button Size", name: "buttonConfig.size", widget: "string"}
+          - {label: "Button Edge", name: "buttonConfig.edge", widget: "string"}
+        preview_path: "public/cms/preview-templates/NavbarPreview.tsx"

@@ -1,25 +1,59 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
     <title>Content Manager</title>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  </head>
-  <body>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+</head>
+<body>
     <script>
+        console.log("this is in the HTML page")
         if (window.netlifyIdentity) {
-          window.netlifyIdentity.on("init", (user) => {
-            if (!user) {
-              window.netlifyIdentity.on("login", () => {
-                document.location.href = "/admin/";
-              });
-            }
-          });
+            window.netlifyIdentity.on("init", (user) => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
         }
-      </script>
-    <!-- Include the script that builds the page and powers Decap CMS -->
+    </script>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  </body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("inside view");
+            if (typeof CMS !== 'undefined' && typeof React !== 'undefined') {
+                const NavbarPreview = ({ entry }) => {
+                    const data = entry.getIn(['data']).toJS(); 
+                    const buttonConfig = data.buttonConfig || { color: 'grey', size: 'medium', edge: 'square' };
+
+                    const buttonStyle = {
+                        backgroundColor: buttonConfig.color,
+                        padding: buttonConfig.size === 'large' ? '10px 20px' : '5px 10px',
+                        borderRadius: buttonConfig.edge === 'rounded' ? '15px' : '0px',
+                        border: 'none',
+                        color: 'white',
+                        cursor: 'pointer',
+                        fontSize: buttonConfig.size === 'large' ? '1.2em' : '1em'
+                    };
+
+                    return (
+                        React.createElement('div', null,
+                            React.createElement('h1', null, 'Button Preview'),
+                            React.createElement('button', {style: buttonStyle}, 'Click Me')
+                        )
+                    );
+                };
+
+                CMS.registerPreviewTemplate('navbar', NavbarPreview);
+            } else {
+                console.error('CMS or React is not defined.');
+            }
+        });
+    </script>
+</body>
 </html>
