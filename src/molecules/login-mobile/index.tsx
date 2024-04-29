@@ -8,7 +8,7 @@ import { Box, CircularProgress, TextField, Button } from "@mui/material";
 const LoginMobile = () => {
   const theme = useColorPalates();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
   const [input, setInput] = useState("");
   const [valid, setValid] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");

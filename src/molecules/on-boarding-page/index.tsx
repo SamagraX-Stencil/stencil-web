@@ -15,7 +15,7 @@ const OnBoardingPage = () => {
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(-1);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [steps, setSteps] = useState(5);
+  const [steps] = useState(5);
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };

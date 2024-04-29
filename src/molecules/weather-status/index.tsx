@@ -24,7 +24,7 @@ const style = {
 const WeatherStatus = () => {
   const [open, setOpen] = React.useState(true);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const handleOpen = () => setOpen(true);
+ 
   const handleClose = () => setOpen(false);
 
   const weatherDetails = [

@@ -1,4 +1,3 @@
-import React from "react";
 
 import farmer from "./assets/farmer.jpeg";
 import user from "./assets/user.svg";
