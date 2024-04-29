@@ -24,6 +24,10 @@ const HistoryPage: FC = () => {
     console.log({ activeItem })
   }, [])
 
+  const demoFn = () => {
+    console.log('demo')
+  }
+
   const onSecondaryActionClick = useCallback(
     (activeItem: ChatItem) => () => {
       if (
