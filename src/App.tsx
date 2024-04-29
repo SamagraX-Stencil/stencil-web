@@ -39,7 +39,7 @@ function App() {
           <Route path="/chat-ui" element={<ChatUI />} />
           <Route path="/molecules" element={<Components />} />
           <Route path="/admin" element={<AdminRoute />} />
-          <Route path="/onBoarding" element={<OnBoardingPage />} />
+          <Route path="/on-boarding-page" element={<OnBoardingPage />} />
         </Routes>
       </>
     </>

@@ -24,9 +24,9 @@ const OnBoarding: FC<{
         steps={steps}
         position="static"
         activeStep={activeStep}
-        sx={{ maxWidth: 400, flexGrow: 1 }}
-        nextButton={<div style={{ width: "50px" }}></div>}
-        backButton={<div style={{ width: "50px" }}></div>}
+        sx={{  flexGrow: 1 }}
+        nextButton={<div style={{ width: "10px" }}></div>}
+        backButton={<div style={{ width: "10px" }}></div>}
       />
     </div>
   );
