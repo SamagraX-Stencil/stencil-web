@@ -22,10 +22,7 @@ const HistoryPage: FC = () => {
 
   const handleClick = useCallback((activeItem: HistoryItem) => {
     console.log({ activeItem })
-  }, [])
-
-   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-   const newDemo2Added=()=>{}
+  }, []);
 
   const onSecondaryActionClick = useCallback(
     (activeItem: ChatItem) => () => {
