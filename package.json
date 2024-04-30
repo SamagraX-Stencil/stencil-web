@@ -1,0 +1,43 @@
+{
+  "name": "stencil-ui",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^20.12.7",
+    "cross-env": "^7.0.3",
+    "prettier": "^3.2.5",
+    "turbo": "latest"
+  },
+  "packageManager": "pnpm@8.9.0",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@babel/preset-react": "^7.23.3",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "@mui/base": "5.0.0-beta.39",
+    "@mui/icons-material": "^5.15.15",
+    "@mui/material": "^5.15.15",
+    "@repo/ui": "workspace:^",
+    "@samagra-x/chatui": "^1.0.3",
+    "bootstrap-css-only": "^4.4.1",
+    "i18next": "^23.10.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.30.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
+    "react-i18next": "^14.0.5",
+    "react-router-dom": "^6.22.2",
+    "service-page-cli": "^0.0.29",
+    "storybook-addon-react-docgen": "^1.2.44"
+  }
+}
