@@ -17,6 +17,7 @@ import wheat from "./assets/wheat.png";
 import more from "./assets/more.png";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import { includes } from "lodash";
+import { useUiConfig } from "../../hook/useConfig";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -28,6 +29,7 @@ const Item = styled(Paper)(({ theme }) => ({
   position: "relative",
 }));
 const OptionSelector = () => {
+  const config = useUiConfig("component", "optionSelectorPage");
   const theme = useColorPalates();
   const [activeElements, setActiveElements] = React.useState<Array<any>>([]);
   const vegetables = [
@@ -44,8 +46,8 @@ const OptionSelector = () => {
 
   const onItemClick = useCallback(
     (item: any) => () => {
-      if (activeElements.length === 4 && !activeElements?.includes(item?.id)) {
-        alert("You can select only 4 items");
+      if ((activeElements.length == (config?.optionSelectLength ?? 4 ))&& (!activeElements?.includes(item?.id))) {
+        alert(`You can select only ${config?.optionSelectLength ?? 4 } items`);
         return;
       }
       setActiveElements((prev) =>
@@ -54,7 +56,7 @@ const OptionSelector = () => {
           : [...prev, item?.id]
       );
     },
-    [activeElements]
+    [activeElements, config?.optionSelectLength]
   );
 
   
@@ -80,14 +82,14 @@ const OptionSelector = () => {
               color: theme.primary.dark,
             }}
           >
-            अपनी फसलें चुनें
+           {config?.topText}
           </p>
         </div>
       </div>
 
       <div className="text-center mt-3">
         <p style={{ color: "#51586B", fontSize: "18px" }}>
-          कृपया नीचे से 4 फसलें चुनें
+          {config?.centerText}
         </p>
         <div
           style={{
@@ -157,7 +159,7 @@ const OptionSelector = () => {
                   borderRadius: "10px",
                 }}
               >
-                आगे बढ़ें
+               {config?.btnText}
               </Button>
               <Link
                 component="button"
@@ -165,7 +167,7 @@ const OptionSelector = () => {
                 onClick={() => {}}
                 className="mt-2"
               >
-                अभी के लिए छोड़ दें
+               {config?.helpingText1}
               </Link>
             </Box>
           </div>

@@ -5,7 +5,10 @@ import LanguagePicker from "../language-picker";
 import { Container, IconButton } from "@mui/material";
 import { useColorPalates } from "../theme-provider/hooks";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { useUiConfig } from "../../hook/useConfig";
+
 const AkaiLaunch = () => {
+  const config = useUiConfig('component', 'akaiWelcomePage');
   const theme = useColorPalates();
   return (
     <Container
@@ -25,12 +28,12 @@ const AkaiLaunch = () => {
         }}
         className="p-2"
       >
-        <img src={logo} style={{ height: "40px" }} />
+       {config?.showTopLeftLogo && <img src={config?.topLeftLogo || logo} style={{ height:config?.topLeftLogoHeight || "40px" }} />}
         <LanguagePicker />
       </div>
       <div className="text-center">
         <div className="mt-4">
-          <img src={cm} style={{ width: "148px", height: "210px" }} />
+         {config?.showCenterImage && <img src={cm} style={{ width: config?.centerImageWidth || "148px", height: config?.centerImageHeight || "210px" }} />}
         </div>
         <div>
           <text
@@ -41,19 +44,19 @@ const AkaiLaunch = () => {
               fontWeight: "600",
             }}
           >
-            आमा कृषी ए.आई चैटबॉटै
+           {config?.centerText}
           </text>
         </div>
-        <img src={bottom} style={{ maxWidth: "80vw" }} />
+      {config?.showCenterBottomImage &&  <img src={config?.centerBottomImage || bottom} style={{ maxWidth: "80vw" ,height: config?.centerBottomImageHeight  ,width: config?.centerBottomImageWidth }} />}
       </div>
-      <div className="text-center">
+     {config?.showProceedBtn && <div className="text-center">
         <IconButton
           aria-label="fingerprint"
-          style={{ background: theme.primary.dark }}
+          style={{ background: config?.proceedBtnColor || theme.primary.dark }}
         >
           <ArrowForwardIcon style={{ color: "white" }} />
         </IconButton>
-      </div>
+      </div>}
     </Container>
   );
 };

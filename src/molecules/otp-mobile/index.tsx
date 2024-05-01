@@ -1,24 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
-import {
-  Box,
-  Button,
-  Container,
-  IconButton,
-  Link,
- 
-} from "@mui/material";
+import { Box, Button, Container, IconButton, Link } from "@mui/material";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
 import { useColorPalates } from "../theme-provider/hooks";
 import { OTPInput } from "../otp-input";
-
-
-
+import { useUiConfig } from "../../hook/useConfig";
 
 const OtpMobile = () => {
   const theme = useColorPalates();
-  const [otp, setOtp] = useState('')
-  
+  const [otp, setOtp] = useState("");
+  const config = useUiConfig("component", "otpMobilePage");
+
   return (
     <Container>
       <div className="d-flex">
@@ -38,16 +30,15 @@ const OtpMobile = () => {
               lineHeight: "40px",
               fontWeight: "500",
               fontSize: "22px",
-              color: theme.primary.dark,
+              color: config?.topTextColor || theme.primary.dark,
             }}
           >
-            ओटीपी सत्यापन
+            {config?.topText}
           </p>
         </div>
       </div>
 
       <div className="text-center mt-3">
-      
         <div
           style={{
             display: "flex",
@@ -56,25 +47,28 @@ const OtpMobile = () => {
             height: "65vh",
           }}
         >
-            <p style={{ color: "#51586B", fontSize: "18px",marginTop:'20%' }}>
-        वह सत्यापन कोड दर्ज करें जो हमने अभी आपके मोबाइल नंबर पर भेजा है।
-        </p>
-           <Box
-                className="text-center"  sx={{
-                  mt: 1,
-                  width: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                }}
-              >
-                <OTPInput
-                  separator={<span style={{width:'10px'}}></span>}
-                  value={otp}
-                  onChange={setOtp}
-                  length={4}
-                />
-              </Box>
+          <p style={{ color: "#51586B", fontSize: "18px", marginTop: "20%" }}>
+            {config?.centerText}
+          </p>
+          <Box
+            className="text-center"
+            sx={{
+              mt: 1,
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <OTPInput
+              separator={
+                config?.otpSeparator || <span style={{ width: "10px" }}></span>
+              }
+              value={otp}
+              onChange={setOtp}
+              length={config?.otpLength || 4}
+            />
+          </Box>
           <div>
             <Box sx={{ mt: 1 }}>
               <Button
@@ -90,18 +84,13 @@ const OtpMobile = () => {
                   borderRadius: "10px",
                 }}
               >
-                सबमिट करे
+                {config?.btnText}
               </Button>
               <div className="mt-2 d-flex justify-content-center">
-              ओटीपी नहीं मिला?  &nbsp;
-              <Link
-                component="button"
-                variant="body2"
-                onClick={() => {}}
-                
-              >
-                ओटीपी पुनः भेजें
-              </Link>
+                {config?.helpingText1} &nbsp;
+                <Link component="button" variant="body2" onClick={() => {}}>
+                  {config?.helpingText2}
+                </Link>
               </div>
             </Box>
           </div>
@@ -111,6 +100,4 @@ const OtpMobile = () => {
   );
 };
 
-
-
-export default OtpMobile
+export default OtpMobile;

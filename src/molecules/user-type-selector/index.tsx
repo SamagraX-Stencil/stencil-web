@@ -1,11 +1,13 @@
-
 import farmer from "./assets/farmer.jpeg";
 import user from "./assets/user.svg";
 import farmer2 from "./assets/farmer-op.svg";
 import { useColorPalates } from "../theme-provider/hooks";
 import LanguagePicker from "../language-picker";
+import { useUiConfig } from "../../hook/useConfig";
 const UserTypeSelector = () => {
-    const theme =useColorPalates()
+  const theme = useColorPalates();
+  const config = useUiConfig("component", "userTypeSelectorPage");
+
   return (
     <div
       style={{
@@ -18,9 +20,15 @@ const UserTypeSelector = () => {
         overflow: "hidden",
       }}
     >
-        <div style={{position:'absolute',top:'10px' ,left:'calc(100% - 85px - 10px)'}}>
-            <LanguagePicker />
-        </div>
+      <div
+        style={{
+          position: "absolute",
+          top: "10px",
+          left: "calc(100% - 85px - 10px)",
+        }}
+      >
+        <LanguagePicker />
+      </div>
       <div
         style={{
           position: "absolute",
@@ -42,7 +50,7 @@ const UserTypeSelector = () => {
               color: "#51586B",
             }}
           >
-            कृपया बताएं आप कौन हैं?
+            {config?.title || "कृपया बताएं आप कौन हैं?"}
           </p>
           <div
             style={{
@@ -63,11 +71,11 @@ const UserTypeSelector = () => {
               }}
             >
               <img
-                src={farmer2}
+                src={config?.user1Image || farmer2}
                 alt="Farmer"
                 style={{ maxWidth: "100%", height: "auto" }}
               />
-              <p style={{color:'white'}}>किसान</p>
+              <p style={{ color: "white" }}>{config?.user1Text || "किसान"} </p>
             </div>
             <p></p>
             <div
@@ -81,11 +89,11 @@ const UserTypeSelector = () => {
               }}
             >
               <img
-                src={user}
+                src={config?.user2Image || user}
                 alt="Worker"
                 style={{ maxWidth: "100%", height: "auto" }}
               />
-              <p>विक्रेता या कारीगर</p>
+              <p>{config?.user1Text || "विक्रेता या कारीगर"}</p>
             </div>
           </div>
         </div>
@@ -93,7 +101,7 @@ const UserTypeSelector = () => {
       <main>
         <div>
           <img
-            src={farmer}
+            src={config?.backgroundImage || farmer}
             alt="Farmer with vegetables"
             style={{ maxWidth: "100%", height: "auto" }}
           />

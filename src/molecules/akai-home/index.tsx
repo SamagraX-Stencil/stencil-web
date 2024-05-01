@@ -21,6 +21,7 @@ import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import { useColorPalates } from "../theme-provider/hooks";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import KeyboardVoiceRoundedIcon from "@mui/icons-material/KeyboardVoiceRounded";
+import { useUiConfig } from "../../hook/useConfig";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -32,6 +33,8 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const AkaiDashboard = () => {
+  const config = useUiConfig("component", "akaiDashboard");
+  console.log({ config });
   const theme = useColorPalates();
   const [value, setValue] = React.useState(0);
   const chips = [
@@ -44,15 +47,30 @@ const AkaiDashboard = () => {
   ];
 
   const options = [
-    { id: 1, label: "मौसम की जानकारी", key: "मौसम की जानकारी", image: cloud },
+    {
+      id: 1,
+      label: config?.card1Title,
+      key: config?.card1Title,
+      image: config?.card1Image || cloud,
+    },
     {
       id: 2,
-      label: "योजनाओं की जानकारी",
-      key: "चायोजनाओं की जानकारीवल",
-      image: book,
+      label: config?.card2Title,
+      key: config?.card2Title,
+      image: config?.card2Image || book,
     },
-    { id: 3, label: "कीट एवं रोग", key: "कीट एवं रोग", image: pest },
-    { id: 3, label: "अन्य सूचना", key: "अन्य सूचना", image: chat },
+    {
+      id: 3,
+      label: config?.card3Title,
+      key: config?.card3Title,
+      image: config?.card3Image || pest,
+    },
+    {
+      id: 3,
+      label: config?.card4Title,
+      key: config?.card4Title,
+      image: config?.card4Image || chat,
+    },
   ];
   return (
     <div>
@@ -130,7 +148,7 @@ const AkaiDashboard = () => {
             }}
             className="p-1"
           >
-            मुझसे कुछ भी पूछें
+             {config?.centerText} 
           </p>
 
           <Grid
@@ -163,8 +181,7 @@ const AkaiDashboard = () => {
           </Grid>
           <div className="mt-4 text-center">
             <p style={{ color: "##6C758B", fontSize: "12px" }}>
-              आमा कृषी चैटबॉट गलतियाँ कर सकता है। महत्वपूर्ण जानकारी की जाँच
-              करने पर विचार करें. हमारी शर्तें और गोपनीयता नीति पढ़ें।
+             {config?.bottomText}
             </p>
           </div>
         </div>
@@ -176,7 +193,7 @@ const AkaiDashboard = () => {
             showLabels
             value={value}
             onChange={(event, newValue) => {
-              console.log(event)
+              console.log(event);
               setValue(newValue);
             }}
           >

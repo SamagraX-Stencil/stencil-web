@@ -4,8 +4,11 @@ import farmer from "./assets/farmer.jpeg";
 import { useColorPalates } from "../theme-provider/hooks";
 import LanguagePicker from "../language-picker";
 import { Box, CircularProgress, TextField, Button } from "@mui/material";
+import { useUiConfig } from "../../hook/useConfig";
 
 const LoginMobile = () => {
+  const config = useUiConfig("component", "loginMobilePage");
+  
   const theme = useColorPalates();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [loading] = useState(false);
@@ -86,7 +89,7 @@ const LoginMobile = () => {
               color: "#51586B",
             }}
           >
-            कृपया अपना मोबाइल नंबर बताएं
+          {config?.title}
           </p>
           <div
             style={{
@@ -106,7 +109,7 @@ const LoginMobile = () => {
                 value={input}
                 helperText={!valid ? errorMessage : ""}
                 onChange={handleInput}
-                label="मोबाइल नंबर"
+                label={config?.placeholder}
                 name={"phone"}
                 autoComplete={"phone"}
                 autoFocus
@@ -132,7 +135,7 @@ const LoginMobile = () => {
                   {loading ? (
                     <CircularProgress size={24} color="inherit" />
                   ) : (
-                    "लॉग इन करें"
+                   <>{config?.btnText}</> 
                   )}
                 </Button>
               </Box>
@@ -143,7 +146,7 @@ const LoginMobile = () => {
       <main>
         <div>
           <img
-            src={farmer}
+            src={config?.backgroundImage || farmer}
             alt="Farmer with vegetables"
             style={{ maxWidth: "100%", height: "auto" }}
           />

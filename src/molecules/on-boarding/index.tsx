@@ -14,17 +14,25 @@ const OnBoarding: FC<{
   activeStep = 0,
   steps = 3,
 }) => {
-
   return (
     <div>
-      <div style={{ height: "80vh",maxHeight:'80vh',overflowY:'scroll', ...containerStyle }}>{children}</div>
+      <div
+        style={{
+          height: "80vh",
+          maxHeight: "80vh",
+          overflowY: "scroll",
+          ...containerStyle,
+        }}
+      >
+        {children}
+      </div>
 
       <MobileStepper
         variant={variant}
         steps={steps}
         position="static"
         activeStep={activeStep}
-        sx={{  flexGrow: 1 }}
+        sx={{ flexGrow: 1 }}
         nextButton={<div style={{ width: "10px" }}></div>}
         backButton={<div style={{ width: "10px" }}></div>}
       />
