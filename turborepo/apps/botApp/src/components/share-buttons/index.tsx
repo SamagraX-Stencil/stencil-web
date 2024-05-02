@@ -9,11 +9,11 @@ import { toast } from 'react-hot-toast'
 import { AppContext } from '@repo/provider'
 import axios from 'axios'
 import { CircularProgress, Divider } from '@mui/material'
-import { useColorPalates } from '../../providers/theme-provider/hooks'
+import { useBotAppColorPalates } from '@repo/hooks'
 import { useBotConfig } from '@repo/hooks'
 const ShareButtons = () => {
   const config = useBotConfig('component', 'share-buttons')
-  const theme = useColorPalates()
+  const theme = useBotAppColorPalates()
   const secondaryColor = useMemo(() => {
     return theme?.primary?.main
   }, [theme?.primary?.main])

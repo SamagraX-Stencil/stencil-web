@@ -5,7 +5,7 @@ import { Box } from '@mui/material'
 import Rating from '@mui/material/Rating'
 import Button from '@mui/material/Button'
 import { toast } from 'react-hot-toast'
-import { useColorPalates } from '../../providers/theme-provider/hooks'
+import { useBotAppColorPalates } from '@repo/hooks'
 import { useBotConfig } from '@repo/hooks'
 import axios from 'axios'
 import { useLocalization } from '@repo/hooks'
@@ -13,7 +13,7 @@ import { useLocalization } from '@repo/hooks'
 const FeedbackPage: React.FC = () => {
   const [star, setStar] = useState(1)
   const [review, setReview] = useState('')
-  const theme = useColorPalates()
+  const theme = useBotAppColorPalates()
   const config = useBotConfig('component', 'feedbackPage')
   const t = useLocalization()
 

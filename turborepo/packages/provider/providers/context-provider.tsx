@@ -21,11 +21,11 @@ import { useCookies } from 'react-cookie'
 import { UCI } from 'socket-package'
 import { XMessage } from '@samagra-x/xmessage'
 
-import mergeConfigurations from '../utils/mergeConfigurations'
-import { FullPageLoader } from './fullpage-loader'
-import LaunchPage from '../pageComponents/launch-page'
+import mergeConfigurations from './utils/mergeConfigurations'
+import { FullPageLoader } from './components/fullpage-loader'
+import LaunchPage from './components/launch-page'
 import { ThemeContext } from './theme-provider/theme-context'
-import saveTelemetryEvent from '../utils/telemetry'
+import saveTelemetryEvent from './utils/telemetry'
 
 const URL = process.env.NEXT_PUBLIC_SOCKET_URL || ''
 

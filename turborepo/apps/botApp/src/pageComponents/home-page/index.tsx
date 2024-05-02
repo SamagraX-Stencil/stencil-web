@@ -20,7 +20,7 @@ import RenderVoiceRecorder from '../../components/recorder/RenderVoiceRecorder'
 import { recordUserLocation } from '../../utils/location'
 import { useBotConfig } from '@repo/hooks'
 import DowntimePage from '../downtime-page'
-import { useColorPalates } from '../../providers/theme-provider/hooks'
+import { useBotAppColorPalates } from '@repo/hooks'
 import kaliaStatusImg from './assets/kalia_status.png'
 import plantProtectionImg from './assets/plant_protection.png'
 import weatherAdvisoryImg from './assets/weather_advisory.png'
@@ -40,7 +40,7 @@ const HomePage: NextPage = () => {
   const [suggestionClicked, setSuggestionClicked] = useState(false)
   const [activeSuggestion, setActiveSuggestion] = useState<number>(0)
   const [cursorPosition, setCursorPosition] = useState(0)
-  const theme = useColorPalates()
+  const theme = useBotAppColorPalates()
   const secondaryColor = useMemo(() => {
     return theme?.primary?.main
   }, [theme?.primary?.main])

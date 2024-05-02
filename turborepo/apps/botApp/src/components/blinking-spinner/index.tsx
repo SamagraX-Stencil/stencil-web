@@ -1,18 +1,19 @@
-import React, { useMemo } from 'react';
-import styles from './index.module.css';
-import { useColorPalates } from '../../providers/theme-provider/hooks';
+import React, { useMemo } from 'react'
+import styles from './index.module.css'
+import { useBotAppColorPalates } from '@repo/hooks'
 
 const BlinkingSpinner = () => {
-  const theme = useColorPalates();
+  const theme = useBotAppColorPalates()
   const secondaryColor = useMemo(() => {
-    return theme?.primary?.light;
-  }, [theme?.primary?.light]);
-  
+    return theme?.primary?.light
+  }, [theme?.primary?.light])
+
   return (
     <p
       className={styles.spinner}
-      style={{ backgroundColor: secondaryColor }}></p>
-  );
-};
+      style={{ backgroundColor: secondaryColor }}
+    ></p>
+  )
+}
 
-export default BlinkingSpinner;
+export default BlinkingSpinner

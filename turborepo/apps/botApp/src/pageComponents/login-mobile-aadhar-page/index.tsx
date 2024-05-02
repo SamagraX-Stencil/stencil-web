@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography'
 import _logo from './assets/logo.png'
 import CircularProgress from '@mui/material/CircularProgress'
 import { toast } from 'react-hot-toast'
-import { useColorPalates } from '../../providers/theme-provider/hooks'
+import { useBotAppColorPalates } from '@repo/hooks'
 import { useLocalization } from '@repo/hooks'
 import { useRouter } from 'next/router'
 import { useBotConfig } from '@repo/hooks'
@@ -31,7 +31,7 @@ const LoginMobileAadharPage: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState('')
   const [loading, setLoading] = useState(false)
 
-  const theme = useColorPalates()
+  const theme = useBotAppColorPalates()
 
   const handleInput = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {

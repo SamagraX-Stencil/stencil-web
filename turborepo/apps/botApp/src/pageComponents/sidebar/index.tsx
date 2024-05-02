@@ -15,7 +15,7 @@ import FeedbackIcon from '@mui/icons-material/ThumbUpOffAlt'
 import LogoutIcon from '@mui/icons-material/Logout'
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline'
 import { useBotConfig } from '@repo/hooks'
-import { useColorPalates } from '../../providers/theme-provider/hooks'
+import { useBotAppColorPalates } from '@repo/hooks'
 import router from 'next/router'
 import { useCookies } from 'react-cookie'
 import { AppContext } from '@repo/provider'
@@ -40,7 +40,7 @@ export const Sidebar = ({
   const [cookie, setCookie, removeCookie] = useCookies()
   const context = useContext(AppContext)
   const config = useBotConfig('component', 'sidebar')
-  const theme = useColorPalates()
+  const theme = useBotAppColorPalates()
   const t = useLocalization()
 
   useEffect(() => {

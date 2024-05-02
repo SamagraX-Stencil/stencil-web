@@ -1,7 +1,7 @@
 'use client'
 import flagsmith from 'flagsmith/isomorphic'
 import React, { FC, ReactElement, useEffect, useState } from 'react'
-import { FullPageLoader } from './fullpage-loader'
+import { FullPageLoader } from './components/fullpage-loader'
 import ContextProvider from './context-provider'
 import { IntlProvider } from 'react-intl'
 

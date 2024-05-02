@@ -5,14 +5,14 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import CallRoundedIcon from '@mui/icons-material/Call'
 import { Avatar } from '@mui/material'
-import { useColorPalates } from '../../providers/theme-provider/hooks'
+import { useBotAppColorPalates } from '@repo/hooks'
 import { useFlags } from 'flagsmith/react'
 import ComingSoonPage from '../coming-soon-page'
 import { useLocalization } from '@repo/hooks'
 
 const FAQPage: React.FC = () => {
   const t = useLocalization()
-  const theme = useColorPalates()
+  const theme = useBotAppColorPalates()
   const flags = useFlags([
     'show_faq_page',
     'show_dialer',

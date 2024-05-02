@@ -13,7 +13,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { AppContext } from '@repo/provider'
 import { useLocalization, useLogin } from '@repo/hooks'
 import toast from 'react-hot-toast'
-import { useColorPalates } from '../../providers/theme-provider/hooks'
+import { useBotAppColorPalates } from '@repo/hooks'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
 
 const Navbar: React.FC = () => {
@@ -26,7 +26,7 @@ const Navbar: React.FC = () => {
     return storedLang || 'en'
   })
   const t = useLocalization()
-  const theme = useColorPalates()
+  const theme = useBotAppColorPalates()
   const { isAuthenticated } = useLogin()
   const {
     showHamburgerMenu,

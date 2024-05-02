@@ -4,12 +4,12 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Hourglass from './hourglass'
-import { useColorPalates } from '../../providers/theme-provider/hooks'
+import { useBotAppColorPalates } from '@repo/hooks'
 import { useLocalization } from '@repo/hooks'
 
 const ComingSoonPage: React.FC = () => {
   const t = useLocalization()
-  const theme = useColorPalates()
+  const theme = useBotAppColorPalates()
   const handleBack = useCallback(() => {
     window?.history?.back()
   }, [])

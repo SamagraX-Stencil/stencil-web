@@ -27,7 +27,7 @@ import MsgThumbsDown from './assets/msg-thumbs-down'
 import { MessageItemPropType } from './index.d'
 import { JsonToTable } from '../json-to-table'
 import moment from 'moment'
-import { useColorPalates } from '../../providers/theme-provider/hooks'
+import { useBotAppColorPalates } from '@repo/hooks'
 import { useBotConfig } from '@repo/hooks'
 import { useLocalization } from '@repo/hooks'
 import { AppContext } from '@repo/provider'
@@ -49,7 +49,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message }) => {
   const [audioFetched, setAudioFetched] = useState(false)
   const [ttsLoader, setTtsLoader] = useState(false)
   const t = useLocalization()
-  const theme = useColorPalates()
+  const theme = useBotAppColorPalates()
   const secondaryColor = useMemo(() => {
     return theme?.primary?.light
   }, [theme?.primary?.light])

@@ -16,13 +16,13 @@ import toast from 'react-hot-toast'
 import { useBotConfig } from '@repo/hooks'
 import ShareButtons from '../share-buttons'
 import DowntimePage from '../../pageComponents/downtime-page'
-import { useColorPalates } from '../../providers/theme-provider/hooks'
+import { useBotAppColorPalates } from '@repo/hooks'
 import { getMsgType } from '../../utils/getMsgType'
 import { recordUserLocation } from '../../utils/location'
 
 const ChatUiWindow: React.FC = () => {
   const config = useBotConfig('component', 'chatUI')
-  const theme = useColorPalates()
+  const theme = useBotAppColorPalates()
   const secondaryColor = useMemo(() => {
     return theme?.primary?.light
   }, [theme?.primary?.light])

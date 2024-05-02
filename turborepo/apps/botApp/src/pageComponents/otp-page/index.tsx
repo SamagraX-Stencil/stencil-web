@@ -5,7 +5,7 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import CircularProgress from '@mui/material/CircularProgress'
 import { toast } from 'react-hot-toast'
-import { useColorPalates } from '../../providers/theme-provider/hooks'
+import { useBotAppColorPalates } from '@repo/hooks'
 import { OTPInput } from '../../components/otp-input'
 import { useLocalization } from '@repo/hooks'
 import { useRouter } from 'next/router'
@@ -19,7 +19,7 @@ const OtpPage: React.FC = () => {
   const [loading, setLoading] = useState(false)
   const [countdown, setCountdown] = useState(0)
   const config = useBotConfig('component', 'otpPage')
-  const theme = useColorPalates()
+  const theme = useBotAppColorPalates()
   const { logo, showLogo, showSplitedView, otpLength, resendOtpTimer } = config
   const router = useRouter()
   const mobile = router.query.state

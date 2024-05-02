@@ -2,7 +2,7 @@
 import React, { FC, ReactElement, useEffect, useState } from 'react'
 import { FlagsmithProvider as FSProvider } from 'flagsmith/react'
 import flagsmith from 'flagsmith/isomorphic'
-import { FullPageLoader } from './fullpage-loader'
+import { FullPageLoader } from './components/fullpage-loader'
 
 export const FlagsmithProvider: FC<{ children: ReactElement }> = ({
   children,

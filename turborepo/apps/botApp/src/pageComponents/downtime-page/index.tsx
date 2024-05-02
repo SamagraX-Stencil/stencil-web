@@ -3,14 +3,14 @@ import styles from './index.module.css'
 import { Avatar, Box, Button, Typography } from '@mui/material'
 import downTimeGIF from './assets/downTimeGIF.gif'
 import CallRoundedIcon from '@mui/icons-material/Call'
-import { useColorPalates } from '../../providers/theme-provider/hooks'
+import { useBotAppColorPalates } from '@repo/hooks'
 import { useFlags } from 'flagsmith/react'
 import { useBotConfig } from '@repo/hooks'
 import { useLocalization } from '@repo/hooks'
 
 const DowntimePage: React.FC = () => {
   const t = useLocalization()
-  const theme = useColorPalates()
+  const theme = useBotAppColorPalates()
   const config = useBotConfig('component', 'downtimePage')
   const flags = useFlags(['dialer_number'])
   const handleRefreshClick = useCallback(() => {

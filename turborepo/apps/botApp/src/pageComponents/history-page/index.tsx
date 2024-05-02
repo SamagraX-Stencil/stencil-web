@@ -15,7 +15,7 @@ import moment from 'moment'
 import _ from 'underscore'
 import { ChatItem, HistoryItem } from './index.d'
 import { map } from 'lodash'
-import { useColorPalates } from '../../providers/theme-provider/hooks'
+import { useBotAppColorPalates } from '@repo/hooks'
 import { FullPageLoader } from '../../components/fullpage-loader'
 import { useFlags } from 'flagsmith/react'
 import { useLocalization } from '@repo/hooks'
@@ -30,7 +30,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 const HistoryPage: FC = () => {
   const [isFetching, setIsFetching] = useState(true)
-  const theme = useColorPalates()
+  const theme = useBotAppColorPalates()
   const [conversations, setConversations] = useState([])
   const flags = useFlags(['show_chat_history_page'])
   const context = useContext(AppContext)
