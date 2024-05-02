@@ -11,14 +11,14 @@ import { NextPage } from 'next'
 import axios from 'axios'
 import { AppContext } from '@repo/provider'
 import SendIcon from './assets/sendButton.svg'
-import { useLocalization } from '../../hooks'
+import { useLocalization } from '@repo/hooks'
 import router from 'next/router'
 import Image from 'next/image'
 import toast from 'react-hot-toast'
 import { v4 as uuidv4 } from 'uuid'
 import RenderVoiceRecorder from '../../components/recorder/RenderVoiceRecorder'
 import { recordUserLocation } from '../../utils/location'
-import { useConfig } from '../../hooks/useConfig'
+import { useBotConfig } from '@repo/hooks'
 import DowntimePage from '../downtime-page'
 import { useColorPalates } from '../../providers/theme-provider/hooks'
 import kaliaStatusImg from './assets/kalia_status.png'
@@ -27,8 +27,8 @@ import weatherAdvisoryImg from './assets/weather_advisory.png'
 
 const HomePage: NextPage = () => {
   const context = useContext(AppContext)
-  const botConfig = useConfig('component', 'chatUI')
-  const config = useConfig('component', 'homePage')
+  const botConfig = useBotConfig('component', 'chatUI')
+  const config = useBotConfig('component', 'homePage')
   const { micWidth, micHeight } = config
   const t = useLocalization()
   const inputRef = useRef(null)

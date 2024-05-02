@@ -18,10 +18,10 @@ import { map } from 'lodash'
 import { useColorPalates } from '../../providers/theme-provider/hooks'
 import { FullPageLoader } from '../../components/fullpage-loader'
 import { useFlags } from 'flagsmith/react'
-import { useLocalization } from '../../hooks'
+import { useLocalization } from '@repo/hooks'
 import axios from 'axios'
 import ComingSoonPage from '../coming-soon-page'
-import { useConfig } from '../../hooks/useConfig'
+import { useBotConfig } from '@repo/hooks'
 import router from 'next/router'
 import { toast } from 'react-hot-toast'
 import { AppContext } from '@repo/provider'
@@ -36,7 +36,7 @@ const HistoryPage: FC = () => {
   const context = useContext(AppContext)
   const t = useLocalization()
 
-  const config = useConfig('component', 'historyPage')
+  const config = useBotConfig('component', 'historyPage')
   const handleClick = useCallback((activeItem: ChatItem) => {
     sessionStorage.setItem(
       'conversationId',

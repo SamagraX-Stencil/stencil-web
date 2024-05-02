@@ -1,49 +1,55 @@
-import React, { useEffect, useState } from 'react';
-import styles from './index.module.css';
-import Typography from '@mui/material/Typography';
-import { Box } from '@mui/material';
-import Rating from '@mui/material/Rating';
-import Button from '@mui/material/Button';
-import { toast } from 'react-hot-toast';
-import { useColorPalates } from '../../providers/theme-provider/hooks';
-import { useConfig } from '../../hooks/useConfig';
-import axios from 'axios';
-import { useLocalization } from '../../hooks';
+import React, { useEffect, useState } from 'react'
+import styles from './index.module.css'
+import Typography from '@mui/material/Typography'
+import { Box } from '@mui/material'
+import Rating from '@mui/material/Rating'
+import Button from '@mui/material/Button'
+import { toast } from 'react-hot-toast'
+import { useColorPalates } from '../../providers/theme-provider/hooks'
+import { useBotConfig } from '@repo/hooks'
+import axios from 'axios'
+import { useLocalization } from '@repo/hooks'
 
 const FeedbackPage: React.FC = () => {
-  const [star, setStar] = useState(1);
-  const [review, setReview] = useState('');
-  const theme = useColorPalates();
-  const config = useConfig('component', 'feedbackPage');
-  const t = useLocalization();
+  const [star, setStar] = useState(1)
+  const [review, setReview] = useState('')
+  const theme = useColorPalates()
+  const config = useBotConfig('component', 'feedbackPage')
+  const t = useLocalization()
 
   useEffect(() => {
-    axios.get(`${process.env.NEXT_PUBLIC_BFF_API_URL}/feedback/${localStorage.getItem(
-      'userID'
-    )}`,{
-      headers: {
-        botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-        orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-      },
-    }).then((res) => {
-      setStar(res?.data?.rating);
-      setReview(res?.data?.review);
-    }).catch((error) => {
-      console.log(error);
-    })
+    axios
+      .get(
+        `${process.env.NEXT_PUBLIC_BFF_API_URL}/feedback/${localStorage.getItem(
+          'userID'
+        )}`,
+        {
+          headers: {
+            botId: process.env.NEXT_PUBLIC_BOT_ID || '',
+            orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
+          },
+        }
+      )
+      .then((res) => {
+        setStar(res?.data?.rating)
+        setReview(res?.data?.review)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }, [])
 
   const handleFeedback = () => {
-    if (!config) return;
+    if (!config) return
 
     if (config?.ratingBox && star === 0) {
-      toast.error('Please provide a rating');
-      return;
+      toast.error('Please provide a rating')
+      return
     }
 
     if (config?.reviewBox && review === '') {
-      toast.error('Please provide a review');
-      return;
+      toast.error('Please provide a review')
+      return
     }
 
     axios
@@ -63,13 +69,13 @@ const FeedbackPage: React.FC = () => {
         }
       )
       .then(() => {
-        toast.success('Feedback submitted successfully');
+        toast.success('Feedback submitted successfully')
       })
       .catch((error) => {
-        console.error('Error submitting feedback:', error);
-        toast.error('Failed to submit feedback. Please try again later.');
-      });
-  };
+        console.error('Error submitting feedback:', error)
+        toast.error('Failed to submit feedback. Please try again later.')
+      })
+  }
 
   return (
     <div className={styles.container}>
@@ -80,7 +86,8 @@ const FeedbackPage: React.FC = () => {
               fontSize: '5vh',
               fontWeight: 'bold',
               color: theme.primary.main,
-            }}>
+            }}
+          >
             {t('label.feedback')}
           </Typography>
         </Box>
@@ -91,7 +98,8 @@ const FeedbackPage: React.FC = () => {
               sx={{
                 fontWeight: 'bold',
                 fontSize: '3vh',
-              }}>
+              }}
+            >
               {t('message.rating')}
             </Typography>
 
@@ -101,7 +109,7 @@ const FeedbackPage: React.FC = () => {
               value={star}
               max={config?.ratingMaxStars || 5}
               onChange={(event, newValue) => {
-                setStar(newValue || 1);
+                setStar(newValue || 1)
               }}
               defaultValue={1}
               sx={{
@@ -112,7 +120,8 @@ const FeedbackPage: React.FC = () => {
               sx={{
                 textAlign: 'center',
                 fontSize: '2vh',
-              }}>
+              }}
+            >
               {t('message.rating_description')}
             </Typography>
             <Button
@@ -130,7 +139,8 @@ const FeedbackPage: React.FC = () => {
                   backgroundColor: `${theme.primary.dark}`,
                 },
               }}
-              onClick={handleFeedback}>
+              onClick={handleFeedback}
+            >
               {t('label.submit_review')}
             </Button>
           </Box>
@@ -143,7 +153,8 @@ const FeedbackPage: React.FC = () => {
                 m: '1rem',
                 fontWeight: 'bold',
                 fontSize: '3vh',
-              }}>
+              }}
+            >
               {t('message.review')}
             </Typography>
             <textarea
@@ -154,7 +165,7 @@ const FeedbackPage: React.FC = () => {
                 border: `2px solid ${theme.primary.main}`,
               }}
               onChange={(e) => {
-                setReview(e.target.value);
+                setReview(e.target.value)
               }}
             />
 
@@ -173,14 +184,15 @@ const FeedbackPage: React.FC = () => {
                   backgroundColor: `${theme.primary.dark}`,
                 },
               }}
-              onClick={handleFeedback}>
+              onClick={handleFeedback}
+            >
               {t('label.submit_review')}
             </Button>
           </Box>
         )}
       </Box>
     </div>
-  );
-};
+  )
+}
 
-export default FeedbackPage;
+export default FeedbackPage

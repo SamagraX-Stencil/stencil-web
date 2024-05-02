@@ -8,7 +8,7 @@ import React, {
 import crossIcon from '../../assets/icons/crossIcon.svg'
 import styles from './index.module.css'
 import Image from 'next/image'
-import { useLocalization } from '../../hooks'
+import { useLocalization } from '@repo/hooks'
 import { AppContext } from '@repo/provider'
 import { MessageType, XMessage } from '@samagra-x/xmessage'
 

@@ -6,20 +6,20 @@ import MenuIcon from '@mui/icons-material/Menu'
 import HomeIcon from '@mui/icons-material/Home'
 import Typography from '@mui/material/Typography'
 import { useRouter } from 'next/router'
-import { useConfig } from '../../hooks/useConfig'
+import { useBotConfig } from '@repo/hooks'
 import Sidebar from '../../pageComponents/sidebar'
 import { recordUserLocation } from '../../utils/location'
 import { v4 as uuidv4 } from 'uuid'
 import { AppContext } from '@repo/provider'
-import { useLocalization, useLogin } from '../../hooks'
+import { useLocalization, useLogin } from '@repo/hooks'
 import toast from 'react-hot-toast'
 import { useColorPalates } from '../../providers/theme-provider/hooks'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
 
 const Navbar: React.FC = () => {
   const router = useRouter()
-  const config = useConfig('component', 'navbar')
-  const botConfig = useConfig('component', 'botDetails')
+  const config = useBotConfig('component', 'navbar')
+  const botConfig = useBotConfig('component', 'botDetails')
   const context = useContext(AppContext)
   const [activeLanguage, setActiveLanguage] = useState<string>(() => {
     const storedLang = localStorage.getItem('locale')

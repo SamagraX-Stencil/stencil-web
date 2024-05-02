@@ -5,8 +5,8 @@ import error from './assets/error.gif'
 import start from './assets/startIcon.svg'
 import styles from './styles.module.css'
 import toast from 'react-hot-toast'
-import { useLocalization } from '../../hooks'
-import { useConfig } from '../../hooks/useConfig'
+import { useLocalization } from '@repo/hooks'
+import { useBotConfig } from '@repo/hooks'
 import { v4 as uuidv4 } from 'uuid'
 import { AppContext } from '@repo/provider'
 import saveTelemetryEvent from '../../utils/telemetry'
@@ -16,7 +16,7 @@ const RenderVoiceRecorder = ({ setInputMsg, tapToSpeak }) => {
   const [mediaRecorder, setMediaRecorder] = useState(null)
   const [apiCallStatus, setApiCallStatus] = useState('idle')
   const [userClickedError, setUserClickedError] = useState(false)
-  const config = useConfig('component', 'voiceRecorder')
+  const config = useBotConfig('component', 'voiceRecorder')
   const context = useContext(AppContext)
 
   let VOICE_MIN_DECIBELS = -35

@@ -1,4 +1,4 @@
-import { useLocalization } from '../../hooks'
+import { useLocalization } from '@repo/hooks'
 import styles from './index.module.css'
 import { FC } from 'react'
 
@@ -11,15 +11,19 @@ const LaunchPage: FC<{ theme: any; config: any; compConfig: any }> = ({
   return (
     <div
       className={`${styles.container}`}
-      style={{ background: config?.launchPageColor || theme?.palette?.primary?.light }}
+      style={{
+        background: config?.launchPageColor || theme?.palette?.primary?.light,
+      }}
     >
-      {config?.logo && <img
-        className={styles.loginImage}
-        src={config?.logo}
-        alt="launchPageLogo"
-        width={220}
-        height={233}
-      />}
+      {config?.logo && (
+        <img
+          className={styles.loginImage}
+          src={config?.logo}
+          alt="launchPageLogo"
+          width={220}
+          height={233}
+        />
+      )}
       <span style={{ color: theme?.palette?.primary?.main }}>
         {t('label.title')}
       </span>

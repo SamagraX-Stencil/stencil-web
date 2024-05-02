@@ -1,24 +1,22 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import FeedbackPage from '../pageComponents/feedback-page/index';
-import { useLocalization } from '../hooks';
-import { useConfig } from "../hooks/useConfig";
-
+import React from 'react'
+import type { NextPage } from 'next'
+import Head from 'next/head'
+import FeedbackPage from '../pageComponents/feedback-page/index'
+import { useLocalization } from '@repo/hooks'
+import { useBotConfig } from '@repo/hooks'
 
 const Feedback: NextPage = () => {
-  const t=useLocalization();
-  const config = useConfig("component", "botDetails");
+  const t = useLocalization()
+  const config = useBotConfig('component', 'botDetails')
   return (
     <React.Fragment>
-     <Head>
-        <title>{t("label.tab_title")}</title>
+      <Head>
+        <title>{t('label.tab_title')}</title>
         <link rel="icon" href={config?.favicon} />
-        
       </Head>
       <FeedbackPage />
     </React.Fragment>
-  );
-};
+  )
+}
 
-export default Feedback;
+export default Feedback

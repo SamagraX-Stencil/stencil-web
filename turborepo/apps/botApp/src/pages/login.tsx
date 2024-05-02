@@ -1,12 +1,12 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useLocalization } from '../hooks'
+import { useLocalization } from '@repo/hooks'
 import LoginMobileAadharPage from '../pageComponents/login-mobile-aadhar-page'
-import { useConfig } from '../hooks/useConfig'
+import { useBotConfig } from '@repo/hooks'
 const Login: NextPage = () => {
   const t = useLocalization()
-  const config = useConfig('component', 'botDetails')
+  const config = useBotConfig('component', 'botDetails')
   return (
     <React.Fragment>
       <Head>

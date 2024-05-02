@@ -9,11 +9,11 @@ import React, {
   useEffect,
 } from 'react'
 import { AppContext } from '@repo/provider'
-import { useLocalization } from '../../hooks'
+import { useLocalization } from '@repo/hooks'
 import MessageItem from '../message-item'
 import RenderVoiceRecorder from '../recorder/RenderVoiceRecorder'
 import toast from 'react-hot-toast'
-import { useConfig } from '../../hooks/useConfig'
+import { useBotConfig } from '@repo/hooks'
 import ShareButtons from '../share-buttons'
 import DowntimePage from '../../pageComponents/downtime-page'
 import { useColorPalates } from '../../providers/theme-provider/hooks'
@@ -21,7 +21,7 @@ import { getMsgType } from '../../utils/getMsgType'
 import { recordUserLocation } from '../../utils/location'
 
 const ChatUiWindow: React.FC = () => {
-  const config = useConfig('component', 'chatUI')
+  const config = useBotConfig('component', 'chatUI')
   const theme = useColorPalates()
   const secondaryColor = useMemo(() => {
     return theme?.primary?.light

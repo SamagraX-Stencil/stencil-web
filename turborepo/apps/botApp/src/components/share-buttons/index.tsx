@@ -2,7 +2,7 @@ import React, { useContext, useMemo, useState } from 'react'
 import Image from 'next/image'
 import Loader from '../loader'
 import Draggable from 'react-draggable'
-import { useLocalization } from '../../hooks'
+import { useLocalization } from '@repo/hooks'
 import ShareIcon from '../../assets/icons/share'
 import DownloadIcon from '../../assets/icons/download'
 import { toast } from 'react-hot-toast'
@@ -10,9 +10,9 @@ import { AppContext } from '@repo/provider'
 import axios from 'axios'
 import { CircularProgress, Divider } from '@mui/material'
 import { useColorPalates } from '../../providers/theme-provider/hooks'
-import { useConfig } from '../../hooks/useConfig'
+import { useBotConfig } from '@repo/hooks'
 const ShareButtons = () => {
-  const config = useConfig('component', 'share-buttons')
+  const config = useBotConfig('component', 'share-buttons')
   const theme = useColorPalates()
   const secondaryColor = useMemo(() => {
     return theme?.primary?.main

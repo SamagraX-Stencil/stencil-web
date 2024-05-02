@@ -8,11 +8,11 @@ import _logo from './assets/logo.png'
 import CircularProgress from '@mui/material/CircularProgress'
 import { toast } from 'react-hot-toast'
 import { useColorPalates } from '../../providers/theme-provider/hooks'
-import { useLocalization } from '../../hooks'
+import { useLocalization } from '@repo/hooks'
 import { useRouter } from 'next/router'
-import { useConfig } from '../../hooks/useConfig'
+import { useBotConfig } from '@repo/hooks'
 const LoginMobileAadharPage: React.FC = () => {
-  const config = useConfig('component', 'loginMobileAadharPage')
+  const config = useBotConfig('component', 'loginMobileAadharPage')
   const {
     loginWithAadhaar,
     showSignUp,
@@ -104,7 +104,7 @@ const LoginMobileAadharPage: React.FC = () => {
     },
     [isAadharClicked, input]
   )
-console.log("debug login:",{config})
+  console.log('debug login:', { config })
   return (
     <>
       <meta
@@ -160,14 +160,14 @@ console.log("debug login:",{config})
               <img
                 src={config?.logo}
                 alt="loginPageImg"
-                height={config.logoheight || "280px"}
-                width={config.logowidth || "280px"}
+                height={config.logoheight || '280px'}
+                width={config.logowidth || '280px'}
               />
             )}
             <Box
               component="form"
               onSubmit={handleLogin}
-              sx={{ mt: 1, width: "100%" }}
+              sx={{ mt: 1, width: '100%' }}
             >
               <TextField
                 margin="normal"

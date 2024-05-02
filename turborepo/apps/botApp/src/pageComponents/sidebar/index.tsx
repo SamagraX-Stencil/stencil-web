@@ -14,12 +14,12 @@ import HelpIcon from '@mui/icons-material/QuestionMark'
 import FeedbackIcon from '@mui/icons-material/ThumbUpOffAlt'
 import LogoutIcon from '@mui/icons-material/Logout'
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline'
-import { useConfig } from '../../hooks/useConfig'
+import { useBotConfig } from '@repo/hooks'
 import { useColorPalates } from '../../providers/theme-provider/hooks'
 import router from 'next/router'
 import { useCookies } from 'react-cookie'
 import { AppContext } from '@repo/provider'
-import { useLocalization } from '../../hooks'
+import { useLocalization } from '@repo/hooks'
 import BhashiniImg from '../../assets/images/bhashinilogo.png'
 import darshanLogo from '../../assets/images/darshan-logo.png'
 import styles from './style.module.css'
@@ -39,7 +39,7 @@ export const Sidebar = ({
 
   const [cookie, setCookie, removeCookie] = useCookies()
   const context = useContext(AppContext)
-  const config = useConfig('component', 'sidebar')
+  const config = useBotConfig('component', 'sidebar')
   const theme = useColorPalates()
   const t = useLocalization()
 

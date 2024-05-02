@@ -7,18 +7,18 @@ import CircularProgress from '@mui/material/CircularProgress'
 import { toast } from 'react-hot-toast'
 import { useColorPalates } from '../../providers/theme-provider/hooks'
 import { OTPInput } from '../../components/otp-input'
-import { useLocalization } from '../../hooks'
+import { useLocalization } from '@repo/hooks'
 import { useRouter } from 'next/router'
 import jwt_decode from 'jwt-decode'
 import { useCookies } from 'react-cookie'
-import { useConfig } from '../../hooks/useConfig'
+import { useBotConfig } from '@repo/hooks'
 import axios from 'axios'
 import { FormattedMessage } from 'react-intl'
 const OtpPage: React.FC = () => {
   const [otp, setOtp] = useState('')
   const [loading, setLoading] = useState(false)
   const [countdown, setCountdown] = useState(0)
-  const config = useConfig('component', 'otpPage')
+  const config = useBotConfig('component', 'otpPage')
   const theme = useColorPalates()
   const { logo, showLogo, showSplitedView, otpLength, resendOtpTimer } = config
   const router = useRouter()

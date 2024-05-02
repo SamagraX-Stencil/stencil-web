@@ -28,8 +28,8 @@ import { MessageItemPropType } from './index.d'
 import { JsonToTable } from '../json-to-table'
 import moment from 'moment'
 import { useColorPalates } from '../../providers/theme-provider/hooks'
-import { useConfig } from '../../hooks/useConfig'
-import { useLocalization } from '../../hooks'
+import { useBotConfig } from '@repo/hooks'
+import { useLocalization } from '@repo/hooks'
 import { AppContext } from '@repo/provider'
 import axios from 'axios'
 import saveTelemetryEvent from '../../utils/telemetry'
@@ -38,7 +38,7 @@ import { MessageType, XMessage } from '@samagra-x/xmessage'
 import BlinkingSpinner from '../blinking-spinner/index'
 
 const MessageItem: FC<MessageItemPropType> = ({ message }) => {
-  const config = useConfig('component', 'chatUI')
+  const config = useBotConfig('component', 'chatUI')
   const context = useContext(AppContext)
   const [reaction, setReaction] = useState(
     message?.content?.data?.reaction?.type
