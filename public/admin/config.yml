@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: main # Branch to update (optional; defaults to master)
+  branch: test # Branch to update (optional; defaults to master)
 media_folder: public/img
 public_folder: img
 collections:
@@ -9,7 +9,7 @@ collections:
     files:
     - label: "Home"
       name: "home"
-      file: "content/home.md"
+      file: "src/molecules/feedback/index.tsx"
       fields:
         - { label: "Title", name: "title", widget: "string"}
         - { label: "Publish Date", name: "date", widget: "datetime" }
