@@ -22,7 +22,7 @@ const HistoryPage: FC = () => {
 
   const handleClick = useCallback((activeItem: HistoryItem) => {
     console.log({ activeItem })
-  }, [])
+  }, []);
 
   const onSecondaryActionClick = useCallback(
     (activeItem: ChatItem) => () => {
