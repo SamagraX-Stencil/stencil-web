@@ -8,7 +8,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useUiConfig } from "../../hook/useConfig";
 
 const AkaiLaunch = () => {
-  const config = useUiConfig('component', 'akaiWelcomePage');
+  const config = useUiConfig('component', 'welcomePage');
   const theme = useColorPalates();
   return (
     <Container

@@ -4,13 +4,13 @@ import Button from "@mui/material/Button";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import { useTheme } from "@mui/material";
-import AkaiLaunch from "../akai-launch-page";
+import Welcome from "../welcome-page";
 import UserTypeSelector from "../user-type-selector";
 import LoginMobile from "../login-mobile";
 import OptionSelector from "../option-selector";
 import WeatherStatus from "../weather-status";
 import OtpMobile from "../otp-mobile";
-import AkaiDashboard from "../akai-home";
+import Dashboard from "../dashboard";
 const OnBoardingPage = () => {
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(-1);
@@ -51,7 +51,7 @@ const OnBoardingPage = () => {
       </div>
     
       {activeStep === -1 ? (
-        <AkaiLaunch />
+        <Welcome />
       ) : (
         <OnBoarding
           containerStyle={{ width: "100%" }}
@@ -64,7 +64,7 @@ const OnBoardingPage = () => {
           {activeStep === 1 && <LoginMobile />}
           {activeStep === 2 && <OtpMobile />}
           {activeStep === 3 && <OptionSelector />}
-          {activeStep === 4 && <AkaiDashboard />}
+          {activeStep === 4 && <Dashboard />}
         </OnBoarding>
       )}
     </div>

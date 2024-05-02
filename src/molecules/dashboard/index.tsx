@@ -32,8 +32,8 @@ const Item = styled(Paper)(({ theme }) => ({
   position: "relative",
 }));
 
-const AkaiDashboard = () => {
-  const config = useUiConfig("component", "akaiDashboard");
+const Dashboard = () => {
+  const config = useUiConfig("component", "dashboard");
   console.log({ config });
   const theme = useColorPalates();
   const [value, setValue] = React.useState(0);
@@ -228,4 +228,4 @@ const AkaiDashboard = () => {
   );
 };
 
-export default AkaiDashboard;
+export default Dashboard;

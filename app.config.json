@@ -200,7 +200,7 @@
       "allowDownloadChat": true,
       "allowShareChat": true
     },
-    "akaiWelcomePage": {
+    "welcomePage": {
       "allowOverride": false,
       "showTopLeftLogo": true,
       "topLeftLogo": null,
@@ -254,7 +254,7 @@
       "btnText": "आगे बढ़ें",
       "helpingText1": "अभी के लिए छोड़ दें"
     },
-    "akaiDashboard": {
+    "dashboard": {
       "allowOverride": false,
       "weatherCardText": "जानिए मौसम के बारे में",
       "centerText": "मुझसे कुछ भी पूछें",
