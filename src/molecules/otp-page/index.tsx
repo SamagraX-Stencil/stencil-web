@@ -82,7 +82,7 @@ const OtpPage: React.FC = () => {
               textAlign="center"
               width="90%"
               color="#1E232C"
-              sx={{ m: 2 }}
+              sx={{ m: 2, mb: 10 }}
             >
               {config.title}
             </Typography>
@@ -91,10 +91,11 @@ const OtpPage: React.FC = () => {
               textAlign="center"
               width="90%"
               color="#838BA1"
+              sx={{ mb: 4 }}
             >
               Enter the verification code we just sent on your mobile number
             </Typography>
-            <Typography fontWeight="bold" textAlign="center">
+            <Typography fontWeight="bold" textAlign="center" sx={{ mb: 2 }}>
               +91-{phNo}
             </Typography>
             <Box
@@ -113,6 +114,7 @@ const OtpPage: React.FC = () => {
                   display: 'flex',
                   flexDirection: 'column',
                   gap: 2,
+                  mb: 4,
                 }}
               >
                 <OTPInput
@@ -124,31 +126,27 @@ const OtpPage: React.FC = () => {
               </Box>
               <div style={{ marginTop: '10px' }}>
                 {countdown > 0 ? (
-
-                <Typography textAlign='center'>Please wait {countdown} seconds before resending OTP</Typography>
-                  ):(
-
-                  <>
-                    <Typography variant="body2" align="center" color="#838BA1">
-                      Didn't receive the OTP? &nbsp;
-                      <p
-                        onClick={resendOtp}
-                        style={{
-                          color: theme.primary.main,
-                          fontWeight: 'bold',
-                          cursor: 'pointer',
-                        }}
-                      >
-                        Resend again
-                      </p>
-                    </Typography>
-                  </>
+                  <Typography textAlign="center" sx={{ mb: 2 }}>
+                    Please wait {countdown} seconds before resending OTP
+                  </Typography>
+                ) : (
+                  <Typography variant="body2" align="center" color="#838BA1">
+                    Didn't receive the OTP? &nbsp;
+                    <span
+                      onClick={resendOtp}
+                      style={{
+                        color: theme.primary.main,
+                        fontWeight: 'bold',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      Resend again
+                    </span>
+                  </Typography>
                 )}
               </div>
               <div
                 style={{
-                  marginTop: '10px',
-                  marginBottom: '10px',
                   display: 'flex',
                   gap: '10px',
                   width: '100%',
@@ -159,10 +157,7 @@ const OtpPage: React.FC = () => {
                   type="button"
                   sx={{
                     textTransform: 'none',
-
                     p: 1,
-
-                    // background: config?.theme.secondaryColor.value,
                     background: '#000',
                     borderRadius: '10px',
                     width: '50%',
@@ -175,10 +170,8 @@ const OtpPage: React.FC = () => {
                   variant="contained"
                   sx={{
                     textTransform: 'none',
-                    mt: 5,
-                    mb: 4,
+                    mt: 1,
                     p: 1,
-
                     background: theme.primary.main,
                     borderRadius: '10px',
                     width: '50%',

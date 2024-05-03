@@ -92,7 +92,7 @@ export const Sidebar: FC<{
               <ListItemButton>
                 <ListItemText
                   primary="Pages"
-                  style={{ color: theme?.primary?.light }}
+                  style={{ color: "white"}}
                 />
               </ListItemButton>
             </ListItem>
@@ -100,12 +100,12 @@ export const Sidebar: FC<{
               <ListItem key={page.label} disablePadding>
                 <Link to={page.path} style={{ textDecoration: "none" }}>
                   <ListItemButton>
-                    <ListItemIcon style={{ color: theme?.primary?.light }}>
+                    <ListItemIcon style={{ color: "white" }}>
                       {page.icon}
                     </ListItemIcon>
                     <ListItemText
                       primary={page?.label}
-                      style={{ color: theme?.primary?.light }}
+                      style={{ color: "white"}}
                     />
                   </ListItemButton>
                 </Link>
@@ -118,19 +118,19 @@ export const Sidebar: FC<{
               <ListItemButton>
                 <ListItemText
                   primary="Molecules"
-                  style={{ color: theme?.primary?.light }}
+                  style={{ color: "white" }}
                 />
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
               <Link to={"/molecules"} style={{ textDecoration: "none" }}>
                 <ListItemButton>
-                  <ListItemIcon style={{ color: theme?.primary?.light }}>
+                  <ListItemIcon style={{ color: "white"}}>
                     <GridViewIcon />
                   </ListItemIcon>
                   <ListItemText
                     primary={"Molecules"}
-                    style={{ color: theme?.primary?.light }}
+                    style={{ color: "white" }}
                   />
                 </ListItemButton>
               </Link>
@@ -138,12 +138,12 @@ export const Sidebar: FC<{
             <ListItem disablePadding>
               <Link to={"/admin"} style={{ textDecoration: "none" }}>
                 <ListItemButton>
-                  <ListItemIcon style={{ color: theme?.primary?.light }}>
+                  <ListItemIcon style={{ color: "white"}}>
                     {getIcon("admin")}
                   </ListItemIcon>
                   <ListItemText
                     primary={"Admin"}
-                    style={{ color: theme?.primary?.light }}
+                    style={{ color: "white" }}
                   />
                 </ListItemButton>
               </Link>

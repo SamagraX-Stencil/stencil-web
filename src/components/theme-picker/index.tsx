@@ -63,7 +63,7 @@ modifyPaletes(selectedColor);
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>Th</Avatar>
+            <Avatar sx={{ width: 32, height: 32,padding:20 }}>Th</Avatar>
           </IconButton>
         </Tooltip>
       </Box>
