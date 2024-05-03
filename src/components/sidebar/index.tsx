@@ -97,7 +97,7 @@ export const Sidebar: FC<{
               </ListItemButton>
             </ListItem>
             {sidebar.map((page) => (
-              <ListItem key={page.label} disablePadding>
+              <ListItem key={page.label} disablePadding sx={{}}>
                 <Link to={page.path} style={{ textDecoration: "none" }}>
                   <ListItemButton>
                     <ListItemIcon style={{ color: "white" }}>
