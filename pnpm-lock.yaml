@@ -29,9 +29,6 @@ importers:
       '@repo/ui':
         specifier: workspace:^
         version: link:packages/ui
-      '@samagra-x/chatui':
-        specifier: ^1.0.3
-        version: 1.0.3(react-dom@18.2.0)(react@18.2.0)
       bootstrap-css-only:
         specifier: ^4.4.1
         version: 4.4.1
@@ -4607,22 +4604,6 @@ packages:
       intersection-observer: 0.12.2
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
-    dev: false
-
-  /@samagra-x/chatui@1.0.3(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-+wB2nsFGEhFF7vqH/8XOUdTzL0LtUia4xvBo/DbzHxuvgDXaThtSKou5bzz38eACI3jioXCq9g+RHoiMoEgggA==}
-    peerDependencies:
-      react: '>=16.8.0'
-      react-dom: '>=16.8.0'
-    dependencies:
-      '@babel/runtime': 7.24.4
-      '@babel/runtime-corejs3': 7.22.10
-      clsx: 1.2.1
-      core-js: 3.37.0
-      dompurify: 2.5.1
-      intersection-observer: 0.12.2
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /@samagra-x/xmessage@1.1.1(postcss@8.4.38)(typescript@4.9.5):

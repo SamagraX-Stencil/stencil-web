@@ -11,7 +11,7 @@ import { useBotAppColorPalates } from '@repo/hooks'
 import { useLocalization } from '@repo/hooks'
 import { useRouter } from 'next/router'
 import { useBotConfig } from '@repo/hooks'
-const LoginMobileAadharPage: React.FC = () => {
+const LocalLoginMobileAadharPage: React.FC = () => {
   const config = useBotConfig('component', 'loginMobileAadharPage')
   const {
     loginWithAadhaar,
@@ -248,4 +248,4 @@ const LoginMobileAadharPage: React.FC = () => {
   )
 }
 
-export default LoginMobileAadharPage
+export default LocalLoginMobileAadharPage

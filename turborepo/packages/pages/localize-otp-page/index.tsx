@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography'
 import CircularProgress from '@mui/material/CircularProgress'
 import { toast } from 'react-hot-toast'
 import { useBotAppColorPalates } from '@repo/hooks'
-import { OTPInput } from '../../components/otp-input'
+import { LocalOTPInput } from '@repo/molecules'
 import { useLocalization } from '@repo/hooks'
 import { useRouter } from 'next/router'
 import jwt_decode from 'jwt-decode'
@@ -14,7 +14,7 @@ import { useCookies } from 'react-cookie'
 import { useBotConfig } from '@repo/hooks'
 import axios from 'axios'
 import { FormattedMessage } from 'react-intl'
-const OtpPage: React.FC = () => {
+const LocalOtpPage: React.FC = () => {
   const [otp, setOtp] = useState('')
   const [loading, setLoading] = useState(false)
   const [countdown, setCountdown] = useState(0)
@@ -195,7 +195,7 @@ const OtpPage: React.FC = () => {
                   gap: 2,
                 }}
               >
-                <OTPInput
+                <LocalOTPInput
                   separator={<></>}
                   value={otp}
                   onChange={setOtp}
@@ -284,4 +284,4 @@ const OtpPage: React.FC = () => {
   )
 }
 
-export default OtpPage
+export default LocalOtpPage

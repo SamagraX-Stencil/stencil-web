@@ -7,7 +7,7 @@ import {
   useMemo,
 } from 'react'
 import styles from './style.module.css'
-import { List } from '../../components/list'
+import { LocalList } from '@repo/molecules'
 import ForumIcon from '@mui/icons-material/Forum'
 import { IconButton } from '@mui/material'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
@@ -16,19 +16,19 @@ import _ from 'underscore'
 import { ChatItem, HistoryItem } from './index.d'
 import { map } from 'lodash'
 import { useBotAppColorPalates } from '@repo/hooks'
-import { FullPageLoader } from '../../components/fullpage-loader'
+import { LocalFullPageLoader } from '@repo/molecules'
 import { useFlags } from 'flagsmith/react'
 import { useLocalization } from '@repo/hooks'
 import axios from 'axios'
-import ComingSoonPage from '../coming-soon-page'
+import { LocalComingSoonPage } from '@repo/pages'
 import { useBotConfig } from '@repo/hooks'
 import router from 'next/router'
 import { toast } from 'react-hot-toast'
 import { AppContext } from '@repo/provider'
-import { recordUserLocation } from '../../utils/location'
+import { recordUserLocation } from '../resources/utils/location'
 import { v4 as uuidv4 } from 'uuid'
 
-const HistoryPage: FC = () => {
+const LocalHistoryPage: FC = () => {
   const [isFetching, setIsFetching] = useState(true)
   const theme = useBotAppColorPalates()
   const [conversations, setConversations] = useState([])
@@ -176,7 +176,7 @@ const HistoryPage: FC = () => {
   }
 
   if (!flags?.show_chat_history_page?.enabled) {
-    return <ComingSoonPage />
+    return <LocalComingSoonPage />
   }
   return (
     <>
@@ -203,4 +203,4 @@ const HistoryPage: FC = () => {
   )
 }
 
-export default HistoryPage
+export default LocalHistoryPage

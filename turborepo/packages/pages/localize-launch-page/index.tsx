@@ -2,7 +2,7 @@ import { useLocalization } from '@repo/hooks'
 import styles from './index.module.css'
 import { FC } from 'react'
 
-const LaunchPage: FC<{ theme: any; config: any; compConfig: any }> = ({
+const LocalLaunchPage: FC<{ theme: any; config: any; compConfig: any }> = ({
   theme,
   config,
   compConfig,
@@ -31,4 +31,4 @@ const LaunchPage: FC<{ theme: any; config: any; compConfig: any }> = ({
   )
 }
 
-export default LaunchPage
+export default LocalLaunchPage

@@ -8,7 +8,7 @@ import { useFlags } from 'flagsmith/react'
 import { useBotConfig } from '@repo/hooks'
 import { useLocalization } from '@repo/hooks'
 
-const DowntimePage: React.FC = () => {
+const LocalDowntimePage: React.FC = () => {
   const t = useLocalization()
   const theme = useBotAppColorPalates()
   const config = useBotConfig('component', 'downtimePage')
@@ -118,4 +118,4 @@ const DowntimePage: React.FC = () => {
   )
 }
 
-export default DowntimePage
+export default LocalDowntimePage

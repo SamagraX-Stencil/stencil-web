@@ -10,7 +10,7 @@ import { useBotConfig } from '@repo/hooks'
 import axios from 'axios'
 import { useLocalization } from '@repo/hooks'
 
-const FeedbackPage: React.FC = () => {
+const LocalFeedbackPage: React.FC = () => {
   const [star, setStar] = useState(1)
   const [review, setReview] = useState('')
   const theme = useBotAppColorPalates()
@@ -195,4 +195,4 @@ const FeedbackPage: React.FC = () => {
   )
 }
 
-export default FeedbackPage
+export default LocalFeedbackPage

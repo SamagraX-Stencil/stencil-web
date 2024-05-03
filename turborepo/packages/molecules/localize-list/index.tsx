@@ -20,7 +20,7 @@ import {
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'
 import { useBotConfig } from '@repo/hooks'
 
-export const List: React.FC<ListType> = ({ items, label, noItem }) => {
+export const LocalList: React.FC<ListType> = ({ items, label, noItem }) => {
   const [openItem, setOpenItem] = React.useState<string | null>(null)
 
   const config = useBotConfig('component', 'historyPage')

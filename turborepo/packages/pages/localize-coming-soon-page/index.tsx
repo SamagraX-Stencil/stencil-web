@@ -7,7 +7,7 @@ import Hourglass from './hourglass'
 import { useBotAppColorPalates } from '@repo/hooks'
 import { useLocalization } from '@repo/hooks'
 
-const ComingSoonPage: React.FC = () => {
+const LocalComingSoonPage: React.FC = () => {
   const t = useLocalization()
   const theme = useBotAppColorPalates()
   const handleBack = useCallback(() => {
@@ -53,4 +53,4 @@ const ComingSoonPage: React.FC = () => {
   )
 }
 
-export default ComingSoonPage
+export default LocalComingSoonPage

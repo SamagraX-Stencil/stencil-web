@@ -3,7 +3,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useBotConfig } from '@repo/hooks'
 import { useLocalization } from '@repo/hooks'
-import FAQPage from '../pageComponents/faq-page'
+import { LocalFAQPage } from '@repo/pages'
 
 const Faq: NextPage = () => {
   const t = useLocalization()
@@ -14,7 +14,7 @@ const Faq: NextPage = () => {
         <title>{t('label.tab_title')}</title>
         <link rel="icon" href={config?.favicon} />
       </Head>
-      <FAQPage />
+      <LocalFAQPage />
     </React.Fragment>
   )
 }

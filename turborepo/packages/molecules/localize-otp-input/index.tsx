@@ -1,31 +1,31 @@
-import * as React from 'react';
-import { Input as BaseInput } from '@mui/base/Input';
-import { Box, styled } from '@mui/system';
+import * as React from 'react'
+import { Input as BaseInput } from '@mui/base/Input'
+import { Box, styled } from '@mui/system'
 
-export function OTPInput({
+export function LocalOTPInput({
   separator,
   length,
   value,
   onChange,
 }: {
-  separator: React.ReactNode;
-  length: number;
-  value: string;
-  onChange: React.Dispatch<React.SetStateAction<string>>;
+  separator: React.ReactNode
+  length: number
+  value: string
+  onChange: React.Dispatch<React.SetStateAction<string>>
 }) {
   const inputRefs = React.useRef<HTMLInputElement[]>(
     new Array(length).fill(null)
-  );
+  )
 
   const focusInput = (targetIndex: number) => {
-    const targetInput = inputRefs.current[targetIndex];
-    targetInput.focus();
-  };
+    const targetInput = inputRefs.current[targetIndex]
+    targetInput.focus()
+  }
 
   const selectInput = (targetIndex: number) => {
-    const targetInput = inputRefs.current[targetIndex];
-    targetInput.select();
-  };
+    const targetInput = inputRefs.current[targetIndex]
+    targetInput.select()
+  }
 
   const handleKeyDown = (
     event: React.KeyboardEvent<HTMLInputElement>,
@@ -35,120 +35,120 @@ export function OTPInput({
       case 'ArrowUp':
       case 'ArrowDown':
       case ' ':
-        event.preventDefault();
-        break;
+        event.preventDefault()
+        break
       case 'ArrowLeft':
-        event.preventDefault();
+        event.preventDefault()
         if (currentIndex > 0) {
-          focusInput(currentIndex - 1);
-          selectInput(currentIndex - 1);
+          focusInput(currentIndex - 1)
+          selectInput(currentIndex - 1)
         }
-        break;
+        break
       case 'ArrowRight':
-        event.preventDefault();
+        event.preventDefault()
         if (currentIndex < length - 1) {
-          focusInput(currentIndex + 1);
-          selectInput(currentIndex + 1);
+          focusInput(currentIndex + 1)
+          selectInput(currentIndex + 1)
         }
-        break;
+        break
       case 'Delete':
-        event.preventDefault();
+        event.preventDefault()
         onChange((prevOtp) => {
           const otp =
-            prevOtp.slice(0, currentIndex) + prevOtp.slice(currentIndex + 1);
-          return otp;
-        });
+            prevOtp.slice(0, currentIndex) + prevOtp.slice(currentIndex + 1)
+          return otp
+        })
 
-        break;
+        break
       case 'Backspace':
-        event.preventDefault();
+        event.preventDefault()
         if (currentIndex > 0) {
-          focusInput(currentIndex - 1);
-          selectInput(currentIndex - 1);
+          focusInput(currentIndex - 1)
+          selectInput(currentIndex - 1)
         }
 
         onChange((prevOtp) => {
           const otp =
-            prevOtp.slice(0, currentIndex) + prevOtp.slice(currentIndex + 1);
-          return otp;
-        });
-        break;
+            prevOtp.slice(0, currentIndex) + prevOtp.slice(currentIndex + 1)
+          return otp
+        })
+        break
 
       default:
-        break;
+        break
     }
-  };
+  }
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement>,
     currentIndex: number
   ) => {
-    const currentValue = event.target.value;
-    let indexToEnter = 0;
+    const currentValue = event.target.value
+    let indexToEnter = 0
 
     while (indexToEnter <= currentIndex) {
       if (
         inputRefs.current[indexToEnter].value &&
         indexToEnter < currentIndex
       ) {
-        indexToEnter += 1;
+        indexToEnter += 1
       } else {
-        break;
+        break
       }
     }
     onChange((prev) => {
-      const otpArray = prev.split('');
-      const lastValue = currentValue[currentValue.length - 1];
-      otpArray[indexToEnter] = lastValue;
-      return otpArray.join('');
-    });
+      const otpArray = prev.split('')
+      const lastValue = currentValue[currentValue.length - 1]
+      otpArray[indexToEnter] = lastValue
+      return otpArray.join('')
+    })
     if (currentValue !== '') {
       if (currentIndex < length - 1) {
-        focusInput(currentIndex + 1);
+        focusInput(currentIndex + 1)
       }
     }
-  };
+  }
 
   const handleClick = (
     _event: React.MouseEvent<HTMLInputElement, MouseEvent>,
     currentIndex: number
   ) => {
-    selectInput(currentIndex);
-  };
+    selectInput(currentIndex)
+  }
 
   const handlePaste = (
     event: React.ClipboardEvent<HTMLInputElement>,
     currentIndex: number
   ) => {
-    event.preventDefault();
-    const clipboardData = event.clipboardData;
+    event.preventDefault()
+    const clipboardData = event.clipboardData
 
     // Check if there is text data in the clipboard
     if (clipboardData.types.includes('text/plain')) {
-      let pastedText = clipboardData.getData('text/plain');
-      pastedText = pastedText.substring(0, length).trim();
-      let indexToEnter = 0;
+      let pastedText = clipboardData.getData('text/plain')
+      pastedText = pastedText.substring(0, length).trim()
+      let indexToEnter = 0
 
       while (indexToEnter <= currentIndex) {
         if (
           inputRefs.current[indexToEnter].value &&
           indexToEnter < currentIndex
         ) {
-          indexToEnter += 1;
+          indexToEnter += 1
         } else {
-          break;
+          break
         }
       }
 
-      const otpArray = value.split('');
+      const otpArray = value.split('')
 
       for (let i = indexToEnter; i < length; i += 1) {
-        const lastValue = pastedText[i - indexToEnter] ?? ' ';
-        otpArray[i] = lastValue;
+        const lastValue = pastedText[i - indexToEnter] ?? ' '
+        otpArray[i] = lastValue
       }
-      onChange(otpArray.join(''));
+      onChange(otpArray.join(''))
     }
-  };
+  }
 
   return (
     <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
@@ -159,11 +159,11 @@ export function OTPInput({
             slots={{
               input: InputElement,
             }}
-           aria-label={`Digit ${index + 1} of OTP`}
+            aria-label={`Digit ${index + 1} of OTP`}
             slotProps={{
               input: {
                 ref: (ele) => {
-                  inputRefs.current[index] = ele!;
+                  inputRefs.current[index] = ele!
                 },
                 onKeyDown: (event) => handleKeyDown(event, index),
                 onChange: (event) => handleChange(event, index),
@@ -177,7 +177,7 @@ export function OTPInput({
         </React.Fragment>
       ))}
     </Box>
-  );
+  )
 }
 
 const blue = {
@@ -187,7 +187,7 @@ const blue = {
   500: '#007FFF',
   600: '#0072E5',
   700: '#0059B2',
-};
+}
 
 const grey = {
   50: '#F3F6F9',
@@ -200,7 +200,7 @@ const grey = {
   700: '#434D5B',
   800: '#303740',
   900: '#1C2025',
-};
+}
 
 const InputElement = styled('input')(
   ({ theme }) => `
@@ -235,4 +235,4 @@ const InputElement = styled('input')(
     outline: 0;
   }
 `
-);
+)

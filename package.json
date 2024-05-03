@@ -27,7 +27,6 @@
     "@mui/icons-material": "^5.15.15",
     "@mui/material": "^5.15.15",
     "@repo/ui": "workspace:^",
-    "@samagra-x/chatui": "^1.0.3",
     "bootstrap-css-only": "^4.4.1",
     "i18next": "^23.10.0",
     "lodash": "^4.17.21",

@@ -15,7 +15,7 @@ import RenderVoiceRecorder from '../recorder/RenderVoiceRecorder'
 import toast from 'react-hot-toast'
 import { useBotConfig } from '@repo/hooks'
 import ShareButtons from '../share-buttons'
-import DowntimePage from '../../pageComponents/downtime-page'
+import { LocalDowntimePage } from '@repo/pages'
 import { useBotAppColorPalates } from '@repo/hooks'
 import { getMsgType } from '../../utils/getMsgType'
 import { recordUserLocation } from '../../utils/location'
@@ -140,7 +140,7 @@ const ChatUiWindow: React.FC = () => {
   }, [context?.loading, normalizeMsgs])
 
   if (isDown) {
-    return <DowntimePage />
+    return <LocalDowntimePage />
   } else
     return (
       <div style={{ height: '100%', width: '100%' }}>

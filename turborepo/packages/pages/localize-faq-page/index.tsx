@@ -10,7 +10,7 @@ import { useFlags } from 'flagsmith/react'
 import ComingSoonPage from '../coming-soon-page'
 import { useLocalization } from '@repo/hooks'
 
-const FAQPage: React.FC = () => {
+const LocalFAQPage: React.FC = () => {
   const t = useLocalization()
   const theme = useBotAppColorPalates()
   const flags = useFlags([
@@ -132,4 +132,4 @@ const FAQPage: React.FC = () => {
     )
 }
 
-export default FAQPage
+export default LocalFAQPage

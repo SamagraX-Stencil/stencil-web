@@ -1,5 +1,5 @@
-import Chat from '@samagra-x/chatui'
-import '@samagra-x/chatui/dist/index.css'
+// import Chat from '@samagra-x/chatui'
+// import '@samagra-x/chatui/dist/index.css'
 import React, {
   ReactElement,
   useCallback,

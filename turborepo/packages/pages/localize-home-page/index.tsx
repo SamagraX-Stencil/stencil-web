@@ -16,8 +16,8 @@ import router from 'next/router'
 import Image from 'next/image'
 import toast from 'react-hot-toast'
 import { v4 as uuidv4 } from 'uuid'
-import RenderVoiceRecorder from '../../components/recorder/RenderVoiceRecorder'
-import { recordUserLocation } from '../../utils/location'
+import { LocalRenderVoiceRecorder } from '@repo/molecules'
+import { recordUserLocation } from '../resources/utils/location'
 import { useBotConfig } from '@repo/hooks'
 import DowntimePage from '../downtime-page'
 import { useBotAppColorPalates } from '@repo/hooks'
@@ -25,7 +25,7 @@ import kaliaStatusImg from './assets/kalia_status.png'
 import plantProtectionImg from './assets/plant_protection.png'
 import weatherAdvisoryImg from './assets/weather_advisory.png'
 
-const HomePage: NextPage = () => {
+const LocalHomePage: NextPage = () => {
   const context = useContext(AppContext)
   const botConfig = useBotConfig('component', 'chatUI')
   const config = useBotConfig('component', 'homePage')
@@ -376,7 +376,7 @@ const HomePage: NextPage = () => {
                   style={{ height: micHeight, width: micWidth }}
                   ref={voiceRecorderRef}
                 >
-                  <RenderVoiceRecorder
+                  <LocalRenderVoiceRecorder
                     setInputMsg={setInputMsg}
                     tapToSpeak={true}
                   />
@@ -432,4 +432,4 @@ const HomePage: NextPage = () => {
       </>
     )
 }
-export default HomePage
+export default LocalHomePage
