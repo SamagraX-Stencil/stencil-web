@@ -1,5 +1,6 @@
-// import Chat from '@samagra-x/chatui'
-// import '@samagra-x/chatui/dist/index.css'
+'use-client'
+import Chat from '@samagra-x/chatui'
+import '@samagra-x/chatui/dist/index.css'
 import React, {
   ReactElement,
   useCallback,
@@ -24,7 +25,6 @@ export const ChatUI: React.FC = () => {
   const theme = useThemeConfig('theme')
 
   useEffect(() => {
-    console.log('ankit1.1', config, theme)
     const fetchHistory = () => {
       const normalizedChats = normalizedChat(chatHistory)
       if (normalizedChats.length > 0) {
@@ -33,12 +33,9 @@ export const ChatUI: React.FC = () => {
     }
     fetchHistory()
     recordUserLocation()
-    console.log('ankit1.2', config, theme)
   }, [])
 
   const normalizedChat = (chats: any): any => {
-    console.log('ankit1.3', config, theme)
-
     console.log('in normalized', chats)
     const history = chats.flatMap((item: any) =>
       [
@@ -64,7 +61,6 @@ export const ChatUI: React.FC = () => {
 
     return history
   }
-  console.log('ankit1.4', config, theme)
 
   const sendMessage = (text: string) => {
     setMessages((prev: any) => [
@@ -89,12 +85,9 @@ export const ChatUI: React.FC = () => {
       ])
       setLoading(false)
     }, 1000)
-    console.log('ankit1.5', config, theme)
   }
 
   const handleSend = useCallback(async (type: string, msg: any) => {
-    console.log('ankit1.6', config, theme)
-
     if (msg.length === 0) {
       toast.error('Please enter message')
       return
@@ -102,7 +95,6 @@ export const ChatUI: React.FC = () => {
     if (type === 'text' && msg.trim()) {
       sendMessage(msg.trim())
     }
-    console.log('ankit1.7', config, theme)
   }, [])
 
   const normalizeMsgs = useMemo(
@@ -132,10 +124,10 @@ export const ChatUI: React.FC = () => {
     []
   )
 
-  console.log('ankit1.8', config, theme)
   return (
     <div className={styles.container}>
       <Chat
+        showInput={true}
         btnColor={theme.secondaryColor.value}
         background="white"
         disableSend={false}

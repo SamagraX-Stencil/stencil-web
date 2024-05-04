@@ -160,7 +160,8 @@ const OtpPage: React.FC = () => {
                     textTransform: 'none',
 
                     p: 1,
-
+                    mt: 5,
+                    mb: 4,
                     // background: config?.theme.secondaryColor.value,
                     background: '#000',
                     borderRadius: '10px',

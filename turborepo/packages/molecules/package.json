@@ -16,6 +16,7 @@
     "@mui/material": "^5.15.15",
     "@repo/configmanager": "*",
     "@repo/hooks": "*",
+    "@samagra-x/chatui": "^1.0.6",
     "@types/lodash": "^4.17.0",
     "lodash": "^4.17.21",
     "moment": "^2.30.1",

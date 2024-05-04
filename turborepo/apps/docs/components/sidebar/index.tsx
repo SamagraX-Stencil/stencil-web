@@ -7,7 +7,8 @@ import GridViewIcon from '@mui/icons-material/GridView'
 import { useColorPalates } from '@repo/hooks'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import { ChatBubble, HistoryOutlined } from '@mui/icons-material'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { FC } from 'react'
 import { capitalize, toUpper } from 'lodash'
 import LoginIcon from '@mui/icons-material/Login'
@@ -94,9 +95,12 @@ export const Sidebar: FC<{
         {sidebar.map(
           (page: { label: string; path: string; icon: React.ReactNode }) => (
             <ListItem key={page.label} disablePadding>
-              <Link to={page.path} style={{ textDecoration: 'none' }}>
-                {' '}
-                {/* <Link href={page.path} underline="none"> */}
+              {/* <Link to={page.path} style={{ textDecoration: 'none' }}> */}{' '}
+              <Link
+                href={page.path}
+                passHref
+                style={{ textDecoration: 'none' }}
+              >
                 <ListItemButton>
                   <ListItemIcon style={{ color: theme?.primary?.light }}>
                     {page.icon}
@@ -122,7 +126,8 @@ export const Sidebar: FC<{
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <Link to={'/molecules'} style={{ textDecoration: 'none' }}>
+          {/* <Link to={'/molecules'} style={{ textDecoration: 'none' }}> */}
+          <Link href={'/molecules'} passHref style={{ textDecoration: 'none' }}>
             {/* <Link href={`/molecules`} underline="none"> */}
             <ListItemButton>
               <ListItemIcon style={{ color: theme?.primary?.light }}>
@@ -135,8 +140,9 @@ export const Sidebar: FC<{
             </ListItemButton>
           </Link>
         </ListItem>
-        <ListItem disablePadding>
-          <Link to={'/admin'} style={{ textDecoration: 'none' }}>
+        {/* admin route  */}
+        {/* <ListItem disablePadding>
+          <Link href={'/admin'} passHref style={{ textDecoration: 'none' }}>
             <ListItemButton>
               <ListItemIcon style={{ color: theme?.primary?.light }}>
                 {getIcon('admin')}
@@ -147,7 +153,7 @@ export const Sidebar: FC<{
               />
             </ListItemButton>
           </Link>
-        </ListItem>
+        </ListItem> */}
         {/* {molecules.map((molecule, index) => (
           <ListItem key={molecule} disablePadding>
             <Link href={`/${molecule}`} underline="none">
