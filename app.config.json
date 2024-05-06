@@ -199,6 +199,74 @@
       "allowOverride": false,
       "allowDownloadChat": true,
       "allowShareChat": true
+    },
+    "welcomePage": {
+      "allowOverride": false,
+      "showTopLeftLogo": true,
+      "topLeftLogo": null,
+      "topLeftLogoHeight": "40px",
+      "showCenterImage": true,
+      "centerImageHeight": "210px",
+      "centerImageWidth": "148px",
+      "centerImage": "https://seeklogo.com/images/C/corporate-company-logo-749CEE6ADC-seeklogo.com.png",
+      "centerText": "आमा कृषी ए.आई चैटबॉटै",
+      "centerTextColor": "green",
+      "showCenterBottomImage": true,
+      "centerBottomImage": null,
+      "centerBottomImageHeight": null,
+      "centerBottomImageWidth": "80vw",
+      "showProceedBtn": true,
+      "proceedBtnColor": null
+    },
+    "userTypeSelectorPage": {
+      "allowOverride": false,
+      "backgroundImage": null,
+      "title": "कृपया बताएं आप कौन हैं?",
+      "user1Text": "किसान",
+      "user1Image": null,
+      "user2Text": "विक्रेता या कारीगर",
+      "user2Image": null
+    },
+    "loginMobilePage": {
+      "allowOverride": false,
+      "backgroundImage": null,
+      "title": "कृपया अपना मोबाइल नंबर बताएं",
+      "placeholder": "मोबाइल नंबर",
+      "btnText": "लॉग इन करें"
+    },
+    "otpMobilePage": {
+      "allowOverride": false,
+      "topText": "ओटीपी सत्यापन",
+      "topTextColor": null,
+      "otpLength": 4,
+      "otpSeparator": null,
+      "centerText": "वह सत्यापन कोड दर्ज करें जो हमने अभी आपके मोबाइल नंबर पर भेजा है।",
+      "btnText": "सबमिट करे",
+      "helpingText1": "ओटीपी नहीं मिला?",
+      "helpingText2": "ओटीपी पुनः भेजें"
+    },
+    "optionSelectorPage": {
+      "allowOverride": false,
+      "topText": "अपनी फसलें चुनें",
+      "topTextColor": null,
+      "optionSelectLength": 4,
+      "centerText": "कृपया नीचे से 4 फसलें चुनें",
+      "btnText": "आगे बढ़ें",
+      "helpingText1": "अभी के लिए छोड़ दें"
+    },
+    "dashboard": {
+      "allowOverride": false,
+      "weatherCardText": "जानिए मौसम के बारे में",
+      "centerText": "मुझसे कुछ भी पूछें",
+      "card1Title": "मौसम की जानकारी",
+      "card1Image": null,
+      "card2Title": "योजनाओं की जानकारी",
+      "card2Image": null,
+      "card3Title": "कीट एवं रोग",
+      "card3Image": null,
+      "card4Title": "अन्य सूचना",
+      "card4Image": null,
+      "bottomText": "आमा कृषी चैटबॉट गलतियाँ कर सकता है। महत्वपूर्ण जानकारी की जाँच करने पर विचार करें. हमारी शर्तें और गोपनीयता नीति पढ़ें।"
     }
   }
 }
