@@ -8,7 +8,7 @@ import { useTheme } from '@mui/material/styles';
 import { useUiConfig } from '../../hook/useConfig';
 import { toast } from 'react-hot-toast';
 
-const FeedbackPage: React.FC = () => {
+const about: React.FC = () => {
   const theme = useTheme();
   const config = useUiConfig('component', 'feedbackPage');
 
@@ -106,4 +106,4 @@ const FeedbackPage: React.FC = () => {
   );
 };
 
-export default FeedbackPage;
+export default about;
