@@ -18,6 +18,7 @@ import ChatUI from './molecules/chat-ui'
 import AdminRoute from './components/InputForm'
 import OnBoardingPage from './molecules/on-boarding-page'
 import Dashboard from './molecules/dashboard'
+import WheatherPage from './molecules/weather-page'
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
           <Route path="/admin" element={<AdminRoute />} />
           <Route path="/on-boarding-page" element={<OnBoardingPage />} />
           <Route path="/dashbord" element={<Dashboard />} />
+          <Route path="/weather-page" element={<WheatherPage />} />
         </Routes>
       </>
     </>

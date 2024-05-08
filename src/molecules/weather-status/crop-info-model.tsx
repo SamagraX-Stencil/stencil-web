@@ -1,12 +1,11 @@
 import * as React from 'react'
 import Backdrop from '@mui/material/Backdrop'
-
+import speaker from './assets/speaker.svg'
 import Modal from '@mui/material/Modal'
 import Fade from '@mui/material/Fade'
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded'
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
-import { Button, List, Typography } from '@mui/material'
-import cloud from './assets/cloud.png'
+import { Button, Divider, Typography } from '@mui/material'
 import { useColorPalates } from '../theme-provider/hooks'
 const style = {
   position: 'absolute' as const,
@@ -21,23 +20,23 @@ const style = {
   borderRadius: '5px',
 }
 
-const WeatherStatus = () => {
-  const [open, setOpen] = React.useState(true)
+const CropInfoModel = ({ currentStatus }: { currentStatus: boolean }) => {
+  const [open, setOpen] = React.useState(currentStatus)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
   const handleClose = () => setOpen(false)
 
-  const weatherDetails = [
-    {
-      id: 1,
-      label:
-        'उन्हें अच्छी तरह हाइड्रेटेड रखने के लिए स्वच्छ पेयजल उपलब्ध कराएं।',
-    },
-    {
-      id: 2,
-      label: 'तूफ़ान गुज़रने तक उन्हें शांत और सुरक्षित स्थान पर रखें।',
-    },
-  ]
+  // const weatherDetails = [
+  //   {
+  //     id: 1,
+  //     label:
+  //       'उन्हें अच्छी तरह हाइड्रेटेड रखने के लिए स्वच्छ पेयजल उपलब्ध कराएं।',
+  //   },
+  //   {
+  //     id: 2,
+  //     label: 'तूफ़ान गुज़रने तक उन्हें शांत और सुरक्षित स्थान पर रखें।',
+  //   },
+  // ]
 
   const theme = useColorPalates()
   return (
@@ -66,29 +65,28 @@ const WeatherStatus = () => {
                   fontSize: '20px',
                 }}
               >
-                मंगलवार को आंधी आने की अनुमान
+                फ़सल सलाह - गेहूँ
               </p>
               <CloseRoundedIcon onClick={handleClose} />
             </div>
-            <div
-              style={{
-                marginTop: '4px',
-                height: '1px',
-                borderColor: 'black',
-                backgroundColor: '#B4B9C5',
-              }}
-            ></div>
+            <Divider />
             <div className="text-center p-3">
-              <img src={cloud} />
-              <List dense>
-                {weatherDetails.map((item) => (
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'flex-start',
-                      textAlign: 'start',
-                    }}
-                  >
+              <div
+                style={{
+                  margin: '16px 0px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '12px',
+                  alignItems: 'flex-start',
+                  textAlign: 'start',
+                }}
+              >
+                {[
+                  'आज गेहूं में कीटनाशक डालने का सबसे अच्छा दिन है |',
+                  'आज कम बारिश है तो गेहूं की सिंचाई मत करो |',
+                ].map((item, index) => (
+                  // <div key={index}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start' }}>
                     <span
                       style={{
                         marginRight: '8px',
@@ -96,7 +94,7 @@ const WeatherStatus = () => {
                         fontSize: '16px',
                         fontWeight: 500,
                       }}
-                    >{`${item.id}.`}</span>
+                    >{`${index}.`}</span>
                     <Typography
                       color="black"
                       style={{
@@ -105,16 +103,33 @@ const WeatherStatus = () => {
                         fontWeight: 500,
                       }}
                     >
-                      {item.label}
+                      {item}
                     </Typography>
                   </div>
+
+                  // </div>
                 ))}
-              </List>
+              </div>
+              {/* <List dense>
+                {weatherDetails.map((item) => (
+                  <ListItem>
+                    <ListItemText
+                      sx={{
+                        color: '#000000',
+                        lineHeight: '13px',
+                        fontWeight: '400',
+                        fontSize: '13px',
+                      }}
+                      primary={`${item?.id}. ${item.label}`}
+                    />
+                  </ListItem>
+                ))}
+              </List> */}
               <p
                 style={{
+                  fontWeight: '500',
                   color: theme.primary.dark,
-                  fontSize: '13px',
-                  fontWeight: 600,
+                  fontSize: '12px',
                 }}
               >
                 <span
@@ -122,7 +137,6 @@ const WeatherStatus = () => {
                   style={{
                     width: '20px',
                     height: '20px',
-                    marginRight: '4px',
                   }}
                 >
                   <CheckCircleRoundedIcon
@@ -134,15 +148,21 @@ const WeatherStatus = () => {
               </p>
               <Button
                 fullWidth
-                variant="contained"
+                variant="outlined"
                 style={{
                   marginTop: '30px',
-                  backgroundColor: `${theme.primary.dark}`,
-                  padding: '8px 0',
+                  height: '60px',
+                  border: '1px solid var(--Mid-Gray-50, #F6F7F9)',
+                  background: 'var(--Mid-Gray-100, #EDEDF1)',
+                  fontSize: '16px',
+                  fontWeight: 500,
                 }}
               >
-                जानिए इसके बारे में
+                <img src={speaker} alt="" style={{ marginRight: '10px' }} />
+                सुनने के लिए यहां क्लिक करें
               </Button>
+              <p style={{ margin: '8px 0' }}>साथी किसानों के साथ साझा करें</p>
+              <div style={{ display: 'flex' }}></div>
             </div>
           </div>
         </Fade>
@@ -151,4 +171,4 @@ const WeatherStatus = () => {
   )
 }
 
-export default WeatherStatus
+export default CropInfoModel

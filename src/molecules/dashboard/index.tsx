@@ -5,6 +5,8 @@ import chat from './assets/chat.png'
 import pest from './assets/pest.png'
 import cloud from './assets/cloud.png'
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded'
+import { Link } from 'react-router-dom'
+
 import { map } from 'lodash'
 import {
   Badge,
@@ -172,6 +174,8 @@ const Dashboard = () => {
               }}
               className="py-2"
               endIcon={<ArrowForwardRoundedIcon />}
+              component={Link}
+              to="/weather-page"
             >
               जानिए मौसम के बारे में
             </Button>
