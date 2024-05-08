@@ -1,22 +1,23 @@
-import { Navbar } from "./components/navbar";
-import { Route, Routes } from "react-router-dom";
-import LoginPage from "./molecules/login-mobile-aadhar-page";
-import { Toaster } from "react-hot-toast";
-import Components from "./components";
-import OtpPage from "./molecules/otp-page";
-import HistoryPage from "./molecules/history-page";
+import { Navbar } from './components/navbar'
+import { Route, Routes } from 'react-router-dom'
+import LoginPage from './molecules/login-mobile-aadhar-page'
+import { Toaster } from 'react-hot-toast'
+import Components from './components'
+import OtpPage from './molecules/otp-page'
+import HistoryPage from './molecules/history-page'
 
-import ComingSoonPage from "./molecules/coming-soon-page";
-import DowntimePage from "./molecules/downtime-page";
-import FAQPage from "./molecules/faq-page";
+import ComingSoonPage from './molecules/coming-soon-page'
+import DowntimePage from './molecules/downtime-page'
+import FAQPage from './molecules/faq-page'
 
-import LaunchPage from "./molecules/launch-page";
-import HomePage from "./molecules/home-page";
-import FeedbackPage from "./molecules/feedback";
-import ShareButtons from "./molecules/share-buttons";
-import ChatUI from "./molecules/chat-ui";
-import AdminRoute from "./components/InputForm";
-import OnBoardingPage from "./molecules/on-boarding-page";
+import LaunchPage from './molecules/launch-page'
+import HomePage from './molecules/home-page'
+import FeedbackPage from './molecules/feedback'
+import ShareButtons from './molecules/share-buttons'
+import ChatUI from './molecules/chat-ui'
+import AdminRoute from './components/InputForm'
+import OnBoardingPage from './molecules/on-boarding-page'
+import Dashboard from './molecules/dashboard'
 
 function App() {
   return (
@@ -40,9 +41,10 @@ function App() {
           <Route path="/molecules" element={<Components />} />
           <Route path="/admin" element={<AdminRoute />} />
           <Route path="/on-boarding-page" element={<OnBoardingPage />} />
+          <Route path="/dashbord" element={<Dashboard />} />
         </Routes>
       </>
     </>
-  );
+  )
 }
-export default App;
+export default App
