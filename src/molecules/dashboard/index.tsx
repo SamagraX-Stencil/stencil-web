@@ -22,6 +22,7 @@ import { useColorPalates } from '../theme-provider/hooks'
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded'
 import KeyboardVoiceRoundedIcon from '@mui/icons-material/KeyboardVoiceRounded'
 import { useUiConfig } from '../../hook/useConfig'
+import WeatherStatus from '../weather-status'
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -71,6 +72,7 @@ const Dashboard = () => {
   ]
   return (
     <div>
+      <WeatherStatus />
       <div
         style={{
           background: `linear-gradient(90deg, #26C3E4 20%, #3A7BD5 100%)`,
