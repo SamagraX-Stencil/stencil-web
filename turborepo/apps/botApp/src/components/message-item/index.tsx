@@ -6,7 +6,7 @@ import {
   ListItem,
   FileCard,
   Typing,
-} from '@samagra-x/chatui'
+} from 'chatui-package'
 import {
   FC,
   ReactElement,

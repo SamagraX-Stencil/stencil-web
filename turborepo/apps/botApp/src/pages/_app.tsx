@@ -9,7 +9,7 @@ import {
   useState,
 } from 'react'
 
-// import '@samagra-x/chatui/dist/index.css'
+// import 'chatui-package/dist/index.css'
 import { Toaster } from 'react-hot-toast'
 import { useCookies } from 'react-cookie'
 import { useRouter } from 'next/router'

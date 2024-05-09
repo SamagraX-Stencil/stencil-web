@@ -8,11 +8,11 @@ import { AppContext } from '@repo/provider'
 import styles from '../components/dialer-popup/index.module.css'
 import DialerPopUp from '../components/dialer-popup'
 import { useBotConfig } from '@repo/hooks'
-import { ChatUI } from '@repo/molecules'
+// import { ChatUI } from '@repo/molecules'
 
-// const ChatUi = dynamic(() => import('../components/chat-window'), {
-//   ssr: false,
-// })
+const ChatUi = dynamic(() => import('../components/chat-window'), {
+  ssr: false,
+})
 
 const Chat: NextPage = () => {
   const t = useLocalization()
@@ -45,7 +45,7 @@ const Chat: NextPage = () => {
           top: '100px',
         }}
       >
-        <ChatUI />
+        <ChatUi />
       </div>
     </>
   )

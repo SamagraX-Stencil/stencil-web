@@ -1,6 +1,6 @@
 import axios from 'axios'
 //@ts-ignore
-import Chat from '@samagra-x/chatui'
+import Chat from 'chatui-package'
 import React, {
   ReactElement,
   useCallback,
