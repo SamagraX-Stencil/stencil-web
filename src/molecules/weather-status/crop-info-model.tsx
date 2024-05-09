@@ -5,8 +5,10 @@ import Modal from '@mui/material/Modal'
 import Fade from '@mui/material/Fade'
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded'
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
-import { Button, Divider, Typography } from '@mui/material'
+import { Button, Typography } from '@mui/material'
 import { useColorPalates } from '../theme-provider/hooks'
+import FacebookIcon from '@mui/icons-material/Facebook'
+
 const style = {
   position: 'absolute' as const,
   top: '50%',
@@ -69,7 +71,14 @@ const CropInfoModel = ({ currentStatus }: { currentStatus: boolean }) => {
               </p>
               <CloseRoundedIcon onClick={handleClose} />
             </div>
-            <Divider />
+            <div
+              style={{
+                marginTop: '4px',
+                height: '1px',
+                borderColor: 'black',
+                backgroundColor: '#B4B9C5',
+              }}
+            ></div>{' '}
             <div className="text-center p-3">
               <div
                 style={{
@@ -127,9 +136,9 @@ const CropInfoModel = ({ currentStatus }: { currentStatus: boolean }) => {
               </List> */}
               <p
                 style={{
-                  fontWeight: '500',
                   color: theme.primary.dark,
-                  fontSize: '12px',
+                  fontSize: '13px',
+                  fontWeight: 600,
                 }}
               >
                 <span
@@ -137,6 +146,7 @@ const CropInfoModel = ({ currentStatus }: { currentStatus: boolean }) => {
                   style={{
                     width: '20px',
                     height: '20px',
+                    marginRight: '4px',
                   }}
                 >
                   <CheckCircleRoundedIcon
@@ -150,19 +160,37 @@ const CropInfoModel = ({ currentStatus }: { currentStatus: boolean }) => {
                 fullWidth
                 variant="outlined"
                 style={{
+                  color: theme?.primary?.dark,
+
                   marginTop: '30px',
                   height: '60px',
                   border: '1px solid var(--Mid-Gray-50, #F6F7F9)',
                   background: 'var(--Mid-Gray-100, #EDEDF1)',
-                  fontSize: '16px',
-                  fontWeight: 500,
+                  fontSize: '17px',
+                  fontWeight: 600,
                 }}
               >
                 <img src={speaker} alt="" style={{ marginRight: '10px' }} />
                 सुनने के लिए यहां क्लिक करें
               </Button>
+
               <p style={{ margin: '8px 0' }}>साथी किसानों के साथ साझा करें</p>
-              <div style={{ display: 'flex' }}></div>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  gap: '20px',
+                  marginTop: '12px',
+                }}
+              >
+                {[1, 2, 3, 4].map(() => (
+                  <FacebookIcon
+                    fontSize="large"
+                    radius={'50%'}
+                    style={{ color: 'blue' }}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </Fade>
