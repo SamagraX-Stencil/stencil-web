@@ -49,25 +49,25 @@ const Dashboard = () => {
   const options = [
     {
       id: 1,
-      label: config?.card1Title,
+      label: config?.card1Title || 'मौसम की जानकारी',
       key: config?.card1Title,
       image: config?.card1Image || cloud,
     },
     {
       id: 2,
-      label: config?.card2Title,
+      label: config?.card2Title || 'योजनाओं की जानकारी',
       key: config?.card2Title,
       image: config?.card2Image || book,
     },
     {
       id: 3,
-      label: config?.card3Title,
+      label: config?.card3Title || 'कीट एवं रोग',
       key: config?.card3Title,
       image: config?.card3Image || pest,
     },
     {
       id: 3,
-      label: config?.card4Title,
+      label: config?.card4Title || 'अन्य सूचना',
       key: config?.card4Title,
       image: config?.card4Image || chat,
     },
@@ -217,7 +217,13 @@ const Dashboard = () => {
                       borderRadius: '50%',
                     }}
                   />
-                  <p style={{ lineHeight: '1rem' }} className="mt-2">
+                  <p
+                    style={{
+                      fontSize: '20px',
+                      color: 'black',
+                    }}
+                    className="mt-2"
+                  >
                     {_?.label}
                   </p>
                 </Item>

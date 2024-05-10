@@ -7,7 +7,7 @@ import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded'
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
 import { Button, Typography } from '@mui/material'
 import { useColorPalates } from '../theme-provider/hooks'
-import FacebookIcon from '@mui/icons-material/Facebook'
+import facebookIcon from './assets/facebook.png'
 
 const style = {
   position: 'absolute' as const,
@@ -21,7 +21,31 @@ const style = {
   border: 'none',
   borderRadius: '5px',
 }
+const canShare = navigator.share !== undefined
 
+const shareData = async (data: {
+  title: string
+  text: string
+  url: string
+}) => {
+  if (canShare) {
+    try {
+      await navigator.share(data)
+    } catch (err) {
+      console.error('Error sharing data:', err)
+    }
+  } else {
+    console.warn('Web Share API is not supported in this browser.')
+  }
+}
+
+const handleShare = () => {
+  shareData({
+    title: 'My App',
+    text: 'Check out my awesome PWA!',
+    url: 'www.facebook.com',
+  })
+}
 const CropInfoModel = ({ currentStatus }: { currentStatus: boolean }) => {
   const [open, setOpen] = React.useState(currentStatus)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -39,6 +63,20 @@ const CropInfoModel = ({ currentStatus }: { currentStatus: boolean }) => {
   //     label: 'तूफ़ान गुज़रने तक उन्हें शांत और सुरक्षित स्थान पर रखें।',
   //   },
   // ]
+
+  const synth = React.useRef<SpeechSynthesis | null>(null)
+
+  React.useEffect(() => {
+    synth.current = window.speechSynthesis
+  }, [])
+  const speakText = (text: string) => {
+    console.log('speak text called')
+    if (synth.current && text) {
+      console.log('enter into first')
+      const utterance = new SpeechSynthesisUtterance(text)
+      synth.current.speak(utterance)
+    }
+  }
 
   const theme = useColorPalates()
   return (
@@ -169,6 +207,11 @@ const CropInfoModel = ({ currentStatus }: { currentStatus: boolean }) => {
                   fontSize: '17px',
                   fontWeight: 600,
                 }}
+                onClick={() =>
+                  speakText(
+                    'आज गेहूं में कीटनाशक डालने का सबसे अच्छा दिन है  आज कम बारिश है तो गेहूं की सिंचाई मत करो|'
+                  )
+                }
               >
                 <img src={speaker} alt="" style={{ marginRight: '10px' }} />
                 सुनने के लिए यहां क्लिक करें
@@ -184,11 +227,7 @@ const CropInfoModel = ({ currentStatus }: { currentStatus: boolean }) => {
                 }}
               >
                 {[1, 2, 3, 4].map(() => (
-                  <FacebookIcon
-                    fontSize="large"
-                    radius={'50%'}
-                    style={{ color: 'blue' }}
-                  />
+                  <img src={facebookIcon} onClick={handleShare} />
                 ))}
               </div>
             </div>
