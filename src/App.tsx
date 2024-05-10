@@ -16,6 +16,7 @@ import FeedbackPage from "./molecules/feedback";
 import ShareButtons from "./molecules/share-buttons";
 import ChatUI from "./molecules/chat-ui";
 import AdminRoute from "./components/InputForm";
+import OnBoardingPage from "./molecules/on-boarding-page";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="/chat-ui" element={<ChatUI />} />
           <Route path="/molecules" element={<Components />} />
           <Route path="/admin" element={<AdminRoute />} />
+          <Route path="/on-boarding-page" element={<OnBoardingPage />} />
         </Routes>
       </>
     </>

@@ -9,7 +9,8 @@
     "login-mobile-aadhar-page",
     "coming-soon-page",
     "home-page",
-    "launch-page"
+    "launch-page",
+    "on-boarding-page"
   ],
   "molecules": [
     "otp-input",
