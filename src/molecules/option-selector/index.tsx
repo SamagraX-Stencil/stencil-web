@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useCallback } from "react";
+import React, { useCallback } from 'react'
 import {
   Box,
   Button,
@@ -9,66 +9,70 @@ import {
   Link,
   Paper,
   styled,
-} from "@mui/material";
-import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
-import { useColorPalates } from "../theme-provider/hooks";
-import rice from "./assets/rice.jpeg";
-import wheat from "./assets/wheat.png";
-import more from "./assets/more.png";
-import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
-import { includes } from "lodash";
-import { useUiConfig } from "../../hook/useConfig";
+} from '@mui/material'
+import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
+
+import { useColorPalates } from '../theme-provider/hooks'
+import rice from './assets/rice.jpeg'
+import wheat from './assets/wheat.png'
+import more from './assets/more.png'
+import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded'
+import { includes } from 'lodash'
+import { useUiConfig } from '../../hook/useConfig'
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
   padding: theme.spacing(2),
-  textAlign: "center",
-  color: "#363A44",
-  borderRadius: "5px",
-  position: "relative",
-}));
+  textAlign: 'center',
+  color: '#363A44',
+  borderRadius: '5px',
+  position: 'relative',
+}))
 const OptionSelector = () => {
-  const config = useUiConfig("component", "optionSelectorPage");
-  const theme = useColorPalates();
-  const [activeElements, setActiveElements] = React.useState<Array<any>>([]);
+  const config = useUiConfig('component', 'optionSelectorPage')
+  const theme = useColorPalates()
+  const [activeElements, setActiveElements] = React.useState<Array<any>>([])
   const vegetables = [
-    { id: 1, label: "गेहूँ", key: "गेहूँ", image: rice },
-    { id: 2, label: "चावल", key: "चावल", image: wheat },
-    { id: 3, label: "milk", key: "milk", image: rice },
-    { id: 4, label: "आलू", key: "आलू", image: wheat },
-    { id: 5, label: "गेहूँ", key: "गेहूँ", image: wheat },
-    { id: 6, label: "चावल", key: "आलू", image: rice },
-    { id: 7, label: "आलू", key: "आलू", image: wheat },
-    { id: 8, label: "गेहूँ", key: "आलू", image: rice },
-    { id: 9, label: "अन्य", key: "more", image: more },
-  ];
+    { id: 1, label: 'गेहूँ', key: 'गेहूँ', image: rice },
+    { id: 2, label: 'चावल', key: 'चावल', image: wheat },
+    { id: 3, label: 'milk', key: 'milk', image: rice },
+    { id: 4, label: 'आलू', key: 'आलू', image: wheat },
+    { id: 5, label: 'गेहूँ', key: 'गेहूँ', image: wheat },
+    { id: 6, label: 'चावल', key: 'आलू', image: rice },
+    { id: 7, label: 'आलू', key: 'आलू', image: wheat },
+    { id: 8, label: 'गेहूँ', key: 'आलू', image: rice },
+    { id: 9, label: 'अन्य', key: 'more', image: more },
+  ]
 
   const onItemClick = useCallback(
     (item: any) => () => {
-      if ((activeElements.length == (config?.optionSelectLength ?? 4 ))&& (!activeElements?.includes(item?.id))) {
-        alert(`You can select only ${config?.optionSelectLength ?? 4 } items`);
-        return;
+      if (
+        activeElements.length == (config?.optionSelectLength ?? 4) &&
+        !activeElements?.includes(item?.id)
+      ) {
+        alert(`You can select only ${config?.optionSelectLength ?? 4} items`)
+        return
       }
       setActiveElements((prev) =>
         prev?.includes(item?.id)
           ? prev?.filter((i) => i !== item?.id)
           : [...prev, item?.id]
-      );
+      )
     },
     [activeElements, config?.optionSelectLength]
-  );
+  )
 
-  
   return (
     <Container>
       <div className="d-flex">
         <IconButton
           aria-label="fingerprint"
           style={{
-            borderRadius: "12px",
-            background: "",
-            border: "1px solid #E8ECF4",
+            borderRadius: '12px',
+            background: '',
+            border: '1px solid #E8ECF4',
           }}
         >
           <ArrowBackIosNewRoundedIcon />
@@ -76,34 +80,34 @@ const OptionSelector = () => {
         <div className="text-center w-100">
           <p
             style={{
-              lineHeight: "40px",
-              fontWeight: "500",
-              fontSize: "22px",
+              lineHeight: '40px',
+              fontSize: '24px',
               color: theme.primary.dark,
+              fontWeight: 600,
             }}
           >
-           {config?.topText}
+            {config?.topText}
           </p>
         </div>
       </div>
 
       <div className="text-center mt-3">
-        <p style={{ color: "#51586B", fontSize: "18px" }}>
+        <p style={{ color: '#51586B', fontSize: '18px' }}>
           {config?.centerText}
         </p>
         <div
           style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            height: "70vh",
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            height: '70vh',
           }}
         >
           <Grid
             container
             spacing={{ xs: 2, md: 3 }}
             columns={{ xs: 3, sm: 8, md: 12 }}
-            style={{ marginTop: "20px" }}
+            style={{ marginTop: '20px' }}
           >
             {vegetables.map((_) => (
               <Grid item xs={1} sm={4} md={4}>
@@ -112,17 +116,17 @@ const OptionSelector = () => {
                   style={{
                     border: includes(activeElements, _?.id)
                       ? `1px solid ${theme.primary.dark}`
-                      : "1px solid #B0B0B0",
+                      : '1px solid #B0B0B0',
                   }}
                 >
                   {includes(activeElements, _?.id) && (
                     <div
                       className="rounded-circle position-absolute "
                       style={{
-                        width: "20px",
-                        height: "20px",
-                        top: "0px",
-                        left: "75%",
+                        width: '20px',
+                        height: '20px',
+                        top: '0px',
+                        left: '75%',
                       }}
                     >
                       <CheckCircleRoundedIcon color="success" />
@@ -131,12 +135,12 @@ const OptionSelector = () => {
                   <img
                     src={_?.image}
                     style={{
-                      width: "50px",
-                      height: "50px",
-                      borderRadius: "50%",
+                      width: '50px',
+                      height: '50px',
+                      borderRadius: '50%',
                     }}
                   />
-                  <p style={{ lineHeight: "1rem" }} className="mt-2">
+                  <p style={{ lineHeight: '1rem' }} className="mt-2">
                     {_?.label}
                   </p>
                 </Item>
@@ -150,16 +154,18 @@ const OptionSelector = () => {
                 fullWidth
                 variant="contained"
                 disabled={activeElements.length < 4}
+                endIcon={<ArrowForwardIcon />}
                 sx={{
-                  textTransform: "none",
+                  textTransform: 'none',
                   mt: 3,
                   mb: 4,
                   p: 1,
-                  background: theme.primary?.main,
-                  borderRadius: "10px",
+                  borderRadius: '10px',
+                  background: theme.primary?.dark,
+                  height: '60px',
                 }}
               >
-               {config?.btnText}
+                {config?.btnText}
               </Button>
               <Link
                 component="button"
@@ -167,14 +173,14 @@ const OptionSelector = () => {
                 onClick={() => {}}
                 className="mt-2"
               >
-               {config?.helpingText1}
+                {config?.helpingText1}
               </Link>
             </Box>
           </div>
         </div>
       </div>
     </Container>
-  );
-};
+  )
+}
 
-export default OptionSelector;
+export default OptionSelector

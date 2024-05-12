@@ -1,15 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from "react";
-import { Box, Button, Container, IconButton, Link } from "@mui/material";
-import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
-import { useColorPalates } from "../theme-provider/hooks";
-import { OTPInput } from "../otp-input";
-import { useUiConfig } from "../../hook/useConfig";
+import { useState } from 'react'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
+
+import { Box, Button, Container, IconButton, Link } from '@mui/material'
+import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded'
+import { useColorPalates } from '../theme-provider/hooks'
+import { OTPInput } from '../otp-input'
+import { useUiConfig } from '../../hook/useConfig'
 
 const OtpMobile = () => {
-  const theme = useColorPalates();
-  const [otp, setOtp] = useState("");
-  const config = useUiConfig("component", "otpMobilePage");
+  const theme = useColorPalates()
+  const [otp, setOtp] = useState('')
+  const config = useUiConfig('component', 'otpMobilePage')
 
   return (
     <Container>
@@ -17,9 +19,9 @@ const OtpMobile = () => {
         <IconButton
           aria-label="fingerprint"
           style={{
-            borderRadius: "12px",
-            background: "",
-            border: "1px solid #E8ECF4",
+            borderRadius: '12px',
+            background: '',
+            border: '1px solid #E8ECF4',
           }}
         >
           <ArrowBackIosNewRoundedIcon />
@@ -27,9 +29,9 @@ const OtpMobile = () => {
         <div className="text-center w-100">
           <p
             style={{
-              lineHeight: "40px",
-              fontWeight: "500",
-              fontSize: "22px",
+              lineHeight: '40px',
+              fontWeight: 600,
+              fontSize: '24px',
               color: config?.topTextColor || theme.primary.dark,
             }}
           >
@@ -41,28 +43,35 @@ const OtpMobile = () => {
       <div className="text-center mt-3">
         <div
           style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            height: "65vh",
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            height: '65vh',
           }}
         >
-          <p style={{ color: "#51586B", fontSize: "18px", marginTop: "20%" }}>
+          <p
+            style={{
+              color: '#51586B',
+              fontSize: '24px',
+              marginTop: '20%',
+              fontWeight: 400,
+            }}
+          >
             {config?.centerText}
           </p>
           <Box
             className="text-center"
             sx={{
               mt: 1,
-              width: "100%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
+              width: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
             }}
           >
             <OTPInput
               separator={
-                config?.otpSeparator || <span style={{ width: "10px" }}></span>
+                config?.otpSeparator || <span style={{ width: '10px' }}></span>
               }
               value={otp}
               onChange={setOtp}
@@ -75,13 +84,15 @@ const OtpMobile = () => {
                 type="submit"
                 fullWidth
                 variant="contained"
+                endIcon={<ArrowForwardIcon />}
                 sx={{
-                  textTransform: "none",
+                  textTransform: 'none',
                   mt: 3,
                   mb: 4,
                   p: 1,
-                  background: theme.primary?.main,
-                  borderRadius: "10px",
+                  borderRadius: '10px',
+                  background: theme.primary?.dark,
+                  height: '60px',
                 }}
               >
                 {config?.btnText}
@@ -97,7 +108,7 @@ const OtpMobile = () => {
         </div>
       </div>
     </Container>
-  );
-};
+  )
+}
 
-export default OtpMobile;
+export default OtpMobile
