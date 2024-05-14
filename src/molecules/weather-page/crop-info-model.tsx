@@ -46,11 +46,17 @@ const handleShare = () => {
     url: 'www.facebook.com',
   })
 }
-const CropInfoModel = ({ currentStatus }: { currentStatus: boolean }) => {
-  const [open, setOpen] = React.useState(currentStatus)
+const CropInfoModel = ({
+  isOpen,
+  onClose,
+}: {
+  isOpen: boolean
+  onClose: () => void
+}) => {
+  // const [open, setOpen] = React.useState(currentStatus)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
-  const handleClose = () => setOpen(false)
+  // const handleClose = () => setOpen(false)
 
   // const weatherDetails = [
   //   {
@@ -84,8 +90,8 @@ const CropInfoModel = ({ currentStatus }: { currentStatus: boolean }) => {
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
-        open={open}
-        onClose={handleClose}
+        open={isOpen}
+        onClose={onClose}
         closeAfterTransition
         slots={{ backdrop: Backdrop }}
         slotProps={{
@@ -94,7 +100,7 @@ const CropInfoModel = ({ currentStatus }: { currentStatus: boolean }) => {
           },
         }}
       >
-        <Fade in={open}>
+        <Fade in={isOpen}>
           <div style={style}>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <p
@@ -107,7 +113,7 @@ const CropInfoModel = ({ currentStatus }: { currentStatus: boolean }) => {
               >
                 फ़सल सलाह - गेहूँ
               </p>
-              <CloseRoundedIcon onClick={handleClose} />
+              <CloseRoundedIcon onClick={onClose} />
             </div>
             <div
               style={{

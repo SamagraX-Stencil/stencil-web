@@ -46,7 +46,7 @@
         "src": "https://www.amakrushi.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fphone.50753eec.png&w=64&q=75 "
       },
       "logos": {
-        "showCenterLogos": true,
+        "showCenterLogos": false,
         "centerLogoIcons": [
           {
             "id": "logo1",

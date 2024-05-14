@@ -15,12 +15,10 @@ import {
   Typography,
   styled,
 } from '@mui/material'
-// import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded'
 import { useColorPalates } from '../theme-provider/hooks'
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded'
 import KeyboardVoiceRoundedIcon from '@mui/icons-material/KeyboardVoiceRounded'
-import CropInfoModel from '../weather-status/crop-info-model'
-// import { useUiConfig } from '../../hook/useConfig'
+import CropInfoModel from './crop-info-model'
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -33,11 +31,10 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const WheatherPage = () => {
   const [isModelOpen, setIsModelOpen] = useState(false)
-  // const handleItemClick = () => {
-  //   setIsModelOpen(true)
-  // }
+  const handleOpenModal = () => {
+    setIsModelOpen(true)
+  }
 
-  // const config = useUiConfig('component', '')
   const config = {
     allowOverride: false,
     weatherCardText: 'जानिए मौसम के बारे में',
@@ -63,7 +60,13 @@ const WheatherPage = () => {
   ]
 
   return (
-    <div>
+    <div
+      style={{
+        height: 'auto',
+        maxHeight: '90vh',
+        overflowY: 'scroll',
+      }}
+    >
       <div
         style={{
           background: `linear-gradient(90deg, #26C3E4 20%, #3A7BD5 100%)`,
@@ -269,7 +272,12 @@ const WheatherPage = () => {
           >
             आज की फ़सल सलाह
           </p>
-          {isModelOpen && <CropInfoModel currentStatus={isModelOpen} />}
+          {isModelOpen && (
+            <CropInfoModel
+              isOpen={isModelOpen}
+              onClose={() => setIsModelOpen(false)}
+            />
+          )}
           <Grid
             container
             spacing={{ xs: 2, md: 3 }}
@@ -282,7 +290,7 @@ const WheatherPage = () => {
                   style={{
                     border: '1px solid #B0B0B0',
                   }}
-                  onClick={() => setIsModelOpen(true)}
+                  onClick={handleOpenModal}
                 >
                   <img
                     src={wheatImage}
@@ -299,11 +307,11 @@ const WheatherPage = () => {
               </Grid>
             ))}
           </Grid>
-          <div className="mt-4 text-center">
+          {/* <div className="mt-4 text-center">
             <p style={{ color: '##6C758B', fontSize: '12px' }}>
               {config?.bottomText}
             </p>
-          </div>
+          </div> */}
         </div>
         <Paper
           sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}

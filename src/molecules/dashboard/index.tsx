@@ -5,6 +5,8 @@ import chat from './assets/chat.png'
 import pest from './assets/pest.png'
 import cloud from './assets/cloud.png'
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded'
+// import sunnyImage from './assets/Sunny.svg'
+// import cloudyImage from './assets/Night.svg'
 import { Link } from 'react-router-dom'
 
 import { map } from 'lodash'
@@ -84,6 +86,8 @@ const Dashboard = () => {
       <div
         style={{
           background: `linear-gradient(90deg, #26C3E4 20%, #3A7BD5 100%)`,
+          // background: `url(${sunnyImage})`, // Set background image
+
           color: 'white',
           borderRadius: '5px',
         }}
