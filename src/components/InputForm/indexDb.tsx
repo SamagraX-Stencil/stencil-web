@@ -68,7 +68,6 @@ import { Box } from '@mui/material'
 //     postData = (
 //       <div className="postsContainer">
 //         {posts.map((post) => {
-//           console.log(post.file, 'ankit image is here')
 //           return (
 //             <div
 //               style={{

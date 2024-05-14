@@ -73,7 +73,13 @@ const Dashboard = () => {
     },
   ]
   return (
-    <div>
+    <div
+      style={{
+        height: 'auto',
+        maxHeight: '80vh',
+        overflowY: 'scroll',
+      }}
+    >
       <WeatherStatus />
       <div
         style={{

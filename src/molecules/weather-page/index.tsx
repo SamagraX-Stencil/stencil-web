@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import sun from './assets/sun.png'
 import wheatImage from './assets/crop1.png'
-import bulb from './assets/bulb.svg'
+import rainingCloud from './assets/rainingCloud.png'
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded'
 import { map } from 'lodash'
 import {
@@ -106,7 +106,7 @@ const WheatherPage = () => {
           style={{ background: '#fff', height: '50%', borderRadius: '5px' }}
           className="p-2 text-center"
         >
-          <div style={{ width: '80%' }} className="mx-auto ">
+          <div style={{ width: '80%', marginTop: '12px' }} className="mx-auto ">
             <Grid
               container
               spacing={{ xs: 2, md: 3 }}
@@ -141,7 +141,7 @@ const WheatherPage = () => {
             </Grid>
 
             <div style={{ marginTop: '30px' }}>
-              <div
+              {/* <div
                 style={{
                   display: 'flex',
                   gap: '8px',
@@ -198,6 +198,58 @@ const WheatherPage = () => {
 
                   // </div>
                 ))}
+              </div> */}
+              <div
+                style={{
+                  color: 'black',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '20px',
+                }}
+              >
+                <p style={{ width: '20%', fontSize: '16px', fontWeight: 400 }}>
+                  अगले 4 दिनों का पूर्वानुमान
+                </p>
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    flex: '1',
+                  }}
+                >
+                  {[1, 2, 3, 4].map((ele, index) => (
+                    <div
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'space-around',
+                        alignItems: 'center',
+                        flex: '1',
+                      }}
+                    >
+                      <div>
+                        <p style={{ fontSize: '14px', fontWeight: 400 }}>Sun</p>
+                        <img
+                          src={rainingCloud}
+                          alt=""
+                          style={{ margin: '8px 0' }}
+                        />
+                        <p style={{ fontSize: '16px', fontWeight: 400 }}>
+                          21&deg;C
+                        </p>
+                      </div>
+                      {index !== 3 && (
+                        <div
+                          style={{
+                            width: '1px',
+                            height: '80%',
+                            backgroundColor: '#ccc',
+                            margin: '0 5px',
+                          }}
+                        />
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
