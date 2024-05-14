@@ -8,6 +8,10 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
 import { Button, Typography } from '@mui/material'
 import { useColorPalates } from '../theme-provider/hooks'
 import facebookIcon from './assets/facebook.png'
+import whatsappIcon from './assets/whatsapp.png'
+import telegramIcon from './assets/telegram.png'
+import socialSharingIcon from './assets/sharingIcon.png'
+import { toast } from 'react-hot-toast'
 
 const style = {
   position: 'absolute' as const,
@@ -29,13 +33,9 @@ const shareData = async (data: {
   url: string
 }) => {
   if (canShare) {
-    try {
-      await navigator.share(data)
-    } catch (err) {
-      console.error('Error sharing data:', err)
-    }
+    await navigator.share(data)
   } else {
-    console.warn('Web Share API is not supported in this browser.')
+    toast.error('Sharing is not supported in this browser.')
   }
 }
 
@@ -53,22 +53,35 @@ const CropInfoModel = ({
   isOpen: boolean
   onClose: () => void
 }) => {
-  // const [open, setOpen] = React.useState(currentStatus)
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const weatherDetails = [
+    {
+      id: 1,
+      label: 'आज गेहूं में कीटनाशक डालने का सबसे अच्छा दिन है |',
+    },
+    {
+      id: 2,
+      label: 'आज कम बारिश है तो गेहूं की सिंचाई मत करो |',
+    },
+  ]
 
-  // const handleClose = () => setOpen(false)
-
-  // const weatherDetails = [
-  //   {
-  //     id: 1,
-  //     label:
-  //       'उन्हें अच्छी तरह हाइड्रेटेड रखने के लिए स्वच्छ पेयजल उपलब्ध कराएं।',
-  //   },
-  //   {
-  //     id: 2,
-  //     label: 'तूफ़ान गुज़रने तक उन्हें शांत और सुरक्षित स्थान पर रखें।',
-  //   },
-  // ]
+  const sharingIcon = [
+    {
+      id: 1,
+      image: facebookIcon,
+    },
+    {
+      id: 2,
+      image: whatsappIcon,
+    },
+    {
+      id: 3,
+      image: telegramIcon,
+    },
+    {
+      id: 4,
+      image: socialSharingIcon,
+    },
+  ]
 
   const synth = React.useRef<SpeechSynthesis | null>(null)
 
@@ -76,9 +89,7 @@ const CropInfoModel = ({
     synth.current = window.speechSynthesis
   }, [])
   const speakText = (text: string) => {
-    console.log('speak text called')
     if (synth.current && text) {
-      console.log('enter into first')
       const utterance = new SpeechSynthesisUtterance(text)
       synth.current.speak(utterance)
     }
@@ -134,12 +145,12 @@ const CropInfoModel = ({
                   textAlign: 'start',
                 }}
               >
-                {[
-                  'आज गेहूं में कीटनाशक डालने का सबसे अच्छा दिन है |',
-                  'आज कम बारिश है तो गेहूं की सिंचाई मत करो |',
-                ].map((item, index) => (
+                {weatherDetails.map((item, index) => (
                   // <div key={index}>
-                  <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+                  <div
+                    style={{ display: 'flex', alignItems: 'flex-start' }}
+                    key={item.id}
+                  >
                     <span
                       style={{
                         marginRight: '8px',
@@ -156,7 +167,7 @@ const CropInfoModel = ({
                         fontWeight: 500,
                       }}
                     >
-                      {item}
+                      {item.label}
                     </Typography>
                   </div>
 
@@ -232,8 +243,14 @@ const CropInfoModel = ({
                   marginTop: '12px',
                 }}
               >
-                {[1, 2, 3, 4].map(() => (
-                  <img src={facebookIcon} onClick={handleShare} />
+                {sharingIcon.map((element) => (
+                  <img
+                    src={element.image}
+                    key={element.id}
+                    onClick={handleShare}
+                    height="32px"
+                    width="32px"
+                  />
                 ))}
               </div>
             </div>

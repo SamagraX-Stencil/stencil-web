@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import sun from './assets/sun.png'
 import wheatImage from './assets/crop1.png'
 import rainingCloud from './assets/rainingCloud.png'
+import heaveRain from './assets/heavyRain.png'
+import sunRainCloud from './assets/sunRainCloud.png'
+import thunderCloud from './assets/thunderCloud.png'
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded'
 import { map } from 'lodash'
 import {
@@ -57,6 +60,12 @@ const WheatherPage = () => {
     { id: 1, heading: 'हवा की दिशा', label: 'उत्तर पश्चिम' },
     { id: 2, heading: 'हवा की गति', label: 'धीमी', color: '#101860' },
     { id: 3, heading: 'नमी', label: 'ज़्यादा', color: '#4CC3CB' },
+  ]
+  const upComingWhetherData = [
+    { id: 1, day: 'Sun', temp: '21°C', img: heaveRain },
+    { id: 2, day: 'Mon', temp: '21°C', img: thunderCloud },
+    { id: 3, day: 'Tue', temp: '21°C', img: sunRainCloud },
+    { id: 4, day: 'Thur', temp: '21°C', img: rainingCloud },
   ]
 
   return (
@@ -220,8 +229,9 @@ const WheatherPage = () => {
                     flex: '1',
                   }}
                 >
-                  {[1, 2, 3, 4].map((ele, index) => (
+                  {upComingWhetherData.map((ele, index) => (
                     <div
+                      key={ele.id}
                       style={{
                         display: 'flex',
                         justifyContent: 'space-around',
@@ -230,14 +240,17 @@ const WheatherPage = () => {
                       }}
                     >
                       <div>
-                        <p style={{ fontSize: '14px', fontWeight: 400 }}>Sun</p>
+                        <p style={{ fontSize: '14px', fontWeight: 400 }}>
+                          {ele.day}
+                        </p>
                         <img
-                          src={rainingCloud}
+                          src={ele.img}
                           alt=""
                           style={{ margin: '8px 0' }}
+                          height={'32px'}
                         />
                         <p style={{ fontSize: '16px', fontWeight: 400 }}>
-                          21&deg;C
+                          {ele.temp}
                         </p>
                       </div>
                       {index !== 3 && (
