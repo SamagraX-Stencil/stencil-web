@@ -19,7 +19,11 @@ import ThumbsUpDownIcon from '@mui/icons-material/ThumbsUpDown'
 import GridViewIcon from '@mui/icons-material/GridView'
 import { useColorPalates } from '../../molecules/theme-provider/hooks'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
-import { ChatBubble, HistoryOutlined } from '@mui/icons-material'
+import {
+  ChatBubble,
+  HistoryOutlined,
+  WbSunnyOutlined,
+} from '@mui/icons-material'
 import { Link } from 'react-router-dom'
 
 const getLabel = (label: string) =>
@@ -55,6 +59,8 @@ const getIcon = (label: string) => {
       return <ThumbsUpDownIcon />
     case 'chat-ui':
       return <ChatBubble />
+    case 'weather-page':
+      return <WbSunnyOutlined />
     case 'admin':
       return <AccountCircleIcon />
     default:
@@ -83,7 +89,7 @@ export const Sidebar: FC<{
         sx={{ '& .MuiPaper-root': { background: theme?.primary?.dark } }}
       >
         <Box
-          sx={{ width: 250, height: "100vh" }}
+          sx={{ width: 250, height: '100vh' }}
           role="presentation"
           onClick={() => onToggle(!isOpen)}
         >
@@ -98,7 +104,7 @@ export const Sidebar: FC<{
             </ListItem>
             {sidebar.map((page) => (
               <ListItem key={page.label} disablePadding>
-                <Link to={page.path} style={{ textDecoration: "none" }}>
+                <Link to={page.path} style={{ textDecoration: 'none' }}>
                   <ListItemButton>
                     <ListItemIcon style={{ color: theme?.primary?.light }}>
                       {page.icon}
@@ -123,26 +129,26 @@ export const Sidebar: FC<{
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-              <Link to={"/molecules"} style={{ textDecoration: "none" }}>
+              <Link to={'/molecules'} style={{ textDecoration: 'none' }}>
                 <ListItemButton>
                   <ListItemIcon style={{ color: theme?.primary?.light }}>
                     <GridViewIcon />
                   </ListItemIcon>
                   <ListItemText
-                    primary={"Molecules"}
+                    primary={'Molecules'}
                     style={{ color: theme?.primary?.light }}
                   />
                 </ListItemButton>
               </Link>
             </ListItem>
             <ListItem disablePadding>
-              <Link to={"/admin"} style={{ textDecoration: "none" }}>
+              <Link to={'/admin'} style={{ textDecoration: 'none' }}>
                 <ListItemButton>
                   <ListItemIcon style={{ color: theme?.primary?.light }}>
-                    {getIcon("admin")}
+                    {getIcon('admin')}
                   </ListItemIcon>
                   <ListItemText
-                    primary={"Admin"}
+                    primary={'Admin'}
                     style={{ color: theme?.primary?.light }}
                   />
                 </ListItemButton>
