@@ -255,6 +255,7 @@
       "helpingText1": "अभी के लिए छोड़ दें"
     },
     "dashboard": {
+      "todayTemprature": "21",
       "allowOverride": false,
       "weatherCardText": "जानिए मौसम के बारे में",
       "centerText": "मुझसे कुछ भी पूछें",
