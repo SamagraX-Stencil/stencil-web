@@ -5,7 +5,7 @@ import { Box } from '@mui/material'
 import Rating from '@mui/material/Rating'
 import Button from '@mui/material/Button'
 import { toast } from 'react-hot-toast'
-import { useUiConfig, useColorPalates } from '@stencil/hooks'
+import { useUiConfig, useColorPalates } from '@repo/hooks'
 
 const FeedbackPage: React.FC = () => {
   const config = useUiConfig('component', 'feedbackPage')

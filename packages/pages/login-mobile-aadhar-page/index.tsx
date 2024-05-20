@@ -6,7 +6,7 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import CircularProgress from '@mui/material/CircularProgress'
 import { toast } from 'react-hot-toast'
-import { useUiConfig, useColorPalates } from '@stencil/hooks'
+import { useUiConfig, useColorPalates } from '@repo/hooks'
 
 const LoginMobileAadharPage: React.FC = () => {
   const [isAadharClicked, setIsAadharClicked] = useState(false)

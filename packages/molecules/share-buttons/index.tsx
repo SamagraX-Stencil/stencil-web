@@ -4,8 +4,8 @@ import ShareIcon from '@mui/icons-material/Share'
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined'
 import { toast } from 'react-hot-toast'
 import { CircularProgress, Divider } from '@mui/material'
-import { useColorPalates } from '@stencil/hooks'
-import { useUiConfig } from '@stencil/hooks'
+import { useColorPalates } from '@repo/hooks'
+import { useUiConfig } from '@repo/hooks'
 
 const ShareButtons = () => {
   const config = useUiConfig('component', 'shareButton')

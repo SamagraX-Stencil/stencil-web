@@ -7,7 +7,7 @@ import HomeIcon from '@mui/icons-material/Home'
 import Typography from '@mui/material/Typography'
 import { Sidebar } from '../sidebar/index'
 // import ThemePicker from '../../components/theme-picker'
-import { useColorPalates, useUiConfig } from '@stencil/hooks'
+import { useColorPalates, useUiConfig } from '@repo/hooks'
 
 const Navbar: React.FC = () => {
   const config = useUiConfig('component', 'navbar')

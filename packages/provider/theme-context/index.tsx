@@ -1,3 +1,4 @@
+'use client'
 import React, { ReactNode, useCallback, useEffect, useState } from 'react'
 import {
   ThemeProvider as MuiThemeProvider,
@@ -16,11 +17,7 @@ interface CustomThemeProviderProps {
 const CustomThemeProvider: React.FC<CustomThemeProviderProps> = ({
   children,
 }) => {
-  const [theme, setTheme] = useState<Theme>(
-    localStorage.getItem('theme')
-      ? createTheme(JSON.parse(localStorage.getItem('theme') as string))
-      : initialTheme
-  )
+  const [theme, setTheme] = useState<Theme>(initialTheme)
 
   useEffect(() => {
     localStorage.setItem('theme', JSON.stringify(theme))

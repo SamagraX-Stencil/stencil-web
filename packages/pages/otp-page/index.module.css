@@ -4,11 +4,11 @@
   height: 100vh;
 }
 /* To remove arrows from number otp inputs */
-input::-webkit-outer-spin-button,
+/* input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
+} */
 
 .leftColumn {
   margin: 0;

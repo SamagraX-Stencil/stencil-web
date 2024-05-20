@@ -1,7 +1,8 @@
+'use client'
 import { createContext } from 'react'
 
 import { Theme } from '@mui/material/styles'
-import { Color } from '../../types/ColorType'
+import { Color } from '../types/colorType'
 
 interface ThemeContextType {
   theme: Theme

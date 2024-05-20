@@ -5,8 +5,8 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import CircularProgress from '@mui/material/CircularProgress'
 import { toast } from 'react-hot-toast'
-import { OTPInput } from '@stencil/molecules'
-import { useColorPalates, useUiConfig } from '@stencil/hooks'
+import { OTPInput } from '@repo/molecules'
+import { useColorPalates, useUiConfig } from '@repo/hooks'
 
 const OtpPage: React.FC = () => {
   const config = useUiConfig('component', 'otpPage')
@@ -160,7 +160,8 @@ const OtpPage: React.FC = () => {
                     textTransform: 'none',
 
                     p: 1,
-
+                    mt: 5,
+                    mb: 4,
                     // background: config?.theme.secondaryColor.value,
                     background: '#000',
                     borderRadius: '10px',

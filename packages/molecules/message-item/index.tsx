@@ -6,7 +6,7 @@ import {
   ListItem,
   FileCard,
   Typing,
-} from '@samagra-x/chatui'
+} from 'chatui-package'
 import { FC, ReactElement, useCallback, useEffect, useState } from 'react'
 
 import { toast } from 'react-hot-toast'
@@ -18,7 +18,7 @@ import MsgThumbsDown from './assets/msg-thumbs-down'
 import { MessageItemPropType } from './index.d'
 import moment from 'moment'
 import { JsonToTable } from '../json-to-table'
-import { useColorPalates } from '@stencil/hooks'
+import { useColorPalates } from '@repo/hooks'
 
 // import BlinkingSpinner from '../blinking-spinner/index';
 
@@ -126,32 +126,18 @@ const MessageItem: FC<MessageItemPropType> = ({
             maxWidth: '90vw',
           }}
         >
-          <div
-            className={
-              content?.data?.position === 'right'
-                ? styles.messageTriangleRight
-                : styles.messageTriangleLeft
-            }
-            style={
-              content?.data?.position === 'right'
-                ? {
-                    borderColor: `${theme?.primary?.main} transparent transparent transparent`,
-                  }
-                : {
-                    borderColor: `${themeColor.primaryColor.value} transparent transparent transparent`,
-                  }
-            }
-          ></div>
           <Bubble
             type="text"
             style={
               content?.data?.position === 'right'
                 ? {
                     background: theme?.primary?.main,
+                    borderRadius: '10px 10px 0 25px',
                     boxShadow: '0 3px 8px rgba(0,0,0,.24)',
                   }
                 : {
                     background: themeColor.primaryColor.value,
+                    borderRadius: '10px 10px 10px 0',
                     boxShadow: '0 3px 8px rgba(0,0,0,.24)',
                   }
             }

@@ -2,8 +2,8 @@ import { useState } from 'react'
 import styles from './styles.module.css'
 import toast from 'react-hot-toast'
 import MicIcon from '@mui/icons-material/Mic'
-import { useColorPalates } from '@stencil/hooks'
-import { useUiConfig } from '@stencil/hooks'
+import { useColorPalates } from '@repo/hooks'
+import { useUiConfig } from '@repo/hooks'
 
 interface VoiceRecorder {
   setInputMsg: (msg: string) => void

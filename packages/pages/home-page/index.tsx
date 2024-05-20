@@ -4,7 +4,7 @@ import SendIcon from './assets/sendButton.png'
 import WeatherIcon from './assets/weather_advisory.png'
 import toast from 'react-hot-toast'
 
-import { useUiConfig, useColorPalates } from '@stencil/hooks'
+import { useUiConfig, useColorPalates } from '@repo/hooks'
 
 const HomePage = () => {
   const config = useUiConfig('component', 'homePage')

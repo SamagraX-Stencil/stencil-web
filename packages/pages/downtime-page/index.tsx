@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import styles from './index.module.css'
 import { Avatar, Box, Button, Typography } from '@mui/material'
 import CallRoundedIcon from '@mui/icons-material/Call'
-import { useUiConfig, useColorPalates } from '@stencil/hooks'
+import { useUiConfig, useColorPalates } from '@repo/hooks'
 
 const DowntimePage: React.FC = () => {
   const config = useUiConfig('component', 'downtime')

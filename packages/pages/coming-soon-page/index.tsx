@@ -4,7 +4,7 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Hourglass from './hourglass'
-import { useUiConfig, useColorPalates } from '@stencil/hooks'
+import { useUiConfig, useColorPalates } from '@repo/hooks'
 
 const ComingSoonPage: React.FC = () => {
   const theme = useColorPalates()

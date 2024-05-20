@@ -1,5 +1,5 @@
-import configObj from '@stencil/configmanager'
-import AppConfig from '../../types/AppConfigType'
+import configObj from '@repo/configmanager'
+import AppConfig from '../types/appConfigType'
 
 interface UpdateConfigAction {
   type: 'UPDATE_CONFIG' | 'RESET_VALUE'

@@ -1,3 +1,20 @@
 import { useConfig, useThemeConfig, useUiConfig } from './useConfigHook'
 import { useColorPalates, useTheme } from './useThemeHook'
-export { useConfig, useThemeConfig, useUiConfig, useColorPalates, useTheme }
+import { useLocalization } from './useLocalization'
+import { useBotAppColorPalates } from './botHooks'
+import { useLogin } from './useLogin'
+import { useLocalStorage } from './useLocalStorage'
+import { useGetInitTheme, useBotConfig } from './useConfig'
+export {
+  useConfig,
+  useThemeConfig,
+  useUiConfig,
+  useColorPalates,
+  useTheme,
+  useLocalization,
+  useBotAppColorPalates,
+  useLogin,
+  useLocalStorage,
+  useGetInitTheme,
+  useBotConfig,
+}

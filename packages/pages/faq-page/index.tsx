@@ -5,7 +5,7 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import CallRoundedIcon from '@mui/icons-material/Call'
 import { Avatar } from '@mui/material'
-import { useUiConfig, useColorPalates } from '@stencil/hooks'
+import { useUiConfig, useColorPalates } from '@repo/hooks'
 
 const FAQPage: React.FC = () => {
   const config = useUiConfig('component', 'faqs')

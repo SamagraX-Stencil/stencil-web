@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { ThemeContext } from '@stencil/provider'
+import { ThemeContext } from '@repo/provider'
 
 export const useTheme = () => {
   const context = useContext(ThemeContext)

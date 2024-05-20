@@ -1,5 +1,6 @@
-import Chat from '@samagra-x/chatui'
-import '@samagra-x/chatui/dist/index.css'
+'use-client'
+import Chat from 'chatui-package'
+import 'chatui-package/dist/index.css'
 import React, {
   ReactElement,
   useCallback,
@@ -14,7 +15,7 @@ import toast from 'react-hot-toast'
 import { recordUserLocation } from './utils/location'
 import chatHistory from './chatHistory.json'
 import ShareButtons from '../share-buttons'
-import { useUiConfig, useThemeConfig } from '@stencil/hooks'
+import { useUiConfig, useThemeConfig } from '@repo/hooks'
 
 export const ChatUI: React.FC = () => {
   const [messages, setMessages] = useState<any>([])
@@ -60,6 +61,7 @@ export const ChatUI: React.FC = () => {
 
     return history
   }
+
   const sendMessage = (text: string) => {
     setMessages((prev: any) => [
       ...prev,
@@ -118,13 +120,14 @@ export const ChatUI: React.FC = () => {
   }, [loading, normalizeMsgs])
 
   const placeholder = useMemo(
-    () => config.placeholder ?? 'Ask Your Question',
+    () => config?.placeholder ?? 'Ask Your Question',
     []
   )
 
   return (
     <div className={styles.container}>
       <Chat
+        showInput={true}
         btnColor={theme.secondaryColor.value}
         background="white"
         disableSend={false}

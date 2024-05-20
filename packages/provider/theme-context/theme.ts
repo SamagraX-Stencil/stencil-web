@@ -1,6 +1,7 @@
 import { createTheme } from '@mui/material/styles'
 
 import defaultConfig from '../default-config.json'
+import { blue } from '@mui/material/colors'
 const { theme } = defaultConfig
 
 console.log({ theme })
@@ -10,7 +11,7 @@ export const initialTheme = createTheme({
     primary: {
       // main: theme.primaryColor.value || purple[500],
       light: '#757ce8',
-      main: '#3f50b5',
+      main: blue[500],
       dark: '#002884',
       contrastText: '#fff',
     },

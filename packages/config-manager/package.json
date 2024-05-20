@@ -1,24 +1,21 @@
 {
-  "name": "@stencil/configmanager",
+  "name": "@repo/configmanager",
   "version": "0.0.1",
   "private": true,
   "exports": {
     ".": "./index.ts"
   },
   "scripts": {
-    "lint": "eslint . --max-warnings 0",
-    "generate:component": "turbo gen react-component"
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
-    "@turbo/gen": "^1.12.4",
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
     "@types/node": "^20.11.24",
-    "@types/eslint": "^8.56.5",
-    "@types/react": "^18.2.61",
-    "@types/react-dom": "^18.2.19",
-    "eslint": "^8.57.0",
-    "react": "^18.2.0",
+    "tsup": "^8.0.2",
     "typescript": "^5.3.3"
   }
 }

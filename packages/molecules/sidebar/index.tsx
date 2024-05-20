@@ -14,7 +14,7 @@ import HistoryIcon from '@mui/icons-material/History'
 import HelpIcon from '@mui/icons-material/Help'
 import FeedbackIcon from '@mui/icons-material/Feedback'
 import LogoutIcon from '@mui/icons-material/Logout'
-import configObj from '@stencil/configmanager'
+import configObj from '@repo/configmanager'
 
 export const Sidebar = ({
   isOpen,
