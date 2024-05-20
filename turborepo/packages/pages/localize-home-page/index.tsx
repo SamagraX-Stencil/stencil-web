@@ -12,11 +12,12 @@ import axios from 'axios'
 import { AppContext } from '@repo/provider'
 import SendIcon from './assets/sendButton.svg'
 import { useLocalization } from '@repo/hooks'
-import router from 'next/router'
+import { useRouter } from 'next/navigation'
+
 import Image from 'next/image'
 import toast from 'react-hot-toast'
 import { v4 as uuidv4 } from 'uuid'
-import { LocalRenderVoiceRecorder } from '@repo/molecules'
+import { VoiceRecorder } from '@repo/molecules'
 import { recordUserLocation } from '../resources/utils/location'
 import { useBotConfig } from '@repo/hooks'
 import DowntimePage from '../downtime-page'
@@ -26,6 +27,8 @@ import plantProtectionImg from './assets/plant_protection.png'
 import weatherAdvisoryImg from './assets/weather_advisory.png'
 
 const LocalHomePage: NextPage = () => {
+  const router = useRouter()
+
   const context = useContext(AppContext)
   const botConfig = useBotConfig('component', 'chatUI')
   const config = useBotConfig('component', 'homePage')
@@ -376,10 +379,7 @@ const LocalHomePage: NextPage = () => {
                   style={{ height: micHeight, width: micWidth }}
                   ref={voiceRecorderRef}
                 >
-                  <LocalRenderVoiceRecorder
-                    setInputMsg={setInputMsg}
-                    tapToSpeak={true}
-                  />
+                  <VoiceRecorder setInputMsg={setInputMsg} tapToSpeak={true} />
                 </div>
               )}
             </>

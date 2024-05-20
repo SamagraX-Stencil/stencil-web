@@ -5,6 +5,7 @@ import { AppContext } from './AppContext'
 import CustomBotThemeProvider from './providers/theme-provider'
 import { FlagsmithProvider } from './providers/flagsmith-provider'
 import { LocaleProvider } from './providers/intl-provider'
+import ContextProvider from './providers/context-provider'
 import Provider from './providers'
 
 export {
@@ -17,4 +18,5 @@ export {
   FlagsmithProvider,
   LocaleProvider,
   Provider,
+  ContextProvider,
 }

@@ -1,3 +1,4 @@
+'use client'
 import React, { ReactNode, useCallback, useEffect, useState } from 'react'
 import {
   ThemeProvider as MuiThemeProvider,

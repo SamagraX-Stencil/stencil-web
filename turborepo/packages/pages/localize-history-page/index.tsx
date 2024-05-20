@@ -7,7 +7,7 @@ import {
   useMemo,
 } from 'react'
 import styles from './style.module.css'
-import { LocalList } from '@repo/molecules'
+import { FullPageLoader, List, LocalList } from '@repo/molecules'
 import ForumIcon from '@mui/icons-material/Forum'
 import { IconButton } from '@mui/material'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
@@ -181,11 +181,7 @@ const LocalHistoryPage: FC = () => {
   return (
     <>
       <div className={styles.main}>
-        <FullPageLoader
-          loading={isFetching}
-          color={theme?.primary?.main}
-          label="Fetching History"
-        />
+        <FullPageLoader loading={isFetching} color={theme?.primary?.main} />
         <div className={styles.title} style={{ color: theme?.primary?.main }}>
           {t('label.chats') ?? 'No Label Provided'}
         </div>

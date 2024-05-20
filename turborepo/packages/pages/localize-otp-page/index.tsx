@@ -8,7 +8,7 @@ import { toast } from 'react-hot-toast'
 import { useBotAppColorPalates } from '@repo/hooks'
 import { LocalOTPInput } from '@repo/molecules'
 import { useLocalization } from '@repo/hooks'
-import { useRouter } from 'next/router'
+import { useRouter, useSearchParams } from 'next/navigation'
 import jwt_decode from 'jwt-decode'
 import { useCookies } from 'react-cookie'
 import { useBotConfig } from '@repo/hooks'
@@ -22,12 +22,13 @@ const LocalOtpPage: React.FC = () => {
   const theme = useBotAppColorPalates()
   const { logo, showLogo, showSplitedView, otpLength, resendOtpTimer } = config
   const router = useRouter()
-  const mobile = router.query.state
+  const searchParams = useSearchParams()
+  const mobile = searchParams.get('state')
   const t = useLocalization()
 
   const [cookies, setCookie, removeCookie] = useCookies(['access_token'])
   useEffect(() => {
-    if (!router.query.state || router.query.state?.length !== 10) {
+    if (!mobile || mobile?.length !== 10) {
       router.push('/login')
     }
   }, [router])
@@ -54,7 +55,7 @@ const LocalOtpPage: React.FC = () => {
     try {
       setLoading(true)
       const response = axios.get(
-        `${process.env.NEXT_PUBLIC_USER_SERVICE_URL}/api/sendOTP?phone=${router.query.state}`
+        `${process.env.NEXT_PUBLIC_USER_SERVICE_URL}/api/sendOTP?phone=${mobile}`
       )
       console.log(response)
       setLoading(false)
@@ -84,7 +85,7 @@ const LocalOtpPage: React.FC = () => {
         if (navigator.onLine) {
           setLoading(true)
           verifyOtp({
-            loginId: router.query.state,
+            loginId: mobile,
             password: otp,
             applicationId: process.env.NEXT_PUBLIC_USER_SERVICE_APP_ID,
             //@ts-ignore
@@ -103,7 +104,7 @@ const LocalOtpPage: React.FC = () => {
                 path: '/',
                 expires,
               })
-              const phoneNumber = router.query.state
+              const phoneNumber = mobile
               // @ts-ignore
               localStorage.setItem('phoneNumber', phoneNumber)
               const decodedToken = jwt_decode(res.result.data.user.token)

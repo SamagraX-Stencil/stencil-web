@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { createContext, useContext, useReducer, useState } from 'react'
 import configObj from '@repo/configmanager'

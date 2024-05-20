@@ -9,7 +9,7 @@ import CircularProgress from '@mui/material/CircularProgress'
 import { toast } from 'react-hot-toast'
 import { useBotAppColorPalates } from '@repo/hooks'
 import { useLocalization } from '@repo/hooks'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { useBotConfig } from '@repo/hooks'
 const LocalLoginMobileAadharPage: React.FC = () => {
   const config = useBotConfig('component', 'loginMobileAadharPage')
@@ -87,7 +87,10 @@ const LocalLoginMobileAadharPage: React.FC = () => {
               setLoading(false)
               if (response.status === 200) {
                 // localStorage.setItem('phoneNumber',input)
-                router.push({ pathname: '/otp', query: { state: input } })
+                const url = `/otp?state=${input}`
+                router.push(url)
+
+                // router.push({ pathname: '/otp', query: { state: input } })
               } else {
                 setLoading(false)
                 toast.error(`${t('message.otp_not_sent')}`)
