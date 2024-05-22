@@ -7,10 +7,11 @@ import { useBotConfig } from '@repo/hooks'
 import dynamic from 'next/dynamic'
 import styles from '../src/components/dialer-popup/index.module.css'
 import DialerPopUp from '../src/components/dialer-popup'
+import { ChatUI } from '@repo/molecules'
 
-const ChatUi = dynamic(() => import('../src/components/chat-window'), {
-  ssr: false,
-})
+// const ChatUi = dynamic(() => import('../src/components/chat-window'), {
+//   ssr: false,
+// })
 
 const ClientComponent = () => {
   const context = useContext(AppContext)
@@ -37,7 +38,7 @@ const ClientComponent = () => {
           top: '100px',
         }}
       >
-        <ChatUi />
+        <ChatUI />
       </div>
     </>
   )

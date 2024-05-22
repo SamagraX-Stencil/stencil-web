@@ -1,81 +1,129 @@
-# Turborepo starter
+# Stencil Ui
 
-This is an official starter Turborepo.
+Welcome to the Stencil Ui repository! This repository is designed to help streamline your development workflow by managing multiple projects within a single repository. Below you'll find instructions on how to set up, use, and maintain this monorepo.
 
-## Using this example
+## Table of Contents
 
-Run the following command:
+1. [Introduction](#introduction)
+2. [Structure](#structure)
+3. [Getting Started](#getting-started)
+4. [Scripts](#scripts)
+5. [Contributing](#contributing)
+6. [License](#license)
 
-```sh
-npx create-turbo@latest
-```
+## Introduction
 
-## What's inside?
+This monorepo is set up to manage multiple projects and packages efficiently. By consolidating projects into a single repository, we can share common configurations, scripts, and dependencies, making the development process more streamlined and cohesive.
 
-This Turborepo includes the following packages/apps:
+## Structure
 
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
+The repository is organized as follows:
 
 ```
-cd my-turborepo
-pnpm build
-```
+stencil-ui/
+stencil-ui/
+├── packages/
+│   ├── molecules/
+│   ├── pages/
+│   ├── config-manager/
+│   ├── hooks/
+│   └── provider/
+├── apps/
+│   ├── all-molecule-example/
+│   └── bot-app/
+├── node_modules/
+├── package.json
+├── turbo.json
+└── README.md
 
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
 
 ```
-cd my-turborepo
-npx turbo login
-```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+- `packages/`: Contains shared libraries and modules.
+- `apps/`: Contains the different applications.
+- `node_modules/`: Automatically generated directory containing installed dependencies.
+- `package.json`: Contains metadata about the project and dependencies.
+- `turbo.json`: Configuration file for Turborepo.
+- `README.md`: This file.
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+## Getting Started
 
-```
-npx turbo link
-```
+### Prerequisites
 
-## Useful Links
+Ensure you have the following installed:
 
-Learn more about the power of Turborepo:
+- [Node.js](https://nodejs.org/) (version 14.x or later)
+- [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/)
+- [Lerna](https://lerna.js.org/) (if using Lerna)
+- [Turborepo](https://turborepo.org/)
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/my-monorepo.git
+   cd my-monorepo
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   yarn install
+   ```
+
+3. To start the local development
+   ```bash
+   turbo dev
+   ```
+
+## Scripts
+
+Common scripts you can use in this monorepo are defined in the root `package.json`. Here are a few examples:
+
+- `build`: Builds all packages and applications.
+
+  ```bash
+  npm run build
+  # or
+  yarn build
+  ```
+
+- `test`: Runs tests for all packages and applications.
+
+  ```bash
+  npm test
+  # or
+  yarn test
+  ```
+
+- `lint`: Lints all packages and applications.
+
+  ```bash
+  npm run lint
+  # or
+  yarn lint
+  ```
+
+Additional scripts specific to individual packages or applications can be found in their respective directories.
+
+## Contributing
+
+We welcome contributions! Please follow these steps to contribute:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes.
+4. Commit your changes (`git commit -m 'Add some feature'`).
+5. Push to the branch (`git push origin feature-branch`).
+6. Open a pull request.
+
+Please ensure your code adheres to the project's coding standards and passes all tests before submitting a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+Thank you for using My Monorepo! If you have any questions or feedback, feel free to open an issue.

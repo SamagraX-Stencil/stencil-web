@@ -16,6 +16,7 @@ import { recordUserLocation } from './utils/location'
 import chatHistory from './chatHistory.json'
 import ShareButtons from '../share-buttons'
 import { useUiConfig, useThemeConfig } from '@repo/hooks'
+import NewMessageItem from '../message-item/index2'
 
 export const ChatUI: React.FC = () => {
   const [messages, setMessages] = useState<any>([])
@@ -142,7 +143,8 @@ export const ChatUI: React.FC = () => {
         //@ts-ignore
         messages={msgToRender}
         renderMessageContent={(props): ReactElement => (
-          <MessageItem message={props} themeColor={theme} chatUi={config} />
+          // <MessageItem message={props} themeColor={theme} chatUi={config} />
+          <NewMessageItem message={props} themeColor={theme} chatUi={config} />
         )}
         onSend={handleSend}
         locale="en-US"

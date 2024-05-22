@@ -56,74 +56,74 @@
       "centerLogoSize": "60px",
       "logoTitleColor": "green",
       "newChatButtonColor": "orange"
+    },
+    "sidebar": {
+      "activeLanguageColor": "orange",
+      "nonActiveLanguageColor": "whilte",
+      "backgroudColor": "green",
+      "showLangSwitcher": true,
+      "sidebarBackground": "#1D6231",
+      "faqPage": true,
+      "feedbackPage": true,
+      "historyPage": true,
+      "languageCode1": "en",
+      "languageCode2": "or",
+      "languageName1": "ENG",
+      "languageName2": "ଓଡିଆ",
+      "showProfileIcon": true,
+      "showLogoutButton": true,
+      "showBhashiniLogo": false
+    },
+    "otpPage": {
+      "showLogo": false,
+      "showSplitedView": true,
+      "otpLength": 4,
+      "logo": "https://seeklogo.com/images/C/corporate-company-logo-749CEE6ADC-seeklogo.com.png",
+      "title": "OTP Verification",
+      "resendOtpTimer": "30"
+    },
+    "downtimePage": {
+      "downTimeImage": ""
+    },
+    "voiceRecorder": {
+      "showVoiceRecorder": true,
+      "delayBetweenDialogs": 2500
+    },
+    "feedbackPage": {
+      "reviewBox": true,
+      "ratingBox": true,
+      "ratingMaxStars": 5
+    },
+    "loginMobileAadharPage": {
+      "loginWithAadhaar": false,
+      "showSignUp": false,
+      "showAlternateSignIn": false,
+      "showSplitedView": true,
+      "logowidth": "320px",
+      "logoheight": "280px",
+      "logo": "https://seeklogo.com/images/C/corporate-company-logo-749CEE6ADC-seeklogo.com.png"
+    },
+    "historyPage": {
+      "allowOverride": false,
+      "allowDelete": true,
+      "showTimestamp": true
+    },
+    "launchPage": {
+      "allowOverride": false,
+      "logo": "src/pages/launch-page/krushak_odisha.png",
+      "showLaunchPage": true,
+      "launchPageColor": ""
+    },
+    "share-buttons": {
+      "allowOverride": false,
+      "allowDownloadChat": true,
+      "allowShareChat": true,
+      "shareButtonColor": "orange",
+      "downloadButtonColor": "orange"
+    },
+    "chatUI": {
+      "showLogo": false,
+      "logo": "https://seeklogo.com/images/C/corporate-company-logo-749CEE6ADC-seeklogo.com.png"
     }
-  },
-  "sidebar": {
-    "activeLanguageColor": "orange",
-    "nonActiveLanguageColor": "whilte",
-    "backgroudColor": "green",
-    "showLangSwitcher": true,
-    "sidebarBackground": "#1D6231",
-    "faqPage": true,
-    "feedbackPage": true,
-    "historyPage": true,
-    "languageCode1": "en",
-    "languageCode2": "or",
-    "languageName1": "ENG",
-    "languageName2": "ଓଡିଆ",
-    "showProfileIcon": true,
-    "showLogoutButton": true,
-    "showBhashiniLogo": false
-  },
-  "otpPage": {
-    "showLogo": false,
-    "showSplitedView": true,
-    "otpLength": 4,
-    "logo": "https://seeklogo.com/images/C/corporate-company-logo-749CEE6ADC-seeklogo.com.png",
-    "title": "OTP Verification",
-    "resendOtpTimer": "30"
-  },
-  "downtimePage": {
-    "downTimeImage": ""
-  },
-  "voiceRecorder": {
-    "showVoiceRecorder": true,
-    "delayBetweenDialogs": 2500
-  },
-  "feedbackPage": {
-    "reviewBox": true,
-    "ratingBox": true,
-    "ratingMaxStars": 5
-  },
-  "loginMobileAadharPage": {
-    "loginWithAadhaar": false,
-    "showSignUp": false,
-    "showAlternateSignIn": false,
-    "showSplitedView": true,
-    "logowidth": "320px",
-    "logoheight": "280px",
-    "logo": "https://seeklogo.com/images/C/corporate-company-logo-749CEE6ADC-seeklogo.com.png"
-  },
-  "historyPage": {
-    "allowOverride": false,
-    "allowDelete": true,
-    "showTimestamp": true
-  },
-  "launchPage": {
-    "allowOverride": false,
-    "logo": "src/pages/launch-page/krushak_odisha.png",
-    "showLaunchPage": true,
-    "launchPageColor": ""
-  },
-  "share-buttons": {
-    "allowOverride": false,
-    "allowDownloadChat": true,
-    "allowShareChat": true,
-    "shareButtonColor": "orange",
-    "downloadButtonColor": "orange"
-  },
-  "chatUI": {
-    "showLogo": false,
-    "logo": "https://seeklogo.com/images/C/corporate-company-logo-749CEE6ADC-seeklogo.com.png"
   }
 }

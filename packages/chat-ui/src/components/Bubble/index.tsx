@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 
 export interface BubbleProps extends React.HTMLAttributes<HTMLDivElement> {
   type?: string;
