@@ -5,7 +5,7 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import CircularProgress from '@mui/material/CircularProgress'
 import { toast } from 'react-hot-toast'
-import { OTPInput } from '@repo/molecules'
+import { LocalOTPInput } from '@repo/molecules'
 import { useColorPalates, useUiConfig } from '@repo/hooks'
 
 const OtpPage: React.FC = () => {
@@ -114,7 +114,7 @@ const OtpPage: React.FC = () => {
                   gap: 2,
                 }}
               >
-                <OTPInput
+                <LocalOTPInput
                   separator={<></>}
                   value={otp}
                   onChange={setOtp}
