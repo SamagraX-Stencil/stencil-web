@@ -3,17 +3,19 @@ import { Box, Container, IconButton } from '@mui/material'
 import { useMemo } from 'react'
 import ForumIcon from '@mui/icons-material/Forum'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
-import { useColorPalates } from '@repo/hooks'
+import { useColorPalates, useLocalizationForExampleApp } from '@repo/hooks'
 import {
   JsonToTable,
   List,
-  OTPInput,
+  LocalOTPInput,
   ShareButtons,
   VoiceRecorder,
 } from '@repo/molecules'
 import { Navbar } from '@repo/molecules'
 
 const Components = () => {
+  const t = useLocalizationForExampleApp()
+
   const [otp, setOtp] = useState('')
   const theme = useColorPalates()
   const sampleList = useMemo(
@@ -76,7 +78,12 @@ const Components = () => {
       <Container style={{ marginTop: '50px' }}>
         <h4>OTP Input</h4>
         <div className="mt-2 p-5 border">
-          <OTPInput separator="-" length={4} value={otp} onChange={setOtp} />
+          <LocalOTPInput
+            separator="-"
+            length={4}
+            value={otp}
+            onChange={setOtp}
+          />
         </div>
       </Container>
 
@@ -156,6 +163,7 @@ const Components = () => {
           <ShareButtons />
         </div>
       </Container>
+      <Container style={{ marginTop: '50px' }}></Container>
     </Box>
   )
 }

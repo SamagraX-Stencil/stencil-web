@@ -15,6 +15,7 @@ import HelpIcon from '@mui/icons-material/Help'
 import FeedbackIcon from '@mui/icons-material/Feedback'
 import LogoutIcon from '@mui/icons-material/Logout'
 import configObj from '@repo/configmanager'
+import { useLocaleForExampleApp } from '@repo/provider'
 
 export const Sidebar = ({
   isOpen,
@@ -38,11 +39,16 @@ export const Sidebar = ({
       setConfig(configObj.component.sidebar)
     }
   }, [])
+  const { locale, setLocale } = useLocaleForExampleApp()
 
   const handleLanguageClick = (langCode: string) => {
     setActiveLanguage(langCode)
     onToggle()
   }
+  useEffect(() => {
+    console.log(activeLanguage, 'ankit')
+    setLocale(activeLanguage)
+  }, [activeLanguage])
 
   const handleItemClick = () => {
     onToggle()

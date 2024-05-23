@@ -1,5 +1,9 @@
 'use client'
-import { ConfigContext, CustomThemeProvider } from '@repo/provider'
+import {
+  ConfigContext,
+  CustomThemeProvider,
+  LocaleProviderExampleApp,
+} from '@repo/provider'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { CssBaseline } from '@mui/material'
@@ -19,15 +23,17 @@ export default function RootLayout({
       <>
         <ConfigContext>
           <CustomThemeProvider>
-            <CssBaseline>
-              <BrowserRouter>
-                <body className={inter.className}>
-                  <Toaster />
-                  <Navbar />
-                  {children}
-                </body>
-              </BrowserRouter>
-            </CssBaseline>
+            <LocaleProviderExampleApp>
+              <CssBaseline>
+                <BrowserRouter>
+                  <body className={inter.className}>
+                    <Toaster />
+                    <Navbar />
+                    {children}
+                  </body>
+                </BrowserRouter>
+              </CssBaseline>
+            </LocaleProviderExampleApp>
           </CustomThemeProvider>
         </ConfigContext>
       </>
