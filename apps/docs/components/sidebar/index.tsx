@@ -6,7 +6,11 @@ import ThumbsUpDownIcon from '@mui/icons-material/ThumbsUpDown'
 import GridViewIcon from '@mui/icons-material/GridView'
 import { useColorPalates } from '@repo/hooks'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
-import { ChatBubble, HistoryOutlined } from '@mui/icons-material'
+import {
+  ChatBubble,
+  HistoryOutlined,
+  WbSunnyOutlined,
+} from '@mui/icons-material'
 // import { Link } from 'react-router-dom'
 import Link from 'next/link'
 import { FC } from 'react'
@@ -57,6 +61,8 @@ const getIcon = (label: string) => {
       return <ThumbsUpDownIcon />
     case 'chat-ui':
       return <ChatBubble />
+    case 'weather-page':
+      return <WbSunnyOutlined />
     case 'admin':
       return <AccountCircleIcon />
     default:

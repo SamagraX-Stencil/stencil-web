@@ -26,8 +26,9 @@ const ConfigProvider = createContext<ConfigContextValue>({
   handleResetButton: () => {},
 })
 const getConfigFromLocalStorage = () => {
-  const storedConfig = localStorage.getItem('config')
-  return storedConfig ? JSON.parse(storedConfig) : configObj
+  // const storedConfig = localStorage.getItem('config')
+  // return storedConfig ? JSON.parse(storedConfig) : configObj
+  return configObj
 }
 
 const ConfigContext = ({ children }: { children: React.ReactElement }) => {

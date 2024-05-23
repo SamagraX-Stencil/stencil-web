@@ -11,7 +11,7 @@ import ShareButtons from './share-buttons'
 import VoiceRecorder from './voice-recorder'
 import Navbar from './navbar'
 import Sidebar from './sidebar'
-
+import LanguagePicker from './language-picker'
 export {
   List,
   LocalList,
@@ -25,4 +25,5 @@ export {
   VoiceRecorder,
   LocalOTPInput,
   LocalFullPageLoader,
+  LanguagePicker,
 }

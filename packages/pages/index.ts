@@ -16,7 +16,8 @@ import LocalFeedbackPage from './localize-feedback-page'
 import LocalLaunchPage from './localize-launch-page'
 import LocalLoginMobileAadharPage from './localize-login-mobile-aadhar-page'
 import LocalHistoryPage from './localize-history-page'
-
+import OnBoardingPage from './on-boarding-page'
+import WheatherPage from './weather-page'
 export {
   ComingSoonPage,
   DowntimePage,
@@ -36,4 +37,6 @@ export {
   LocalOtpPage,
   LocalLoginMobileAadharPage,
   LocalHistoryPage,
+  OnBoardingPage,
+  WheatherPage,
 }
