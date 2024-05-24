@@ -3,7 +3,7 @@ import './src/styles/globals.css'
 import { InstallModal } from './src/components/install-modal'
 import FeaturePopup from './src/components/FeaturePopup'
 import { useEffect } from 'react'
-import { LocalFullPageLoader } from '@repo/molecules'
+import { FullPageLoader } from '@repo/molecules'
 import { ConfigContext, CustomThemeProvider } from '@repo/provider'
 import './globals.css'
 import { Inter } from 'next/font/google'
@@ -74,7 +74,7 @@ export default function RootLayout({
     globalThis.console.log = () => {}
   }
 
-  if (typeof window === 'undefined') return <LocalFullPageLoader loading />
+  if (typeof window === 'undefined') return <FullPageLoader loading />
 
   return (
     <html lang="en">

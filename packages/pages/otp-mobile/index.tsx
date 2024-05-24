@@ -5,7 +5,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import { Box, Button, Container, IconButton, Link } from '@mui/material'
 import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded'
 import { useUiConfig, useColorPalates } from '@repo/hooks'
-import { LocalOTPInput } from '@repo/molecules'
+import { OTPInput } from '@repo/molecules'
 
 const OtpMobile = () => {
   const theme = useColorPalates()
@@ -68,7 +68,7 @@ const OtpMobile = () => {
               alignItems: 'center',
             }}
           >
-            <LocalOTPInput
+            <OTPInput
               separator={
                 config?.otpSeparator || <span style={{ width: '10px' }}></span>
               }

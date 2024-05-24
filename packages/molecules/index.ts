@@ -1,9 +1,6 @@
 import { List } from './list'
-import { LocalList } from './localize-list'
-// import { OTPInput } from './otp-input'
-import { LocalOTPInput } from './localize-otp-input'
-import FullPageLoader from './fullpage-loader'
-import { LocalFullPageLoader } from './localize-fullpage-loader'
+import { OTPInput } from './otp-input'
+import { FullPageLoader } from './fullpage-loader'
 import { ChatUI } from './chat-ui'
 import { JsonToTable } from './json-to-table'
 import MessageItem from './message-item'
@@ -14,7 +11,6 @@ import Sidebar from './sidebar'
 import LanguagePicker from './language-picker'
 export {
   List,
-  LocalList,
   FullPageLoader,
   ChatUI,
   JsonToTable,
@@ -23,7 +19,6 @@ export {
   Sidebar,
   ShareButtons,
   VoiceRecorder,
-  LocalOTPInput,
-  LocalFullPageLoader,
+  OTPInput,
   LanguagePicker,
 }

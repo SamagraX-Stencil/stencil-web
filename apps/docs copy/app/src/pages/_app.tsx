@@ -18,7 +18,7 @@ import { useLogin } from '@repo/hooks'
 import FeaturePopup from '../components/FeaturePopup'
 import { Provider } from '@repo/provider'
 import { InstallModal } from '../components/install-modal'
-import { LocalFullPageLoader } from '@repo/molecules'
+import { FullPageLoader } from '@repo/molecules'
 import { v4 as uuidv4 } from 'uuid'
 import {
   ConfigContext,
@@ -78,7 +78,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     globalThis.console.log = () => {}
   }
 
-  if (typeof window === 'undefined') return <LocalFullPageLoader loading />
+  if (typeof window === 'undefined') return <FullPageLoader loading />
   return (
     <Provider>
       <ConfigContext>

@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography'
 import CircularProgress from '@mui/material/CircularProgress'
 import { toast } from 'react-hot-toast'
 import { useBotAppColorPalates } from '@repo/hooks'
-import { LocalOTPInput } from '@repo/molecules'
+import { OTPInput } from '@repo/molecules'
 import { useLocalization } from '@repo/hooks'
 import { useRouter, useSearchParams } from 'next/navigation'
 import jwt_decode from 'jwt-decode'
@@ -196,7 +196,7 @@ const LocalOtpPage: React.FC = () => {
                   gap: 2,
                 }}
               >
-                <LocalOTPInput
+                <OTPInput
                   separator={<></>}
                   value={otp}
                   onChange={setOtp}

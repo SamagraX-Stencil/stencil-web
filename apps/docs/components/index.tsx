@@ -7,7 +7,7 @@ import { useColorPalates, useLocalizationForExampleApp } from '@repo/hooks'
 import {
   JsonToTable,
   List,
-  LocalOTPInput,
+  OTPInput,
   ShareButtons,
   VoiceRecorder,
 } from '@repo/molecules'
@@ -78,7 +78,7 @@ const Components = () => {
       <Container style={{ marginTop: '50px' }}>
         <h4>OTP Input</h4>
         <div className="mt-2 p-5 border">
-          <LocalOTPInput
+          <OTPInput
             separator="-"
             length={4}
             value={otp}
