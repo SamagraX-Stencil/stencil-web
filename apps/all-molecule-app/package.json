@@ -1,0 +1,34 @@
+{
+  "name": "all-molecule-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3001",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --max-warnings 0"
+  },
+  "dependencies": {
+    "@repo/ui": "*",
+    "next": "^14.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "stencil-pages": "1.0.3"
+  },
+  "devDependencies": {
+    "stencil-configmanager": "1.0.2",
+    "stencil-provider": "1.0.3",
+    "@repo/ui": "*",
+    "stencil-hooks": "1.0.2",
+    "stencil-molecule": "1.0.6",
+    "@next/eslint-plugin-next": "^14.1.1",
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "@types/eslint": "^8.56.5",
+    "@types/node": "^20.11.24",
+    "@types/react": "^18.2.61",
+    "@types/react-dom": "^18.2.19",
+    "eslint": "^8.57.0",
+    "typescript": "^5.3.3"
+  }
+}
