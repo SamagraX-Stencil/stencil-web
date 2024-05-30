@@ -8,7 +8,7 @@ import Tooltip from '@mui/material/Tooltip'
 import { Divider } from '@mui/material'
 import { colors } from './colors'
 import { map } from 'lodash'
-import { useTheme } from '@repo/hooks'
+import { useTheme } from 'stencil-hooks'
 
 export type Color = {
   light: string

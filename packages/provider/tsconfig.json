@@ -1,15 +1,18 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
+    "outDir": "dist",
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "module": "ESNext",
+    "resolveJsonModule": true,
     "moduleResolution": "Bundler",
     "preserveWatchOutput": true,
     "skipLibCheck": true,
     "noEmit": true,
     "strict": true,
-    "jsx": "react-jsx"
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true
   },
   "exclude": ["node_modules"]
 }

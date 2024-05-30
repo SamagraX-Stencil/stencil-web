@@ -1,5 +1,5 @@
 'use client'
-import { ShareButtons } from '@repo/molecules'
+import { ShareButtons } from 'stencil-molecule'
 import React from 'react'
 
 const ShareButton = () => {

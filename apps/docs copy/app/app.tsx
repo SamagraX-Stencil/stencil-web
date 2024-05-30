@@ -1,6 +1,6 @@
 'use client'
 
-import { LoginMobileAadharPage } from '@repo/pages'
+import { LoginMobileAadharPage } from 'stencil-pages'
 
 function App() {
   return (

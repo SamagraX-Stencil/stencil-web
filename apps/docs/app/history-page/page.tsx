@@ -1,5 +1,5 @@
 'use client'
-import { HistoryPage } from '@repo/pages'
+import { HistoryPage } from 'stencil-pages'
 import React from 'react'
 
 const History = () => {

@@ -9,22 +9,22 @@ import {
   useState,
 } from 'react'
 
-// import 'chatui-package/dist/index.css'
+// import 'stencil-chatui/dist/index.css'
 import { Toaster } from 'react-hot-toast'
 import { useCookies } from 'react-cookie'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
-import { useLogin } from '@repo/hooks'
+import { useLogin } from 'stencil-hooks'
 import FeaturePopup from '../components/FeaturePopup'
-import { Provider } from '@repo/provider'
+import { Provider } from 'stencil-provider'
 import { InstallModal } from '../components/install-modal'
-import { FullPageLoader } from '@repo/molecules'
+import { FullPageLoader } from 'stencil-molecule'
 import { v4 as uuidv4 } from 'uuid'
 import {
   ConfigContext,
   CustomThemeProvider,
   ThemeContext,
-} from '@repo/provider'
+} from 'stencil-provider'
 
 const NavBar = dynamic(() => import('../components/NavBar'), {
   ssr: false,

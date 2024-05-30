@@ -2,9 +2,9 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useLocalization } from '@repo/hooks'
-import { LocalHistoryPage } from '@repo/pages'
-import { useBotConfig } from '@repo/hooks'
+import { useLocalization } from 'stencil-hooks'
+import { LocalHistoryPage } from 'stencil-pages'
+import { useBotConfig } from 'stencil-hooks'
 const History: NextPage = () => {
   const t = useLocalization()
   const config = useBotConfig('component', 'botDetails')

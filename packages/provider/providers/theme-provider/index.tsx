@@ -7,7 +7,6 @@ import {
 } from '@mui/material/styles'
 import { initialTheme } from './theme'
 import { Color, ThemeContext } from './theme-context'
-import { useGetInitTheme } from '@repo/hooks'
 
 interface CustomThemeProviderProps {
   children: ReactNode
@@ -16,7 +15,6 @@ interface CustomThemeProviderProps {
 const CustomThemeProvider: React.FC<CustomThemeProviderProps> = ({
   children,
 }) => {
-  const _initialTheme = useGetInitTheme()
 
   const [theme, setTheme] = useState<Theme | null>(null)
 
@@ -24,7 +22,7 @@ const CustomThemeProvider: React.FC<CustomThemeProviderProps> = ({
     setTheme((prevTheme) => createTheme({ ...prevTheme, ...changes }))
   }
 
-  const modifyPaletes = useCallback((palette: Color) => {
+  const modifyPaletes = useCallback((palette: any) => {
     //@ts-ignore
     setTheme((prevTheme) =>
       createTheme({

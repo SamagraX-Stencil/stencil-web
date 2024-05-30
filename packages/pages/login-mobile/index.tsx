@@ -2,10 +2,10 @@ import React, { useCallback, useState } from 'react'
 
 import farmer from './assets/farmer.jpeg'
 import { Box, CircularProgress, TextField, Button } from '@mui/material'
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
+import { ArrowForward } from '@mui/icons-material'
 
-import { useUiConfig, useColorPalates } from '@repo/hooks'
-import { LanguagePicker } from '@repo/molecules'
+import { useUiConfig, useColorPalates } from 'stencil-hooks'
+import { LanguagePicker } from 'stencil-molecule'
 
 const LoginMobile = () => {
   const config = useUiConfig('component', 'loginMobilePage')
@@ -122,7 +122,7 @@ const LoginMobile = () => {
                   type="submit"
                   fullWidth
                   variant="contained"
-                  endIcon={<ArrowForwardIcon />}
+                  endIcon={<ArrowForward />}
                   sx={{
                     textTransform: 'none',
                     mt: 3,

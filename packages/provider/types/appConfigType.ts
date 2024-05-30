@@ -190,8 +190,9 @@ export interface Component {
 
 // Define the type for the JSON object
 interface AppConfig {
-  theme: Theme
+  theme: any
   component: Component
+  translation: any
   [key: string]: any // Add this line
 }
 

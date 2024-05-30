@@ -2,9 +2,9 @@ import logo from './assets/main.png'
 import cm from './assets/cm.png'
 import bottom from './assets/bottom.png'
 import { Container, IconButton } from '@mui/material'
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
-import { useUiConfig, useColorPalates } from '@repo/hooks'
-import { LanguagePicker } from '@repo/molecules'
+import { ArrowForward } from '@mui/icons-material'
+import { useUiConfig, useColorPalates } from 'stencil-hooks'
+import { LanguagePicker } from 'stencil-molecule'
 
 const AkaiLaunch = () => {
   const config = useUiConfig('component', 'welcomePage')
@@ -78,7 +78,7 @@ const AkaiLaunch = () => {
               background: config?.proceedBtnColor || theme.primary.dark,
             }}
           >
-            <ArrowForwardIcon
+            <ArrowForward
               style={{ color: 'white', height: '24px', width: '24px' }}
             />
           </IconButton>

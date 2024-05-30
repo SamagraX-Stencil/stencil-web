@@ -3,9 +3,9 @@ import { useState } from 'react'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 
 import { Box, Button, Container, IconButton, Link } from '@mui/material'
-import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded'
-import { useUiConfig, useColorPalates } from '@repo/hooks'
-import { OTPInput } from '@repo/molecules'
+import { ArrowBackIosNewRounded } from '@mui/icons-material'
+import { useUiConfig, useColorPalates } from 'stencil-hooks'
+import { OTPInput } from 'stencil-molecule'
 
 const OtpMobile = () => {
   const theme = useColorPalates()
@@ -23,7 +23,7 @@ const OtpMobile = () => {
             border: '1px solid #E8ECF4',
           }}
         >
-          <ArrowBackIosNewRoundedIcon />
+          <ArrowBackIosNewRounded />
         </IconButton>
         <div className="text-center w-100">
           <p

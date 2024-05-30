@@ -3,15 +3,15 @@ import { Box, Container, IconButton } from '@mui/material'
 import { useMemo } from 'react'
 import ForumIcon from '@mui/icons-material/Forum'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
-import { useColorPalates, useLocalizationForExampleApp } from '@repo/hooks'
+import { useColorPalates, useLocalizationForExampleApp } from 'stencil-hooks'
 import {
   JsonToTable,
   List,
   OTPInput,
   ShareButtons,
   VoiceRecorder,
-} from '@repo/molecules'
-import { Navbar } from '@repo/molecules'
+} from 'stencil-molecule'
+import { Navbar } from 'stencil-molecule'
 
 const Components = () => {
   const t = useLocalizationForExampleApp()
@@ -78,12 +78,7 @@ const Components = () => {
       <Container style={{ marginTop: '50px' }}>
         <h4>OTP Input</h4>
         <div className="mt-2 p-5 border">
-          <OTPInput
-            separator="-"
-            length={4}
-            value={otp}
-            onChange={setOtp}
-          />
+          <OTPInput separator="-" length={4} value={otp} onChange={setOtp} />
         </div>
       </Container>
 

@@ -1,5 +1,5 @@
 'use client'
-import { LocalComingSoonPage } from '@repo/pages'
+import { LocalComingSoonPage } from 'stencil-pages'
 import React from 'react'
 
 const CommingSoon = () => {

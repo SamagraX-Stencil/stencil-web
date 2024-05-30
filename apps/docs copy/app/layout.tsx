@@ -3,22 +3,23 @@ import './src/styles/globals.css'
 import { InstallModal } from './src/components/install-modal'
 import FeaturePopup from './src/components/FeaturePopup'
 import { useEffect } from 'react'
-import { FullPageLoader } from '@repo/molecules'
-import { ConfigContext, CustomThemeProvider } from '@repo/provider'
+import { FullPageLoader } from 'stencil-molecule'
+// import { ConfigContext, CustomThemeProvider } from 'stencil-provider'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { CssBaseline } from '@mui/material'
 import { BrowserRouter } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
-import { Provider } from '@repo/provider'
+import { ConfigContext, CustomThemeProvider } from 'stencil-provider'
 
 const inter = Inter({ subsets: ['latin'] })
 import Navbar from './src/components/NavBar'
-import { useLogin } from '@repo/hooks'
+import { useLogin } from 'stencil-hooks'
 
 import { useCookies } from 'react-cookie'
 import { usePathname, useRouter } from 'next/navigation'
 import { v4 as uuidv4 } from 'uuid'
+import { Provider } from 'stencil-provider'
 
 // import dynamic from 'next/dynamic'
 

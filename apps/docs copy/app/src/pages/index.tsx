@@ -1,9 +1,9 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { CookiesProvider } from 'react-cookie'
-import { useLocalization } from '@repo/hooks'
-import { LocalHomePage } from '@repo/pages'
-import { useBotConfig } from '@repo/hooks'
+import { useLocalization } from 'stencil-hooks'
+import { LocalHomePage } from 'stencil-pages'
+import { useBotConfig } from 'stencil-hooks'
 const Home: NextPage = () => {
   const t = useLocalization()
   const config = useBotConfig('component', 'botDetails')

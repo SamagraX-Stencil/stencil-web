@@ -1,4 +1,4 @@
-import { botConfigObj } from '@repo/configmanager'
+import { botConfigObj } from 'stencil-configmanager'
 import axios from 'axios'
 
 //@ts-ignore
@@ -34,9 +34,10 @@ const fetchOverrideConfig = async () => {
         accept: 'application/json',
       },
     }
-    const deploymentResp = await axios.request(deploymentIdConfig)
+    // const deploymentResp = await axios.request(deploymentIdConfig)
 
-    return deploymentResp?.data?.data?.config
+    // return deploymentResp?.data?.data?.config
+    return botConfigObj
   } catch (err) {
     console.error(err)
   }

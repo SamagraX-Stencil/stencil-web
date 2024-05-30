@@ -1,5 +1,5 @@
 'use client'
-import { OnBoardingPage } from '@repo/pages'
+import { OnBoardingPage } from 'stencil-pages'
 import React from 'react'
 
 const OnBoardingMolecule = () => {

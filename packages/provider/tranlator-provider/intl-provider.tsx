@@ -1,6 +1,6 @@
 'use client'
-import configObj from '@repo/configmanager'
-import flagsmith from 'flagsmith/isomorphic'
+import configObj from 'stencil-configmanager'
+// import flagsmith from 'flagsmith/isomorphic'
 import React, {
   FC,
   ReactElement,
@@ -21,10 +21,8 @@ export const useLocaleForExampleApp = () => useContext(LocaleContext)
 export const LocaleProviderExampleApp: FC<{ children: ReactElement }> = ({
   children,
 }) => {
-  const defaultLang = flagsmith.getValue('default_lang', { fallback: 'en' })
-  const [locale, setLocale] = useState(
-    localStorage.getItem('locale') || defaultLang
-  )
+  const defaultLang = 'en'
+  const [locale, setLocale] = useState(defaultLang)
   const [localeMsgs, setLocaleMsgs] = useState<any | null>(null)
 
   useEffect(() => {

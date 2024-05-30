@@ -1,0 +1,66 @@
+.main {
+    margin: 1vh 0 1vh 1vh;
+  }
+  
+  .chatList{
+    height: 73dvh;
+    overflow-x: hidden;
+    overflow-y: scroll !important;
+  }
+  
+  .chatList::-webkit-scrollbar {
+    width: 4px;
+    height: 6px;
+  }
+  .chatList::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.1);
+  }
+  .chatList::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2);
+  }
+  .chatList::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4);
+  }
+  .chatList::-webkit-scrollbar-thumb:active {
+    background: rgba(0, 0, 0, 0.9);
+  }
+  
+  .title {
+    margin-top: 4vh;
+    margin-left: 2vh;
+    font-family: 'Mulish-Bold';
+    font-size: 4.265vh;
+    font-weight: 700;
+  }
+  
+  .noHistory{
+    height: 35vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .noHistory div{
+    margin-top: 4vh;
+    margin-left: 2vh;
+    font-family: 'Mulish-Bold';
+    font-size: 4vh;
+    text-align: center;
+    color: var(--grey);  
+  }
+  .noHistory p{
+    margin-top: 4vh;
+    margin-left: 2vh;
+    font-family: 'Mulish-Bold';
+    font-size: 1.65vh;
+    text-align: center;
+    color: var(--secondarygreen);  
+  }
+  .pagination{
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }

@@ -1,4 +1,4 @@
-import { botConfigObj } from '@repo/configmanager'
+import { botConfigObj } from 'stencil-configmanager'
 import axios from 'axios'
 
 //@ts-ignore

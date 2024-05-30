@@ -1,8 +1,8 @@
 import farmer from './assets/farmer.jpeg'
 import user from './assets/user.svg'
 import farmer2 from './assets/farmer-op.svg'
-import { useUiConfig, useColorPalates } from '@repo/hooks'
-import { LanguagePicker } from '@repo/molecules'
+import { useUiConfig, useColorPalates } from 'stencil-hooks'
+import { LanguagePicker } from 'stencil-molecule'
 
 const UserTypeSelector = () => {
   const theme = useColorPalates()

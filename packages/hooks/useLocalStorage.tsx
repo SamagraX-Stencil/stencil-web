@@ -6,12 +6,12 @@ export const useLocalStorage = (
   initialState: string | null,
   parseToJson = false
 ): [any, any] => {
-  const [value, setValue] = useState(
-    // @ts-ignore
-    parseToJson
-      ? JSON.parse(localStorage.getItem(key))
-      : localStorage.getItem(key) ?? initialState
-  )
+  const getStoredValue = () => {
+    const item = localStorage.getItem(key)
+    if (item === null) return initialState
+    return parseToJson ? JSON.parse(item) : item
+  }
+  const [value, setValue] = useState(getStoredValue)
   const updatedSetValue = useCallback(
     (newValue: string) => {
       if (newValue === initialState || typeof newValue === 'undefined') {

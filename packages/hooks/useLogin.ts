@@ -2,7 +2,7 @@
 import axios from 'axios'
 import { useCallback, useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
-import jwt from 'jsonwebtoken'
+// import jwt from 'jsonwebtoken'
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
 
@@ -24,41 +24,39 @@ export const useLogin = () => {
   const login = useCallback(() => {
     // No need to check for auth if access token is not present
     if (cookies.access_token) {
-      const decodedToken: any = jwt.decode(cookies.access_token)
-
-      const expires = new Date(decodedToken?.exp * 1000)
-
-      if (expires > new Date()) {
-        const token = cookies.access_token
-        axios
-          .get(`/api/auth?token=${token}`)
-          .then((response) => {
-            if (response.data === null) {
-              toast.error('Invalid Access Token')
-              removeCookie('access_token', { path: '/' })
-              localStorage.clear()
-              sessionStorage.clear()
-              router.push('/login')
-              console.log('response null')
-            } else {
-              setIsAuthenticated(true)
-              console.log('authenticated true')
-            }
-          })
-          .catch((err: any) => {
-            console.error(err)
-            removeCookie('access_token', { path: '/' })
-            localStorage.clear()
-            sessionStorage.clear()
-            router.push('/login')
-          })
-      } else {
-        removeCookie('access_token', { path: '/' })
-        localStorage.clear()
-        sessionStorage.clear()
-        router.push('/login')
-        if (typeof window !== 'undefined') window.location.reload()
-      }
+      // const decodedToken: any = jwt.decode(cookies.access_token)
+      // const expires = new Date(decodedToken?.exp * 1000)
+      // if (expires > new Date()) {
+      //   const token = cookies.access_token
+      //   axios
+      //     .get(`/api/auth?token=${token}`)
+      //     .then((response) => {
+      //       if (response.data === null) {
+      //         toast.error('Invalid Access Token')
+      //         removeCookie('access_token', { path: '/' })
+      //         localStorage.clear()
+      //         sessionStorage.clear()
+      //         router.push('/login')
+      //         console.log('response null')
+      //       } else {
+      //         setIsAuthenticated(true)
+      //         console.log('authenticated true')
+      //       }
+      //     })
+      //     .catch((err: any) => {
+      //       console.error(err)
+      //       removeCookie('access_token', { path: '/' })
+      //       localStorage.clear()
+      //       sessionStorage.clear()
+      //       router.push('/login')
+      //     })
+      // } else {
+      //   removeCookie('access_token', { path: '/' })
+      //   localStorage.clear()
+      //   sessionStorage.clear()
+      //   router.push('/login')
+      //   if (typeof window !== 'undefined') window.location.reload()
+      // }
     }
   }, [cookies.access_token, removeCookie, router])
   useEffect(() => {

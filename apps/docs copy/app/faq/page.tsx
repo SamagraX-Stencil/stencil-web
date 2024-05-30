@@ -2,9 +2,9 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useBotConfig } from '@repo/hooks'
-import { useLocalization } from '@repo/hooks'
-import { LocalFAQPage } from '@repo/pages'
+import { useBotConfig } from 'stencil-hooks'
+import { useLocalization } from 'stencil-hooks'
+import { LocalFAQPage } from 'stencil-pages'
 
 const Faq: NextPage = () => {
   const t = useLocalization()

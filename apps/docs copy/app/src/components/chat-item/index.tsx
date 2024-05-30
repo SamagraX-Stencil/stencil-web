@@ -7,9 +7,9 @@ import Image from 'next/image'
 import router from 'next/router'
 import axios from 'axios'
 import { v4 as uuidv4 } from 'uuid'
-import { AppContext } from '@repo/provider'
-import { useLocalization } from '@repo/hooks'
-import { useFlags } from 'flagsmith/react'
+import { AppContext } from 'stencil-provider'
+import { useLocalization } from 'stencil-hooks'
+// import { useFlags } from 'flagsmith/react'
 import { formatDate } from '../../utils/formatDate'
 import { recordUserLocation } from '../../utils/location'
 
@@ -23,7 +23,7 @@ const ChatItem: React.FC<ChatItemPropsType> = ({
   const context = useContext(AppContext)
   const t = useLocalization()
   const [isConversationDeleted, setIsConversationDeleted] = useState(false)
-  const flags = useFlags(['show_download_button', 'show_share_button'])
+  // const flags = useFlags(['show_download_button', 'show_share_button'])
 
   const handleChatPage = useCallback(() => {
     sessionStorage.setItem('conversationId', conversationId || 'null')

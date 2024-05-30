@@ -1,3 +1,4 @@
+'use client'
 import styles from './index.module.css'
 import React, {
   useCallback,
@@ -9,19 +10,19 @@ import React, {
 } from 'react'
 import { NextPage } from 'next'
 import axios from 'axios'
-import { AppContext } from '@repo/provider'
+import { AppContext } from 'stencil-provider'
 import SendIcon from './assets/sendButton.svg'
-import { useLocalization } from '@repo/hooks'
+import { useLocalization } from 'stencil-hooks'
 import { useRouter } from 'next/navigation'
 
 import Image from 'next/image'
 import toast from 'react-hot-toast'
 import { v4 as uuidv4 } from 'uuid'
-import { VoiceRecorder } from '@repo/molecules'
+import { VoiceRecorder } from 'stencil-molecule'
 import { recordUserLocation } from '../resources/utils/location'
-import { useBotConfig } from '@repo/hooks'
+import { useBotConfig } from 'stencil-hooks'
 import DowntimePage from '../downtime-page'
-import { useBotAppColorPalates } from '@repo/hooks'
+import { useBotAppColorPalates } from 'stencil-hooks'
 import kaliaStatusImg from './assets/kalia_status.png'
 import plantProtectionImg from './assets/plant_protection.png'
 import weatherAdvisoryImg from './assets/weather_advisory.png'
@@ -92,16 +93,16 @@ const LocalHomePage: NextPage = () => {
         data: data,
       }
 
-      axios
-        .request(axiosConfig)
-        .then((res: any) => {
-          // console.log("hurray", res?.data?.output?.[0]?.target);
-          setSuggestions(res?.data?.suggestions)
-        })
-        .catch((err) => {
-          console.log(err)
-          toast.error('Bhashini transliteration failed')
-        })
+      // axios
+      //   .request(axiosConfig)
+      //   .then((res: any) => {
+      //     // console.log("hurray", res?.data?.output?.[0]?.target);
+      //     setSuggestions(res?.data?.suggestions)
+      //   })
+      //   .catch((err) => {
+      //     console.log(err)
+      //     toast.error('Bhashini transliteration failed')
+      //   })
     } else {
       setSuggestions([])
     }

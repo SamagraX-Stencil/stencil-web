@@ -1,5 +1,5 @@
 'use client'
-import { WheatherPage } from '@repo/pages'
+import { WheatherPage } from 'stencil-pages'
 import React from 'react'
 
 const Wheather = () => {

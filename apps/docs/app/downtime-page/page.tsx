@@ -1,5 +1,5 @@
 'use client'
-import { DowntimePage } from '@repo/pages'
+import { DowntimePage } from 'stencil-pages'
 import React from 'react'
 
 const DownTime = () => {

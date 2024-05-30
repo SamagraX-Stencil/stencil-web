@@ -1,4 +1,4 @@
-import { useConfigContext } from '@repo/provider'
+import { useConfigContext } from 'stencil-provider'
 
 export const useConfig = (key: string, name: string) => {
   const { config } = useConfigContext()

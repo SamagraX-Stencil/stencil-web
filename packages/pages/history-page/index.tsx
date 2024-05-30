@@ -1,16 +1,15 @@
 import { FC, useCallback, useEffect, useState } from 'react'
 import styles from './style.module.css'
 
-import { List } from '@repo/molecules'
-import ForumIcon from '@mui/icons-material/Forum'
+import { List } from 'stencil-molecule'
 import { IconButton } from '@mui/material'
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
+import { DeleteOutline, Forum } from '@mui/icons-material'
 import moment from 'moment'
-import { FullPageLoader } from '@repo/molecules'
-import { ChatItem, HistoryItem } from './index.d'
+import { FullPageLoader } from 'stencil-molecule'
+import { ChatItem, HistoryItem } from './types'
 import { map } from 'lodash'
 import sample from './sample.json'
-import { useUiConfig, useColorPalates } from '@repo/hooks'
+import { useUiConfig, useColorPalates } from 'stencil-hooks'
 
 const HistoryPage: FC = () => {
   const config = useUiConfig('component', 'historyPage')
@@ -49,14 +48,14 @@ const HistoryPage: FC = () => {
       secondaryLabel: config.showTimestamp
         ? moment(chatItem?.updatedAt).format('hh:mm A DD/MM/YYYY')
         : '',
-      icon: <ForumIcon style={{ color: theme?.primary?.light }} />,
+      icon: <Forum style={{ color: theme?.primary?.light }} />,
       secondaryAction: config.allowDelete && (
         <IconButton
           edge="end"
           aria-label="comments"
           onClick={onSecondaryActionClick(chatItem)}
         >
-          <DeleteOutlineIcon />
+          <DeleteOutline />
         </IconButton>
       ),
       onClick: handleClick,
@@ -88,7 +87,7 @@ const HistoryPage: FC = () => {
             items={list}
             noItem={{
               label: config.noItemsText,
-              icon: <ForumIcon style={{ color: theme?.primary?.light }} />,
+              icon: <Forum style={{ color: theme?.primary?.light }} />,
             }}
           />
         </div>

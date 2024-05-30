@@ -1,5 +1,5 @@
 'use client'
-import {
+import React, {
   FC,
   ReactElement,
   useCallback,
@@ -8,15 +8,10 @@ import {
   useMemo,
   useState,
 } from 'react'
-import { AppContext } from '@repo/provider'
-import _ from 'underscore'
 import { v4 as uuidv4 } from 'uuid'
-import { IntlProvider } from 'react-intl'
-import { useLocalization } from '@repo/hooks'
 import toast from 'react-hot-toast'
-import flagsmith from 'flagsmith/isomorphic'
 import axios from 'axios'
-import { useFlags } from 'flagsmith/react'
+// import { useFlags } from 'flagsmith/react'
 import { useCookies } from 'react-cookie'
 import { UCI } from 'socket-package'
 import { XMessage } from '@samagra-x/xmessage'
@@ -26,6 +21,7 @@ import { FullPageLoader } from './components/fullpage-loader'
 import LaunchPage from './components/launch-page'
 import { ThemeContext } from './theme-provider/theme-context'
 import saveTelemetryEvent from './utils/telemetry'
+import { AppContext } from '../AppContext'
 
 const URL = process.env.NEXT_PUBLIC_SOCKET_URL || ''
 
@@ -36,8 +32,6 @@ const ContextProvider: FC<{
   children: ReactElement
   setLocaleMsgs: any
 }> = ({ locale, children, localeMsgs, setLocale, setLocaleMsgs }) => {
-  const t = useLocalization()
-  const flags = useFlags(['health_check_time'])
   const [loading, setLoading] = useState(false)
   const [isMsgReceiving, setIsMsgReceiving] = useState(false)
   const [messages, setMessages] = useState<Array<any>>([])
@@ -46,11 +40,9 @@ const ContextProvider: FC<{
   const [conversationId, setConversationId] = useState<string | null>(
     sessionStorage.getItem('conversationId')
   )
-  const timer1 = flagsmith.getValue('timer1', { fallback: 30000 })
-  const timer2 = flagsmith.getValue('timer2', { fallback: 45000 })
-  const audio_playback = flagsmith.getValue('audio_playback', {
-    fallback: 1.5,
-  })
+  const timer1 = 30000
+  const timer2 = 45000
+  const audio_playback = 1.5
   const [isDown, setIsDown] = useState(false)
   const [showDialerPopup, setShowDialerPopup] = useState(false)
   const [currentQuery, setCurrentQuery] = useState('')
@@ -206,7 +198,7 @@ const ContextProvider: FC<{
       setMessages((prev) => [
         ...prev,
         {
-          text: `${t('message.no_signal')}`,
+          text: 'Network Issue',
           choices: [],
           position: 'left',
           reaction: 0,
@@ -549,7 +541,7 @@ const ContextProvider: FC<{
     // } catch (error: any) {
     //   console.error(error);
     // }
-  }, [flags?.health_check_time?.value])
+  }, [])
 
   const normalizedChat = (chats: any): any => {
     console.log('in normalized', chats)
@@ -596,7 +588,7 @@ const ContextProvider: FC<{
     }
     timer = setTimeout(() => {
       if (loading) {
-        toast.loading(t('message.taking_longer'), { duration: 3000 })
+        toast.loading('loading', { duration: 3000 })
       }
       secondTimer = setTimeout(async () => {
         fetchIsDown()
@@ -618,9 +610,8 @@ const ContextProvider: FC<{
             console.log('history:', chatHistory.data)
 
             if (!chatHistory.data[chatHistory.data.length - 1].response) {
-              chatHistory.data[chatHistory.data.length - 1].response = `${t(
-                'message.no_signal'
-              )}`
+              chatHistory.data[chatHistory.data.length - 1].response =
+                'No Network'
             }
             const normalizedChats = normalizedChat(chatHistory)
             console.log('normalized chats', normalizedChats)
@@ -678,7 +669,7 @@ const ContextProvider: FC<{
       clearTimeout(secondTimer)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isDown, isMsgReceiving, loading, t, timer1, timer2])
+  }, [isDown, isMsgReceiving, loading, timer1, timer2])
 
   const values = useMemo(
     () => ({
@@ -757,10 +748,7 @@ const ContextProvider: FC<{
         compConfig={config}
       />
     )
-  return (
-    //@ts-ignore
-    <AppContext.Provider value={values}>{children}</AppContext.Provider>
-  )
+  return <AppContext.Provider value={values}>{children}</AppContext.Provider>
 }
 
 export default ContextProvider

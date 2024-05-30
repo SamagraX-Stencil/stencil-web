@@ -1,5 +1,5 @@
 'use client'
-import { FeedbackPage } from '@repo/pages'
+import { FeedbackPage } from 'stencil-pages'
 import React from 'react'
 
 const FeebBack = () => {

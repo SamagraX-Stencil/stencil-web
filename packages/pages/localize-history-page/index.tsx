@@ -7,23 +7,23 @@ import {
   useMemo,
 } from 'react'
 import styles from './style.module.css'
-import { FullPageLoader, List } from '@repo/molecules'
+import { FullPageLoader, List } from 'stencil-molecule'
 import ForumIcon from '@mui/icons-material/Forum'
 import { IconButton } from '@mui/material'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import moment from 'moment'
 import _ from 'underscore'
-import { ChatItem, HistoryItem } from './index.d'
+import { ChatItem, HistoryItem } from './types'
 import { map } from 'lodash'
-import { useBotAppColorPalates } from '@repo/hooks'
+import { useBotAppColorPalates } from 'stencil-hooks'
 import { useFlags } from 'flagsmith/react'
-import { useLocalization } from '@repo/hooks'
+import { useLocalization } from 'stencil-hooks'
 import axios from 'axios'
-import { LocalComingSoonPage } from '@repo/pages'
-import { useBotConfig } from '@repo/hooks'
+import LocalComingSoonPage from '../localize-coming-soon-page/index'
+import { useBotConfig } from 'stencil-hooks'
 import router from 'next/router'
-import { toast } from 'react-hot-toast'
-import { AppContext } from '@repo/provider'
+// import { toast } from 'react-hot-toast'
+import { AppContext } from 'stencil-provider'
 import { recordUserLocation } from '../resources/utils/location'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -31,7 +31,7 @@ const LocalHistoryPage: FC = () => {
   const [isFetching, setIsFetching] = useState(true)
   const theme = useBotAppColorPalates()
   const [conversations, setConversations] = useState([])
-  const flags = useFlags(['show_chat_history_page'])
+  // const flags = useFlags(['show_chat_history_page'])
   const context = useContext(AppContext)
   const t = useLocalization()
 
@@ -174,9 +174,12 @@ const LocalHistoryPage: FC = () => {
       })
   }
 
-  if (!flags?.show_chat_history_page?.enabled) {
+  if (true) {
     return <LocalComingSoonPage />
   }
+  // if (!flags?.show_chat_history_page?.enabled) {
+  //   return <LocalComingSoonPage />
+  // }
   return (
     <>
       <div className={styles.main}>
