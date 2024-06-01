@@ -2,7 +2,7 @@ import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useLocalization } from '@repo/hooks'
-import { LocalLoginMobileAadharPage } from '@repo/pages'
+import { LoginMobileAadharPage } from '@repo/pages'
 import { useBotConfig } from '@repo/hooks'
 const Login: NextPage = () => {
   const t = useLocalization()
@@ -13,7 +13,7 @@ const Login: NextPage = () => {
         <title>{t('label.tab_title')}</title>
         <link rel="icon" href={config?.favicon} />
       </Head>
-      <LocalLoginMobileAadharPage />
+      <LoginMobileAadharPage />
     </React.Fragment>
   )
 }

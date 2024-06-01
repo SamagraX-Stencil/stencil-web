@@ -9,7 +9,6 @@ import LoginMobileAadharPage from './login-mobile-aadhar-page';
 import OtpPage from './otp-page';
 import LocalOtpPage from './localize-otp-page';
 import ComingSoonPage from './coming-soon-page';
-import LocalLoginMobileAadharPage from './localize-login-mobile-aadhar-page';
 import OnBoardingPage from './on-boarding-page';
 import WheatherPage from './weather-page';
-export { ComingSoonPage, DowntimePage, FeedbackPage, HomePage, LaunchPage, LoginMobileAadharPage, OtpPage, FAQPage, LocalHomePage, LocalOtpPage, LocalLoginMobileAadharPage, HistoryPage, OnBoardingPage, WheatherPage };
+export { ComingSoonPage, DowntimePage, FeedbackPage, HomePage, LaunchPage, OtpPage, FAQPage, LocalHomePage, LocalOtpPage, LoginMobileAadharPage, HistoryPage, OnBoardingPage, WheatherPage };

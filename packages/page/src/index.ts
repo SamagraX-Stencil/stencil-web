@@ -9,7 +9,6 @@ import LoginMobileAadharPage from './login-mobile-aadhar-page';
 import OtpPage from './otp-page';
 import LocalOtpPage from './localize-otp-page';
 import ComingSoonPage from './coming-soon-page';
-import LocalLoginMobileAadharPage from './localize-login-mobile-aadhar-page';
 import OnBoardingPage from './on-boarding-page';
 import WheatherPage from './weather-page';
 export {
@@ -18,12 +17,11 @@ export {
   FeedbackPage,
   HomePage,
   LaunchPage,
-  LoginMobileAadharPage,
   OtpPage,
   FAQPage,
   LocalHomePage,
   LocalOtpPage,
-  LocalLoginMobileAadharPage,
+  LoginMobileAadharPage,
   HistoryPage,
   OnBoardingPage,
   WheatherPage,

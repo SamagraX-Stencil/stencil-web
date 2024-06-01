@@ -52,12 +52,6 @@ Object.defineProperty(exports, "LocalHomePage", {
     return _localizeHomePage.default;
   }
 });
-Object.defineProperty(exports, "LocalLoginMobileAadharPage", {
-  enumerable: true,
-  get: function get() {
-    return _localizeLoginMobileAadharPage.default;
-  }
-});
 Object.defineProperty(exports, "LocalOtpPage", {
   enumerable: true,
   get: function get() {
@@ -99,6 +93,5 @@ var _loginMobileAadharPage = _interopRequireDefault(require("./login-mobile-aadh
 var _otpPage = _interopRequireDefault(require("./otp-page"));
 var _localizeOtpPage = _interopRequireDefault(require("./localize-otp-page"));
 var _comingSoonPage = _interopRequireDefault(require("./coming-soon-page"));
-var _localizeLoginMobileAadharPage = _interopRequireDefault(require("./localize-login-mobile-aadhar-page"));
 var _onBoardingPage = _interopRequireDefault(require("./on-boarding-page"));
 var _weatherPage = _interopRequireDefault(require("./weather-page"));
