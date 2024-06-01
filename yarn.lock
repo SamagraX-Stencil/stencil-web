@@ -3699,76 +3699,76 @@
     "@svgr/plugin-svgo" "^5.5.0"
     loader-utils "^2.0.0"
 
-"@swc/core-darwin-arm64@1.5.7":
-  version "1.5.7"
-  resolved "https://registry.yarnpkg.com/@swc/core-darwin-arm64/-/core-darwin-arm64-1.5.7.tgz#2b5cdbd34e4162e50de6147dd1a5cb12d23b08e8"
-  integrity sha512-bZLVHPTpH3h6yhwVl395k0Mtx8v6CGhq5r4KQdAoPbADU974Mauz1b6ViHAJ74O0IVE5vyy7tD3OpkQxL/vMDQ==
+"@swc/core-darwin-arm64@1.5.24":
+  version "1.5.24"
+  resolved "https://registry.yarnpkg.com/@swc/core-darwin-arm64/-/core-darwin-arm64-1.5.24.tgz#71875695bc617e57c2d93352f48317b4c41e0240"
+  integrity sha512-M7oLOcC0sw+UTyAuL/9uyB9GeO4ZpaBbH76JSH6g1m0/yg7LYJZGRmplhDmwVSDAR5Fq4Sjoi1CksmmGkgihGA==
 
-"@swc/core-darwin-x64@1.5.7":
-  version "1.5.7"
-  resolved "https://registry.yarnpkg.com/@swc/core-darwin-x64/-/core-darwin-x64-1.5.7.tgz#6aa7e3c01ab8e5e41597f8a24ff24c4e50936a46"
-  integrity sha512-RpUyu2GsviwTc2qVajPL0l8nf2vKj5wzO3WkLSHAHEJbiUZk83NJrZd1RVbEknIMO7+Uyjh54hEh8R26jSByaw==
+"@swc/core-darwin-x64@1.5.24":
+  version "1.5.24"
+  resolved "https://registry.yarnpkg.com/@swc/core-darwin-x64/-/core-darwin-x64-1.5.24.tgz#6b4c3eb9b21ab50b7324a82c9497ffeb2e8e0a57"
+  integrity sha512-MfcFjGGYognpSBSos2pYUNYJSmqEhuw5ceGr6qAdME7ddbjGXliza4W6FggsM+JnWwpqa31+e7/R+GetW4WkaQ==
 
-"@swc/core-linux-arm-gnueabihf@1.5.7":
-  version "1.5.7"
-  resolved "https://registry.yarnpkg.com/@swc/core-linux-arm-gnueabihf/-/core-linux-arm-gnueabihf-1.5.7.tgz#160108633b9e1d1ad05f815bedc7e9eb5d59fc2a"
-  integrity sha512-cTZWTnCXLABOuvWiv6nQQM0hP6ZWEkzdgDvztgHI/+u/MvtzJBN5lBQ2lue/9sSFYLMqzqff5EHKlFtrJCA9dQ==
+"@swc/core-linux-arm-gnueabihf@1.5.24":
+  version "1.5.24"
+  resolved "https://registry.yarnpkg.com/@swc/core-linux-arm-gnueabihf/-/core-linux-arm-gnueabihf-1.5.24.tgz#5730ed6ad86afe4ee8df04ee6f21430daead186c"
+  integrity sha512-amI2pwtcWV3E/m/nf+AQtn1LWDzKLZyjCmWd3ms7QjEueWYrY8cU1Y4Wp7wNNsxIoPOi8zek1Uj2wwFD/pttNQ==
 
-"@swc/core-linux-arm64-gnu@1.5.7":
-  version "1.5.7"
-  resolved "https://registry.yarnpkg.com/@swc/core-linux-arm64-gnu/-/core-linux-arm64-gnu-1.5.7.tgz#cbfa512683c73227ad25552f3b3e722b0e7fbd1d"
-  integrity sha512-hoeTJFBiE/IJP30Be7djWF8Q5KVgkbDtjySmvYLg9P94bHg9TJPSQoC72tXx/oXOgXvElDe/GMybru0UxhKx4g==
+"@swc/core-linux-arm64-gnu@1.5.24":
+  version "1.5.24"
+  resolved "https://registry.yarnpkg.com/@swc/core-linux-arm64-gnu/-/core-linux-arm64-gnu-1.5.24.tgz#0a2478e8601391aa88f82bfece1dbc60d27cbcfd"
+  integrity sha512-sTSvmqMmgT1ynH/nP75Pc51s+iT4crZagHBiDOf5cq+kudUYjda9lWMs7xkXB/TUKFHPCRK0HGunl8bkwiIbuw==
 
-"@swc/core-linux-arm64-musl@1.5.7":
-  version "1.5.7"
-  resolved "https://registry.yarnpkg.com/@swc/core-linux-arm64-musl/-/core-linux-arm64-musl-1.5.7.tgz#80239cb58fe57f3c86b44617fe784530ec55ee2b"
-  integrity sha512-+NDhK+IFTiVK1/o7EXdCeF2hEzCiaRSrb9zD7X2Z7inwWlxAntcSuzZW7Y6BRqGQH89KA91qYgwbnjgTQ22PiQ==
+"@swc/core-linux-arm64-musl@1.5.24":
+  version "1.5.24"
+  resolved "https://registry.yarnpkg.com/@swc/core-linux-arm64-musl/-/core-linux-arm64-musl-1.5.24.tgz#e0199092dc611ca75f8a92dcea17de44e38f3fbf"
+  integrity sha512-vd2/hfOBGbrX21FxsFdXCUaffjkHvlZkeE2UMRajdXifwv79jqOHIJg3jXG1F3ZrhCghCzirFts4tAZgcG8XWg==
 
-"@swc/core-linux-x64-gnu@1.5.7":
-  version "1.5.7"
-  resolved "https://registry.yarnpkg.com/@swc/core-linux-x64-gnu/-/core-linux-x64-gnu-1.5.7.tgz#a699c1632de60b6a63b7fdb7abcb4fef317e57ca"
-  integrity sha512-25GXpJmeFxKB+7pbY7YQLhWWjkYlR+kHz5I3j9WRl3Lp4v4UD67OGXwPe+DIcHqcouA1fhLhsgHJWtsaNOMBNg==
+"@swc/core-linux-x64-gnu@1.5.24":
+  version "1.5.24"
+  resolved "https://registry.yarnpkg.com/@swc/core-linux-x64-gnu/-/core-linux-x64-gnu-1.5.24.tgz#1fe347c9f28457c593f2fda5b0d4904a2b105ecd"
+  integrity sha512-Zrdzi7NqzQxm2BvAG5KyOSBEggQ7ayrxh599AqqevJmsUXJ8o2nMiWQOBvgCGp7ye+Biz3pvZn1EnRzAp+TpUg==
 
-"@swc/core-linux-x64-musl@1.5.7":
-  version "1.5.7"
-  resolved "https://registry.yarnpkg.com/@swc/core-linux-x64-musl/-/core-linux-x64-musl-1.5.7.tgz#8e4c203d6bc41e7f85d7d34d0fdf4ef751fa626c"
-  integrity sha512-0VN9Y5EAPBESmSPPsCJzplZHV26akC0sIgd3Hc/7S/1GkSMoeuVL+V9vt+F/cCuzr4VidzSkqftdP3qEIsXSpg==
+"@swc/core-linux-x64-musl@1.5.24":
+  version "1.5.24"
+  resolved "https://registry.yarnpkg.com/@swc/core-linux-x64-musl/-/core-linux-x64-musl-1.5.24.tgz#bf6ac583fac211d704d2d78cfd0b7bf751268f5e"
+  integrity sha512-1F8z9NRi52jdZQCGc5sflwYSctL6omxiVmIFVp8TC9nngjQKc00TtX/JC2Eo2HwvgupkFVl5YQJidAck9YtmJw==
 
-"@swc/core-win32-arm64-msvc@1.5.7":
-  version "1.5.7"
-  resolved "https://registry.yarnpkg.com/@swc/core-win32-arm64-msvc/-/core-win32-arm64-msvc-1.5.7.tgz#31e3d42b8c0aa79f0ea1a980c0dd1a999d378ed7"
-  integrity sha512-RtoNnstBwy5VloNCvmvYNApkTmuCe4sNcoYWpmY7C1+bPR+6SOo8im1G6/FpNem8AR5fcZCmXHWQ+EUmRWJyuA==
+"@swc/core-win32-arm64-msvc@1.5.24":
+  version "1.5.24"
+  resolved "https://registry.yarnpkg.com/@swc/core-win32-arm64-msvc/-/core-win32-arm64-msvc-1.5.24.tgz#41b9faf4db69cc08a43c3a176df2a7b94d765637"
+  integrity sha512-cKpP7KvS6Xr0jFSTBXY53HZX/YfomK5EMQYpCVDOvfsZeYHN20sQSKXfpVLvA/q2igVt1zzy1XJcOhpJcgiKLg==
 
-"@swc/core-win32-ia32-msvc@1.5.7":
-  version "1.5.7"
-  resolved "https://registry.yarnpkg.com/@swc/core-win32-ia32-msvc/-/core-win32-ia32-msvc-1.5.7.tgz#a235285f9f62850aefcf9abb03420f2c54f63638"
-  integrity sha512-Xm0TfvcmmspvQg1s4+USL3x8D+YPAfX2JHygvxAnCJ0EHun8cm2zvfNBcsTlnwYb0ybFWXXY129aq1wgFC9TpQ==
+"@swc/core-win32-ia32-msvc@1.5.24":
+  version "1.5.24"
+  resolved "https://registry.yarnpkg.com/@swc/core-win32-ia32-msvc/-/core-win32-ia32-msvc-1.5.24.tgz#e123ad00e3b28d567d3851a86697fb3c54ed817a"
+  integrity sha512-IoPWfi0iwqjZuf7gE223+B97/ZwkKbu7qL5KzGP7g3hJrGSKAvv7eC5Y9r2iKKtLKyv5R/T6Ho0kFR/usi7rHw==
 
-"@swc/core-win32-x64-msvc@1.5.7":
-  version "1.5.7"
-  resolved "https://registry.yarnpkg.com/@swc/core-win32-x64-msvc/-/core-win32-x64-msvc-1.5.7.tgz#f84641393b5223450d00d97bfff877b8b69d7c9b"
-  integrity sha512-tp43WfJLCsKLQKBmjmY/0vv1slVywR5Q4qKjF5OIY8QijaEW7/8VwPyUyVoJZEnDgv9jKtUTG5PzqtIYPZGnyg==
+"@swc/core-win32-x64-msvc@1.5.24":
+  version "1.5.24"
+  resolved "https://registry.yarnpkg.com/@swc/core-win32-x64-msvc/-/core-win32-x64-msvc-1.5.24.tgz#21fb87b1981253039e6d45255e31a875f446e397"
+  integrity sha512-zHgF2k1uVJL8KIW+PnVz1To4a3Cz9THbh2z2lbehaF/gKHugH4c3djBozU4das1v35KOqf5jWIEviBLql2wDLQ==
 
 "@swc/core@^1.5.7":
-  version "1.5.7"
-  resolved "https://registry.yarnpkg.com/@swc/core/-/core-1.5.7.tgz#e1db7b9887d5f34eb4a3256a738d0c5f1b018c33"
-  integrity sha512-U4qJRBefIJNJDRCCiVtkfa/hpiZ7w0R6kASea+/KLp+vkus3zcLSB8Ub8SvKgTIxjWpwsKcZlPf5nrv4ls46SQ==
+  version "1.5.24"
+  resolved "https://registry.yarnpkg.com/@swc/core/-/core-1.5.24.tgz#9ecb4601cb6a4fb19f227ec5fb59d07e23347dca"
+  integrity sha512-Eph9zvO4xvqWZGVzTdtdEJ0Vqf0VIML/o/e4Qd2RLOqtfgnlRi7avmMu5C0oqciJ0tk+hqdUKVUZ4JPoPaiGvQ==
   dependencies:
-    "@swc/counter" "^0.1.2"
-    "@swc/types" "0.1.7"
+    "@swc/counter" "^0.1.3"
+    "@swc/types" "^0.1.7"
   optionalDependencies:
-    "@swc/core-darwin-arm64" "1.5.7"
-    "@swc/core-darwin-x64" "1.5.7"
-    "@swc/core-linux-arm-gnueabihf" "1.5.7"
-    "@swc/core-linux-arm64-gnu" "1.5.7"
-    "@swc/core-linux-arm64-musl" "1.5.7"
-    "@swc/core-linux-x64-gnu" "1.5.7"
-    "@swc/core-linux-x64-musl" "1.5.7"
-    "@swc/core-win32-arm64-msvc" "1.5.7"
-    "@swc/core-win32-ia32-msvc" "1.5.7"
-    "@swc/core-win32-x64-msvc" "1.5.7"
+    "@swc/core-darwin-arm64" "1.5.24"
+    "@swc/core-darwin-x64" "1.5.24"
+    "@swc/core-linux-arm-gnueabihf" "1.5.24"
+    "@swc/core-linux-arm64-gnu" "1.5.24"
+    "@swc/core-linux-arm64-musl" "1.5.24"
+    "@swc/core-linux-x64-gnu" "1.5.24"
+    "@swc/core-linux-x64-musl" "1.5.24"
+    "@swc/core-win32-arm64-msvc" "1.5.24"
+    "@swc/core-win32-ia32-msvc" "1.5.24"
+    "@swc/core-win32-x64-msvc" "1.5.24"
 
-"@swc/counter@^0.1.2", "@swc/counter@^0.1.3":
+"@swc/counter@^0.1.3":
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/@swc/counter/-/counter-0.1.3.tgz#cc7463bd02949611c6329596fccd2b0ec782b0e9"
   integrity sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ==
@@ -3788,7 +3788,7 @@
   dependencies:
     tslib "^2.4.0"
 
-"@swc/types@0.1.7":
+"@swc/types@^0.1.7":
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/@swc/types/-/types-0.1.7.tgz#ea5d658cf460abff51507ca8d26e2d391bafb15e"
   integrity sha512-scHWahbHF0eyj3JsxG9CFJgFdFNaVQCNAimBlT6PzS3n/HptxqREjsm4OH6AN3lYcffZYSPxXW8ua2BEHp0lJQ==
@@ -4133,9 +4133,9 @@
   integrity sha512-CuPgU6f3eT/XgKKPqKd/gLZV1Xmvf1a2R5POBOGQa6uv82xpls89HU5zKeVoyR8XzHd1RGNOlQlvUe3CFkjWNQ==
 
 "@types/express-serve-static-core@*", "@types/express-serve-static-core@^4.17.33":
-  version "4.19.2"
-  resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.19.2.tgz#ca09a37ffbdc66c584c305af0044b8ad3aa7b9ef"
-  integrity sha512-dPSEQElyVJ97BuGduAqQjpBocZWAs0GR94z+ptL7JXQJeJdHw2WBG3EWdFrK36b8Q6j8P4cXOMhgUoi0IIfIsg==
+  version "4.19.3"
+  resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.19.3.tgz#e469a13e4186c9e1c0418fb17be8bc8ff1b19a7a"
+  integrity sha512-KOzM7MhcBFlmnlr/fzISFF5vGWVSvN6fTd4T+ExOt08bA/dA5kpSzY52nMsI1KDFmUREpJelPYyuslLRSjjgCg==
   dependencies:
     "@types/node" "*"
     "@types/qs" "*"
@@ -7727,9 +7727,9 @@ ejs@^3.1.6:
     jake "^10.8.5"
 
 electron-to-chromium@^1.4.668:
-  version "1.4.785"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.785.tgz#12fd1154bf0758c3ad595a3dbec3ff7e3ee6c716"
-  integrity sha512-V94FSLwW6V1JYeYT/pl23zIdwiAbeod7gBjyud2uhuWTa2yV3gZ4IaWt6l0t808y4l6NwOspyR5hiENGrYQqvA==
+  version "1.4.787"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.787.tgz#3eedd0a3b8be2b9e96e21675d399786ad90b99ed"
+  integrity sha512-d0EFmtLPjctczO3LogReyM2pbBiiZbnsKnGF+cdZhsYzHm/A0GV7W94kqzLD8SN4O3f3iHlgLUChqghgyznvCQ==
 
 emittery@^0.10.2:
   version "0.10.2"
@@ -16161,216 +16161,6 @@ statuses@2.0.1:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha512-OpZ3zP+jT1PI7I8nemJX4AKmAX070ZkYPVWV/AaKTJl+tXCTGyVdC1a4SL8RUQYEwk/f34ZX8UTykN68FwrqAA==
-
-stencil-chatui@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/stencil-chatui/-/stencil-chatui-0.0.1.tgz#7b2780b02517ff6023bbff01f269f1a73630e79e"
-  integrity sha512-oQDlarPlPyozOMLUI1Mfh16xOw3X4Q7gYUAQ2idzAcm111lermC6oJeXfyAQzrM4Pbbv7naMaYNgzy2UNnnufg==
-  dependencies:
-    "@babel/runtime" "^7.18.3"
-    "@babel/runtime-corejs3" "^7.18.3"
-    clsx "^1.1.1"
-    core-js "^3.23.1"
-    dompurify "^2.3.8"
-    intersection-observer "^0.12.2"
-
-stencil-configmanager@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/stencil-configmanager/-/stencil-configmanager-1.0.2.tgz#d28e0d6529df0dd60965e6c58f939129ae655c7c"
-  integrity sha512-m/lp0mGHr8/urxCArEuFjhWHEsnfNEsLKr/lotQj8ctu9yv4MHE5DBiBqaai+P/y2brOTd8Y+MbkfoWwIMLadg==
-
-stencil-hooks@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/stencil-hooks/-/stencil-hooks-1.0.2.tgz#432c8287ec815a6131718da14643e58fd46ec98a"
-  integrity sha512-+O5Bq0mZwil/SfJQXpD1CzXAm/MQwA+hVjEzbGHSLa90P2eIuuKxSFOSiuMCwPLjM2KyRlaAHgYmxhnUabo4iQ==
-  dependencies:
-    react "^18.2.0"
-    react-dom "^18.2.0"
-    stencil-provider "1.0.3"
-
-stencil-molecule@1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/stencil-molecule/-/stencil-molecule-1.0.6.tgz#eccc76dab8bf148d49b88f8c3f44b917dabf31c7"
-  integrity sha512-7KiC4xnp9EIHWCEZLnPDil0e2KxVD+7v94IZWc3mfnUzQUxwKKU/7bjh8qdCISVi37ICR8f3GIIM5oRYh2gJsw==
-  dependencies:
-    "@babel/runtime" "^7.18.3"
-    "@babel/runtime-corejs3" "^7.18.3"
-    "@emotion/react" "^11.11.4"
-    "@emotion/styled" "^11.11.5"
-    "@magicbell/magicbell-react" "^8.5.3"
-    "@material-ui/core" "^4.12.4"
-    "@mui/base" "5.0.0-beta.39"
-    "@mui/icons-material" "^5.15.15"
-    "@mui/material" "^5.15.15"
-    "@mui/system" "^5.15.13"
-    "@next/bundle-analyzer" "^13.3.0"
-    "@samagra-x/xmessage" "^1.1.0"
-    "@storybook/react" "^8.1.4"
-    "@storybook/test" "^8.1.4"
-    "@testing-library/jest-dom" "^5.16.2"
-    "@testing-library/react" "^10.4.9"
-    "@testing-library/user-event" "^12.8.3"
-    "@types/jest" "^25.2.3"
-    "@types/lodash" "^4.17.0"
-    axios "^1.3.5"
-    bootstrap "^5.1.3"
-    clsx "^1.1.1"
-    core-js "^3.23.1"
-    cross-env "^7.0.3"
-    dompurify "^2.3.8"
-    flagsmith "^3.18.3"
-    framer-motion "^6.3.15"
-    immer "^10.0.4"
-    inferno "^8.2.3"
-    intersection-observer "^0.12.2"
-    json-to-table "^4.2.1"
-    jsonwebtoken "^8.5.1"
-    jwks-rsa "^3.0.1"
-    jwt-decode "^3.1.2"
-    lodash "^4.17.21"
-    moment "^2.30.1"
-    next "^14.1.1"
-    next-pwa "^5.6.0"
-    react "^18.2.0"
-    react-alert "^7.0.3"
-    react-alert-template-basic "^1.0.2"
-    react-bootstrap "^2.4.0"
-    react-cookie "^4.1.1"
-    react-dom "^18.2.0"
-    react-draggable "^4.4.6"
-    react-hot-toast "^2.4.0"
-    react-intl "^6.3.2"
-    react-router-dom "^6.3.0"
-    react-scripts "5.0.0"
-    socket-package "0.14.0"
-    socket.io-client "^4.5.1"
-    stencil-chatui "0.0.1"
-    stencil-configmanager "1.0.2"
-    stencil-hooks "1.0.2"
-    stencil-provider "1.0.3"
-    typescript "^4.9.3"
-    underscore "^1.13.6"
-    uuid "^9.0.0"
-    web-vitals "^2.1.4"
-
-stencil-pages@1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/stencil-pages/-/stencil-pages-1.0.3.tgz#fec9f867a0b914a54f25ba5dec49aa533f1a5ad7"
-  integrity sha512-5szcB4+tqff9PiRKS9n6h49IKJKkbpxUCCN7CQjBOzkQxB7VarLxi6HCeYYXuTA93UtovNEiIy7eiCfnhF2hCQ==
-  dependencies:
-    "@babel/runtime" "^7.18.3"
-    "@babel/runtime-corejs3" "^7.18.3"
-    "@emotion/react" "^11.11.4"
-    "@emotion/styled" "^11.11.5"
-    "@magicbell/magicbell-react" "^8.5.3"
-    "@material-ui/core" "^4.12.4"
-    "@mui/base" "5.0.0-beta.39"
-    "@mui/icons-material" "^5.15.15"
-    "@mui/material" "^5.15.15"
-    "@mui/system" "^5.15.13"
-    "@next/bundle-analyzer" "^13.3.0"
-    "@samagra-x/xmessage" "^1.1.0"
-    "@testing-library/jest-dom" "^5.16.2"
-    "@testing-library/react" "^10.4.9"
-    "@testing-library/user-event" "^12.8.3"
-    "@types/jest" "^25.2.3"
-    "@types/lodash" "^4.17.0"
-    axios "^1.3.5"
-    bootstrap "^5.1.3"
-    clsx "^1.1.1"
-    core-js "^3.23.1"
-    cross-env "^7.0.3"
-    dompurify "^2.3.8"
-    flagsmith "^3.18.3"
-    framer-motion "^6.3.15"
-    immer "^10.0.4"
-    inferno "^8.2.3"
-    intersection-observer "^0.12.2"
-    json-to-table "^4.2.1"
-    jsonwebtoken "^8.5.1"
-    jwks-rsa "^3.0.1"
-    jwt-decode "^3.1.2"
-    lodash "^4.17.21"
-    moment "^2.30.1"
-    next "^14.1.1"
-    next-pwa "^5.6.0"
-    react "^18.2.0"
-    react-alert "^7.0.3"
-    react-alert-template-basic "^1.0.2"
-    react-bootstrap "^2.4.0"
-    react-cookie "^4.1.1"
-    react-dom "^18.2.0"
-    react-draggable "^4.4.6"
-    react-hot-toast "^2.4.0"
-    react-intl "^6.3.2"
-    react-router-dom "^6.3.0"
-    react-scripts "5.0.0"
-    socket-package "0.14.0"
-    socket.io-client "^4.5.1"
-    stencil-configmanager "1.0.2"
-    stencil-hooks "1.0.2"
-    stencil-molecule "1.0.6"
-    stencil-provider "1.0.3"
-    typescript "^4.9.3"
-    underscore "^1.13.6"
-    uuid "^9.0.0"
-    web-vitals "^2.1.4"
-
-stencil-provider@1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/stencil-provider/-/stencil-provider-1.0.3.tgz#a0a9bef4e6957e66b7bf90158a968423a08bfde1"
-  integrity sha512-XobafJaYlYzDaC6YihIw2hjJ0m7y8Na5s4S+/1sciKhxh1gbRkOEZNFJ+C78dIho53j/CU4biEKf7ZUyvNbSbQ==
-  dependencies:
-    "@emotion/react" "^11.11.4"
-    "@emotion/styled" "^11.11.5"
-    "@magicbell/magicbell-react" "^8.5.3"
-    "@material-ui/core" "^4.12.4"
-    "@mui/base" "5.0.0-beta.39"
-    "@mui/icons-material" "^5.15.13"
-    "@mui/material" "^5.15.15"
-    "@mui/system" "^5.15.13"
-    "@next/bundle-analyzer" "^13.3.0"
-    "@samagra-x/xmessage" "^1.1.0"
-    "@testing-library/jest-dom" "^5.16.2"
-    "@testing-library/react" "^10.4.9"
-    "@testing-library/user-event" "^12.8.3"
-    "@types/jest" "^25.2.3"
-    "@types/lodash" "^4.17.0"
-    "@types/react" "^18.2.61"
-    axios "^1.3.5"
-    bootstrap "^5.1.3"
-    cross-env "^7.0.3"
-    esbuild-plugin-polyfill-node "^0.3.0"
-    flagsmith "^3.18.3"
-    framer-motion "^6.3.15"
-    immer "^10.0.4"
-    json-to-table "^4.2.1"
-    jsonwebtoken "^8.5.1"
-    jwks-rsa "^3.0.1"
-    jwt-decode "^3.1.2"
-    lodash "^4.17.21"
-    moment "^2.30.1"
-    next "^14.1.1"
-    next-pwa "^5.6.0"
-    react "^18.2.0"
-    react-alert "^7.0.3"
-    react-alert-template-basic "^1.0.2"
-    react-bootstrap "^2.4.0"
-    react-cookie "^4.1.1"
-    react-dom "^18.2.0"
-    react-draggable "^4.4.6"
-    react-hot-toast "^2.4.1"
-    react-intl "^6.3.2"
-    react-router-dom "^6.3.0"
-    react-scripts "5.0.0"
-    socket-package "0.14.0"
-    socket.io-client "^4.5.1"
-    stencil-configmanager "1.0.2"
-    tsup "^8.0.2"
-    typescript "^4.9.3"
-    underscore "^1.13.6"
-    uuid "^9.0.0"
-    web-vitals "^2.1.4"
 
 stop-iteration-iterator@^1.0.0:
   version "1.0.0"

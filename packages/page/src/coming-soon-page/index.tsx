@@ -1,18 +1,18 @@
-import React, { useCallback } from 'react'
-import styles from './index.module.css'
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography'
-import Hourglass from './hourglass'
-import { useUiConfig, useColorPalates } from 'stencil-hooks'
+import React, { useCallback } from 'react';
+import styles from './index.module.css';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Hourglass from './hourglass';
+import { useUiConfig, useColorPalates } from '@repo/hooks';
 
 const ComingSoonPage: React.FC = () => {
-  const theme = useColorPalates()
-  const config = useUiConfig('component', 'comingSoon')
+  const theme = useColorPalates();
+  const config = useUiConfig('component', 'comingSoon');
   const handleBack = useCallback(() => {
     // window?.history?.back()
-    console.log(config.backText ?? 'Back Button')
-  }, [])
+    console.log(config.backText ?? 'Back Button');
+  }, []);
 
   return (
     <>
@@ -22,10 +22,7 @@ const ComingSoonPage: React.FC = () => {
       ></meta>
       <Box className={styles.container}>
         <Box>
-          <Typography
-            variant="h4"
-            sx={{ color: theme?.primary?.main, fontWeight: '700' }}
-          >
+          <Typography variant="h4" sx={{ color: theme?.primary?.main, fontWeight: '700' }}>
             {config.title ?? 'Coming Soon'}
           </Typography>
         </Box>
@@ -33,10 +30,7 @@ const ComingSoonPage: React.FC = () => {
           <Hourglass fillColor={theme?.primary?.main} />
         </Box>
         <Box>
-          <Typography
-            variant="body1"
-            sx={{ fontWeight: '600', textAlign: 'center' }}
-          >
+          <Typography variant="body1" sx={{ fontWeight: '600', textAlign: 'center' }}>
             {config.description ?? 'Coming Soon Description'}
           </Typography>
         </Box>
@@ -53,7 +47,7 @@ const ComingSoonPage: React.FC = () => {
         </Box>
       </Box>
     </>
-  )
-}
+  );
+};
 
-export default ComingSoonPage
+export default ComingSoonPage;

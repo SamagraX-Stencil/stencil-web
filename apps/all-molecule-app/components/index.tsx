@@ -3,19 +3,17 @@ import { Box, Container, IconButton } from '@mui/material'
 import { useMemo } from 'react'
 import ForumIcon from '@mui/icons-material/Forum'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
-import { useColorPalates, useLocalizationForExampleApp } from 'stencil-hooks'
+import { useColorPalates } from '@repo/hooks'
 import {
   JsonToTable,
   List,
   OTPInput,
   ShareButtons,
   VoiceRecorder,
-} from 'stencil-molecule'
-import { Navbar } from 'stencil-molecule'
+} from '@repo/molecules'
+import { Navbar } from '@repo/molecules'
 
 const Components = () => {
-  const t = useLocalizationForExampleApp()
-
   const [otp, setOtp] = useState('')
   const theme = useColorPalates()
   const sampleList = useMemo(
@@ -97,7 +95,6 @@ const Components = () => {
         <h4>List</h4>
         <div className="mt-2 p-5 border">
           {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             //@ts-ignore
             <List items={sampleList} />
           }
@@ -158,7 +155,6 @@ const Components = () => {
           <ShareButtons />
         </div>
       </Container>
-      <Container style={{ marginTop: '50px' }}></Container>
     </Box>
   )
 }

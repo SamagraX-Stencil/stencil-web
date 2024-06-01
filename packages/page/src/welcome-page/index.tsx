@@ -3,12 +3,13 @@ import cm from './assets/cm.png';
 import bottom from './assets/bottom.png';
 import { Container, IconButton } from '@mui/material';
 import { ArrowForward } from '@mui/icons-material';
-import { useUiConfig, useColorPalates } from 'stencil-hooks';
-import { LanguagePicker } from 'stencil-molecule';
+import { useUiConfig, useColorPalates } from '@repo/hooks';
+import { LanguagePicker } from '@repo/molecules';
 
 const AkaiLaunch = () => {
   const config = useUiConfig('component', 'welcomePage');
   const theme = useColorPalates();
+  console.log('akailaunch page', config, theme);
   return (
     <Container
       className="p-2"
@@ -29,17 +30,17 @@ const AkaiLaunch = () => {
       >
         {config?.showTopLeftLogo && (
           <img
-            src={config?.topLeftLogo || logo}
+            src={config?.topLeftLogo || logo.src}
             style={{ height: config?.topLeftLogoHeight || '40px' }}
           />
         )}
         <LanguagePicker />
       </div>
-      <div className="text-center">
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <div className="mt-4">
           {config?.showCenterImage && (
             <img
-              src={cm}
+              src={cm.src}
               style={{
                 width: config?.centerImageWidth || '148px',
                 height: config?.centerImageHeight || '210px',
@@ -61,7 +62,7 @@ const AkaiLaunch = () => {
         </div>
         {config?.showCenterBottomImage && (
           <img
-            src={config?.centerBottomImage || bottom}
+            src={config?.centerBottomImage || bottom.src}
             style={{
               maxWidth: '80vw',
               height: config?.centerBottomImageHeight,
@@ -71,7 +72,7 @@ const AkaiLaunch = () => {
         )}
       </div>
       {config?.showProceedBtn && (
-        <div className="text-center">
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <IconButton
             aria-label="fingerprint"
             style={{

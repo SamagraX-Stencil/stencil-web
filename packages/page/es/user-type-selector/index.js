@@ -1,8 +1,8 @@
 import farmer from './assets/farmer.jpeg';
 import user from './assets/user.svg';
 import farmer2 from './assets/farmer-op.svg';
-import { useUiConfig, useColorPalates } from 'stencil-hooks';
-import { LanguagePicker } from 'stencil-molecule';
+import { useUiConfig, useColorPalates } from '@repo/hooks';
+import { LanguagePicker } from '@repo/molecules';
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 var UserTypeSelector = function UserTypeSelector() {
   var theme = useColorPalates();
@@ -20,8 +20,9 @@ var UserTypeSelector = function UserTypeSelector() {
     children: [/*#__PURE__*/_jsx("div", {
       style: {
         position: 'absolute',
-        top: '10px',
-        left: 'calc(100% - 85px - 10px)'
+        top: '5px',
+        right: '8px'
+        // left: 'calc(100% - 85px - 10px)',
       },
       children: /*#__PURE__*/_jsx(LanguagePicker, {})
     }), /*#__PURE__*/_jsx("div", {
@@ -64,12 +65,11 @@ var UserTypeSelector = function UserTypeSelector() {
               textAlign: 'center'
             },
             children: [/*#__PURE__*/_jsx("img", {
-              src: (config === null || config === void 0 ? void 0 : config.user1Image) || farmer2,
+              src: (config === null || config === void 0 ? void 0 : config.user1Image) || farmer2.src,
               alt: "Farmer",
               style: {
                 maxWidth: '100%',
-                height: 'auto',
-                marginBottom: '8px'
+                height: 'auto'
               }
             }), /*#__PURE__*/_jsxs("p", {
               style: {
@@ -89,12 +89,11 @@ var UserTypeSelector = function UserTypeSelector() {
               textAlign: 'center'
             },
             children: [/*#__PURE__*/_jsx("img", {
-              src: (config === null || config === void 0 ? void 0 : config.user2Image) || user,
+              src: (config === null || config === void 0 ? void 0 : config.user2Image) || user.src,
               alt: "Worker",
               style: {
                 maxWidth: '100%',
-                height: 'auto',
-                marginBottom: '8px'
+                height: 'auto'
               }
             }), /*#__PURE__*/_jsx("p", {
               children: (config === null || config === void 0 ? void 0 : config.user1Text) || 'विस्तार कार्यकर्ता'
@@ -105,7 +104,7 @@ var UserTypeSelector = function UserTypeSelector() {
     }), /*#__PURE__*/_jsx("main", {
       children: /*#__PURE__*/_jsx("div", {
         children: /*#__PURE__*/_jsx("img", {
-          src: (config === null || config === void 0 ? void 0 : config.backgroundImage) || farmer,
+          src: (config === null || config === void 0 ? void 0 : config.backgroundImage) || farmer.src,
           alt: "Farmer with vegetables",
           style: {
             maxWidth: '100%',

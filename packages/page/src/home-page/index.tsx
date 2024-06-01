@@ -1,39 +1,39 @@
-import styles from './index.module.css'
-import { useCallback, useRef, useState } from 'react'
-import SendIcon from './assets/sendButton.png'
-import WeatherIcon from './assets/weather_advisory.png'
-import toast from 'react-hot-toast'
+import styles from './index.module.css';
+import { useCallback, useRef, useState } from 'react';
+import SendIcon from './assets/sendButton.png';
+import WeatherIcon from './assets/weather_advisory.png';
+import toast from 'react-hot-toast';
 
-import { useUiConfig, useColorPalates } from 'stencil-hooks'
+import { useUiConfig, useColorPalates } from '@repo/hooks';
 
 const HomePage = () => {
-  const config = useUiConfig('component', 'homePage')
+  const config = useUiConfig('component', 'homePage');
 
-  const theme = useColorPalates()
-  const inputRef = useRef(null)
-  const [inputMsg, setInputMsg] = useState('')
+  const theme = useColorPalates();
+  const inputRef = useRef(null);
+  const [inputMsg, setInputMsg] = useState('');
 
   const sendMessage = useCallback(async (msg: string) => {
     if (msg.length === 0) {
-      toast.error('Please enter a message to send')
-      return
+      toast.error('Please enter a message to send');
+      return;
     }
-    toast.success('Message sent!')
-    setInputMsg('')
-  }, [])
+    toast.success('Message sent!');
+    setInputMsg('');
+  }, []);
 
   const handleInputChange = (e: any) => {
-    const inputValue = e.target.value
-    setInputMsg(inputValue)
+    const inputValue = e.target.value;
+    setInputMsg(inputValue);
 
     // Adjust textarea height dynamically based on content
     if (inputRef.current) {
       //@ts-ignore
-      inputRef.current.style.height = 'auto'
+      inputRef.current.style.height = 'auto';
       //@ts-ignore
-      inputRef.current.style.height = `${inputRef.current.scrollHeight}px`
+      inputRef.current.style.height = `${inputRef.current.scrollHeight}px`;
     }
-  }
+  };
 
   return (
     <>
@@ -43,21 +43,15 @@ const HomePage = () => {
           {config?.showBtns && (
             <div className={styles.imgButtons}>
               {config?.btns?.map((btn: any, index: number) => (
-                <div
-                  className={styles.imgBtn}
-                  key={index}
-                  onClick={() => console.log('clicked')}
-                >
-                  <img src={btn?.image || WeatherIcon} alt={btn?.title} />
+                <div className={styles.imgBtn} key={index} onClick={() => console.log('clicked')}>
+                  <img src={btn?.image || WeatherIcon.src} alt={btn?.title} />
                   <p>{btn?.title}</p>
                 </div>
               ))}
             </div>
           )}
           {config?.showMic && (
-            <div className={styles.voiceRecorder}>
-              {/* Render a recorder component here */}
-            </div>
+            <div className={styles.voiceRecorder}>{/* Render a recorder component here */}</div>
           )}
         </>
 
@@ -83,6 +77,6 @@ const HomePage = () => {
         </form>
       </div>
     </>
-  )
-}
-export default HomePage
+  );
+};
+export default HomePage;

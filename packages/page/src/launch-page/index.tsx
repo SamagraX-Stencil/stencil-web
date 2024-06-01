@@ -1,18 +1,15 @@
-import { useUiConfig, useColorPalates } from 'stencil-hooks'
+import { useUiConfig, useColorPalates } from '@repo/hooks';
 
-import styles from './index.module.css'
+import styles from './index.module.css';
 
 // import Image from 'next/image';
 
 const LaunchPage = () => {
-  const config = useUiConfig('component', 'launchPage')
+  const config = useUiConfig('component', 'launchPage');
 
-  const theme = useColorPalates()
+  const theme = useColorPalates();
   return (
-    <div
-      className={`${styles.container}`}
-      style={{ background: theme?.primary?.main }}
-    >
+    <div className={`${styles.container}`} style={{ background: theme?.primary?.main }}>
       <img
         className={styles.loginImage}
         src={config?.logo}
@@ -22,7 +19,7 @@ const LaunchPage = () => {
       />
       <span>{config?.label}</span>
     </div>
-  )
-}
+  );
+};
 
-export default LaunchPage
+export default LaunchPage;

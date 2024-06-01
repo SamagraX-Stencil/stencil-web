@@ -1,5 +1,5 @@
 import _slicedToArray from "@babel/runtime/helpers/esm/slicedToArray";
-import { Bubble, Image as Img, ScrollView, List, ListItem, FileCard, Typing } from 'stencil-chatui';
+import { Bubble, Image as Img, ScrollView, List, ListItem, FileCard, Typing } from '@repo/chatui';
 import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import styles from './index.module.css';
@@ -9,7 +9,7 @@ import MsgThumbsUp from './assets/msg-thumbs-up';
 import MsgThumbsDown from './assets/msg-thumbs-down';
 import moment from 'moment';
 import { JsonToTable } from '../json-to-table';
-import { useColorPalates } from 'stencil-hooks';
+import { useColorPalates } from '@repo/hooks';
 
 // import BlinkingSpinner from '../blinking-spinner/index';
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";

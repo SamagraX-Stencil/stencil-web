@@ -1,5 +1,5 @@
 'use client'
-import { OtpPage } from 'stencil-pages'
+import { OtpPage } from '@repo/pages'
 import React from 'react'
 
 const Otp = () => {

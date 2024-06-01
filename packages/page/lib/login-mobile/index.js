@@ -10,16 +10,15 @@ var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/sli
 var _react = _interopRequireWildcard(require("react"));
 var _farmer = _interopRequireDefault(require("./assets/farmer.jpeg"));
 var _material = require("@mui/material");
-var _iconsMaterial = require("@mui/icons-material");
-var _stencilHooks = require("stencil-hooks");
-var _stencilMolecule = require("stencil-molecule");
+var _hooks = require("@repo/hooks");
+var _molecules = require("@repo/molecules");
 var _jsxRuntime = require("react/jsx-runtime");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 var LoginMobile = function LoginMobile() {
   var _theme$primary;
-  var config = (0, _stencilHooks.useUiConfig)('component', 'loginMobilePage');
-  var theme = (0, _stencilHooks.useColorPalates)();
+  var config = (0, _hooks.useUiConfig)('component', 'loginMobilePage');
+  var theme = (0, _hooks.useColorPalates)();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   var _useState = (0, _react.useState)(false),
     _useState2 = (0, _slicedToArray2.default)(_useState, 1),
@@ -76,10 +75,10 @@ var LoginMobile = function LoginMobile() {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       style: {
         position: 'absolute',
-        top: '10px',
-        left: 'calc(100% - 85px - 10px)'
+        top: '4px',
+        right: '8px'
       },
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilMolecule.LanguagePicker, {})
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_molecules.LanguagePicker, {})
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       style: {
         position: 'absolute',
@@ -98,11 +97,11 @@ var LoginMobile = function LoginMobile() {
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
           style: {
             marginTop: '24px',
-            fontSize: '22px',
-            fontWeight: 400,
+            fontSize: '24px',
+            fontWeight: '400',
             color: '#51586B'
           },
-          children: (config === null || config === void 0 ? void 0 : config.title) || 'कृपया अपना मोबाइल नंबर बताएं'
+          children: config === null || config === void 0 ? void 0 : config.title
         }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
           style: {
             display: 'flex',
@@ -124,7 +123,7 @@ var LoginMobile = function LoginMobile() {
               value: input,
               helperText: !valid ? errorMessage : '',
               onChange: handleInput,
-              label: (config === null || config === void 0 ? void 0 : config.placeholder) || 'मोबाइल नंबर',
+              label: config === null || config === void 0 ? void 0 : config.placeholder,
               name: 'phone',
               autoComplete: 'phone',
               autoFocus: true
@@ -138,19 +137,13 @@ var LoginMobile = function LoginMobile() {
                 type: "submit",
                 fullWidth: true,
                 variant: "contained",
-                endIcon: /*#__PURE__*/(0, _jsxRuntime.jsx)(_iconsMaterial.ArrowForward, {}),
                 sx: {
                   textTransform: 'none',
                   mt: 3,
                   mb: 4,
                   p: 1,
-                  background: (_theme$primary = theme.primary) === null || _theme$primary === void 0 ? void 0 : _theme$primary.dark,
-                  height: '60px',
+                  background: (_theme$primary = theme.primary) === null || _theme$primary === void 0 ? void 0 : _theme$primary.main,
                   borderRadius: '10px'
-                },
-                style: {
-                  fontSize: '18px',
-                  fontWeight: 500
                 }
                 // onClick={handleLogin}
                 ,
@@ -159,7 +152,7 @@ var LoginMobile = function LoginMobile() {
                   size: 24,
                   color: "inherit"
                 }) : /*#__PURE__*/(0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {
-                  children: (config === null || config === void 0 ? void 0 : config.btnText) || 'ओटीपी भेजा'
+                  children: config === null || config === void 0 ? void 0 : config.btnText
                 })
               })
             })
@@ -169,7 +162,7 @@ var LoginMobile = function LoginMobile() {
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("main", {
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         children: /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
-          src: (config === null || config === void 0 ? void 0 : config.backgroundImage) || _farmer.default,
+          src: (config === null || config === void 0 ? void 0 : config.backgroundImage) || _farmer.default.src,
           alt: "Farmer with vegetables",
           style: {
             maxWidth: '100%',

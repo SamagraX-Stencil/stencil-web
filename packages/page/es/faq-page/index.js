@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import styles from './index.module.css';
 import { Typography, Button, Box, Avatar } from '@mui/material';
 import { CallRounded } from '@mui/icons-material';
-import { useUiConfig, useColorPalates } from 'stencil-hooks';
+import { useUiConfig, useColorPalates } from '@repo/hooks';
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 var FAQPage = function FAQPage() {
   var _theme$primary, _config$title, _theme$primary2, _theme$primary3, _config$userManualTex2, _config$contactDescri, _theme$primary4, _theme$primary5, _config$contactText2;

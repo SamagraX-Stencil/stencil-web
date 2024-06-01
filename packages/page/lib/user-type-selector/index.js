@@ -8,12 +8,12 @@ exports.default = void 0;
 var _farmer = _interopRequireDefault(require("./assets/farmer.jpeg"));
 var _user = _interopRequireDefault(require("./assets/user.svg"));
 var _farmerOp = _interopRequireDefault(require("./assets/farmer-op.svg"));
-var _stencilHooks = require("stencil-hooks");
-var _stencilMolecule = require("stencil-molecule");
+var _hooks = require("@repo/hooks");
+var _molecules = require("@repo/molecules");
 var _jsxRuntime = require("react/jsx-runtime");
 var UserTypeSelector = function UserTypeSelector() {
-  var theme = (0, _stencilHooks.useColorPalates)();
-  var config = (0, _stencilHooks.useUiConfig)('component', 'userTypeSelectorPage');
+  var theme = (0, _hooks.useColorPalates)();
+  var config = (0, _hooks.useUiConfig)('component', 'userTypeSelectorPage');
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: {
       fontFamily: '"Helvetica Neue", Arial, sans-serif',
@@ -27,10 +27,11 @@ var UserTypeSelector = function UserTypeSelector() {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       style: {
         position: 'absolute',
-        top: '10px',
-        left: 'calc(100% - 85px - 10px)'
+        top: '5px',
+        right: '8px'
+        // left: 'calc(100% - 85px - 10px)',
       },
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilMolecule.LanguagePicker, {})
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_molecules.LanguagePicker, {})
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       style: {
         position: 'absolute',
@@ -71,12 +72,11 @@ var UserTypeSelector = function UserTypeSelector() {
               textAlign: 'center'
             },
             children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
-              src: (config === null || config === void 0 ? void 0 : config.user1Image) || _farmerOp.default,
+              src: (config === null || config === void 0 ? void 0 : config.user1Image) || _farmerOp.default.src,
               alt: "Farmer",
               style: {
                 maxWidth: '100%',
-                height: 'auto',
-                marginBottom: '8px'
+                height: 'auto'
               }
             }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("p", {
               style: {
@@ -96,12 +96,11 @@ var UserTypeSelector = function UserTypeSelector() {
               textAlign: 'center'
             },
             children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
-              src: (config === null || config === void 0 ? void 0 : config.user2Image) || _user.default,
+              src: (config === null || config === void 0 ? void 0 : config.user2Image) || _user.default.src,
               alt: "Worker",
               style: {
                 maxWidth: '100%',
-                height: 'auto',
-                marginBottom: '8px'
+                height: 'auto'
               }
             }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
               children: (config === null || config === void 0 ? void 0 : config.user1Text) || 'विस्तार कार्यकर्ता'
@@ -112,7 +111,7 @@ var UserTypeSelector = function UserTypeSelector() {
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("main", {
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         children: /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
-          src: (config === null || config === void 0 ? void 0 : config.backgroundImage) || _farmer.default,
+          src: (config === null || config === void 0 ? void 0 : config.backgroundImage) || _farmer.default.src,
           alt: "Farmer with vegetables",
           style: {
             maxWidth: '100%',

@@ -7,7 +7,7 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 import React, { useCallback } from 'react';
 import { Box, Button, Container, Grid, IconButton, Link, Paper, styled } from '@mui/material';
 import { ArrowBackIosNewRounded, ArrowForward, CheckCircleRounded } from '@mui/icons-material';
-import { useUiConfig, useColorPalates } from 'stencil-hooks';
+import { useUiConfig, useColorPalates } from '@repo/hooks';
 import rice from './assets/rice.jpeg';
 import wheat from './assets/wheat.png';
 import more from './assets/more.png';
@@ -169,7 +169,7 @@ var OptionSelector = function OptionSelector() {
                     color: "success"
                   })
                 }), /*#__PURE__*/_jsx("img", {
-                  src: _ === null || _ === void 0 ? void 0 : _.image,
+                  src: _ === null || _ === void 0 ? void 0 : _.image.src,
                   style: {
                     width: '50px',
                     height: '50px',

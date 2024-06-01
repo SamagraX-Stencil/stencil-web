@@ -4,8 +4,8 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Hourglass from './hourglass';
-import { useBotAppColorPalates } from 'stencil-hooks';
-import { useLocalization } from 'stencil-hooks';
+import { useBotAppColorPalates } from '@repo/hooks';
+import { useLocalization } from '@repo/hooks';
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 var LocalComingSoonPage = function LocalComingSoonPage() {
   var _theme$primary, _theme$primary2, _theme$primary3;

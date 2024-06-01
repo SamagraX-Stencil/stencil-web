@@ -1,17 +1,17 @@
-import * as React from 'react'
-import Backdrop from '@mui/material/Backdrop'
-import speaker from './assets/speaker.svg'
-import Modal from '@mui/material/Modal'
-import Fade from '@mui/material/Fade'
-import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded'
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
-import { Button, Typography } from '@mui/material'
-import { useUiConfig, useColorPalates } from 'stencil-hooks'
-import facebookIcon from './assets/facebook.png'
-import whatsappIcon from './assets/whatsapp.png'
-import telegramIcon from './assets/telegram.png'
-import socialSharingIcon from './assets/sharingIcon.png'
-import { toast } from 'react-hot-toast'
+import * as React from 'react';
+import Backdrop from '@mui/material/Backdrop';
+import speaker from './assets/speaker.svg';
+import Modal from '@mui/material/Modal';
+import Fade from '@mui/material/Fade';
+import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import { Button, Typography } from '@mui/material';
+import { useUiConfig, useColorPalates } from '@repo/hooks';
+import facebookIcon from './assets/facebook.png';
+import whatsappIcon from './assets/whatsapp.png';
+import telegramIcon from './assets/telegram.png';
+import socialSharingIcon from './assets/sharingIcon.png';
+import { toast } from 'react-hot-toast';
 
 const style = {
   position: 'absolute' as const,
@@ -24,35 +24,25 @@ const style = {
   padding: '20px',
   border: 'none',
   borderRadius: '5px',
-}
-const canShare = navigator.share !== undefined
+};
+const canShare = navigator.share !== undefined;
 
-const shareData = async (data: {
-  title: string
-  text: string
-  url: string
-}) => {
+const shareData = async (data: { title: string; text: string; url: string }) => {
   if (canShare) {
-    await navigator.share(data)
+    await navigator.share(data);
   } else {
-    toast.error('Sharing is not supported in this browser.')
+    toast.error('Sharing is not supported in this browser.');
   }
-}
+};
 
 const handleShare = () => {
   shareData({
     title: 'My App',
     text: 'Check out my awesome PWA!',
     url: 'www.facebook.com',
-  })
-}
-const CropInfoModel = ({
-  isOpen,
-  onClose,
-}: {
-  isOpen: boolean
-  onClose: () => void
-}) => {
+  });
+};
+const CropInfoModel = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
   const weatherDetails = [
     {
       id: 1,
@@ -62,7 +52,7 @@ const CropInfoModel = ({
       id: 2,
       label: 'आज कम बारिश है तो गेहूं की सिंचाई मत करो |',
     },
-  ]
+  ];
 
   const sharingIcon = [
     {
@@ -81,21 +71,21 @@ const CropInfoModel = ({
       id: 4,
       image: socialSharingIcon,
     },
-  ]
+  ];
 
-  const synth = React.useRef<SpeechSynthesis | null>(null)
+  const synth = React.useRef<SpeechSynthesis | null>(null);
 
   React.useEffect(() => {
-    synth.current = window.speechSynthesis
-  }, [])
+    synth.current = window.speechSynthesis;
+  }, []);
   const speakText = (text: string) => {
     if (synth.current && text) {
-      const utterance = new SpeechSynthesisUtterance(text)
-      synth.current.speak(utterance)
+      const utterance = new SpeechSynthesisUtterance(text);
+      synth.current.speak(utterance);
     }
-  }
+  };
 
-  const theme = useColorPalates()
+  const theme = useColorPalates();
   return (
     <div>
       <Modal
@@ -147,10 +137,7 @@ const CropInfoModel = ({
               >
                 {weatherDetails.map((item, index) => (
                   // <div key={index}>
-                  <div
-                    style={{ display: 'flex', alignItems: 'flex-start' }}
-                    key={item.id}
-                  >
+                  <div style={{ display: 'flex', alignItems: 'flex-start' }} key={item.id}>
                     <span
                       style={{
                         marginRight: '8px',
@@ -204,10 +191,7 @@ const CropInfoModel = ({
                     marginRight: '4px',
                   }}
                 >
-                  <CheckCircleRoundedIcon
-                    color="success"
-                    style={{ fontSize: '14px' }}
-                  />
+                  <CheckCircleRoundedIcon color="success" style={{ fontSize: '14px' }} />
                 </span>
                 वेरिफ़िएड बय ओडिशा कृषि एवं प्रौद्योगिकी विश्वविद्यालय
               </p>
@@ -226,11 +210,11 @@ const CropInfoModel = ({
                 }}
                 onClick={() =>
                   speakText(
-                    'आज गेहूं में कीटनाशक डालने का सबसे अच्छा दिन है  आज कम बारिश है तो गेहूं की सिंचाई मत करो|'
+                    'आज गेहूं में कीटनाशक डालने का सबसे अच्छा दिन है  आज कम बारिश है तो गेहूं की सिंचाई मत करो|',
                   )
                 }
               >
-                <img src={speaker} alt="" style={{ marginRight: '10px' }} />
+                <img src={speaker.src} alt="" style={{ marginRight: '10px' }} />
                 सुनने के लिए यहां क्लिक करें
               </Button>
 
@@ -245,7 +229,7 @@ const CropInfoModel = ({
               >
                 {sharingIcon.map((element) => (
                   <img
-                    src={element.image}
+                    src={element.image.src}
                     key={element.id}
                     onClick={handleShare}
                     height="32px"
@@ -258,7 +242,7 @@ const CropInfoModel = ({
         </Fade>
       </Modal>
     </div>
-  )
-}
+  );
+};
 
-export default CropInfoModel
+export default CropInfoModel;

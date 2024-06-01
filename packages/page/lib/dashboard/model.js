@@ -15,7 +15,7 @@ var _CheckCircleRounded = _interopRequireDefault(require("@mui/icons-material/Ch
 var _CloseRounded = _interopRequireDefault(require("@mui/icons-material/CloseRounded"));
 var _material = require("@mui/material");
 var _cloudCopy = _interopRequireDefault(require("./assets/cloud-copy.png"));
-var _stencilHooks = require("stencil-hooks");
+var _hooks = require("@repo/hooks");
 var _jsxRuntime = require("react/jsx-runtime");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -48,7 +48,7 @@ var WeatherStatus = function WeatherStatus() {
     id: 2,
     label: 'तूफ़ान गुज़रने तक उन्हें शांत और सुरक्षित स्थान पर रखें।'
   }];
-  var theme = (0, _stencilHooks.useColorPalates)();
+  var theme = (0, _hooks.useColorPalates)();
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Modal.default, {
       "aria-labelledby": "transition-modal-title",
@@ -94,7 +94,7 @@ var WeatherStatus = function WeatherStatus() {
           }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
             className: "text-center p-3",
             children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
-              src: _cloudCopy.default
+              src: _cloudCopy.default.src
             }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_material.List, {
               dense: true,
               children: weatherDetails.map(function (item) {

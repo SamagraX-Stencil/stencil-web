@@ -16,7 +16,7 @@ var _Fade = _interopRequireDefault(require("@mui/material/Fade"));
 var _CheckCircleRounded = _interopRequireDefault(require("@mui/icons-material/CheckCircleRounded"));
 var _CloseRounded = _interopRequireDefault(require("@mui/icons-material/CloseRounded"));
 var _material = require("@mui/material");
-var _stencilHooks = require("stencil-hooks");
+var _hooks = require("@repo/hooks");
 var _facebook = _interopRequireDefault(require("./assets/facebook.png"));
 var _whatsapp = _interopRequireDefault(require("./assets/whatsapp.png"));
 var _telegram = _interopRequireDefault(require("./assets/telegram.png"));
@@ -105,7 +105,7 @@ var CropInfoModel = function CropInfoModel(_ref2) {
       synth.current.speak(utterance);
     }
   };
-  var theme = (0, _stencilHooks.useColorPalates)();
+  var theme = (0, _hooks.useColorPalates)();
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Modal.default, {
       "aria-labelledby": "transition-modal-title",
@@ -226,7 +226,7 @@ var CropInfoModel = function CropInfoModel(_ref2) {
                 return speakText('आज गेहूं में कीटनाशक डालने का सबसे अच्छा दिन है  आज कम बारिश है तो गेहूं की सिंचाई मत करो|');
               },
               children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
-                src: _speaker.default,
+                src: _speaker.default.src,
                 alt: "",
                 style: {
                   marginRight: '10px'
@@ -246,7 +246,7 @@ var CropInfoModel = function CropInfoModel(_ref2) {
               },
               children: sharingIcon.map(function (element) {
                 return /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
-                  src: element.image,
+                  src: element.image.src,
                   onClick: handleShare,
                   height: "32px",
                   width: "32px"

@@ -10,12 +10,13 @@ var _cm = _interopRequireDefault(require("./assets/cm.png"));
 var _bottom = _interopRequireDefault(require("./assets/bottom.png"));
 var _material = require("@mui/material");
 var _iconsMaterial = require("@mui/icons-material");
-var _stencilHooks = require("stencil-hooks");
-var _stencilMolecule = require("stencil-molecule");
+var _hooks = require("@repo/hooks");
+var _molecules = require("@repo/molecules");
 var _jsxRuntime = require("react/jsx-runtime");
 var AkaiLaunch = function AkaiLaunch() {
-  var config = (0, _stencilHooks.useUiConfig)('component', 'welcomePage');
-  var theme = (0, _stencilHooks.useColorPalates)();
+  var config = (0, _hooks.useUiConfig)('component', 'welcomePage');
+  var theme = (0, _hooks.useColorPalates)();
+  console.log('akailaunch page', config, theme);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_material.Container, {
     className: "p-2",
     style: {
@@ -32,17 +33,21 @@ var AkaiLaunch = function AkaiLaunch() {
       },
       className: "p-2",
       children: [(config === null || config === void 0 ? void 0 : config.showTopLeftLogo) && /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
-        src: (config === null || config === void 0 ? void 0 : config.topLeftLogo) || _main.default,
+        src: (config === null || config === void 0 ? void 0 : config.topLeftLogo) || _main.default.src,
         style: {
           height: (config === null || config === void 0 ? void 0 : config.topLeftLogoHeight) || '40px'
         }
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilMolecule.LanguagePicker, {})]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_molecules.LanguagePicker, {})]
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      className: "text-center",
+      style: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center'
+      },
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         className: "mt-4",
         children: (config === null || config === void 0 ? void 0 : config.showCenterImage) && /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
-          src: _cm.default,
+          src: _cm.default.src,
           style: {
             width: (config === null || config === void 0 ? void 0 : config.centerImageWidth) || '148px',
             height: (config === null || config === void 0 ? void 0 : config.centerImageHeight) || '210px'
@@ -59,7 +64,7 @@ var AkaiLaunch = function AkaiLaunch() {
           children: config === null || config === void 0 ? void 0 : config.centerText
         })
       }), (config === null || config === void 0 ? void 0 : config.showCenterBottomImage) && /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
-        src: (config === null || config === void 0 ? void 0 : config.centerBottomImage) || _bottom.default,
+        src: (config === null || config === void 0 ? void 0 : config.centerBottomImage) || _bottom.default.src,
         style: {
           maxWidth: '80vw',
           height: config === null || config === void 0 ? void 0 : config.centerBottomImageHeight,
@@ -67,7 +72,11 @@ var AkaiLaunch = function AkaiLaunch() {
         }
       })]
     }), (config === null || config === void 0 ? void 0 : config.showProceedBtn) && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      className: "text-center",
+      style: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center'
+      },
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_material.IconButton, {
         "aria-label": "fingerprint",
         style: {

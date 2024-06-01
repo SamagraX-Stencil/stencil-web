@@ -1,4 +1,4 @@
-import { useUiConfig, useColorPalates } from 'stencil-hooks';
+import { useUiConfig, useColorPalates } from '@repo/hooks';
 import styles from './index.module.css';
 
 // import Image from 'next/image';

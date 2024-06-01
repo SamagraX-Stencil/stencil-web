@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react';
 
-import LoginMobileAadharPage from './index'
-import { CustomThemeProvider } from 'stencil-provider'
-import { CssBaseline } from '@mui/material'
+import LoginMobileAadharPage from './index';
+import { CustomThemeProvider } from '@repo/provider';
+import { CssBaseline } from '@mui/material';
 
 const meta = {
   title: 'Pages/Login',
@@ -36,9 +36,9 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof LoginMobileAadharPage>
+} satisfies Meta<typeof LoginMobileAadharPage>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Login: Story = {}
+export const Login: Story = {};

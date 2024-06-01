@@ -2,7 +2,7 @@ import _asyncToGenerator from "@babel/runtime/helpers/esm/asyncToGenerator";
 import _typeof from "@babel/runtime/helpers/esm/typeof";
 import _defineProperty from "@babel/runtime/helpers/esm/defineProperty";
 import _regeneratorRuntime from "@babel/runtime/regenerator";
-import { botConfigObj } from 'stencil-configmanager';
+import { botConfigObj } from '@repo/configmanager';
 import axios from 'axios';
 
 //@ts-ignore

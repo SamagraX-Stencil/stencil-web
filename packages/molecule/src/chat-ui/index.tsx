@@ -1,6 +1,6 @@
 'use-client';
-import Chat from 'stencil-chatui';
-import 'stencil-chatui/dist/index.css';
+import Chat from '@repo/chatui';
+import '@repo/chatui/dist/index.css';
 import React, { ReactElement, useCallback, useEffect, useMemo, useState } from 'react';
 import styles from './index.module.css';
 import { getMsgType } from './utils/getMsgType';
@@ -9,7 +9,7 @@ import toast from 'react-hot-toast';
 import { recordUserLocation } from './utils/location';
 import chatHistory from './chatHistory.json';
 import ShareButtons from '../share-buttons';
-import { useUiConfig, useThemeConfig } from 'stencil-hooks';
+import { useUiConfig, useThemeConfig } from '@repo/hooks';
 import NewMessageItem from '../message-item/index2';
 
 export const ChatUI: React.FC = () => {

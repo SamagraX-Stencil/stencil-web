@@ -10,19 +10,19 @@ var _react = require("react");
 var _ArrowForward = _interopRequireDefault(require("@mui/icons-material/ArrowForward"));
 var _material = require("@mui/material");
 var _iconsMaterial = require("@mui/icons-material");
-var _stencilHooks = require("stencil-hooks");
-var _stencilMolecule = require("stencil-molecule");
+var _hooks = require("@repo/hooks");
+var _molecules = require("@repo/molecules");
 var _jsxRuntime = require("react/jsx-runtime");
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 var OtpMobile = function OtpMobile() {
   var _theme$primary;
-  var theme = (0, _stencilHooks.useColorPalates)();
+  var theme = (0, _hooks.useColorPalates)();
   var _useState = (0, _react.useState)(''),
     _useState2 = (0, _slicedToArray2.default)(_useState, 2),
     otp = _useState2[0],
     setOtp = _useState2[1];
-  var config = (0, _stencilHooks.useUiConfig)('component', 'otpMobilePage');
+  var config = (0, _hooks.useUiConfig)('component', 'otpMobilePage');
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_material.Container, {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       className: "d-flex",
@@ -72,7 +72,7 @@ var OtpMobile = function OtpMobile() {
             flexDirection: 'column',
             alignItems: 'center'
           },
-          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilMolecule.OTPInput, {
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_molecules.OTPInput, {
             separator: (config === null || config === void 0 ? void 0 : config.otpSeparator) || /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
               style: {
                 width: '10px'

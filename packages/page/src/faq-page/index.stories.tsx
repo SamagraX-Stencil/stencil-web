@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { CustomThemeProvider } from 'stencil-provider'
-import { CssBaseline } from '@mui/material'
-import FAQPage from './index'
+import { CustomThemeProvider } from '@repo/provider';
+import { CssBaseline } from '@mui/material';
+import FAQPage from './index';
 
 const meta = {
   title: 'Pages/FAQPage',
@@ -29,9 +29,9 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof FAQPage>
+} satisfies Meta<typeof FAQPage>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Faq: Story = {}
+export const Faq: Story = {};

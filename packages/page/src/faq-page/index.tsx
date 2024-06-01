@@ -1,29 +1,26 @@
-import React, { useCallback } from 'react'
-import styles from './index.module.css'
-import { Typography, Button, Box, Avatar } from '@mui/material'
-import { CallRounded } from '@mui/icons-material'
-import { useUiConfig, useColorPalates } from 'stencil-hooks'
+import React, { useCallback } from 'react';
+import styles from './index.module.css';
+import { Typography, Button, Box, Avatar } from '@mui/material';
+import { CallRounded } from '@mui/icons-material';
+import { useUiConfig, useColorPalates } from '@repo/hooks';
 
 const FAQPage: React.FC = () => {
-  const config = useUiConfig('component', 'faqs')
+  const config = useUiConfig('component', 'faqs');
 
-  const theme = useColorPalates()
+  const theme = useColorPalates();
   const downloadPDFHandler = useCallback(() => {
-    console.log(config.userManualText ?? 'User Manual')
-  }, [])
+    console.log(config.userManualText ?? 'User Manual');
+  }, []);
 
   const handleContactClick = useCallback(() => {
-    console.log(config.contactText ?? 'Contact User')
-  }, [])
+    console.log(config.contactText ?? 'Contact User');
+  }, []);
 
   return (
     <>
       <Box className={styles.main}>
         <Box>
-          <Typography
-            variant="h4"
-            sx={{ fontWeight: '600', color: theme?.primary?.main }}
-          >
+          <Typography variant="h4" sx={{ fontWeight: '600', color: theme?.primary?.main }}>
             {config.title ?? 'Faq'}
           </Typography>
         </Box>
@@ -81,7 +78,7 @@ const FAQPage: React.FC = () => {
         )}
       </Box>
     </>
-  )
-}
+  );
+};
 
-export default FAQPage
+export default FAQPage;

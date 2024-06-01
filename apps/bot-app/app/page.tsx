@@ -2,9 +2,9 @@
 
 import Head from 'next/head'
 import { CookiesProvider } from 'react-cookie'
-import { useLocalization } from 'stencil-hooks'
-import { LocalHomePage } from 'stencil-pages'
-import { useBotConfig } from 'stencil-hooks'
+import { useLocalization } from '@repo/hooks'
+import { LocalHomePage } from '@repo/pages'
+import { useBotConfig } from '@repo/hooks'
 
 export default function Home() {
   const t = useLocalization()

@@ -1,13 +1,12 @@
-import { useLocalization } from 'stencil-hooks'
-import styles from './index.module.css'
-import { FC } from 'react'
-
+import { useLocalization } from '@repo/hooks';
+import styles from './index.module.css';
+import { FC } from 'react';
 const LocalLaunchPage: FC<{ theme: any; config: any; compConfig: any }> = ({
   theme,
   config,
   compConfig,
 }) => {
-  const t = useLocalization()
+  const t = useLocalization();
   return (
     <div
       className={`${styles.container}`}
@@ -24,11 +23,9 @@ const LocalLaunchPage: FC<{ theme: any; config: any; compConfig: any }> = ({
           height={233}
         />
       )}
-      <span style={{ color: theme?.palette?.primary?.main }}>
-        {t('label.title')}
-      </span>
+      <span style={{ color: theme?.palette?.primary?.main }}>{t('label.title')}</span>
     </div>
-  )
-}
+  );
+};
 
-export default LocalLaunchPage
+export default LocalLaunchPage;

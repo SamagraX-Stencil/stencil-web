@@ -1,7 +1,7 @@
 'use client'
 import axios from 'axios'
 //@ts-ignore
-import Chat from 'stencil-chatui'
+import Chat from '@repo/chatui'
 import React, {
   ReactElement,
   useCallback,
@@ -9,15 +9,15 @@ import React, {
   useMemo,
   useEffect,
 } from 'react'
-import { AppContext } from 'stencil-provider'
-import { useLocalization } from 'stencil-hooks'
+import { AppContext } from '@repo/provider'
+import { useLocalization } from '@repo/hooks'
 import MessageItem from '../message-item'
 import RenderVoiceRecorder from '../recorder/RenderVoiceRecorder'
 import toast from 'react-hot-toast'
-import { useBotConfig } from 'stencil-hooks'
+import { useBotConfig } from '@repo/hooks'
 import ShareButtons from '../share-buttons'
-import { LocalDowntimePage } from 'stencil-pages'
-import { useBotAppColorPalates } from 'stencil-hooks'
+import { LocalDowntimePage } from '@repo/pages'
+import { useBotAppColorPalates } from '@repo/hooks'
 import { getMsgType } from '../../utils/getMsgType'
 import { recordUserLocation } from '../../utils/location'
 

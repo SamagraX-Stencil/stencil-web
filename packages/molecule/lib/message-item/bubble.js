@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.UpdatedBubble = void 0;
-var _stencilChatui = require("stencil-chatui");
+var _chatui = require("@repo/chatui");
 var _moment = _interopRequireDefault(require("moment"));
 var _jsonToTable = require("../json-to-table");
 var _jsxRuntime = require("react/jsx-runtime");
@@ -35,7 +35,7 @@ var UpdatedBubble = exports.UpdatedBubble = function UpdatedBubble(_ref) {
     type = message.type;
   switch (type) {
     case 'loader':
-      return /*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilChatui.Typing, {});
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)(_chatui.Typing, {});
     case 'text':
       return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         style: {
@@ -44,7 +44,7 @@ var UpdatedBubble = exports.UpdatedBubble = function UpdatedBubble(_ref) {
           position: 'relative',
           maxWidth: '90vw'
         },
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_stencilChatui.Bubble, {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_chatui.Bubble, {
           type: "text",
           style: (content === null || content === void 0 || (_content$data = content.data) === null || _content$data === void 0 ? void 0 : _content$data.position) === 'right' ? {
             background: theme === null || theme === void 0 || (_theme$primary = theme.primary) === null || _theme$primary === void 0 ? void 0 : _theme$primary.main,
@@ -225,7 +225,7 @@ var UpdatedBubble = exports.UpdatedBubble = function UpdatedBubble(_ref) {
         var _url2 = (content === null || content === void 0 || (_content$data15 = content.data) === null || _content$data15 === void 0 || (_content$data15 = _content$data15.payload) === null || _content$data15 === void 0 || (_content$data15 = _content$data15.media) === null || _content$data15 === void 0 ? void 0 : _content$data15.url) || (content === null || content === void 0 || (_content$data16 = content.data) === null || _content$data16 === void 0 ? void 0 : _content$data16.videoUrl);
         var videoId = _url2.split('=')[1];
         return /*#__PURE__*/(0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {
-          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilChatui.Bubble, {
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_chatui.Bubble, {
             type: "image",
             children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
               style: {
@@ -260,7 +260,7 @@ var UpdatedBubble = exports.UpdatedBubble = function UpdatedBubble(_ref) {
       {
         var _content$data19, _content$data$payload, _content$data20, _content$data21;
         return /*#__PURE__*/(0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {
-          children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_stencilChatui.Bubble, {
+          children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_chatui.Bubble, {
             type: "text",
             className: textBubbleStyle,
             children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
@@ -289,7 +289,7 @@ var UpdatedBubble = exports.UpdatedBubble = function UpdatedBubble(_ref) {
           },
           children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
             className: (content === null || content === void 0 || (_content$data22 = content.data) === null || _content$data22 === void 0 ? void 0 : _content$data22.position) === 'right' ? messageTriangleRightStyle : messageTriangleLeftStyle
-          }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_stencilChatui.Bubble, {
+          }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_chatui.Bubble, {
             type: "text",
             children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
               className: tableContinerStyle,
@@ -310,7 +310,7 @@ var UpdatedBubble = exports.UpdatedBubble = function UpdatedBubble(_ref) {
         });
       }
     default:
-      return /*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilChatui.ScrollView, {
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)(_chatui.ScrollView, {
         data: []
         // @ts-ignore
         ,
@@ -330,12 +330,12 @@ var MediaBubble = function MediaBubble(_ref2) {
   var url = isFile ? (content === null || content === void 0 || (_content$data24 = content.data) === null || _content$data24 === void 0 || (_content$data24 = _content$data24.payload) === null || _content$data24 === void 0 || (_content$data24 = _content$data24.media) === null || _content$data24 === void 0 ? void 0 : _content$data24.url) || (content === null || content === void 0 || (_content$data25 = content.data) === null || _content$data25 === void 0 ? void 0 : _content$data25.fileUrl) : (content === null || content === void 0 || (_content$data26 = content.data) === null || _content$data26 === void 0 || (_content$data26 = _content$data26.payload) === null || _content$data26 === void 0 || (_content$data26 = _content$data26.media) === null || _content$data26 === void 0 ? void 0 : _content$data26.url) || (content === null || content === void 0 || (_content$data27 = content.data) === null || _content$data27 === void 0 ? void 0 : _content$data27.imageUrl);
   var renderMedia = function renderMedia() {
     if (isFile) {
-      return /*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilChatui.FileCard, {
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)(_chatui.FileCard, {
         file: url,
         extension: "pdf"
       });
     } else {
-      return /*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilChatui.Image, {
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)(_chatui.Image, {
         src: url,
         width: "299",
         height: "200",
@@ -352,7 +352,7 @@ var MediaBubble = function MediaBubble(_ref2) {
         marginRight: '4px',
         textAlign: 'center'
       }
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilChatui.Bubble, {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_chatui.Bubble, {
       type: "image",
       children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         style: {

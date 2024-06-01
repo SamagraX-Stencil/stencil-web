@@ -1,14 +1,14 @@
 import _slicedToArray from "@babel/runtime/helpers/esm/slicedToArray";
 import { useCallback, useEffect, useState } from 'react';
 import styles from './style.module.css';
-import { List } from 'stencil-molecule';
+import { List } from '@repo/molecules';
 import { IconButton } from '@mui/material';
 import { DeleteOutline, Forum } from '@mui/icons-material';
 import moment from 'moment';
-import { FullPageLoader } from 'stencil-molecule';
+import { FullPageLoader } from '@repo/molecules';
 import { map } from 'lodash';
 import sample from './sample.json';
-import { useUiConfig, useColorPalates } from 'stencil-hooks';
+import { useUiConfig, useColorPalates } from '@repo/hooks';
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 var HistoryPage = function HistoryPage() {
   var _theme$primary2, _theme$primary3, _theme$primary4, _config$title, _theme$primary5;

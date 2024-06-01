@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
 import { toast } from 'react-hot-toast';
-import { useUiConfig, useColorPalates } from 'stencil-hooks';
+import { useUiConfig, useColorPalates } from '@repo/hooks';
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 var LoginMobileAadharPage = function LoginMobileAadharPage() {
   var _theme$primary, _theme$primary2, _theme$primary3, _theme$primary4, _theme$primary5, _theme$primary6, _theme$primary7;

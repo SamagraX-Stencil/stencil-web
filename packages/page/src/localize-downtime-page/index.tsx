@@ -1,29 +1,29 @@
-import React, { useCallback } from 'react'
-import styles from './index.module.css'
-import { Avatar, Box, Button, Typography } from '@mui/material'
-import downTimeGIF from './assets/downTimeGIF.gif'
-import CallRoundedIcon from '@mui/icons-material/Call'
-import { useBotAppColorPalates } from 'stencil-hooks'
+import React, { useCallback } from 'react';
+import styles from './index.module.css';
+import { Avatar, Box, Button, Typography } from '@mui/material';
+import downTimeGIF from '../downtime-page/assets/downTimeGIF.gif';
+import CallRoundedIcon from '@mui/icons-material/Call';
+import { useBotAppColorPalates } from '@repo/hooks';
 // import { useFlags } from 'flagsmith/react'
-import { useBotConfig } from 'stencil-hooks'
-import { useLocalization } from 'stencil-hooks'
+import { useBotConfig } from '@repo/hooks';
+import { useLocalization } from '@repo/hooks';
 
 const LocalDowntimePage: React.FC = () => {
-  const t = useLocalization()
-  const theme = useBotAppColorPalates()
-  const config = useBotConfig('component', 'downtimePage')
+  const t = useLocalization();
+  const theme = useBotAppColorPalates();
+  const config = useBotConfig('component', 'downtimePage');
   // const flags = useFlags(['dialer_number'])
   const handleRefreshClick = useCallback(() => {
-    window?.location.reload()
-  }, [])
+    window?.location.reload();
+  }, []);
   const handlePreviousClick = useCallback(() => {
-    window?.history.back()
-  }, [])
+    window?.history.back();
+  }, []);
 
   const handleContactUserClick = useCallback(() => {
     // const phoneNumber = `tel:${flags.dialer_number.value}`
     // window.location.href = phoneNumber
-  }, [])
+  }, []);
 
   return (
     <>
@@ -33,11 +33,7 @@ const LocalDowntimePage: React.FC = () => {
       ></meta>
       <Box className={styles.container} px={18} py={12}>
         <Box>
-          <Typography
-            variant="h5"
-            fontWeight={600}
-            color={theme?.primary?.main}
-          >
+          <Typography variant="h5" fontWeight={600} color={theme?.primary?.main}>
             {t('message.down_time_title')}
           </Typography>
         </Box>
@@ -62,11 +58,7 @@ const LocalDowntimePage: React.FC = () => {
               <CallRoundedIcon fontSize="large" />
             </Avatar>
           </Box>
-          <Button
-            variant={'text'}
-            sx={{ textTransform: 'none' }}
-            onClick={handleContactUserClick}
-          >
+          <Button variant={'text'} sx={{ textTransform: 'none' }} onClick={handleContactUserClick}>
             <Typography
               variant="h5"
               color={theme?.grey?.[600]}
@@ -78,12 +70,7 @@ const LocalDowntimePage: React.FC = () => {
           </Button>
         </Box>
 
-        <Box
-          display={'flex'}
-          justifyContent={'space-around'}
-          width={'100%'}
-          my={4}
-        >
+        <Box display={'flex'} justifyContent={'space-around'} width={'100%'} my={4}>
           <Button
             className={styles.roundedButton}
             onClick={handleRefreshClick}
@@ -94,9 +81,7 @@ const LocalDowntimePage: React.FC = () => {
               backgroundColor: theme?.grey?.[600],
             }}
           >
-            <Typography variant="body1">
-              {t('message.down_time_retry')}
-            </Typography>
+            <Typography variant="body1">{t('message.down_time_retry')}</Typography>
           </Button>
           <Button
             className={styles.roundedButton}
@@ -108,14 +93,12 @@ const LocalDowntimePage: React.FC = () => {
             }}
             onClick={handlePreviousClick}
           >
-            <Typography variant="body1">
-              {t('message.down_time_view_prev_chats')}
-            </Typography>
+            <Typography variant="body1">{t('message.down_time_view_prev_chats')}</Typography>
           </Button>
         </Box>
       </Box>
     </>
-  )
-}
+  );
+};
 
-export default LocalDowntimePage
+export default LocalDowntimePage;

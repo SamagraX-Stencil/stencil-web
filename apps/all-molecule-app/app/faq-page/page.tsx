@@ -1,5 +1,5 @@
 'use client'
-import { FAQPage } from 'stencil-pages'
+import { FAQPage } from '@repo/pages'
 import React from 'react'
 
 const Faq = () => {

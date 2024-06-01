@@ -11,7 +11,7 @@ var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/sli
 var _react = require("react");
 var _stylesModule = _interopRequireDefault(require("./styles.module.css"));
 var _reactHotToast = _interopRequireDefault(require("react-hot-toast"));
-var _stencilHooks = require("stencil-hooks");
+var _hooks = require("@repo/hooks");
 var _recordController = _interopRequireDefault(require("./record-controller"));
 var _jsxRuntime = require("react/jsx-runtime");
 var VoiceRecorder = function VoiceRecorder(_ref) {
@@ -19,7 +19,7 @@ var VoiceRecorder = function VoiceRecorder(_ref) {
     tapToSpeak = _ref.tapToSpeak,
     _ref$includeDiv = _ref.includeDiv,
     includeDiv = _ref$includeDiv === void 0 ? false : _ref$includeDiv;
-  var config = (0, _stencilHooks.useUiConfig)('component', 'voiceRecorder');
+  var config = (0, _hooks.useUiConfig)('component', 'voiceRecorder');
   var _useState = (0, _react.useState)(null),
     _useState2 = (0, _slicedToArray2.default)(_useState, 2),
     mediaRecorder = _useState2[0],

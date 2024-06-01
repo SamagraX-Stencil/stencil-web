@@ -1,6 +1,6 @@
 'use client'
 
-import { LoginMobileAadharPage } from 'stencil-pages'
+import { LoginMobileAadharPage } from '@repo/pages'
 import React from 'react'
 
 const LoginPage = () => {

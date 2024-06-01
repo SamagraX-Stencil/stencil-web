@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { createContext, useContext, useReducer, useState } from 'react'
-import configObj from 'stencil-configmanager'
+import configObj from '@repo/configmanager'
 import { configReducer } from './configReducer'
 import toast from 'react-hot-toast'
 import AppConfig, { Component } from '../types/appConfigType'

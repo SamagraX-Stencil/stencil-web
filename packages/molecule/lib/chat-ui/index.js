@@ -12,8 +12,8 @@ var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/de
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-var _stencilChatui = _interopRequireDefault(require("stencil-chatui"));
-require("stencil-chatui/dist/index.css");
+var _chatui = _interopRequireDefault(require("@repo/chatui"));
+require("@repo/chatui/dist/index.css");
 var _react = _interopRequireWildcard(require("react"));
 var _indexModule = _interopRequireDefault(require("./index.module.css"));
 var _getMsgType = require("./utils/getMsgType");
@@ -21,7 +21,7 @@ var _reactHotToast = _interopRequireDefault(require("react-hot-toast"));
 var _location = require("./utils/location");
 var _chatHistory = _interopRequireDefault(require("./chatHistory.json"));
 var _shareButtons = _interopRequireDefault(require("../share-buttons"));
-var _stencilHooks = require("stencil-hooks");
+var _hooks = require("@repo/hooks");
 var _index2 = _interopRequireDefault(require("../message-item/index2"));
 var _jsxRuntime = require("react/jsx-runtime");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
@@ -37,8 +37,8 @@ var ChatUI = exports.ChatUI = function ChatUI() {
     _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
     loading = _useState4[0],
     setLoading = _useState4[1];
-  var config = (0, _stencilHooks.useUiConfig)('component', 'chatUi');
-  var theme = (0, _stencilHooks.useThemeConfig)('theme');
+  var config = (0, _hooks.useUiConfig)('component', 'chatUi');
+  var theme = (0, _hooks.useThemeConfig)('theme');
   (0, _react.useEffect)(function () {
     var fetchHistory = function fetchHistory() {
       var normalizedChats = normalizedChat(_chatHistory.default);
@@ -144,7 +144,7 @@ var ChatUI = exports.ChatUI = function ChatUI() {
   }, []);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     className: _indexModule.default.container,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilChatui.default, {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_chatui.default, {
       showInput: true,
       btnColor: theme.secondaryColor.value,
       background: "white",

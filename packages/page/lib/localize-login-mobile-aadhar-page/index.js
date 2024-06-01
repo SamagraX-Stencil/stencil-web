@@ -15,21 +15,21 @@ var _Button = _interopRequireDefault(require("@mui/material/Button"));
 var _Typography = _interopRequireDefault(require("@mui/material/Typography"));
 var _CircularProgress = _interopRequireDefault(require("@mui/material/CircularProgress"));
 var _reactHotToast = require("react-hot-toast");
-var _stencilHooks = require("stencil-hooks");
+var _hooks = require("@repo/hooks");
 var _navigation = require("next/navigation");
 var _jsxRuntime = require("react/jsx-runtime");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 var LocalLoginMobileAadharPage = function LocalLoginMobileAadharPage() {
   var _theme$primary, _theme$primary2, _theme$primary3, _theme$primary4;
-  var config = (0, _stencilHooks.useBotConfig)('component', 'loginMobileAadharPage');
+  var config = (0, _hooks.useBotConfig)('component', 'loginMobileAadharPage');
   var loginWithAadhaar = config.loginWithAadhaar,
     showSignUp = config.showSignUp,
     showAlternateSignIn = config.showAlternateSignIn,
     logo = config.logo,
     showLogo = config.showLogo,
     showSplitedView = config.showSplitedView;
-  var t = (0, _stencilHooks.useLocalization)();
+  var t = (0, _hooks.useLocalization)();
   var router = (0, _navigation.useRouter)();
   var _useState = (0, _react.useState)(loginWithAadhaar),
     _useState2 = (0, _slicedToArray2.default)(_useState, 2),
@@ -51,7 +51,7 @@ var LocalLoginMobileAadharPage = function LocalLoginMobileAadharPage() {
     _useState10 = (0, _slicedToArray2.default)(_useState9, 2),
     loading = _useState10[0],
     setLoading = _useState10[1];
-  var theme = (0, _stencilHooks.useBotAppColorPalates)();
+  var theme = (0, _hooks.useBotAppColorPalates)();
   var handleInput = (0, _react.useCallback)(function (e) {
     var reg;
     var errorMessage = '';

@@ -4,8 +4,8 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 import { Box, Button, Container, IconButton, Link } from '@mui/material';
 import { ArrowBackIosNewRounded } from '@mui/icons-material';
-import { useUiConfig, useColorPalates } from 'stencil-hooks';
-import { OTPInput } from 'stencil-molecule';
+import { useUiConfig, useColorPalates } from '@repo/hooks';
+import { OTPInput } from '@repo/molecules';
 
 const OtpMobile = () => {
   const theme = useColorPalates();

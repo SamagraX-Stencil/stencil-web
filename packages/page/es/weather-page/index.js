@@ -12,7 +12,7 @@ import thunderCloud from './assets/thunderCloud.png';
 import { LocationOnRounded, HomeRounded, KeyboardVoiceRounded } from '@mui/icons-material';
 import { map } from 'lodash';
 import { Badge, BottomNavigation, BottomNavigationAction, Button, Chip, Grid, Paper, Typography, styled } from '@mui/material';
-import { useColorPalates } from 'stencil-hooks';
+import { useColorPalates } from '@repo/hooks';
 import CropInfoModel from './crop-info-model';
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 var Item = styled(Paper)(function (_ref) {
@@ -111,7 +111,7 @@ var WheatherPage = function WheatherPage() {
         children: /*#__PURE__*/_jsxs("div", {
           className: "text-right",
           children: [/*#__PURE__*/_jsx("img", {
-            src: sun,
+            src: sun.src,
             style: {
               height: '30px',
               width: '30px'
@@ -149,7 +149,7 @@ var WheatherPage = function WheatherPage() {
                     fontSize: '18px',
                     fontWeight: 400
                   }
-                }), ' ', "\u092C\u093F\u0936\u0928\u092A\u0941\u0930 \u0938\u0947\u0915\u094D\u091F\u0930 58, \u0928\u094B\u090F\u0921\u093E"]
+                }), " \u092C\u093F\u0936\u0928\u092A\u0941\u0930 \u0938\u0947\u0915\u094D\u091F\u0930 58, \u0928\u094B\u090F\u0921\u093E"]
               })]
             })]
           })]
@@ -247,7 +247,7 @@ var WheatherPage = function WheatherPage() {
                         },
                         children: ele.day
                       }), /*#__PURE__*/_jsx("img", {
-                        src: ele.img,
+                        src: ele.img.src,
                         alt: "",
                         style: {
                           margin: '8px 0'
@@ -323,7 +323,7 @@ var WheatherPage = function WheatherPage() {
                 },
                 onClick: handleOpenModal,
                 children: [/*#__PURE__*/_jsx("img", {
-                  src: wheatImage,
+                  src: wheatImage.src,
                   style: {
                     width: '60px',
                     height: '60px',

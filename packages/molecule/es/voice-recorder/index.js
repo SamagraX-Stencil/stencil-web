@@ -4,7 +4,7 @@ import _regeneratorRuntime from "@babel/runtime/regenerator";
 import { useState } from 'react';
 import styles from './styles.module.css';
 import toast from 'react-hot-toast';
-import { useUiConfig } from 'stencil-hooks';
+import { useUiConfig } from '@repo/hooks';
 import RecorderControl from './record-controller';
 import { jsx as _jsx } from "react/jsx-runtime";
 var VoiceRecorder = function VoiceRecorder(_ref) {

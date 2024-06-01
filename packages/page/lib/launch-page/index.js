@@ -5,14 +5,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _stencilHooks = require("stencil-hooks");
+var _hooks = require("@repo/hooks");
 var _indexModule = _interopRequireDefault(require("./index.module.css"));
 var _jsxRuntime = require("react/jsx-runtime");
 // import Image from 'next/image';
 var LaunchPage = function LaunchPage() {
   var _theme$primary;
-  var config = (0, _stencilHooks.useUiConfig)('component', 'launchPage');
-  var theme = (0, _stencilHooks.useColorPalates)();
+  var config = (0, _hooks.useUiConfig)('component', 'launchPage');
+  var theme = (0, _hooks.useColorPalates)();
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     className: "".concat(_indexModule.default.container),
     style: {

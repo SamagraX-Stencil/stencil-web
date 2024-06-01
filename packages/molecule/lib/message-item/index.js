@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-var _stencilChatui = require("stencil-chatui");
+var _chatui = require("@repo/chatui");
 var _react = require("react");
 var _reactHotToast = require("react-hot-toast");
 var _indexModule = _interopRequireDefault(require("./index.module.css"));
@@ -16,7 +16,7 @@ var _msgThumbsUp = _interopRequireDefault(require("./assets/msg-thumbs-up"));
 var _msgThumbsDown = _interopRequireDefault(require("./assets/msg-thumbs-down"));
 var _moment = _interopRequireDefault(require("moment"));
 var _jsonToTable = require("../json-to-table");
-var _stencilHooks = require("stencil-hooks");
+var _hooks = require("@repo/hooks");
 var _jsxRuntime = require("react/jsx-runtime");
 // import BlinkingSpinner from '../blinking-spinner/index';
 var MessageItem = function MessageItem(_ref) {
@@ -24,7 +24,7 @@ var MessageItem = function MessageItem(_ref) {
   var message = _ref.message,
     themeColor = _ref.themeColor,
     chatUi = _ref.chatUi;
-  var theme = (0, _stencilHooks.useColorPalates)();
+  var theme = (0, _hooks.useColorPalates)();
   var _useState = (0, _react.useState)(message === null || message === void 0 || (_message$content = message.content) === null || _message$content === void 0 || (_message$content = _message$content.data) === null || _message$content === void 0 ? void 0 : _message$content.reaction),
     _useState2 = (0, _slicedToArray2.default)(_useState, 2),
     reaction = _useState2[0],
@@ -53,14 +53,14 @@ var MessageItem = function MessageItem(_ref) {
   }, [reaction]);
   var getLists = (0, _react.useCallback)(function (_ref3) {
     var choices = _ref3.choices;
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilChatui.List, {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_chatui.List, {
       className: "".concat(_indexModule.default.list),
       children: choices === null || choices === void 0 ? void 0 : choices.map(function (choice, index) {
         var _content$data, _theme$primary, _theme$primary2, _theme$primary3;
         return (
           /*#__PURE__*/
           // {_.map(choices ?? [], (choice, index) => (
-          (0, _jsxRuntime.jsx)(_stencilChatui.ListItem, {
+          (0, _jsxRuntime.jsx)(_chatui.ListItem, {
             className: "".concat(_indexModule.default.onHover, " ").concat(_indexModule.default.listItem),
             onClick: function onClick(e) {
               e.preventDefault();
@@ -104,7 +104,7 @@ var MessageItem = function MessageItem(_ref) {
   }, []);
   switch (type) {
     case 'loader':
-      return /*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilChatui.Typing, {});
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)(_chatui.Typing, {});
     case 'text':
       return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         style: {
@@ -113,7 +113,7 @@ var MessageItem = function MessageItem(_ref) {
           position: 'relative',
           maxWidth: '90vw'
         },
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_stencilChatui.Bubble, {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_chatui.Bubble, {
           type: "text",
           style: (content === null || content === void 0 || (_content$data2 = content.data) === null || _content$data2 === void 0 ? void 0 : _content$data2.position) === 'right' ? {
             background: theme === null || theme === void 0 || (_theme$primary4 = theme.primary) === null || _theme$primary4 === void 0 ? void 0 : _theme$primary4.main,
@@ -279,13 +279,13 @@ var MessageItem = function MessageItem(_ref) {
               marginRight: '4px',
               textAlign: 'center'
             }
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilChatui.Bubble, {
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_chatui.Bubble, {
             type: "image",
             children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
               style: {
                 padding: '7px'
               },
-              children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilChatui.Image, {
+              children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_chatui.Image, {
                 src: url,
                 width: "299",
                 height: "200",
@@ -321,13 +321,13 @@ var MessageItem = function MessageItem(_ref) {
               marginRight: '4px',
               textAlign: 'center'
             }
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilChatui.Bubble, {
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_chatui.Bubble, {
             type: "image",
             children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
               style: {
                 padding: '7px'
               },
-              children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilChatui.FileCard, {
+              children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_chatui.FileCard, {
                 file: _url,
                 extension: "pdf"
               }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
@@ -354,7 +354,7 @@ var MessageItem = function MessageItem(_ref) {
         var _url2 = (content === null || content === void 0 || (_content$data22 = content.data) === null || _content$data22 === void 0 || (_content$data22 = _content$data22.payload) === null || _content$data22 === void 0 || (_content$data22 = _content$data22.media) === null || _content$data22 === void 0 ? void 0 : _content$data22.url) || (content === null || content === void 0 || (_content$data23 = content.data) === null || _content$data23 === void 0 ? void 0 : _content$data23.videoUrl);
         var videoId = _url2.split('=')[1];
         return /*#__PURE__*/(0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {
-          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilChatui.Bubble, {
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_chatui.Bubble, {
             type: "image",
             children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
               style: {
@@ -389,7 +389,7 @@ var MessageItem = function MessageItem(_ref) {
       {
         var _content$data26, _content$data$payload, _content$data27, _content$data28;
         return /*#__PURE__*/(0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {
-          children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_stencilChatui.Bubble, {
+          children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_chatui.Bubble, {
             type: "text",
             className: _indexModule.default.textBubble,
             children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
@@ -418,7 +418,7 @@ var MessageItem = function MessageItem(_ref) {
           },
           children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
             className: (content === null || content === void 0 || (_content$data29 = content.data) === null || _content$data29 === void 0 ? void 0 : _content$data29.position) === 'right' ? _indexModule.default.messageTriangleRight : _indexModule.default.messageTriangleLeft
-          }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_stencilChatui.Bubble, {
+          }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_chatui.Bubble, {
             type: "text",
             children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
               className: _indexModule.default.tableContainer,
@@ -439,7 +439,7 @@ var MessageItem = function MessageItem(_ref) {
         });
       }
     default:
-      return /*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilChatui.ScrollView, {
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)(_chatui.ScrollView, {
         data: []
         // @ts-ignore
         ,

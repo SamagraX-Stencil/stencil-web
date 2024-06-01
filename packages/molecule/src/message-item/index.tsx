@@ -1,4 +1,4 @@
-import { Bubble, Image as Img, ScrollView, List, ListItem, FileCard, Typing } from 'stencil-chatui';
+import { Bubble, Image as Img, ScrollView, List, ListItem, FileCard, Typing } from '@repo/chatui';
 import { FC, ReactElement, useCallback, useEffect, useState } from 'react';
 
 import { MessageItemPropType } from './types';
@@ -11,7 +11,7 @@ import MsgThumbsUp from './assets/msg-thumbs-up';
 import MsgThumbsDown from './assets/msg-thumbs-down';
 import moment from 'moment';
 import { JsonToTable } from '../json-to-table';
-import { useColorPalates } from 'stencil-hooks';
+import { useColorPalates } from '@repo/hooks';
 
 // import BlinkingSpinner from '../blinking-spinner/index';
 

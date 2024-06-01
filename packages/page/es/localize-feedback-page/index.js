@@ -6,10 +6,10 @@ import { Box } from '@mui/material';
 import Rating from '@mui/material/Rating';
 import Button from '@mui/material/Button';
 import { toast } from 'react-hot-toast';
-import { useBotAppColorPalates } from 'stencil-hooks';
-import { useBotConfig } from 'stencil-hooks';
+import { useBotAppColorPalates } from '@repo/hooks';
+import { useBotConfig } from '@repo/hooks';
 import axios from 'axios';
-import { useLocalization } from 'stencil-hooks';
+import { useLocalization } from '@repo/hooks';
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 var LocalFeedbackPage = function LocalFeedbackPage() {
   var _useState = useState(1),

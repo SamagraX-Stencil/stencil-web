@@ -13,7 +13,7 @@ var _Button = _interopRequireDefault(require("@mui/material/Button"));
 var _Typography = _interopRequireDefault(require("@mui/material/Typography"));
 var _Call = _interopRequireDefault(require("@mui/icons-material/Call"));
 var _material = require("@mui/material");
-var _stencilHooks = require("stencil-hooks");
+var _hooks = require("@repo/hooks");
 var _comingSoonPage = _interopRequireDefault(require("../coming-soon-page"));
 var _jsxRuntime = require("react/jsx-runtime");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
@@ -22,8 +22,8 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
 
 var LocalFAQPage = function LocalFAQPage() {
   var _flags$show_faq_page, _theme$primary, _flags$show_pdf_butto, _theme$primary2, _theme$primary3, _flags$show_dialer, _theme$primary4, _theme$primary5;
-  var t = (0, _stencilHooks.useLocalization)();
-  var theme = (0, _stencilHooks.useBotAppColorPalates)();
+  var t = (0, _hooks.useLocalization)();
+  var theme = (0, _hooks.useBotAppColorPalates)();
   // const flags = useFlags([
   //   'show_faq_page',
   //   'show_dialer',

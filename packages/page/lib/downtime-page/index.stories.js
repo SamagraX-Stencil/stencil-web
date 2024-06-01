@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = exports.Downtime = void 0;
-var _stencilProvider = require("stencil-provider");
+var _provider = require("@repo/provider");
 var _material = require("@mui/material");
 var _index = _interopRequireDefault(require("./index"));
 var _jsxRuntime = require("react/jsx-runtime");
@@ -17,7 +17,7 @@ var meta = {
     layout: 'fullscreen'
   },
   decorators: [function (Story) {
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_stencilProvider.CustomThemeProvider, {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_provider.CustomThemeProvider, {
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_material.CssBaseline, {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(Story, {})]
     });
   }],
@@ -25,7 +25,7 @@ var meta = {
     config: {
       component: {
         title: "We're under maintainance",
-        downTimeImage: '/src/pages/downtime-page/assets/downTimeGIF.gif',
+        downTimeImage: '/src/downtime-page/assets/downTimeGIF.gif',
         supportingText: 'Have an urgent query?',
         contactLink: 'Call Ama Krushi',
         refreshText: 'Try Again',

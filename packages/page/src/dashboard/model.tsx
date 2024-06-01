@@ -1,13 +1,13 @@
-import * as React from 'react'
-import Backdrop from '@mui/material/Backdrop'
+import * as React from 'react';
+import Backdrop from '@mui/material/Backdrop';
 
-import Modal from '@mui/material/Modal'
-import Fade from '@mui/material/Fade'
-import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded'
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
-import { Button, List, Typography } from '@mui/material'
-import cloud from './assets/cloud-copy.png'
-import { useColorPalates } from 'stencil-hooks'
+import Modal from '@mui/material/Modal';
+import Fade from '@mui/material/Fade';
+import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import { Button, List, Typography } from '@mui/material';
+import cloud from './assets/cloud-copy.png';
+import { useColorPalates } from '@repo/hooks';
 const style = {
   position: 'absolute' as const,
   top: '50%',
@@ -19,27 +19,26 @@ const style = {
   padding: '20px',
   border: 'none',
   borderRadius: '5px',
-}
+};
 
 const WeatherStatus = () => {
-  const [open, setOpen] = React.useState(true)
+  const [open, setOpen] = React.useState(true);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
-  const handleClose = () => setOpen(false)
+  const handleClose = () => setOpen(false);
 
   const weatherDetails = [
     {
       id: 1,
-      label:
-        'उन्हें अच्छी तरह हाइड्रेटेड रखने के लिए स्वच्छ पेयजल उपलब्ध कराएं।',
+      label: 'उन्हें अच्छी तरह हाइड्रेटेड रखने के लिए स्वच्छ पेयजल उपलब्ध कराएं।',
     },
     {
       id: 2,
       label: 'तूफ़ान गुज़रने तक उन्हें शांत और सुरक्षित स्थान पर रखें।',
     },
-  ]
+  ];
 
-  const theme = useColorPalates()
+  const theme = useColorPalates();
   return (
     <div>
       <Modal
@@ -79,7 +78,7 @@ const WeatherStatus = () => {
               }}
             ></div>
             <div className="text-center p-3">
-              <img src={cloud} />
+              <img src={cloud.src} />
               <List dense>
                 {weatherDetails.map((item) => (
                   <div
@@ -125,10 +124,7 @@ const WeatherStatus = () => {
                     marginRight: '4px',
                   }}
                 >
-                  <CheckCircleRoundedIcon
-                    color="success"
-                    style={{ fontSize: '14px' }}
-                  />
+                  <CheckCircleRoundedIcon color="success" style={{ fontSize: '14px' }} />
                 </span>
                 वेरिफ़िएड बय ओडिशा कृषि एवं प्रौद्योगिकी विश्वविद्यालय
               </p>
@@ -148,7 +144,7 @@ const WeatherStatus = () => {
         </Fade>
       </Modal>
     </div>
-  )
-}
+  );
+};
 
-export default WeatherStatus
+export default WeatherStatus;

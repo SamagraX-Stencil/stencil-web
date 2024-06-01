@@ -2,10 +2,9 @@ import React, { useCallback, useState } from 'react';
 
 import farmer from './assets/farmer.jpeg';
 import { Box, CircularProgress, TextField, Button } from '@mui/material';
-import { ArrowForward } from '@mui/icons-material';
 
-import { useUiConfig, useColorPalates } from 'stencil-hooks';
-import { LanguagePicker } from 'stencil-molecule';
+import { useUiConfig, useColorPalates } from '@repo/hooks';
+import { LanguagePicker } from '@repo/molecules';
 
 const LoginMobile = () => {
   const config = useUiConfig('component', 'loginMobilePage');
@@ -63,8 +62,8 @@ const LoginMobile = () => {
       <div
         style={{
           position: 'absolute',
-          top: '10px',
-          left: 'calc(100% - 85px - 10px)',
+          top: '4px',
+          right: '8px',
         }}
       >
         <LanguagePicker />
@@ -85,12 +84,12 @@ const LoginMobile = () => {
           <p
             style={{
               marginTop: '24px',
-              fontSize: '22px',
-              fontWeight: 400,
+              fontSize: '24px',
+              fontWeight: '400',
               color: '#51586B',
             }}
           >
-            {config?.title || 'कृपया अपना मोबाइल नंबर बताएं'}
+            {config?.title}
           </p>
           <div
             style={{
@@ -110,7 +109,7 @@ const LoginMobile = () => {
                 value={input}
                 helperText={!valid ? errorMessage : ''}
                 onChange={handleInput}
-                label={config?.placeholder || 'मोबाइल नंबर'}
+                label={config?.placeholder}
                 name={'phone'}
                 autoComplete={'phone'}
                 autoFocus
@@ -122,24 +121,21 @@ const LoginMobile = () => {
                   type="submit"
                   fullWidth
                   variant="contained"
-                  endIcon={<ArrowForward />}
                   sx={{
                     textTransform: 'none',
                     mt: 3,
                     mb: 4,
                     p: 1,
-                    background: theme.primary?.dark,
-                    height: '60px',
+                    background: theme.primary?.main,
                     borderRadius: '10px',
                   }}
-                  style={{ fontSize: '18px', fontWeight: 500 }}
                   // onClick={handleLogin}
                   disabled={!valid || loading}
                 >
                   {loading ? (
                     <CircularProgress size={24} color="inherit" />
                   ) : (
-                    <>{config?.btnText || 'ओटीपी भेजा'}</>
+                    <>{config?.btnText}</>
                   )}
                 </Button>
               </Box>
@@ -150,7 +146,7 @@ const LoginMobile = () => {
       <main>
         <div>
           <img
-            src={config?.backgroundImage || farmer}
+            src={config?.backgroundImage || farmer.src}
             alt="Farmer with vegetables"
             style={{ maxWidth: '100%', height: 'auto' }}
           />

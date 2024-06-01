@@ -1,4 +1,4 @@
-import { Image as Img, ScrollView, List, ListItem, FileCard, Typing } from 'stencil-chatui';
+import { Image as Img, ScrollView, List, ListItem, FileCard, Typing } from '@repo/chatui';
 import { FC, ReactElement, useCallback, useEffect, useState } from 'react';
 
 import { toast } from 'react-hot-toast';
@@ -9,7 +9,7 @@ import MsgThumbsUp from './assets/msg-thumbs-up';
 import MsgThumbsDown from './assets/msg-thumbs-down';
 import { MessageItemPropType } from './types';
 import { JsonToTable } from '../json-to-table';
-import { useColorPalates } from 'stencil-hooks';
+import { useColorPalates } from '@repo/hooks';
 import { UpdatedBubble } from './bubble';
 
 // import BlinkingSpinner from '../blinking-spinner/index';

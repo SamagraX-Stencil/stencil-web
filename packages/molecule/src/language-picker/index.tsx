@@ -1,22 +1,22 @@
-import React from 'react'
-import MenuItem from '@mui/material/MenuItem'
-import FormControl from '@mui/material/FormControl'
-import Select, { SelectChangeEvent } from '@mui/material/Select'
-import { map } from 'lodash'
+import React from 'react';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { map } from 'lodash';
 
-import { useColorPalates } from 'stencil-hooks'
+import { useColorPalates } from '@repo/hooks';
 const LanguagePicker = () => {
-  const [activeLanguage, setActiveLanguage] = React.useState('en')
+  const [activeLanguage, setActiveLanguage] = React.useState('en');
 
   const handleChange = (event: SelectChangeEvent) => {
-    setActiveLanguage(event.target.value)
-  }
-  const theme = useColorPalates()
+    setActiveLanguage(event.target.value);
+  };
+  const theme = useColorPalates();
 
   const languages = [
     { name: 'Eng', value: 'en' },
     { name: 'हिंदी', value: 'hi' },
-  ]
+  ];
   return (
     <FormControl
       sx={{
@@ -46,7 +46,7 @@ const LanguagePicker = () => {
         ))}
       </Select>
     </FormControl>
-  )
-}
+  );
+};
 
-export default LanguagePicker
+export default LanguagePicker;

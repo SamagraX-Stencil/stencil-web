@@ -1,6 +1,6 @@
 import { FC, useCallback, useEffect, useState, useContext, useMemo } from 'react';
 import styles from './style.module.css';
-import { FullPageLoader, List } from 'stencil-molecule';
+import { FullPageLoader, List } from '@repo/molecules';
 import ForumIcon from '@mui/icons-material/Forum';
 import { IconButton } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
@@ -8,15 +8,15 @@ import moment from 'moment';
 import _ from 'underscore';
 import { ChatItem, HistoryItem } from './types';
 import { map } from 'lodash';
-import { useBotAppColorPalates } from 'stencil-hooks';
+import { useBotAppColorPalates } from '@repo/hooks';
 import { useFlags } from 'flagsmith/react';
-import { useLocalization } from 'stencil-hooks';
+import { useLocalization } from '@repo/hooks';
 import axios from 'axios';
 import LocalComingSoonPage from '../localize-coming-soon-page/index';
-import { useBotConfig } from 'stencil-hooks';
+import { useBotConfig } from '@repo/hooks';
 import router from 'next/router';
 // import { toast } from 'react-hot-toast'
-import { AppContext } from 'stencil-provider';
+import { AppContext } from '@repo/provider';
 import { recordUserLocation } from '../resources/utils/location';
 import { v4 as uuidv4 } from 'uuid';
 

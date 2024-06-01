@@ -7,7 +7,7 @@ import { Home, Menu } from '@mui/icons-material';
 import Typography from '@mui/material/Typography';
 import { Sidebar } from '../sidebar/index';
 // import ThemePicker from '../../components/theme-picker'
-import { useColorPalates, useUiConfig } from 'stencil-hooks';
+import { useColorPalates, useUiConfig } from '@repo/hooks';
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 var Navbar = function Navbar() {
   var config = useUiConfig('component', 'navbar');

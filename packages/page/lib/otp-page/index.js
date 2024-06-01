@@ -16,14 +16,14 @@ var _Button = _interopRequireDefault(require("@mui/material/Button"));
 var _Typography = _interopRequireDefault(require("@mui/material/Typography"));
 var _CircularProgress = _interopRequireDefault(require("@mui/material/CircularProgress"));
 var _reactHotToast = require("react-hot-toast");
-var _stencilMolecule = require("stencil-molecule");
-var _stencilHooks = require("stencil-hooks");
+var _molecules = require("@repo/molecules");
+var _hooks = require("@repo/hooks");
 var _jsxRuntime = require("react/jsx-runtime");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 var OtpPage = function OtpPage() {
   var _theme$primary;
-  var config = (0, _stencilHooks.useUiConfig)('component', 'otpPage');
+  var config = (0, _hooks.useUiConfig)('component', 'otpPage');
   var _useState = (0, _react.useState)(''),
     _useState2 = (0, _slicedToArray2.default)(_useState, 2),
     otp = _useState2[0],
@@ -36,7 +36,7 @@ var OtpPage = function OtpPage() {
     _useState6 = (0, _slicedToArray2.default)(_useState5, 2),
     countdown = _useState6[0],
     setCountdown = _useState6[1];
-  var theme = (0, _stencilHooks.useColorPalates)();
+  var theme = (0, _hooks.useColorPalates)();
   var phNo = 9999999999; // update number here
   var handleLogin = (0, _react.useCallback)(function (e) {
     e.preventDefault();
@@ -149,7 +149,7 @@ var OtpPage = function OtpPage() {
                 flexDirection: 'column',
                 gap: 2
               },
-              children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilMolecule.OTPInput, {
+              children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_molecules.OTPInput, {
                 separator: /*#__PURE__*/(0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {}),
                 value: otp,
                 onChange: setOtp,

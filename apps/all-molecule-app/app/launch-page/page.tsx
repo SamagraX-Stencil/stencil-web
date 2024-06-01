@@ -1,5 +1,5 @@
 'use client'
-import { LaunchPage } from 'stencil-pages'
+import { LaunchPage } from '@repo/pages'
 import React from 'react'
 
 const Launch = () => {

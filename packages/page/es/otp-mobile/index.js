@@ -4,8 +4,8 @@ import { useState } from 'react';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Box, Button, Container, IconButton, Link } from '@mui/material';
 import { ArrowBackIosNewRounded } from '@mui/icons-material';
-import { useUiConfig, useColorPalates } from 'stencil-hooks';
-import { OTPInput } from 'stencil-molecule';
+import { useUiConfig, useColorPalates } from '@repo/hooks';
+import { OTPInput } from '@repo/molecules';
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 var OtpMobile = function OtpMobile() {
   var _theme$primary;

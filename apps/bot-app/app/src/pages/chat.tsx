@@ -2,13 +2,13 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
-import { useLocalization } from 'stencil-hooks'
+import { useLocalization } from '@repo/hooks'
 import { useContext } from 'react'
-import { AppContext } from 'stencil-provider'
+import { AppContext } from '@repo/provider'
 import styles from '../components/dialer-popup/index.module.css'
 import DialerPopUp from '../components/dialer-popup'
-import { useBotConfig } from 'stencil-hooks'
-// import { ChatUI } from 'stencil-molecule'
+import { useBotConfig } from '@repo/hooks'
+// import { ChatUI } from '@repo/molecules'
 
 const ChatUi = dynamic(() => import('../components/chat-window'), {
   ssr: false,

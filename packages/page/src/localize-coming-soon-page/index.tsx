@@ -1,18 +1,18 @@
-import React, { useCallback } from 'react'
-import styles from './index.module.css'
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography'
-import Hourglass from './hourglass'
-import { useBotAppColorPalates } from 'stencil-hooks'
-import { useLocalization } from 'stencil-hooks'
+import React, { useCallback } from 'react';
+import styles from './index.module.css';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Hourglass from './hourglass';
+import { useBotAppColorPalates } from '@repo/hooks';
+import { useLocalization } from '@repo/hooks';
 
 const LocalComingSoonPage: React.FC = () => {
-  const t = useLocalization()
-  const theme = useBotAppColorPalates()
+  const t = useLocalization();
+  const theme = useBotAppColorPalates();
   const handleBack = useCallback(() => {
-    window?.history?.back()
-  }, [])
+    window?.history?.back();
+  }, []);
 
   return (
     <>
@@ -22,10 +22,7 @@ const LocalComingSoonPage: React.FC = () => {
       ></meta>
       <Box my={15} className={styles.container}>
         <Box mt={5}>
-          <Typography
-            variant="h4"
-            sx={{ color: theme?.primary?.main, fontWeight: '700' }}
-          >
+          <Typography variant="h4" sx={{ color: theme?.primary?.main, fontWeight: '700' }}>
             {t('message.coming_soon')}
           </Typography>
         </Box>
@@ -50,7 +47,7 @@ const LocalComingSoonPage: React.FC = () => {
         </Box>
       </Box>
     </>
-  )
-}
+  );
+};
 
-export default LocalComingSoonPage
+export default LocalComingSoonPage;

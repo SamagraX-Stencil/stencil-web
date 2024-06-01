@@ -12,14 +12,14 @@ var _Box = _interopRequireDefault(require("@mui/material/Box"));
 var _Button = _interopRequireDefault(require("@mui/material/Button"));
 var _Typography = _interopRequireDefault(require("@mui/material/Typography"));
 var _hourglass = _interopRequireDefault(require("./hourglass"));
-var _stencilHooks = require("stencil-hooks");
+var _hooks = require("@repo/hooks");
 var _jsxRuntime = require("react/jsx-runtime");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 var ComingSoonPage = function ComingSoonPage() {
   var _theme$primary, _config$title, _theme$primary2, _config$description, _theme$primary3, _config$backText2;
-  var theme = (0, _stencilHooks.useColorPalates)();
-  var config = (0, _stencilHooks.useUiConfig)('component', 'comingSoon');
+  var theme = (0, _hooks.useColorPalates)();
+  var config = (0, _hooks.useUiConfig)('component', 'comingSoon');
   var handleBack = (0, _react.useCallback)(function () {
     var _config$backText;
     // window?.history?.back()

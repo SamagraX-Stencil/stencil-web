@@ -6,7 +6,7 @@ import { useCallback, useRef, useState } from 'react';
 import SendIcon from './assets/sendButton.png';
 import WeatherIcon from './assets/weather_advisory.png';
 import toast from 'react-hot-toast';
-import { useUiConfig, useColorPalates } from 'stencil-hooks';
+import { useUiConfig, useColorPalates } from '@repo/hooks';
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 var HomePage = function HomePage() {
   var _theme$primary, _config$btns;
@@ -72,7 +72,7 @@ var HomePage = function HomePage() {
                 return console.log('clicked');
               },
               children: [/*#__PURE__*/_jsx("img", {
-                src: (btn === null || btn === void 0 ? void 0 : btn.image) || WeatherIcon,
+                src: (btn === null || btn === void 0 ? void 0 : btn.image) || WeatherIcon.src,
                 alt: btn === null || btn === void 0 ? void 0 : btn.title
               }), /*#__PURE__*/_jsx("p", {
                 children: btn === null || btn === void 0 ? void 0 : btn.title

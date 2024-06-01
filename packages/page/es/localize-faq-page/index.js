@@ -5,10 +5,10 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import CallRoundedIcon from '@mui/icons-material/Call';
 import { Avatar } from '@mui/material';
-import { useBotAppColorPalates } from 'stencil-hooks';
+import { useBotAppColorPalates } from '@repo/hooks';
 // import { useFlags } from 'flagsmith/react'
 import ComingSoonPage from '../coming-soon-page';
-import { useLocalization } from 'stencil-hooks';
+import { useLocalization } from '@repo/hooks';
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 var LocalFAQPage = function LocalFAQPage() {
   var _flags$show_faq_page, _theme$primary, _flags$show_pdf_butto, _theme$primary2, _theme$primary3, _flags$show_dialer, _theme$primary4, _theme$primary5;

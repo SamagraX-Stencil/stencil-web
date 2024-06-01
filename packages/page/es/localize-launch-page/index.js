@@ -1,4 +1,4 @@
-import { useLocalization } from 'stencil-hooks';
+import { useLocalization } from '@repo/hooks';
 import styles from './index.module.css';
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 var LocalLaunchPage = function LocalLaunchPage(_ref) {

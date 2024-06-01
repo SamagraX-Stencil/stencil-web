@@ -1,64 +1,64 @@
 // @ts-ignore
-import React, { useMemo, useState } from 'react'
-import { FileDownloadOutlined, Share } from '@mui/icons-material'
-import { toast } from 'react-hot-toast'
-import { CircularProgress, Divider } from '@mui/material'
-import { useColorPalates } from 'stencil-hooks'
-import { useUiConfig } from 'stencil-hooks'
+import React, { useMemo, useState } from 'react';
+import { FileDownloadOutlined, Share } from '@mui/icons-material';
+import { toast } from 'react-hot-toast';
+import { CircularProgress, Divider } from '@mui/material';
+import { useColorPalates } from '@repo/hooks';
+import { useUiConfig } from '@repo/hooks';
 
 const ShareButtons = () => {
-  const config = useUiConfig('component', 'shareButton')
+  const config = useUiConfig('component', 'shareButton');
 
-  const theme = useColorPalates()
+  const theme = useColorPalates();
 
   // @ts-ignore
   const secondaryColor = useMemo(() => {
-    return theme?.primary?.light
-  }, [theme?.primary?.light])
+    return theme?.primary?.light;
+  }, [theme?.primary?.light]);
 
   const primaryColor = useMemo(() => {
-    return theme?.primary?.main
-  }, [theme?.primary?.main])
+    return theme?.primary?.main;
+  }, [theme?.primary?.main]);
 
-  const [shareLoader, setShareLoader] = useState(false)
-  const [downloadLoader, setDownloadLoader] = useState(false)
+  const [shareLoader, setShareLoader] = useState(false);
+  const [downloadLoader, setDownloadLoader] = useState(false);
 
   // @ts-ignore
   const downloadChat = async (type: string) => {
     // perform your download chat logic here
-  }
+  };
 
   const downloadShareHandler = async (type: string) => {
     try {
       if (type === 'download') {
-        setDownloadLoader(true)
+        setDownloadLoader(true);
       } else {
-        setShareLoader(true)
+        setShareLoader(true);
       }
 
       if (type === 'download') {
-        setDownloadLoader(false)
+        setDownloadLoader(false);
 
         setTimeout(() => {
-          toast.success('Downloading...')
-        }, 2000)
+          toast.success('Downloading...');
+        }, 2000);
       } else if (type === 'share') {
-        setShareLoader(false)
+        setShareLoader(false);
         setTimeout(() => {
-          toast.success('Share successful')
-        }, 2000)
+          toast.success('Share successful');
+        }, 2000);
       } else {
-        toast.error("Your system doesn't support sharing this file.")
-        setDownloadLoader(false)
-        setShareLoader(false)
+        toast.error("Your system doesn't support sharing this file.");
+        setDownloadLoader(false);
+        setShareLoader(false);
       }
     } catch (error: any) {
-      setDownloadLoader(false)
-      setShareLoader(false)
+      setDownloadLoader(false);
+      setShareLoader(false);
 
-      toast.error('Error while performing')
+      toast.error('Error while performing');
     }
-  }
+  };
 
   return (
     <>
@@ -174,7 +174,7 @@ const ShareButtons = () => {
         </div>
       )}
     </>
-  )
-}
+  );
+};
 
-export default ShareButtons
+export default ShareButtons;

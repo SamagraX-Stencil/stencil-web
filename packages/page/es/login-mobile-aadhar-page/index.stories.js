@@ -1,5 +1,5 @@
 import LoginMobileAadharPage from './index';
-import { CustomThemeProvider } from 'stencil-provider';
+import { CustomThemeProvider } from '@repo/provider';
 import { CssBaseline } from '@mui/material';
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 var meta = {

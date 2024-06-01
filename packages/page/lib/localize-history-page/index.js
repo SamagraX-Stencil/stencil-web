@@ -9,18 +9,18 @@ var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 var _react = require("react");
 var _styleModule = _interopRequireDefault(require("./style.module.css"));
-var _stencilMolecule = require("stencil-molecule");
+var _molecules = require("@repo/molecules");
 var _Forum = _interopRequireDefault(require("@mui/icons-material/Forum"));
 var _material = require("@mui/material");
 var _DeleteOutline = _interopRequireDefault(require("@mui/icons-material/DeleteOutline"));
 var _moment = _interopRequireDefault(require("moment"));
 var _underscore = _interopRequireDefault(require("underscore"));
 var _lodash = require("lodash");
-var _stencilHooks = require("stencil-hooks");
+var _hooks = require("@repo/hooks");
 var _axios = _interopRequireDefault(require("axios"));
 var _index = _interopRequireDefault(require("../localize-coming-soon-page/index"));
 var _router = _interopRequireDefault(require("next/router"));
-var _stencilProvider = require("stencil-provider");
+var _provider = require("@repo/provider");
 var _location = require("../resources/utils/location");
 var _uuid = require("uuid");
 var _jsxRuntime = require("react/jsx-runtime");
@@ -32,15 +32,15 @@ var LocalHistoryPage = function LocalHistoryPage() {
     _useState2 = (0, _slicedToArray2.default)(_useState, 2),
     isFetching = _useState2[0],
     setIsFetching = _useState2[1];
-  var theme = (0, _stencilHooks.useBotAppColorPalates)();
+  var theme = (0, _hooks.useBotAppColorPalates)();
   var _useState3 = (0, _react.useState)([]),
     _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
     conversations = _useState4[0],
     setConversations = _useState4[1];
   // const flags = useFlags(['show_chat_history_page'])
-  var context = (0, _react.useContext)(_stencilProvider.AppContext);
-  var t = (0, _stencilHooks.useLocalization)();
-  var config = (0, _stencilHooks.useBotConfig)('component', 'historyPage');
+  var context = (0, _react.useContext)(_provider.AppContext);
+  var t = (0, _hooks.useLocalization)();
+  var config = (0, _hooks.useBotConfig)('component', 'historyPage');
   var handleClick = (0, _react.useCallback)(function (activeItem) {
     sessionStorage.setItem('conversationId', (activeItem === null || activeItem === void 0 ? void 0 : activeItem.conversationId) || 'null');
     context === null || context === void 0 || context.setConversationId(activeItem === null || activeItem === void 0 ? void 0 : activeItem.conversationId);
@@ -158,7 +158,7 @@ var LocalHistoryPage = function LocalHistoryPage() {
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {
     children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       className: _styleModule.default.main,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilMolecule.FullPageLoader, {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_molecules.FullPageLoader, {
         loading: isFetching,
         color: theme === null || theme === void 0 || (_theme$primary2 = theme.primary) === null || _theme$primary2 === void 0 ? void 0 : _theme$primary2.main
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
@@ -169,7 +169,7 @@ var LocalHistoryPage = function LocalHistoryPage() {
         children: (_t = t('label.chats')) !== null && _t !== void 0 ? _t : 'No Label Provided'
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         className: _styleModule.default.chatList,
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilMolecule.List, {
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_molecules.List, {
           items: conversations,
           noItem: {
             label: (_t2 = t('label.no_history')) !== null && _t2 !== void 0 ? _t2 : 'No History Found',

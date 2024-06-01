@@ -18,7 +18,7 @@ var _thunderCloud = _interopRequireDefault(require("./assets/thunderCloud.png"))
 var _iconsMaterial = require("@mui/icons-material");
 var _lodash = require("lodash");
 var _material = require("@mui/material");
-var _stencilHooks = require("stencil-hooks");
+var _hooks = require("@repo/hooks");
 var _cropInfoModel = _interopRequireDefault(require("./crop-info-model"));
 var _jsxRuntime = require("react/jsx-runtime");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
@@ -62,7 +62,7 @@ var WheatherPage = function WheatherPage() {
   console.log({
     config: config
   });
-  var theme = (0, _stencilHooks.useColorPalates)();
+  var theme = (0, _hooks.useColorPalates)();
   var _React$useState = _react.default.useState(0),
     _React$useState2 = (0, _slicedToArray2.default)(_React$useState, 2),
     value = _React$useState2[0],
@@ -121,7 +121,7 @@ var WheatherPage = function WheatherPage() {
         children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
           className: "text-right",
           children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
-            src: _sun.default,
+            src: _sun.default.src,
             style: {
               height: '30px',
               width: '30px'
@@ -159,7 +159,7 @@ var WheatherPage = function WheatherPage() {
                     fontSize: '18px',
                     fontWeight: 400
                   }
-                }), ' ', "\u092C\u093F\u0936\u0928\u092A\u0941\u0930 \u0938\u0947\u0915\u094D\u091F\u0930 58, \u0928\u094B\u090F\u0921\u093E"]
+                }), " \u092C\u093F\u0936\u0928\u092A\u0941\u0930 \u0938\u0947\u0915\u094D\u091F\u0930 58, \u0928\u094B\u090F\u0921\u093E"]
               })]
             })]
           })]
@@ -257,7 +257,7 @@ var WheatherPage = function WheatherPage() {
                         },
                         children: ele.day
                       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
-                        src: ele.img,
+                        src: ele.img.src,
                         alt: "",
                         style: {
                           margin: '8px 0'
@@ -333,7 +333,7 @@ var WheatherPage = function WheatherPage() {
                 },
                 onClick: handleOpenModal,
                 children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
-                  src: _crop.default,
+                  src: _crop.default.src,
                   style: {
                     width: '60px',
                     height: '60px',

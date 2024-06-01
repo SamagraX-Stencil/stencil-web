@@ -1,8 +1,8 @@
 import farmer from './assets/farmer.jpeg';
 import user from './assets/user.svg';
 import farmer2 from './assets/farmer-op.svg';
-import { useUiConfig, useColorPalates } from 'stencil-hooks';
-import { LanguagePicker } from 'stencil-molecule';
+import { useUiConfig, useColorPalates } from '@repo/hooks';
+import { LanguagePicker } from '@repo/molecules';
 
 const UserTypeSelector = () => {
   const theme = useColorPalates();
@@ -23,8 +23,9 @@ const UserTypeSelector = () => {
       <div
         style={{
           position: 'absolute',
-          top: '10px',
-          left: 'calc(100% - 85px - 10px)',
+          top: '5px',
+          right: '8px',
+          // left: 'calc(100% - 85px - 10px)',
         }}
       >
         <LanguagePicker />
@@ -72,14 +73,14 @@ const UserTypeSelector = () => {
               }}
             >
               <img
-                src={config?.user1Image || farmer2}
+                src={config?.user1Image || farmer2.src}
                 alt="Farmer"
                 style={{
                   maxWidth: '100%',
                   height: 'auto',
-                  marginBottom: '8px',
                 }}
               />
+
               <p style={{ color: 'white' }}>{config?.user1Text || 'किसान'} </p>
             </div>
             <p>या</p>
@@ -94,12 +95,11 @@ const UserTypeSelector = () => {
               }}
             >
               <img
-                src={config?.user2Image || user}
+                src={config?.user2Image || user.src}
                 alt="Worker"
                 style={{
                   maxWidth: '100%',
                   height: 'auto',
-                  marginBottom: '8px',
                 }}
               />
 
@@ -111,7 +111,7 @@ const UserTypeSelector = () => {
       <main>
         <div>
           <img
-            src={config?.backgroundImage || farmer}
+            src={config?.backgroundImage || farmer.src}
             alt="Farmer with vegetables"
             style={{ maxWidth: '100%', height: 'auto' }}
           />

@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { map } from 'lodash';
-import { useColorPalates } from 'stencil-hooks';
+import { useColorPalates } from '@repo/hooks';
 import { jsx as _jsx } from "react/jsx-runtime";
 var LanguagePicker = function LanguagePicker() {
   var _React$useState = React.useState('en'),

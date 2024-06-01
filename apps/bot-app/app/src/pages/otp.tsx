@@ -1,9 +1,9 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useLocalization } from 'stencil-hooks'
-import { LocalOtpPage } from 'stencil-pages'
-import { useBotConfig } from 'stencil-hooks'
+import { useLocalization } from '@repo/hooks'
+import { LocalOtpPage } from '@repo/pages'
+import { useBotConfig } from '@repo/hooks'
 
 const OTP: NextPage = () => {
   const t = useLocalization()

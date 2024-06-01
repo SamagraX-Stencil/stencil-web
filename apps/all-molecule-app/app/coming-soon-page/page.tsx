@@ -1,9 +1,9 @@
 'use client'
-import { LocalComingSoonPage } from 'stencil-pages'
+import { ComingSoonPage } from '@repo/pages'
 import React from 'react'
 
 const CommingSoon = () => {
-  return <LocalComingSoonPage />
+  return <ComingSoonPage />
 }
 
 export default CommingSoon

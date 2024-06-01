@@ -3,7 +3,7 @@ import {
   ConfigContext,
   CustomThemeProvider,
   LocaleProviderExampleApp,
-} from 'stencil-provider'
+} from '@repo/provider'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { CssBaseline } from '@mui/material'

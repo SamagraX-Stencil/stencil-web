@@ -1,4 +1,4 @@
-import configObj from 'stencil-configmanager'
+import configObj from '@repo/configmanager'
 import AppConfig from '../types/appConfigType'
 
 interface UpdateConfigAction {

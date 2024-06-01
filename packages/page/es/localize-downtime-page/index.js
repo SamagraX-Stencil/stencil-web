@@ -1,12 +1,12 @@
 import React, { useCallback } from 'react';
 import styles from './index.module.css';
 import { Avatar, Box, Button, Typography } from '@mui/material';
-import downTimeGIF from './assets/downTimeGIF.gif';
+import downTimeGIF from '../downtime-page/assets/downTimeGIF.gif';
 import CallRoundedIcon from '@mui/icons-material/Call';
-import { useBotAppColorPalates } from 'stencil-hooks';
+import { useBotAppColorPalates } from '@repo/hooks';
 // import { useFlags } from 'flagsmith/react'
-import { useBotConfig } from 'stencil-hooks';
-import { useLocalization } from 'stencil-hooks';
+import { useBotConfig } from '@repo/hooks';
+import { useLocalization } from '@repo/hooks';
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 var LocalDowntimePage = function LocalDowntimePage() {
   var _theme$primary, _theme$grey, _theme$grey2, _theme$grey3, _theme$primary2;

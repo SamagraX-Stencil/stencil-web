@@ -16,8 +16,8 @@ var _Button = _interopRequireDefault(require("@mui/material/Button"));
 var _Typography = _interopRequireDefault(require("@mui/material/Typography"));
 var _CircularProgress = _interopRequireDefault(require("@mui/material/CircularProgress"));
 var _reactHotToast = require("react-hot-toast");
-var _stencilHooks = require("stencil-hooks");
-var _stencilMolecule = require("stencil-molecule");
+var _hooks = require("@repo/hooks");
+var _molecules = require("@repo/molecules");
 var _navigation = require("next/navigation");
 var _jwtDecode = _interopRequireDefault(require("jwt-decode"));
 var _reactCookie = require("react-cookie");
@@ -40,8 +40,8 @@ var LocalOtpPage = function LocalOtpPage() {
     _useState6 = (0, _slicedToArray2.default)(_useState5, 2),
     countdown = _useState6[0],
     setCountdown = _useState6[1];
-  var config = (0, _stencilHooks.useBotConfig)('component', 'otpPage');
-  var theme = (0, _stencilHooks.useBotAppColorPalates)();
+  var config = (0, _hooks.useBotConfig)('component', 'otpPage');
+  var theme = (0, _hooks.useBotAppColorPalates)();
   var logo = config.logo,
     showLogo = config.showLogo,
     showSplitedView = config.showSplitedView,
@@ -50,7 +50,7 @@ var LocalOtpPage = function LocalOtpPage() {
   var router = (0, _navigation.useRouter)();
   var searchParams = (0, _navigation.useSearchParams)();
   var mobile = searchParams.get('state');
-  var t = (0, _stencilHooks.useLocalization)();
+  var t = (0, _hooks.useLocalization)();
   var _useCookies = (0, _reactCookie.useCookies)(['access_token']),
     _useCookies2 = (0, _slicedToArray2.default)(_useCookies, 3),
     cookies = _useCookies2[0],
@@ -252,7 +252,7 @@ var LocalOtpPage = function LocalOtpPage() {
                 flexDirection: 'column',
                 gap: 2
               },
-              children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilMolecule.OTPInput, {
+              children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_molecules.OTPInput, {
                 separator: /*#__PURE__*/(0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {}),
                 value: otp,
                 onChange: setOtp,

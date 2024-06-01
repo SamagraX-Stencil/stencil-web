@@ -9,8 +9,8 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { Logout, Feedback, Help, History, AccountCircle, ArrowBack, ChevronRight } from '@mui/icons-material';
-import configObj from 'stencil-configmanager';
-// import { useLocaleForExampleApp } from 'stencil-provider'
+import configObj from '@repo/configmanager';
+// import { useLocaleForExampleApp } from '@repo/provider'
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 export var Sidebar = function Sidebar(_ref) {
   var isOpen = _ref.isOpen,

@@ -1,44 +1,27 @@
-import * as React from 'react'
-import MuiList from '@mui/material/List'
-import {
-  ListItemIcon,
-  ListItemText,
-  ListItemButton,
-  ListSubheader,
-  Collapse,
-} from '@mui/material'
-import {
-  ExpandLess,
-  StarBorder,
-  ExpandMore,
-  ErrorOutline,
-} from '@mui/icons-material'
+import * as React from 'react';
+import MuiList from '@mui/material/List';
+import { ListItemIcon, ListItemText, ListItemButton, ListSubheader, Collapse } from '@mui/material';
+import { ExpandLess, StarBorder, ExpandMore, ErrorOutline } from '@mui/icons-material';
 
-import { ListType } from './types'
-import { map } from 'lodash'
-import {
-  Avatar,
-  Divider,
-  ListItem,
-  ListItemAvatar,
-  Typography,
-} from '@mui/material'
-import { useBotConfig } from 'stencil-hooks'
+import { ListType } from './types';
+import { map } from 'lodash';
+import { Avatar, Divider, ListItem, ListItemAvatar, Typography } from '@mui/material';
+import { useBotConfig } from '@repo/hooks';
 
 export const List: React.FC<ListType> = ({ items, label, noItem }) => {
-  const [openItem, setOpenItem] = React.useState<string | null>(null)
+  const [openItem, setOpenItem] = React.useState<string | null>(null);
 
-  const config = useBotConfig('component', 'historyPage')
+  const config = useBotConfig('component', 'historyPage');
 
   const handleClick = React.useCallback(
     (id: string) => {
-      if (id === openItem) setOpenItem(null)
-      else setOpenItem(id)
+      if (id === openItem) setOpenItem(null);
+      else setOpenItem(id);
     },
-    [openItem]
-  )
+    [openItem],
+  );
 
-  const hasItems = React.useMemo(() => items?.length > 0, [items])
+  const hasItems = React.useMemo(() => items?.length > 0, [items]);
 
   if (!hasItems)
     return (
@@ -54,34 +37,30 @@ export const List: React.FC<ListType> = ({ items, label, noItem }) => {
           <ListItemText primary={noItem?.label ?? 'Nothing available'} />
         </ListItemButton>
       </MuiList>
-    )
+    );
   return (
     <MuiList
       sx={{ width: '100%', bgcolor: 'background.paper' }}
       component="nav"
       aria-labelledby="nested-list-subheader"
-      subheader={
-        <>{label && <ListSubheader component="div">{label}</ListSubheader>}</>
-      }
+      subheader={<>{label && <ListSubheader component="div">{label}</ListSubheader>}</>}
     >
       {map(items, (item) => {
-        console.log({ item })
+        console.log({ item });
         return (
           <>
             <ListItem secondaryAction={item?.secondaryAction ?? null}>
               <ListItemButton
                 onClick={(ev) => {
-                  ev.stopPropagation()
+                  ev.stopPropagation();
                   if (item?.items) {
-                    return handleClick(item?.id)
+                    return handleClick(item?.id);
                   }
-                  if (item?.onClick) return item?.onClick(item)
-                  return null
+                  if (item?.onClick) return item?.onClick(item);
+                  return null;
                 }}
               >
-                {item.icon && (
-                  <ListItemIcon>{React.cloneElement(item.icon)}</ListItemIcon>
-                )}
+                {item.icon && <ListItemIcon>{React.cloneElement(item.icon)}</ListItemIcon>}
                 {item.avatar && (
                   <ListItemAvatar>
                     <Avatar alt="Travis Howard" src={item.avatar} />
@@ -106,9 +85,7 @@ export const List: React.FC<ListType> = ({ items, label, noItem }) => {
                     }
                   />
                 )}
-                {item?.items && (
-                  <>{openItem === item?.id ? <ExpandLess /> : <ExpandMore />}</>
-                )}
+                {item?.items && <>{openItem === item?.id ? <ExpandLess /> : <ExpandMore />}</>}
               </ListItemButton>
             </ListItem>
             <Collapse in={openItem === item?.id} timeout="auto" unmountOnExit>
@@ -123,8 +100,8 @@ export const List: React.FC<ListType> = ({ items, label, noItem }) => {
             </Collapse>
             {item?.isDivider && <Divider />}
           </>
-        )
+        );
       })}
     </MuiList>
-  )
-}
+  );
+};

@@ -1,16 +1,12 @@
-import React, { useState } from 'react'
-import sun from './assets/sun.png'
-import wheatImage from './assets/crop1.png'
-import rainingCloud from './assets/rainingCloud.png'
-import heaveRain from './assets/heavyRain.png'
-import sunRainCloud from './assets/sunRainCloud.png'
-import thunderCloud from './assets/thunderCloud.png'
-import {
-  LocationOnRounded,
-  HomeRounded,
-  KeyboardVoiceRounded,
-} from '@mui/icons-material'
-import { map } from 'lodash'
+import React, { useState } from 'react';
+import sun from './assets/sun.png';
+import wheatImage from './assets/crop1.png';
+import rainingCloud from './assets/rainingCloud.png';
+import heaveRain from './assets/heavyRain.png';
+import sunRainCloud from './assets/sunRainCloud.png';
+import thunderCloud from './assets/thunderCloud.png';
+import { LocationOnRounded, HomeRounded, KeyboardVoiceRounded } from '@mui/icons-material';
+import { map } from 'lodash';
 import {
   Badge,
   BottomNavigation,
@@ -21,10 +17,10 @@ import {
   Paper,
   Typography,
   styled,
-} from '@mui/material'
-import { useColorPalates } from 'stencil-hooks'
+} from '@mui/material';
+import { useColorPalates } from '@repo/hooks';
 
-import CropInfoModel from './crop-info-model'
+import CropInfoModel from './crop-info-model';
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -33,13 +29,13 @@ const Item = styled(Paper)(({ theme }) => ({
   color: '#363A44',
   borderRadius: '5px',
   position: 'relative',
-}))
+}));
 
 const WheatherPage = () => {
-  const [isModelOpen, setIsModelOpen] = useState(false)
+  const [isModelOpen, setIsModelOpen] = useState(false);
   const handleOpenModal = () => {
-    setIsModelOpen(true)
-  }
+    setIsModelOpen(true);
+  };
 
   const config = {
     allowOverride: false,
@@ -55,21 +51,21 @@ const WheatherPage = () => {
     card4Image: null,
     bottomText:
       'आमा कृषी चैटबॉट गलतियाँ कर सकता है। महत्वपूर्ण जानकारी की जाँच करने पर विचार करें. हमारी शर्तें और गोपनीयता नीति पढ़ें।',
-  }
-  console.log({ config })
-  const theme = useColorPalates()
-  const [value, setValue] = React.useState(0)
+  };
+  console.log({ config });
+  const theme = useColorPalates();
+  const [value, setValue] = React.useState(0);
   const chips = [
     { id: 1, heading: 'हवा की दिशा', label: 'उत्तर पश्चिम' },
     { id: 2, heading: 'हवा की गति', label: 'धीमी', color: '#101860' },
     { id: 3, heading: 'नमी', label: 'ज़्यादा', color: '#4CC3CB' },
-  ]
+  ];
   const upComingWhetherData = [
     { id: 1, day: 'Sun', temp: '21°C', img: heaveRain },
     { id: 2, day: 'Mon', temp: '21°C', img: thunderCloud },
     { id: 3, day: 'Tue', temp: '21°C', img: sunRainCloud },
     { id: 4, day: 'Thur', temp: '21°C', img: rainingCloud },
-  ]
+  ];
 
   return (
     <div
@@ -89,18 +85,11 @@ const WheatherPage = () => {
       >
         <div className="mb-1 mt-4">
           <div className="text-right">
-            <img src={sun} style={{ height: '30px', width: '30px' }} />
-            <div
-              style={{ display: 'flex', alignItems: 'flex-end' }}
-              className="my-4 mr-2"
-            >
+            <img src={sun.src} style={{ height: '30px', width: '30px' }} />
+            <div style={{ display: 'flex', alignItems: 'flex-end' }} className="my-4 mr-2">
               {' '}
               <div style={{ width: '30%' }}>
-                <h1
-                  style={{ color: 'white', fontSize: '48px', fontWeight: 600 }}
-                >
-                  27°C
-                </h1>
+                <h1 style={{ color: 'white', fontSize: '48px', fontWeight: 600 }}>27°C</h1>
               </div>
               <div
                 className="text-right"
@@ -108,10 +97,8 @@ const WheatherPage = () => {
               >
                 <h3>स्पष्ट</h3>
                 <p>
-                  <LocationOnRounded
-                    style={{ fontSize: '18px', fontWeight: 400 }}
-                  />{' '}
-                  बिशनपुर सेक्टर 58, नोएडा
+                  <LocationOnRounded style={{ fontSize: '18px', fontWeight: 400 }} /> बिशनपुर सेक्टर
+                  58, नोएडा
                 </p>
               </div>
             </div>
@@ -122,11 +109,7 @@ const WheatherPage = () => {
           className="p-2 text-center"
         >
           <div style={{ width: '80%', marginTop: '12px' }} className="mx-auto ">
-            <Grid
-              container
-              spacing={{ xs: 2, md: 3 }}
-              columns={{ xs: 3, sm: 8, md: 12 }}
-            >
+            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 3, sm: 8, md: 12 }}>
               {map(chips, (chip) => (
                 <Grid item xs={1} sm={4} md={4}>
                   <Chip
@@ -243,18 +226,9 @@ const WheatherPage = () => {
                       }}
                     >
                       <div>
-                        <p style={{ fontSize: '14px', fontWeight: 400 }}>
-                          {ele.day}
-                        </p>
-                        <img
-                          src={ele.img}
-                          alt=""
-                          style={{ margin: '8px 0' }}
-                          height={'32px'}
-                        />
-                        <p style={{ fontSize: '16px', fontWeight: 400 }}>
-                          {ele.temp}
-                        </p>
+                        <p style={{ fontSize: '14px', fontWeight: 400 }}>{ele.day}</p>
+                        <img src={ele.img.src} alt="" style={{ margin: '8px 0' }} height={'32px'} />
+                        <p style={{ fontSize: '16px', fontWeight: 400 }}>{ele.temp}</p>
                       </div>
                       {index !== 3 && (
                         <div
@@ -289,10 +263,7 @@ const WheatherPage = () => {
             आज की फ़सल सलाह
           </p>
           {isModelOpen && (
-            <CropInfoModel
-              isOpen={isModelOpen}
-              onClose={() => setIsModelOpen(false)}
-            />
+            <CropInfoModel isOpen={isModelOpen} onClose={() => setIsModelOpen(false)} />
           )}
           <Grid
             container
@@ -309,7 +280,7 @@ const WheatherPage = () => {
                   onClick={handleOpenModal}
                 >
                   <img
-                    src={wheatImage}
+                    src={wheatImage.src}
                     style={{
                       width: '60px',
                       height: '60px',
@@ -329,16 +300,13 @@ const WheatherPage = () => {
             </p>
           </div> */}
         </div>
-        <Paper
-          sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
-          elevation={3}
-        >
+        <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
           <BottomNavigation
             showLabels
             value={value}
             onChange={(event, newValue) => {
-              console.log(event)
-              setValue(newValue)
+              console.log(event);
+              setValue(newValue);
             }}
           >
             <BottomNavigationAction label="होम " icon={<HomeRounded />} />
@@ -369,7 +337,7 @@ const WheatherPage = () => {
         </Paper>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default WheatherPage
+export default WheatherPage;

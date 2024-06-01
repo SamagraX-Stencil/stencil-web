@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-var _stencilChatui = require("stencil-chatui");
+var _chatui = require("@repo/chatui");
 var _react = require("react");
 var _reactHotToast = require("react-hot-toast");
 var _indexModule = _interopRequireDefault(require("./index.module.css"));
@@ -14,7 +14,7 @@ var _right = _interopRequireDefault(require("./assets/right"));
 var _speaker = _interopRequireDefault(require("./assets/speaker.svg"));
 var _msgThumbsUp = _interopRequireDefault(require("./assets/msg-thumbs-up"));
 var _msgThumbsDown = _interopRequireDefault(require("./assets/msg-thumbs-down"));
-var _stencilHooks = require("stencil-hooks");
+var _hooks = require("@repo/hooks");
 var _bubble = require("./bubble");
 var _jsxRuntime = require("react/jsx-runtime");
 // import BlinkingSpinner from '../blinking-spinner/index';
@@ -23,7 +23,7 @@ var NewMessageItem = function NewMessageItem(_ref) {
   var message = _ref.message,
     themeColor = _ref.themeColor,
     chatUi = _ref.chatUi;
-  var theme = (0, _stencilHooks.useColorPalates)();
+  var theme = (0, _hooks.useColorPalates)();
   var _useState = (0, _react.useState)(message === null || message === void 0 || (_message$content = message.content) === null || _message$content === void 0 || (_message$content = _message$content.data) === null || _message$content === void 0 ? void 0 : _message$content.reaction),
     _useState2 = (0, _slicedToArray2.default)(_useState, 2),
     reaction = _useState2[0],
@@ -52,14 +52,14 @@ var NewMessageItem = function NewMessageItem(_ref) {
   }, [reaction]);
   var getLists = (0, _react.useCallback)(function (_ref3) {
     var choices = _ref3.choices;
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilChatui.List, {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_chatui.List, {
       className: "".concat(_indexModule.default.list),
       children: choices === null || choices === void 0 ? void 0 : choices.map(function (choice, index) {
         var _content$data, _theme$primary, _theme$primary2, _theme$primary3;
         return (
           /*#__PURE__*/
           // {_.map(choices ?? [], (choice, index) => (
-          (0, _jsxRuntime.jsx)(_stencilChatui.ListItem, {
+          (0, _jsxRuntime.jsx)(_chatui.ListItem, {
             className: "".concat(_indexModule.default.onHover, " ").concat(_indexModule.default.listItem),
             onClick: function onClick(e) {
               e.preventDefault();

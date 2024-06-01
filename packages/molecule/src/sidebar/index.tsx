@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import Box from '@mui/material/Box'
-import Drawer from '@mui/material/Drawer'
-import List from '@mui/material/List'
-import Divider from '@mui/material/Divider'
-import ListItem from '@mui/material/ListItem'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import ListItemText from '@mui/material/ListItemText'
+import React, { useState, useEffect } from 'react';
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
 
 import {
   Logout,
@@ -16,46 +16,40 @@ import {
   AccountCircle,
   ArrowBack,
   ChevronRight,
-} from '@mui/icons-material'
-import configObj from 'stencil-configmanager'
-// import { useLocaleForExampleApp } from 'stencil-provider'
+} from '@mui/icons-material';
+import configObj from '@repo/configmanager';
+// import { useLocaleForExampleApp } from '@repo/provider'
 
-export const Sidebar = ({
-  isOpen,
-  onToggle,
-}: {
-  isOpen: boolean
-  onToggle: () => void
-}) => {
+export const Sidebar = ({ isOpen, onToggle }: { isOpen: boolean; onToggle: () => void }) => {
   const [config, setConfig] = useState<{
-    showLangSwitcher: boolean
-    languages: { code: string; label: string }[]
-    showProfileIcon: boolean
-    profileText: string
-    links: { label: string; icon: string; route: string }[]
-    showLogoutButton: boolean
-    logoutButtonLabel: string
-  } | null>(null)
-  const [activeLanguage, setActiveLanguage] = useState<string>('en')
+    showLangSwitcher: boolean;
+    languages: { code: string; label: string }[];
+    showProfileIcon: boolean;
+    profileText: string;
+    links: { label: string; icon: string; route: string }[];
+    showLogoutButton: boolean;
+    logoutButtonLabel: string;
+  } | null>(null);
+  const [activeLanguage, setActiveLanguage] = useState<string>('en');
   useEffect(() => {
     if (configObj && configObj.component && configObj.component.sidebar) {
-      setConfig(configObj.component.sidebar)
+      setConfig(configObj.component.sidebar);
     }
-  }, [])
+  }, []);
   // const { locale, setLocale } = useLocaleForExampleApp()
 
   const handleLanguageClick = (langCode: string) => {
-    setActiveLanguage(langCode)
-    onToggle()
-  }
+    setActiveLanguage(langCode);
+    onToggle();
+  };
   // useEffect(() => {
   //   console.log(activeLanguage, 'ankit')
   //   setLocale(activeLanguage)
   // }, [activeLanguage])
 
   const handleItemClick = () => {
-    onToggle()
-  }
+    onToggle();
+  };
 
   return (
     <div>
@@ -87,17 +81,10 @@ export const Sidebar = ({
                             borderTopLeftRadius: index === 0 ? '10px' : '0',
                             borderBottomLeftRadius: index === 0 ? '10px' : '0',
                             borderTopRightRadius:
-                              index === config.languages.length - 1
-                                ? '10px'
-                                : '0',
+                              index === config.languages.length - 1 ? '10px' : '0',
                             borderBottomRightRadius:
-                              index === config.languages.length - 1
-                                ? '10px'
-                                : '0',
-                            backgroundColor:
-                              lang.code === activeLanguage
-                                ? '#00FF00'
-                                : '#FFFFFF',
+                              index === config.languages.length - 1 ? '10px' : '0',
+                            backgroundColor: lang.code === activeLanguage ? '#00FF00' : '#FFFFFF',
                             border: '1px solid #000',
                             width: '60px',
                             height: '30px',
@@ -126,10 +113,7 @@ export const Sidebar = ({
 
               {config.links.map((link, index) => (
                 <div key={index}>
-                  <ListItem
-                    disablePadding
-                    sx={{ paddingTop: '10px', paddingBottom: '10px' }}
-                  >
+                  <ListItem disablePadding sx={{ paddingTop: '10px', paddingBottom: '10px' }}>
                     <ListItemButton>
                       <ListItemIcon>{getIconComponent(link.icon)}</ListItemIcon>
                       <ListItemText primary={link.label} />
@@ -156,20 +140,20 @@ export const Sidebar = ({
         </Box>
       </Drawer>
     </div>
-  )
-}
+  );
+};
 
 const getIconComponent = (iconName: string) => {
   switch (iconName) {
     case 'HistoryIcon':
-      return <History />
+      return <History />;
     case 'HelpIcon':
-      return <Help />
+      return <Help />;
     case 'FeedbackIcon':
-      return <Feedback />
+      return <Feedback />;
     default:
-      return null
+      return null;
   }
-}
+};
 
-export default Sidebar
+export default Sidebar;

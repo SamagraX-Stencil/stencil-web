@@ -20,7 +20,7 @@ var _material = require("@mui/material");
 var _ArrowForwardRounded = _interopRequireDefault(require("@mui/icons-material/ArrowForwardRounded"));
 var _HomeRounded = _interopRequireDefault(require("@mui/icons-material/HomeRounded"));
 var _KeyboardVoiceRounded = _interopRequireDefault(require("@mui/icons-material/KeyboardVoiceRounded"));
-var _stencilHooks = require("stencil-hooks");
+var _hooks = require("@repo/hooks");
 var _model = _interopRequireDefault(require("./model"));
 var _jsxRuntime = require("react/jsx-runtime");
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -40,11 +40,11 @@ var Item = (0, _material.styled)(_material.Paper)(function (_ref) {
 });
 var Dashboard = function Dashboard() {
   var _theme$primary;
-  var config = (0, _stencilHooks.useUiConfig)('component', 'dashboard');
+  var config = (0, _hooks.useUiConfig)('component', 'dashboard');
   console.log({
     config: config
   });
-  var theme = (0, _stencilHooks.useColorPalates)();
+  var theme = (0, _hooks.useColorPalates)();
   var _React$useState = _react.default.useState(0),
     _React$useState2 = (0, _slicedToArray2.default)(_React$useState, 2),
     value = _React$useState2[0],
@@ -105,7 +105,7 @@ var Dashboard = function Dashboard() {
         children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
           className: "text-right",
           children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
-            src: _sun.default,
+            src: _sun.default.src,
             style: {
               height: '30px',
               width: '30px'
@@ -143,7 +143,7 @@ var Dashboard = function Dashboard() {
                     fontSize: '18px',
                     fontWeight: 400
                   }
-                }), ' ', "\u092C\u093F\u0936\u0928\u092A\u0941\u0930 \u0938\u0947\u0915\u094D\u091F\u0930 58, \u0928\u094B\u090F\u0921\u093E"]
+                }), " \u092C\u093F\u0936\u0928\u092A\u0941\u0930 \u0938\u0947\u0915\u094D\u091F\u0930 58, \u0928\u094B\u090F\u0921\u093E"]
               })]
             })]
           })]
@@ -261,7 +261,7 @@ var Dashboard = function Dashboard() {
                   borderRadius: '16px'
                 },
                 children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
-                  src: _ === null || _ === void 0 ? void 0 : _.image,
+                  src: _ === null || _ === void 0 ? void 0 : _.image.src,
                   style: {
                     width: '50px',
                     height: '50px',

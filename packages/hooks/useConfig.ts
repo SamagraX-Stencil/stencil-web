@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { AppContext } from 'stencil-provider'
+import { AppContext } from '@repo/provider'
 
 export const useBotConfig = (key: string, name: string) => {
   const context = useContext(AppContext)

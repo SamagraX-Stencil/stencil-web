@@ -7,8 +7,8 @@ import _slicedToArray from "@babel/runtime/helpers/esm/slicedToArray";
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 import _regeneratorRuntime from "@babel/runtime/regenerator";
-import Chat from 'stencil-chatui';
-import 'stencil-chatui/dist/index.css';
+import Chat from '@repo/chatui';
+import '@repo/chatui/dist/index.css';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import styles from './index.module.css';
 import { getMsgType } from './utils/getMsgType';
@@ -16,7 +16,7 @@ import toast from 'react-hot-toast';
 import { recordUserLocation } from './utils/location';
 import chatHistory from './chatHistory.json';
 import ShareButtons from '../share-buttons';
-import { useUiConfig, useThemeConfig } from 'stencil-hooks';
+import { useUiConfig, useThemeConfig } from '@repo/hooks';
 import NewMessageItem from '../message-item/index2';
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 export var ChatUI = function ChatUI() {

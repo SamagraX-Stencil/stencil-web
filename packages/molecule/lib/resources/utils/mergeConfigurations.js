@@ -9,7 +9,7 @@ var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"))
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
-var _stencilConfigmanager = require("stencil-configmanager");
+var _configmanager = require("@repo/configmanager");
 var _axios = _interopRequireDefault(require("axios"));
 //@ts-ignore
 var deepMerge = function deepMerge(target) {
@@ -90,7 +90,7 @@ var mergeConfiguration = /*#__PURE__*/function () {
           // Optionally handle error, such as falling back to default configs
         case 10:
           _context2.next = 12;
-          return deepMerge({}, _stencilConfigmanager.botConfigObj, overrideConfig);
+          return deepMerge({}, _configmanager.botConfigObj, overrideConfig);
         case 12:
           mergedConfig = _context2.sent;
           return _context2.abrupt("return", mergedConfig);

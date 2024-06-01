@@ -1,7 +1,7 @@
 import styles from './styles.module.css';
 
 import { Mic } from '@mui/icons-material';
-import { useColorPalates } from 'stencil-hooks';
+import { useColorPalates } from '@repo/hooks';
 const RecorderControl: React.FC<{
   status: string;
   onClick?: () => void;

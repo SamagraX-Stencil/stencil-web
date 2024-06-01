@@ -6,8 +6,8 @@ import React, { useMemo, useState } from 'react';
 import { FileDownloadOutlined, Share } from '@mui/icons-material';
 import { toast } from 'react-hot-toast';
 import { CircularProgress, Divider } from '@mui/material';
-import { useColorPalates } from 'stencil-hooks';
-import { useUiConfig } from 'stencil-hooks';
+import { useColorPalates } from '@repo/hooks';
+import { useUiConfig } from '@repo/hooks';
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 var ShareButtons = function ShareButtons() {
   var _theme$primary2, _theme$primary4, _theme$primary5, _theme$primary6;

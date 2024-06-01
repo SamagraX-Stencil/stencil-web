@@ -7,14 +7,14 @@ import HomeIcon from '@mui/icons-material/Home'
 import Typography from '@mui/material/Typography'
 import { useRouter, usePathname } from 'next/navigation'
 
-import { useBotConfig } from 'stencil-hooks'
+import { useBotConfig } from '@repo/hooks'
 import Sidebar from '../../pageComponents/sidebar'
 import { recordUserLocation } from '../../utils/location'
 import { v4 as uuidv4 } from 'uuid'
-import { AppContext } from 'stencil-provider'
-import { useLocalization, useLogin } from 'stencil-hooks'
+import { AppContext } from '@repo/provider'
+import { useLocalization, useLogin } from '@repo/hooks'
 import toast from 'react-hot-toast'
-import { useBotAppColorPalates } from 'stencil-hooks'
+import { useBotAppColorPalates } from '@repo/hooks'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
 
 const Navbar: React.FC = () => {

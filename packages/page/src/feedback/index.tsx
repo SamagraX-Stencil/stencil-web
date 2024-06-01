@@ -1,43 +1,43 @@
-import React, { useState } from 'react'
-import styles from './index.module.css'
-import Typography from '@mui/material/Typography'
-import { Box } from '@mui/material'
-import Rating from '@mui/material/Rating'
-import Button from '@mui/material/Button'
-import { toast } from 'react-hot-toast'
-import { useUiConfig, useColorPalates } from 'stencil-hooks'
+import React, { useState } from 'react';
+import styles from './index.module.css';
+import Typography from '@mui/material/Typography';
+import { Box } from '@mui/material';
+import Rating from '@mui/material/Rating';
+import Button from '@mui/material/Button';
+import { toast } from 'react-hot-toast';
+import { useUiConfig, useColorPalates } from '@repo/hooks';
 
 const FeedbackPage: React.FC = () => {
-  const config = useUiConfig('component', 'feedbackPage')
+  const config = useUiConfig('component', 'feedbackPage');
 
-  const [star, setStar] = useState(1)
-  const [review, setReview] = useState('')
+  const [star, setStar] = useState(1);
+  const [review, setReview] = useState('');
 
-  const theme = useColorPalates()
+  const theme = useColorPalates();
 
   const handleFeedback = () => {
-    const rateBox = config.ratingBox
-    const reviewContainer = config.reviewBox
+    const rateBox = config.ratingBox;
+    const reviewContainer = config.reviewBox;
 
     const sendReviewSuccess = () => {
       setTimeout(() => {
-        toast.success(`Review sent successfully`)
-        setReview('')
-      }, 2000)
-    }
+        toast.success(`Review sent successfully`);
+        setReview('');
+      }, 2000);
+    };
 
     const sendReviewError = () => {
-      toast.error(`Please provide valid review`)
-    }
+      toast.error(`Please provide valid review`);
+    };
 
     if (rateBox && reviewContainer) {
-      star === 0 ? sendReviewError() : sendReviewSuccess()
+      star === 0 ? sendReviewError() : sendReviewSuccess();
     } else if (rateBox && !reviewContainer) {
-      star === 0 ? sendReviewError() : sendReviewSuccess()
+      star === 0 ? sendReviewError() : sendReviewSuccess();
     } else if (!rateBox && reviewContainer) {
-      review === '' ? sendReviewError() : sendReviewSuccess()
+      review === '' ? sendReviewError() : sendReviewSuccess();
     }
-  }
+  };
 
   return (
     <div className={styles.container}>
@@ -73,10 +73,10 @@ const FeedbackPage: React.FC = () => {
               value={star}
               max={config.ratingMaxStars}
               onChange={(event, newValue) => {
-                console.log(event)
+                console.log(event);
                 setStar(() => {
-                  return newValue === null ? 1 : newValue
-                })
+                  return newValue === null ? 1 : newValue;
+                });
               }}
               defaultValue={1}
               sx={{
@@ -134,7 +134,7 @@ const FeedbackPage: React.FC = () => {
                 border: `2px solid ${theme?.primary?.light}`,
               }}
               onChange={(e) => {
-                setReview(e.target.value)
+                setReview(e.target.value);
               }}
             />
 
@@ -161,7 +161,7 @@ const FeedbackPage: React.FC = () => {
         )}
       </Box>
     </div>
-  )
-}
+  );
+};
 
-export default FeedbackPage
+export default FeedbackPage;

@@ -7,7 +7,7 @@ import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { Button, List, Typography } from '@mui/material';
 import cloud from './assets/cloud-copy.png';
-import { useColorPalates } from 'stencil-hooks';
+import { useColorPalates } from '@repo/hooks';
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 var style = {
   position: 'absolute',
@@ -84,7 +84,7 @@ var WeatherStatus = function WeatherStatus() {
           }), /*#__PURE__*/_jsxs("div", {
             className: "text-center p-3",
             children: [/*#__PURE__*/_jsx("img", {
-              src: cloud
+              src: cloud.src
             }), /*#__PURE__*/_jsx(List, {
               dense: true,
               children: weatherDetails.map(function (item) {

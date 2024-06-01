@@ -3,15 +3,15 @@ import { Box, Container, IconButton } from '@mui/material'
 import { useMemo } from 'react'
 import ForumIcon from '@mui/icons-material/Forum'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
-import { useColorPalates } from 'stencil-hooks'
+import { useColorPalates } from '@repo/hooks'
 import {
   JsonToTable,
   List,
   OTPInput,
   ShareButtons,
   VoiceRecorder,
-} from 'stencil-molecule'
-import { Navbar } from 'stencil-molecule'
+} from '@repo/molecules'
+import { Navbar } from '@repo/molecules'
 
 const Components = () => {
   const [otp, setOtp] = useState('')

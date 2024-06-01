@@ -6,7 +6,7 @@ import { Box } from '@mui/material';
 import Rating from '@mui/material/Rating';
 import Button from '@mui/material/Button';
 import { toast } from 'react-hot-toast';
-import { useUiConfig, useColorPalates } from 'stencil-hooks';
+import { useUiConfig, useColorPalates } from '@repo/hooks';
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 var FeedbackPage = function FeedbackPage() {
   var _theme$primary, _theme$primary2, _theme$primary3, _theme$primary4, _theme$primary5, _theme$primary6, _theme$primary7, _theme$primary8, _theme$primary9;

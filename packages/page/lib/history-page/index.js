@@ -8,17 +8,17 @@ exports.default = void 0;
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 var _react = require("react");
 var _styleModule = _interopRequireDefault(require("./style.module.css"));
-var _stencilMolecule = require("stencil-molecule");
+var _molecules = require("@repo/molecules");
 var _material = require("@mui/material");
 var _iconsMaterial = require("@mui/icons-material");
 var _moment = _interopRequireDefault(require("moment"));
 var _lodash = require("lodash");
 var _sample = _interopRequireDefault(require("./sample.json"));
-var _stencilHooks = require("stencil-hooks");
+var _hooks = require("@repo/hooks");
 var _jsxRuntime = require("react/jsx-runtime");
 var HistoryPage = function HistoryPage() {
   var _theme$primary2, _theme$primary3, _theme$primary4, _config$title, _theme$primary5;
-  var config = (0, _stencilHooks.useUiConfig)('component', 'historyPage');
+  var config = (0, _hooks.useUiConfig)('component', 'historyPage');
   var _useState = (0, _react.useState)(true),
     _useState2 = (0, _slicedToArray2.default)(_useState, 2),
     isFetching = _useState2[0],
@@ -27,7 +27,7 @@ var HistoryPage = function HistoryPage() {
     _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
     list = _useState4[0],
     setList = _useState4[1];
-  var theme = (0, _stencilHooks.useColorPalates)();
+  var theme = (0, _hooks.useColorPalates)();
   var handleClick = (0, _react.useCallback)(function (activeItem) {
     console.log({
       activeItem: activeItem
@@ -79,7 +79,7 @@ var HistoryPage = function HistoryPage() {
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {
     children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       className: _styleModule.default.main,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilMolecule.FullPageLoader, {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_molecules.FullPageLoader, {
         loading: isFetching,
         color: theme === null || theme === void 0 || (_theme$primary3 = theme.primary) === null || _theme$primary3 === void 0 ? void 0 : _theme$primary3.main
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
@@ -90,7 +90,7 @@ var HistoryPage = function HistoryPage() {
         children: (_config$title = config.title) !== null && _config$title !== void 0 ? _config$title : 'No Label Provided'
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         className: _styleModule.default.chatList,
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilMolecule.List, {
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_molecules.List, {
           items: list,
           noItem: {
             label: config.noItemsText,

@@ -12,7 +12,7 @@ var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/de
 var _react = _interopRequireWildcard(require("react"));
 var _material = require("@mui/material");
 var _iconsMaterial = require("@mui/icons-material");
-var _stencilHooks = require("stencil-hooks");
+var _hooks = require("@repo/hooks");
 var _rice = _interopRequireDefault(require("./assets/rice.jpeg"));
 var _wheat = _interopRequireDefault(require("./assets/wheat.png"));
 var _more = _interopRequireDefault(require("./assets/more.png"));
@@ -36,8 +36,8 @@ var Item = (0, _material.styled)(_material.Paper)(function (_ref) {
 });
 var OptionSelector = function OptionSelector() {
   var _theme$primary;
-  var config = (0, _stencilHooks.useUiConfig)('component', 'optionSelectorPage');
-  var theme = (0, _stencilHooks.useColorPalates)();
+  var config = (0, _hooks.useUiConfig)('component', 'optionSelectorPage');
+  var theme = (0, _hooks.useColorPalates)();
   var _React$useState = _react.default.useState([]),
     _React$useState2 = (0, _slicedToArray2.default)(_React$useState, 2),
     activeElements = _React$useState2[0],
@@ -178,7 +178,7 @@ var OptionSelector = function OptionSelector() {
                     color: "success"
                   })
                 }), /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
-                  src: _ === null || _ === void 0 ? void 0 : _.image,
+                  src: _ === null || _ === void 0 ? void 0 : _.image.src,
                   style: {
                     width: '50px',
                     height: '50px',

@@ -5,7 +5,7 @@ import { ListItemIcon, ListItemText, ListItemButton, ListSubheader, Collapse } f
 import { ExpandLess, StarBorder, ExpandMore, ErrorOutline } from '@mui/icons-material';
 import { map } from 'lodash';
 import { Avatar, Divider, ListItem, ListItemAvatar, Typography } from '@mui/material';
-import { useBotConfig } from 'stencil-hooks';
+import { useBotConfig } from '@repo/hooks';
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 export var List = function List(_ref) {
   var _noItem$label;

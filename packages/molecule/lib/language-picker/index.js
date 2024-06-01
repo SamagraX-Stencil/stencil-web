@@ -11,7 +11,7 @@ var _MenuItem = _interopRequireDefault(require("@mui/material/MenuItem"));
 var _FormControl = _interopRequireDefault(require("@mui/material/FormControl"));
 var _Select = _interopRequireDefault(require("@mui/material/Select"));
 var _lodash = require("lodash");
-var _stencilHooks = require("stencil-hooks");
+var _hooks = require("@repo/hooks");
 var _jsxRuntime = require("react/jsx-runtime");
 var LanguagePicker = function LanguagePicker() {
   var _React$useState = _react.default.useState('en'),
@@ -21,7 +21,7 @@ var LanguagePicker = function LanguagePicker() {
   var handleChange = function handleChange(event) {
     setActiveLanguage(event.target.value);
   };
-  var theme = (0, _stencilHooks.useColorPalates)();
+  var theme = (0, _hooks.useColorPalates)();
   var languages = [{
     name: 'Eng',
     value: 'en'

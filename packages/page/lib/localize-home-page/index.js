@@ -12,14 +12,14 @@ var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 var _indexModule = _interopRequireDefault(require("./index.module.css"));
 var _react = _interopRequireWildcard(require("react"));
-var _stencilProvider = require("stencil-provider");
+var _provider = require("@repo/provider");
 var _sendButton = _interopRequireDefault(require("./assets/sendButton.svg"));
-var _stencilHooks = require("stencil-hooks");
+var _hooks = require("@repo/hooks");
 var _navigation = require("next/navigation");
 var _image = _interopRequireDefault(require("next/image"));
 var _reactHotToast = _interopRequireDefault(require("react-hot-toast"));
 var _uuid = require("uuid");
-var _stencilMolecule = require("stencil-molecule");
+var _molecules = require("@repo/molecules");
 var _location = require("../resources/utils/location");
 var _downtimePage = _interopRequireDefault(require("../downtime-page"));
 var _kalia_status = _interopRequireDefault(require("./assets/kalia_status.png"));
@@ -31,12 +31,12 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
 var LocalHomePage = function LocalHomePage() {
   var _theme$primary2;
   var router = (0, _navigation.useRouter)();
-  var context = (0, _react.useContext)(_stencilProvider.AppContext);
-  var botConfig = (0, _stencilHooks.useBotConfig)('component', 'chatUI');
-  var config = (0, _stencilHooks.useBotConfig)('component', 'homePage');
+  var context = (0, _react.useContext)(_provider.AppContext);
+  var botConfig = (0, _hooks.useBotConfig)('component', 'chatUI');
+  var config = (0, _hooks.useBotConfig)('component', 'homePage');
   var micWidth = config.micWidth,
     micHeight = config.micHeight;
-  var t = (0, _stencilHooks.useLocalization)();
+  var t = (0, _hooks.useLocalization)();
   var inputRef = (0, _react.useRef)(null);
   var placeholder = (0, _react.useMemo)(function () {
     return t('message.ask_ur_question');
@@ -63,7 +63,7 @@ var LocalHomePage = function LocalHomePage() {
     _useState10 = (0, _slicedToArray2.default)(_useState9, 2),
     cursorPosition = _useState10[0],
     setCursorPosition = _useState10[1];
-  var theme = (0, _stencilHooks.useBotAppColorPalates)();
+  var theme = (0, _hooks.useBotAppColorPalates)();
   var secondaryColor = (0, _react.useMemo)(function () {
     var _theme$primary;
     return theme === null || theme === void 0 || (_theme$primary = theme.primary) === null || _theme$primary === void 0 ? void 0 : _theme$primary.main;
@@ -355,7 +355,7 @@ var LocalHomePage = function LocalHomePage() {
             width: micWidth
           },
           ref: voiceRecorderRef,
-          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_stencilMolecule.VoiceRecorder, {
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_molecules.VoiceRecorder, {
             setInputMsg: setInputMsg,
             tapToSpeak: true
           })

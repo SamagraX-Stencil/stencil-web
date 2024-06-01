@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _stencilHooks = require("stencil-hooks");
+var _hooks = require("@repo/hooks");
 var _indexModule = _interopRequireDefault(require("./index.module.css"));
 var _jsxRuntime = require("react/jsx-runtime");
 var LocalLaunchPage = function LocalLaunchPage(_ref) {
@@ -13,7 +13,7 @@ var LocalLaunchPage = function LocalLaunchPage(_ref) {
   var theme = _ref.theme,
     config = _ref.config,
     compConfig = _ref.compConfig;
-  var t = (0, _stencilHooks.useLocalization)();
+  var t = (0, _hooks.useLocalization)();
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     className: "".concat(_indexModule.default.container),
     style: {

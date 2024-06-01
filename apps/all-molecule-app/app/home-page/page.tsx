@@ -1,5 +1,5 @@
 'use client'
-import { HomePage } from 'stencil-pages'
+import { HomePage } from '@repo/pages'
 import React from 'react'
 
 const Home = () => {

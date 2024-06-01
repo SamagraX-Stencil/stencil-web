@@ -14,13 +14,13 @@ var _material = require("@mui/material");
 var _Rating = _interopRequireDefault(require("@mui/material/Rating"));
 var _Button = _interopRequireDefault(require("@mui/material/Button"));
 var _reactHotToast = require("react-hot-toast");
-var _stencilHooks = require("stencil-hooks");
+var _hooks = require("@repo/hooks");
 var _jsxRuntime = require("react/jsx-runtime");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 var FeedbackPage = function FeedbackPage() {
   var _theme$primary, _theme$primary2, _theme$primary3, _theme$primary4, _theme$primary5, _theme$primary6, _theme$primary7, _theme$primary8, _theme$primary9;
-  var config = (0, _stencilHooks.useUiConfig)('component', 'feedbackPage');
+  var config = (0, _hooks.useUiConfig)('component', 'feedbackPage');
   var _useState = (0, _react.useState)(1),
     _useState2 = (0, _slicedToArray2.default)(_useState, 2),
     star = _useState2[0],
@@ -29,7 +29,7 @@ var FeedbackPage = function FeedbackPage() {
     _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
     review = _useState4[0],
     setReview = _useState4[1];
-  var theme = (0, _stencilHooks.useColorPalates)();
+  var theme = (0, _hooks.useColorPalates)();
   var handleFeedback = function handleFeedback() {
     var rateBox = config.ratingBox;
     var reviewContainer = config.reviewBox;

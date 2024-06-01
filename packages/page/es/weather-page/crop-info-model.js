@@ -8,7 +8,7 @@ import Fade from '@mui/material/Fade';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { Button, Typography } from '@mui/material';
-import { useColorPalates } from 'stencil-hooks';
+import { useColorPalates } from '@repo/hooks';
 import facebookIcon from './assets/facebook.png';
 import whatsappIcon from './assets/whatsapp.png';
 import telegramIcon from './assets/telegram.png';
@@ -216,7 +216,7 @@ var CropInfoModel = function CropInfoModel(_ref2) {
                 return speakText('आज गेहूं में कीटनाशक डालने का सबसे अच्छा दिन है  आज कम बारिश है तो गेहूं की सिंचाई मत करो|');
               },
               children: [/*#__PURE__*/_jsx("img", {
-                src: speaker,
+                src: speaker.src,
                 alt: "",
                 style: {
                   marginRight: '10px'
@@ -236,7 +236,7 @@ var CropInfoModel = function CropInfoModel(_ref2) {
               },
               children: sharingIcon.map(function (element) {
                 return /*#__PURE__*/_jsx("img", {
-                  src: element.image,
+                  src: element.image.src,
                   onClick: handleShare,
                   height: "32px",
                   width: "32px"

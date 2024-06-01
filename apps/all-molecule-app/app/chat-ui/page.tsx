@@ -1,5 +1,5 @@
 'use client'
-import { ChatUI } from 'stencil-molecule'
+import { ChatUI } from '@repo/molecules'
 import React from 'react'
 
 const ChatPage = () => {

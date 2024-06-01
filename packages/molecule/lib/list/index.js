@@ -12,7 +12,7 @@ var _List = _interopRequireDefault(require("@mui/material/List"));
 var _material = require("@mui/material");
 var _iconsMaterial = require("@mui/icons-material");
 var _lodash = require("lodash");
-var _stencilHooks = require("stencil-hooks");
+var _hooks = require("@repo/hooks");
 var _jsxRuntime = require("react/jsx-runtime");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -25,7 +25,7 @@ var List = exports.List = function List(_ref) {
     _React$useState2 = (0, _slicedToArray2.default)(_React$useState, 2),
     openItem = _React$useState2[0],
     setOpenItem = _React$useState2[1];
-  var config = (0, _stencilHooks.useBotConfig)('component', 'historyPage');
+  var config = (0, _hooks.useBotConfig)('component', 'historyPage');
   var handleClick = React.useCallback(function (id) {
     if (id === openItem) setOpenItem(null);else setOpenItem(id);
   }, [openItem]);

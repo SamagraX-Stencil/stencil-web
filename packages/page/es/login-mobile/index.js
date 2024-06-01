@@ -2,9 +2,8 @@ import _slicedToArray from "@babel/runtime/helpers/esm/slicedToArray";
 import React, { useCallback, useState } from 'react';
 import farmer from './assets/farmer.jpeg';
 import { Box, CircularProgress, TextField, Button } from '@mui/material';
-import { ArrowForward } from '@mui/icons-material';
-import { useUiConfig, useColorPalates } from 'stencil-hooks';
-import { LanguagePicker } from 'stencil-molecule';
+import { useUiConfig, useColorPalates } from '@repo/hooks';
+import { LanguagePicker } from '@repo/molecules';
 import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
 var LoginMobile = function LoginMobile() {
   var _theme$primary;
@@ -66,8 +65,8 @@ var LoginMobile = function LoginMobile() {
     children: [/*#__PURE__*/_jsx("div", {
       style: {
         position: 'absolute',
-        top: '10px',
-        left: 'calc(100% - 85px - 10px)'
+        top: '4px',
+        right: '8px'
       },
       children: /*#__PURE__*/_jsx(LanguagePicker, {})
     }), /*#__PURE__*/_jsx("div", {
@@ -88,11 +87,11 @@ var LoginMobile = function LoginMobile() {
         children: [/*#__PURE__*/_jsx("p", {
           style: {
             marginTop: '24px',
-            fontSize: '22px',
-            fontWeight: 400,
+            fontSize: '24px',
+            fontWeight: '400',
             color: '#51586B'
           },
-          children: (config === null || config === void 0 ? void 0 : config.title) || 'कृपया अपना मोबाइल नंबर बताएं'
+          children: config === null || config === void 0 ? void 0 : config.title
         }), /*#__PURE__*/_jsxs("div", {
           style: {
             display: 'flex',
@@ -114,7 +113,7 @@ var LoginMobile = function LoginMobile() {
               value: input,
               helperText: !valid ? errorMessage : '',
               onChange: handleInput,
-              label: (config === null || config === void 0 ? void 0 : config.placeholder) || 'मोबाइल नंबर',
+              label: config === null || config === void 0 ? void 0 : config.placeholder,
               name: 'phone',
               autoComplete: 'phone',
               autoFocus: true
@@ -128,19 +127,13 @@ var LoginMobile = function LoginMobile() {
                 type: "submit",
                 fullWidth: true,
                 variant: "contained",
-                endIcon: /*#__PURE__*/_jsx(ArrowForward, {}),
                 sx: {
                   textTransform: 'none',
                   mt: 3,
                   mb: 4,
                   p: 1,
-                  background: (_theme$primary = theme.primary) === null || _theme$primary === void 0 ? void 0 : _theme$primary.dark,
-                  height: '60px',
+                  background: (_theme$primary = theme.primary) === null || _theme$primary === void 0 ? void 0 : _theme$primary.main,
                   borderRadius: '10px'
-                },
-                style: {
-                  fontSize: '18px',
-                  fontWeight: 500
                 }
                 // onClick={handleLogin}
                 ,
@@ -149,7 +142,7 @@ var LoginMobile = function LoginMobile() {
                   size: 24,
                   color: "inherit"
                 }) : /*#__PURE__*/_jsx(_Fragment, {
-                  children: (config === null || config === void 0 ? void 0 : config.btnText) || 'ओटीपी भेजा'
+                  children: config === null || config === void 0 ? void 0 : config.btnText
                 })
               })
             })
@@ -159,7 +152,7 @@ var LoginMobile = function LoginMobile() {
     }), /*#__PURE__*/_jsx("main", {
       children: /*#__PURE__*/_jsx("div", {
         children: /*#__PURE__*/_jsx("img", {
-          src: (config === null || config === void 0 ? void 0 : config.backgroundImage) || farmer,
+          src: (config === null || config === void 0 ? void 0 : config.backgroundImage) || farmer.src,
           alt: "Farmer with vegetables",
           style: {
             maxWidth: '100%',

@@ -1,113 +1,102 @@
-import React, { useCallback, useState } from 'react'
-import styles from './index.module.css'
-import Box from '@mui/material/Box'
-import TextField from '@mui/material/TextField'
-import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography'
-import _logo from './assets/logo.png'
-import CircularProgress from '@mui/material/CircularProgress'
-import { toast } from 'react-hot-toast'
-import { useBotAppColorPalates } from 'stencil-hooks'
-import { useLocalization } from 'stencil-hooks'
-import { useRouter } from 'next/navigation'
-import { useBotConfig } from 'stencil-hooks'
+import React, { useCallback, useState } from 'react';
+import styles from './index.module.css';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import _logo from './assets/logo.png';
+import CircularProgress from '@mui/material/CircularProgress';
+import { toast } from 'react-hot-toast';
+import { useBotAppColorPalates } from '@repo/hooks';
+import { useLocalization } from '@repo/hooks';
+import { useRouter } from 'next/navigation';
+import { useBotConfig } from '@repo/hooks';
 const LocalLoginMobileAadharPage: React.FC = () => {
-  const config = useBotConfig('component', 'loginMobileAadharPage')
-  const {
-    loginWithAadhaar,
-    showSignUp,
-    showAlternateSignIn,
-    logo,
-    showLogo,
-    showSplitedView,
-  } = config
+  const config = useBotConfig('component', 'loginMobileAadharPage');
+  const { loginWithAadhaar, showSignUp, showAlternateSignIn, logo, showLogo, showSplitedView } =
+    config;
 
-  const t = useLocalization()
-  const router = useRouter()
-  const [isAadharClicked, setIsAadharClicked] =
-    useState<boolean>(loginWithAadhaar)
-  const [input, setInput] = useState('')
-  const [valid, setValid] = useState(true)
-  const [errorMessage, setErrorMessage] = useState('')
-  const [loading, setLoading] = useState(false)
+  const t = useLocalization();
+  const router = useRouter();
+  const [isAadharClicked, setIsAadharClicked] = useState<boolean>(loginWithAadhaar);
+  const [input, setInput] = useState('');
+  const [valid, setValid] = useState(true);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const theme = useBotAppColorPalates()
+  const theme = useBotAppColorPalates();
 
   const handleInput = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      let reg
-      let errorMessage = ''
+      let reg;
+      let errorMessage = '';
 
-      const inputValue = e.target.value
-      const numericInput = inputValue.replace(/[^0-9]/g, '')
+      const inputValue = e.target.value;
+      const numericInput = inputValue.replace(/[^0-9]/g, '');
 
       if (isAadharClicked) {
-        reg = /^\d{12}$/ // Allow up to 12 digits for Aadhar
-        errorMessage = 'Please enter a valid Aadhar number'
+        reg = /^\d{12}$/; // Allow up to 12 digits for Aadhar
+        errorMessage = 'Please enter a valid Aadhar number';
       } else {
-        reg = /^\d{10}$/ // Allow any number of digits for Phone Number
-        errorMessage = 'Please enter a valid mobile number'
+        reg = /^\d{10}$/; // Allow any number of digits for Phone Number
+        errorMessage = 'Please enter a valid mobile number';
       }
 
-      const isValid = reg.test(numericInput)
-      setValid(isValid)
+      const isValid = reg.test(numericInput);
+      setValid(isValid);
 
-      setInput(numericInput) // Update input directly
+      setInput(numericInput); // Update input directly
 
       if (!isValid) {
-        setErrorMessage(errorMessage)
+        setErrorMessage(errorMessage);
       }
     },
-    [isAadharClicked]
-  )
+    [isAadharClicked],
+  );
 
   const handleAadharClick = useCallback(() => {
-    setIsAadharClicked((prop) => !prop)
-  }, [])
+    setIsAadharClicked((prop) => !prop);
+  }, []);
 
   const handleRegistration = () => {
     // Register User
-  }
+  };
 
   const handleLogin = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault()
-      if (
-        (isAadharClicked && input.length === 12) ||
-        (!isAadharClicked && input.length === 10)
-      ) {
-        console.log('hello')
-        setLoading(true)
+      e.preventDefault();
+      if ((isAadharClicked && input.length === 12) || (!isAadharClicked && input.length === 10)) {
+        console.log('hello');
+        setLoading(true);
         if (navigator.onLine) {
-          fetch(
-            `${process.env.NEXT_PUBLIC_USER_SERVICE_URL}/api/sendOTP?phone=${input}`,
-            { method: 'GET' }
-          )
+          fetch(`${process.env.NEXT_PUBLIC_USER_SERVICE_URL}/api/sendOTP?phone=${input}`, {
+            method: 'GET',
+          })
             .then((response) => {
-              setLoading(false)
+              setLoading(false);
               if (response.status === 200) {
                 // localStorage.setItem('phoneNumber',input)
-                const url = `/otp?state=${input}`
-                router.push(url)
+                const url = `/otp?state=${input}`;
+                router.push(url);
 
                 // router.push({ pathname: '/otp', query: { state: input } })
               } else {
-                setLoading(false)
-                toast.error(`${t('message.otp_not_sent')}`)
+                setLoading(false);
+                toast.error(`${t('message.otp_not_sent')}`);
               }
             })
             .catch((err) => {
-              setLoading(false)
-              toast.error(err.message)
-            })
+              setLoading(false);
+              toast.error(err.message);
+            });
         } else {
-          toast.error(`${t('label.no_internet')}`)
+          toast.error(`${t('label.no_internet')}`);
         }
       }
     },
-    [isAadharClicked, input]
-  )
-  console.log('debug login:', { config })
+    [isAadharClicked, input],
+  );
+  console.log('debug login:', { config });
   return (
     <>
       <meta
@@ -116,10 +105,7 @@ const LocalLoginMobileAadharPage: React.FC = () => {
       ></meta>
       <div className={styles.main}>
         {showSplitedView && (
-          <div
-            className={styles.leftColumn}
-            style={{ background: theme?.primary?.main }}
-          ></div>
+          <div className={styles.leftColumn} style={{ background: theme?.primary?.main }}></div>
         )}
 
         <div className={styles.rightColumn}>
@@ -167,11 +153,7 @@ const LocalLoginMobileAadharPage: React.FC = () => {
                 width={config.logowidth || '280px'}
               />
             )}
-            <Box
-              component="form"
-              onSubmit={handleLogin}
-              sx={{ mt: 1, width: '100%' }}
-            >
+            <Box component="form" onSubmit={handleLogin} sx={{ mt: 1, width: '100%' }}>
               <TextField
                 margin="normal"
                 error={!valid}
@@ -180,11 +162,7 @@ const LocalLoginMobileAadharPage: React.FC = () => {
                 value={input}
                 helperText={!valid ? errorMessage : ''}
                 onChange={handleInput}
-                label={
-                  isAadharClicked
-                    ? `Enter Aadhar Number`
-                    : t('message.enter_mobile')
-                }
+                label={isAadharClicked ? `Enter Aadhar Number` : t('message.enter_mobile')}
                 name={isAadharClicked ? 'aadhar' : 'phone'}
                 autoComplete={isAadharClicked ? 'aadhar' : 'phone'}
                 autoFocus
@@ -238,9 +216,7 @@ const LocalLoginMobileAadharPage: React.FC = () => {
                     cursor: 'pointer',
                   }}
                 >
-                  {!isAadharClicked
-                    ? `Aadhar Number`
-                    : t('message.enter_mobile')}
+                  {!isAadharClicked ? `Aadhar Number` : t('message.enter_mobile')}
                 </Typography>
               </>
             )}
@@ -248,7 +224,7 @@ const LocalLoginMobileAadharPage: React.FC = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default LocalLoginMobileAadharPage
+export default LocalLoginMobileAadharPage;

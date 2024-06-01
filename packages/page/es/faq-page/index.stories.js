@@ -1,4 +1,4 @@
-import { CustomThemeProvider } from 'stencil-provider';
+import { CustomThemeProvider } from '@repo/provider';
 import { CssBaseline } from '@mui/material';
 import FAQPage from './index';
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";

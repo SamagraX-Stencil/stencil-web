@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { CustomThemeProvider } from 'stencil-provider'
-import { CssBaseline } from '@mui/material'
-import DowntimePage from './index'
+import { CustomThemeProvider } from '@repo/provider';
+import { CssBaseline } from '@mui/material';
+import DowntimePage from './index';
 
 const meta = {
   title: 'Pages/DowntimePage',
@@ -23,7 +23,7 @@ const meta = {
     config: {
       component: {
         title: "We're under maintainance",
-        downTimeImage: '/src/pages/downtime-page/assets/downTimeGIF.gif',
+        downTimeImage: '/src/downtime-page/assets/downTimeGIF.gif',
         supportingText: 'Have an urgent query?',
         contactLink: 'Call Ama Krushi',
         refreshText: 'Try Again',
@@ -31,9 +31,9 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof DowntimePage>
+} satisfies Meta<typeof DowntimePage>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Downtime: Story = {}
+export const Downtime: Story = {};

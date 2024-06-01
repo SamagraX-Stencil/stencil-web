@@ -1,15 +1,15 @@
-import React from 'react'
-import sun from './assets/sun.png'
-import book from './assets/book.png'
-import chat from './assets/chat.png'
-import pest from './assets/pest.png'
-import cloud from './assets/cloud.png'
-import { LocationOnRounded } from '@mui/icons-material'
+import React from 'react';
+import sun from './assets/sun.png';
+import book from './assets/book.png';
+import chat from './assets/chat.png';
+import pest from './assets/pest.png';
+import cloud from './assets/cloud.png';
+import { LocationOnRounded } from '@mui/icons-material';
 // import sunnyImage from './assets/Sunny.svg'
 // import cloudyImage from './assets/Night.svg'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-import { map } from 'lodash'
+import { map } from 'lodash';
 import {
   Badge,
   BottomNavigation,
@@ -20,13 +20,13 @@ import {
   Paper,
   Typography,
   styled,
-} from '@mui/material'
-import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded'
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded'
-import KeyboardVoiceRoundedIcon from '@mui/icons-material/KeyboardVoiceRounded'
-import { useUiConfig, useColorPalates } from 'stencil-hooks'
+} from '@mui/material';
+import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
+import KeyboardVoiceRoundedIcon from '@mui/icons-material/KeyboardVoiceRounded';
+import { useUiConfig, useColorPalates } from '@repo/hooks';
 
-import WeatherStatus from './model'
+import WeatherStatus from './model';
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -35,18 +35,18 @@ const Item = styled(Paper)(({ theme }) => ({
   color: '#363A44',
   borderRadius: '5px',
   position: 'relative',
-}))
+}));
 
 const Dashboard = () => {
-  const config = useUiConfig('component', 'dashboard')
-  console.log({ config })
-  const theme = useColorPalates()
-  const [value, setValue] = React.useState(0)
+  const config = useUiConfig('component', 'dashboard');
+  console.log({ config });
+  const theme = useColorPalates();
+  const [value, setValue] = React.useState(0);
   const chips = [
     { id: 1, heading: 'हवा की दिशा', label: 'उत्तर पश्चिम' },
     { id: 2, heading: 'हवा की गति', label: 'धीमी', color: '#101860' },
     { id: 3, heading: 'नमी', label: 'ज़्यादा', color: '#4CC3CB' },
-  ]
+  ];
 
   const options = [
     {
@@ -73,7 +73,7 @@ const Dashboard = () => {
       key: config?.card4Title,
       image: config?.card4Image || chat,
     },
-  ]
+  ];
   return (
     <div
       style={{
@@ -95,17 +95,10 @@ const Dashboard = () => {
       >
         <div className="mb-1 mt-4">
           <div className="text-right">
-            <img src={sun} style={{ height: '30px', width: '30px' }} />
-            <div
-              style={{ display: 'flex', alignItems: 'flex-end' }}
-              className="my-4 mr-2"
-            >
+            <img src={sun.src} style={{ height: '30px', width: '30px' }} />
+            <div style={{ display: 'flex', alignItems: 'flex-end' }} className="my-4 mr-2">
               <div style={{ width: '30%' }}>
-                <h1
-                  style={{ color: 'white', fontSize: '48px', fontWeight: 600 }}
-                >
-                  27°C
-                </h1>
+                <h1 style={{ color: 'white', fontSize: '48px', fontWeight: 600 }}>27°C</h1>
               </div>
               <div
                 className="text-right"
@@ -113,10 +106,8 @@ const Dashboard = () => {
               >
                 <h3>स्पष्ट</h3>
                 <p>
-                  <LocationOnRounded
-                    style={{ fontSize: '18px', fontWeight: 400 }}
-                  />{' '}
-                  बिशनपुर सेक्टर 58, नोएडा
+                  <LocationOnRounded style={{ fontSize: '18px', fontWeight: 400 }} /> बिशनपुर सेक्टर
+                  58, नोएडा
                 </p>
               </div>
             </div>
@@ -127,11 +118,7 @@ const Dashboard = () => {
           className="p-2 text-center"
         >
           <div style={{ width: '80%' }} className="mx-auto px-8 py-2 ">
-            <Grid
-              container
-              spacing={{ xs: 2, md: 3 }}
-              columns={{ xs: 3, sm: 8, md: 12 }}
-            >
+            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 3, sm: 8, md: 12 }}>
               {map(chips, (chip) => (
                 <Grid item xs={1} sm={4} md={4}>
                   <div>
@@ -220,7 +207,7 @@ const Dashboard = () => {
                   }}
                 >
                   <img
-                    src={_?.image}
+                    src={_?.image.src}
                     style={{
                       width: '50px',
                       height: '50px',
@@ -252,16 +239,13 @@ const Dashboard = () => {
             </p>
           </div>
         </div>
-        <Paper
-          sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
-          elevation={3}
-        >
+        <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
           <BottomNavigation
             showLabels
             value={value}
             onChange={(event, newValue) => {
-              console.log(event)
-              setValue(newValue)
+              console.log(event);
+              setValue(newValue);
             }}
           >
             <BottomNavigationAction label="होम " icon={<HomeRoundedIcon />} />
@@ -292,7 +276,7 @@ const Dashboard = () => {
         </Paper>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

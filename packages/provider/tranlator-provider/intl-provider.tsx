@@ -1,5 +1,5 @@
 'use client'
-import configObj from 'stencil-configmanager'
+import configObj from '@repo/configmanager'
 // import flagsmith from 'flagsmith/isomorphic'
 import React, {
   FC,

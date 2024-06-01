@@ -13,12 +13,12 @@ var _react = require("react");
 var _sendButton = _interopRequireDefault(require("./assets/sendButton.png"));
 var _weather_advisory = _interopRequireDefault(require("./assets/weather_advisory.png"));
 var _reactHotToast = _interopRequireDefault(require("react-hot-toast"));
-var _stencilHooks = require("stencil-hooks");
+var _hooks = require("@repo/hooks");
 var _jsxRuntime = require("react/jsx-runtime");
 var HomePage = function HomePage() {
   var _theme$primary, _config$btns;
-  var config = (0, _stencilHooks.useUiConfig)('component', 'homePage');
-  var theme = (0, _stencilHooks.useColorPalates)();
+  var config = (0, _hooks.useUiConfig)('component', 'homePage');
+  var theme = (0, _hooks.useColorPalates)();
   var inputRef = (0, _react.useRef)(null);
   var _useState = (0, _react.useState)(''),
     _useState2 = (0, _slicedToArray2.default)(_useState, 2),
@@ -79,7 +79,7 @@ var HomePage = function HomePage() {
                 return console.log('clicked');
               },
               children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
-                src: (btn === null || btn === void 0 ? void 0 : btn.image) || _weather_advisory.default,
+                src: (btn === null || btn === void 0 ? void 0 : btn.image) || _weather_advisory.default.src,
                 alt: btn === null || btn === void 0 ? void 0 : btn.title
               }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
                 children: btn === null || btn === void 0 ? void 0 : btn.title

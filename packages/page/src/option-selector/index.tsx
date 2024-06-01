@@ -1,26 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useCallback } from 'react'
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  IconButton,
-  Link,
-  Paper,
-  styled,
-} from '@mui/material'
-import {
-  ArrowBackIosNewRounded,
-  ArrowForward,
-  CheckCircleRounded,
-} from '@mui/icons-material'
+import React, { useCallback } from 'react';
+import { Box, Button, Container, Grid, IconButton, Link, Paper, styled } from '@mui/material';
+import { ArrowBackIosNewRounded, ArrowForward, CheckCircleRounded } from '@mui/icons-material';
 
-import { useUiConfig, useColorPalates } from 'stencil-hooks'
-import rice from './assets/rice.jpeg'
-import wheat from './assets/wheat.png'
-import more from './assets/more.png'
-import { includes } from 'lodash'
+import { useUiConfig, useColorPalates } from '@repo/hooks';
+import rice from './assets/rice.jpeg';
+import wheat from './assets/wheat.png';
+import more from './assets/more.png';
+import { includes } from 'lodash';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -30,11 +17,11 @@ const Item = styled(Paper)(({ theme }) => ({
   color: '#363A44',
   borderRadius: '5px',
   position: 'relative',
-}))
+}));
 const OptionSelector = () => {
-  const config = useUiConfig('component', 'optionSelectorPage')
-  const theme = useColorPalates()
-  const [activeElements, setActiveElements] = React.useState<Array<any>>([])
+  const config = useUiConfig('component', 'optionSelectorPage');
+  const theme = useColorPalates();
+  const [activeElements, setActiveElements] = React.useState<Array<any>>([]);
   const vegetables = [
     { id: 1, label: 'गेहूँ', key: 'गेहूँ', image: rice },
     { id: 2, label: 'चावल', key: 'चावल', image: wheat },
@@ -45,7 +32,7 @@ const OptionSelector = () => {
     { id: 7, label: 'आलू', key: 'आलू', image: wheat },
     { id: 8, label: 'गेहूँ', key: 'आलू', image: rice },
     { id: 9, label: 'अन्य', key: 'more', image: more },
-  ]
+  ];
 
   const onItemClick = useCallback(
     (item: any) => () => {
@@ -53,17 +40,15 @@ const OptionSelector = () => {
         activeElements.length == (config?.optionSelectLength ?? 4) &&
         !activeElements?.includes(item?.id)
       ) {
-        alert(`You can select only ${config?.optionSelectLength ?? 4} items`)
-        return
+        alert(`You can select only ${config?.optionSelectLength ?? 4} items`);
+        return;
       }
       setActiveElements((prev) =>
-        prev?.includes(item?.id)
-          ? prev?.filter((i) => i !== item?.id)
-          : [...prev, item?.id]
-      )
+        prev?.includes(item?.id) ? prev?.filter((i) => i !== item?.id) : [...prev, item?.id],
+      );
     },
-    [activeElements, config?.optionSelectLength]
-  )
+    [activeElements, config?.optionSelectLength],
+  );
 
   return (
     <Container>
@@ -93,9 +78,7 @@ const OptionSelector = () => {
       </div>
 
       <div className="text-center mt-3">
-        <p style={{ color: '#51586B', fontSize: '18px' }}>
-          {config?.centerText}
-        </p>
+        <p style={{ color: '#51586B', fontSize: '18px' }}>{config?.centerText}</p>
         <div
           style={{
             display: 'flex',
@@ -134,7 +117,7 @@ const OptionSelector = () => {
                     </div>
                   )}
                   <img
-                    src={_?.image}
+                    src={_?.image.src}
                     style={{
                       width: '50px',
                       height: '50px',
@@ -168,12 +151,7 @@ const OptionSelector = () => {
               >
                 {config?.btnText}
               </Button>
-              <Link
-                component="button"
-                variant="body2"
-                onClick={() => {}}
-                className="mt-2"
-              >
+              <Link component="button" variant="body2" onClick={() => {}} className="mt-2">
                 {config?.helpingText1}
               </Link>
             </Box>
@@ -181,7 +159,7 @@ const OptionSelector = () => {
         </div>
       </div>
     </Container>
-  )
-}
+  );
+};
 
-export default OptionSelector
+export default OptionSelector;

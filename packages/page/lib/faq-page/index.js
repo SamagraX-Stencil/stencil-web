@@ -10,14 +10,14 @@ var _react = _interopRequireWildcard(require("react"));
 var _indexModule = _interopRequireDefault(require("./index.module.css"));
 var _material = require("@mui/material");
 var _iconsMaterial = require("@mui/icons-material");
-var _stencilHooks = require("stencil-hooks");
+var _hooks = require("@repo/hooks");
 var _jsxRuntime = require("react/jsx-runtime");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 var FAQPage = function FAQPage() {
   var _theme$primary, _config$title, _theme$primary2, _theme$primary3, _config$userManualTex2, _config$contactDescri, _theme$primary4, _theme$primary5, _config$contactText2;
-  var config = (0, _stencilHooks.useUiConfig)('component', 'faqs');
-  var theme = (0, _stencilHooks.useColorPalates)();
+  var config = (0, _hooks.useUiConfig)('component', 'faqs');
+  var theme = (0, _hooks.useColorPalates)();
   var downloadPDFHandler = (0, _react.useCallback)(function () {
     var _config$userManualTex;
     console.log((_config$userManualTex = config.userManualText) !== null && _config$userManualTex !== void 0 ? _config$userManualTex : 'User Manual');

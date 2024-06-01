@@ -2,8 +2,8 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useLocalization } from 'stencil-hooks'
-import { useBotConfig } from 'stencil-hooks'
+import { useLocalization } from '@repo/hooks'
+import { useBotConfig } from '@repo/hooks'
 
 const Profile: NextPage = () => {
   const t = useLocalization()

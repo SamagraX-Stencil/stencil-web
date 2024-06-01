@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { CustomThemeProvider } from 'stencil-provider'
-import { CssBaseline } from '@mui/material'
-import ComingSoonPage from './index'
+import { CustomThemeProvider } from '@repo/provider';
+import { CssBaseline } from '@mui/material';
+import ComingSoonPage from './index';
 
 const meta = {
   title: 'Pages/ComingSoonPage',
@@ -23,15 +23,14 @@ const meta = {
     config: {
       component: {
         title: 'Coming Soon!',
-        description:
-          'We are going to launch this feature very soon. Stay tuned!',
+        description: 'We are going to launch this feature very soon. Stay tuned!',
         backText: 'Back',
       },
     },
   },
-} satisfies Meta<typeof ComingSoonPage>
+} satisfies Meta<typeof ComingSoonPage>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const ComingSoon: Story = {}
+export const ComingSoon: Story = {};

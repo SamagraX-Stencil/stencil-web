@@ -1,15 +1,15 @@
 import { FC, useCallback, useEffect, useState } from 'react';
 import styles from './style.module.css';
 
-import { List } from 'stencil-molecule';
+import { List } from '@repo/molecules';
 import { IconButton } from '@mui/material';
 import { DeleteOutline, Forum } from '@mui/icons-material';
 import moment from 'moment';
-import { FullPageLoader } from 'stencil-molecule';
+import { FullPageLoader } from '@repo/molecules';
 import { ChatItem, HistoryItem } from './types';
 import { map } from 'lodash';
 import sample from './sample.json';
-import { useUiConfig, useColorPalates } from 'stencil-hooks';
+import { useUiConfig, useColorPalates } from '@repo/hooks';
 
 const HistoryPage: FC = () => {
   const config = useUiConfig('component', 'historyPage');

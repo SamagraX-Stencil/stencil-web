@@ -7,10 +7,10 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
 import { toast } from 'react-hot-toast';
-import { useBotAppColorPalates } from 'stencil-hooks';
-import { useLocalization } from 'stencil-hooks';
+import { useBotAppColorPalates } from '@repo/hooks';
+import { useLocalization } from '@repo/hooks';
 import { useRouter } from 'next/navigation';
-import { useBotConfig } from 'stencil-hooks';
+import { useBotConfig } from '@repo/hooks';
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 var LocalLoginMobileAadharPage = function LocalLoginMobileAadharPage() {
   var _theme$primary, _theme$primary2, _theme$primary3, _theme$primary4;

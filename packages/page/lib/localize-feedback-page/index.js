@@ -14,7 +14,7 @@ var _material = require("@mui/material");
 var _Rating = _interopRequireDefault(require("@mui/material/Rating"));
 var _Button = _interopRequireDefault(require("@mui/material/Button"));
 var _reactHotToast = require("react-hot-toast");
-var _stencilHooks = require("stencil-hooks");
+var _hooks = require("@repo/hooks");
 var _axios = _interopRequireDefault(require("axios"));
 var _jsxRuntime = require("react/jsx-runtime");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
@@ -28,9 +28,9 @@ var LocalFeedbackPage = function LocalFeedbackPage() {
     _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
     review = _useState4[0],
     setReview = _useState4[1];
-  var theme = (0, _stencilHooks.useBotAppColorPalates)();
-  var config = (0, _stencilHooks.useBotConfig)('component', 'feedbackPage');
-  var t = (0, _stencilHooks.useLocalization)();
+  var theme = (0, _hooks.useBotAppColorPalates)();
+  var config = (0, _hooks.useBotConfig)('component', 'feedbackPage');
+  var t = (0, _hooks.useLocalization)();
   (0, _react.useEffect)(function () {
     _axios.default.get("".concat(process.env.NEXT_PUBLIC_BFF_API_URL, "/feedback/").concat(localStorage.getItem('userID')), {
       headers: {

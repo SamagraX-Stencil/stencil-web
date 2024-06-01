@@ -2,9 +2,9 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { LocalFeedbackPage } from 'stencil-pages'
-import { useLocalization } from 'stencil-hooks'
-import { useBotConfig } from 'stencil-hooks'
+import { LocalFeedbackPage } from '@repo/pages'
+import { useLocalization } from '@repo/hooks'
+import { useBotConfig } from '@repo/hooks'
 
 const Feedback: NextPage = () => {
   const t = useLocalization()
