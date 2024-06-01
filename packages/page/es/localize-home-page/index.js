@@ -1,32 +1,27 @@
-'use client';
-
 import _asyncToGenerator from "@babel/runtime/helpers/esm/asyncToGenerator";
 import _slicedToArray from "@babel/runtime/helpers/esm/slicedToArray";
 import _regeneratorRuntime from "@babel/runtime/regenerator";
 import styles from './index.module.css';
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { AppContext } from '@repo/provider';
-import SendIcon from './assets/sendButton.svg';
-import { useLocalization } from '@repo/hooks';
-import { useRouter } from 'next/navigation';
-import Image from 'next/image';
+import axios from 'axios';
+import SendButton from './assets/sendButton';
+import router from 'next/router';
 import toast from 'react-hot-toast';
 import { v4 as uuidv4 } from 'uuid';
-import { VoiceRecorder } from '@repo/molecules';
-import { recordUserLocation } from '../resources/utils/location';
-import { useBotConfig } from '@repo/hooks';
 import DowntimePage from '../downtime-page';
-import { useBotAppColorPalates } from '@repo/hooks';
 import kaliaStatusImg from './assets/kalia_status.png';
 import plantProtectionImg from './assets/plant_protection.png';
 import weatherAdvisoryImg from './assets/weather_advisory.png';
+import { AppContext } from '@repo/provider';
+import { useColorPalates, useConfig, useLocalization } from '@repo/hooks';
+import { recordUserLocation } from '../resources/utils/location';
+import { VoiceRecorder } from '@repo/molecules';
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 var LocalHomePage = function LocalHomePage() {
-  var _theme$primary2;
-  var router = useRouter();
+  var _theme$primary2, _theme$primary3;
   var context = useContext(AppContext);
-  var botConfig = useBotConfig('component', 'chatUI');
-  var config = useBotConfig('component', 'homePage');
+  var botConfig = useConfig('component', 'chatUI');
+  var config = useConfig('component', 'homePage');
   var micWidth = config.micWidth,
     micHeight = config.micHeight;
   var t = useLocalization();
@@ -56,7 +51,7 @@ var LocalHomePage = function LocalHomePage() {
     _useState10 = _slicedToArray(_useState9, 2),
     cursorPosition = _useState10[0],
     setCursorPosition = _useState10[1];
-  var theme = useBotAppColorPalates();
+  var theme = useColorPalates();
   var secondaryColor = useMemo(function () {
     var _theme$primary;
     return theme === null || theme === void 0 || (_theme$primary = theme.primary) === null || _theme$primary === void 0 ? void 0 : _theme$primary.main;
@@ -92,27 +87,19 @@ var LocalHomePage = function LocalHomePage() {
         },
         data: data
       };
-
-      // axios
-      //   .request(axiosConfig)
-      //   .then((res: any) => {
-      //     // console.log("hurray", res?.data?.output?.[0]?.target);
-      //     setSuggestions(res?.data?.suggestions)
-      //   })
-      //   .catch((err) => {
-      //     console.log(err)
-      //     toast.error('Bhashini transliteration failed')
-      //   })
+      axios.request(axiosConfig).then(function (res) {
+        var _res$data;
+        // console.log("hurray", res?.data?.output?.[0]?.target);
+        setSuggestions(res === null || res === void 0 || (_res$data = res.data) === null || _res$data === void 0 ? void 0 : _res$data.suggestions);
+      }).catch(function (err) {
+        console.log(err);
+        toast.error('Transliteration failed');
+      });
     } else {
       setSuggestions([]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputMsg, cursorPosition]);
-
-  // useEffect(() => {
-  //   setMessages([getInitialMsgs(t, flags, context?.locale)]);
-  // }, [t, context?.locale, flags]);
-
   useEffect(function () {
     context === null || context === void 0 || context.fetchIsDown(); // check if server is down
 
@@ -146,8 +133,8 @@ var LocalHomePage = function LocalHomePage() {
             context === null || context === void 0 || context.setMessages([]);
             router.push('/chat');
             if (context !== null && context !== void 0 && context.kaliaClicked) {
-              context === null || context === void 0 || context.sendMessage('Aadhaar number - ' + msg, null, true, null, true);
-            } else context === null || context === void 0 || context.sendMessage(msg);
+              context === null || context === void 0 || context.sendMessage('Aadhaar number - ' + msg, 'Aadhaar number - ' + msg, null, true);
+            } else context === null || context === void 0 || context.sendMessage(msg, msg);
             _context.next = 12;
             break;
           case 10:
@@ -234,19 +221,21 @@ var LocalHomePage = function LocalHomePage() {
     }
   }, [inputMsg]);
   var handleKeyDown = useCallback(function (e) {
+    if (e.keyCode === 229) return;
+    // console.log(e);
     if (suggestions.length > 0) {
-      if (e.key === 'ArrowUp') {
+      if (e.code === 'ArrowUp') {
         e.preventDefault();
         setActiveSuggestion(function (prevActiveSuggestion) {
           return prevActiveSuggestion > 0 ? prevActiveSuggestion - 1 : prevActiveSuggestion;
         });
-      } else if (e.key === 'ArrowDown') {
+      } else if (e.code === 'ArrowDown') {
         e.preventDefault();
         setActiveSuggestion(function (prevActiveSuggestion) {
           return prevActiveSuggestion < suggestions.length - 1 ? prevActiveSuggestion + 1 : prevActiveSuggestion;
         });
-      } else if (e.key === ' ') {
-        e.preventDefault();
+      } else if (e.data === ' ') {
+        e.preventDefault && e.preventDefault();
         if (activeSuggestion >= 0 && activeSuggestion < (suggestions === null || suggestions === void 0 ? void 0 : suggestions.length)) {
           suggestionClickHandler(suggestions[activeSuggestion]);
         } else {
@@ -259,10 +248,20 @@ var LocalHomePage = function LocalHomePage() {
   }, [activeSuggestion, suggestionClickHandler, suggestions]);
   useEffect(function () {
     document.addEventListener('keydown', handleKeyDown);
+    var input = document.getElementById('inputBox');
+    input === null || input === void 0 || input.addEventListener('textInput', handleKeyDown);
     return function () {
       document.removeEventListener('keydown', handleKeyDown);
+      input === null || input === void 0 || input.removeEventListener('textInput', handleKeyDown);
     };
   }, [handleKeyDown]);
+  var sendGuidedMsg = function sendGuidedMsg(type) {
+    // convert the string type into stringified array
+    context === null || context === void 0 || context.setShowInputBox(false);
+    var tags = [type];
+    sessionStorage.setItem('tags', JSON.stringify(tags));
+    sendMessage("Guided: ".concat(t('label.' + type)));
+  };
   if (context !== null && context !== void 0 && context.isDown) {
     return /*#__PURE__*/_jsx(DowntimePage, {});
   } else return /*#__PURE__*/_jsx(_Fragment, {
@@ -298,7 +297,7 @@ var LocalHomePage = function LocalHomePage() {
             children: [(config === null || config === void 0 ? void 0 : config.showWeatherAdvisory) && /*#__PURE__*/_jsxs("div", {
               className: styles.imgBtn,
               onClick: function onClick() {
-                sendMessage('Guided: weather');
+                return router.push('/weather');
               },
               children: [/*#__PURE__*/_jsx("p", {
                 children: t('label.weather_advisory')
@@ -311,7 +310,7 @@ var LocalHomePage = function LocalHomePage() {
             }), (config === null || config === void 0 ? void 0 : config.showPlantProtection) && /*#__PURE__*/_jsxs("div", {
               className: styles.imgBtn,
               onClick: function onClick() {
-                sendMessage(t('Guided: pest'));
+                return sendGuidedMsg('pest');
               },
               children: [/*#__PURE__*/_jsx("p", {
                 children: t('label.plant_protection')
@@ -350,7 +349,7 @@ var LocalHomePage = function LocalHomePage() {
           ref: voiceRecorderRef,
           children: /*#__PURE__*/_jsx(VoiceRecorder, {
             setInputMsg: setInputMsg,
-            tapToSpeak: true
+            tapToSpeak: config === null || config === void 0 ? void 0 : config.showTapToSpeakText
           })
         })]
       }), /*#__PURE__*/_jsx("form", {
@@ -375,6 +374,13 @@ var LocalHomePage = function LocalHomePage() {
               }, index);
             })
           }), /*#__PURE__*/_jsx("textarea", {
+            onKeyDown: function onKeyDown(e) {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                sendMessage(inputMsg);
+              }
+            },
+            id: "inputBox",
             ref: inputRef,
             rows: 1,
             value: inputMsg,
@@ -383,14 +389,13 @@ var LocalHomePage = function LocalHomePage() {
           }), /*#__PURE__*/_jsx("button", {
             type: "submit",
             className: styles.sendButton,
-            children: /*#__PURE__*/_jsx(Image, {
-              src: SendIcon,
-              width: 50,
-              height: 50,
-              alt: "sendIcon",
-              onClick: function onClick() {
-                return sendMessage(inputMsg);
-              }
+            onClick: function onClick() {
+              return sendMessage(inputMsg);
+            },
+            children: /*#__PURE__*/_jsx(SendButton, {
+              width: 40,
+              height: 40,
+              color: theme === null || theme === void 0 || (_theme$primary3 = theme.primary) === null || _theme$primary3 === void 0 ? void 0 : _theme$primary3.light
             })
           })]
         })

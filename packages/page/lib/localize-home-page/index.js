@@ -1,5 +1,4 @@
 "use strict";
-'use client';
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 var _typeof = require("@babel/runtime/helpers/typeof");
@@ -12,28 +11,27 @@ var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 var _indexModule = _interopRequireDefault(require("./index.module.css"));
 var _react = _interopRequireWildcard(require("react"));
-var _provider = require("@repo/provider");
-var _sendButton = _interopRequireDefault(require("./assets/sendButton.svg"));
-var _hooks = require("@repo/hooks");
-var _navigation = require("next/navigation");
-var _image = _interopRequireDefault(require("next/image"));
+var _axios = _interopRequireDefault(require("axios"));
+var _sendButton = _interopRequireDefault(require("./assets/sendButton"));
+var _router = _interopRequireDefault(require("next/router"));
 var _reactHotToast = _interopRequireDefault(require("react-hot-toast"));
 var _uuid = require("uuid");
-var _molecules = require("@repo/molecules");
-var _location = require("../resources/utils/location");
 var _downtimePage = _interopRequireDefault(require("../downtime-page"));
 var _kalia_status = _interopRequireDefault(require("./assets/kalia_status.png"));
 var _plant_protection = _interopRequireDefault(require("./assets/plant_protection.png"));
 var _weather_advisory = _interopRequireDefault(require("./assets/weather_advisory.png"));
+var _provider = require("@repo/provider");
+var _hooks = require("@repo/hooks");
+var _location = require("../resources/utils/location");
+var _molecules = require("@repo/molecules");
 var _jsxRuntime = require("react/jsx-runtime");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 var LocalHomePage = function LocalHomePage() {
-  var _theme$primary2;
-  var router = (0, _navigation.useRouter)();
+  var _theme$primary2, _theme$primary3;
   var context = (0, _react.useContext)(_provider.AppContext);
-  var botConfig = (0, _hooks.useBotConfig)('component', 'chatUI');
-  var config = (0, _hooks.useBotConfig)('component', 'homePage');
+  var botConfig = (0, _hooks.useConfig)('component', 'chatUI');
+  var config = (0, _hooks.useConfig)('component', 'homePage');
   var micWidth = config.micWidth,
     micHeight = config.micHeight;
   var t = (0, _hooks.useLocalization)();
@@ -63,7 +61,7 @@ var LocalHomePage = function LocalHomePage() {
     _useState10 = (0, _slicedToArray2.default)(_useState9, 2),
     cursorPosition = _useState10[0],
     setCursorPosition = _useState10[1];
-  var theme = (0, _hooks.useBotAppColorPalates)();
+  var theme = (0, _hooks.useColorPalates)();
   var secondaryColor = (0, _react.useMemo)(function () {
     var _theme$primary;
     return theme === null || theme === void 0 || (_theme$primary = theme.primary) === null || _theme$primary === void 0 ? void 0 : _theme$primary.main;
@@ -99,27 +97,19 @@ var LocalHomePage = function LocalHomePage() {
         },
         data: data
       };
-
-      // axios
-      //   .request(axiosConfig)
-      //   .then((res: any) => {
-      //     // console.log("hurray", res?.data?.output?.[0]?.target);
-      //     setSuggestions(res?.data?.suggestions)
-      //   })
-      //   .catch((err) => {
-      //     console.log(err)
-      //     toast.error('Bhashini transliteration failed')
-      //   })
+      _axios.default.request(axiosConfig).then(function (res) {
+        var _res$data;
+        // console.log("hurray", res?.data?.output?.[0]?.target);
+        setSuggestions(res === null || res === void 0 || (_res$data = res.data) === null || _res$data === void 0 ? void 0 : _res$data.suggestions);
+      }).catch(function (err) {
+        console.log(err);
+        _reactHotToast.default.error('Transliteration failed');
+      });
     } else {
       setSuggestions([]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputMsg, cursorPosition]);
-
-  // useEffect(() => {
-  //   setMessages([getInitialMsgs(t, flags, context?.locale)]);
-  // }, [t, context?.locale, flags]);
-
   (0, _react.useEffect)(function () {
     context === null || context === void 0 || context.fetchIsDown(); // check if server is down
 
@@ -151,10 +141,10 @@ var LocalHomePage = function LocalHomePage() {
             }
             console.log('clearing mssgs');
             context === null || context === void 0 || context.setMessages([]);
-            router.push('/chat');
+            _router.default.push('/chat');
             if (context !== null && context !== void 0 && context.kaliaClicked) {
-              context === null || context === void 0 || context.sendMessage('Aadhaar number - ' + msg, null, true, null, true);
-            } else context === null || context === void 0 || context.sendMessage(msg);
+              context === null || context === void 0 || context.sendMessage('Aadhaar number - ' + msg, 'Aadhaar number - ' + msg, null, true);
+            } else context === null || context === void 0 || context.sendMessage(msg, msg);
             _context.next = 12;
             break;
           case 10:
@@ -241,19 +231,21 @@ var LocalHomePage = function LocalHomePage() {
     }
   }, [inputMsg]);
   var handleKeyDown = (0, _react.useCallback)(function (e) {
+    if (e.keyCode === 229) return;
+    // console.log(e);
     if (suggestions.length > 0) {
-      if (e.key === 'ArrowUp') {
+      if (e.code === 'ArrowUp') {
         e.preventDefault();
         setActiveSuggestion(function (prevActiveSuggestion) {
           return prevActiveSuggestion > 0 ? prevActiveSuggestion - 1 : prevActiveSuggestion;
         });
-      } else if (e.key === 'ArrowDown') {
+      } else if (e.code === 'ArrowDown') {
         e.preventDefault();
         setActiveSuggestion(function (prevActiveSuggestion) {
           return prevActiveSuggestion < suggestions.length - 1 ? prevActiveSuggestion + 1 : prevActiveSuggestion;
         });
-      } else if (e.key === ' ') {
-        e.preventDefault();
+      } else if (e.data === ' ') {
+        e.preventDefault && e.preventDefault();
         if (activeSuggestion >= 0 && activeSuggestion < (suggestions === null || suggestions === void 0 ? void 0 : suggestions.length)) {
           suggestionClickHandler(suggestions[activeSuggestion]);
         } else {
@@ -266,10 +258,20 @@ var LocalHomePage = function LocalHomePage() {
   }, [activeSuggestion, suggestionClickHandler, suggestions]);
   (0, _react.useEffect)(function () {
     document.addEventListener('keydown', handleKeyDown);
+    var input = document.getElementById('inputBox');
+    input === null || input === void 0 || input.addEventListener('textInput', handleKeyDown);
     return function () {
       document.removeEventListener('keydown', handleKeyDown);
+      input === null || input === void 0 || input.removeEventListener('textInput', handleKeyDown);
     };
   }, [handleKeyDown]);
+  var sendGuidedMsg = function sendGuidedMsg(type) {
+    // convert the string type into stringified array
+    context === null || context === void 0 || context.setShowInputBox(false);
+    var tags = [type];
+    sessionStorage.setItem('tags', JSON.stringify(tags));
+    sendMessage("Guided: ".concat(t('label.' + type)));
+  };
   if (context !== null && context !== void 0 && context.isDown) {
     return /*#__PURE__*/(0, _jsxRuntime.jsx)(_downtimePage.default, {});
   } else return /*#__PURE__*/(0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {
@@ -305,7 +307,7 @@ var LocalHomePage = function LocalHomePage() {
             children: [(config === null || config === void 0 ? void 0 : config.showWeatherAdvisory) && /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
               className: _indexModule.default.imgBtn,
               onClick: function onClick() {
-                sendMessage('Guided: weather');
+                return _router.default.push('/weather');
               },
               children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
                 children: t('label.weather_advisory')
@@ -318,7 +320,7 @@ var LocalHomePage = function LocalHomePage() {
             }), (config === null || config === void 0 ? void 0 : config.showPlantProtection) && /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
               className: _indexModule.default.imgBtn,
               onClick: function onClick() {
-                sendMessage(t('Guided: pest'));
+                return sendGuidedMsg('pest');
               },
               children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
                 children: t('label.plant_protection')
@@ -357,7 +359,7 @@ var LocalHomePage = function LocalHomePage() {
           ref: voiceRecorderRef,
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_molecules.VoiceRecorder, {
             setInputMsg: setInputMsg,
-            tapToSpeak: true
+            tapToSpeak: config === null || config === void 0 ? void 0 : config.showTapToSpeakText
           })
         })]
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("form", {
@@ -382,6 +384,13 @@ var LocalHomePage = function LocalHomePage() {
               }, index);
             })
           }), /*#__PURE__*/(0, _jsxRuntime.jsx)("textarea", {
+            onKeyDown: function onKeyDown(e) {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                sendMessage(inputMsg);
+              }
+            },
+            id: "inputBox",
             ref: inputRef,
             rows: 1,
             value: inputMsg,
@@ -390,14 +399,13 @@ var LocalHomePage = function LocalHomePage() {
           }), /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
             type: "submit",
             className: _indexModule.default.sendButton,
-            children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_image.default, {
-              src: _sendButton.default,
-              width: 50,
-              height: 50,
-              alt: "sendIcon",
-              onClick: function onClick() {
-                return sendMessage(inputMsg);
-              }
+            onClick: function onClick() {
+              return sendMessage(inputMsg);
+            },
+            children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_sendButton.default, {
+              width: 40,
+              height: 40,
+              color: theme === null || theme === void 0 || (_theme$primary3 = theme.primary) === null || _theme$primary3 === void 0 ? void 0 : _theme$primary3.light
             })
           })]
         })

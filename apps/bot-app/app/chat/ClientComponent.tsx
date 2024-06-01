@@ -9,10 +9,6 @@ import styles from '../src/components/dialer-popup/index.module.css'
 import DialerPopUp from '../src/components/dialer-popup'
 import { ChatUI } from '@repo/molecules'
 
-// const ChatUi = dynamic(() => import('../src/components/chat-window'), {
-//   ssr: false,
-// })
-
 const ClientComponent = () => {
   const context = useContext(AppContext)
   const config = useBotConfig('component', 'botDetails')

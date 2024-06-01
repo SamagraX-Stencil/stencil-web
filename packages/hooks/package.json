@@ -1,7 +1,6 @@
 {
   "name": "@repo/hooks",
-  "version": "1.0.2",
-  "private": true,
+  "version": "1.0.3",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.mts",

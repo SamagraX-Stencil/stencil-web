@@ -1,31 +1,26 @@
-'use client';
 import styles from './index.module.css';
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { NextPage } from 'next';
 import axios from 'axios';
-import { AppContext } from '@repo/provider';
-import SendIcon from './assets/sendButton.svg';
-import { useLocalization } from '@repo/hooks';
-import { useRouter } from 'next/navigation';
-
+import SendButton from './assets/sendButton';
+import router from 'next/router';
 import Image from 'next/image';
 import toast from 'react-hot-toast';
 import { v4 as uuidv4 } from 'uuid';
-import { VoiceRecorder } from '@repo/molecules';
-import { recordUserLocation } from '../resources/utils/location';
-import { useBotConfig } from '@repo/hooks';
+
 import DowntimePage from '../downtime-page';
-import { useBotAppColorPalates } from '@repo/hooks';
 import kaliaStatusImg from './assets/kalia_status.png';
 import plantProtectionImg from './assets/plant_protection.png';
 import weatherAdvisoryImg from './assets/weather_advisory.png';
+import { AppContext } from '@repo/provider';
+import { useColorPalates, useConfig, useLocalization } from '@repo/hooks';
+import { recordUserLocation } from '../resources/utils/location';
+import { VoiceRecorder } from '@repo/molecules';
 
 const LocalHomePage: NextPage = () => {
-  const router = useRouter();
-
   const context = useContext(AppContext);
-  const botConfig = useBotConfig('component', 'chatUI');
-  const config = useBotConfig('component', 'homePage');
+  const botConfig = useConfig('component', 'chatUI');
+  const config = useConfig('component', 'homePage');
   const { micWidth, micHeight } = config;
   const t = useLocalization();
   const inputRef = useRef(null);
@@ -37,7 +32,7 @@ const LocalHomePage: NextPage = () => {
   const [suggestionClicked, setSuggestionClicked] = useState(false);
   const [activeSuggestion, setActiveSuggestion] = useState<number>(0);
   const [cursorPosition, setCursorPosition] = useState(0);
-  const theme = useBotAppColorPalates();
+  const theme = useColorPalates();
   const secondaryColor = useMemo(() => {
     return theme?.primary?.main;
   }, [theme?.primary?.main]);
@@ -85,25 +80,21 @@ const LocalHomePage: NextPage = () => {
         data: data,
       };
 
-      // axios
-      //   .request(axiosConfig)
-      //   .then((res: any) => {
-      //     // console.log("hurray", res?.data?.output?.[0]?.target);
-      //     setSuggestions(res?.data?.suggestions)
-      //   })
-      //   .catch((err) => {
-      //     console.log(err)
-      //     toast.error('Bhashini transliteration failed')
-      //   })
+      axios
+        .request(axiosConfig)
+        .then((res: any) => {
+          // console.log("hurray", res?.data?.output?.[0]?.target);
+          setSuggestions(res?.data?.suggestions);
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error('Transliteration failed');
+        });
     } else {
       setSuggestions([]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputMsg, cursorPosition]);
-
-  // useEffect(() => {
-  //   setMessages([getInitialMsgs(t, flags, context?.locale)]);
-  // }, [t, context?.locale, flags]);
 
   useEffect(() => {
     context?.fetchIsDown(); // check if server is down
@@ -129,8 +120,8 @@ const LocalHomePage: NextPage = () => {
         context?.setMessages([]);
         router.push('/chat');
         if (context?.kaliaClicked) {
-          context?.sendMessage('Aadhaar number - ' + msg, null, true, null, true);
-        } else context?.sendMessage(msg);
+          context?.sendMessage('Aadhaar number - ' + msg, 'Aadhaar number - ' + msg, null, true);
+        } else context?.sendMessage(msg, msg);
       } else {
         toast.error(t('error.disconnected'));
         return;
@@ -224,22 +215,24 @@ const LocalHomePage: NextPage = () => {
   );
 
   const handleKeyDown = useCallback(
-    (e: KeyboardEvent) => {
+    (e: any) => {
+      if (e.keyCode === 229) return;
+      // console.log(e);
       if (suggestions.length > 0) {
-        if (e.key === 'ArrowUp') {
+        if (e.code === 'ArrowUp') {
           e.preventDefault();
           setActiveSuggestion((prevActiveSuggestion) =>
             prevActiveSuggestion > 0 ? prevActiveSuggestion - 1 : prevActiveSuggestion,
           );
-        } else if (e.key === 'ArrowDown') {
+        } else if (e.code === 'ArrowDown') {
           e.preventDefault();
           setActiveSuggestion((prevActiveSuggestion) =>
             prevActiveSuggestion < suggestions.length - 1
               ? prevActiveSuggestion + 1
               : prevActiveSuggestion,
           );
-        } else if (e.key === ' ') {
-          e.preventDefault();
+        } else if (e.data === ' ') {
+          e.preventDefault && e.preventDefault();
           if (activeSuggestion >= 0 && activeSuggestion < suggestions?.length) {
             suggestionClickHandler(suggestions[activeSuggestion]);
           } else {
@@ -253,11 +246,22 @@ const LocalHomePage: NextPage = () => {
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
+    let input = document.getElementById('inputBox');
+    input?.addEventListener('textInput', handleKeyDown);
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
+      input?.removeEventListener('textInput', handleKeyDown);
     };
   }, [handleKeyDown]);
+
+  const sendGuidedMsg = (type: string) => {
+    // convert the string type into stringified array
+    context?.setShowInputBox(false);
+    const tags = [type];
+    sessionStorage.setItem('tags', JSON.stringify(tags));
+    sendMessage(`Guided: ${t('label.' + type)}`);
+  };
 
   if (context?.isDown) {
     return <DowntimePage />;
@@ -297,12 +301,7 @@ const LocalHomePage: NextPage = () => {
                     }}
                   >
                     {config?.showWeatherAdvisory && (
-                      <div
-                        className={styles.imgBtn}
-                        onClick={() => {
-                          sendMessage('Guided: weather');
-                        }}
-                      >
+                      <div className={styles.imgBtn} onClick={() => router.push('/weather')}>
                         <p>{t('label.weather_advisory')}</p>
                         <img
                           src={config?.weatherAdvisoryImg || weatherAdvisoryImg?.src}
@@ -313,12 +312,7 @@ const LocalHomePage: NextPage = () => {
                       </div>
                     )}
                     {config?.showPlantProtection && (
-                      <div
-                        className={styles.imgBtn}
-                        onClick={() => {
-                          sendMessage(t('Guided: pest'));
-                        }}
-                      >
+                      <div className={styles.imgBtn} onClick={() => sendGuidedMsg('pest')}>
                         <p>{t('label.plant_protection')}</p>
                         <img
                           src={config?.plantProtectionImg || plantProtectionImg?.src}
@@ -355,7 +349,10 @@ const LocalHomePage: NextPage = () => {
                   style={{ height: micHeight, width: micWidth }}
                   ref={voiceRecorderRef}
                 >
-                  <VoiceRecorder setInputMsg={setInputMsg} tapToSpeak={true} />
+                  <VoiceRecorder
+                    setInputMsg={setInputMsg}
+                    tapToSpeak={config?.showTapToSpeakText}
+                  />
                 </div>
               )}
             </>
@@ -380,20 +377,25 @@ const LocalHomePage: NextPage = () => {
                 })}
               </div>
               <textarea
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    sendMessage(inputMsg);
+                  }
+                }}
+                id="inputBox"
                 ref={inputRef}
                 rows={1}
                 value={inputMsg}
                 onChange={handleInputChange}
                 placeholder={!context?.kaliaClicked ? placeholder : t('label.enter_aadhaar_number')}
               />
-              <button type="submit" className={styles.sendButton}>
-                <Image
-                  src={SendIcon}
-                  width={50}
-                  height={50}
-                  alt="sendIcon"
-                  onClick={() => sendMessage(inputMsg)}
-                />
+              <button
+                type="submit"
+                className={styles.sendButton}
+                onClick={() => sendMessage(inputMsg)}
+              >
+                <SendButton width={40} height={40} color={theme?.primary?.light} />
               </button>
             </div>
           </form>
