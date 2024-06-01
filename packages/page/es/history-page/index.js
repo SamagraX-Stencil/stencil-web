@@ -8,10 +8,10 @@ import moment from 'moment';
 import { FullPageLoader } from '@repo/molecules';
 import { map } from 'lodash';
 import sample from './sample.json';
-import { useUiConfig, useColorPalates } from '@repo/hooks';
+import { useUiConfig, useColorPalates, useLocalization } from '@repo/hooks';
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 var HistoryPage = function HistoryPage() {
-  var _theme$primary2, _theme$primary3, _theme$primary4, _config$title, _theme$primary5;
+  var _theme$primary2, _theme$primary3, _theme$primary4, _t, _t2, _theme$primary5;
   var config = useUiConfig('component', 'historyPage');
   var _useState = useState(true),
     _useState2 = _slicedToArray(_useState, 2),
@@ -22,6 +22,7 @@ var HistoryPage = function HistoryPage() {
     list = _useState4[0],
     setList = _useState4[1];
   var theme = useColorPalates();
+  var t = useLocalization();
   var handleClick = useCallback(function (activeItem) {
     console.log({
       activeItem: activeItem
@@ -81,13 +82,13 @@ var HistoryPage = function HistoryPage() {
         style: {
           color: theme === null || theme === void 0 || (_theme$primary4 = theme.primary) === null || _theme$primary4 === void 0 ? void 0 : _theme$primary4.main
         },
-        children: (_config$title = config.title) !== null && _config$title !== void 0 ? _config$title : 'No Label Provided'
+        children: (_t = t('label.chats')) !== null && _t !== void 0 ? _t : 'No Label Provided'
       }), /*#__PURE__*/_jsx("div", {
         className: styles.chatList,
         children: /*#__PURE__*/_jsx(List, {
           items: list,
           noItem: {
-            label: config.noItemsText,
+            label: (_t2 = t('label.no_history')) !== null && _t2 !== void 0 ? _t2 : 'No History Found',
             icon: /*#__PURE__*/_jsx(Forum, {
               style: {
                 color: theme === null || theme === void 0 || (_theme$primary5 = theme.primary) === null || _theme$primary5 === void 0 ? void 0 : _theme$primary5.light

@@ -1,16 +1,12 @@
 .main {
-  /* margin: 1vh 0 1vh 1vh; */
+  margin: 1vh 0 1vh 1vh;
   overflow-x: hidden;
   overflow-y: scroll !important;
   width: 98%;
   position: fixed;
   bottom: 1vh;
   top: 100px;
-  display: flex;
-  flex-direction: column;
-  row-gap: 24px;
-  padding: 0 32px;
-  font: sans-serif !important;
+  font: sans-serif;
 }
 .main::-webkit-scrollbar {
   width: 4px;
@@ -40,5 +36,5 @@
   background-color: white;
   border-radius: 10px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.16);
-  padding: 16px;
+  padding-bottom: 1vh;
 }

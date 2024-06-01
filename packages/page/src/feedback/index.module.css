@@ -3,13 +3,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    padding-top: 100px;
+    height: calc(100vh - 100px);
     width: 100vw;
+    overflow-y: auto;
 }
 
 .main {
     width: 80vw;
-    height: 80vh;
+    height: 90vh;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -27,9 +29,10 @@
 }
 
 .textBlock {
+    border: 2px solid #f5952e;
     resize: vertical;
     overflow: auto;
-    height: 10rem;
+    height: 25vh;
     padding: 10px;
     margin: auto;
     display: flex;
@@ -39,6 +42,6 @@
 
 @media (max-width: 601px) {
     .textBlock {
-        width: 85vw;
+        width: 90vw;
     }
 }

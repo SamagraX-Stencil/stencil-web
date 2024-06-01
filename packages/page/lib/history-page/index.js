@@ -17,7 +17,7 @@ var _sample = _interopRequireDefault(require("./sample.json"));
 var _hooks = require("@repo/hooks");
 var _jsxRuntime = require("react/jsx-runtime");
 var HistoryPage = function HistoryPage() {
-  var _theme$primary2, _theme$primary3, _theme$primary4, _config$title, _theme$primary5;
+  var _theme$primary2, _theme$primary3, _theme$primary4, _t, _t2, _theme$primary5;
   var config = (0, _hooks.useUiConfig)('component', 'historyPage');
   var _useState = (0, _react.useState)(true),
     _useState2 = (0, _slicedToArray2.default)(_useState, 2),
@@ -28,6 +28,7 @@ var HistoryPage = function HistoryPage() {
     list = _useState4[0],
     setList = _useState4[1];
   var theme = (0, _hooks.useColorPalates)();
+  var t = (0, _hooks.useLocalization)();
   var handleClick = (0, _react.useCallback)(function (activeItem) {
     console.log({
       activeItem: activeItem
@@ -87,13 +88,13 @@ var HistoryPage = function HistoryPage() {
         style: {
           color: theme === null || theme === void 0 || (_theme$primary4 = theme.primary) === null || _theme$primary4 === void 0 ? void 0 : _theme$primary4.main
         },
-        children: (_config$title = config.title) !== null && _config$title !== void 0 ? _config$title : 'No Label Provided'
+        children: (_t = t('label.chats')) !== null && _t !== void 0 ? _t : 'No Label Provided'
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         className: _styleModule.default.chatList,
         children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_molecules.List, {
           items: list,
           noItem: {
-            label: config.noItemsText,
+            label: (_t2 = t('label.no_history')) !== null && _t2 !== void 0 ? _t2 : 'No History Found',
             icon: /*#__PURE__*/(0, _jsxRuntime.jsx)(_iconsMaterial.Forum, {
               style: {
                 color: theme === null || theme === void 0 || (_theme$primary5 = theme.primary) === null || _theme$primary5 === void 0 ? void 0 : _theme$primary5.light

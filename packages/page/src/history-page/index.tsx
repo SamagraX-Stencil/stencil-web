@@ -9,7 +9,7 @@ import { FullPageLoader } from '@repo/molecules';
 import { ChatItem, HistoryItem } from './types';
 import { map } from 'lodash';
 import sample from './sample.json';
-import { useUiConfig, useColorPalates } from '@repo/hooks';
+import { useUiConfig, useColorPalates, useLocalization } from '@repo/hooks';
 
 const HistoryPage: FC = () => {
   const config = useUiConfig('component', 'historyPage');
@@ -17,6 +17,7 @@ const HistoryPage: FC = () => {
   const [isFetching, setIsFetching] = useState(true);
   const [list, setList] = useState([]);
   const theme = useColorPalates();
+  const t = useLocalization();
 
   const handleClick = useCallback((activeItem: HistoryItem) => {
     console.log({ activeItem });
@@ -71,13 +72,13 @@ const HistoryPage: FC = () => {
       <div className={styles.main}>
         <FullPageLoader loading={isFetching} color={theme?.primary?.main} />
         <div className={styles.title} style={{ color: theme?.primary?.main }}>
-          {config.title ?? 'No Label Provided'}
+          {t('label.chats') ?? 'No Label Provided'}
         </div>
         <div className={styles.chatList}>
           <List
             items={list}
             noItem={{
-              label: config.noItemsText,
+              label: t('label.no_history') ?? 'No History Found',
               icon: <Forum style={{ color: theme?.primary?.light }} />,
             }}
           />
