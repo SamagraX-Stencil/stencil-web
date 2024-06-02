@@ -2,8 +2,8 @@ import React, { useCallback } from 'react';
 import styles from './index.module.css';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Hourglass from './hourglass';
+import Typography from '@mui/material/Typography';
 import { useBotAppColorPalates } from '@repo/hooks';
 import { useLocalization } from '@repo/hooks';
 

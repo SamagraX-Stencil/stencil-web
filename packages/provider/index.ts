@@ -7,10 +7,9 @@ import CustomBotThemeProvider from './providers/theme-provider'
 import { LocaleProvider } from './providers/intl-provider'
 import ContextProvider from './providers/context-provider'
 import Provider from './providers'
-import {
-  LocaleProviderExampleApp,
-  useLocaleForExampleApp,
-} from './tranlator-provider/intl-provider'
+import { ThemeContextType } from './providers/theme-provider/theme-context'
+import { ThemeContextType2 } from './theme-context/theme-context'
+
 export {
   ConfigContext,
   useConfigContext,
@@ -22,6 +21,6 @@ export {
   LocaleProvider,
   Provider,
   ContextProvider,
-  LocaleProviderExampleApp,
-  useLocaleForExampleApp,
 }
+
+export { type ThemeContextType, type ThemeContextType2 }

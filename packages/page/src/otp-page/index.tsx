@@ -79,6 +79,7 @@ const OtpPage: React.FC = () => {
             <Typography fontWeight="bold" textAlign="center">
               +91-{phNo}
             </Typography>
+
             <Box
               component="form"
               onSubmit={handleLogin}

@@ -9,7 +9,7 @@ export type Color = {
   contrastText: string
 }
 
-interface ThemeContextType {
+export type ThemeContextType = {
   theme: Theme
   modifyTheme: (changes: Partial<Theme>) => void
   modifyPaletes: (paletes: Color) => void

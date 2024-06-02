@@ -26,6 +26,7 @@ stencil-ui/
 │   ├── molecules/
 │   ├── pages/
 │   ├── config-manager/
+│   ├── chatui/
 │   ├── hooks/
 │   └── provider/
 ├── apps/
@@ -53,8 +54,7 @@ stencil-ui/
 Ensure you have the following installed:
 
 - [Node.js](https://nodejs.org/) (version 14.x or later)
-- [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/)
-- [Lerna](https://lerna.js.org/) (if using Lerna)
+- [Yarn](https://yarnpkg.com/)
 - [Turborepo](https://turborepo.org/)
 
 ### Installation
@@ -62,8 +62,8 @@ Ensure you have the following installed:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/my-monorepo.git
-   cd my-monorepo
+   git clone https://github.com/SamagraX-Stencil/stencil-web.git
+   cd stencil-web
    ```
 
 2. Install dependencies:
@@ -73,39 +73,20 @@ Ensure you have the following installed:
    ```
 
 3. To start the local development
-   ```bash
-   turbo dev
-   ```
 
-## Scripts
+- first create build of all packages using
 
-Common scripts you can use in this monorepo are defined in the root `package.json`. Here are a few examples:
+```
+turbo build
+```
 
-- `build`: Builds all packages and applications.
+- now start the project
 
-  ```bash
-  npm run build
-  # or
-  yarn build
-  ```
+```bash
+turbo dev
+```
 
-- `test`: Runs tests for all packages and applications.
-
-  ```bash
-  npm test
-  # or
-  yarn test
-  ```
-
-- `lint`: Lints all packages and applications.
-
-  ```bash
-  npm run lint
-  # or
-  yarn lint
-  ```
-
-Additional scripts specific to individual packages or applications can be found in their respective directories.
+- above command will start all bot-app/ and all-molecule-example/ on the 7001 and 3001 port respectively
 
 ## Contributing
 

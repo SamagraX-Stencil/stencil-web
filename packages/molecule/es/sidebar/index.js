@@ -10,7 +10,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { Logout, Feedback, Help, History, AccountCircle, ArrowBack, ChevronRight } from '@mui/icons-material';
 import configObj from '@repo/configmanager';
-// import { useLocaleForExampleApp } from '@repo/provider'
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 export var Sidebar = function Sidebar(_ref) {
   var isOpen = _ref.isOpen,
@@ -28,8 +27,6 @@ export var Sidebar = function Sidebar(_ref) {
       setConfig(configObj.component.sidebar);
     }
   }, []);
-  // const { locale, setLocale } = useLocaleForExampleApp()
-
   var handleLanguageClick = function handleLanguageClick(langCode) {
     setActiveLanguage(langCode);
     onToggle();

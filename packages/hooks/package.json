@@ -11,9 +11,9 @@
     }
   },
   "scripts": {
+    "build": "tsup",
     "lint": "eslint . --max-warnings 0",
-    "generate:component": "turbo gen react-component",
-    "build": "tsup"
+    "generate:component": "turbo gen react-component"
   },
   "dependencies": {
     "react": "^18.2.0",

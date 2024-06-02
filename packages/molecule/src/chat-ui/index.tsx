@@ -118,6 +118,7 @@ export const ChatUI: React.FC = () => {
 
   return (
     <div className={styles.container}>
+      {/* @tsignore */}
       <Chat
         showInput={true}
         btnColor={theme.secondaryColor.value}

@@ -61,7 +61,6 @@
   }
   .form{
     width: 90%;
-    justify-content: flex-start;
   }
   .register {
     display: flex;

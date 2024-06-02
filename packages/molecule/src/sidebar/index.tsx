@@ -18,7 +18,6 @@ import {
   ChevronRight,
 } from '@mui/icons-material';
 import configObj from '@repo/configmanager';
-// import { useLocaleForExampleApp } from '@repo/provider'
 
 export const Sidebar = ({ isOpen, onToggle }: { isOpen: boolean; onToggle: () => void }) => {
   const [config, setConfig] = useState<{
@@ -36,7 +35,6 @@ export const Sidebar = ({ isOpen, onToggle }: { isOpen: boolean; onToggle: () =>
       setConfig(configObj.component.sidebar);
     }
   }, []);
-  // const { locale, setLocale } = useLocaleForExampleApp()
 
   const handleLanguageClick = (langCode: string) => {
     setActiveLanguage(langCode);

@@ -11,9 +11,10 @@
     }
   },
   "scripts": {
+    "clean": "rimraf dist es lib",
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
-    "build": "tsup"
+    "build": "npm run clean && tsup"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -68,6 +69,7 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "rimraf": "^5.0.7",
     "@rollup/plugin-commonjs": "^25.0.8",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^11.1.1",
