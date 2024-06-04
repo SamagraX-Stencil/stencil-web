@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Config {
+  id      Int             @id @default(autoincrement())
+  name    String
+  data    Json
+  history ConfigHistory[]
+}
+
+model ConfigHistory {
+  id        Int      @id @default(autoincrement())
+  configId  Int
+  config    Config   @relation(fields: [configId], references: [id])
+  data      Json
+  timestamp DateTime @default(now())
+}
