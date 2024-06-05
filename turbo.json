@@ -1,21 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": ["**/.env.*local"],
-  "globalEnv": [
-    "NEXT_PUBLIC_SOCKET_URL",
-    "NEXT_PUBLIC_BOT_ID",
-    "NEXT_PUBLIC_TELEMETRY_API",
-    "NEXT_PUBLIC_AI_TOOLS_API",
-    "NEXT_PUBLIC_FLAGSMITH_ENVIRONMENT_ID",
-    "NEXT_PUBLIC_PWA_DEPLOYER_URL",
-    "NEXT_PUBLIC_BFF_API_URL",
-    "NEXT_PUBLIC_USER_SERVICE_APP_ID",
-    "NEXT_PUBLIC_JWKS_URI",
-    "NEXT_PUBLIC_USER_SERVICE_URL",
-    "NEXT_PUBLIC_ORG_ID",
-    "NEXT_PUBLIC_CONFIG_BASE_URL",
-    "NEXT_PUBLIC_BOT_NAME"
-  ],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
@@ -26,7 +11,7 @@
     },
     "dev": {
       "cache": false,
-      "persistent": true
+      "persistent": false
     }
   }
 }
