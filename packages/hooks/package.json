@@ -13,7 +13,8 @@
   "scripts": {
     "build": "tsup",
     "lint": "eslint . --max-warnings 0",
-    "generate:component": "turbo gen react-component"
+    "generate:component": "turbo gen react-component",
+    "dev": "tsup --watch"
   },
   "dependencies": {
     "react": "^18.2.0",
