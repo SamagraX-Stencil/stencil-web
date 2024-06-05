@@ -1,6 +1,10 @@
 import { Image as Img, Bubble, FileCard, ScrollView, Typing } from '@repo/chatui';
 import moment from 'moment';
 import { JsonToTable } from '../json-to-table';
+import SpeakerIcon from './assets/speaker.svg';
+import MsgThumbsUp from './assets/msg-thumbs-up';
+import MsgThumbsDown from './assets/msg-thumbs-down';
+import styles from './index.module.css';
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 export var UpdatedBubble = function UpdatedBubble(_ref) {
   var _content$data, _theme$primary, _content$data2, _theme$primary2, _content$data3, _theme$primary3, _content$data4, _content$data5, _content$data6, _theme$primary4, _content$data7, _content$data8, _theme$primary5, _theme$primary6, _theme$primary7, _theme$primary8, _theme$primary9, _theme$primary10, _theme$primary11;
@@ -10,18 +14,6 @@ export var UpdatedBubble = function UpdatedBubble(_ref) {
     theme = _ref.theme,
     handleAudio = _ref.handleAudio,
     feedbackHandler = _ref.feedbackHandler,
-    SpeakerIcon = _ref.SpeakerIcon,
-    MsgThumbsUp = _ref.MsgThumbsUp,
-    MsgThumbsDown = _ref.MsgThumbsDown,
-    offlineBtnsStyle = _ref.offlineBtnsStyle,
-    messageSpeakerStyle = _ref.messageSpeakerStyle,
-    tableContinerStyle = _ref.tableContinerStyle,
-    messageTriangleLeftStyle = _ref.messageTriangleLeftStyle,
-    messageTriangleRightStyle = _ref.messageTriangleRightStyle,
-    optionsTextStyle = _ref.optionsTextStyle,
-    textBubbleStyle = _ref.textBubbleStyle,
-    msgFeedbackIconsStyle = _ref.msgFeedbackIconsStyle,
-    msgFeedbackStyle = _ref.msgFeedbackStyle,
     getLists = _ref.getLists,
     reaction = _ref.reaction;
   var content = message.content,
@@ -69,7 +61,7 @@ export var UpdatedBubble = function UpdatedBubble(_ref) {
             })
           })]
         }), content !== null && content !== void 0 && (_content$data6 = content.data) !== null && _content$data6 !== void 0 && _content$data6.btns ? /*#__PURE__*/_jsx("div", {
-          className: offlineBtnsStyle,
+          className: "".concat(styles.offlineBtns),
           children: /*#__PURE__*/_jsx("button", {
             onClick: function onClick() {
               var _window;
@@ -92,7 +84,7 @@ export var UpdatedBubble = function UpdatedBubble(_ref) {
               display: 'flex'
             },
             children: /*#__PURE__*/_jsxs("div", {
-              className: messageSpeakerStyle,
+              className: "".concat(styles.msgSpeaker),
               onClick: handleAudio,
               style: !(content !== null && content !== void 0 && (_content$data8 = content.data) !== null && _content$data8 !== void 0 && _content$data8.isEnd) ? {
                 pointerEvents: 'none',
@@ -125,9 +117,9 @@ export var UpdatedBubble = function UpdatedBubble(_ref) {
               })]
             })
           }), chatUi.allowFeedback && /*#__PURE__*/_jsx("div", {
-            className: msgFeedbackStyle,
+            className: "".concat(styles.msgFeedback),
             children: /*#__PURE__*/_jsxs("div", {
-              className: msgFeedbackIconsStyle,
+              className: "".concat(styles.msgFeedbackIcons),
               style: {
                 border: "1px solid ".concat(theme === null || theme === void 0 || (_theme$primary8 = theme.primary) === null || _theme$primary8 === void 0 ? void 0 : _theme$primary8.main)
               },
@@ -255,13 +247,13 @@ export var UpdatedBubble = function UpdatedBubble(_ref) {
         return /*#__PURE__*/_jsx(_Fragment, {
           children: /*#__PURE__*/_jsxs(Bubble, {
             type: "text",
-            className: textBubbleStyle,
+            className: "".concat(styles.textBubble),
             children: [/*#__PURE__*/_jsx("div", {
               style: {
                 display: 'flex'
               },
               children: /*#__PURE__*/_jsx("span", {
-                className: optionsTextStyle,
+                className: "".concat(styles.optionsText),
                 children: content === null || content === void 0 || (_content$data19 = content.data) === null || _content$data19 === void 0 || (_content$data19 = _content$data19.payload) === null || _content$data19 === void 0 ? void 0 : _content$data19.text
               })
             }), getLists({
@@ -281,11 +273,11 @@ export var UpdatedBubble = function UpdatedBubble(_ref) {
             maxWidth: '90vw'
           },
           children: [/*#__PURE__*/_jsx("div", {
-            className: (content === null || content === void 0 || (_content$data22 = content.data) === null || _content$data22 === void 0 ? void 0 : _content$data22.position) === 'right' ? messageTriangleRightStyle : messageTriangleLeftStyle
+            className: (content === null || content === void 0 || (_content$data22 = content.data) === null || _content$data22 === void 0 ? void 0 : _content$data22.position) === 'right' ? "".concat(styles.messageTriangleRight) : "".concat(styles.messageTriangleLeft)
           }), /*#__PURE__*/_jsxs(Bubble, {
             type: "text",
             children: [/*#__PURE__*/_jsx("div", {
-              className: tableContinerStyle,
+              className: "".concat(styles.tableContainer),
               children: /*#__PURE__*/_jsx(JsonToTable, {
                 json: (_JSON$parse = JSON.parse(content === null || content === void 0 ? void 0 : content.text)) === null || _JSON$parse === void 0 ? void 0 : _JSON$parse.table
               })
@@ -303,16 +295,20 @@ export var UpdatedBubble = function UpdatedBubble(_ref) {
         });
       }
     default:
-      return /*#__PURE__*/_jsx(ScrollView, {
-        data: []
+      return (
+        /*#__PURE__*/
         // @ts-ignore
-        ,
-        renderItem: function renderItem(item) {
-          return /*#__PURE__*/_jsx(Button, {
-            label: item.text
-          });
-        }
-      });
+        _jsx(ScrollView, {
+          data: []
+          // @ts-ignore
+          ,
+          renderItem: function renderItem(item) {
+            return /*#__PURE__*/_jsx(Button, {
+              label: item.text
+            });
+          }
+        })
+      );
   }
 };
 var MediaBubble = function MediaBubble(_ref2) {
@@ -328,6 +324,7 @@ var MediaBubble = function MediaBubble(_ref2) {
         extension: "pdf"
       });
     } else {
+      // @ts-ignore
       return /*#__PURE__*/_jsx(Img, {
         src: url,
         width: "299",

@@ -1,6 +1,10 @@
 import { Image as Img, Bubble, FileCard, ScrollView, Typing } from '@repo/chatui';
 import moment from 'moment';
 import { JsonToTable } from '../json-to-table';
+import SpeakerIcon from './assets/speaker.svg';
+import MsgThumbsUp from './assets/msg-thumbs-up';
+import MsgThumbsDown from './assets/msg-thumbs-down';
+import styles from './index.module.css';
 
 export const UpdatedBubble = ({
   message,
@@ -9,18 +13,6 @@ export const UpdatedBubble = ({
   theme,
   handleAudio,
   feedbackHandler,
-  SpeakerIcon,
-  MsgThumbsUp,
-  MsgThumbsDown,
-  offlineBtnsStyle,
-  messageSpeakerStyle,
-  tableContinerStyle,
-  messageTriangleLeftStyle,
-  messageTriangleRightStyle,
-  optionsTextStyle,
-  textBubbleStyle,
-  msgFeedbackIconsStyle,
-  msgFeedbackStyle,
   getLists,
   reaction,
 }: any) => {
@@ -95,7 +87,7 @@ export const UpdatedBubble = ({
             </div>
           </Bubble>
           {content?.data?.btns ? (
-            <div className={offlineBtnsStyle}>
+            <div className={`${styles.offlineBtns}`}>
               <button
                 onClick={() => window?.location?.reload()}
                 style={{
@@ -118,7 +110,7 @@ export const UpdatedBubble = ({
                 {chatUi.allowTextToSpeech && (
                   <div style={{ display: 'flex' }}>
                     <div
-                      className={messageSpeakerStyle}
+                      className={`${styles.msgSpeaker}`}
                       onClick={handleAudio}
                       style={
                         !content?.data?.isEnd
@@ -156,9 +148,9 @@ export const UpdatedBubble = ({
                   </div>
                 )}
                 {chatUi.allowFeedback && (
-                  <div className={msgFeedbackStyle}>
+                  <div className={`${styles.msgFeedback}`}>
                     <div
-                      className={msgFeedbackIconsStyle}
+                      className={`${styles.msgFeedbackIcons}`}
                       style={{
                         border: `1px solid ${theme?.primary?.main}`,
                       }}
@@ -281,9 +273,9 @@ export const UpdatedBubble = ({
     case 'options': {
       return (
         <>
-          <Bubble type="text" className={textBubbleStyle}>
+          <Bubble type="text" className={`${styles.textBubble}`}>
             <div style={{ display: 'flex' }}>
-              <span className={optionsTextStyle}>{content?.data?.payload?.text}</span>
+              <span className={`${styles.optionsText}`}>{content?.data?.payload?.text}</span>
             </div>
             {getLists({
               choices: content?.data?.payload?.buttonChoices ?? content?.data?.choices,
@@ -306,12 +298,12 @@ export const UpdatedBubble = ({
           <div
             className={
               content?.data?.position === 'right'
-                ? messageTriangleRightStyle
-                : messageTriangleLeftStyle
+                ? `${styles.messageTriangleRight}`
+                : `${styles.messageTriangleLeft}`
             }
           ></div>
           <Bubble type="text">
-            <div className={tableContinerStyle}>
+            <div className={`${styles.tableContainer}`}>
               <JsonToTable json={JSON.parse(content?.text)?.table} />
             </div>
             <span
@@ -338,6 +330,7 @@ export const UpdatedBubble = ({
     }
     default:
       return (
+        // @ts-ignore
         <ScrollView
           data={[]}
           // @ts-ignore
@@ -356,6 +349,7 @@ const MediaBubble = ({ content, themeColor, isFile }: any) => {
     if (isFile) {
       return <FileCard file={url} extension="pdf" />;
     } else {
+      // @ts-ignore
       return <Img src={url} width="299" height="200" alt="image" lazy fluid />;
     }
   };

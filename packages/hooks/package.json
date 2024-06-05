@@ -11,6 +11,7 @@
     }
   },
   "scripts": {
+    "clean": "rimraf dist es lib",
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "build": "npm run clean && tsup",

@@ -8,6 +8,10 @@ exports.UpdatedBubble = void 0;
 var _chatui = require("@repo/chatui");
 var _moment = _interopRequireDefault(require("moment"));
 var _jsonToTable = require("../json-to-table");
+var _speaker = _interopRequireDefault(require("./assets/speaker.svg"));
+var _msgThumbsUp = _interopRequireDefault(require("./assets/msg-thumbs-up"));
+var _msgThumbsDown = _interopRequireDefault(require("./assets/msg-thumbs-down"));
+var _indexModule = _interopRequireDefault(require("./index.module.css"));
 var _jsxRuntime = require("react/jsx-runtime");
 var UpdatedBubble = exports.UpdatedBubble = function UpdatedBubble(_ref) {
   var _content$data, _theme$primary, _content$data2, _theme$primary2, _content$data3, _theme$primary3, _content$data4, _content$data5, _content$data6, _theme$primary4, _content$data7, _content$data8, _theme$primary5, _theme$primary6, _theme$primary7, _theme$primary8, _theme$primary9, _theme$primary10, _theme$primary11;
@@ -17,18 +21,6 @@ var UpdatedBubble = exports.UpdatedBubble = function UpdatedBubble(_ref) {
     theme = _ref.theme,
     handleAudio = _ref.handleAudio,
     feedbackHandler = _ref.feedbackHandler,
-    SpeakerIcon = _ref.SpeakerIcon,
-    MsgThumbsUp = _ref.MsgThumbsUp,
-    MsgThumbsDown = _ref.MsgThumbsDown,
-    offlineBtnsStyle = _ref.offlineBtnsStyle,
-    messageSpeakerStyle = _ref.messageSpeakerStyle,
-    tableContinerStyle = _ref.tableContinerStyle,
-    messageTriangleLeftStyle = _ref.messageTriangleLeftStyle,
-    messageTriangleRightStyle = _ref.messageTriangleRightStyle,
-    optionsTextStyle = _ref.optionsTextStyle,
-    textBubbleStyle = _ref.textBubbleStyle,
-    msgFeedbackIconsStyle = _ref.msgFeedbackIconsStyle,
-    msgFeedbackStyle = _ref.msgFeedbackStyle,
     getLists = _ref.getLists,
     reaction = _ref.reaction;
   var content = message.content,
@@ -76,7 +68,7 @@ var UpdatedBubble = exports.UpdatedBubble = function UpdatedBubble(_ref) {
             })
           })]
         }), content !== null && content !== void 0 && (_content$data6 = content.data) !== null && _content$data6 !== void 0 && _content$data6.btns ? /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-          className: offlineBtnsStyle,
+          className: "".concat(_indexModule.default.offlineBtns),
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
             onClick: function onClick() {
               var _window;
@@ -99,7 +91,7 @@ var UpdatedBubble = exports.UpdatedBubble = function UpdatedBubble(_ref) {
               display: 'flex'
             },
             children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-              className: messageSpeakerStyle,
+              className: "".concat(_indexModule.default.msgSpeaker),
               onClick: handleAudio,
               style: !(content !== null && content !== void 0 && (_content$data8 = content.data) !== null && _content$data8 !== void 0 && _content$data8.isEnd) ? {
                 pointerEvents: 'none',
@@ -113,7 +105,7 @@ var UpdatedBubble = exports.UpdatedBubble = function UpdatedBubble(_ref) {
                 border: "1px solid ".concat(theme === null || theme === void 0 || (_theme$primary6 = theme.primary) === null || _theme$primary6 === void 0 ? void 0 : _theme$primary6.main)
               },
               children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
-                src: SpeakerIcon,
+                src: _speaker.default,
                 width: 15,
                 height: 15,
                 alt: ""
@@ -132,9 +124,9 @@ var UpdatedBubble = exports.UpdatedBubble = function UpdatedBubble(_ref) {
               })]
             })
           }), chatUi.allowFeedback && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-            className: msgFeedbackStyle,
+            className: "".concat(_indexModule.default.msgFeedback),
             children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-              className: msgFeedbackIconsStyle,
+              className: "".concat(_indexModule.default.msgFeedbackIcons),
               style: {
                 border: "1px solid ".concat(theme === null || theme === void 0 || (_theme$primary8 = theme.primary) === null || _theme$primary8 === void 0 ? void 0 : _theme$primary8.main)
               },
@@ -152,7 +144,7 @@ var UpdatedBubble = exports.UpdatedBubble = function UpdatedBubble(_ref) {
                     msgId: content === null || content === void 0 || (_content$data9 = content.data) === null || _content$data9 === void 0 ? void 0 : _content$data9.messageId
                   });
                 },
-                children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(MsgThumbsUp, {
+                children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_msgThumbsUp.default, {
                   fill: reaction === 1,
                   width: "20px"
                 }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
@@ -183,7 +175,7 @@ var UpdatedBubble = exports.UpdatedBubble = function UpdatedBubble(_ref) {
                     msgId: content === null || content === void 0 || (_content$data10 = content.data) === null || _content$data10 === void 0 ? void 0 : _content$data10.messageId
                   });
                 },
-                children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(MsgThumbsDown, {
+                children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_msgThumbsDown.default, {
                   fill: reaction === -1,
                   width: "20px"
                 }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
@@ -262,13 +254,13 @@ var UpdatedBubble = exports.UpdatedBubble = function UpdatedBubble(_ref) {
         return /*#__PURE__*/(0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {
           children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_chatui.Bubble, {
             type: "text",
-            className: textBubbleStyle,
+            className: "".concat(_indexModule.default.textBubble),
             children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
               style: {
                 display: 'flex'
               },
               children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-                className: optionsTextStyle,
+                className: "".concat(_indexModule.default.optionsText),
                 children: content === null || content === void 0 || (_content$data19 = content.data) === null || _content$data19 === void 0 || (_content$data19 = _content$data19.payload) === null || _content$data19 === void 0 ? void 0 : _content$data19.text
               })
             }), getLists({
@@ -288,11 +280,11 @@ var UpdatedBubble = exports.UpdatedBubble = function UpdatedBubble(_ref) {
             maxWidth: '90vw'
           },
           children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-            className: (content === null || content === void 0 || (_content$data22 = content.data) === null || _content$data22 === void 0 ? void 0 : _content$data22.position) === 'right' ? messageTriangleRightStyle : messageTriangleLeftStyle
+            className: (content === null || content === void 0 || (_content$data22 = content.data) === null || _content$data22 === void 0 ? void 0 : _content$data22.position) === 'right' ? "".concat(_indexModule.default.messageTriangleRight) : "".concat(_indexModule.default.messageTriangleLeft)
           }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_chatui.Bubble, {
             type: "text",
             children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-              className: tableContinerStyle,
+              className: "".concat(_indexModule.default.tableContainer),
               children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_jsonToTable.JsonToTable, {
                 json: (_JSON$parse = JSON.parse(content === null || content === void 0 ? void 0 : content.text)) === null || _JSON$parse === void 0 ? void 0 : _JSON$parse.table
               })
@@ -310,16 +302,20 @@ var UpdatedBubble = exports.UpdatedBubble = function UpdatedBubble(_ref) {
         });
       }
     default:
-      return /*#__PURE__*/(0, _jsxRuntime.jsx)(_chatui.ScrollView, {
-        data: []
+      return (
+        /*#__PURE__*/
         // @ts-ignore
-        ,
-        renderItem: function renderItem(item) {
-          return /*#__PURE__*/(0, _jsxRuntime.jsx)(Button, {
-            label: item.text
-          });
-        }
-      });
+        (0, _jsxRuntime.jsx)(_chatui.ScrollView, {
+          data: []
+          // @ts-ignore
+          ,
+          renderItem: function renderItem(item) {
+            return /*#__PURE__*/(0, _jsxRuntime.jsx)(Button, {
+              label: item.text
+            });
+          }
+        })
+      );
   }
 };
 var MediaBubble = function MediaBubble(_ref2) {
@@ -335,6 +331,7 @@ var MediaBubble = function MediaBubble(_ref2) {
         extension: "pdf"
       });
     } else {
+      // @ts-ignore
       return /*#__PURE__*/(0, _jsxRuntime.jsx)(_chatui.Image, {
         src: url,
         width: "299",

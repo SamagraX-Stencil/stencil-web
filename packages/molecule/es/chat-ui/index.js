@@ -17,7 +17,7 @@ import { recordUserLocation } from './utils/location';
 import chatHistory from './chatHistory.json';
 import ShareButtons from '../share-buttons';
 import { useUiConfig, useThemeConfig } from '@repo/hooks';
-import NewMessageItem from '../message-item/index2';
+import MessageItem from '../message-item';
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 export var ChatUI = function ChatUI() {
   var _useState = useState([]),
@@ -155,7 +155,8 @@ export var ChatUI = function ChatUI() {
         return (
           /*#__PURE__*/
           // <MessageItem message={props} themeColor={theme} chatUi={config} />
-          _jsx(NewMessageItem, {
+          // @ts-ignore
+          _jsx(MessageItem, {
             message: props,
             themeColor: theme,
             chatUi: config

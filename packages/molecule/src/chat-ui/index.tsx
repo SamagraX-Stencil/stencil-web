@@ -4,13 +4,12 @@ import '@repo/chatui/dist/index.css';
 import React, { ReactElement, useCallback, useEffect, useMemo, useState } from 'react';
 import styles from './index.module.css';
 import { getMsgType } from './utils/getMsgType';
-import MessageItem from '../message-item';
 import toast from 'react-hot-toast';
 import { recordUserLocation } from './utils/location';
 import chatHistory from './chatHistory.json';
 import ShareButtons from '../share-buttons';
 import { useUiConfig, useThemeConfig } from '@repo/hooks';
-import NewMessageItem from '../message-item/index2';
+import MessageItem from '../message-item';
 
 export const ChatUI: React.FC = () => {
   const [messages, setMessages] = useState<any>([]);
@@ -118,7 +117,7 @@ export const ChatUI: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {/* @tsignore */}
+      {/* @ts-ignore */}
       <Chat
         showInput={true}
         btnColor={theme.secondaryColor.value}
@@ -136,7 +135,8 @@ export const ChatUI: React.FC = () => {
         messages={msgToRender}
         renderMessageContent={(props): ReactElement => (
           // <MessageItem message={props} themeColor={theme} chatUi={config} />
-          <NewMessageItem message={props} themeColor={theme} chatUi={config} />
+          // @ts-ignore
+          <MessageItem message={props} themeColor={theme} chatUi={config} />
         )}
         onSend={handleSend}
         locale="en-US"

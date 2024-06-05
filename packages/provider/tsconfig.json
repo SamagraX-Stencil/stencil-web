@@ -1,18 +1,39 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true,
-    "outDir": "dist",
-    "forceConsistentCasingInFileNames": true,
+    /* Project Options */
+    "allowJs": true,
     "isolatedModules": true,
-    "module": "ESNext",
-    "resolveJsonModule": true,
-    "moduleResolution": "Bundler",
-    "preserveWatchOutput": true,
-    "skipLibCheck": true,
-    "noEmit": true,
+    "jsx": "react-jsx",
+    "lib": ["dom", "esnext"],
+    "module": "esnext",
+    "target": "esnext",
+
+    /* Strict Checks */
+    "noImplicitAny": false,
+    "noImplicitThis": true,
     "strict": true,
-    "jsx": "react",
-    "allowSyntheticDefaultImports": true
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+
+    /* Module Resolution */
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+
+    /* Linter Checks */
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+
+    /* Advanced */
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "stripInternal": true,
+    "resolveJsonModule": true
   },
-  "exclude": ["node_modules"]
+
+  /* File Inclusion */
+  "exclude": ["node_modules", "dist", "es", "lib", "./*.js"]
 }

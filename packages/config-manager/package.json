@@ -12,6 +12,7 @@
     }
   },
   "scripts": {
+    "clean": "rimraf dist es lib",
     "build": "npm run clean && tsup",
     "dev": "nodemon --watch src --ext ts,tsx,css,json,js,jsx --exec \"npm run build\"",
     "lint": "eslint",
