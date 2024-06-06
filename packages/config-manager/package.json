@@ -2,19 +2,11 @@
   "name": "@repo/configmanager",
   "version": "1.0.3",
   "private": true,
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    }
-  },
+  "main": "./index.ts",
   "scripts": {
     "clean": "rimraf dist es lib",
     "build": "npm run clean && tsup",
-    "dev": "nodemon --watch src --ext ts,tsx,css,json,js,jsx --exec \"npm run build\"",
+    "dev2": "nodemon --watch src --ext ts,tsx,css,json,js,jsx --exec \"npm run build\"",
     "lint": "eslint",
     "typecheck": "tsc --noEmit"
   },

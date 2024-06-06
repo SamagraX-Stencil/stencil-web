@@ -2,11 +2,7 @@
   "name": "@repo/pages",
   "version": "1.0.4",
   "description": "Pages Library",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "browser": "dist/index.js",
-  "style": "dist/index.css",
-  "typings": "lib/index.d.ts",
+  "main": "./src/index.ts",
   "files": [
     "dist",
     "es",
@@ -30,7 +26,7 @@
     "test:coverage": "jest --coverage",
     "prepare": "husky install",
     "build": "npm run clean && npm run prepublishOnly",
-    "dev": "nodemon --watch src --ext ts,tsx,css --exec \"npm run build\""
+    "dev2": "nodemon --watch src --ext ts,tsx,css --exec \"npm run build\""
   },
   "dependencies": {
     "@babel/runtime": "^7.18.3",

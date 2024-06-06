@@ -1,21 +1,13 @@
 {
   "name": "@repo/hooks",
   "version": "1.0.3",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.mts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    }
-  },
+  "main": "./index.ts",
   "scripts": {
     "clean": "rimraf dist es lib",
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "build": "npm run clean && tsup",
-    "dev": "nodemon --watch src --ext ts,tsx,css,json,js,jsx --exec \"npm run build\""
+    "dev2": "nodemon --watch src --ext ts,tsx,css,json,js,jsx --exec \"npm run build\""
   },
   "dependencies": {
     "react": "^18.2.0",
