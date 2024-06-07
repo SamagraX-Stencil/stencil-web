@@ -1,19 +1,19 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { OTPInput } from "./index";
-import { fn } from "@storybook/test";
+import { OTPInput } from './index';
+import { fn } from '@storybook/test';
 
 const meta = {
-  title: "Molecule/OTPInput",
+  title: 'Molecule/OTPInput',
   component: OTPInput,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "fullscreen",
+    layout: 'centered',
   },
   args: {
-    separator: "-",
+    separator: '-',
     length: 4,
-    value: "",
+    value: '',
     onChange: fn(),
   },
 } satisfies Meta<typeof OTPInput>;

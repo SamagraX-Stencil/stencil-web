@@ -1,47 +1,47 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { JsonToTable } from "./index";
+import { JsonToTable } from './index';
 
 const meta = {
-  title: "Molecule/JsonToTable",
+  title: 'Molecule/JsonToTable',
   component: JsonToTable,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "fullscreen",
+    layout: 'fullscreen',
   },
   args: {
     json: {
       personalDetails: {
-        "Aadhaar Card No": "5592****6433",
-        "Farmer Category": "SMF",
-        "Applicant Name": "MALAR GARNAYAK",
-        "Father Name": "ISWAR GARNAYAK",
-        District: "ANGUL",
-        Block: "KANIHA",
-        GP: "KUILEI",
-        Village: "Kulei",
+        'Aadhaar Card No': '5592****6433',
+        'Farmer Category': 'SMF',
+        'Applicant Name': 'MALAR GARNAYAK',
+        'Father Name': 'ISWAR GARNAYAK',
+        District: 'ANGUL',
+        Block: 'KANIHA',
+        GP: 'KUILEI',
+        Village: 'Kulei',
       },
       buttons: [
         {
           id: 0,
-          type: "kalia_grievance_status",
-          aadhar: "Aadhar number - 559207276433",
-          textInEnglish: "Grievance Status",
-          text: "Grievance Status",
+          type: 'kalia_grievance_status',
+          aadhar: 'Aadhar number - 559207276433',
+          textInEnglish: 'Grievance Status',
+          text: 'Grievance Status',
         },
         {
           id: 1,
-          type: "kalia_eligibility_criteria",
-          aadhar: "Aadhar number - 559207276433",
-          textInEnglish: "Eligibility Criteria",
-          text: "Eligibility Criteria",
+          type: 'kalia_eligibility_criteria',
+          aadhar: 'Aadhar number - 559207276433',
+          textInEnglish: 'Eligibility Criteria',
+          text: 'Eligibility Criteria',
         },
         {
           id: 2,
-          type: "kalia_benefit_disbursal_history",
-          aadhar: "Aadhar number - 559207276433",
-          textInEnglish: "Benefit Disbursal History",
-          text: "Benefit Disbursal History",
+          type: 'kalia_benefit_disbursal_history',
+          aadhar: 'Aadhar number - 559207276433',
+          textInEnglish: 'Benefit Disbursal History',
+          text: 'Benefit Disbursal History',
         },
       ],
     },
@@ -50,13 +50,5 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-
-// export const LoggedIn: Story = {
-//   args: {
-//     json: {
-//       name: 'Jane Doe',
-//     },
-//   },
-// };
 
 export const JsonTable: Story = {};
