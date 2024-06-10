@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen); // Toggle sidebar state
   };
-
+  console.log('config from nav: ', config);
   return (
     <>
       <AppBar position="static" sx={{ background: theme.primary.dark }}>
