@@ -47,7 +47,7 @@ To start developing and see your changes live, follow these steps:
    - Open your favorite code editor and make changes to the source files.
    - Save your changes, and the development server will automatically reload the application in your browser.
 
-   By default, the development server runs at `http://localhost:3000`. Open this URL in your browser to see your changes live.
+   By default, the development server runs at `http://localhost:3001`  and `http://localhost:7001`. Open this URL in your browser to see your changes live.
 
 ## Contributing
 
@@ -66,6 +66,27 @@ We welcome contributions! If you would like to contribute to this project, pleas
 There are multiple molecules present in the packages folder which houses the building blocks for an application.
 
 Checkout the project and it's structure from there and you can start the implementation for it.
+All the molecules are in the packages folder. 
+
+stencil-ui/
+stencil-ui/
+├── packages/
+│   ├── molecules/
+│   ├── pages/
+│   ├── config-manager/
+│   ├── chatui/
+│   ├── hooks/
+│   └── provider/
+├── apps/
+│   ├── all-molecule-example/
+│   └── bot-app/
+├── node_modules/
+├── package.json
+├── turbo.json
+└── README.md
+
+
+
 
 ## Updating 
  
