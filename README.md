@@ -100,11 +100,20 @@ We welcome contributions! Please follow these steps to contribute:
 6. Open a pull request.
 
 Please ensure your code adheres to the project's coding standards and passes all tests before submitting a pull request.
+ We expect all the code to come with their test cases using React Testing Library. Attach the build pass code and the test pass with the PR 
 
+## Creation of Molecule
+
+There are multiple molecules present in the packages folder which houses the building blocks for our application.
+
+Checkout the project and it's structure from there and you can start the implementation for it.
+All the molecules are in the packages folder. 
+
+ 
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
-Thank you for using My Monorepo! If you have any questions or feedback, feel free to open an issue.
+Thank you for using our Stencil-Web! If you have any questions or feedback, feel free to open an issue.
