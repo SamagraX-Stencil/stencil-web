@@ -1,4 +1,4 @@
-![image](https://github.com/SamagraX-Stencil/stencil-web/assets/88641794/72f410f8-4243-4d95-8879-e1c1c6a48772)## Introduction
+ ## Introduction
 
 `Stencil UI` is a robust, open-source development UI library designed to revolutionize the creation of scalable and secure Web applications. Stencil UI is the a set of molecules which turns makes easier to use the common UI components into  production-ready code in a few minutes. We make our applications development easier with it, ensuring consistency, predictability, and adherence to the highest standards with code that’s built to scale.
 
