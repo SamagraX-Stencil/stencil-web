@@ -1,13 +1,13 @@
 'use client'
 
 import { useContext } from 'react'
-import { AppContext } from '@repo/provider'
-import { useLocalization } from '@repo/hooks'
-import { useBotConfig } from '@repo/hooks'
+import { AppContext } from '@samagra-x/provider'
+import { useLocalization } from '@samagra-x/hooks'
+import { useBotConfig } from '@samagra-x/hooks'
 import dynamic from 'next/dynamic'
 import styles from '../src/components/dialer-popup/index.module.css'
 import DialerPopUp from '../src/components/dialer-popup'
-import { ChatUI } from '@repo/molecules'
+import { ChatUI } from '@samagra-x/molecules'
 
 const ClientComponent = () => {
   const context = useContext(AppContext)

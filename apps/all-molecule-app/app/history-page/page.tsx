@@ -1,5 +1,5 @@
 'use client'
-import { HistoryPage } from '@repo/pages'
+import { HistoryPage } from '@samagra-x/pages'
 import React from 'react'
 
 const History = () => {

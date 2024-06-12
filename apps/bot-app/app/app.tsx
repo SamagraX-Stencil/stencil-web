@@ -1,6 +1,6 @@
 'use client'
 
-import { LoginMobileAadharPage } from '@repo/pages'
+import { LoginMobileAadharPage } from '@samagra-x/pages'
 
 function App() {
   return (

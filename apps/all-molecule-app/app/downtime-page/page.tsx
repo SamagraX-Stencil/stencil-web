@@ -1,5 +1,5 @@
 'use client'
-import { DowntimePage } from '@repo/pages'
+import { DowntimePage } from '@samagra-x/pages'
 import React from 'react'
 
 const DownTime = () => {

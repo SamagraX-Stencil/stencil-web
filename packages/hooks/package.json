@@ -1,8 +1,15 @@
 {
-  "name": "@repo/hooks",
-  "version": "1.0.3",
-  "main": "./index.ts",
-  "scripts": {
+  "name": "@samagra-x/hooks",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.mts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },  "scripts": {
     "clean": "rimraf dist es lib",
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
@@ -12,7 +19,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@repo/provider": "*"
+    "@samagra-x/provider": "0.0.1"
   },
   "devDependencies": {
     "build": "tsup",

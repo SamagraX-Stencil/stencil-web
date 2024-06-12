@@ -1,5 +1,5 @@
 'use client'
-import { ConfigContext, CustomThemeProvider } from '@repo/provider'
+import { ConfigContext, CustomThemeProvider } from '@samagra-x/provider'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { CssBaseline } from '@mui/material'
@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 import { Navbar } from '../components/navbar'
 
-import { Provider } from '@repo/provider'
+import { Provider } from '@samagra-x/provider'
 
 const inter = Inter({ subsets: ['latin'] })
 

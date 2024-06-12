@@ -1,4 +1,4 @@
-import configObj from '@repo/configmanager'
+import configObj from '@samagra-x/config-manager'
 import AppConfig from '../types/appConfigType'
 
 interface UpdateConfigAction {

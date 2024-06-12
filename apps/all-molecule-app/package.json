@@ -12,14 +12,14 @@
     "next": "^14.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@repo/pages": "*"
+    "@samagra-x/pages": "*"
   },
   "devDependencies": {
-    "@repo/configmanager": "*",
-    "@repo/provider": "*",
+    "@samagra-x/config-manager": "*",
+    "@samagra-x/provider": "*",
     "@repo/ui": "*",
-    "@repo/hooks": "*",
-    "@repo/molecules": "*",
+    "@samagra-x/hooks": "*",
+    "@samagra-x/molecules": "*",
     "@next/eslint-plugin-next": "^14.1.1",
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",

@@ -9,22 +9,22 @@ import {
   useState,
 } from 'react'
 
-// import '@repo/chatui/dist/index.css'
+// import '@samagra-x/chatui/dist/index.css'
 import { Toaster } from 'react-hot-toast'
 import { useCookies } from 'react-cookie'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
-import { useLogin } from '@repo/hooks'
+import { useLogin } from '@samagra-x/hooks'
 import FeaturePopup from '../components/FeaturePopup'
-import { Provider } from '@repo/provider'
+import { Provider } from '@samagra-x/provider'
 import { InstallModal } from '../components/install-modal'
-import { FullPageLoader } from '@repo/molecules'
+import { FullPageLoader } from '@samagra-x/molecules'
 import { v4 as uuidv4 } from 'uuid'
 import {
   ConfigContext,
   CustomThemeProvider,
   ThemeContext,
-} from '@repo/provider'
+} from '@samagra-x/provider'
 
 const NavBar = dynamic(() => import('../components/NavBar'), {
   ssr: false,

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { List } from '.';
-import { ConfigContext, CustomThemeProvider } from '@repo/provider';
+import { ConfigContext, CustomThemeProvider } from '@samagra-x/provider';
 
 const meta = {
   title: 'Molecule/List',

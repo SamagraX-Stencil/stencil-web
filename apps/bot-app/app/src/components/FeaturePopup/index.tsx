@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react'
 import styles from './styles.module.css'
-import { useBotAppColorPalates } from '@repo/hooks'
+import { useBotAppColorPalates } from '@samagra-x/hooks'
 
 function FeaturePopup() {
   const [popupData, setPopupData] = useState<any>(null)

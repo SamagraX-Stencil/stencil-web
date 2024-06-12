@@ -4,7 +4,7 @@ import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import pkg from './package.json';
 
-const name = '@repo/molecules';
+const name = '@samagra-x/molecules';
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
 export default {

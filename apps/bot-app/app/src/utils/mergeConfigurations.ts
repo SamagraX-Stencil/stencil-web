@@ -1,4 +1,4 @@
-import { botConfigObj } from '@repo/configmanager'
+import { botConfigObj } from '@samagra-x/config-manager'
 import axios from 'axios'
 
 //@ts-ignore

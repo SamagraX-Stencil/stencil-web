@@ -5,10 +5,10 @@ import error from './assets/error.gif'
 import start from './assets/startIcon.svg'
 import styles from './styles.module.css'
 import toast from 'react-hot-toast'
-import { useLocalization } from '@repo/hooks'
-import { useBotConfig } from '@repo/hooks'
+import { useLocalization } from '@samagra-x/hooks'
+import { useBotConfig } from '@samagra-x/hooks'
 import { v4 as uuidv4 } from 'uuid'
-import { AppContext } from '@repo/provider'
+import { AppContext } from '@samagra-x/provider'
 import saveTelemetryEvent from '../../utils/telemetry'
 
 const RenderVoiceRecorder = ({ setInputMsg, tapToSpeak }) => {

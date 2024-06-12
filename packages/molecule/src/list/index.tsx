@@ -6,7 +6,7 @@ import { ExpandLess, StarBorder, ExpandMore, ErrorOutline } from '@mui/icons-mat
 import { ListType } from './types';
 import { map } from 'lodash';
 import { Avatar, Divider, ListItem, ListItemAvatar, Typography } from '@mui/material';
-import { useBotConfig } from '@repo/hooks';
+import { useBotConfig } from '@samagra-x/hooks';
 
 export const List: React.FC<ListType> = ({ items, label, noItem }) => {
   const [openItem, setOpenItem] = React.useState<string | null>(null);

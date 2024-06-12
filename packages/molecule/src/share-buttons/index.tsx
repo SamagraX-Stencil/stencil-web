@@ -3,8 +3,8 @@ import React, { useMemo, useState } from 'react';
 import { FileDownloadOutlined, Share } from '@mui/icons-material';
 import { toast } from 'react-hot-toast';
 import { CircularProgress, Divider } from '@mui/material';
-import { useColorPalates } from '@repo/hooks';
-import { useUiConfig } from '@repo/hooks';
+import { useColorPalates } from '@samagra-x/hooks';
+import { useUiConfig } from '@samagra-x/hooks';
 
 const ShareButtons = () => {
   const config = useUiConfig('component', 'shareButton');

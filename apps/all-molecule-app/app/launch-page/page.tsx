@@ -1,5 +1,5 @@
 'use client'
-import { LaunchPage } from '@repo/pages'
+import { LaunchPage } from '@samagra-x/pages'
 import React from 'react'
 
 const Launch = () => {

@@ -1,7 +1,15 @@
 {
-  "name": "@repo/provider",
-  "version": "1.0.3",
-  "main": "./src/index.ts",
+  "name": "@samagra-x/provider",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.mts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
   "scripts": {
     "clean": "rimraf dist es lib",
     "lint": "eslint . --max-warnings 0",
@@ -13,7 +21,7 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@mui/material": "^5.15.15",
-    "@repo/configmanager": "*",
+    "@samagra-x/config-manager": "0.0.1",
     "esbuild-plugin-polyfill-node": "^0.3.0",
     "lodash": "^4.17.21",
     "react": "^18.2.0",

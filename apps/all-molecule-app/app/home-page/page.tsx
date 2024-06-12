@@ -1,5 +1,5 @@
 'use client'
-import { HomePage } from '@repo/pages'
+import { HomePage } from '@samagra-x/pages'
 import React from 'react'
 
 const Home = () => {

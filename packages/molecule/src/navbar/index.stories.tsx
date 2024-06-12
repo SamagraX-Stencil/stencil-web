@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ConfigContext, CustomThemeProvider } from '@repo/provider';
+import { ConfigContext, CustomThemeProvider } from '@samagra-x/provider';
 import Navbar from '.';
 
 const meta = {

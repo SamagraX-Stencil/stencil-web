@@ -6,7 +6,7 @@ import {
   ListItem,
   FileCard,
   Typing,
-} from '@repo/chatui'
+} from '@samagra-x/chatui'
 import {
   FC,
   ReactElement,
@@ -27,10 +27,10 @@ import MsgThumbsDown from './assets/msg-thumbs-down'
 import { MessageItemPropType } from './index.d'
 import { JsonToTable } from '../json-to-table'
 import moment from 'moment'
-import { useBotAppColorPalates } from '@repo/hooks'
-import { useBotConfig } from '@repo/hooks'
-import { useLocalization } from '@repo/hooks'
-import { AppContext } from '@repo/provider'
+import { useBotAppColorPalates } from '@samagra-x/hooks'
+import { useBotConfig } from '@samagra-x/hooks'
+import { useLocalization } from '@samagra-x/hooks'
+import { AppContext } from '@samagra-x/provider'
 import axios from 'axios'
 import saveTelemetryEvent from '../../utils/telemetry'
 import Loader from '../loader'

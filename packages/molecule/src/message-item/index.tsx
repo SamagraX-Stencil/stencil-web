@@ -1,4 +1,4 @@
-import { List, ListItem } from '@repo/chatui';
+import { List, ListItem } from '@samagra-x/chatui';
 import { FC, useCallback, useEffect, useState } from 'react';
 
 import { toast } from 'react-hot-toast';
@@ -6,7 +6,7 @@ import styles from './index.module.css';
 import RightIcon from './assets/right';
 
 import { MessageItemPropType } from './types';
-import { useColorPalates } from '@repo/hooks';
+import { useColorPalates } from '@samagra-x/hooks';
 import { UpdatedBubble } from './bubble';
 
 // import BlinkingSpinner from '../blinking-spinner/index';

@@ -1,4 +1,4 @@
-import { useConfigContext } from '@repo/provider'
+import { useConfigContext } from '@samagra-x/provider'
 
 export const useConfig = (key: string, name: string) => {
   const { config } = useConfigContext()

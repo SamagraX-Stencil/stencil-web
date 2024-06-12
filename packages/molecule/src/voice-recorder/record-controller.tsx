@@ -1,7 +1,7 @@
 import styles from './styles.module.css';
 
 import { Mic } from '@mui/icons-material';
-import { useColorPalates } from '@repo/hooks';
+import { useColorPalates } from '@samagra-x/hooks';
 const RecorderControl: React.FC<{
   status: string;
   onClick?: () => void;

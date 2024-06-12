@@ -4,7 +4,7 @@ import MobiledataOffIcon from '@mui/icons-material/MobiledataOff'
 import HomeIcon from '@mui/icons-material/Home'
 import ThumbsUpDownIcon from '@mui/icons-material/ThumbsUpDown'
 import GridViewIcon from '@mui/icons-material/GridView'
-import { useColorPalates } from '@repo/hooks'
+import { useColorPalates } from '@samagra-x/hooks'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import {
   ChatBubble,

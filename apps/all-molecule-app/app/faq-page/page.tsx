@@ -1,5 +1,5 @@
 'use client'
-import { FAQPage } from '@repo/pages'
+import { FAQPage } from '@samagra-x/pages'
 import React from 'react'
 
 const Faq = () => {

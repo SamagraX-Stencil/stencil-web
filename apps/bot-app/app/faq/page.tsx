@@ -2,9 +2,9 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useBotConfig } from '@repo/hooks'
-import { useLocalization } from '@repo/hooks'
-import { FAQPage } from '@repo/pages'
+import { useBotConfig } from '@samagra-x/hooks'
+import { useLocalization } from '@samagra-x/hooks'
+import { FAQPage } from '@samagra-x/pages'
 
 const Faq: NextPage = () => {
   const t = useLocalization()

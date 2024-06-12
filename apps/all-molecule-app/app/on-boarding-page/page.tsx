@@ -1,5 +1,5 @@
 'use client'
-import { OnBoardingPage } from '@repo/pages'
+import { OnBoardingPage } from '@samagra-x/pages'
 import React from 'react'
 
 const OnBoardingMolecule = () => {
