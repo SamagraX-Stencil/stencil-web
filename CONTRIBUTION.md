@@ -20,6 +20,10 @@ Experience the fastest way to develop  WEB Applications applications with Amplic
 - [Resources](#Resources)
 - [Contributors](#contributors)
 
+## Screenshot
+![all-molecules-app](https://github.com/SamagraX-Stencil/stencil-web/assets/88641794/8a261351-35bf-4f6d-820f-785611fc1afa)
+![bot-app](https://github.com/SamagraX-Stencil/stencil-web/assets/88641794/c6bca5ba-be18-4049-af3a-c7d5ee63475d)
+
 
 ## Some Important Terminologies
 ### Molecules
