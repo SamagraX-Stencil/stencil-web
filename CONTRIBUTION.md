@@ -1,6 +1,6 @@
  ## Introduction
 
-`Stencil UI` is a robust, open-source development UI library designed to revolutionize the creation of scalable and secure Web applications. Stencil UI is the set of molecules which turns makes it easier to use the common UI components in  production-ready code in a few minutes. We make our application development easier with it, ensuring consistency, predictability, and adherence to the highest standards with code that’s built to scale.
+`Stencil UI` is a robust, open-source development UI library designed to revolutionize the creation of scalable and secure Web applications. Stencil UI is the set of molecules which turn makes it easier to use the common UI components in  production-ready code in a few minutes. We make our application development easier with it, ensuring consistency, predictability, and adherence to the highest standards with code that’s built to scale.
 
 Our user-friendly interface fosters seamless integration with APIs, data models, databases, authentication, and authorization. Built on a flexible, plugin-based architecture, Amplication allows effortless customization of the code and offers a diverse range of integrations.
 
@@ -29,7 +29,7 @@ All molecules currently supported can be viewed on this  [website](https://stenc
 
 ## Usage 
 
-To get started with Stencil-UI, the hosted version of the product can be used to check what all the available molecules. You can get started immediately at [stencil-ui-templates](https://stencil-ui-templates.vercel.app/).   The [website]( https://stencil-ui-templates.vercel.app) provides an overview of the application, and additional information on the product and guides can be found in the [docs](https://stencil-docs.vercel.app/).
+To get started with Stencil-UI, the hosted version of the product can be used to check all the available molecules. You can get started immediately at [stencil-ui-templates](https://stencil-ui-templates.vercel.app/).   The [website]( https://stencil-ui-templates.vercel.app) provides an overview of the application, and additional information on the product and guides can be found in the [docs](https://stencil-docs.vercel.app/).
 
 ## Development
 Pre-requisites
@@ -37,9 +37,11 @@ Pre-requisites
 To be able to start development on StencilUI, make sure that you have the following prerequisites installed:
 
 ###
-- Node.js
-- Git
- 
+- [Node.js](https://nodejs.org/) (version 14.x or later)
+- [Yarn](https://yarnpkg.com/)
+- [Turborepo](https://turborepo.org/)
+- [Git](https://git-scm.com/)
+  
 ### Running Stencil UI
 
 > **Note**
@@ -55,14 +57,14 @@ Stencil UI uses a mono repo architecture - powered by <a href="https://turbo.bui
 
 1. Clone the repository and install dependencies:
 ```shell
-git clone  https://github.com/SamagraX-Stencil/stencil-web && cd stencil-web && npm install or yarn install
+git clone  https://github.com/SamagraX-Stencil/stencil-web && cd stencil-web && yarn install
 ```
 
 2. To start developing, run one or more of the applications available under `dev` scripts of the package.json.
 
-   ```bash
-   yarn install
-   ```
+```bash
+yarn install
+```
 
 3. To start the local development
 
@@ -77,16 +79,11 @@ turbo build
 ```bash
 turbo dev
 ```
-
-
-
 > **Note**
 >   The above command will start all bot-app/ and all-molecule-example/ on the 7001 and 3001 ports respectively
 
-The development environment should now be set up. Additional information on the different application components can be found under packages/`[application]`/README.md file. Happy hacking! 👾
+The development environment should now be set up.Happy hacking! 👾
  
-
-
 ## Structure
 
 The repository is organized as follows:
@@ -128,22 +125,22 @@ stencil-ui/
  
 ## Contributing
 
-The Stencil-UI code is open-source. We are committed to a transparent development process and highly appreciate any contributions. Whether you are helping us fix bugs, proposing new features, improving our documentation or spreading the word - we would love to have you as a part of the Samagra community.  
+The Stencil-UI code is open-source. We are committed to a transparent development process and highly appreciate any contributions. Whether you are helping us fix bugs, proposing new features, improving our documentation, or spreading the word - we would love to have you as a part of the Samagra community.  
 
-- Bug Report: If you see an error message or encounter an issue while using Stencil-UI, please create a [bug report]( https://github.com/SamagraX-Stencil/stencil-web/issues/new).
+-** Bug Report**: If you see an error message or encounter an issue while using Stencil-UI, please create a [bug report]( https://github.com/SamagraX-Stencil/stencil-web/issues/new).
 
-- Feature Request: If you have an idea or if there is a capability that is missing and would make development easier and more robust, please submit a [feature request]( https://github.com/SamagraX-Stencil/stencil-web/issues/new).
+- **Feature Request**: If you have an idea or if there is a capability that is missing and would make development easier and more robust, please submit a [feature request]( https://github.com/SamagraX-Stencil/stencil-web/issues/new).
 
-- Documentation Request: If you're reading the Stencil-UI docs and feel like you're missing something, please submit a [documentation request](https://github.com/SamagraX-Stencil/stencil-web/issues/new).
+- **Documentation Request**: If you're reading the Stencil-UI docs and feel like you're missing something, please submit a [documentation request](https://github.com/SamagraX-Stencil/stencil-web/issues/new).
 
 Not sure where to start? Join our discord and we will help you get started!
  
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.  
 
 ---
 
-Thank you for using My Monorepo! If you have any questions or feedback, feel free to open an issue.
+Thank you for using Stencil_UI. If you have any questions or feedback, feel free to open an issue.
 
  
