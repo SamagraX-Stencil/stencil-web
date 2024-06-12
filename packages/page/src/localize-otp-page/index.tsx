@@ -5,13 +5,13 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
 import { toast } from 'react-hot-toast';
-import { useBotAppColorPalates } from '@repo/hooks';
-import { OTPInput } from '@repo/molecules';
-import { useLocalization } from '@repo/hooks';
+import { useBotAppColorPalates } from '@samagra-x/hooks';
+import { OTPInput } from '@samagra-x/molecules';
+import { useLocalization } from '@samagra-x/hooks';
 import { useRouter, useSearchParams } from 'next/navigation';
 import jwt_decode from 'jwt-decode';
 import { useCookies } from 'react-cookie';
-import { useBotConfig } from '@repo/hooks';
+import { useBotConfig } from '@samagra-x/hooks';
 import axios from 'axios';
 import { FormattedMessage } from 'react-intl';
 const LocalOtpPage: React.FC = () => {

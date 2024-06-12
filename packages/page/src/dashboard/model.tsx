@@ -7,7 +7,7 @@ import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { Button, List, Typography } from '@mui/material';
 import cloud from './assets/cloud-copy.png';
-import { useColorPalates } from '@repo/hooks';
+import { useColorPalates } from '@samagra-x/hooks';
 const style = {
   position: 'absolute' as const,
   top: '50%',

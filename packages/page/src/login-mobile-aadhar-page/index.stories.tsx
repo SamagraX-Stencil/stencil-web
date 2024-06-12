@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import LoginMobileAadharPage from './index';
-import { CustomThemeProvider } from '@repo/provider';
+import { CustomThemeProvider } from '@samagra-x/provider';
 import { CssBaseline } from '@mui/material';
 
 const meta = {

@@ -3,8 +3,8 @@ import React, { useCallback, useState } from 'react';
 import farmer from './assets/farmer.jpeg';
 import { Box, CircularProgress, TextField, Button } from '@mui/material';
 
-import { useUiConfig, useColorPalates } from '@repo/hooks';
-import { LanguagePicker } from '@repo/molecules';
+import { useUiConfig, useColorPalates } from '@samagra-x/hooks';
+import { LanguagePicker } from '@samagra-x/molecules';
 
 const LoginMobile = () => {
   const config = useUiConfig('component', 'loginMobilePage');

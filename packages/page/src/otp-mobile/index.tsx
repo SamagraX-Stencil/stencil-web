@@ -4,8 +4,8 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 import { Box, Button, Container, IconButton, Link } from '@mui/material';
 import { ArrowBackIosNewRounded } from '@mui/icons-material';
-import { useUiConfig, useColorPalates } from '@repo/hooks';
-import { OTPInput } from '@repo/molecules';
+import { useUiConfig, useColorPalates } from '@samagra-x/hooks';
+import { OTPInput } from '@samagra-x/molecules';
 
 const OtpMobile = () => {
   const theme = useColorPalates();

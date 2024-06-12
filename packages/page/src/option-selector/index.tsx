@@ -3,7 +3,7 @@ import React, { useCallback } from 'react';
 import { Box, Button, Container, Grid, IconButton, Link, Paper, styled } from '@mui/material';
 import { ArrowBackIosNewRounded, ArrowForward, CheckCircleRounded } from '@mui/icons-material';
 
-import { useUiConfig, useColorPalates } from '@repo/hooks';
+import { useUiConfig, useColorPalates } from '@samagra-x/hooks';
 import rice from './assets/rice.jpeg';
 import wheat from './assets/wheat.png';
 import more from './assets/more.png';

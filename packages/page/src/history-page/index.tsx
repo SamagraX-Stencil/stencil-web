@@ -1,15 +1,15 @@
 import { FC, useCallback, useEffect, useState } from 'react';
 import styles from './style.module.css';
 
-import { List } from '@repo/molecules';
+import { List } from '@samagra-x/molecules';
 import { IconButton } from '@mui/material';
 import { DeleteOutline, Forum } from '@mui/icons-material';
 import moment from 'moment';
-import { FullPageLoader } from '@repo/molecules';
+import { FullPageLoader } from '@samagra-x/molecules';
 import { ChatItem, HistoryItem } from './types';
 import { map } from 'lodash';
 import sample from './sample.json';
-import { useUiConfig, useColorPalates, useLocalization } from '@repo/hooks';
+import { useUiConfig, useColorPalates, useLocalization } from '@samagra-x/hooks';
 
 const HistoryPage: FC = () => {
   const config = useUiConfig('component', 'historyPage');

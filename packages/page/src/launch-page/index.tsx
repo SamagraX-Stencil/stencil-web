@@ -1,4 +1,4 @@
-import { useUiConfig, useColorPalates } from '@repo/hooks';
+import { useUiConfig, useColorPalates } from '@samagra-x/hooks';
 
 import styles from './index.module.css';
 

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { CustomThemeProvider } from '@repo/provider';
+import { CustomThemeProvider } from '@samagra-x/provider';
 import { CssBaseline } from '@mui/material';
 import FAQPage from './index';
 

@@ -5,10 +5,10 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import CallRoundedIcon from '@mui/icons-material/Call';
 import { Avatar } from '@mui/material';
-import { useBotAppColorPalates } from '@repo/hooks';
+import { useBotAppColorPalates } from '@samagra-x/hooks';
 // import { useFlags } from 'flagsmith/react'
 import ComingSoonPage from '../coming-soon-page';
-import { useLocalization } from '@repo/hooks';
+import { useLocalization } from '@samagra-x/hooks';
 
 const FAQPage: React.FC = () => {
   const t = useLocalization();

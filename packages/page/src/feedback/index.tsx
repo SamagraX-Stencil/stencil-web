@@ -5,10 +5,10 @@ import { Box } from '@mui/material';
 import Rating from '@mui/material/Rating';
 import Button from '@mui/material/Button';
 import { toast } from 'react-hot-toast';
-import { useBotAppColorPalates } from '@repo/hooks';
-import { useBotConfig } from '@repo/hooks';
+import { useBotAppColorPalates } from '@samagra-x/hooks';
+import { useBotConfig } from '@samagra-x/hooks';
 import axios from 'axios';
-import { useLocalization } from '@repo/hooks';
+import { useLocalization } from '@samagra-x/hooks';
 
 const FeedbackPage: React.FC = () => {
   const [star, setStar] = useState(1);

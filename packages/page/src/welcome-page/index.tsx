@@ -3,8 +3,8 @@ import cm from './assets/cm.png';
 import bottom from './assets/bottom.png';
 import { Container, IconButton } from '@mui/material';
 import { ArrowForward } from '@mui/icons-material';
-import { useUiConfig, useColorPalates } from '@repo/hooks';
-import { LanguagePicker } from '@repo/molecules';
+import { useUiConfig, useColorPalates } from '@samagra-x/hooks';
+import { LanguagePicker } from '@samagra-x/molecules';
 
 const AkaiLaunch = () => {
   const config = useUiConfig('component', 'welcomePage');

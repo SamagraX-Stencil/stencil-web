@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import ComingSoonPage from './index';
 import { vi } from 'vitest';
-import { useUiConfig } from '@repo/hooks';
+import { useUiConfig } from '@samagra-x/hooks';
 
 describe('Coming Soon component', () => {
   const config = useUiConfig('component', 'comingSoon');

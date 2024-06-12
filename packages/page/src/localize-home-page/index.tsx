@@ -12,10 +12,10 @@ import DowntimePage from '../downtime-page';
 import kaliaStatusImg from './assets/kalia_status.png';
 import plantProtectionImg from './assets/plant_protection.png';
 import weatherAdvisoryImg from './assets/weather_advisory.png';
-import { AppContext } from '@repo/provider';
-import { useColorPalates, useConfig, useLocalization } from '@repo/hooks';
+import { AppContext } from '@samagra-x/provider';
+import { useColorPalates, useConfig, useLocalization } from '@samagra-x/hooks';
 import { recordUserLocation } from '../resources/utils/location';
-import { VoiceRecorder } from '@repo/molecules';
+import { VoiceRecorder } from '@samagra-x/molecules';
 
 const LocalHomePage: NextPage = () => {
   const context = useContext(AppContext);
