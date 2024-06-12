@@ -61,44 +61,14 @@ Stencil UI uses a mono repo architecture - powered by <a href="https://turbo.bui
 git clone  https://github.com/SamagraX-Stencil/stencil-web && cd stencil-web && npm install or yarn install
 ```
 
-2. Run the setup script, which takes care of installing dependencies, building packages, and setting up the workspace:
-```shell
-npm run setup:dev
-```
-
-3. Option 1: Running the required infrastructure - view infrastructure component logs
-
+2. To start developing, run one or more of the applications available under `dev` scripts of the package.json.
 
 ```shell
-npm run docker:dev
-```
-3. Option 2: Running the required infrastructure - run the infrastructure components in background
-```shell
-npm run docker:dev -- -d
-```
+# running the dev server
+yarn dev
 
-4. Apply database migrations
-```shell
-npm run db:migrate:deploy
-```
-
-5. To start developing, run one or more of the applications available under `serve:[application]` scripts of the package.json.
-
-```shell
-# running the server component
-npm run serve:server
-
-# running the client component
-npm run serve:client
-
-# running the data-service-generator component
-npm run serve:dsg
-
-# running the git-sync-manager component
-npm run serve:git
-
-# running the plugin-api component
-npm run serve:plugins
+#building the application
+yarn build
 ```
 
 > **Note**
