@@ -1,6 +1,6 @@
  ## Introduction
 
-`Stencil UI` is a robust, open-source development UI library designed to revolutionize the creation of scalable and secure Web applications. Stencil UI is the a set of molecules which turns makes easier to use the common UI components into  production-ready code in a few minutes. We make our applications development easier with it, ensuring consistency, predictability, and adherence to the highest standards with code that’s built to scale.
+`Stencil UI` is a robust, open-source development UI library designed to revolutionize the creation of scalable and secure Web applications. Stencil UI is the set of molecules which turns makes it easier to use the common UI components in  production-ready code in a few minutes. We make our application development easier with it, ensuring consistency, predictability, and adherence to the highest standards with code that’s built to scale.
 
 Our user-friendly interface fosters seamless integration with APIs, data models, databases, authentication, and authorization. Built on a flexible, plugin-based architecture, Amplication allows effortless customization of the code and offers a diverse range of integrations.
 
@@ -102,7 +102,7 @@ npm run serve:plugins
 ```
 
 > **Note**
-> In order to run the Amplication client properly, both the client and server need to be started by the `npm run serve:[application]` command, as well as an additional component for development on a specific component.
+> In order to run the Stencil-UI properly, both the client and server need to be started by the `npm run serve:[application]` command, as well as an additional component for development on a specific component.
 
 The development environment should now be set up. Additional information on the different application components can be found under packages/`[application]`/README.md file. Happy hacking! 👾
 </details>
@@ -117,7 +117,7 @@ The development environment should now be set up. Additional information on the 
 
 The Stencil-UI code is open-source. We are committed to a transparent development process and highly appreciate any contributions. Whether you are helping us fix bugs, proposing new features, improving our documentation or spreading the word - we would love to have you as a part of the Samagra community.  
 
-- Bug Report: If you see an error message or encounter an issue while using Amplication, please create a [bug report]( https://github.com/SamagraX-Stencil/stencil-web/issues/new).
+- Bug Report: If you see an error message or encounter an issue while using Stencil-UI, please create a [bug report]( https://github.com/SamagraX-Stencil/stencil-web/issues/new).
 
 - Feature Request: If you have an idea or if there is a capability that is missing and would make development easier and more robust, please submit a [feature request]( https://github.com/SamagraX-Stencil/stencil-web/issues/new).
 
@@ -125,7 +125,6 @@ The Stencil-UI code is open-source. We are committed to a transparent developmen
 
 Not sure where to start? Join our discord and we will help you get started!
  
+ 
 
-## License
-
-A large part of this project is licensed under the [Apache 2.0](./LICENSE) license. The only exception are the components under the `ee` (enterprise edition) directory, these are licensed under the [Amplication Enterprise Edition](./ee/LICENSE) license.
+ 
