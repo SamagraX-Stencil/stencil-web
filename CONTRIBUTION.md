@@ -9,16 +9,11 @@ With a strong focus on collaboration, Stencil UI streamlines team-oriented devel
 Experience the fastest way to develop  WEB Applications applications with Amplication.
 ## Table of Contents
 - [Screenshot](#screenshot)
-- [Demo](#demo)
-- [Install](#install)
-  - [As NPM package](#as-npm-package)
-  - [Using a CDN](#using-a-cdn)
-  - [Peer Dependencies](#peer-dependencies)
 - [Usage](#usage) 
 - [Development](#development)
+- [Resources](#resources)
+- [Structure](#structure)
 - [License](#license)
-- [Resources](#Resources)
-- [Contributors](#contributors)
 
 ## Screenshot
 ![all-molecules-app](https://github.com/SamagraX-Stencil/stencil-web/assets/88641794/8a261351-35bf-4f6d-820f-785611fc1afa)
@@ -34,7 +29,7 @@ All molecules currently supported can be viewed on this  [website](https://stenc
 
 ## Usage 
 
-To get started with Stencil-UI, the hosted version of the product can be used to check what all the avaiable molecules. You can get started immediately at [stencil-ui-templates](https://stencil-ui-templates.vercel.app/).   The [website]( https://stencil-ui-templates.vercel.app) provides an overview of the application, additional information on the product and guides can be found in the [docs](https://stencil-docs.vercel.app/).
+To get started with Stencil-UI, the hosted version of the product can be used to check what all the available molecules. You can get started immediately at [stencil-ui-templates](https://stencil-ui-templates.vercel.app/).   The [website]( https://stencil-ui-templates.vercel.app) provides an overview of the application, and additional information on the product and guides can be found in the [docs](https://stencil-docs.vercel.app/).
 
 ## Development
 Pre-requisites
@@ -45,8 +40,7 @@ To be able to start development on StencilUI, make sure that you have the follow
 - Node.js
 - Git
  
-Running Stencil UI
- 
+### Running Stencil UI
 
 > **Note**
 > It is also possible to start development with GitHub Codespaces, when navigating to `< > Code`, select `Codespaces` instead of `Local`. Click on either the `+`-sign or the `Create codespace on master`-button.
@@ -59,7 +53,6 @@ Stencil UI uses a mono repo architecture - powered by <a href="https://turbo.bui
 3. You are using a supported npm version (check `engines` `npm` in the [package.json](./package.json))
  
 
-
 1. Clone the repository and install dependencies:
 ```shell
 git clone  https://github.com/SamagraX-Stencil/stencil-web && cd stencil-web && npm install or yarn install
@@ -67,19 +60,65 @@ git clone  https://github.com/SamagraX-Stencil/stencil-web && cd stencil-web && 
 
 2. To start developing, run one or more of the applications available under `dev` scripts of the package.json.
 
-```shell
-# running the dev server
-yarn dev
+   ```bash
+   yarn install
+   ```
 
-#building the application
-yarn build
+3. To start the local development
+
+- first, create a build of all packages using
+
+```bash
+turbo build
 ```
 
+- now start the project
+
+```bash
+turbo dev
+```
+
+
+
 > **Note**
-> In order to run the Stencil-UI properly, both the client and server need to be started by the `npm run serve:[application]` command, as well as an additional component for development on a specific component.
+>   The above command will start all bot-app/ and all-molecule-example/ on the 7001 and 3001 ports respectively
 
 The development environment should now be set up. Additional information on the different application components can be found under packages/`[application]`/README.md file. Happy hacking! 👾
-</details>
+ 
+
+
+## Structure
+
+The repository is organized as follows:
+
+```
+stencil-ui/
+stencil-ui/
+├── packages/
+│   ├── molecules/
+│   ├── pages/
+│   ├── config-manager/
+│   ├── chatui/
+│   ├── hooks/
+│   └── provider/
+├── apps/
+│   ├── all-molecule-example/
+│   └── bot-app/
+├── node_modules/
+├── package.json
+├── turbo.json
+└── CONTRIBUTION.md
+
+
+```
+
+- `packages/`: Contains shared libraries and modules.
+- `apps/`: Contains the different applications.
+- `node_modules/`: Automatically generated directory containing installed dependencies.
+- `package.json`: Contains metadata about the project and dependencies.
+- `turbo.json`: Configuration file for Turborepo.
+- `CONTRIBUTION.md`: This file.
+
 
 ## Resources
 
@@ -99,6 +138,12 @@ The Stencil-UI code is open-source. We are committed to a transparent developmen
 
 Not sure where to start? Join our discord and we will help you get started!
  
- 
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+Thank you for using My Monorepo! If you have any questions or feedback, feel free to open an issue.
 
  
