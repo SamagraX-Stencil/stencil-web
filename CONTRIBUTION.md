@@ -15,6 +15,7 @@ Experience the fastest way to develop web applications with Stencil UI.
 - [Resources](#resources)
 - [Structure](#structure)
 - [Contributing](#contributing)
+- [Conclusion](#conclusion)
 - [License](#license)
 
 
@@ -45,6 +46,7 @@ To start development on Stencil UI, make sure that you have the following prereq
 - [Yarn](https://yarnpkg.com/)
 - [Turborepo](https://turborepo.org/)
 - [Git](https://git-scm.com/)
+- [StoryBook](https://storybook.js.org/)
 
 ### Running Stencil UI
 
@@ -54,22 +56,17 @@ To start development on Stencil UI, make sure that you have the following prereq
 Stencil UI uses a monorepo architecture - powered by [Turbo Repo](https://turbo.build/repo) - where multiple applications and libraries exist in a single repository. To set up a local development environment, follow these steps:
 
 **BEFORE** you run the following steps, make sure:
-1. You have TypeScript installed locally on your machine: `npm install -g typescript`
-2. You are using a supported Node.js version (check `engines` `node` in the [package.json](./package.json))
-3. You are using a supported npm version (check `engines` `npm` in the [package.json](./package.json))
+- You have TypeScript installed locally on your machine: `npm install -g typescript`
+- You are using a supported Node.js version (check `engines` `node` in the [package.json](./package.json))
+- You are using a supported npm version (check `engines` `npm` in the [package.json](./package.json))
+
 
 1. Clone the repository and install dependencies:
+
 ```shell
 git clone https://github.com/SamagraX-Stencil/stencil-web && cd stencil-web && yarn install
 ```
-
-2. To start developing, run one or more of the applications available under `dev` scripts of the package.json.
-
-```bash
-yarn install
-```
-
-3. To start the local development
+2. To start the local development
 
 - first, create a build of all packages using
 
@@ -121,11 +118,11 @@ stencil-ui/
 
 
 
-## Resources
+
 ## Resources
 
 - **[Website](https://stencil-ui-templates.vercel.app/)**: Overview of the product.
-- **[Docs](https://stencil-docs.vercel.app/)**: Comprehensive documentation.
+- **[Docs](https://stencil-docs.vercel.app/)**: Our Comprehensive documentation on the product.
 - **[Discord](https://discord.gg/)**: Support and discussions with the community and the team.
 
  
@@ -133,14 +130,81 @@ stencil-ui/
 
 The Stencil-UI code is open-source. We are committed to a transparent development process and highly appreciate any contributions. Whether you are helping us fix bugs, proposing new features, improving our documentation, or spreading the word - we would love to have you as a part of the Samagra community.  
 
-- ** Bug Report**: If you see an error message or encounter an issue while using Stencil-UI, please create a [bug report]( https://github.com/SamagraX-Stencil/stencil-web/issues/new).
+- **Bug Report**: If you see an error message or encounter an issue while using Stencil-UI, please create a [bug report]( https://github.com/SamagraX-Stencil/stencil-web/issues/new).
 
 - **Feature Request**: If you have an idea or if there is a capability that is missing and would make development easier and more robust, please submit a [feature request]( https://github.com/SamagraX-Stencil/stencil-web/issues/new).
 
 - **Documentation Request**: If you're reading the Stencil-UI docs and feel like you're missing something, please submit a [documentation request](https://github.com/SamagraX-Stencil/stencil-web/issues/new).
 
 Not sure where to start? Join our discord and we will help you get started!
+
+
+## How to Create a New Molecule
+---
+
+All the new Molecules are created via the `packages` folder in the repo.
+
+stencil-ui/
+stencil-ui/
+├── packages/
+│   ├── molecules/
+│   ├── pages/
+│   ├── config-manager/
+│   ├── chatui/
+│   ├── hooks/
+│   └── provider/
+
+Any kind of new molecule is create inside the `packages/molecule/src` folder that will house multiple other packages that can be used anywhere.
  
+ Each Molecule should come with it's StoryBook and Unit.
+ 
+ > Checkout the `packages/molecule/src/list` for a example Molecule Structure
+
+### Step 1: Creating a new Molecule
+
+1. **Navigate** to the `packages` directory
+
+```bash 
+cd packages
+```
+
+2. **Create** a new directory for your molecule.
+
+3. **Setup** the folder structure for your molecule.
+
+4. **Implement** your molecule.
+
+### Step 2: Writing the Test Cases
+
+1. **Install testing dependencies** (if not already installed):
+ ```bash
+ yarn add --dev jest @testing-library/react @testing-library/jest-dom
+```
+2. **Create** a test file for your component:
+3. **Run** the tests:
+```bash
+yarn test
+```
+
+### Step 3: Add to Storybook
+
+1. **Install** Storybook dependencies (if not already installed):
+
+```bash
+yarn dlx sb init
+```
+
+2. **Create** a Storybook file for your component
+
+3. **Run** Storybook:
+```bash
+yarn storybook
+```
+
+
+## Conclusion
+You have now created a new molecule, written test cases for it, and added it to Storybook. Great job! If you have any questions or need further assistance, feel free to reach out to the team. Happy coding! 👾
+
 ## License
 
 This project is licensed under the MIT License.  
