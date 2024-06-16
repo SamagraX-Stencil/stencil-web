@@ -165,14 +165,38 @@ Any kind of new molecule is create inside the `packages/molecule/src` folder tha
 1. **Navigate** to the `packages` directory
 
 ```bash 
-cd packages
+cd packages/molecule/src
 ```
 
 2. **Create** a new directory for your molecule.
+ ```bash
+    mkdir new-molecule
+    cd molecules/new-molecule
+    ```
 
 3. **Setup** the folder structure for your molecule.
 
 4. **Implement** your molecule.
+
+  - `new-molecule/index.tsx`:
+
+    ```tsx
+    import React from 'react';
+
+    interface NewMoleculeProps {
+      items: string[];
+    }
+
+    const NewMolecule: React.FC<NewMoleculeProps> = ({ items }) => (
+      <ul>
+        {items.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+    );
+
+    export default NewMolecule;
+    ```
 
 ### Step 2: Writing the Test Cases
 
@@ -181,6 +205,25 @@ cd packages
  yarn add --dev jest @testing-library/react @testing-library/jest-dom
 ```
 2. **Create** a test file for your component:
+  ```bash
+    touch packages/molecule/src/new-molecule/index.test.tsx
+    ```
+     - `index.test.tsx`:
+    ```tsx
+    import React from 'react';
+    import { render } from '@testing-library/react';
+    import '@testing-library/jest-dom/extend-expect';
+    import NewMolecule from './NewMolecule';
+
+    test('renders list items', () => {
+      const items = ['Item 1', 'Item 2', 'Item 3'];
+      const { getByText } = render(<NewMolecule items={items} />);
+
+      items.forEach(item => {
+        expect(getByText(item)).toBeInTheDocument();
+      });
+    });
+    ```
 3. **Run** the tests:
 ```bash
 yarn test
@@ -195,6 +238,29 @@ yarn dlx sb init
 ```
 
 2. **Create** a Storybook file for your component
+
+```bash
+    touch index.stories.tsx
+    ```
+
+    - `index.stories.tsx`:
+    ```tsx
+    import React from 'react';
+    import { Meta, Story } from '@storybook/react';
+    
+
+    export default {
+      title: 'Molecules/NewMolecule',
+      component: NewMolecule,
+    } as Meta;
+
+    const Template: Story<NewMoleculeProps> = (args) => <NewMolecule {...args} />;
+
+    export const Default = Template.bind({});
+    Default.args = {
+      items: ['Item 1', 'Item 2', 'Item 3'],
+    };
+    ```
 
 3. **Run** Storybook:
 ```bash
