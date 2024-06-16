@@ -63,22 +63,22 @@ Stencil UI uses a monorepo architecture - powered by [Turbo Repo](https://turbo.
 
 1. Clone the repository and install dependencies:
 
-```shell
-git clone https://github.com/SamagraX-Stencil/stencil-web && cd stencil-web && yarn install
-```
+    ```shell
+    git clone https://github.com/SamagraX-Stencil/stencil-web && cd stencil-web && yarn install
+    ```
 2. To start the local development
 
 - first, create a build of all packages using
 
-```bash
-turbo build
-```
+    ```bash
+    turbo build
+    ```
 
 - now start the project
 
-```bash
-turbo dev
-```
+    ```bash
+    turbo dev
+    ```
 > **Note**
 >   The above command will start all bot-app/ and all-molecule-example/ on the 7001 and 3001 ports respectively
 
@@ -164,22 +164,21 @@ Any kind of new molecule is create inside the `packages/molecule/src` folder tha
 
 1. **Navigate** to the `packages` directory
 
-```bash 
-cd packages/molecule/src
-```
+    ```bash 
+    cd packages/molecule/src
+    ```
 
 2. **Create** a new directory for your molecule.
- ```bash
-    mkdir new-molecule
-    cd molecules/new-molecule
+    ```bash
+        mkdir new-molecule
+        cd molecules/new-molecule
     ```
 
 3. **Setup** the folder structure for your molecule.
 
+
 4. **Implement** your molecule.
-
-  - `new-molecule/index.tsx`:
-
+   - Create a `index.tsx` file for your molecule.
     ```tsx
     import React from 'react';
 
@@ -201,14 +200,14 @@ cd packages/molecule/src
 ### Step 2: Writing the Test Cases
 
 1. **Install testing dependencies** (if not already installed):
- ```bash
- yarn add --dev jest @testing-library/react @testing-library/jest-dom
-```
-2. **Create** a test file for your component:
-  ```bash
-    touch packages/molecule/src/new-molecule/index.test.tsx
+    ```bash
+    yarn add --dev jest @testing-library/react @testing-library/jest-dom
     ```
-     - `index.test.tsx`:
+2. **Create** a test file for your component:
+
+- Create a  `index.test.tsx` for the test file
+  
+
     ```tsx
     import React from 'react';
     import { render } from '@testing-library/react';
@@ -225,26 +224,26 @@ cd packages/molecule/src
     });
     ```
 3. **Run** the tests:
-```bash
-yarn test
-```
+
+    ```bash
+    yarn test
+    ```
 
 ### Step 3: Add to Storybook
 
 1. **Install** Storybook dependencies (if not already installed):
 
-```bash
-yarn dlx sb init
-```
+    ```bash
+    yarn dlx sb init
+    ```
 
 2. **Create** a Storybook file for your component
 
-```bash
-    touch index.stories.tsx
-    ```
+- Create a `index.stories.tsx` for your component
+  
 
-    - `index.stories.tsx`:
-    ```tsx
+    
+     ```tsx
     import React from 'react';
     import { Meta, Story } from '@storybook/react';
     
@@ -263,9 +262,9 @@ yarn dlx sb init
     ```
 
 3. **Run** Storybook:
-```bash
-yarn storybook
-```
+    ```bash
+    yarn storybook
+    ```
 
 
 ## Conclusion
