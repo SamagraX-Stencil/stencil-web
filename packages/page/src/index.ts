@@ -3,11 +3,9 @@ import FAQPage from './faq-page';
 import FeedbackPage from './feedback';
 import HistoryPage from './history-page';
 import HomePage from './home-page';
-import LocalHomePage from './localize-home-page';
 import LaunchPage from './launch-page';
 import LoginMobileAadharPage from './login-mobile-aadhar-page';
 import OtpPage from './otp-page';
-import LocalOtpPage from './localize-otp-page';
 import ComingSoonPage from './coming-soon-page';
 import OnBoardingPage from './on-boarding-page';
 import WheatherPage from './weather-page';
@@ -19,8 +17,6 @@ export {
   LaunchPage,
   OtpPage,
   FAQPage,
-  LocalHomePage,
-  LocalOtpPage,
   LoginMobileAadharPage,
   HistoryPage,
   OnBoardingPage,

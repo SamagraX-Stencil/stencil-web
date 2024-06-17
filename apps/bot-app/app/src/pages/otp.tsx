@@ -2,7 +2,7 @@ import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useLocalization } from '@samagra-x/hooks'
-import { LocalOtpPage } from '@samagra-x/pages'
+import { OtpPage } from '@samagra-x/pages'
 import { useBotConfig } from '@samagra-x/hooks'
 
 const OTP: NextPage = () => {
@@ -14,7 +14,7 @@ const OTP: NextPage = () => {
         <title>{t('label.tab_title')}</title>
         <link rel="icon" href={config?.favicon} />
       </Head>
-      <LocalOtpPage />
+      <OtpPage />
     </React.Fragment>
   )
 }

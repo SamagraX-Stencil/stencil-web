@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { CookiesProvider } from 'react-cookie'
 import { useLocalization } from '@samagra-x/hooks'
-import { LocalHomePage } from '@samagra-x/pages'
+import { HomePage } from '@samagra-x/pages'
 import { useBotConfig } from '@samagra-x/hooks'
 const Home: NextPage = () => {
   const t = useLocalization()
@@ -27,7 +27,7 @@ const Home: NextPage = () => {
             top: homeConfig?.topGap || '75px',
           }}
         >
-          <LocalHomePage />
+          <HomePage />
         </div>
       </CookiesProvider>
     </>

@@ -3,7 +3,7 @@
 import Head from 'next/head'
 import { CookiesProvider } from 'react-cookie'
 import { useLocalization } from '@samagra-x/hooks'
-import { LocalHomePage } from '@samagra-x/pages'
+import { HomePage } from '@samagra-x/pages'
 import { useBotConfig } from '@samagra-x/hooks'
 
 export default function Home() {
@@ -28,7 +28,7 @@ export default function Home() {
             top: homeConfig?.topGap || '75px',
           }}
         >
-          <LocalHomePage />
+          <HomePage />
         </div>
       </CookiesProvider>
     </>
