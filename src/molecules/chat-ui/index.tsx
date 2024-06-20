@@ -10,6 +10,7 @@ import chatHistory from "./chatHistory.json";
 import ShareButtons from "../share-buttons";
 import { useUiConfig, useThemeConfig } from "../../hook/useConfig";
 
+
 interface ChatMessage {
   text: string;
   position: "left" | "right";
