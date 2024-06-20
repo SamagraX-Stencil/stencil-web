@@ -2,6 +2,12 @@
   "name": "turborepo",
   "private": true,
   "scripts": {
+    "update-versions": "bash ./scripts/update_versions.sh",
+    "update-files": "bash ./scripts/update_files.sh",
+    "update": "yarn update-versions && yarn update-files",
+    "revert-files": "bash ./scripts/revert_files.sh",
+    "publish-packages": "yarn update && yarn build && yarn doPublish && yarn revert-files",
+    "doPublish": "turbo publish",
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
