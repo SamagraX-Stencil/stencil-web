@@ -2,16 +2,7 @@
   "name": "@samagra-x/molecules",
   "version": "0.0.1",
   "description": "The React library for Chatbot UI",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "browser": "dist/index.js",
-  "style": "dist/index.css",
-  "typings": "lib/index.d.ts",
-  "files": [
-    "dist",
-    "es",
-    "lib"
-  ],
+  "main": "./src/index.ts",
   "scripts": {
     "clean": "rimraf dist es lib",
     "prebuild": "npm run clean",

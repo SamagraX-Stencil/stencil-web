@@ -1,15 +1,8 @@
 {
   "name": "@samagra-x/hooks",
   "version": "0.0.1",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.mts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    }
-  },  "scripts": {
+  "main": "./index.ts",
+  "scripts": {
     "clean": "rimraf dist es lib",
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
