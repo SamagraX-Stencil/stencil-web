@@ -1,5 +1,5 @@
 'use client'
-import { ComingSoonPage } from '@samagra-x/pages'
+import { ComingSoonPage } from '@samagra-x/stencil-pages'
 import React from 'react'
 
 const CommingSoon = () => {

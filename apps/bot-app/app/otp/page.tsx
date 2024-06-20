@@ -2,9 +2,9 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useLocalization } from '@samagra-x/hooks'
-import { OtpPage } from '@samagra-x/pages'
-import { useBotConfig } from '@samagra-x/hooks'
+import { useLocalization } from '@samagra-x/stencil-hooks'
+import { OtpPage } from '@samagra-x/stencil-pages'
+import { useBotConfig } from '@samagra-x/stencil-hooks'
 
 const OTP: NextPage = () => {
   const t = useLocalization()

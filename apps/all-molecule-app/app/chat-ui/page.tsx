@@ -1,5 +1,5 @@
 'use client'
-import { ChatUI } from '@samagra-x/molecules'
+import { ChatUI } from '@samagra-x/stencil-molecules'
 import React from 'react'
 
 const ChatPage = () => {

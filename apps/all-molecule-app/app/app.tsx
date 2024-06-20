@@ -1,6 +1,6 @@
 'use client'
 
-import { LoginMobileAadharPage } from '@samagra-x/pages'
+import { LoginMobileAadharPage } from '@samagra-x/stencil-pages'
 
 function App() {
   return (

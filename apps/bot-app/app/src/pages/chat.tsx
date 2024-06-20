@@ -2,13 +2,13 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
-import { useLocalization } from '@samagra-x/hooks'
+import { useLocalization } from '@samagra-x/stencil-hooks'
 import { useContext } from 'react'
-import { AppContext } from '@samagra-x/provider'
+import { AppContext } from '@samagra-x/stencil-provider'
 import styles from '../components/dialer-popup/index.module.css'
 import DialerPopUp from '../components/dialer-popup'
-import { useBotConfig } from '@samagra-x/hooks'
-import { ChatUI } from '@samagra-x/molecules'
+import { useBotConfig } from '@samagra-x/stencil-hooks'
+import { ChatUI } from '@samagra-x/stencil-molecules'
 
 const Chat: NextPage = () => {
   const t = useLocalization()

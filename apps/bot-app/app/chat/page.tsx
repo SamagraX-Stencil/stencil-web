@@ -2,7 +2,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import ClientComponent from './ClientComponent' // Import the client component
-import { useBotConfig, useLocalization } from '@samagra-x/hooks'
+import { useBotConfig, useLocalization } from '@samagra-x/stencil-hooks'
 
 const Chat: NextPage = () => {
   const t = useLocalization()

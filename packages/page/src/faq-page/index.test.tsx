@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import FAQPage from './index';
 import { vi } from 'vitest';
-import { useUiConfig } from '@samagra-x/hooks';
+import { useUiConfig } from '@samagra-x/stencil-hooks';
 
 describe('FAQ component', () => {
   const config = useUiConfig('component', 'faqs');

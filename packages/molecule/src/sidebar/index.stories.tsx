@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ConfigContext, CustomThemeProvider } from '@samagra-x/provider';
+import { ConfigContext, CustomThemeProvider } from '@samagra-x/stencil-provider';
 import Sidebar from '.';
 import { fn } from '@storybook/test';
 

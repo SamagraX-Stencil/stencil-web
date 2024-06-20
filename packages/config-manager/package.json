@@ -1,5 +1,5 @@
 {
-  "name": "@samagra-x/config-manager",
+  "name": "@samagra-x/stencil-config-manager",
   "version": "0.0.1",
   "main": "./index.ts",
   "scripts": {

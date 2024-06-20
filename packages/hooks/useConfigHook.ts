@@ -1,4 +1,4 @@
-import { useConfigContext } from '@samagra-x/provider'
+import { useConfigContext } from '@samagra-x/stencil-provider'
 
 export const useConfig = (key: string, name: string) => {
   const { config } = useConfigContext()

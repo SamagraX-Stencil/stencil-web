@@ -4,7 +4,7 @@ import SendIcon from './assets/sendButton.png';
 import WeatherIcon from './assets/weather_advisory.png';
 import toast from 'react-hot-toast';
 
-import { useUiConfig, useColorPalates } from '@samagra-x/hooks';
+import { useUiConfig, useColorPalates } from '@samagra-x/stencil-hooks';
 
 const HomePage = () => {
   const config = useUiConfig('component', 'homePage');

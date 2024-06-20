@@ -2,9 +2,9 @@
 
 import Head from 'next/head'
 import { CookiesProvider } from 'react-cookie'
-import { useLocalization } from '@samagra-x/hooks'
-import { HomePage } from '@samagra-x/pages'
-import { useBotConfig } from '@samagra-x/hooks'
+import { useLocalization } from '@samagra-x/stencil-hooks'
+import { HomePage } from '@samagra-x/stencil-pages'
+import { useBotConfig } from '@samagra-x/stencil-hooks'
 
 export default function Home() {
   const t = useLocalization()

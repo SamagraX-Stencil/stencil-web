@@ -3,7 +3,7 @@ import styles from './index.module.css';
 import { Avatar, Box, Button, Typography } from '@mui/material';
 import { CallRounded } from '@mui/icons-material';
 import downTimeGit from './assets/downTimeGIF.gif';
-import { useUiConfig, useColorPalates } from '@samagra-x/hooks';
+import { useUiConfig, useColorPalates } from '@samagra-x/stencil-hooks';
 
 const DowntimePage: React.FC = () => {
   const config = useUiConfig('component', 'downtime');

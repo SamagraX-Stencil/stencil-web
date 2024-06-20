@@ -1,5 +1,5 @@
 'use client'
-import { LaunchPage } from '@samagra-x/pages'
+import { LaunchPage } from '@samagra-x/stencil-pages'
 import React from 'react'
 
 const Launch = () => {

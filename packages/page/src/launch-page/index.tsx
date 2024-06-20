@@ -1,4 +1,4 @@
-import { useUiConfig, useColorPalates } from '@samagra-x/hooks';
+import { useUiConfig, useColorPalates } from '@samagra-x/stencil-hooks';
 
 import styles from './index.module.css';
 

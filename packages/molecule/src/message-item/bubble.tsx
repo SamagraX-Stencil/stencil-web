@@ -1,4 +1,4 @@
-import { Image as Img, Bubble, FileCard, ScrollView, Typing } from '@samagra-x/chatui';
+import { Image as Img, Bubble, FileCard, ScrollView, Typing } from '@samagra-x/stencil-chatui';
 import moment from 'moment';
 import { JsonToTable } from '../json-to-table';
 import SpeakerIcon from './assets/speaker.svg';

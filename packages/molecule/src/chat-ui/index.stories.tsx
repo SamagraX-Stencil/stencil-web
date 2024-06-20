@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ChatUI } from '.';
-import { ConfigContext, CustomThemeProvider } from '@samagra-x/provider';
+import { ConfigContext, CustomThemeProvider } from '@samagra-x/stencil-provider';
 
 const meta = {
   title: 'Molecule/ChatUI',

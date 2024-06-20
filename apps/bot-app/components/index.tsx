@@ -3,15 +3,15 @@ import { Box, Container, IconButton } from '@mui/material'
 import { useMemo } from 'react'
 import ForumIcon from '@mui/icons-material/Forum'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
-import { useColorPalates } from '@samagra-x/hooks'
+import { useColorPalates } from '@samagra-x/stencil-hooks'
 import {
   JsonToTable,
   List,
   OTPInput,
   ShareButtons,
   VoiceRecorder,
-} from '@samagra-x/molecules'
-import { Navbar } from '@samagra-x/molecules'
+} from '@samagra-x/stencil-molecules'
+import { Navbar } from '@samagra-x/stencil-molecules'
 
 const Components = () => {
   const [otp, setOtp] = useState('')

@@ -4,8 +4,8 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Hourglass from './hourglass';
 import Typography from '@mui/material/Typography';
-import { useBotAppColorPalates } from '@samagra-x/hooks';
-import { useLocalization } from '@samagra-x/hooks';
+import { useBotAppColorPalates } from '@samagra-x/stencil-hooks';
+import { useLocalization } from '@samagra-x/stencil-hooks';
 
 const ComingSoonPage: React.FC = () => {
   const t = useLocalization();

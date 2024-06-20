@@ -6,7 +6,7 @@ import Fade from '@mui/material/Fade';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { Button, Typography } from '@mui/material';
-import { useUiConfig, useColorPalates } from '@samagra-x/hooks';
+import { useUiConfig, useColorPalates } from '@samagra-x/stencil-hooks';
 import facebookIcon from './assets/facebook.png';
 import whatsappIcon from './assets/whatsapp.png';
 import telegramIcon from './assets/telegram.png';

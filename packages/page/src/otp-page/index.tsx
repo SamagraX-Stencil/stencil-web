@@ -5,8 +5,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
 import { toast } from 'react-hot-toast';
-import { OTPInput } from '@samagra-x/molecules';
-import { useColorPalates, useUiConfig } from '@samagra-x/hooks';
+import { OTPInput } from '@samagra-x/stencil-molecules';
+import { useColorPalates, useUiConfig } from '@samagra-x/stencil-hooks';
 
 const OtpPage: React.FC = () => {
   const config = useUiConfig('component', 'otpPage');

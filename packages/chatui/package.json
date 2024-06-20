@@ -1,5 +1,5 @@
 {
-  "name": "@samagra-x/chatui",
+  "name": "@samagra-x/stencil-chatui",
   "version": "0.0.1",
   "description": "The React library for Chatbot UI",
   "main": "lib/index.js",

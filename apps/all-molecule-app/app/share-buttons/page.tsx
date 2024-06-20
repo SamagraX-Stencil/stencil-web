@@ -1,5 +1,5 @@
 'use client'
-import { ShareButtons } from '@samagra-x/molecules'
+import { ShareButtons } from '@samagra-x/stencil-molecules'
 import React from 'react'
 
 const ShareButton = () => {

@@ -18,7 +18,7 @@ import {
   Typography,
   styled,
 } from '@mui/material';
-import { useColorPalates } from '@samagra-x/hooks';
+import { useColorPalates } from '@samagra-x/stencil-hooks';
 
 import CropInfoModel from './crop-info-model';
 const Item = styled(Paper)(({ theme }) => ({

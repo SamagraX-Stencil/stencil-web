@@ -4,7 +4,7 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { map } from 'lodash';
 
-import { useColorPalates } from '@samagra-x/hooks';
+import { useColorPalates } from '@samagra-x/stencil-hooks';
 const LanguagePicker = () => {
   const [activeLanguage, setActiveLanguage] = React.useState('en');
 

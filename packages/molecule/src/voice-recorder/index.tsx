@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from './styles.module.css';
 import toast from 'react-hot-toast';
 
-import { useUiConfig } from '@samagra-x/hooks';
+import { useUiConfig } from '@samagra-x/stencil-hooks';
 import RecorderControl from './record-controller';
 
 interface VoiceRecorder {

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import styles from './index.module.css'
-import { useBotAppColorPalates } from '@samagra-x/hooks'
+import { useBotAppColorPalates } from '@samagra-x/stencil-hooks'
 
 const BlinkingSpinner = () => {
   const theme = useBotAppColorPalates()

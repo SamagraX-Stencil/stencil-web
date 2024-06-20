@@ -1,7 +1,7 @@
 'use client'
 import axios from 'axios'
 //@ts-ignore
-import Chat from '@samagra-x/chatui'
+import Chat from '@samagra-x/stencil-chatui'
 import React, {
   ReactElement,
   useCallback,
@@ -9,17 +9,17 @@ import React, {
   useMemo,
   useEffect,
 } from 'react'
-import { AppContext } from '@samagra-x/provider'
-import { useLocalization } from '@samagra-x/hooks'
+import { AppContext } from '@samagra-x/stencil-provider'
+import { useLocalization } from '@samagra-x/stencil-hooks'
 import MessageItem from '../message-item'
 import RenderVoiceRecorder from '../recorder/RenderVoiceRecorder'
 import toast from 'react-hot-toast'
-import { useBotConfig } from '@samagra-x/hooks'
+import { useBotConfig } from '@samagra-x/stencil-hooks'
 import ShareButtons from '../share-buttons'
-import { useBotAppColorPalates } from '@samagra-x/hooks'
+import { useBotAppColorPalates } from '@samagra-x/stencil-hooks'
 import { getMsgType } from '../../utils/getMsgType'
 import { recordUserLocation } from '../../utils/location'
-import { DowntimePage } from '@samagra-x/pages'
+import { DowntimePage } from '@samagra-x/stencil-pages'
 
 const ChatUiWindow: React.FC = () => {
   const config = useBotConfig('component', 'chatUI')

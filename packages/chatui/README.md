@@ -6,7 +6,7 @@
 
 <div align="center">
 
-[![LICENSE](https://img.shields.io/npm/l/@samagra-x/chatui?style=flat-square)](https://github.com/Samagra-Development/ChatUI/blob/next/LICENSE) [![NPM version](https://img.shields.io/npm/v/@samagra-x/chatui?style=flat-square)](https://www.npmjs.com/package/@samagra-x/chatui)
+[![LICENSE](https://img.shields.io/npm/l/@samagra-x/stencil-chatui?style=flat-square)](https://github.com/Samagra-Development/ChatUI/blob/next/LICENSE) [![NPM version](https://img.shields.io/npm/v/@samagra-x/stencil-chatui?style=flat-square)](https://www.npmjs.com/package/@samagra-x/stencil-chatui)
 
 </div>
 
@@ -31,18 +31,18 @@
 ## Install
 
 ```bash
-npm install @samagra-x/chatui
+npm install @samagra-x/stencil-chatui
 ```
 
 ```bash
-yarn add @samagra-x/chatui
+yarn add @samagra-x/stencil-chatui
 ```
 
 ## Usage
 
 ```jsx
-import Chat, { Bubble, useMessages } from '@samagra-x/chatui';
-import '@samagra-x/chatui/dist/index.css';
+import Chat, { Bubble, useMessages } from '@samagra-x/stencil-chatui';
+import '@samagra-x/stencil-chatui/dist/index.css';
 
 const App = () => {
   const { messages, appendMsg, setTyping } = useMessages([]);

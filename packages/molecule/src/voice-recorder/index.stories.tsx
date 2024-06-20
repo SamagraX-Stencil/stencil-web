@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import VoiceRecorder from '.';
-import { ConfigContext, CustomThemeProvider } from '@samagra-x/provider';
+import { ConfigContext, CustomThemeProvider } from '@samagra-x/stencil-provider';
 import { fn } from '@storybook/test';
 
 const meta = {

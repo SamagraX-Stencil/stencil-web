@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import DowntimePage from './index';
 import { vi } from 'vitest';
-import { useUiConfig } from '@samagra-x/hooks';
+import { useUiConfig } from '@samagra-x/stencil-hooks';
 
 describe('DowntimePage component', () => {
   const config = useUiConfig('component', 'downtime');

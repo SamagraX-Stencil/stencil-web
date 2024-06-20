@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { ThemeContext } from '@samagra-x/provider'
+import { ThemeContext } from '@samagra-x/stencil-provider'
 
 // export const useTheme = () => {
 //     const context = useContext(ThemeContext);

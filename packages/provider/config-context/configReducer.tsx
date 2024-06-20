@@ -1,4 +1,4 @@
-import configObj from '@samagra-x/config-manager'
+import configObj from '@samagra-x/stencil-config-manager'
 import AppConfig from '../types/appConfigType'
 
 interface UpdateConfigAction {

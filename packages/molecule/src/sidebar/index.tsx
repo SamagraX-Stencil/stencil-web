@@ -17,7 +17,7 @@ import {
   ArrowBack,
   ChevronRight,
 } from '@mui/icons-material';
-import configObj from '@samagra-x/config-manager';
+import configObj from '@samagra-x/stencil-config-manager';
 
 export const Sidebar = ({ isOpen, onToggle }: { isOpen: boolean; onToggle: () => void }) => {
   const [config, setConfig] = useState<{

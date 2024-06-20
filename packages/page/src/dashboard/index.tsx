@@ -24,7 +24,7 @@ import {
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import KeyboardVoiceRoundedIcon from '@mui/icons-material/KeyboardVoiceRounded';
-import { useUiConfig, useColorPalates } from '@samagra-x/hooks';
+import { useUiConfig, useColorPalates } from '@samagra-x/stencil-hooks';
 
 import WeatherStatus from './model';
 const Item = styled(Paper)(({ theme }) => ({

@@ -12,14 +12,14 @@
     "next": "^14.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@samagra-x/pages": "*"
+    "@samagra-x/stencil-pages": "*"
   },
   "devDependencies": {
-    "@samagra-x/config-manager": "*",
-    "@samagra-x/provider": "*",
+    "@samagra-x/stencil-config-manager": "*",
+    "@samagra-x/stencil-provider": "*",
     "@repo/ui": "*",
-    "@samagra-x/hooks": "*",
-    "@samagra-x/molecules": "*",
+    "@samagra-x/stencil-hooks": "*",
+    "@samagra-x/stencil-molecules": "*",
     "@next/eslint-plugin-next": "^14.1.1",
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",

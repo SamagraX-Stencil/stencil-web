@@ -1,9 +1,9 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { FeedbackPage } from '@samagra-x/pages'
-import { useLocalization } from '@samagra-x/hooks'
-import { useBotConfig } from '@samagra-x/hooks'
+import { FeedbackPage } from '@samagra-x/stencil-pages'
+import { useLocalization } from '@samagra-x/stencil-hooks'
+import { useBotConfig } from '@samagra-x/stencil-hooks'
 
 const Feedback: NextPage = () => {
   const t = useLocalization()

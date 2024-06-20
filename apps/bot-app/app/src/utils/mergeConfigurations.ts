@@ -1,4 +1,4 @@
-import { botConfigObj } from '@samagra-x/config-manager'
+import { botConfigObj } from '@samagra-x/stencil-config-manager'
 import axios from 'axios'
 
 //@ts-ignore

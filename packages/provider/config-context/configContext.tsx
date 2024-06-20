@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { createContext, useContext, useReducer, useState } from 'react'
-import configObj from '@samagra-x/config-manager'
+import configObj from '@samagra-x/stencil-config-manager'
 import { configReducer } from './configReducer'
 import toast from 'react-hot-toast'
 import AppConfig, { Component } from '../types/appConfigType'

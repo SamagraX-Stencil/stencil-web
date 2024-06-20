@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { CustomThemeProvider } from '@samagra-x/provider';
+import { CustomThemeProvider } from '@samagra-x/stencil-provider';
 import { CssBaseline } from '@mui/material';
 import DowntimePage from './index';
 

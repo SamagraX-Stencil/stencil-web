@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import LanguagePicker from './index';
-import { CustomThemeProvider } from '@samagra-x/provider';
+import { CustomThemeProvider } from '@samagra-x/stencil-provider';
 
 const meta = {
   title: 'Molecule/LanguagePicker',

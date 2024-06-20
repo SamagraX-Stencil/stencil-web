@@ -1,5 +1,5 @@
 'use client'
-import { OtpPage } from '@samagra-x/pages'
+import { OtpPage } from '@samagra-x/stencil-pages'
 import React from 'react'
 
 const Otp = () => {
