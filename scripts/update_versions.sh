@@ -46,7 +46,7 @@ for package in "$PACKAGES_DIR"/*; do
 
       for dep in $dependencies; do
         # Extract the package name after the "stencil-" prefix
-        if [[ $dep == @samagra-x/* ]]; then
+        if [[ $dep == @samagra-x/stencil-* ]]; then
           dep_name="${dep#@samagra-x/}"
 
           # Check if the dependency is available in the packages directory
@@ -61,7 +61,7 @@ for package in "$PACKAGES_DIR"/*; do
 
       for devDep in $devDependencies; do
         # Extract the devDependency name after the "stencil-" prefix
-        if [[ $devDep == @samagra-x/* ]]; then
+        if [[ $devDep == @samagra-x/stencil-* ]]; then
           devDep_name="${devDep#@samagra-x/}"
 
           if [ -d "$PACKAGES_DIR/$devDep_name" ]; then
