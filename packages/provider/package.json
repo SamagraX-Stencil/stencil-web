@@ -7,13 +7,14 @@
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "build": "npm run clean && tsup",
-    "dev2": "nodemon --watch src --ext ts,tsx,css,json,js,jsx --exec \"npm run build\""
+    "dev2": "nodemon --watch src --ext ts,tsx,css,json,js,jsx --exec \"npm run build\"",
+    "publish": "npm publish --access public"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@mui/material": "^5.15.15",
-    "@samagra-x/stencil-config-manager": "*",
+    "@samagra-x/stencil-config-manager": "0.0.1",
     "esbuild-plugin-polyfill-node": "^0.3.0",
     "lodash": "^4.17.21",
     "react": "^18.2.0",

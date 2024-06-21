@@ -29,7 +29,8 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "prepare": "husky install",
-    "dev2": "nodemon --watch src --ext ts,tsx,less --exec \"npm run build\""
+    "dev2": "nodemon --watch src --ext ts,tsx,less --exec \"npm run build\"",
+    "publish": "npm publish --access public"
   },
   "dependencies": {
     "@babel/runtime": "^7.18.3",
