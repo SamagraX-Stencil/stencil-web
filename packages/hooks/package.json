@@ -7,12 +7,13 @@
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "build": "npm run clean && tsup",
-    "dev2": "nodemon --watch src --ext ts,tsx,css,json,js,jsx --exec \"npm run build\""
+    "dev2": "nodemon --watch src --ext ts,tsx,css,json,js,jsx --exec \"npm run build\"",
+    "publish": "npm publish --access public"
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@samagra-x/stencil-provider": "*"
+    "@samagra-x/stencil-provider": "0.0.1"
   },
   "devDependencies": {
     "build": "tsup",

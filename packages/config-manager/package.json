@@ -7,7 +7,8 @@
     "build": "npm run clean && tsup",
     "dev2": "nodemon --watch src --ext ts,tsx,css,json,js,jsx --exec \"npm run build\"",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "publish": "npm publish --access public"
   },
   "devDependencies": {
     "nodemon": "^3.1.3",

@@ -21,7 +21,8 @@
     "test:coverage": "jest --coverage",
     "prepare": "husky install",
     "build": "npm run clean && npm run prepublishOnly2",
-    "dev2": "nodemon --watch src --ext ts,tsx,css --exec \"npm run build\""
+    "dev2": "nodemon --watch src --ext ts,tsx,css --exec \"npm run build\"",
+    "publish": "npm publish --access public"
   },
   "dependencies": {
     "@babel/runtime": "^7.18.3",
@@ -35,10 +36,10 @@
     "@mui/material": "^5.15.15",
     "@mui/system": "^5.15.13",
     "@next/bundle-analyzer": "^13.3.0",
-    "@samagra-x/stencil-config-manager": "*",
-    "@samagra-x/stencil-hooks": "*",
-    "@samagra-x/stencil-molecules": "*",
-    "@samagra-x/stencil-provider": "*",
+    "@samagra-x/stencil-config-manager": "0.0.1",
+    "@samagra-x/stencil-hooks": "0.0.1",
+    "@samagra-x/stencil-molecules": "0.0.1",
+    "@samagra-x/stencil-provider": "0.0.1",
     "@samagra-x/xmessage": "*",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^10.4.9",

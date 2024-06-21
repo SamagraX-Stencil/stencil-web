@@ -15,6 +15,9 @@
     },
     "storybook": {
       "dependsOn": ["^storybook"]
+    },
+    "publish": {
+      "dependsOn": ["^publish"]
     }
   }
 }
