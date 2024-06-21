@@ -1,14 +1,14 @@
 {
   "name": "@samagra-x/stencil-provider",
   "version": "0.0.1",
-  "main": "./index.ts",
+  "main": "dist/index.js",
   "scripts": {
     "clean": "rimraf dist es lib",
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "build": "npm run clean && tsup",
     "dev2": "nodemon --watch src --ext ts,tsx,css,json,js,jsx --exec \"npm run build\"",
-    "publish": "npm publish --access public"
+    "publish-package": "npm publish --access public"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -106,5 +106,13 @@
     "prettier": "^2.5.1",
     "webpack-dev-server": "^4.9.0",
     "@next/eslint-plugin-next": "^14.1.1"
-  }
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "types": "dist/index.d.mts",
+  "module": "dist/index.mjs"
 }

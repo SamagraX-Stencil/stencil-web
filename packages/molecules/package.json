@@ -24,7 +24,7 @@
     "dev2": "nodemon --watch src --ext ts,tsx,css --exec \"npm run build\"",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "publish": "npm publish --access public"
+    "publish-package": "npm publish --access public"
   },
   "dependencies": {
     "@babel/runtime": "^7.18.3",

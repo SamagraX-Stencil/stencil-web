@@ -22,7 +22,7 @@
     "prepare": "husky install",
     "build": "npm run clean && npm run prepublishOnly2",
     "dev2": "nodemon --watch src --ext ts,tsx,css --exec \"npm run build\"",
-    "publish": "npm publish --access public"
+    "publish-package": "npm publish --access public"
   },
   "dependencies": {
     "@babel/runtime": "^7.18.3",

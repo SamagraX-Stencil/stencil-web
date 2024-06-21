@@ -1,14 +1,14 @@
 {
   "name": "@samagra-x/stencil-hooks",
   "version": "0.0.1",
-  "main": "./index.ts",
+  "main": "dist/index.js",
   "scripts": {
     "clean": "rimraf dist es lib",
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "build": "npm run clean && tsup",
     "dev2": "nodemon --watch src --ext ts,tsx,css,json,js,jsx --exec \"npm run build\"",
-    "publish": "npm publish --access public"
+    "publish-package": "npm publish --access public"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -26,5 +26,13 @@
     "eslint": "^8.57.0",
     "react": "^18.2.0",
     "typescript": "^5.3.3"
+  },
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.mts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
   }
 }

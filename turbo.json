@@ -16,8 +16,8 @@
     "storybook": {
       "dependsOn": ["^storybook"]
     },
-    "publish": {
-      "dependsOn": ["^publish"]
+    "publish-package": {
+      "dependsOn": ["^publish-package"]
     }
   }
 }
