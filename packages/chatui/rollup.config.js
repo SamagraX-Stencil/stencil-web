@@ -17,6 +17,12 @@ export default {
       extensions,
       babelHelpers: 'runtime',
       include: ['src/**/*'],
+      presets: [
+        '@babel/preset-env',
+        '@babel/preset-typescript',
+        '@babel/preset-react'
+      ],
+      plugins: ['@babel/plugin-transform-runtime']
     }),
     terser({
       output: { comments: false },
