@@ -1,0 +1,27 @@
+{
+  "name": "@samagra-x/stencil-config-manager",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rimraf dist es lib",
+    "build": "npm run clean && tsup",
+    "dev2": "nodemon --watch src --ext ts,tsx,css,json,js,jsx --exec \"npm run build\"",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "publish-package": "npm publish --access public"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.3",
+    "@types/node": "^20.11.24",
+    "tsup": "^8.0.2",
+    "typescript": "^5.3.3"
+  },
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "module": "dist/index.mjs"
+}
