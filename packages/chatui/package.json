@@ -1,6 +1,6 @@
 {
   "name": "@samagra-x/stencil-chatui",
-  "version": "0.0.1",
+  "version": "0.0.7",
   "description": "The React library for Chatbot UI",
   "main": "lib/index.js",
   "module": "es/index.js",
