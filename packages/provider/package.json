@@ -1,6 +1,6 @@
 {
   "name": "@samagra-x/stencil-provider",
-  "version": "0.0.1",
+  "version": "0.0.7",
   "main": "dist/index.js",
   "scripts": {
     "clean": "rimraf dist es lib",
@@ -14,7 +14,7 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@mui/material": "^5.15.15",
-    "@samagra-x/stencil-config-manager": "0.0.1",
+    "@samagra-x/stencil-config-manager": "0.0.7",
     "esbuild-plugin-polyfill-node": "^0.3.0",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
