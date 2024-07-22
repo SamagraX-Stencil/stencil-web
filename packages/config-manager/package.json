@@ -1,7 +1,7 @@
 {
   "name": "@samagra-x/stencil-config-manager",
   "version": "0.0.7",
-  "main": "dist/index.js",
+  "main": "./index.ts",
   "scripts": {
     "clean": "rimraf dist es lib",
     "build": "npm run clean && tsup",

@@ -3529,18 +3529,6 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.10.3.tgz#391d528054f758f81e53210f1a1eebcf1a8b1d20"
   integrity sha512-qC/xYId4NMebE6w/V33Fh9gWxLgURiNYgVNObbJl2LZv0GUUItCcCqC5axQSwRaAgaxl2mELq1rMzlswaQ0Zxg==
 
-"@samagra-x/stencil-chatui@0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@samagra-x/stencil-chatui/-/stencil-chatui-0.0.7.tgz#1a7dffc02d59e24f68e79b817adabf23813785e2"
-  integrity sha512-AcDSX4Ck/sbXsDZ9BAeCPi7f8JzZlgD+pv1y/xAGZjNArGeo/I4LXZF03Y1+lxsfkRr3kdSAyPEK97kvknYoPw==
-  dependencies:
-    "@babel/runtime" "^7.18.3"
-    "@babel/runtime-corejs3" "^7.18.3"
-    clsx "^1.1.1"
-    core-js "^3.23.1"
-    dompurify "^2.3.8"
-    intersection-observer "^0.12.2"
-
 "@samagra-x/stencil-config-manager@0.0.1":
   version "0.0.7"
 
@@ -3552,9 +3540,9 @@
     react-dom "^18.2.0"
 
 "@samagra-x/stencil-molecules@0.0.1":
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/@samagra-x/stencil-molecules/-/stencil-molecules-0.0.8.tgz#ffdcb9fdefde74d5abeeb0905f8e5ef1be570b57"
-  integrity sha512-efv7dVRT7qfmJ5qw1J4mjZXaQoEuBDTj32GfOleV8E+61jkfESRyiFg6EGSnEI/bEybCItoe0ob2mvUCK/QO3w==
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/@samagra-x/stencil-molecules/-/stencil-molecules-0.0.12.tgz#49a5aafcacf10995cb57f3f29a880dca5720aa60"
+  integrity sha512-WPn+HVb1aRn/h3XemAsZzXFypOpBdDcOifmSziXyPIROdRc2qeJuepHWZU4dxbm3E3PBKjFpQxE6Dd1mZe7AsA==
   dependencies:
     "@babel/runtime" "^7.18.3"
     "@babel/runtime-corejs3" "^7.18.3"
