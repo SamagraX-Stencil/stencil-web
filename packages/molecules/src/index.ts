@@ -9,6 +9,7 @@ import VoiceRecorder from './voice-recorder'
 import Navbar from './navbar'
 import Sidebar from './sidebar'
 import LanguagePicker from './language-picker'
+import Feedback from './feedback'
 export {
   List,
   FullPageLoader,
@@ -21,4 +22,5 @@ export {
   VoiceRecorder,
   OTPInput,
   LanguagePicker,
+  Feedback
 }

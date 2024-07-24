@@ -1,22 +1,27 @@
 'use client'
-import { useCallback, useState } from 'react'
-import { Box, Container, IconButton } from '@mui/material'
-import { useMemo } from 'react'
-import ForumIcon from '@mui/icons-material/Forum'
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
-import { useColorPalates } from '@samagra-x/stencil-hooks'
+import { useCallback, useState } from 'react';
+import { Box, Container, IconButton } from '@mui/material';
+import { useMemo } from 'react';
+import ForumIcon from '@mui/icons-material/Forum';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import { useColorPalates } from '@samagra-x/stencil-hooks';
 import {
   JsonToTable,
   List,
   OTPInput,
   ShareButtons,
   VoiceRecorder,
-} from '@samagra-x/stencil-molecules'
-import { Navbar } from '@samagra-x/stencil-molecules'
+  Feedback,
+  Navbar
+} from '@samagra-x/stencil-molecules';
 
 const Components = () => {
-  const [otp, setOtp] = useState('')
-  const theme = useColorPalates()
+  const [otp, setOtp] = useState('');
+   const [review, setReview] = useState('');
+  const [rating, setRating] = useState<number | null>(0);
+
+  const theme = useColorPalates();
+  
   const sampleList = useMemo(
     () => [
       {
@@ -24,7 +29,6 @@ const Components = () => {
         label: 'Item 1',
         secondaryLabel: 'Description of Item 1',
         icon: <ForumIcon style={{ color: theme?.primary?.light }} />,
-
         items: [
           {
             id: 'subitem1-1',
@@ -50,7 +54,6 @@ const Components = () => {
           </IconButton>
         ),
       },
-
       {
         id: 'item3',
         label: 'Item 3',
@@ -65,10 +68,25 @@ const Components = () => {
       },
     ],
     [theme?.primary?.light]
-  )
+  );
+
   const setInputMsg = useCallback(() => {
     //message to be passed to VoiceRecorders
-  }, [])
+  }, []);
+
+  const handleReviewChange = (newReview: string) => {
+    setReview(newReview);
+  };
+
+  const handleRatingChange = (newRating: number | null) => {
+    setRating(newRating);
+  };
+
+  const handleFeedback = async () => {
+    console.log('Feedback submitted:', { review, rating });
+    // Handle feedback submission logic here
+  };
+
   return (
     <Box
       style={{ background: 'lightgray', height: '90vh', overflow: 'scroll' }}
@@ -156,8 +174,23 @@ const Components = () => {
           <ShareButtons />
         </div>
       </Container>
-    </Box>
-  )
-}
 
-export default Components
+      <Container style={{ marginTop: '50px' }}>
+        <h4>Feedback</h4>
+        <div className="mt-2 p-10 border w-25">
+          <Feedback
+            showReviewBox={true}
+            showRatingBox={true}
+            review={review}
+            star={rating}
+            onChangeReview={handleReviewChange}
+            onChangeRating={handleRatingChange}
+            handleFeedback={handleFeedback}
+          />
+        </div>
+      </Container>
+    </Box>
+  );
+};
+
+export default Components;
