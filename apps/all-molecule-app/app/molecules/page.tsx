@@ -1,18 +1,25 @@
 'use client'
-import { useCallback, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { Box, Container, IconButton } from '@mui/material'
 import { useMemo } from 'react'
 import ForumIcon from '@mui/icons-material/Forum'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import { useColorPalates } from '@samagra-x/stencil-hooks'
+import { SelectChangeEvent } from '@mui/material/Select'
+
 import {
+  BlinkingSpinner,
+  FullPageLoader,
   JsonToTable,
+  LanguagePicker,
   List,
+  NewLanguagePicker,
   OTPInput,
   ShareButtons,
   VoiceRecorder,
 } from '@samagra-x/stencil-molecules'
 import { Navbar } from '@samagra-x/stencil-molecules'
+import { Button } from '@samagra-x/stencil-chatui'
 
 const Components = () => {
   const [otp, setOtp] = useState('')
@@ -156,8 +163,67 @@ const Components = () => {
           <ShareButtons />
         </div>
       </Container>
+      <LangugagePickerComponent />
+      <BlinkingSpinnerComponent />
+      <FullPageLoaderComponent />
     </Box>
   )
+}
+
+const LangugagePickerComponent = () => {
+  const languages = [
+    { name: 'Eng', value: 'en' },
+    { name: 'हिंदी', value: 'hi' },
+  ]
+  const [activeLanguage, setActiveLanguage] = React.useState('en')
+
+  const handleLanguageClick = (event: SelectChangeEvent) => {
+    setActiveLanguage(event.target.value)
+  }
+  return (
+    <Container style={{ marginTop: '50px' }}>
+      <h4>Language Picker</h4>
+      <div className="mt-2 p-10 border w-25">
+        <NewLanguagePicker
+          languages={languages}
+          activeLanguage={activeLanguage}
+          handleLanguageClick={handleLanguageClick}
+        />
+      </div>
+    </Container>
+  )
+}
+
+const BlinkingSpinnerComponent = () => {
+  return (
+    <Container style={{ marginTop: '50px' }}>
+      <h4>Blinking Spinner</h4>
+      <div className="mt-2 p-10 border w-25">
+        <BlinkingSpinner />
+      </div>
+    </Container>
+  )
+}
+const FullPageLoaderComponent = () => {
+  const [loader, setLoader] = useState(false)
+
+  const FetchData = () => {
+    setLoader(true)
+    setTimeout(() => {
+      setLoader(false)
+    }, 2000)
+  }
+  return (
+    <Container style={{ marginTop: '30px', marginBottom: '20px' }}>
+      <h4>FullPage Loader</h4>
+      <div className="mt-2 p-10 border w-25">
+        <FullPageLoader loading={loader} label="loading" />
+      </div>
+      {/* @ts-ignore */}
+      <Button onClick={FetchData}>Fetch Data</Button>
+    </Container>
+  )
+  // return <BlinkingSpinner />
 }
 
 export default Components
