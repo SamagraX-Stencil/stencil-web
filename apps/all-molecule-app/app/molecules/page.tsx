@@ -16,6 +16,7 @@ import {
   NewLanguagePicker,
   OTPInput,
   ShareButtons,
+  StencilModal,
   VoiceRecorder,
 } from '@samagra-x/stencil-molecules'
 import { Navbar } from '@samagra-x/stencil-molecules'
@@ -166,6 +167,7 @@ const Components = () => {
       <LangugagePickerComponent />
       <BlinkingSpinnerComponent />
       <FullPageLoaderComponent />
+      <ModalComponent />
     </Box>
   )
 }
@@ -221,6 +223,23 @@ const FullPageLoaderComponent = () => {
       </div>
       {/* @ts-ignore */}
       <Button onClick={FetchData}>Fetch Data</Button>
+    </Container>
+  )
+  // return <BlinkingSpinner />
+}
+
+const ModalComponent = () => {
+  const [showModal, setShowModal] = useState(false)
+  const handleOPen = () => setShowModal(true)
+  const handleClose = () => setShowModal(false)
+
+  return (
+    <Container style={{ marginTop: '30px', marginBottom: '20px' }}>
+      <h4>Show Modal</h4>
+
+      {/* @ts-ignore */}
+      <Button onClick={handleOPen}>Open modal</Button>
+      <StencilModal handleCancelButton={handleClose} showModal={showModal} />
     </Container>
   )
   // return <BlinkingSpinner />

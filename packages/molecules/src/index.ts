@@ -11,6 +11,7 @@ import Sidebar from './sidebar';
 import LanguagePicker from './language-picker';
 import { NewLanguagePicker } from './language-picker';
 import BlinkingSpinner from './blinking-spinner';
+import StencilModal from './Modal';
 
 export {
   List,
@@ -26,4 +27,5 @@ export {
   LanguagePicker,
   NewLanguagePicker,
   BlinkingSpinner,
+  StencilModal,
 };
