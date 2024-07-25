@@ -1,0 +1,158 @@
+/* index.module.css */
+
+.profileCard {
+    border-radius: 8px;
+    padding: 16px;
+    margin:auto;
+}
+
+.teacherCard {
+    padding: 12px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+    border: 2.5px solid transparent;
+    border-image-slice: 1;
+    border-radius: 2px;
+    margin-top: 1rem;
+}
+
+.studentCardContainer {
+    box-shadow: 0px 0px 6px 0px rgba(47, 50, 147, 0.5);
+    
+    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.25)!important;
+
+    padding: 12px;
+    border-radius: 8px;
+    border: 3px solid #e0e0e0;
+}
+
+.goldCard {
+    border-image-source: radial-gradient(69.33% 163.05% at 42.86% 44.12%,
+            #ffc50c 0%,
+            #997607 99.67%);
+    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.25)!important;
+}
+
+.silverCard {
+    border-image-source: radial-gradient(69.33% 163.05% at 42.86% 44.12%,
+            #c6c6c6 0%,
+            #4a4a4a 99.67%);
+    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.25)!important;
+
+}
+
+.bronzeCard {
+    border-image-source: radial-gradient(69.33% 163.05% at 42.86% 44.12%,
+            #fd6930 0%,
+            #6e270c 99.67%);
+    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.25)!important;
+
+}
+
+.goldName {
+    background-image: radial-gradient(69.33% 163.05% at 42.86% 44.12%, #FFC50C 0%, #997607 99.67%) ;
+
+}
+
+.silverName {
+    background: radial-gradient(69.33% 163.05% at 42.86% 44.12%,
+            #c6c6c6 0%,
+            #4a4a4a 99.67%);
+}
+
+.bronzeName {
+    background: radial-gradient(69.33% 163.05% at 42.86% 44.12%,
+            #fd6930 0%,
+            #6e270c 99.67%);
+}
+
+.TeacherName {
+    text-align: center;
+    color: transparent;
+    border-radius: 10px;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.studentName {
+    font-family: "Noto Sans Devanagari";
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    padding-bottom: 8px;
+    color: #000;
+}
+
+.line {
+    height: 2px;
+    border: none;
+}
+
+.goldLine {
+    background-image: radial-gradient(69.33% 163.05% at 42.86% 44.12%,
+            #ffc50c 0%,
+            #997607 99.67%);
+}
+
+.silverLine {
+    background-image: radial-gradient(69.33% 163.05% at 42.86% 44.12%,
+            #c6c6c6 0%,
+            #4a4a4a 99.67%);
+}
+
+.bronzeLine {
+    background-image: radial-gradient(69.33% 163.05% at 42.86% 44.12%,
+            #fd6930 0%,
+            #6e270c 99.67%);
+
+}
+
+.defaultLine {
+    background-image: radial-gradient(rgba(200, 216, 253, 1),rgba(200, 216, 253, 1));
+    margin-bottom: 15px;
+}
+
+.bottomText {
+    color: #2f3293;
+    width: 100%;
+    margin: auto;
+    max-width: 86px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -12px;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 8px;
+    width: 90%;
+}
+
+.detailLineItem {
+    display: flex;
+    font-family: "Noto Sans Devanagari";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 11.4px;
+    margin: 16px 0;
+}
+
+.detailLineItemLabel {
+    color: #5e5d5c;
+}
+
+.detailLineItemValue {
+    margin-left: 2px;
+    color: #2f3293;
+}
