@@ -239,7 +239,11 @@ const ModalComponent = () => {
 
       {/* @ts-ignore */}
       <Button onClick={handleOPen}>Open modal</Button>
-      <StencilModal handleCancelButton={handleClose} showModal={showModal} />
+      <StencilModal
+        handleCancelButton={handleClose}
+        showModal={showModal}
+        heading="Click On Ok button"
+      />
     </Container>
   )
   // return <BlinkingSpinner />
