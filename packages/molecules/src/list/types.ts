@@ -18,6 +18,7 @@ export type ListType={
     noItem ?: {
         label ?: string,
         icon ?: React.ReactElement
-    }
-}
+    };
+     onDelete?: (id: string) => void;
+};
 

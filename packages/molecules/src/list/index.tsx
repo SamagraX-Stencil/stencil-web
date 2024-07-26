@@ -1,16 +1,14 @@
 import * as React from 'react';
 import MuiList from '@mui/material/List';
-import { ListItemIcon, ListItemText, ListItemButton, ListSubheader, Collapse } from '@mui/material';
-import { ExpandLess, StarBorder, ExpandMore, ErrorOutline } from '@mui/icons-material';
-
+import { ListItemIcon, ListItemText, ListItemButton, ListSubheader, Collapse, IconButton } from '@mui/material';
+import { ExpandLess, StarBorder, ExpandMore, ErrorOutline, Delete } from '@mui/icons-material';
 import { ListType } from './types';
 import { map } from 'lodash';
 import { Avatar, Divider, ListItem, ListItemAvatar, Typography } from '@mui/material';
 import { useBotConfig } from '@samagra-x/stencil-hooks';
 
-export const List: React.FC<ListType> = ({ items, label, noItem }) => {
+export const List: React.FC<ListType> = ({ items, label, noItem, onDelete }) => {
   const [openItem, setOpenItem] = React.useState<string | null>(null);
-
   const config = useBotConfig('component', 'historyPage');
 
   const handleClick = React.useCallback(
@@ -21,12 +19,18 @@ export const List: React.FC<ListType> = ({ items, label, noItem }) => {
     [openItem],
   );
 
+  const handleDelete = (id: string) => {
+    if (onDelete) {
+      onDelete(id);
+    }
+  };
+
   const hasItems = React.useMemo(() => items?.length > 0, [items]);
 
   if (!hasItems)
     return (
       <MuiList
-        sx={{ width: '100%', bgcolor: 'background.paper' }}
+        sx={{ width: '100%', bgcolor: 'background.paper',  }}
         component="nav"
         aria-labelledby="nested-list-subheader"
       >
@@ -38,17 +42,17 @@ export const List: React.FC<ListType> = ({ items, label, noItem }) => {
         </ListItemButton>
       </MuiList>
     );
+
   return (
     <MuiList
-      sx={{ width: '100%', bgcolor: 'background.paper' }}
+      sx={{ width: '100%', bgcolor: 'background.paper',   }}
       component="nav"
       aria-labelledby="nested-list-subheader"
       subheader={<>{label && <ListSubheader component="div">{label}</ListSubheader>}</>}
     >
       {map(items, (item) => {
-        console.log({ item });
         return (
-          <>
+          <React.Fragment key={item.id}>
             <ListItem secondaryAction={item?.secondaryAction ?? null}>
               <ListItemButton
                 onClick={(ev) => {
@@ -63,7 +67,7 @@ export const List: React.FC<ListType> = ({ items, label, noItem }) => {
                 {item.icon && <ListItemIcon>{React.cloneElement(item.icon)}</ListItemIcon>}
                 {item.avatar && (
                   <ListItemAvatar>
-                    <Avatar alt="Travis Howard" src={item.avatar} />
+                    <Avatar alt="Item Avatar" src={item.avatar} />
                   </ListItemAvatar>
                 )}
                 {item.label && (
@@ -86,20 +90,25 @@ export const List: React.FC<ListType> = ({ items, label, noItem }) => {
                   />
                 )}
                 {item?.items && <>{openItem === item?.id ? <ExpandLess /> : <ExpandMore />}</>}
+                <IconButton edge="end" aria-label="delete" onClick={() => handleDelete(item.id)}>
+                  <Delete />
+                </IconButton>
               </ListItemButton>
             </ListItem>
             <Collapse in={openItem === item?.id} timeout="auto" unmountOnExit>
               <MuiList component="div" disablePadding>
-                <ListItemButton sx={{ pl: 8 }}>
-                  <ListItemIcon>
-                    <StarBorder />
-                  </ListItemIcon>
-                  <ListItemText primary="Starred" />
-                </ListItemButton>
+                {item.items && item.items.map((nestedItem) => (
+                  <ListItemButton key={nestedItem.id} sx={{ pl: 8 }}>
+                    <ListItemIcon>
+                      {nestedItem.icon ? React.cloneElement(nestedItem.icon) : <StarBorder />}
+                    </ListItemIcon>
+                    <ListItemText primary={nestedItem.label} />
+                  </ListItemButton>
+                ))}
               </MuiList>
             </Collapse>
             {item?.isDivider && <Divider />}
-          </>
+          </React.Fragment>
         );
       })}
     </MuiList>
