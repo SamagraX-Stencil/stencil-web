@@ -17,6 +17,7 @@ import {
   OTPInput,
   ShareButtons,
   StencilModal,
+  TransliterationInput,
   VoiceRecorder,
 } from '@samagra-x/stencil-molecules'
 import { Navbar } from '@samagra-x/stencil-molecules'
@@ -168,6 +169,7 @@ const Components = () => {
       <BlinkingSpinnerComponent />
       <FullPageLoaderComponent />
       <ModalComponent />
+      <TransliterationInputComponent />
     </Box>
   )
 }
@@ -225,7 +227,6 @@ const FullPageLoaderComponent = () => {
       <Button onClick={FetchData}>Fetch Data</Button>
     </Container>
   )
-  // return <BlinkingSpinner />
 }
 
 const ModalComponent = () => {
@@ -246,7 +247,38 @@ const ModalComponent = () => {
       />
     </Container>
   )
-  // return <BlinkingSpinner />
+}
+const TransliterationInputComponent = () => {
+  const [review, setReview] = useState('')
+  const config = {
+    allowFeedback: true,
+    allowTextToSpeech: true,
+    transliterationApi: '',
+    allowTransliteration: false,
+    transliterationProvider: '',
+    transliterationSuggestions: '',
+    transliterationInputLanguage: '',
+    transliterationOutputLanguage: '',
+  }
+
+  return (
+    <Container style={{ marginTop: '30px', marginBottom: '20px' }}>
+      <h4>Transliteration Input</h4>
+
+      {/* @ts-ignore */}
+      <TransliterationInput
+        data-testid="feedback-popup-box"
+        config={config}
+        value={review}
+        setValue={setReview}
+        name="experience-feedback"
+        id="inputBox"
+        multiline={true}
+        style={{ minHeight: '120px', minWidth: '250px', padding: '5px' }}
+        placeholder={'Let us know your issue with the response'}
+      />
+    </Container>
+  )
 }
 
 export default Components

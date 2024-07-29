@@ -12,6 +12,11 @@ import LanguagePicker from './language-picker';
 import { NewLanguagePicker } from './language-picker';
 import BlinkingSpinner from './blinking-spinner';
 import StencilModal from './Modal';
+import { TransliterationInput } from './transliteration-input';
+import type {
+  TransliterationInputPropsType,
+  TransliterationConfigType,
+} from './transliteration-input';
 
 export {
   List,
@@ -28,4 +33,7 @@ export {
   NewLanguagePicker,
   BlinkingSpinner,
   StencilModal,
+  TransliterationInput,
 };
+
+export type { TransliterationInputPropsType, TransliterationConfigType };
