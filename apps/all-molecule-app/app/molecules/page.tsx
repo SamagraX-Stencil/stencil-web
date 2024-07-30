@@ -20,7 +20,8 @@ import {
   NewNavbar,
   TransliterationInput,
   VoiceRecorder,
-  NewSidebar
+  NewSidebar,
+  NewShareButtons,
 } from '@samagra-x/stencil-molecules'
 import { Navbar } from '@samagra-x/stencil-molecules'
 import { Button } from '@samagra-x/stencil-chatui'
@@ -195,6 +196,8 @@ const Components = () => {
           <ShareButtons />
         </div>
       </Container>
+
+    
       <LangugagePickerComponent />
       <BlinkingSpinnerComponent />
       <FullPageLoaderComponent />

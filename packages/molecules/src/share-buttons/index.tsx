@@ -186,6 +186,13 @@ type ShareButtonProps = {
   shareLoader?: boolean;
   downloadLoader?: boolean;
   handleDownloadButton?: () => void;
+  style?: {
+    container?: object;
+    button?: object;
+    icon?:  object;
+    text?:  object;
+    divider?:  object;
+  };
 };
 
 const NewShareButtons: React.FC<ShareButtonProps> = ({
@@ -195,6 +202,7 @@ const NewShareButtons: React.FC<ShareButtonProps> = ({
   handleDownloadButton,
   shareLoader,
   downloadLoader,
+  style = {},
 }) => {
   const theme = useColorPalates();
 
@@ -202,13 +210,12 @@ const NewShareButtons: React.FC<ShareButtonProps> = ({
     return theme?.primary?.main;
   }, [theme?.primary?.main]);
 
-  return (
+    return (
     <>
       {(allowDownloadChat || allowShareChat) && (
         <div
           style={{
-            // position: 'absolute',
-            position: 'relative', // just to show them on website, ideally should keep absolute to stick them to right side
+            position: 'relative',
             right: 0,
             top: '40%',
             background: 'white',
@@ -216,6 +223,7 @@ const NewShareButtons: React.FC<ShareButtonProps> = ({
             borderRadius: '5px 0 0 5px',
             boxShadow:
               'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px',
+            ...style.container,  
           }}
         >
           {allowShareChat && (
@@ -226,6 +234,7 @@ const NewShareButtons: React.FC<ShareButtonProps> = ({
                 flexDirection: 'column',
                 alignItems: 'center',
                 cursor: 'pointer',
+                ...style.button,  
               }}
             >
               {shareLoader ? (
@@ -247,6 +256,7 @@ const NewShareButtons: React.FC<ShareButtonProps> = ({
                     flexDirection: 'column',
                     justifyContent: 'center',
                     alignItems: 'center',
+                    ...style.icon, 
                   }}
                 >
                   <Share sx={{ color: primaryColor }} />
@@ -258,6 +268,7 @@ const NewShareButtons: React.FC<ShareButtonProps> = ({
                   margin: 0,
                   color: theme?.primary?.dark,
                   fontFamily: 'Mulish-bold',
+                  ...style.text,  
                 }}
               >
                 Share
@@ -265,7 +276,9 @@ const NewShareButtons: React.FC<ShareButtonProps> = ({
             </div>
           )}
           {/* Only render divider when both share and download allowed */}
-          {allowDownloadChat && allowShareChat && <Divider />}
+          {allowDownloadChat && allowShareChat && (
+            <Divider style={style.divider} />
+          )}
           {allowDownloadChat && (
             <div
               onClick={handleDownloadButton}
@@ -274,6 +287,7 @@ const NewShareButtons: React.FC<ShareButtonProps> = ({
                 flexDirection: 'column',
                 alignItems: 'center',
                 cursor: 'pointer',
+                ...style.button,  
               }}
             >
               {/* Download */}
@@ -296,6 +310,7 @@ const NewShareButtons: React.FC<ShareButtonProps> = ({
                     flexDirection: 'column',
                     justifyContent: 'center',
                     alignItems: 'center',
+                    ...style.icon, 
                   }}
                 >
                   <FileDownloadOutlined sx={{ color: primaryColor }} />
@@ -307,6 +322,7 @@ const NewShareButtons: React.FC<ShareButtonProps> = ({
                   margin: 0,
                   color: theme?.primary?.dark,
                   fontFamily: 'Mulish-bold',
+                  ...style.text,  
                 }}
               >
                 Download
