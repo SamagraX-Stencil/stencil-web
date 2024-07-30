@@ -51,17 +51,18 @@ const LanguagePicker = () => {
 
 export default LanguagePicker;
 
-const NewLanguagePicker = ({ languages, activeLanguage, handleLanguageClick }) => {
-  const theme = useColorPalates();
+const NewLanguagePicker = ({ languages, activeLanguage, handleLanguageClick, customStyles }) => {
+  const { formControlStyle, selectStyle, menuItemStyle } = customStyles;
 
   return (
     <FormControl
       sx={{
         m: 1,
-        background: theme.primary.main,
+        background: 'lightblue',
         border: 'none',
         borderRadius: '10px',
         height: '36px',
+        ...formControlStyle,
       }}
       size="small"
     >
@@ -71,15 +72,17 @@ const NewLanguagePicker = ({ languages, activeLanguage, handleLanguageClick }) =
         displayEmpty
         inputProps={{ 'aria-label': 'Without label' }}
         sx={{
-          color: theme.primary.dark,
           border: 'none',
           borderRadius: '10px',
           width: '85px',
           height: '36px',
+          ...selectStyle,
         }}
       >
         {map(languages, (lang) => (
-          <MenuItem value={lang?.value}>{lang?.name}</MenuItem>
+          <MenuItem value={lang?.value} sx={{ ...menuItemStyle }}>
+            {lang?.name}
+          </MenuItem>
         ))}
       </Select>
     </FormControl>

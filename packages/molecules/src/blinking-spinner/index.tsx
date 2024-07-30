@@ -1,19 +1,8 @@
-import React, { useMemo } from 'react'
-import styles from './index.module.css'
-import { useBotAppColorPalates } from '@samagra-x/stencil-hooks'
+import React from 'react';
+import styles from './index.module.css';
 
-const BlinkingSpinner = () => {
-  const theme = useBotAppColorPalates()
-  const secondaryColor = useMemo(() => {
-    return theme?.primary?.light
-  }, [theme?.primary?.light])
+const BlinkingSpinner = ({ color }: any) => {
+  return <p className={styles.spinner} style={{ backgroundColor: color }}></p>;
+};
 
-  return (
-    <p
-      className={styles.spinner}
-      style={{ backgroundColor: secondaryColor }}
-    ></p>
-  )
-}
-
-export default BlinkingSpinner
+export default BlinkingSpinner;

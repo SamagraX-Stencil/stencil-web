@@ -192,6 +192,7 @@ const LangugagePickerComponent = () => {
           languages={languages}
           activeLanguage={activeLanguage}
           handleLanguageClick={handleLanguageClick}
+          customStyles={{}}
         />
       </div>
     </Container>
@@ -199,17 +200,20 @@ const LangugagePickerComponent = () => {
 }
 
 const BlinkingSpinnerComponent = () => {
+  const theme = useColorPalates()
+
   return (
     <Container style={{ marginTop: '50px' }}>
       <h4>Blinking Spinner</h4>
       <div className="mt-2 p-10 border w-25">
-        <BlinkingSpinner />
+        <BlinkingSpinner color={theme.primary.main} />
       </div>
     </Container>
   )
 }
 const FullPageLoaderComponent = () => {
   const [loader, setLoader] = useState(false)
+  const theme = useColorPalates()
 
   const FetchData = () => {
     setLoader(true)
@@ -221,7 +225,12 @@ const FullPageLoaderComponent = () => {
     <Container style={{ marginTop: '30px', marginBottom: '20px' }}>
       <h4>FullPage Loader</h4>
       <div className="mt-2 p-10 border w-25">
-        <FullPageLoader loading={loader} label="loading" />
+        <FullPageLoader
+          loading={loader}
+          label="loading"
+          color={theme.primary.main}
+          labelStyle={{ color: 'red', fontSize: '24px' }}
+        />
       </div>
       {/* @ts-ignore */}
       <Button onClick={FetchData}>Fetch Data</Button>
