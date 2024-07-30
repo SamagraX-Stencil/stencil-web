@@ -6,6 +6,7 @@ import { useLogin } from './useLogin'
 import { useLocalStorage } from './useLocalStorage'
 import { useGetInitTheme, useBotConfig } from './useConfig'
 import { useLocalizationForExampleApp } from './useLocalizationForExampleApp'
+import useTransliteration from './useTransliteration'
 export {
   useConfig,
   useThemeConfig,
@@ -19,4 +20,5 @@ export {
   useGetInitTheme,
   useBotConfig,
   useLocalizationForExampleApp,
+  useTransliteration,
 }
