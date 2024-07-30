@@ -3,7 +3,6 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import { Home, Menu } from '@mui/icons-material';
-
 import Typography from '@mui/material/Typography';
 import { Sidebar } from '../sidebar/index';
 // import ThemePicker from '../../components/theme-picker'
@@ -23,18 +22,26 @@ type NavbarProps = {
   showHomeIcon?: boolean;
   centerLogoIcons?: Icon[];
   rightLogoIcons?: Icon[];
+  style?: {
+    appBar?: object;
+    toolbar?: object;
+    leftSection?: object;
+    centerSection?: object;
+    rightSection?:object;
+  };
 };
 
 const Navbar: React.FC = () => {
   const config = useUiConfig('component', 'navbar');
-
   const theme = useColorPalates();
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen); // Toggle sidebar state
   };
+
   console.log('config from nav: ', config);
+
   return (
     <>
       <AppBar position="static" sx={{ background: theme.primary.dark }}>
@@ -131,14 +138,15 @@ const NewNavbar: React.FC<NavbarProps> = ({
   leftHomeIcon = {},
   centerLogoIcons = [],
   rightLogoIcons = [],
+  style = {}
 }) => {
   const theme = useColorPalates();
 
   return (
     <>
-      <AppBar position="static" sx={{ background: theme.primary.dark }}>
-        <Toolbar style={{ display: 'flex-start', justifyContent: 'space-between' }}>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
+      <AppBar position="static" sx={{ background: theme.primary.dark, ...style.appBar }}>
+        <Toolbar style={{ display: 'flex-start', justifyContent: 'space-between', ...style.toolbar }}>
+          <div style={{ display: 'flex', alignItems: 'center', ...style.leftSection }}>
             {showHamburgerMenu && (
               <IconButton
                 size="large"
@@ -179,6 +187,7 @@ const NewNavbar: React.FC<NavbarProps> = ({
               flexDirection: 'column',
               alignItems: 'center',
               flex: 1,
+              ...style.centerSection
             }}
           >
             {centerLogoIcons &&
@@ -199,7 +208,7 @@ const NewNavbar: React.FC<NavbarProps> = ({
           </div>
 
           {rightLogoIcons && (
-            <div>
+            <div style={style.rightSection}>
               {rightLogoIcons.map((logo: { id: string; src: string }) => (
                 <img
                   key={logo.id}
