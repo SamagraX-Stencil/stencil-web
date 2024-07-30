@@ -20,6 +20,7 @@ import {
   NewNavbar,
   TransliterationInput,
   VoiceRecorder,
+  NewSidebar
 } from '@samagra-x/stencil-molecules'
 import { Navbar } from '@samagra-x/stencil-molecules'
 import { Button } from '@samagra-x/stencil-chatui'

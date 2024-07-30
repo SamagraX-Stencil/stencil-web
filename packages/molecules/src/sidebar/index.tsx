@@ -39,6 +39,7 @@ type SidebarPropsBase = {
   profileText?: string;
   links: Link[];
   handleLogOutButton: () => void;
+  style?: SidebarStyle
 };
 
 type SidebarPropsWithLangSwitcher = SidebarPropsBase & {
@@ -54,8 +55,21 @@ type SidebarPropsWithoutLangSwitcher = SidebarPropsBase & {
   activeLanguage?: never;
   handleLanguageClick?: never;
 };
+type SidebarStyle = { 
+   
+  drawer?: React.CSSProperties;
+  list?: React.CSSProperties;
+  listItem?: React.CSSProperties;
+  listItemButton?: React.CSSProperties;
+  profileText?: React.CSSProperties;
+  languagePicker?: React.CSSProperties;
+  
+};
 
-type SidebarProps = SidebarPropsWithLangSwitcher | SidebarPropsWithoutLangSwitcher;
+
+type SidebarProps = SidebarPropsWithLangSwitcher | SidebarPropsWithoutLangSwitcher & {
+  style?: SidebarStyle;
+};
 
 export const Sidebar = ({ isOpen, onToggle }: { isOpen: boolean; onToggle: () => void }) => {
   const [config, setConfig] = useState<{
@@ -200,51 +214,55 @@ const NewSidebar: React.FC<SidebarProps> = ({
   showProfileIcon = false,
   showLangSwitcher = false,
   profileText,
-  links,
+  links = [],
   handleLogOutButton,
   languages,
   activeLanguage,
   handleLanguageClick,
+  style = {},
 }) => {
   const handleItemClick = () => {
     onToggle();
   };
 
-  return (
+   return (
     <div>
-      <Drawer open={isOpen} onClose={onToggle}>
-        <Box sx={{ width: 250 }} role="presentation">
-          <List>
+      <Drawer open={isOpen} onClose={onToggle} sx={style.drawer}>
+        <Box sx={{ width: 250, ...style.list }} role="presentation">
+          <List sx={style.list}>
             {showLangSwitcher && (
-              <ListItem disablePadding>
-                <ListItemButton onClick={handleItemClick}>
-                  <ListItemIcon>
+              <ListItem disablePadding sx={style.listItem}>
+                <ListItemButton onClick={handleItemClick} sx={style.listItemButton}>
+                  <ListItemIcon sx={style.languagePicker}>
                     <ArrowBack />
                   </ListItemIcon>
-                  <NewLanguagePicker
-                    languages={languages}
-                    activeLanguage={activeLanguage}
-                    handleLanguageClick={handleLanguageClick}
-                  />
+                  {languages && (
+                    <NewLanguagePicker
+                      languages={languages}
+                      activeLanguage={activeLanguage}
+                      handleLanguageClick={handleLanguageClick}
+                      style={style.languagePicker}
+                    />
+                  )}
                 </ListItemButton>
               </ListItem>
             )}
 
             {showProfileIcon && (
-              <ListItem disablePadding>
-                <ListItemButton>
+              <ListItem disablePadding sx={style.listItem}>
+                <ListItemButton sx={style.listItemButton}>
                   <ListItemIcon>
                     <AccountCircle />
                   </ListItemIcon>
-                  <ListItemText primary={profileText} />
+                  <ListItemText primary={profileText} sx={style.profileText} />
                 </ListItemButton>
               </ListItem>
             )}
 
             {links.map((link, index) => (
               <div key={index}>
-                <ListItem disablePadding sx={{ paddingTop: '10px', paddingBottom: '10px' }}>
-                  <ListItemButton>
+                <ListItem disablePadding sx={style.listItem}>
+                  <ListItemButton sx={style.listItemButton}>
                     <ListItemIcon>{link.icon}</ListItemIcon>
                     <ListItemText primary={link.label} />
                     <ChevronRight />
@@ -254,8 +272,8 @@ const NewSidebar: React.FC<SidebarProps> = ({
               </div>
             ))}
 
-            <ListItem disablePadding>
-              <ListItemButton onClick={handleLogOutButton}>
+            <ListItem disablePadding sx={style.listItem}>
+              <ListItemButton onClick={handleLogOutButton} sx={style.listItemButton}>
                 <ListItemIcon>
                   <Logout />
                 </ListItemIcon>
