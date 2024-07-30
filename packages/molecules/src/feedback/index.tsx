@@ -1,9 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { TextField, Button, Box, Typography, Rating } from '@mui/material';
 import { toast } from 'react-hot-toast';
 import { useColorPalates } from '@samagra-x/stencil-hooks';
 import { useUiConfig } from '@samagra-x/stencil-hooks';
 import styles from './index.module.css';
+
+type FeedbackStyles = {
+  heading?: object;
+  rating?: object;
+  review?: object;
+  submitButton?: object;
+};
 
 type FeedbackProps = {
   showReviewBox?: boolean;
@@ -13,7 +20,7 @@ type FeedbackProps = {
   onChangeReview?: (newReview: string) => void;
   onChangeRating?: (newRating: number | null) => void;
   handleFeedback?: () => void;
-  styles?: object;
+  customStyles?: FeedbackStyles;
 };
 
 const Feedback: React.FC<FeedbackProps> = ({
@@ -24,7 +31,7 @@ const Feedback: React.FC<FeedbackProps> = ({
   onChangeReview = () => {},
   onChangeRating = () => {},
   handleFeedback = () => {},
-  styles = {},
+  customStyles = {},
 }) => {
   const theme = useColorPalates();
   const config = useUiConfig('component', 'feedback');
@@ -53,6 +60,7 @@ const Feedback: React.FC<FeedbackProps> = ({
               fontSize: '5vh',
               fontWeight: 'bold',
               color: theme?.primary?.main,
+              ...customStyles.heading,
             }}
           >
             Feedback
@@ -60,12 +68,13 @@ const Feedback: React.FC<FeedbackProps> = ({
         </Box>
 
         {showRatingBox && (
-          <Box className={styles.section}>
+          <Box className="section">
             <Typography
               data-testid="feedback-rating-title"
               sx={{
                 fontWeight: 'bold',
                 fontSize: '3vh',
+                ...customStyles.rating,
               }}
             >
               Rating
@@ -80,6 +89,7 @@ const Feedback: React.FC<FeedbackProps> = ({
               defaultValue={1}
               sx={{
                 fontSize: '6vh',
+                ...customStyles.rating,
               }}
             />
             <Typography
@@ -87,6 +97,7 @@ const Feedback: React.FC<FeedbackProps> = ({
               sx={{
                 textAlign: 'center',
                 fontSize: '2vh',
+                ...customStyles.rating,
               }}
             >
               Please provide a rating.
@@ -104,6 +115,7 @@ const Feedback: React.FC<FeedbackProps> = ({
                 '&:hover': {
                   backgroundColor: `${theme?.primary?.dark}`,
                 },
+                ...customStyles.submitButton,
               }}
               onClick={handleFeedbackClick}
             >
@@ -113,13 +125,14 @@ const Feedback: React.FC<FeedbackProps> = ({
         )}
 
         {showReviewBox && (
-          <Box className={styles.section}>
+          <Box className="section">
             <Typography
               data-testid="feedback-review-title"
               sx={{
                 m: '1rem',
                 fontWeight: 'bold',
                 fontSize: '3vh',
+                ...customStyles.review,
               }}
             >
               Review
@@ -135,6 +148,7 @@ const Feedback: React.FC<FeedbackProps> = ({
               onChange={(e) => onChangeReview(e.target.value)}
               sx={{
                 border: `2px solid ${theme?.primary?.main}`,
+                ...customStyles.review,
               }}
             />
             <Button
@@ -151,6 +165,7 @@ const Feedback: React.FC<FeedbackProps> = ({
                 '&:hover': {
                   backgroundColor: `${theme?.primary?.dark}`,
                 },
+                ...customStyles.submitButton,
               }}
               onClick={handleFeedbackClick}
             >

@@ -13,6 +13,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "app/molecules/page.tsx"  ],
   "exclude": ["node_modules"]
 }
