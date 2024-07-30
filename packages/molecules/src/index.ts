@@ -13,6 +13,7 @@ import { NewLanguagePicker } from './language-picker';
 import BlinkingSpinner from './blinking-spinner';
 import StencilModal from './Modal';
 import LoginInput, { LoginCheckBox } from './login-input';
+import LoginComponent from './login';
 import { TransliterationInput } from './transliteration-input';
 import type {
   TransliterationInputPropsType,
@@ -27,6 +28,7 @@ export {
   MessageItem,
   LoginInput,
   LoginCheckBox,
+  LoginComponent,
   Navbar,
   NewNavbar,
   Sidebar,
