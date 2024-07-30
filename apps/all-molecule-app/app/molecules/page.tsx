@@ -1,6 +1,6 @@
 'use client'
 import { useCallback, useState } from 'react';
-import { Box, Container, IconButton } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import { useMemo } from 'react';
 import ForumIcon from '@mui/icons-material/Forum';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
@@ -17,11 +17,11 @@ import {
 
 const Components = () => {
   const [otp, setOtp] = useState('');
-   const [review, setReview] = useState('');
+  const [review, setReview] = useState('');
   const [rating, setRating] = useState<number | null>(0);
 
   const theme = useColorPalates();
-  
+
   const [sampleList, setSampleList] = useState([
     {
       id: 'item1',
@@ -47,7 +47,7 @@ const Components = () => {
       label: 'Item 2',
       avatar: 'https://rb.gy/u1ufa2',
       isDivider: true,
-  },
+    },
     {
       id: 'item3',
       label: 'Item 3',
@@ -61,12 +61,13 @@ const Components = () => {
       ],
     },
   ]);
+
   const handleDelete = (id: string) => {
     setSampleList((prevList) => prevList.filter((item) => item.id !== id));
   };
 
   const setInputMsg = useCallback(() => {
-    //message to be passed to VoiceRecorders
+    // message to be passed to VoiceRecorders
   }, []);
 
   const handleReviewChange = (newReview: string) => {
@@ -110,7 +111,11 @@ const Components = () => {
         <div className="mt-2 p-5 border">
           {
             // @ts-ignore
-            <List items={sampleList} onDelete={handleDelete} />
+            <List
+              items={sampleList}
+              onDelete={handleDelete}
+              styles={[{ padding: '10px' }, { border: '1px solid black' }]}
+            />
           }
         </div>
       </Container>
@@ -181,7 +186,6 @@ const Components = () => {
             onChangeReview={handleReviewChange}
             onChangeRating={handleRatingChange}
             handleFeedback={handleFeedback}
-          
           />
         </div>
       </Container>

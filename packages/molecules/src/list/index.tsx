@@ -7,7 +7,7 @@ import { map } from 'lodash';
 import { Avatar, Divider, ListItem, ListItemAvatar, Typography } from '@mui/material';
 import { useBotConfig } from '@samagra-x/stencil-hooks';
 
-export const List: React.FC<ListType> = ({ items, label, noItem, onDelete }) => {
+export const List: React.FC<ListType> = ({ items, label, noItem, onDelete, styles = [] }) => {
   const [openItem, setOpenItem] = React.useState<string | null>(null);
   const config = useBotConfig('component', 'historyPage');
 
@@ -27,10 +27,13 @@ export const List: React.FC<ListType> = ({ items, label, noItem, onDelete }) => 
 
   const hasItems = React.useMemo(() => items?.length > 0, [items]);
 
+  
+  const mergedStyles = styles.reduce((acc, style) => ({ ...acc, ...style }), {});
+
   if (!hasItems)
     return (
       <MuiList
-        sx={{ width: '100%', bgcolor: 'background.paper',  }}
+        sx={{ width: '100%', bgcolor: 'background.paper', ...mergedStyles }}
         component="nav"
         aria-labelledby="nested-list-subheader"
       >
@@ -45,7 +48,7 @@ export const List: React.FC<ListType> = ({ items, label, noItem, onDelete }) => 
 
   return (
     <MuiList
-      sx={{ width: '100%', bgcolor: 'background.paper',   }}
+      sx={{ width: '100%', bgcolor: 'background.paper', ...mergedStyles }}
       component="nav"
       aria-labelledby="nested-list-subheader"
       subheader={<>{label && <ListSubheader component="div">{label}</ListSubheader>}</>}
