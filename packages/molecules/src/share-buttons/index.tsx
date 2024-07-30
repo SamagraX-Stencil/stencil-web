@@ -178,3 +178,145 @@ const ShareButtons = () => {
 };
 
 export default ShareButtons;
+
+type ShareButtonProps = {
+  allowDownloadChat?: boolean;
+  handleShareButton?: () => void;
+  allowShareChat?: boolean;
+  shareLoader?: boolean;
+  downloadLoader?: boolean;
+  handleDownloadButton?: () => void;
+};
+
+const NewShareButtons: React.FC<ShareButtonProps> = ({
+  allowDownloadChat = false,
+  handleShareButton,
+  allowShareChat = false,
+  handleDownloadButton,
+  shareLoader,
+  downloadLoader,
+}) => {
+  const theme = useColorPalates();
+
+  const primaryColor = useMemo(() => {
+    return theme?.primary?.main;
+  }, [theme?.primary?.main]);
+
+  return (
+    <>
+      {(allowDownloadChat || allowShareChat) && (
+        <div
+          style={{
+            // position: 'absolute',
+            position: 'relative', // just to show them on website, ideally should keep absolute to stick them to right side
+            right: 0,
+            top: '40%',
+            background: 'white',
+            padding: '5px',
+            borderRadius: '5px 0 0 5px',
+            boxShadow:
+              'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px',
+          }}
+        >
+          {allowShareChat && (
+            <div
+              onClick={handleShareButton}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                cursor: 'pointer',
+              }}
+            >
+              {shareLoader ? (
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: '24px',
+                    height: '24px',
+                  }}
+                >
+                  <CircularProgress size="20px" />
+                </div>
+              ) : (
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Share sx={{ color: primaryColor }} />
+                </div>
+              )}
+              <p
+                style={{
+                  fontSize: '10px',
+                  margin: 0,
+                  color: theme?.primary?.dark,
+                  fontFamily: 'Mulish-bold',
+                }}
+              >
+                Share
+              </p>
+            </div>
+          )}
+          {/* Only render divider when both share and download allowed */}
+          {allowDownloadChat && allowShareChat && <Divider />}
+          {allowDownloadChat && (
+            <div
+              onClick={handleDownloadButton}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                cursor: 'pointer',
+              }}
+            >
+              {/* Download */}
+              {downloadLoader ? (
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: '24px',
+                    height: '24px',
+                  }}
+                >
+                  <CircularProgress size="20px" />
+                </div>
+              ) : (
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <FileDownloadOutlined sx={{ color: primaryColor }} />
+                </div>
+              )}
+              <p
+                style={{
+                  fontSize: '10px',
+                  margin: 0,
+                  color: theme?.primary?.dark,
+                  fontFamily: 'Mulish-bold',
+                }}
+              >
+                Download
+              </p>
+            </div>
+          )}
+        </div>
+      )}
+    </>
+  );
+};
+
+export { NewShareButtons };

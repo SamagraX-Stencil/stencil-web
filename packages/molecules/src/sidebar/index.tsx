@@ -18,6 +18,44 @@ import {
   ChevronRight,
 } from '@mui/icons-material';
 import configObj from '@samagra-x/stencil-config-manager';
+import { NewLanguagePicker } from '../language-picker';
+
+type Link = {
+  label: string;
+  icon: string;
+  route: string;
+};
+
+type Language = {
+  name: string;
+  value: string;
+};
+
+type SidebarPropsBase = {
+  isOpen: boolean;
+  onToggle: () => void;
+  showProfileIcon?: boolean;
+  showLangSwitcher?: boolean;
+  profileText?: string;
+  links: Link[];
+  handleLogOutButton: () => void;
+};
+
+type SidebarPropsWithLangSwitcher = SidebarPropsBase & {
+  showLangSwitcher: true;
+  languages: Language[];
+  activeLanguage: string;
+  handleLanguageClick: () => void;
+};
+
+type SidebarPropsWithoutLangSwitcher = SidebarPropsBase & {
+  showLangSwitcher?: false;
+  languages?: never;
+  activeLanguage?: never;
+  handleLanguageClick?: never;
+};
+
+type SidebarProps = SidebarPropsWithLangSwitcher | SidebarPropsWithoutLangSwitcher;
 
 export const Sidebar = ({ isOpen, onToggle }: { isOpen: boolean; onToggle: () => void }) => {
   const [config, setConfig] = useState<{
@@ -155,3 +193,81 @@ const getIconComponent = (iconName: string) => {
 };
 
 export default Sidebar;
+
+const NewSidebar: React.FC<SidebarProps> = ({
+  isOpen,
+  onToggle,
+  showProfileIcon = false,
+  showLangSwitcher = false,
+  profileText,
+  links,
+  handleLogOutButton,
+  languages,
+  activeLanguage,
+  handleLanguageClick,
+}) => {
+  const handleItemClick = () => {
+    onToggle();
+  };
+
+  return (
+    <div>
+      <Drawer open={isOpen} onClose={onToggle}>
+        <Box sx={{ width: 250 }} role="presentation">
+          <List>
+            {showLangSwitcher && (
+              <ListItem disablePadding>
+                <ListItemButton onClick={handleItemClick}>
+                  <ListItemIcon>
+                    <ArrowBack />
+                  </ListItemIcon>
+                  <NewLanguagePicker
+                    languages={languages}
+                    activeLanguage={activeLanguage}
+                    handleLanguageClick={handleLanguageClick}
+                  />
+                </ListItemButton>
+              </ListItem>
+            )}
+
+            {showProfileIcon && (
+              <ListItem disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>
+                    <AccountCircle />
+                  </ListItemIcon>
+                  <ListItemText primary={profileText} />
+                </ListItemButton>
+              </ListItem>
+            )}
+
+            {links.map((link, index) => (
+              <div key={index}>
+                <ListItem disablePadding sx={{ paddingTop: '10px', paddingBottom: '10px' }}>
+                  <ListItemButton>
+                    <ListItemIcon>{link.icon}</ListItemIcon>
+                    <ListItemText primary={link.label} />
+                    <ChevronRight />
+                  </ListItemButton>
+                </ListItem>
+                <Divider />
+              </div>
+            ))}
+
+            <ListItem disablePadding>
+              <ListItemButton onClick={handleLogOutButton}>
+                <ListItemIcon>
+                  <Logout />
+                </ListItemIcon>
+                <ListItemText primary={'Log Out'} />
+                <ChevronRight />
+              </ListItemButton>
+            </ListItem>
+          </List>
+        </Box>
+      </Drawer>
+    </div>
+  );
+};
+
+export { NewSidebar };
