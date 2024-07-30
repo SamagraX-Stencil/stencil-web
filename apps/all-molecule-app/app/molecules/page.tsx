@@ -114,7 +114,6 @@ const Components = () => {
             <List
               items={sampleList}
               onDelete={handleDelete}
-              styles={[{ padding: '10px' }, { border: '1px solid black' }]}
             />
           }
         </div>
