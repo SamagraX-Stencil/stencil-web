@@ -9,20 +9,12 @@ interface VoiceRecorder {
   setInputMsg: (msg: string) => void;
   tapToSpeak: boolean;
   includeDiv?: boolean;
-  showVoiceRecorder?: boolean;
-  delayBetweenDialogs?: number;
-  handleVoiceRecorder?: () => void;
-  styles?: object;
 }
 
 const VoiceRecorder: React.FC<VoiceRecorder> = ({
   setInputMsg,
   tapToSpeak,
   includeDiv = false,
-  showVoiceRecorder = true,
-  delayBetweenDialogs,
-  handleVoiceRecorder,
-  styles: customStyles,
 }) => {
   const config = useUiConfig('component', 'voiceRecorder');
 
@@ -31,7 +23,7 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
   const [recorderStatus, setRecorderStatus] = useState('idle');
 
   const voiceMinDecibels: number = config.voiceMinDecibels;
-  const actualDelayBetweenDialogs: number = delayBetweenDialogs || config.delayBetweenDialogs;
+  const delayBetweenDialogs: number = config.delayBetweenDialogs;
   const dialogMaxLength: number = config.dialogMaxLength;
   const [isRecording, setIsRecording] = useState(config.isRecording);
 
@@ -39,7 +31,6 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
     if (!isRecording) {
       setIsRecording(true);
       record();
-      if (handleVoiceRecorder) handleVoiceRecorder();
     }
   };
 
@@ -86,16 +77,19 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
 
         time = new Date();
         const currentTime = time.getTime();
+
         //time out:
         if (currentTime > startTime + dialogMaxLength) {
           recorder.stop();
           return;
         }
+
         //a dialog detected:
-        if (anySoundDetected === true && currentTime > lastDetectedTime + actualDelayBetweenDialogs) {
+        if (anySoundDetected === true && currentTime > lastDetectedTime + delayBetweenDialogs) {
           recorder.stop();
           return;
         }
+
         //check for detection:
         analyser.getByteFrequencyData(domainData);
         for (let i = 0; i < bufferLength; i++)
@@ -104,10 +98,12 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
             time = new Date();
             lastDetectedTime = time.getTime();
           }
+
         //continue the loop:
         window?.requestAnimationFrame(detectSound);
       };
       window?.requestAnimationFrame(detectSound);
+
       //stop event:
       recorder.addEventListener('stop', () => {
         //stop all the tracks:
@@ -120,7 +116,6 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
       });
     });
   }
-
   const makeComputeAPICall = async (blob: Blob) => {
     try {
       setRecorderStatus('processing');
@@ -144,8 +139,6 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
       }, 2500);
     }
   };
-
-  if (!showVoiceRecorder) return null;
 
   return (
     <div>
