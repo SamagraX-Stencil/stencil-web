@@ -213,6 +213,21 @@ const Components = () => {
       <FullPageLoaderComponent />
       <ModalComponent />
       <TransliterationInputComponent />
+      <Container style={{ marginTop: '50px' }}>
+        <h4>Feedback </h4>
+        <div className="mt-2 p-10 border w-25">
+          <Feedback
+            showReviewBox={true}
+            showRatingBox={true}
+            review={review}
+            star={rating}
+            onChangeReview={handleReviewChange}
+            onChangeRating={handleRatingChange}
+            handleFeedback={handleFeedback}
+            
+          />
+        </div>
+      </Container>
     </Box>
   )
 }
@@ -330,6 +345,7 @@ const TransliterationInputComponent = () => {
         placeholder={'Let us know your issue with the response'}
       />
     </Container>
+    
   )
 }
 
