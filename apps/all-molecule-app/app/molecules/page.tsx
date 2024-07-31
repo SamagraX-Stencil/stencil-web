@@ -17,8 +17,11 @@ import {
   OTPInput,
   ShareButtons,
   StencilModal,
+  NewNavbar,
   TransliterationInput,
   VoiceRecorder,
+  NewSidebar,
+  NewShareButtons,
 } from '@samagra-x/stencil-molecules'
 import { Navbar } from '@samagra-x/stencil-molecules'
 import { Button } from '@samagra-x/stencil-chatui'
@@ -26,6 +29,11 @@ import { Button } from '@samagra-x/stencil-chatui'
 const Components = () => {
   const [otp, setOtp] = useState('')
   const theme = useColorPalates()
+ {/* const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+   const handleToggle = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  }; */}
+
   const sampleList = useMemo(
     () => [
       {
@@ -116,6 +124,29 @@ const Components = () => {
         <Navbar />
       </Container>
 
+  {/*    <Container style={{ marginTop: '50px' }}>
+        <h4>New Navbar</h4>
+        <NewNavbar
+  brandName="Bot"
+  onToggle={handleToggle}
+  isOpen={isSidebarOpen}
+  showHamburgerMenu={true}
+  showHomeIcon={true}
+  leftHomeIcon={{ id: 'home', src: '/path/to/home/icon.png' }}
+  centerLogoIcons={[{ id: 'center1', src: '/path/to/center/icon1.png' }]}
+  rightLogoIcons={[{ id: 'right1', src: '/path/to/right/icon1.png' }]}
+  style={{
+    appBar: { backgroundColor: 'blue' },
+    toolbar: { padding: '10px' },
+    leftSection: { marginLeft: '20px' },
+    centerSection: { textAlign: 'center' },
+    rightSection: { marginRight: '20px' },
+  }}
+/>
+</Container>
+
+*/}
+
       <Box sx={{ marginTop: '50px' }}>
         <Container>
           <h4>JSON To Table</h4>
@@ -165,6 +196,8 @@ const Components = () => {
           <ShareButtons />
         </div>
       </Container>
+
+    
       <LangugagePickerComponent />
       <BlinkingSpinnerComponent />
       <FullPageLoaderComponent />
