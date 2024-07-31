@@ -9,15 +9,17 @@ export type ListItemType={
     items?: Array<ListItemType>;
     onClick?: (arg?:any)=>void ;
     isDivider?: boolean;
+    
 };
 
 
 export type ListType={
     items: Array <ListItemType>,
     label ?: string,
+    styles?: object;
     noItem ?: {
         label ?: string,
         icon ?: React.ReactElement
-    }
-}
-
+    };
+     onDelete?: (id: string) => void;
+};

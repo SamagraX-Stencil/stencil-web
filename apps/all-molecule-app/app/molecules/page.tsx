@@ -22,70 +22,77 @@ import {
   VoiceRecorder,
   NewSidebar,
   NewShareButtons,
+  Feedback,
 } from '@samagra-x/stencil-molecules'
 import { Navbar } from '@samagra-x/stencil-molecules'
 import { Button } from '@samagra-x/stencil-chatui'
 
 const Components = () => {
-  const [otp, setOtp] = useState('')
-  const theme = useColorPalates()
- {/* const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-   const handleToggle = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  }; */}
+    const [otp, setOtp] = useState('');
+  const [review, setReview] = useState('');
+  const [rating, setRating] = useState<number | null>(0);
 
-  const sampleList = useMemo(
-    () => [
-      {
-        id: 'item1',
-        label: 'Item 1',
-        secondaryLabel: 'Description of Item 1',
-        icon: <ForumIcon style={{ color: theme?.primary?.light }} />,
+  const theme = useColorPalates();
 
-        items: [
-          {
-            id: 'subitem1-1',
-            label: 'Subitem 1-1',
-          },
-          {
-            id: 'subitem1-2',
-            label: 'Subitem 1-2',
-            isDivider: true,
-          },
-        ],
-        onClick: 'functionNameForItem1',
-        isDivider: false,
-      },
-      {
-        id: 'item2',
-        label: 'Item 2',
-        avatar: 'https://rb.gy/u1ufa2',
-        isDivider: true,
-        secondaryAction: (
-          <IconButton edge="end" aria-label="comments">
-            <DeleteOutlineIcon />
-          </IconButton>
-        ),
-      },
+  const [sampleList, setSampleList] = useState([
+    {
+      id: 'item1',
+      label: 'Item 1',
+      secondaryLabel: 'Description of Item 1',
+      icon: <ForumIcon style={{ color: theme?.primary?.light }} />,
+      items: [
+        {
+          id: 'subitem1-1',
+          label: 'Subitem 1-1',
+        },
+        {
+          id: 'subitem1-2',
+          label: 'Subitem 1-2',
+          isDivider: true,
+        },
+      ],
+      onClick: 'functionNameForItem1',
+      isDivider: false,
+    },
+    {
+      id: 'item2',
+      label: 'Item 2',
+      avatar: 'https://rb.gy/u1ufa2',
+      isDivider: true,
+    },
+    {
+      id: 'item3',
+      label: 'Item 3',
+      secondaryLabel: 'Description of Item 3',
+      avatar: 'https://rb.gy/u1ufa2',
+      items: [
+        {
+          id: 'subitem3-1',
+          label: 'Subitem 3-1',
+        },
+      ],
+    },
+  ]);
 
-      {
-        id: 'item3',
-        label: 'Item 3',
-        secondaryLabel: 'Description of Item 3',
-        avatar: 'https://rb.gy/u1ufa2',
-        items: [
-          {
-            id: 'subitem3-1',
-            label: 'Subitem 3-1',
-          },
-        ],
-      },
-    ],
-    [theme?.primary?.light]
-  )
+  const handleDelete = (id: string) => {
+    setSampleList((prevList) => prevList.filter((item) => item.id !== id));
+  };
   const setInputMsg = useCallback(() => {
     //message to be passed to VoiceRecorders
   }, [])
+
+   const handleReviewChange = (newReview: string) => {
+    setReview(newReview);
+  };
+
+  const handleRatingChange = (newRating: number | null) => {
+    setRating(newRating);
+  };
+
+  const handleFeedback = async () => {
+    console.log('Feedback submitted:', { review, rating });
+    // Handle feedback submission logic here
+  };
   return (
     <Box
       style={{ background: 'lightgray', height: '90vh', overflow: 'scroll' }}
@@ -114,7 +121,10 @@ const Components = () => {
         <div className="mt-2 p-5 border">
           {
             //@ts-ignore
-            <List items={sampleList} />
+           <List
+              items={sampleList}
+              onDelete={handleDelete}
+            />
           }
         </div>
       </Container>
@@ -124,7 +134,7 @@ const Components = () => {
         <Navbar />
       </Container>
 
-  {/*    <Container style={{ marginTop: '50px' }}>
+     {/* <Container style={{ marginTop: '50px' }}>
         <h4>New Navbar</h4>
         <NewNavbar
   brandName="Bot"
@@ -143,9 +153,9 @@ const Components = () => {
     rightSection: { marginRight: '20px' },
   }}
 />
-</Container>
+</Container> */}
 
-*/}
+
 
       <Box sx={{ marginTop: '50px' }}>
         <Container>
@@ -203,6 +213,21 @@ const Components = () => {
       <FullPageLoaderComponent />
       <ModalComponent />
       <TransliterationInputComponent />
+      <Container style={{ marginTop: '50px' }}>
+        <h4>Feedback </h4>
+        <div className="mt-2 p-10 border w-25">
+          <Feedback
+            showReviewBox={true}
+            showRatingBox={true}
+            review={review}
+            star={rating}
+            onChangeReview={handleReviewChange}
+            onChangeRating={handleRatingChange}
+            handleFeedback={handleFeedback}
+            
+          />
+        </div>
+      </Container>
     </Box>
   )
 }
@@ -320,6 +345,7 @@ const TransliterationInputComponent = () => {
         placeholder={'Let us know your issue with the response'}
       />
     </Container>
+    
   )
 }
 
