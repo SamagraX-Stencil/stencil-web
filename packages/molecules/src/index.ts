@@ -7,6 +7,7 @@ import MessageItem from './message-item';
 import ShareButtons, { NewShareButtons } from './share-buttons';
 import VoiceRecorder from './voice-recorder';
 import Navbar, { NewNavbar } from './navbar';
+import Feedback from './feedback';
 import Sidebar, { NewSidebar } from './sidebar';
 import LanguagePicker from './language-picker';
 import { NewLanguagePicker } from './language-picker';
@@ -42,6 +43,7 @@ export {
   BlinkingSpinner,
   StencilModal,
   TransliterationInput,
+  Feedback
 };
 
 export type { TransliterationInputPropsType, TransliterationConfigType };
