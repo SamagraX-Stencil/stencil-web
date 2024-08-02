@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Button, TextField, Typography, Box } from '@mui/material';
+import React from 'react';
+import { Button, Typography, Box } from '@mui/material';
 import LoginInput from '../login-input';
 
 type InputType = 'mobile' | 'password' | 'email' | 'aadhaar';
@@ -7,19 +7,22 @@ type InputType = 'mobile' | 'password' | 'email' | 'aadhaar';
 interface LoginProps {
   title?: string;
   onLogin: (value: string | number) => void;
-  jwksUrl?: string;
-  nextRoute?: string;
+  // jwksUrl?: string;
+  // nextRoute?: string;
   type: InputType;
   value: string | number;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
+  buttonText;
+  string;
 }
 
 const LoginComponent: React.FC<LoginProps> = ({
   title,
   onLogin,
-  jwksUrl,
-  nextRoute,
+  // jwksUrl,
+  // nextRoute,
+  buttonText,
   type,
   value,
   onChange,
@@ -44,7 +47,7 @@ const LoginComponent: React.FC<LoginProps> = ({
       )}
       <LoginInput type={type} value={value} onChange={onChange} placeholder={placeholder} />
       <Button variant="contained" color="primary" onClick={handleLogin} fullWidth sx={{ mt: 2 }}>
-        Login
+        {buttonText}
       </Button>
     </Box>
   );

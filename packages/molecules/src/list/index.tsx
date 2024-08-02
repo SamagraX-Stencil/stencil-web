@@ -1,6 +1,13 @@
 import * as React from 'react';
 import MuiList from '@mui/material/List';
-import { ListItemIcon, ListItemText, ListItemButton, ListSubheader, Collapse, IconButton } from '@mui/material';
+import {
+  ListItemIcon,
+  ListItemText,
+  ListItemButton,
+  ListSubheader,
+  Collapse,
+  IconButton,
+} from '@mui/material';
 import { ExpandLess, StarBorder, ExpandMore, ErrorOutline, Delete } from '@mui/icons-material';
 import { ListType } from './types';
 import { map } from 'lodash';
@@ -27,8 +34,9 @@ export const List: React.FC<ListType> = ({ items, label, noItem, onDelete, style
 
   const hasItems = React.useMemo(() => items?.length > 0, [items]);
 
-  
-  const mergedStyles = styles.reduce((acc, style) => ({ ...acc, ...style }), {});
+  const mergedStyles = (styles as object[]).reduce((acc, style) => ({ ...acc, ...style }), {});
+
+  // const mergedStyles = styles.reduce((acc, style) => ({ ...acc, ...style }), {});
 
   if (!hasItems)
     return (
@@ -100,14 +108,15 @@ export const List: React.FC<ListType> = ({ items, label, noItem, onDelete, style
             </ListItem>
             <Collapse in={openItem === item?.id} timeout="auto" unmountOnExit>
               <MuiList component="div" disablePadding>
-                {item.items && item.items.map((nestedItem) => (
-                  <ListItemButton key={nestedItem.id} sx={{ pl: 8 }}>
-                    <ListItemIcon>
-                      {nestedItem.icon ? React.cloneElement(nestedItem.icon) : <StarBorder />}
-                    </ListItemIcon>
-                    <ListItemText primary={nestedItem.label} />
-                  </ListItemButton>
-                ))}
+                {item.items &&
+                  item.items.map((nestedItem) => (
+                    <ListItemButton key={nestedItem.id} sx={{ pl: 8 }}>
+                      <ListItemIcon>
+                        {nestedItem.icon ? React.cloneElement(nestedItem.icon) : <StarBorder />}
+                      </ListItemIcon>
+                      <ListItemText primary={nestedItem.label} />
+                    </ListItemButton>
+                  ))}
               </MuiList>
             </Collapse>
             {item?.isDivider && <Divider />}

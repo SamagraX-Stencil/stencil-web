@@ -63,11 +63,13 @@ export function OTPInput({
   length,
   value,
   onChange,
+  otpInputStyle,
 }: {
   separator: React.ReactNode;
   length: number;
   value: string;
   onChange: React.Dispatch<React.SetStateAction<string>>;
+  otpInputStyle?: React.CSSProperties;
 }) {
   const inputRefs = React.useRef<HTMLInputElement[]>(new Array(length).fill(null));
 
@@ -188,7 +190,10 @@ export function OTPInput({
   };
 
   return (
-    <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }} data-testid="otp-input-field">
+    <Box
+      sx={{ display: 'flex', gap: 2, alignItems: 'center', ...otpInputStyle }}
+      data-testid="otp-input-field"
+    >
       {new Array(length).fill(null).map((_, index) => (
         <React.Fragment key={index}>
           <BaseInput

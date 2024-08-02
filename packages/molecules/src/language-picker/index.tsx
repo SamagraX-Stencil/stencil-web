@@ -51,7 +51,12 @@ const LanguagePicker = () => {
 
 export default LanguagePicker;
 
-const NewLanguagePicker = ({ languages, activeLanguage, handleLanguageClick, customStyles }) => {
+const NewLanguagePicker = ({
+  languages,
+  activeLanguage,
+  handleLanguageClick,
+  customStyles,
+}: any) => {
   const { formControlStyle, selectStyle, menuItemStyle } = customStyles;
 
   return (

@@ -20,6 +20,8 @@ import type {
   TransliterationInputPropsType,
   TransliterationConfigType,
 } from './transliteration-input';
+import OtpComponent from './otp';
+import InputComponent from './input-component';
 
 export {
   List,
@@ -29,7 +31,7 @@ export {
   MessageItem,
   LoginInput,
   LoginCheckBox,
-  LoginComponent,
+  InputComponent,
   Navbar,
   NewNavbar,
   Sidebar,
@@ -38,12 +40,14 @@ export {
   NewShareButtons,
   VoiceRecorder,
   OTPInput,
+  OtpComponent,
   LanguagePicker,
   NewLanguagePicker,
   BlinkingSpinner,
   StencilModal,
   TransliterationInput,
-  Feedback
+  Feedback,
+  LoginComponent,
 };
 
 export type { TransliterationInputPropsType, TransliterationConfigType };

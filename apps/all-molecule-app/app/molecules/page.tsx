@@ -23,16 +23,19 @@ import {
   NewSidebar,
   NewShareButtons,
   Feedback,
+  LoginInput,
+  LoginComponent,
+  OtpComponent,
 } from '@samagra-x/stencil-molecules'
 import { Navbar } from '@samagra-x/stencil-molecules'
 import { Button } from '@samagra-x/stencil-chatui'
 
 const Components = () => {
-    const [otp, setOtp] = useState('');
-  const [review, setReview] = useState('');
-  const [rating, setRating] = useState<number | null>(0);
+  const [otp, setOtp] = useState('')
+  const [review, setReview] = useState('')
+  const [rating, setRating] = useState<number | null>(0)
 
-  const theme = useColorPalates();
+  const theme = useColorPalates()
 
   const [sampleList, setSampleList] = useState([
     {
@@ -72,27 +75,27 @@ const Components = () => {
         },
       ],
     },
-  ]);
+  ])
 
   const handleDelete = (id: string) => {
-    setSampleList((prevList) => prevList.filter((item) => item.id !== id));
-  };
+    setSampleList((prevList) => prevList.filter((item) => item.id !== id))
+  }
   const setInputMsg = useCallback(() => {
     //message to be passed to VoiceRecorders
   }, [])
 
-   const handleReviewChange = (newReview: string) => {
-    setReview(newReview);
-  };
+  const handleReviewChange = (newReview: string) => {
+    setReview(newReview)
+  }
 
   const handleRatingChange = (newRating: number | null) => {
-    setRating(newRating);
-  };
+    setRating(newRating)
+  }
 
   const handleFeedback = async () => {
-    console.log('Feedback submitted:', { review, rating });
+    console.log('Feedback submitted:', { review, rating })
     // Handle feedback submission logic here
-  };
+  }
   return (
     <Box
       style={{ background: 'lightgray', height: '90vh', overflow: 'scroll' }}
@@ -121,10 +124,7 @@ const Components = () => {
         <div className="mt-2 p-5 border">
           {
             //@ts-ignore
-           <List
-              items={sampleList}
-              onDelete={handleDelete}
-            />
+            <List items={sampleList} onDelete={handleDelete} />
           }
         </div>
       </Container>
@@ -134,7 +134,7 @@ const Components = () => {
         <Navbar />
       </Container>
 
-     {/* <Container style={{ marginTop: '50px' }}>
+      {/* <Container style={{ marginTop: '50px' }}>
         <h4>New Navbar</h4>
         <NewNavbar
   brandName="Bot"
@@ -154,8 +154,6 @@ const Components = () => {
   }}
 />
 </Container> */}
-
-
 
       <Box sx={{ marginTop: '50px' }}>
         <Container>
@@ -207,7 +205,6 @@ const Components = () => {
         </div>
       </Container>
 
-    
       <LangugagePickerComponent />
       <BlinkingSpinnerComponent />
       <FullPageLoaderComponent />
@@ -224,10 +221,11 @@ const Components = () => {
             onChangeReview={handleReviewChange}
             onChangeRating={handleRatingChange}
             handleFeedback={handleFeedback}
-            
           />
         </div>
       </Container>
+      <NewLoginInput />
+      <NewOtpComponent />
     </Box>
   )
 }
@@ -345,7 +343,62 @@ const TransliterationInputComponent = () => {
         placeholder={'Let us know your issue with the response'}
       />
     </Container>
-    
+  )
+}
+
+const NewLoginInput = () => {
+  return (
+    <Container style={{ marginTop: '30px', marginBottom: '20px' }}>
+      {/* <LoginInput
+        onChange={() => {}}
+        type="mobile"
+        placeholder="Mobile number  here"
+        value={''}
+      /> */}
+      {/* username, otp */}
+      <LoginComponent
+        onLogin={() => {}}
+        onChange={() => {}}
+        placeholder="aadhar number  here"
+        type="aadhaar"
+        value={''}
+        jwksUrl=""
+        buttonText="login"
+        title="Write your phone number to login"
+      />
+    </Container>
+  )
+}
+
+const NewOtpComponent = () => {
+  const [review, setReview] = useState('')
+  const config = {
+    allowFeedback: true,
+    allowTextToSpeech: true,
+    transliterationApi: '',
+    allowTransliteration: false,
+    transliterationProvider: '',
+    transliterationSuggestions: '',
+    transliterationInputLanguage: '',
+    transliterationOutputLanguage: '',
+  }
+
+  return (
+    <Container style={{ marginTop: '30px', marginBottom: '20px' }}>
+      <h4> Otp Component</h4>
+      {/* @ts-ignore */}
+      <OtpComponent
+        countdown={0}
+        handleLogin={() => {}}
+        loading={true}
+        otp={'4512'}
+        otpLength={4}
+        phoneNumber={'9907799970'}
+        resendOtp={() => {}}
+        setOtp={() => {}}
+        title={'send otp to ankit'}
+      />
+    </Container>
   )
 }
 
