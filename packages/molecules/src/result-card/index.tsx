@@ -26,118 +26,126 @@ export interface CardProps {
   isAccordion?: boolean;
 }
 
-const ResultCard: React.FC<CardProps> = ({
-  key,
-  bgcolor,
-  textColor,
-  name,
-  secondaryText,
-  buttonText,
-  buttonVariant,
-  buttonStyle,
-  onClick,
-  icon,
-  isAccordion = false,
-  InfoCard,
-}) => {
-  const [expanded, setExpanded] = useState(false);
+const ResultCard: React.FC<CardProps> = React.memo(
+  ({
+    key,
+    bgcolor,
+    textColor,
+    name,
+    secondaryText,
+    buttonText,
+    buttonVariant,
+    buttonStyle,
+    onClick,
+    icon,
+    isAccordion = false,
+    InfoCard,
+  }) => {
+    const [expanded, setExpanded] = useState(false);
 
-  return (
-    <Accordion
-      expanded={expanded}
-      sx={{
-        cursor: 'pointer',
-        width: '100%',
-        borderRadius: '8px',
-        marginTop: '14px',
-        boxShadow: 'none !important',
-        backgroundColor: bgcolor,
-        border: 'none !important',
-      }}
-      onClick={onClick}
-    >
-      <AccordionSummary
-        aria-controls={`panel-${key}-content`}
-        id={`panel-${key}-header`}
+    return (
+      <Accordion
+        expanded={expanded}
         sx={{
           cursor: 'pointer',
           width: '100%',
           borderRadius: '8px',
           marginTop: '14px',
-          boxShadow: '0px 0px 4px 0px rgba(0, 0, 0, 0.25)',
+          boxShadow: 'none !important',
           backgroundColor: bgcolor,
-          border: 'none',
-          maxHeight: '64px',
+          border: 'none !important',
         }}
+        onClick={onClick}
       >
-        <Box display="flex" alignItems="center" gap={2} justifyContent="space-between" width="100%">
-          <Box display="flex" alignItems="center" gap={1}>
-            {icon && (
+        <AccordionSummary
+          aria-controls={`panel-${key}-content`}
+          id={`panel-${key}-header`}
+          sx={{
+            cursor: 'pointer',
+            width: '100%',
+            borderRadius: '8px',
+            marginTop: '14px',
+            boxShadow: '0px 0px 4px 0px rgba(0, 0, 0, 0.25)',
+            backgroundColor: bgcolor,
+            border: 'none',
+            maxHeight: '64px',
+          }}
+        >
+          <Box
+            display="flex"
+            alignItems="center"
+            gap={2}
+            justifyContent="space-between"
+            width="100%"
+          >
+            <Box display="flex" alignItems="center" gap={1}>
+              {icon && (
+                <Box>
+                  <img src={icon} width={30} height={30} alt="icon" />
+                </Box>
+              )}
               <Box>
-                <img src={icon} width={30} height={30} alt="icon" />
+                <Typography component="p" sx={{ color: textColor, fontWeight: '600' }}>
+                  {name}
+                </Typography>
+                <Typography variant="body2" sx={{ color: textColor, fontSize: '12px' }}>
+                  {secondaryText}
+                </Typography>
+              </Box>
+            </Box>
+            {buttonText && !isAccordion && (
+              <Box>
+                <Button
+                  variant={buttonVariant}
+                  size="large"
+                  sx={buttonStyle}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    //   onButtonClick();
+                  }}
+                >
+                  {buttonText}
+                </Button>
               </Box>
             )}
-            <Box>
-              <Typography component="p" sx={{ color: textColor, fontWeight: '600' }}>
-                {name}
-              </Typography>
-              <Typography variant="body2" sx={{ color: textColor, fontSize: '12px' }}>
-                {secondaryText}
-              </Typography>
-            </Box>
-          </Box>
-          {buttonText && !isAccordion && (
-            <Box>
-              <Button
-                variant={buttonVariant}
-                size="large"
-                sx={buttonStyle}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  //   onButtonClick();
-                }}
+            {isAccordion && (
+              <Box
+                p="6px"
+                bgcolor={textColor}
+                color="#fff"
+                fontWeight={600}
+                fontSize={'13px'}
+                onClick={() => setExpanded(!expanded)}
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                borderRadius="6px"
+                borderColor={bgcolor}
               >
-                {buttonText}
-              </Button>
-            </Box>
-          )}
-          {isAccordion && (
-            <Box
-              p="6px"
-              bgcolor={textColor}
-              color="#fff"
-              fontWeight={600}
-              fontSize={'13px'}
-              onClick={() => setExpanded(!expanded)}
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              borderRadius="6px"
-              borderColor={bgcolor}
-            >
-              {buttonText}{' '}
-              <ExpandMore
-                sx={{
-                  transform: expanded ? 'rotate(-180deg)' : 'rotate(0deg)',
-                  transition: 'transform 0.3s ease',
-                }}
-              />
-            </Box>
-          )}
-        </Box>
-      </AccordionSummary>
-      <AccordionDetails
-        sx={{
-          boxShadow: '0px 0px 4px 0px rgba(0, 0, 0, 0.25)',
-          backgroundColor: 'white',
-          borderRadius: '4px',
-          margin: '8px',
-        }}
-      >
-        <InfoCard />
-      </AccordionDetails>
-    </Accordion>
-  );
-};
+                {buttonText}{' '}
+                <ExpandMore
+                  sx={{
+                    transform: expanded ? 'rotate(-180deg)' : 'rotate(0deg)',
+                    transition: 'transform 0.3s ease',
+                  }}
+                />
+              </Box>
+            )}
+          </Box>
+        </AccordionSummary>
+        <AccordionDetails
+          sx={{
+            boxShadow: '0px 0px 4px 0px rgba(0, 0, 0, 0.25)',
+            backgroundColor: 'white',
+            borderRadius: '4px',
+            margin: '8px',
+          }}
+        >
+          <InfoCard />
+        </AccordionDetails>
+      </Accordion>
+    );
+  },
+);
 
 export { ResultCard };

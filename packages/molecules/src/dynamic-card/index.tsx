@@ -36,7 +36,7 @@ type Props = {
   InfoCard: (props: CardProps) => React.ReactNode;
 };
 
-const DynamicCard = ({ outerAccordion, results, InfoCard }: Props) => {
+const DynamicCard = React.memo(({ outerAccordion, results, InfoCard }: Props) => {
   return (
     <Accordion key={outerAccordion.title}>
       <AccordionSummary
@@ -97,6 +97,6 @@ const DynamicCard = ({ outerAccordion, results, InfoCard }: Props) => {
       </AccordionDetails>
     </Accordion>
   );
-};
+});
 
 export default DynamicCard;
