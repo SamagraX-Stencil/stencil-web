@@ -1,0 +1,48 @@
+.main {
+  height: calc(100dvh - 160px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.container {
+  color: white;
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
+  height: 400px;
+  max-height: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.weatherText {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 10px;
+  color: white;
+  width: 100%;
+  height: 100%;
+}
+
+.weatherBottom {
+  background: white;
+  border-radius: 5px;
+  text-align: center;
+  margin: 10px;
+  padding: 5px;
+  font-size: 14px;
+}
+
+.cropContainer {
+  border-radius: 5px;
+  width: 100vw;
+}
+
+.heading {
+  border-radius: 6px;
+  padding: 4px;
+  margin: 20px 20px 10px 20px;
+}

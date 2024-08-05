@@ -1,0 +1,68 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  padding: 20px;
+}
+
+.voiceRecorder {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.faq-section {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.inputBox {
+  border-top: 1px solid #dbdbdb;
+  padding: 9px 5px 0 5px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  bottom: 1vh;
+  transform: translateX(-50%);
+  color: var(--font);
+  width: 70%;
+  margin: auto;
+  transition: all 0.5s ease-in-out;
+}
+.inputBox textarea {
+  width: 100%;
+  /* margin: 0 5px; */
+  padding: 10px;
+  border: 1px solid #d0d0d0;
+  border-radius: 10px;
+  outline: none;
+  resize: none;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.inputBox.inputBoxOpen {
+  width: 100%;
+  left: 0;
+  right: 0;
+  transform: translateX(0);
+}
+
+.sendButton {
+  background: none;
+  outline: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3px;
+  margin-left: 3px;
+}

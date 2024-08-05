@@ -1,0 +1,42 @@
+.main {
+  margin: 1vh 0 1vh 1vh;
+}
+
+.list {
+  height: 71dvh;
+  overflow-x: hidden;
+  overflow-y: scroll !important;
+}
+
+.list::-webkit-scrollbar {
+  width: 4px;
+  height: 6px;
+}
+.list::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+}
+.list::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+.list::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+.list::-webkit-scrollbar-thumb:active {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.title {
+  /* margin-top: 4vh; */
+  margin-left: 2vh;
+  font-family: 'NotoSans-Bold';
+  font-size: 4.265vh;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .list {
+    height: 71dvh;
+  }
+}
