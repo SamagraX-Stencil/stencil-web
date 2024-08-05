@@ -4,7 +4,7 @@
   "main": "./index.ts",
   "scripts": {
     "clean": "rimraf dist es lib",
-    "build": "npm run clean && tsup",
+    "build3": "npm run clean && tsup",
     "dev2": "nodemon --watch src --ext ts,tsx,css,json,js,jsx --exec \"npm run build\"",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",

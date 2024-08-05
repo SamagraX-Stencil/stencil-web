@@ -24,7 +24,7 @@
     "build:css": "lessc src/styles/index.less dist/index.css && npm run prefix && npm run copy:less",
     "build:umd": "cross-env BABEL_ENV=umd rollup -c && npm run build:css",
     "prepublishOnly2": "npm run build2 && npm run build:umd",
-    "build": "npm run clean && npm run prepublishOnly2",
+    "build3": "npm run clean && npm run prepublishOnly2",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
