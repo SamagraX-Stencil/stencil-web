@@ -7,7 +7,7 @@ import { useLocalization } from '../../hooks';
 import { AppContext } from '../../context';
 import axios from 'axios';
 // import { FullPageLoader } from '../../components/fullpage-loader';
-import { FullPageLoader } from 'my-stencil-molecule/lib/fullpage-loader';
+import { FullPageLoader } from '@samagra-x/stencil-molecules/lib/fullpage-loader';
 
 import { useColorPalates } from '../../providers/theme-provider/hooks';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';

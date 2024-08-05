@@ -11,7 +11,7 @@ import { useLogin } from '../hooks';
 import FeaturePopup from '../components/feature-popup';
 import Provider from '../providers';
 // import { InstallModal } from '../components/install-modal';
-import { FullPageLoader } from 'my-stencil-molecule/lib/fullpage-loader';
+import { FullPageLoader } from '@samagra-x/stencil-molecules/lib/fullpage-loader';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import OnBoardingPage from '../pageComponents/onboarding-page';

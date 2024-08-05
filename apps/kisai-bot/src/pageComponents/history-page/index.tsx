@@ -12,7 +12,7 @@ import { ChatItem, HistoryItem } from './index.d';
 import { map } from 'lodash';
 import { useColorPalates } from '../../providers/theme-provider/hooks';
 // import { FullPageLoader } from '../../components/fullpage-loader';
-import { FullPageLoader } from 'my-stencil-molecule/lib/fullpage-loader';
+import { FullPageLoader } from '@samagra-x/stencil-molecules/lib/fullpage-loader';
 
 import { useLocalization } from '../../hooks';
 import axios from 'axios';

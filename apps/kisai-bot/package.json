@@ -68,7 +68,7 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
-    "my-stencil-molecule": "*",
+    "@samagra-x/stencil-molecules": "*",
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@types/jsonwebtoken": "^9.0.6",

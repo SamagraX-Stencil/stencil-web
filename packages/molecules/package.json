@@ -1,5 +1,5 @@
 {
-  "name": "my-stencil-molecule",
+  "name": "@samagra-x/stencil-molecules",
   "version": "0.0.1",
   "description": "The React library to build fast React Application",
   "main": "lib/index.js",

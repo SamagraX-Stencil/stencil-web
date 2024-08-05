@@ -1,6 +1,6 @@
 'use client';
 import React, { FC, ReactElement, useState, useEffect, useContext, useMemo } from 'react';
-import { FullPageLoader } from 'my-stencil-molecule/lib/fullpage-loader';
+import { FullPageLoader } from '@samagra-x/stencil-molecules/lib/fullpage-loader';
 import ContextProvider from './context-provider';
 import { IntlProvider } from 'react-intl';
 import { useConfig } from '../hooks/useConfig';

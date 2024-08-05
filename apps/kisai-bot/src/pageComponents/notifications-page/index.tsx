@@ -5,7 +5,7 @@ import ForumIcon from '@mui/icons-material/Forum';
 import InfoIcon from '@mui/icons-material/Info';
 import CallIcon from '@mui/icons-material/Call';
 import { useColorPalates } from '../../providers/theme-provider/hooks';
-import { FullPageLoader } from 'my-stencil-molecule/lib/fullpage-loader';
+import { FullPageLoader } from '@samagra-x/stencil-molecules/lib/fullpage-loader';
 import { useLocalization } from '../../hooks';
 import { useConfig } from '../../hooks/useConfig';
 import Menu from '../../components/menu';

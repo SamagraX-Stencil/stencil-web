@@ -5,7 +5,7 @@ import { Chip, Grid } from '@mui/material';
 import { useConfig } from '../../hooks/useConfig';
 import { useLocalization } from '../../hooks';
 import axios from 'axios';
-import { FullPageLoader } from 'my-stencil-molecule/lib/fullpage-loader';
+import { FullPageLoader } from '@samagra-x/stencil-molecules/lib/fullpage-loader';
 import WeatherAdvisoryPopup from '../../components/weather-advisory-popup';
 import saveTelemetryEvent from '../../utils/telemetry';
 import { v4 as uuidv4 } from 'uuid';

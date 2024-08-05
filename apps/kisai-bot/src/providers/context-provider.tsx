@@ -10,7 +10,7 @@ import { useCookies } from 'react-cookie';
 import { UCI } from 'socket-package';
 import { XMessage } from '@samagra-x/xmessage';
 // import { FullPageLoader } from '../components/fullpage-loader';
-import { FullPageLoader } from 'my-stencil-molecule/lib/fullpage-loader';
+import { FullPageLoader } from '@samagra-x/stencil-molecules/lib/fullpage-loader';
 // import InputComponent from 'stencil-molecules/lib/input-component';
 
 import WelcomePage from '../pageComponents/welcome-page';
