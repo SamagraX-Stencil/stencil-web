@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './index.module.css';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/material';
+import Feedback from '@samagra-x/stencil-molecules/lib/feedback'
 import Rating from '@mui/material/Rating';
 import Button from '@mui/material/Button';
 import { toast } from 'react-hot-toast';
@@ -72,126 +73,8 @@ const FeedbackPage: React.FC = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <Box className={styles.main}>
-        <Box>
-          <Typography
-            data-testid="feedback-title"
-            sx={{
-              fontSize: '5vh',
-              fontWeight: 'bold',
-              color: theme.primary.main,
-            }}
-          >
-            {t('label.feedback')}
-          </Typography>
-        </Box>
-
-        {config?.ratingBox && (
-          <Box className={styles.section}>
-            <Typography
-              data-testid="feedback-rating-title"
-              sx={{
-                fontWeight: 'bold',
-                fontSize: '3vh',
-              }}
-            >
-              {t('message.rating')}
-            </Typography>
-
-            <Rating
-              data-testid="feedback-rating-component"
-              name="simple-controlled"
-              value={star}
-              max={config?.ratingMaxStars || 5}
-              onChange={(event, newValue) => {
-                setStar(newValue || 1);
-              }}
-              defaultValue={1}
-              sx={{
-                fontSize: '6vh',
-              }}
-            />
-            <Typography
-              data-testid="feedback-rating-description"
-              sx={{
-                textAlign: 'center',
-                fontSize: '2vh',
-              }}
-            >
-              {t('message.rating_description')}
-            </Typography>
-            <Button
-              data-testid="feedback-rating-button"
-              variant="contained"
-              sx={{
-                mt: 2,
-                backgroundColor: `${theme.primary.main}`,
-                fontWeight: 'bold',
-                borderRadius: '10rem',
-                fontSize: '1.5vh',
-                p: 1.5,
-                '&:hover': {
-                  backgroundColor: `${theme.primary.dark}`,
-                },
-              }}
-              onClick={handleFeedback}
-            >
-              {t('label.submit_review')}
-            </Button>
-          </Box>
-        )}
-
-        {config?.reviewBox && (
-          <Box className={styles.section}>
-            <Typography
-              data-testid="feedback-review-title"
-              sx={{
-                m: '1rem',
-                fontWeight: 'bold',
-                fontSize: '3vh',
-              }}
-            >
-              {t('message.review')}
-            </Typography>
-            <textarea
-              data-testid="feedback-review-component"
-              placeholder={t('message.review_description')}
-              value={review}
-              className={styles.textBlock}
-              style={{
-                border: `2px solid ${theme.primary.main}`,
-              }}
-              onChange={(e) => {
-                setReview(e.target.value);
-              }}
-            />
-
-            <Button
-              id="reviewBtn"
-              variant="contained"
-              data-testid="feedback-review-button"
-              sx={{
-                mt: 2,
-                backgroundColor: `${theme.primary.main}`,
-                fontWeight: 'bold',
-                borderRadius: '10rem',
-                fontSize: '1.5vh',
-                p: 1.5,
-                '&:hover': {
-                  backgroundColor: `${theme.primary.dark}`,
-                },
-              }}
-              onClick={handleFeedback}
-            >
-              {t('label.submit_review')}
-            </Button>
-          </Box>
-        )}
-      </Box>
-
-      <Menu />
-    </div>
+    <><Feedback /><Menu /></>
+   
   );
 };
 

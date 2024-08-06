@@ -1,62 +1,61 @@
 import { useState, useContext } from 'react';
-import MicIcon from '@mui/icons-material/Mic';
-import styles from './styles.module.css';
-import toast from 'react-hot-toast';
+import VoiceRecorder from '@samagra-x/stencil-molecules/lib/voice-recorder';
 import { useLocalization } from '../../hooks';
-import { useConfig } from '../../hooks/useConfig';
-import { v4 as uuidv4 } from 'uuid';
 import { AppContext } from '../../context';
 import saveTelemetryEvent from '../../utils/telemetry';
-import { useColorPalates } from '../../providers/theme-provider/hooks';
+import toast from 'react-hot-toast';
+import { v4 as uuidv4 } from 'uuid';
 
-const RenderVoiceRecorder = ({ setInputMsg, tapToSpeak }) => {
+const RenderVoiceRecorder = ({ setInputMsg, tapToSpeak, showVoiceRecorder }) => {
   const t = useLocalization();
   const [mediaRecorder, setMediaRecorder] = useState(null);
-  const [recorderStatus, setRecorderStatus] = useState('idle');
   const [isErrorClicked, setIsErrorClicked] = useState(false);
-  const config = useConfig('component', 'voiceRecorder');
+  const [recorderStatus, setRecorderStatus] = useState('idle');
+  const [isRecording, setIsRecording] = useState(false);
   const context = useContext(AppContext);
 
-  let VOICE_MIN_DECIBELS = -35;
-  let DELAY_BETWEEN_DIALOGS = config?.delayBetweenDialogs || 2500;
-  let DIALOG_MAX_LENGTH = 60 * 1000;
-  let IS_RECORDING = false;
+  const VOICE_MIN_DECIBELS = -35;
+  const DELAY_BETWEEN_DIALOGS = 2500;
+  const DIALOG_MAX_LENGTH = 60 * 1000;
+  const WAIT_MESSAGE = t('message.recorder_wait');
+  const RECORDER_ERROR_MESSAGE = t('message.recorder_error');
 
   const startRecording = async () => {
-    saveTelemetryEvent('0.1', 'E044', 'micAction', 'micTap', {
-      botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-      orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-      userId: localStorage.getItem('userID') || '',
-      phoneNumber: localStorage.getItem('phoneNumber') || '',
-      conversationId: sessionStorage.getItem('conversationId') || '',
-    });
-    IS_RECORDING = true;
-    record();
-  };
-
-  const stopRecording = () => {
-    IS_RECORDING = false;
-    if (mediaRecorder !== null) {
-      mediaRecorder.stop();
-      setMediaRecorder(null); // Set mediaRecorder state to null after stopping
+    try {
+      saveTelemetryEvent('0.1', 'E044', 'micAction', 'micTap', {
+        botId: process.env.NEXT_PUBLIC_BOT_ID || '',
+        orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
+        userId: localStorage.getItem('userID') || '',
+        phoneNumber: localStorage.getItem('phoneNumber') || '',
+        conversationId: sessionStorage.getItem('conversationId') || '',
+      });
+      setIsRecording(true);
+      await record();
+    } catch (error) {
+      handleError(error);
     }
   };
 
-  //record:
-  function record() {
-    navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
-      //start recording:
-      const recorder = new MediaRecorder(stream);
-      recorder.start();
-      setMediaRecorder(recorder);
+  const stopRecording = () => {
+    if (mediaRecorder !== null) {
+      mediaRecorder.stop();
+      setIsRecording(false);
+      setMediaRecorder(null);
+    }
+  };
 
-      //save audio chunks:
+  const record = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const recorder = new MediaRecorder(stream);
+      setMediaRecorder(recorder);
+      recorder.start();
+
       const audioChunks = [];
       recorder.addEventListener('dataavailable', (event) => {
         audioChunks.push(event.data);
       });
 
-      //analisys:
       const audioContext = new AudioContext();
       const audioStreamSource = audioContext.createMediaStreamSource(stream);
       const analyser = audioContext.createAnalyser();
@@ -65,86 +64,66 @@ const RenderVoiceRecorder = ({ setInputMsg, tapToSpeak }) => {
       const bufferLength = analyser.frequencyBinCount;
       const domainData = new Uint8Array(bufferLength);
 
-      //loop:
       let time = new Date();
-      let startTime,
-        lastDetectedTime = time.getTime();
+      let startTime = time.getTime();
+      let lastDetectedTime = time.getTime();
       let anySoundDetected = false;
+
       const detectSound = () => {
-        //recording stoped by user:
-        if (!IS_RECORDING) return;
+        if (!isRecording) return;
 
         time = new Date();
-        let currentTime = time.getTime();
+        const currentTime = time.getTime();
 
-        //time out:
         if (currentTime > startTime + DIALOG_MAX_LENGTH) {
           recorder.stop();
           return;
         }
 
-        //a dialog detected:
         if (anySoundDetected === true && currentTime > lastDetectedTime + DELAY_BETWEEN_DIALOGS) {
           recorder.stop();
           return;
         }
 
-        //check for detection:
         analyser.getByteFrequencyData(domainData);
-        for (let i = 0; i < bufferLength; i++)
+        for (let i = 0; i < bufferLength; i++) {
           if (domainData[i] > 0) {
             anySoundDetected = true;
             time = new Date();
             lastDetectedTime = time.getTime();
           }
+        }
 
-        //continue the loop:
         window.requestAnimationFrame(detectSound);
       };
       window.requestAnimationFrame(detectSound);
 
-      //stop event:
       recorder.addEventListener('stop', () => {
-        //stop all the tracks:
         stream.getTracks().forEach((track) => track.stop());
         if (!anySoundDetected) return;
 
-        //send to server:
         const audioBlob = new Blob(audioChunks, { type: 'audio/mp3' });
         makeComputeAPICall(audioBlob);
       });
-    });
-  }
+    } catch (error) {
+      handleError(error);
+    }
+  };
 
   const makeComputeAPICall = async (blob) => {
     const startTime = Date.now();
     const s2tMsgId = uuidv4();
-    console.log('s2tMsgId:', s2tMsgId);
     try {
       setRecorderStatus('processing');
-      console.log('base', blob);
-      toast.success(`${t('message.recorder_wait')}`);
+      toast.success(WAIT_MESSAGE);
 
-      // const audioElement = new Audio();
-
-      // const blobUrl = URL.createObjectURL(blob);
-      // audioElement.src = blobUrl;
-      // console.log(audioElement)
-      // audioElement.play();
-
-      // Define the API endpoint
       const apiEndpoint = process.env.NEXT_PUBLIC_AI_TOOLS_API + '/speech-to-text';
-
-      // Create a FormData object
       const formData = new FormData();
-
-      // Append the WAV file to the FormData object
       formData.append('file', blob, 'audio.wav');
       formData.append('messageId', s2tMsgId);
       formData.append('conversationId', sessionStorage.getItem('conversationId') || '');
       formData.append('language', localStorage.getItem('locale') || 'en');
 
-      // Send the WAV data to the API
       const resp = await fetch(apiEndpoint, {
         method: 'POST',
         headers: {
@@ -157,7 +136,6 @@ const RenderVoiceRecorder = ({ setInputMsg, tapToSpeak }) => {
 
       if (resp.ok) {
         const rsp_data = await resp.json();
-        console.log('hi', rsp_data);
         if (rsp_data.text === '') throw new Error('Unexpected end of JSON input');
         setInputMsg(rsp_data.text);
         const endTime = Date.now();
@@ -173,165 +151,60 @@ const RenderVoiceRecorder = ({ setInputMsg, tapToSpeak }) => {
           createdAt: Math.floor(startTime / 1000),
         });
       } else {
-        toast.error(`${t('message.recorder_error')}`);
-        console.log(resp);
-        // Set isErrorClicked to true when an error occurs
-        setIsErrorClicked(false);
-
-        // Automatically change back to startIcon after 3 seconds
-        setTimeout(() => {
-          // Check if the user has not clicked the error icon again
-          if (!isErrorClicked) {
-            setRecorderStatus('idle');
-          }
-        }, 2500);
+        handleError(new Error(t('message.recorder_error')));
       }
-      setRecorderStatus('idle');
     } catch (error) {
-      console.error(error);
-      setRecorderStatus('error');
-      toast.error(`${t('message.recorder_error')}`);
-      // Set isErrorClicked to true when an error occurs
-      setIsErrorClicked(false);
-      const endTime = Date.now();
-      const latency = endTime - startTime;
-      await saveTelemetryEvent('0.1', 'E046', 'aiToolProxyToolLatency', 's2tLatency', {
-        botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-        orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-        userId: localStorage.getItem('userID') || '',
-        phoneNumber: localStorage.getItem('phoneNumber') || '',
-        conversationId: sessionStorage.getItem('conversationId') || '',
-        timeTaken: latency,
-        messageId: s2tMsgId,
-        createdAt: Math.floor(startTime / 1000),
-        error: error?.message || t('message.recorder_error'),
-      });
-
-      // Automatically change back to startIcon after 3 seconds
-      setTimeout(() => {
-        // Check if the user has not clicked the error icon again
-        if (!isErrorClicked) {
-          setRecorderStatus('idle');
-        }
-      }, 2500);
+      handleError(error);
     }
     context?.sets2tMsgId((prev) => (prev = s2tMsgId));
   };
 
-  if (config?.showVoiceRecorder === false) {
-    return null;
-  }
-  return (
-    <>
-      {mediaRecorder && mediaRecorder.state === 'recording' ? (
-        <div className={styles.center}>
-          <RecorderControl status={'recording'} onClick={stopRecording} />
-        </div>
-      ) : (
-        <div className={styles.center}>
-          {recorderStatus === 'processing' ? (
-            <RecorderControl status={'processing'} onClick={() => {}} />
-          ) : recorderStatus === 'error' ? (
-            <RecorderControl
-              status={'error'}
-              onClick={() => {
-                setIsErrorClicked(true);
-                startRecording();
-              }}
-            />
-          ) : (
-            <div className={styles.center}>
-              <RecorderControl
-                status={'start'}
-                onClick={() => {
-                  setIsErrorClicked(true);
-                  startRecording();
-                }}
-                tapToSpeak={tapToSpeak}
-              />
-            </div>
-          )}
-        </div>
-      )}
-    </>
-  );
-};
+  const handleError = async (error) => {
+    console.error(error);
+    setRecorderStatus('error');
+    toast.error(RECORDER_ERROR_MESSAGE);
+    setIsErrorClicked(false);
+    const endTime = Date.now();
+    const latency = endTime - startTime;
+    await saveTelemetryEvent('0.1', 'E046', 'aiToolProxyToolLatency', 's2tLatency', {
+      botId: process.env.NEXT_PUBLIC_BOT_ID || '',
+      orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
+      userId: localStorage.getItem('userID') || '',
+      phoneNumber: localStorage.getItem('phoneNumber') || '',
+      conversationId: sessionStorage.getItem('conversationId') || '',
+      timeTaken: latency,
+      messageId: s2tMsgId,
+      createdAt: Math.floor(startTime / 1000),
+      error: error?.message || t('message.recorder_error'),
+    });
 
-const RecorderControl = ({ status, onClick, tapToSpeak = false }) => {
-  const t = useLocalization();
-  const handleClick = () => {
-    if (onClick) {
-      onClick();
-    }
+    setTimeout(() => {
+      if (!isErrorClicked) {
+        setRecorderStatus('idle');
+      }
+    }, 2500);
   };
-  const theme = useColorPalates();
-  let customStylesPulse = null;
-  let customStylesProcess = null;
-  let classPulse = '';
-  let classProcess = '';
 
-  if (status === 'error') {
-    customStylesPulse = {
-      background: 'red',
-      border: '5px solid red',
-    };
-    classPulse = styles.pulseRing;
-  } else if (status === 'recording') {
-    customStylesPulse = {
-      background: `${theme?.primary?.light}`,
-      border: `5px solid ${theme?.primary?.light}`,
-    };
-    classPulse = styles.pulseRing;
-  } else if (status === 'processing') {
-    // processing
-    customStylesProcess = {
-      borderColor: `transparent transparent ${theme?.primary?.dark} ${theme?.primary?.dark}`,
-    };
-    classProcess = styles.loader;
-  }
+  
+
+  if (!showVoiceRecorder === false) return null;
+ 
 
   return (
-    <>
-      <button
-        onClick={handleClick}
-        className={styles.btn}
-        style={{
-          cursor: 'pointer',
-          backgroundColor: theme?.primary?.light,
-          border: `1px solid ${theme?.primary?.light}`,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <div
-          className={`${classPulse}`}
-          style={{
-            ...customStylesPulse,
-          }}
-        ></div>
-        <MicIcon
-          sx={{
-            height: '70%',
-            width: '70%',
-            color: 'white',
-            display: 'block',
-          }}
-        />
-        <div
-          className={`${classProcess}`}
-          style={{
-            ...customStylesProcess,
-          }}
-        ></div>
-      </button>
-      {tapToSpeak && (
-        <p
-          style={{ color: 'black', fontSize: '13px', marginTop: '4px' }}
-          dangerouslySetInnerHTML={{ __html: t('label.tap_to_speak') }}
-        ></p>
-      )}
-    </>
+   
+   
+    <VoiceRecorder 
+      setInputMsg={setInputMsg}
+      tapToSpeak={tapToSpeak}
+      showVoiceRecorder={showVoiceRecorder}
+      delayBetweenDialogs={DELAY_BETWEEN_DIALOGS}
+      voiceMinDecibels={VOICE_MIN_DECIBELS}
+      dialogMaxLength={DIALOG_MAX_LENGTH}
+      isRecording={isRecording}
+      waitMessage={WAIT_MESSAGE}
+      recorderErrorMessage={RECORDER_ERROR_MESSAGE}
+      handleVoiceRecorder={startRecording}
+    />
   );
 };
 

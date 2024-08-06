@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { TextField, Button, Box, Typography, Rating } from '@mui/material';
 import { toast } from 'react-hot-toast';
-import { useColorPalates } from '@samagra-x/stencil-hooks';
-import { useUiConfig } from '@samagra-x/stencil-hooks';
-import styles from './index.module.css';
 
 type FeedbackStyles = {
   heading?: object;
@@ -33,8 +30,6 @@ const Feedback: React.FC<FeedbackProps> = ({
   handleFeedback = () => {},
   customStyles = {},
 }) => {
-  const theme = useColorPalates();
-  const config = useUiConfig('component', 'feedback');
   const [feedbackLoader, setFeedbackLoader] = useState(false);
 
   const handleFeedbackClick = async () => {
@@ -47,18 +42,33 @@ const Feedback: React.FC<FeedbackProps> = ({
       setFeedbackLoader(false);
       toast.error('Error while submitting feedback');
     }
-    };
+  };
 
   return (
-    <div className={styles.container}>
-      <Box className={styles.main}>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100vh',
+      }}
+    >
+      <Box
+        style={{
+          textAlign: 'center',
+          width: '100%',
+          maxWidth: '600px',
+          padding: '2rem',
+          borderRadius: '10px',
+        }}
+      >
         <Box>
           <Typography
             data-testid="feedback-title"
             sx={{
               fontSize: '5vh',
               fontWeight: 'bold',
-              color: theme?.primary?.main,
+              color: '#1976d2', // primary.main color
               ...customStyles.heading,
             }}
           >
@@ -83,7 +93,7 @@ const Feedback: React.FC<FeedbackProps> = ({
               data-testid="feedback-rating-component"
               name="simple-controlled"
               value={star}
-              max={config?.ratingMaxStars || 5}
+              max={5}
               onChange={(event, newValue) => onChangeRating(newValue)}
               defaultValue={1}
               sx={{
@@ -106,13 +116,13 @@ const Feedback: React.FC<FeedbackProps> = ({
               variant="contained"
               sx={{
                 mt: 2,
-                backgroundColor: `${theme?.primary?.main}`,
+                backgroundColor: '#1976d2',
                 fontWeight: 'bold',
                 borderRadius: '10rem',
                 fontSize: '1.5vh',
                 p: 1.5,
                 '&:hover': {
-                  backgroundColor: `${theme?.primary?.dark}`,
+                  backgroundColor: '#115293', // primary.dark color
                 },
                 ...customStyles.submitButton,
               }}
@@ -146,7 +156,7 @@ const Feedback: React.FC<FeedbackProps> = ({
               fullWidth
               onChange={(e) => onChangeReview(e.target.value)}
               sx={{
-                border: `2px solid ${theme?.primary?.main}`,
+                border: '2px solid #1976d2',
                 ...customStyles.review,
               }}
             />
@@ -156,13 +166,13 @@ const Feedback: React.FC<FeedbackProps> = ({
               data-testid="feedback-review-button"
               sx={{
                 mt: 2,
-                backgroundColor: `${theme?.primary?.main}`,
+                backgroundColor: '#1976d2',
                 fontWeight: 'bold',
                 borderRadius: '10rem',
                 fontSize: '1.5vh',
                 p: 1.5,
                 '&:hover': {
-                  backgroundColor: `${theme?.primary?.dark}`,
+                  backgroundColor: '#115293',
                 },
                 ...customStyles.submitButton,
               }}

@@ -21,7 +21,7 @@
     "test:coverage": "jest --coverage",
     "prepare": "husky install",
     "build3": "npm run clean && npm run prepublishOnly2",
-    "dev2": "nodemon --watch src --ext ts,tsx,css --exec \"npm run build\"",
+    "dev": "nodemon --watch src --ext ts,tsx,css --exec \"npm run build\"",
     "publish-package": "npm publish --access public"
   },
   "dependencies": {
