@@ -10,7 +10,7 @@ import Navbar, { NewNavbar } from './navbar';
 import Feedback from './feedback';
 import Sidebar, { NewSidebar } from './sidebar';
 import LanguagePicker from './language-picker';
-import { NewLanguagePicker } from './language-picker';
+import { NewLanguagePicker } from './language-picker/languagePicker';
 import BlinkingSpinner from './blinking-spinner';
 import StencilModal from './Modal';
 import LoginInput, { LoginCheckBox } from './login-input';

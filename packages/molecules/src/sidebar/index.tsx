@@ -18,7 +18,7 @@ import {
   ChevronRight,
 } from '@mui/icons-material';
 import configObj from '@samagra-x/stencil-config-manager';
-import { NewLanguagePicker } from '../language-picker';
+import { NewLanguagePicker } from '../language-picker/languagePicker';
 
 type Link = {
   label: string;
@@ -39,7 +39,7 @@ type SidebarPropsBase = {
   profileText?: string;
   links: Link[];
   handleLogOutButton: () => void;
-  style?: SidebarStyle
+  style?: SidebarStyle;
 };
 
 type SidebarPropsWithLangSwitcher = SidebarPropsBase & {
@@ -55,21 +55,20 @@ type SidebarPropsWithoutLangSwitcher = SidebarPropsBase & {
   activeLanguage?: never;
   handleLanguageClick?: never;
 };
-type SidebarStyle = { 
-   
+type SidebarStyle = {
   drawer?: React.CSSProperties;
   list?: React.CSSProperties;
   listItem?: React.CSSProperties;
   listItemButton?: React.CSSProperties;
   profileText?: React.CSSProperties;
   languagePicker?: React.CSSProperties;
-  
 };
 
-
-type SidebarProps = SidebarPropsWithLangSwitcher | SidebarPropsWithoutLangSwitcher & {
-  style?: SidebarStyle;
-};
+type SidebarProps =
+  | SidebarPropsWithLangSwitcher
+  | (SidebarPropsWithoutLangSwitcher & {
+      style?: SidebarStyle;
+    });
 
 export const Sidebar = ({ isOpen, onToggle }: { isOpen: boolean; onToggle: () => void }) => {
   const [config, setConfig] = useState<{
@@ -224,8 +223,8 @@ const NewSidebar: React.FC<SidebarProps> = ({
   const handleItemClick = () => {
     onToggle();
   };
-
-   return (
+  const { languagePicker = {} } = style;
+  return (
     <div>
       <Drawer open={isOpen} onClose={onToggle} sx={style.drawer}>
         <Box sx={{ width: 250, ...style.list }} role="presentation">
@@ -241,7 +240,7 @@ const NewSidebar: React.FC<SidebarProps> = ({
                       languages={languages}
                       activeLanguage={activeLanguage}
                       handleLanguageClick={handleLanguageClick}
-                      style={style.languagePicker}
+                      // style={{...languagePicker}}
                     />
                   )}
                 </ListItemButton>
