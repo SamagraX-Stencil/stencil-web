@@ -11,11 +11,11 @@ import { useColorPalates } from '../../providers/theme-provider/hooks';
 import { useLocalization } from '../../hooks';
 import { useRouter } from 'next/router';
 import { useConfig } from '../../hooks/useConfig';
-// import LanguagePicker from '../../components/language-picker';
-// import NewLanguagePicker from 'stencil-molecules/lib/language-picker';
+import LanguagePicker from '../../components/language-picker';
+import NewLanguagePicker from '@samagra-x/stencil-molecules/lib/language-picker/languagePicker';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 // import { OTPInput } from 'stencil-molecules/lib/otp-input';
-// import InputComponent from 'stencil-molecules/lib/input-component';
+import InputComponent from '@samagra-x/stencil-molecules/lib/input-component';
 // import ContextProvider from '../../providers/context-provider';
 
 const LoginPage: React.FC = () => {
@@ -98,8 +98,16 @@ const LoginPage: React.FC = () => {
             zIndex: 10,
           }}
         >
-          {/* <NewLanguagePicker /> */}
+          <LanguagePicker />
         </div>
+        <div
+          style={{
+            position: 'absolute',
+            top: '16px',
+            left: 'calc(100% - 117px)',
+            zIndex: 10,
+          }}
+        ></div>
         {showLogo && logo && (
           <div
             style={{
@@ -176,7 +184,7 @@ const LoginPage: React.FC = () => {
               {loading ? <CircularProgress size={24} color="inherit" /> : `${t('label.continue')}`}
             </Button>
           </Box>
-          {/* <InputComponent
+          <InputComponent
             buttonText={t('label.continue')}
             handleNextTask={async () => {
               return 'success';
@@ -190,7 +198,7 @@ const LoginPage: React.FC = () => {
               titleStyle: { color: theme?.primary?.main || 'black', fontWeight: 'bold' },
               containerStyle: { width: '100%' },
             }}
-          /> */}
+          />
         </div>
       </div>
     </>
