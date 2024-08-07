@@ -50,7 +50,7 @@ const Feedback: React.FC<FeedbackProps> = ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        minHeight: '100vh',
+        
       }}
     >
       <Box
@@ -68,7 +68,7 @@ const Feedback: React.FC<FeedbackProps> = ({
             sx={{
               fontSize: '5vh',
               fontWeight: 'bold',
-              color: '#1976d2', // primary.main color
+              color: '#ff9800', // orange color
               ...customStyles.heading,
             }}
           >
@@ -116,13 +116,13 @@ const Feedback: React.FC<FeedbackProps> = ({
               variant="contained"
               sx={{
                 mt: 2,
-                backgroundColor: '#1976d2',
+                backgroundColor: '#ff9800', // orange color
                 fontWeight: 'bold',
                 borderRadius: '10rem',
                 fontSize: '1.5vh',
                 p: 1.5,
                 '&:hover': {
-                  backgroundColor: '#115293', // primary.dark color
+                  backgroundColor: '#e65100', // darker orange color
                 },
                 ...customStyles.submitButton,
               }}
@@ -147,32 +147,40 @@ const Feedback: React.FC<FeedbackProps> = ({
               Review
             </Typography>
             <TextField
-              data-testid="feedback-review-component"
-              placeholder="Write your review here"
-              value={review}
-              multiline
-              rows={4}
-              variant="outlined"
-              fullWidth
-              onChange={(e) => onChangeReview(e.target.value)}
-              sx={{
-                border: '2px solid #1976d2',
-                ...customStyles.review,
-              }}
-            />
+  data-testid="feedback-review-component"
+  placeholder="Write your review here"
+  value={review}
+  multiline
+  rows={4}
+  fullWidth
+  onChange={(e) => onChangeReview(e.target.value)}
+  sx={{
+    ...customStyles.review,
+  }}
+  InputProps={{
+    sx: {
+      border: '2px solid #ff9800',
+      borderRadius: '10px',
+      '& .MuiOutlinedInput-notchedOutline': {
+        border: 'none',
+      },
+    },
+  }}
+/>
+
             <Button
               id="reviewBtn"
               variant="contained"
               data-testid="feedback-review-button"
               sx={{
                 mt: 2,
-                backgroundColor: '#1976d2',
+                backgroundColor: '#ff9800', // orange color
                 fontWeight: 'bold',
                 borderRadius: '10rem',
                 fontSize: '1.5vh',
                 p: 1.5,
                 '&:hover': {
-                  backgroundColor: '#115293',
+                  backgroundColor: '#e65100', // darker orange color
                 },
                 ...customStyles.submitButton,
               }}

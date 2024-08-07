@@ -12,11 +12,13 @@ import { ExpandLess, StarBorder, ExpandMore, ErrorOutline, Delete } from '@mui/i
 import { ListType } from './types';
 import { map } from 'lodash';
 import { Avatar, Divider, ListItem, ListItemAvatar, Typography } from '@mui/material';
-import { useBotConfig } from '@samagra-x/stencil-hooks';
 
-export const List: React.FC<ListType> = ({ items, label, noItem, onDelete, styles = [] }) => {
+interface ListProps extends ListType {
+  showTimestamp: boolean;
+}
+
+export const List: React.FC<ListProps> = ({ items, label, noItem, onDelete, styles = [], showTimestamp }) => {
   const [openItem, setOpenItem] = React.useState<string | null>(null);
-  const config = useBotConfig('component', 'historyPage');
 
   const handleClick = React.useCallback(
     (id: string) => {
@@ -35,8 +37,6 @@ export const List: React.FC<ListType> = ({ items, label, noItem, onDelete, style
   const hasItems = React.useMemo(() => items?.length > 0, [items]);
 
   const mergedStyles = (styles as object[]).reduce((acc, style) => ({ ...acc, ...style }), {});
-
-  // const mergedStyles = styles.reduce((acc, style) => ({ ...acc, ...style }), {});
 
   if (!hasItems)
     return (
@@ -86,7 +86,7 @@ export const List: React.FC<ListType> = ({ items, label, noItem, onDelete, style
                     primary={item.label}
                     secondary={
                       <React.Fragment>
-                        {config?.showTimestamp && item?.secondaryLabel && (
+                        {showTimestamp && item?.secondaryLabel && (
                           <Typography
                             sx={{ display: 'inline' }}
                             component="span"
