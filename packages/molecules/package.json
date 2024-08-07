@@ -18,7 +18,8 @@
     "@mui/material": "^5.15.15",
     "@mui/icons-material": "^5.15.15",
     "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.5"
+    "@emotion/styled": "^11.11.5",
+    "styled-components":"6.1.12"
   },
   "devDependencies": {
     "@types/react": "^18.2.61",

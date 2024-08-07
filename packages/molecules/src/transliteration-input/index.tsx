@@ -1,7 +1,37 @@
 import { useTransliteration } from '@samagra-x/stencil-hooks';
 import { TextareaAutosize, TextareaAutosizeProps } from '@mui/base/TextareaAutosize';
-import styles from './index.module.css';
+import { CSSProperties } from 'react';
 
+const styles: {
+  container: CSSProperties;
+  suggestions: CSSProperties;
+  suggestion: CSSProperties;
+  active: CSSProperties;
+} = {
+  container: {
+    position: 'relative',
+    width: '100%',
+  },
+  suggestions: {
+    position: 'absolute',
+    zIndex: 1000,
+    display: 'flex',
+    minWidth: '50px',
+    width: 'auto',
+    top: '-30px',
+    left: '10px',
+    backgroundColor: 'white',
+    boxShadow: 'rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px',
+  },
+  suggestion: {
+    padding: '0 10px',
+    cursor: 'pointer',
+  },
+  active: {
+    backgroundColor: '#65c3d7',
+    color: 'white',
+  },
+};
 export interface TransliterationConfigType {
   allowFeedback: boolean;
   allowTextToSpeech: boolean;
@@ -43,8 +73,8 @@ const TransliterationInput: React.FC<TransliterationInputPropsType> = ({
   } = useTransliteration(config, value, setValue);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.suggestions}>
+    <div style={styles.container}>
+      <div style={styles.suggestions}>
         {suggestions.map((suggestion, index) => (
           <div
             key={index}
