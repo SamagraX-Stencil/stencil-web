@@ -33,7 +33,7 @@ interface CardProps {
 type Props = {
   outerAccordion: OuterAccordion;
   results: CardProps[];
-  InfoCard: (props: CardProps) => React.ReactNode;
+  InfoCard?: (props: CardProps) => React.ReactNode;
 };
 
 const DynamicCard = React.memo(({ outerAccordion, results, InfoCard }: Props) => {
@@ -49,7 +49,10 @@ const DynamicCard = React.memo(({ outerAccordion, results, InfoCard }: Props) =>
           marginTop: '14px',
           borderRadius: '8px',
           boxShadow: '0px 0px 4px 0px rgba(0, 0, 0, 0.25)',
-          backgroundColor: 'var(--successSecondary)',
+          backgroundColor:
+            outerAccordion.title === 'निपुण'
+              ? 'var(--successSecondary)'
+              : 'var(--failureSecondary)',
           border: 'none',
           maxHeight: '64px',
         }}
@@ -65,7 +68,10 @@ const DynamicCard = React.memo(({ outerAccordion, results, InfoCard }: Props) =>
       </AccordionSummary>
       <AccordionDetails
         sx={{
-          backgroundColor: 'var(--successSecondary)',
+          backgroundColor:
+            outerAccordion.title === 'निपुण'
+              ? 'var(--successSecondary)'
+              : 'var(--failureSecondary)',
         }}
       >
         {results?.length &&
@@ -89,7 +95,7 @@ const DynamicCard = React.memo(({ outerAccordion, results, InfoCard }: Props) =>
                     backgroundColor: el?.grade == 'Passed' ? 'var(--success)' : 'var(--failure)',
                   },
                 }}
-                InfoCard={() => <InfoCard />}
+                InfoCard={InfoCard ? () => <InfoCard /> : () => <></>}
                 isAccordion
               />
             );
