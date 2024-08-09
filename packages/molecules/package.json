@@ -1,8 +1,12 @@
 {
   "name": "@samagra-x/stencil-molecules",
-  "version": "0.0.1",
+  "version": "0.0.19",
   "description": "The React library to build fast React Application",
-  "main": "./src/index.ts",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "browser": "dist/index.js",
+  "style": "dist/index.css",
+  "typings": "lib/index.d.ts",
   "files": [
     "lib",
     "es",
@@ -19,7 +23,7 @@
     "@mui/icons-material": "^5.15.15",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
-    "styled-components":"6.1.12"
+    "styled-components": "6.1.12"
   },
   "devDependencies": {
     "@types/react": "^18.2.61",

@@ -1,4 +1,6 @@
-import { useTransliteration } from '@samagra-x/stencil-hooks';
+// import { useTransliteration } from '@samagra-x/stencil-hooks';
+import useTransliteration from './useTransliteration-input';
+
 import { TextareaAutosize, TextareaAutosizeProps } from '@mui/base/TextareaAutosize';
 import { CSSProperties } from 'react';
 
@@ -64,6 +66,7 @@ const TransliterationInput: React.FC<TransliterationInputPropsType> = ({
   setValue,
   ...props
 }: any) => {
+  // const [temp, setTemp] = useState('');
   const {
     suggestions,
     activeSuggestion,
