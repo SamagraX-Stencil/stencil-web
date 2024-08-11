@@ -51,9 +51,8 @@ const LoginPage: React.FC = () => {
     }
   }, []);
 
-  const handleLogin = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
+  const handleLogin = useCallback((): Promise<string> => {
+    return new Promise((resolve, reject) => {
       if (input.length === 10) {
         console.log('hello');
         setLoading(true);
@@ -64,24 +63,30 @@ const LoginPage: React.FC = () => {
             .then((response) => {
               setLoading(false);
               if (response.status === 200) {
-                // localStorage.setItem('phoneNumber',input)
+                // Perform the navigation and resolve the promise
                 router.push({ pathname: '/otp', query: { state: input } });
+                resolve('SUCCESS');
               } else {
                 setLoading(false);
                 toast.error(`${t('message.otp_not_sent')}`);
+                reject('FAILURE');
               }
             })
-            .catch((err) => {
+            .catch(() => {
               setLoading(false);
-              toast.error(err.message);
+              toast.error(`${t('message.otp_not_sent')}`);
+              reject('FAILURE');
             });
         } else {
           toast.error(`${t('label.no_internet')}`);
+          reject('FAILURE');
         }
+      } else {
+        reject('FAILURE');
       }
-    },
-    [input]
-  );
+    });
+  }, [input]);
+
   console.log('debug login:', { config });
   return (
     <>
@@ -123,7 +128,7 @@ const LoginPage: React.FC = () => {
         )}
         <div className={styles.form}>
           {/* Form */}
-          <Typography
+          {/* <Typography
             data-testid="login-page-title"
             component="h1"
             variant="h4"
@@ -134,8 +139,8 @@ const LoginPage: React.FC = () => {
             dangerouslySetInnerHTML={{
               __html: t('label.subtitle'),
             }}
-          ></Typography>
-          <Box
+          ></Typography> */}
+          {/*   <Box
             component="form"
             onSubmit={handleLogin}
             sx={{
@@ -163,7 +168,7 @@ const LoginPage: React.FC = () => {
               autoFocus
             />
 
-            {/* @ts-ignore */}
+            // {/* @ts-ignore 
             <Button
               data-testid="login-button"
               fullWidth
@@ -183,12 +188,12 @@ const LoginPage: React.FC = () => {
             >
               {loading ? <CircularProgress size={24} color="inherit" /> : `${t('label.continue')}`}
             </Button>
-          </Box>
+          </Box> 
+          */}
           <InputComponent
+            errorMessage="Mobile Number is required"
             buttonText={t('label.continue')}
-            handleNextTask={async () => {
-              return 'success';
-            }}
+            handleNextTask={handleLogin}
             onChange={setInput}
             placeholder={t('message.enter_mobile')}
             type="mobile"

@@ -16,6 +16,7 @@ import axios from 'axios';
 import { FormattedMessage } from 'react-intl';
 import { IconButton } from '@mui/material';
 import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
+import second from '@samagra-x/stencil-molecules/lib';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const OtpPage: React.FC = () => {
@@ -207,7 +208,7 @@ const OtpPage: React.FC = () => {
             )}
           </div>
         </div>
-        {/*  <InputComponent
+        {/* <InputComponent
           buttonText={t('label.continue')}
           handleNextTask={async () => {
             return 'success';
@@ -224,10 +225,10 @@ const OtpPage: React.FC = () => {
             },
             containerStyle: { width: '100%' },
           }}
-          otpCountDown={30}
-          // ResetOtpForgotPassworkAction={}
-        />
-        */}
+          otpCountDown={30} */}
+        {/* // ResetOtpForgotPassworkAction={} */}
+        {/* /> */}
+
         <Button
           data-testid="otp-submit-button"
           fullWidth

@@ -22,7 +22,7 @@ const meta = {
   },
 } satisfies Meta<typeof VoiceRecorder>;
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+// export default meta;
+// type Story = StoryObj<typeof meta>;
 
-export const VoiceRecorderComponent: Story = {};
+// export const VoiceRecorderComponent: Story = {};

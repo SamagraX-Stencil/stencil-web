@@ -9,9 +9,21 @@ interface InputProps {
   onChange: (event: any) => void;
   placeholder: string;
   inputstyle?: React.CSSProperties;
+  valid?: boolean;
+  setValid?: (val: boolean) => void;
+  errorMessage?: string;
 }
 
-const LoginInput: React.FC<InputProps> = ({ type, value, onChange, placeholder, inputstyle }) => {
+const LoginInput: React.FC<InputProps> = ({
+  type,
+  value,
+  onChange,
+  placeholder,
+  inputstyle,
+  valid = true,
+  setValid = () => {},
+  errorMessage = '',
+}) => {
   const getType = () => {
     switch (type) {
       case 'mobile':
@@ -40,20 +52,68 @@ const LoginInput: React.FC<InputProps> = ({ type, value, onChange, placeholder, 
         return undefined;
     }
   };
+  const validateInput = (inputValue: string) => {
+    let isValid = true;
+
+    switch (type) {
+      case 'mobile':
+        isValid = /^\d{10}$/.test(inputValue);
+        break;
+      case 'aadhaar':
+        isValid = /^\d{12}$/.test(inputValue);
+        break;
+      case 'email':
+        isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inputValue);
+        break;
+      default:
+        break;
+    }
+
+    setValid(isValid);
+  };
+  const handleInputChange = (inputValue: string) => {
+    let formattedValue = inputValue;
+
+    switch (type) {
+      case 'mobile':
+        formattedValue = inputValue.replace(/[^0-9]/g, '');
+        break;
+      case 'aadhaar':
+        formattedValue = inputValue.replace(/[^0-9]/g, '');
+        break;
+      case 'email':
+        formattedValue = inputValue.trim();
+        break;
+      case 'password':
+        formattedValue = inputValue;
+        break;
+      case 'username':
+        formattedValue = inputValue;
+        break;
+      default:
+        formattedValue = inputValue;
+        break;
+    }
+    validateInput(formattedValue);
+    onChange(formattedValue);
+  };
 
   return (
     <TextField
       type={getType()}
       value={value}
-      onChange={(e) => onChange(e.target.value)}
+      onChange={(e) => handleInputChange(e.target.value)}
       placeholder={placeholder}
       variant="outlined"
       sx={{ width: '100%', ...inputstyle }}
       defaultValue={value}
-      size="small"
       inputProps={{
         maxLength: getMaxLength(),
       }}
+      fullWidth
+      autoFocus
+      error={!valid}
+      helperText={!valid ? errorMessage : ''}
     />
   );
 };
