@@ -1,39 +1,60 @@
-import { useState } from 'react';
-import styles from './styles.module.css';
+import React, { useState, useEffect } from 'react';
+import { CSSProperties } from 'react';
 import toast from 'react-hot-toast';
-
-import { useUiConfig } from '@samagra-x/stencil-hooks';
+import { Box } from '@mui/material';
 import RecorderControl from './record-controller';
 
-interface VoiceRecorder {
+interface VoiceRecorderProps {
   setInputMsg: (msg: string) => void;
   tapToSpeak: boolean;
   includeDiv?: boolean;
-   showVoiceRecorder?: boolean;
+  showVoiceRecorder?: boolean;
   delayBetweenDialogs?: number;
   handleVoiceRecorder?: () => void;
-  styles?: object;
+  customStyles?: {
+    centerStyles?: CSSProperties;
+  };
+  voiceMinDecibels: number;
+  dialogMaxLength: number;
+  isRecording: boolean;
+  waitMessage: string;
+  recorderErrorMessage: string;
 }
 
-const VoiceRecorder: React.FC<VoiceRecorder> = ({
+const defaultCenterStyles: CSSProperties = {
+  display: 'block',
+  height: '100%',
+  width: '100%',
+};
+
+const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
   setInputMsg,
   tapToSpeak,
   includeDiv = false,
-   showVoiceRecorder = true,
-  delayBetweenDialogs,
+  showVoiceRecorder = true,
+  delayBetweenDialogs = 1000,
   handleVoiceRecorder,
-  styles: customStyles,
+  customStyles = {},
+  voiceMinDecibels,
+  dialogMaxLength,
+  isRecording: initialIsRecording,
+  waitMessage,
+  recorderErrorMessage,
 }) => {
-  const config = useUiConfig('component', 'voiceRecorder');
-
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
   const [isErrorClicked, setIsErrorClicked] = useState(false);
   const [recorderStatus, setRecorderStatus] = useState('idle');
+  const [isRecording, setIsRecording] = useState(initialIsRecording);
 
-  const voiceMinDecibels: number = config.voiceMinDecibels;
-  const actualDelayBetweenDialogs: number = delayBetweenDialogs || config.delayBetweenDialogs;
-  const dialogMaxLength: number = config.dialogMaxLength;
-  const [isRecording, setIsRecording] = useState(config.isRecording);
+  useEffect(() => {
+    if (!showVoiceRecorder) return;
+
+    if (isRecording) {
+      startRecording();
+    } else {
+      stopRecording();
+    }
+  }, [isRecording, showVoiceRecorder]);
 
   const startRecording = () => {
     if (!isRecording) {
@@ -44,29 +65,24 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
   };
 
   const stopRecording = () => {
-    if (isRecording) {
-      if (mediaRecorder !== null) {
-        mediaRecorder.stop();
-        setIsRecording(false);
-        setMediaRecorder(null);
-      }
+    if (isRecording && mediaRecorder !== null) {
+      mediaRecorder.stop();
+      setIsRecording(false);
+      setMediaRecorder(null);
     }
   };
 
-  function record() {
+  const record = () => {
     navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
-      //start recording:
       const recorder = new MediaRecorder(stream);
       recorder.start();
       setMediaRecorder(recorder);
 
-      //save audio chunks:
       const audioChunks: BlobPart[] = [];
       recorder.addEventListener('dataavailable', (event) => {
         audioChunks.push(event.data);
       });
 
-      //analysis:
       const audioContext = new AudioContext();
       const audioStreamSource = audioContext.createMediaStreamSource(stream);
       const analyser = audioContext.createAnalyser();
@@ -75,120 +91,123 @@ const VoiceRecorder: React.FC<VoiceRecorder> = ({
       const bufferLength = analyser.frequencyBinCount;
       const domainData = new Uint8Array(bufferLength);
 
-      //loop:
-      let time: Date = new Date();
-      let startTime: number;
-      let lastDetectedTime: number = time.getTime();
-      let anySoundDetected: boolean = false;
+      let startTime = Date.now();
+      let lastDetectedTime = startTime;
+      let anySoundDetected = false;
+
       const detectSound = () => {
-        //recording stopped by user:
         if (!isRecording) return;
 
-        time = new Date();
-        const currentTime = time.getTime();
+        const currentTime = Date.now();
 
-        //time out:
         if (currentTime > startTime + dialogMaxLength) {
           recorder.stop();
           return;
         }
 
-    //a dialog detected:
-        if (anySoundDetected === true && currentTime > lastDetectedTime + actualDelayBetweenDialogs) {
+        if (anySoundDetected && currentTime > lastDetectedTime + delayBetweenDialogs) {
           recorder.stop();
           return;
         }
 
-        //check for detection:
         analyser.getByteFrequencyData(domainData);
-        for (let i = 0; i < bufferLength; i++)
+        for (let i = 0; i < bufferLength; i++) {
           if (domainData[i] > 0) {
             anySoundDetected = true;
-            time = new Date();
-            lastDetectedTime = time.getTime();
+            lastDetectedTime = Date.now();
           }
+        }
 
-        //continue the loop:
-        window?.requestAnimationFrame(detectSound);
+        window.requestAnimationFrame(detectSound);
       };
-      window?.requestAnimationFrame(detectSound);
 
-      //stop event:
+      window.requestAnimationFrame(detectSound);
+
       recorder.addEventListener('stop', () => {
-        //stop all the tracks:
         stream.getTracks().forEach((track) => track.stop());
         if (!anySoundDetected) return;
 
-        //send to server:
         const audioBlob = new Blob(audioChunks, { type: 'audio/mp3' });
         makeComputeAPICall(audioBlob);
       });
     });
-  }
+  };
+
   const makeComputeAPICall = async (blob: Blob) => {
     try {
       setRecorderStatus('processing');
-      toast.success(`${config.waitMessage}`);
-      // Define the API endpoint and make api call here
-      if (blob) {
-        //set api result in setInputMsg
-        setInputMsg('');
-      }
+      toast.success(waitMessage);
+
+      // Call your API with the audio blob here
+      // await someApiCall(blob);
+
+      // Simulate API call success
+      setTimeout(() => {
+        setInputMsg('Transcription result'); // Replace with actual API response
+        setRecorderStatus('idle');
+      }, 2000);
     } catch (error) {
       console.error(error);
       setRecorderStatus('error');
-      toast.error(`${config.recorderErrorMessage}`);
-      // Set isErrorClicked to true when an error occurs
+      toast.error(recorderErrorMessage);
       setIsErrorClicked(false);
       setTimeout(() => {
-        // Check if the user has not clicked the error icon again
         if (!isErrorClicked) {
           setRecorderStatus('idle');
         }
       }, 2500);
     }
   };
- if (!showVoiceRecorder) return null;
+
+  if (!showVoiceRecorder) return null;
+
   return (
     <div>
-      <div>
+      <Box style={customStyles.centerStyles || defaultCenterStyles}>
         {mediaRecorder && mediaRecorder.state === 'recording' ? (
-          <div className={styles.center}>
-            <RecorderControl status={'recording'} onClick={stopRecording} includeDiv={includeDiv} />
-          </div>
+          <RecorderControl
+            status="recording"
+            onClick={stopRecording}
+            includeDiv={includeDiv}
+            primaryColor={''}
+            primaryDarkColor={''}
+          />
         ) : (
-          <div className={styles.center}>
+          <Box style={defaultCenterStyles}>
             {recorderStatus === 'processing' ? (
-              <div>
-                <RecorderControl status={'processing'} onClick={() => {}} />
-              </div>
+              <RecorderControl
+                status="processing"
+                onClick={() => {}}
+                primaryColor={''}
+                primaryDarkColor={''}
+              />
             ) : recorderStatus === 'error' ? (
-              <div>
-                <RecorderControl
-                  status={'error'}
-                  onClick={() => {
-                    setIsErrorClicked(true);
-                    startRecording();
-                  }}
-                  includeDiv={includeDiv}
-                />
-              </div>
+              <RecorderControl
+                status="error"
+                onClick={() => {
+                  setIsErrorClicked(true);
+                  startRecording();
+                }}
+                includeDiv={includeDiv}
+                primaryColor={''}
+                primaryDarkColor={''}
+              />
             ) : (
-              <div>
-                <RecorderControl
-                  status={'start'}
-                  onClick={() => {
-                    setIsErrorClicked(true);
-                    startRecording();
-                  }}
-                  includeDiv={includeDiv}
-                  tapToSpeak={tapToSpeak}
-                />
-              </div>
+              <RecorderControl
+                status="start"
+                onClick={() => {
+                  setIsErrorClicked(true);
+                  startRecording();
+                }}
+                includeDiv={includeDiv}
+                tapToSpeak={tapToSpeak}
+                primaryColor={''}
+                primaryDarkColor={''}
+              />
             )}
-          </div>
+          </Box>
         )}
-      </div>
+      </Box>
     </div>
   );
 };

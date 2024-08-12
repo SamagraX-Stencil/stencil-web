@@ -16,7 +16,8 @@ import { Modal, Box, IconButton, Typography } from '@mui/material';
 import MicIcon from '@mui/icons-material/Mic';
 import styles from './index.module.css';
 import CircularProgress from '@mui/material/CircularProgress';
-import TransliterationInput from '../../components/transliteration-input';
+// import TransliterationInput from '../../components/transliteration-input';
+import { TransliterationInput } from '@samagra-x/stencil-molecules/lib/transliteration-input';
 
 const ChatPage: NextPage = () => {
   const context = useContext(AppContext);

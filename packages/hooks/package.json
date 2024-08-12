@@ -1,7 +1,15 @@
 {
   "name": "@samagra-x/stencil-hooks",
   "version": "0.0.8",
-  "main": "./index.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.mts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
   "scripts": {
     "clean": "rimraf dist es lib",
     "lint": "eslint . --max-warnings 0",

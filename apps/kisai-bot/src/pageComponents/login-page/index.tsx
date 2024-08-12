@@ -11,11 +11,11 @@ import { useColorPalates } from '../../providers/theme-provider/hooks';
 import { useLocalization } from '../../hooks';
 import { useRouter } from 'next/router';
 import { useConfig } from '../../hooks/useConfig';
-// import LanguagePicker from '../../components/language-picker';
-// import NewLanguagePicker from 'stencil-molecules/lib/language-picker';
+import LanguagePicker from '../../components/language-picker';
+import NewLanguagePicker from '@samagra-x/stencil-molecules/lib/language-picker/languagePicker';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 // import { OTPInput } from 'stencil-molecules/lib/otp-input';
-// import InputComponent from 'stencil-molecules/lib/input-component';
+import InputComponent from '@samagra-x/stencil-molecules/lib/input-component';
 // import ContextProvider from '../../providers/context-provider';
 
 const LoginPage: React.FC = () => {
@@ -51,9 +51,8 @@ const LoginPage: React.FC = () => {
     }
   }, []);
 
-  const handleLogin = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
+  const handleLogin = useCallback((): Promise<string> => {
+    return new Promise((resolve, reject) => {
       if (input.length === 10) {
         console.log('hello');
         setLoading(true);
@@ -64,24 +63,30 @@ const LoginPage: React.FC = () => {
             .then((response) => {
               setLoading(false);
               if (response.status === 200) {
-                // localStorage.setItem('phoneNumber',input)
+                // Perform the navigation and resolve the promise
                 router.push({ pathname: '/otp', query: { state: input } });
+                resolve('SUCCESS');
               } else {
                 setLoading(false);
                 toast.error(`${t('message.otp_not_sent')}`);
+                reject('FAILURE');
               }
             })
-            .catch((err) => {
+            .catch(() => {
               setLoading(false);
-              toast.error(err.message);
+              toast.error(`${t('message.otp_not_sent')}`);
+              reject('FAILURE');
             });
         } else {
           toast.error(`${t('label.no_internet')}`);
+          reject('FAILURE');
         }
+      } else {
+        reject('FAILURE');
       }
-    },
-    [input]
-  );
+    });
+  }, [input]);
+
   console.log('debug login:', { config });
   return (
     <>
@@ -98,8 +103,16 @@ const LoginPage: React.FC = () => {
             zIndex: 10,
           }}
         >
-          {/* <NewLanguagePicker /> */}
+          <LanguagePicker />
         </div>
+        <div
+          style={{
+            position: 'absolute',
+            top: '16px',
+            left: 'calc(100% - 117px)',
+            zIndex: 10,
+          }}
+        ></div>
         {showLogo && logo && (
           <div
             style={{
@@ -115,7 +128,7 @@ const LoginPage: React.FC = () => {
         )}
         <div className={styles.form}>
           {/* Form */}
-          <Typography
+          {/* <Typography
             data-testid="login-page-title"
             component="h1"
             variant="h4"
@@ -126,8 +139,8 @@ const LoginPage: React.FC = () => {
             dangerouslySetInnerHTML={{
               __html: t('label.subtitle'),
             }}
-          ></Typography>
-          <Box
+          ></Typography> */}
+          {/*   <Box
             component="form"
             onSubmit={handleLogin}
             sx={{
@@ -155,7 +168,7 @@ const LoginPage: React.FC = () => {
               autoFocus
             />
 
-            {/* @ts-ignore */}
+            // {/* @ts-ignore 
             <Button
               data-testid="login-button"
               fullWidth
@@ -175,12 +188,12 @@ const LoginPage: React.FC = () => {
             >
               {loading ? <CircularProgress size={24} color="inherit" /> : `${t('label.continue')}`}
             </Button>
-          </Box>
-          {/* <InputComponent
+          </Box> 
+          */}
+          <InputComponent
+            errorMessage="Mobile Number is required"
             buttonText={t('label.continue')}
-            handleNextTask={async () => {
-              return 'success';
-            }}
+            handleNextTask={handleLogin}
             onChange={setInput}
             placeholder={t('message.enter_mobile')}
             type="mobile"
@@ -190,7 +203,7 @@ const LoginPage: React.FC = () => {
               titleStyle: { color: theme?.primary?.main || 'black', fontWeight: 'bold' },
               containerStyle: { width: '100%' },
             }}
-          /> */}
+          />
         </div>
       </div>
     </>

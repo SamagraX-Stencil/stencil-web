@@ -29,7 +29,7 @@ type NavbarProps = {
   children?: React.ReactNode;
 };
 
-const Navbar: React.FC<NavbarProps> = ({
+const NewNavbar: React.FC<NavbarProps> = ({
   brandName,
   onToggle,
   isOpen,
@@ -128,4 +128,4 @@ const Navbar: React.FC<NavbarProps> = ({
   );
 };
 
-export default Navbar;
+export default NewNavbar;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Typography, Box } from '@mui/material';
 import LoginInput from '../login-input';
 import OtpComponent from '../otp';
@@ -16,6 +16,7 @@ interface LoginProps {
   onChange: (value: any) => void;
   placeholder: string;
   buttonText: string;
+  errorMessage: string;
   otpCountDown?: number;
   mobileNumberForOtpScreen?: string;
   optBoxSeparator?: React.ReactNode;
@@ -50,6 +51,7 @@ const InputComponent: React.FC<LoginProps> = ({
   type,
   value,
   onChange,
+  errorMessage,
   placeholder,
   otpCountDown,
   mobileNumberForOtpScreen,
@@ -68,13 +70,13 @@ const InputComponent: React.FC<LoginProps> = ({
     buttonStyle = {},
     otpStyles = {},
   } = customStyles;
+  const [valid, setValid] = useState(true);
   return (
     <Box
       display="flex"
       flexDirection="column"
       // alignItems="center"
       justifyContent="center"
-      padding={2}
       sx={containerStyle}
     >
       {title && (
@@ -90,6 +92,9 @@ const InputComponent: React.FC<LoginProps> = ({
             onChange={onChange}
             placeholder={placeholder}
             inputstyle={inputStyle}
+            valid={valid}
+            errorMessage={errorMessage}
+            setValid={setValid}
           />
           {type == 'username' && (
             <div style={{ marginTop: '12px' }}>
@@ -117,9 +122,11 @@ const InputComponent: React.FC<LoginProps> = ({
           <Button
             variant="contained"
             color="primary"
-            onClick={() => handleNextTask}
+            onClick={handleNextTask}
             fullWidth
-            sx={{ mt: 2, ...buttonStyle }}
+            size="large"
+            sx={{ mt: 2, height: '60px', ...buttonStyle }}
+            disabled={type === 'password' ? !valid || !passwordvalue?.length : !valid}
           >
             {buttonText}
           </Button>

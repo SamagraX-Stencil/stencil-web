@@ -48,7 +48,7 @@ const meta = {
   },
 } satisfies Meta<typeof JsonToTable>;
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+// export default meta;
+// type Story = StoryObj<typeof meta>;
 
-export const JsonTable: Story = {};
+// export const JsonTable: Story = {};

@@ -32,7 +32,8 @@ import Loader from '../loader';
 import { MessageType, XMessage } from '@samagra-x/xmessage';
 import { v4 as uuidv4 } from 'uuid';
 import router from 'next/router';
-import TransliterationInput from '../transliteration-input';
+// import TransliterationInput from '../transliteration-input';
+import { TransliterationInput } from '@samagra-x/stencil-molecules/lib/transliteration-input';
 
 const MessageItem: FC<MessageItemPropType> = ({ message }) => {
   const { content, type } = message;

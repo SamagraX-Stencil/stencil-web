@@ -1,14 +1,28 @@
-import React, { useMemo } from 'react';
-import styles from './index.module.css';
-import { useColorPalates } from '../../providers/theme-provider/hooks';
+import React from 'react';
 
+const styles = {
+  spinner: {
+    display: 'inline-block',
+    height: '15px',
+    width: '1px',
+    animation: 'blink 0.5s infinite',
+    backgroundColor: '#000',
+  },
+};
 const BlinkingSpinner = () => {
-  const theme = useColorPalates();
-  const secondaryColor = useMemo(() => {
-    return theme?.primary?.contrastText;
-  }, [theme?.primary?.contrastText]);
-
-  return <p className={styles.spinner} style={{ backgroundColor: secondaryColor }}></p>;
+  return (
+    <>
+      <style>
+        {`
+          @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+          }
+        `}
+      </style>
+      <p style={styles.spinner}></p>;
+    </>
+  );
 };
 
 export default BlinkingSpinner;

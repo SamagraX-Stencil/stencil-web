@@ -7,7 +7,8 @@ import { AppContext } from '../../context';
 import { MessageType, XMessage } from '@samagra-x/xmessage';
 import { useConfig } from '../../hooks/useConfig';
 import toast from 'react-hot-toast';
-import TransliterationInput from '../transliteration-input';
+// import TransliterationInput from '../transliteration-input';
+import { TransliterationInput } from '@samagra-x/stencil-molecules/lib/transliteration-input';
 
 const FeedbackPopup: React.FC<any> = ({ setShowFeedbackPopup }) => {
   const t = useLocalization();
