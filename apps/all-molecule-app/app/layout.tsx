@@ -1,13 +1,13 @@
 'use client'
-import { ConfigContext, CustomThemeProvider } from '@samagra-x/stencil-provider'
+import CustomThemeProvider from './../provider/theme-provider/index'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { CssBaseline } from '@mui/material'
 import { BrowserRouter } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 import { Navbar } from '../components/navbar'
-
-import { Provider } from '@samagra-x/stencil-provider'
+import ConfigContext from './../provider/config-provider/context'
+// import { Provider } from '@samagra-x/stencil-provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,21 +19,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <>
-        <Provider>
-          <ConfigContext>
-            <CustomThemeProvider>
-              <CssBaseline>
-                <BrowserRouter>
-                  <body className={inter.className}>
-                    <Toaster />
-                    <Navbar />
-                    {children}
-                  </body>
-                </BrowserRouter>
-              </CssBaseline>
-            </CustomThemeProvider>
-          </ConfigContext>
-        </Provider>
+        {/* <Provider> */}
+        <ConfigContext>
+          <CustomThemeProvider>
+            <CssBaseline>
+              <BrowserRouter>
+                <body className={inter.className}>
+                  <Toaster />
+                  <Navbar />
+                  {children}
+                </body>
+              </BrowserRouter>
+            </CssBaseline>
+          </CustomThemeProvider>
+        </ConfigContext>
+        {/*       </Provider> */}
       </>
     </html>
   )

@@ -4,14 +4,13 @@ import MobiledataOffIcon from '@mui/icons-material/MobiledataOff'
 import HomeIcon from '@mui/icons-material/Home'
 import ThumbsUpDownIcon from '@mui/icons-material/ThumbsUpDown'
 import GridViewIcon from '@mui/icons-material/GridView'
-import { useColorPalates } from '@samagra-x/stencil-hooks'
+import { useColorPalates } from '../../provider/theme-provider/hooks'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import {
   ChatBubble,
   HistoryOutlined,
   WbSunnyOutlined,
 } from '@mui/icons-material'
-// import { Link } from 'react-router-dom'
 import Link from 'next/link'
 import { FC } from 'react'
 import { capitalize, toUpper } from 'lodash'
