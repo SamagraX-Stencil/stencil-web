@@ -11,6 +11,7 @@ import axios from 'axios';
 import { CircularProgress, Divider } from '@mui/material';
 import { useColorPalates } from '../../providers/theme-provider/hooks';
 import { useConfig } from '../../hooks/useConfig';
+import NewShareButtons from '@samagra-x/stencil-molecules/lib/share-buttons/shareButtons';
 const ShareButtons = () => {
   const config = useConfig('component', 'share-buttons');
   const theme = useColorPalates();
@@ -37,7 +38,10 @@ const ShareButtons = () => {
     });
   };
 
-  const downloadShareHandler = async (type: string) => {
+  const downloadShareHandler = async (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    type: string
+  ) => {
     try {
       if (type === 'download') {
         setDownloadLoader(true);
@@ -115,125 +119,133 @@ const ShareButtons = () => {
       console.error(error);
     }
   };
+
   return (
+    <NewShareButtons
+      allowDownloadChat={config?.allowDownloadChat}
+      handleButton={downloadShareHandler}
+      allowShareChat={config?.allowShareChat}
+      shareLoader={shareLoader}
+      downloadLoader={downloadLoader}
+    />
     // <Draggable axis="y">
-    <>
-      {(config?.allowDownloadChat || config?.allowShareChat) && (
-        <div
-          style={{
-            position: 'absolute',
-            right: 0,
-            top: '15%',
-            background: 'rgba(255, 255, 255, 0.2)',
-            padding: '5px',
-            borderRadius: '5px 0 0 5px',
-            boxShadow:
-              'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px',
-          }}
-        >
-          {config?.allowShareChat && (
-            <div
-              data-testid="share-button"
-              onClick={() => downloadShareHandler('share')}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-              }}
-            >
-              {/* Share */}
-              {shareLoader ? (
-                <div
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    width: '24px',
-                    height: '24px',
-                  }}
-                >
-                  <CircularProgress size="20px" />
-                </div>
-              ) : (
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}
-                >
-                  <ShareIcon
-                    color={config.shareButtonColor ? config.shareButtonColor : secondaryColor}
-                  />
-                </div>
-              )}
-              <p
-                style={{
-                  fontSize: '12px',
-                  margin: 0,
-                  // color: config?.theme.primaryColor.value,
-                  fontFamily: 'NotoSans-Bold',
-                }}
-              >
-                {t('label.share')}
-              </p>
-            </div>
-          )}
-          {/* Only render divider when both share and download allowed */}
-          {config?.allowDownloadChat && config?.allowShareChat && <Divider />}
-          {config?.allowDownloadChat && (
-            <div
-              data-testid="download-button"
-              onClick={() => downloadShareHandler('download')}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-              }}
-            >
-              {/* Download */}
-              {downloadLoader ? (
-                <div
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    width: '24px',
-                    height: '24px',
-                  }}
-                >
-                  <CircularProgress size="20px" />
-                </div>
-              ) : (
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}
-                >
-                  <DownloadIcon
-                    color={config.downloadButtonColor ? config.downloadButtonColor : secondaryColor}
-                  />
-                </div>
-              )}
-              <p
-                style={{
-                  fontSize: '12px',
-                  margin: 0,
-                  // color: config?.theme.primaryColor.value,
-                  fontFamily: 'NotoSans-Bold',
-                }}
-              >
-                {t('label.download')}
-              </p>
-            </div>
-          )}
-        </div>
-      )}
-    </>
+    // <>
+    //   {(config?.allowDownloadChat || config?.allowShareChat) && (
+    //     <div
+    //       style={{
+    //         position: 'absolute',
+    //         right: 0,
+    //         top: '15%',
+    //         background: 'rgba(255, 255, 255, 0.2)',
+    //         padding: '5px',
+    //         borderRadius: '5px 0 0 5px',
+    //         boxShadow:
+    //           'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px',
+    //       }}
+    //     >
+    //       {config?.allowShareChat && (
+    //         <div
+    //           data-testid="share-button"
+    //           onClick={() => downloadShareHandler('share')}
+    //           style={{
+    //             display: 'flex',
+    //             flexDirection: 'column',
+    //             alignItems: 'center',
+    //           }}
+    //         >
+    //           {/* Share */}
+    //           {shareLoader ? (
+    //             <div
+    //               style={{
+    //                 display: 'flex',
+    //                 justifyContent: 'center',
+    //                 alignItems: 'center',
+    //                 width: '24px',
+    //                 height: '24px',
+    //               }}
+    //             >
+    //               <CircularProgress size="20px" />
+    //             </div>
+    //           ) : (
+    //             <div
+    //               style={{
+    //                 display: 'flex',
+    //                 flexDirection: 'column',
+    //                 justifyContent: 'center',
+    //                 alignItems: 'center',
+    //               }}
+    //             >
+    //               <ShareIcon
+    //                 color={config.shareButtonColor ? config.shareButtonColor : secondaryColor}
+    //               />
+    //             </div>
+    //           )}
+    //           <p
+    //             style={{
+    //               fontSize: '12px',
+    //               margin: 0,
+    //               // color: config?.theme.primaryColor.value,
+    //               fontFamily: 'NotoSans-Bold',
+    //             }}
+    //           >
+    //             {t('label.share')}
+    //           </p>
+    //         </div>
+    //       )}
+    //       {/* Only render divider when both share and download allowed */}
+    //       {config?.allowDownloadChat && config?.allowShareChat && <Divider />}
+    //       {config?.allowDownloadChat && (
+    //         <div
+    //           data-testid="download-button"
+    //           onClick={() => downloadShareHandler('download')}
+    //           style={{
+    //             display: 'flex',
+    //             flexDirection: 'column',
+    //             alignItems: 'center',
+    //           }}
+    //         >
+    //           {/* Download */}
+    //           {downloadLoader ? (
+    //             <div
+    //               style={{
+    //                 display: 'flex',
+    //                 justifyContent: 'center',
+    //                 alignItems: 'center',
+    //                 width: '24px',
+    //                 height: '24px',
+    //               }}
+    //             >
+    //               <CircularProgress size="20px" />
+    //             </div>
+    //           ) : (
+    //             <div
+    //               style={{
+    //                 display: 'flex',
+    //                 flexDirection: 'column',
+    //                 justifyContent: 'center',
+    //                 alignItems: 'center',
+    //               }}
+    //             >
+    //               <DownloadIcon
+    //                 color={config.downloadButtonColor ? config.downloadButtonColor : secondaryColor}
+    //               />
+    //             </div>
+    //           )}
+    //           <p
+    //             style={{
+    //               fontSize: '12px',
+    //               margin: 0,
+    //               // color: config?.theme.primaryColor.value,
+    //               fontFamily: 'NotoSans-Bold',
+    //             }}
+    //           >
+    //             {t('label.download')}
+    //           </p>
+    //         </div>
+    //       )}
+    //     </div>
+    //   )}
+    // </>
     // </Draggable>
   );
 };

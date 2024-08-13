@@ -3,37 +3,41 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { map } from 'lodash';
-interface NewLanguagePickerProps {
-  languages: Array<{
-    name: string;
-    value: string;
-  }>;
-  activeLanguage: string;
-  handleLanguageClick: (event: SelectChangeEvent) => void;
-  customStyles?: {
-    formControlStyle?: React.CSSProperties;
-    selectStyle?: React.CSSProperties;
-    menuItemStyle?: React.CSSProperties;
-  };
-}
 
-const NewLanguagePicker = ({
+type Language = {
+  name: string;
+  value: string;
+};
+
+type LanguagePickerProps = {
+  languages: Language[];
+  activeLanguage: string;
+  handleLanguageClick: (event: SelectChangeEvent<string>) => void;
+  style?: {
+    formControlStyle?: object;
+    selectStyle?: object;
+    menuItemStyle?: object;
+  };
+};
+
+const NewLanguagePicker: React.FC<LanguagePickerProps> = ({
   languages,
   activeLanguage,
   handleLanguageClick,
-  customStyles = {},
-}: NewLanguagePickerProps) => {
-  const { formControlStyle, selectStyle, menuItemStyle } = customStyles;
-
+  style = {},
+}) => {
+  // const handleSelectChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+  //   console.log('lllll', event);
+  //   handleLanguageClick(event.target.value as string);
+  // };
   return (
     <FormControl
       sx={{
         m: 1,
-        background: 'lightblue',
         border: 'none',
         borderRadius: '10px',
         height: '36px',
-        ...formControlStyle,
+        ...style.formControlStyle,
       }}
       size="small"
     >
@@ -47,11 +51,11 @@ const NewLanguagePicker = ({
           borderRadius: '10px',
           width: '85px',
           height: '36px',
-          ...selectStyle,
+          ...style.selectStyle,
         }}
       >
         {map(languages, (lang) => (
-          <MenuItem value={lang?.value} sx={{ ...menuItemStyle }}>
+          <MenuItem value={lang?.value} sx={{ ...style.menuItemStyle }}>
             {lang?.name}
           </MenuItem>
         ))}
@@ -60,4 +64,4 @@ const NewLanguagePicker = ({
   );
 };
 
-export { NewLanguagePicker };
+export default NewLanguagePicker;
