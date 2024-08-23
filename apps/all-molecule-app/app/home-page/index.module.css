@@ -1,0 +1,109 @@
+.main {
+  padding: 5px;
+  height: 100%;
+}
+
+.title {
+  width: 57%;
+  margin: auto;
+  position: relative;
+  top: 0;
+  text-align: center;
+  font-family: 'Mulish-Bold';
+  font-size: 3.5vh;
+  font-weight: 700;
+}
+
+.imgButtons{
+  position: relative;
+  top: 7%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.imgBtn {
+  background-color: white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 10px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 110px;
+  height: 110px;
+}
+
+.imgBtn:active{
+  transform: scale(0.9);
+}
+
+.imgBtn img{
+  min-width: 80% !important;
+}
+
+.imgBtn p{
+  font-weight: bold;
+  text-align: center;
+  line-height: 1;
+  margin: 5px;
+}
+
+.voiceRecorder {
+  position: relative;
+  margin: auto;
+  top: 12%;
+  text-align: center;
+  height: 12vh;
+  width: 12vh;
+}
+
+.inputBox {
+  border-top: 1px solid #dbdbdb;
+  padding: 9px 5px 0 5px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  bottom: 1vh;
+  transform: translateX(-50%);
+  color: var(--font);
+  width: 70%;
+  margin: auto;
+  transition: all 0.5s ease-in-out;
+}
+
+.inputBox textarea {
+  width: 100%;
+  margin: 0 5px;
+  padding: 10px;
+  border: 1px solid #D0D0D0;
+  border-radius: 10px;
+  outline: none;
+  resize: none;
+  overflow: hidden;
+}
+
+.inputBox.inputBoxOpen {
+  width: 100%;
+  left: 0;
+  right: 0;
+  transform: translateX(0);
+}
+
+.sendButton {
+  background: none;
+  outline: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3px;
+  margin-left: 3px;
+}

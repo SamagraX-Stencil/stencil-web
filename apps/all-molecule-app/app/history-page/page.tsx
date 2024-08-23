@@ -1,3 +1,4 @@
+'use client'
 import { FC, useCallback, useEffect, useState } from 'react'
 import styles from './style.module.css'
 
