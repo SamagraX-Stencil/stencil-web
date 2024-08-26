@@ -26,7 +26,6 @@ import { useConfig } from '../../hooks/useConfig';
 import { useLocalization } from '../../hooks';
 import { AppContext } from '../../context';
 import axios from 'axios';
-import saveTelemetryEvent from '../../utils/telemetry';
 import BlinkingSpinner from '../blinking-spinner/index';
 import Loader from '../loader';
 import { MessageType, XMessage } from '@samagra-x/xmessage';
@@ -237,16 +236,6 @@ const MessageItem: FC<MessageItemPropType> = ({ message }) => {
       }
       context?.playAudio(url, content);
       setTtsLoader(false);
-      saveTelemetryEvent('0.1', 'E015', 'userQuery', 'timesAudioUsed', {
-        botId: '74b41966-c74a-43e7-ba43-07f038893cb4',
-        orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-        userId: localStorage.getItem('userID') || '',
-        phoneNumber: localStorage.getItem('phoneNumber') || '',
-        conversationId: sessionStorage.getItem('conversationId') || '',
-        messageId: content?.data?.replyId,
-        text: content?.text,
-        timesAudioUsed: 1,
-      });
     },
     [audioFetched, content, context?.playAudio]
   );
@@ -274,18 +263,6 @@ const MessageItem: FC<MessageItemPropType> = ({ message }) => {
         setAudioFetched(true);
         const endTime = Date.now();
         const latency = endTime - startTime;
-        await saveTelemetryEvent('0.1', 'E045', 'aiToolProxyToolLatency', 't2sLatency', {
-          botId: '74b41966-c74a-43e7-ba43-07f038893cb4',
-          orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-          userId: localStorage.getItem('userID') || '',
-          phoneNumber: localStorage.getItem('phoneNumber') || '',
-          conversationId: sessionStorage.getItem('conversationId') || '',
-          text: text,
-          messageId: content?.data?.replyId,
-          timeTaken: latency,
-          createdAt: Math.floor(startTime / 1000),
-          audioUrl: response?.data?.url || 'No audio URL',
-        });
         // cacheAudio(response.data);
         return response?.data?.url;
       } catch (error: any) {
@@ -293,18 +270,6 @@ const MessageItem: FC<MessageItemPropType> = ({ message }) => {
         setAudioFetched(true);
         const endTime = Date.now();
         const latency = endTime - startTime;
-        await saveTelemetryEvent('0.1', 'E045', 'aiToolProxyToolLatency', 't2sLatency', {
-          botId: '74b41966-c74a-43e7-ba43-07f038893cb4',
-          orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-          userId: localStorage.getItem('userID') || '',
-          phoneNumber: localStorage.getItem('phoneNumber') || '',
-          conversationId: sessionStorage.getItem('conversationId') || '',
-          text: text,
-          msgId: content?.data?.replyId,
-          timeTaken: latency,
-          createdAt: Math.floor(startTime / 1000),
-          error: error?.message || 'Error fetching audio',
-        });
         return null;
       }
     };

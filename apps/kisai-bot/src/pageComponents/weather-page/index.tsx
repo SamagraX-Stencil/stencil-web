@@ -7,7 +7,6 @@ import { useLocalization } from '../../hooks';
 import axios from 'axios';
 import { FullPageLoader } from '@samagra-x/stencil-molecules/lib/fullpage-loader';
 import WeatherAdvisoryPopup from '../../components/weather-advisory-popup';
-import saveTelemetryEvent from '../../utils/telemetry';
 import { v4 as uuidv4 } from 'uuid';
 import Menu from '../../components/menu';
 
@@ -116,80 +115,6 @@ const WeatherPage: React.FC = () => {
       if (weather?.current) {
         setTelemetrySent(true);
         const msgId = uuidv4();
-        await saveTelemetryEvent('0.1', 'E032', 'messageQuery', 'messageSent', {
-          botId: '74b41966-c74a-43e7-ba43-07f038893cb4',
-          orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-          userId: localStorage.getItem('userID') || '',
-          phoneNumber: localStorage.getItem('phoneNumber') || '',
-          conversationId: convId,
-          messageId: msgId || messageId || '',
-          text: cropData?.descriptor?.name || t('label.weather'),
-          createdAt: Math.floor(new Date().getTime() / 1000),
-        });
-        await saveTelemetryEvent('0.1', 'E005', 'userQuery', 'userHistory', {
-          botId: '74b41966-c74a-43e7-ba43-07f038893cb4',
-          orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-          userId: localStorage.getItem('userID') || '',
-          phoneNumber: localStorage.getItem('phoneNumber') || '',
-          conversationId: convId,
-          messageId: msgId || messageId || '',
-          text: cropData?.descriptor?.name || t('label.weather'),
-          createdAt: Math.floor(new Date().getTime() / 1000),
-          timeTaken: 0,
-          did: uuidv4(),
-        });
-        await saveTelemetryEvent('0.1', 'E006', 'userQuery', 'userInfo', {
-          botId: '74b41966-c74a-43e7-ba43-07f038893cb4',
-          orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-          userId: localStorage.getItem('userID') || '',
-          phoneNumber: localStorage.getItem('phoneNumber') || '',
-          conversationId: convId,
-          messageId: msgId || messageId || '',
-          text: cropData?.descriptor?.name || t('label.weather'),
-          createdAt: Math.floor(new Date().getTime() / 1000),
-          block: localStorage.getItem('block') || '',
-          district: localStorage.getItem('city') || '',
-          transformerId: uuidv4(),
-        });
-        saveTelemetryEvent('0.1', 'E017', 'userQuery', 'responseAt', {
-          botId: '74b41966-c74a-43e7-ba43-07f038893cb4',
-          orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-          userId: localStorage.getItem('userID') || '',
-          phoneNumber: localStorage.getItem('phoneNumber') || '',
-          conversationId: convId || '',
-          messageId: msgId || messageId || '',
-          text: '',
-          timeTaken: 0,
-          createdAt: Math.floor(new Date().getTime() / 1000),
-        });
-        saveTelemetryEvent('0.1', 'E012', 'userQuery', 'llmResponse', {
-          botId: '74b41966-c74a-43e7-ba43-07f038893cb4',
-          transformerId: uuidv4(),
-          orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-          userId: localStorage.getItem('userID') || '',
-          phoneNumber: localStorage.getItem('phoneNumber') || '',
-          conversationId: convId || '',
-          replyId: uuidv4(),
-          messageId: msgId || messageId || '',
-          text: cropData?.descriptor?.long_desc || JSON.stringify(weather.current),
-          createdAt: Math.floor(new Date().getTime() / 1000),
-          timeTaken: parseInt(`${fetchTime}`),
-          responseType: `Guided: weather`,
-          isGuided: 'true',
-          isFlowEnd: 'false',
-        });
-        saveTelemetryEvent('0.1', 'E033', 'messageQuery', 'messageReceived', {
-          botId: '74b41966-c74a-43e7-ba43-07f038893cb4',
-          orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-          userId: localStorage.getItem('userID') || '',
-          phoneNumber: localStorage.getItem('phoneNumber') || '',
-          conversationId: convId || '',
-          replyId: uuidv4(),
-          messageId: msgId || messageId || '',
-          text: cropData?.descriptor?.long_desc || JSON.stringify(weather.current),
-          createdAt: Math.floor(new Date().getTime() / 1000),
-          timeTaken: parseInt(`${fetchTime}`),
-        });
       }
     } catch (err) {
       console.error(err);
