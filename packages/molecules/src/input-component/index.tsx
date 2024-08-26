@@ -1,84 +1,81 @@
-import React, { useState } from 'react';
+import React, { CSSProperties, useState } from 'react';
 import { Button, Typography, Box } from '@mui/material';
 import LoginInput from '../login-input';
 import OtpComponent from '../otp';
 
 type InputType = 'mobile' | 'password' | 'email' | 'aadhaar' | 'otp' | 'username';
 
-interface LoginProps {
-  title?: string;
+export interface ButtonProps {
   handleNextTask: () => Promise<string>;
-  ResetOtpForgotPassworkAction?: () => void;
+  buttonText: string;
   jwksUrl?: string;
   nextRoute?: string;
-  type: InputType;
+  buttonStyle?: React.CSSProperties;
+}
+
+export interface InputProps {
   value: string;
   onChange: (value: any) => void;
   placeholder: string;
-  buttonText: string;
   errorMessage: string;
-  otpCountDown?: number;
-  mobileNumberForOtpScreen?: string;
+  inputStyle?: React.CSSProperties;
+}
+
+export interface OtpProps {
+  value: string;
+  onChange: (value: any) => void;
+  handleResendOtpButton: () => void;
+  countDownTime?: number;
+  mobileNumberForOtpScreen: string;
   optBoxSeparator?: React.ReactNode;
+  ResetOtpPlaceHolder?: string;
+  styles?: {
+    titleStyle?: CSSProperties;
+    subtitleStyle?: CSSProperties;
+    phoneNumberStyle?: CSSProperties;
+    countdownStyle?: CSSProperties;
+    resendTextStyle?: CSSProperties;
+    mainStyle?: React.CSSProperties;
+    formStyle?: React.CSSProperties;
+    otpInputStyle?: React.CSSProperties;
+    backButtonStyle?: React.CSSProperties;
+    loginButtonStyle?: React.CSSProperties;
+  };
+}
+
+export interface PasswordProps {
+  handleForgotPasswordButton: () => void;
   passWordPlaceholder?: string;
-  ResetOtpForgotPassworkPlaceHolder?: string;
   passwordvalue?: string;
   passwordOnchange?: (value: any) => void;
-  customStyles?: {
-    containerStyle?: React.CSSProperties;
-    titleStyle?: React.CSSProperties;
-    inputStyle?: React.CSSProperties;
-    passwordInputStyle?: React.CSSProperties;
-    forgotPasswordStyle?: React.CSSProperties;
-    buttonStyle?: React.CSSProperties;
-    otpStyles?: {
-      mainStyle?: React.CSSProperties;
-      formStyle?: React.CSSProperties;
-      otpInputStyle?: React.CSSProperties;
-      backButtonStyle?: React.CSSProperties;
-      loginButtonStyle?: React.CSSProperties;
-    };
-  };
+  ForgotPassworkPlaceHolder?: string;
+  forgotPasswordStyleText?: React.CSSProperties;
+  passwordInputStyle?: React.CSSProperties;
+}
+
+export interface LoginProps {
+  title?: string;
+  type: InputType;
+  mainContainerStyle?: React.CSSProperties;
+  titleStyle?: React.CSSProperties;
+  buttonProps: ButtonProps;
+  inputProps?: InputProps;
+  otpProps?: OtpProps;
+  passwordProp?: PasswordProps;
 }
 const InputComponent: React.FC<LoginProps> = ({
   title,
-  handleNextTask,
-  ResetOtpForgotPassworkAction,
-  ResetOtpForgotPassworkPlaceHolder,
-  // jwksUrl,
-  // nextRoute,
-  buttonText,
   type,
-  value,
-  onChange,
-  errorMessage,
-  placeholder,
-  otpCountDown,
-  mobileNumberForOtpScreen,
-  optBoxSeparator,
-  passWordPlaceholder,
-  passwordvalue,
-  passwordOnchange,
-  customStyles = {},
+  mainContainerStyle,
+  titleStyle,
+  buttonProps,
+  inputProps,
+  otpProps,
+  passwordProp,
 }) => {
-  const {
-    containerStyle = {},
-    titleStyle: titleStyle = {},
-    inputStyle = {},
-    passwordInputStyle = {},
-    forgotPasswordStyle = {},
-    buttonStyle = {},
-    otpStyles = {},
-  } = customStyles;
   const [valid, setValid] = useState(true);
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      // alignItems="center"
-      justifyContent="center"
-      sx={containerStyle}
-    >
+    <Box display="flex" flexDirection="column" justifyContent="center" sx={mainContainerStyle}>
       {title && (
         <Typography variant="h4" gutterBottom sx={titleStyle}>
           {title}
@@ -86,35 +83,38 @@ const InputComponent: React.FC<LoginProps> = ({
       )}
       {type !== 'otp' ? (
         <>
-          <LoginInput
-            type={type}
-            value={value}
-            onChange={onChange}
-            placeholder={placeholder}
-            inputstyle={inputStyle}
-            valid={valid}
-            errorMessage={errorMessage}
-            setValid={setValid}
-          />
-          {type == 'username' && (
+          {inputProps && (
+            <LoginInput
+              type={type}
+              value={inputProps.value}
+              onChange={inputProps.onChange}
+              placeholder={inputProps.placeholder}
+              inputstyle={inputProps.inputStyle}
+              valid={valid}
+              errorMessage={inputProps.errorMessage}
+              setValid={setValid}
+            />
+          )}
+
+          {type == 'username' && passwordProp && (
             <div style={{ marginTop: '12px' }}>
               <LoginInput
-                type={'password'}
-                value={passwordvalue || ''}
-                onChange={passwordOnchange || (() => {})}
-                placeholder={passWordPlaceholder || ''}
-                inputstyle={passwordInputStyle}
+                type="password"
+                value={passwordProp.passwordvalue || ''}
+                onChange={passwordProp.passwordOnchange || (() => {})}
+                placeholder={passwordProp.passWordPlaceholder || ''}
+                inputstyle={passwordProp.passwordInputStyle}
               />
               <a
                 style={{
                   textAlign: 'end',
                   display: 'block',
                   marginTop: '4px',
-                  ...forgotPasswordStyle,
+                  ...passwordProp.forgotPasswordStyleText,
                 }}
-                onClick={ResetOtpForgotPassworkAction}
+                onClick={passwordProp.handleForgotPasswordButton}
               >
-                {ResetOtpForgotPassworkPlaceHolder}
+                {passwordProp.ForgotPassworkPlaceHolder}
               </a>
             </div>
           )}
@@ -122,28 +122,30 @@ const InputComponent: React.FC<LoginProps> = ({
           <Button
             variant="contained"
             color="primary"
-            onClick={handleNextTask}
+            onClick={buttonProps.handleNextTask}
             fullWidth
             size="large"
-            sx={{ mt: 2, height: '60px', ...buttonStyle }}
-            disabled={type === 'password' ? !valid || !passwordvalue?.length : !valid}
+            sx={{ mt: 2, height: '60px', ...buttonProps.buttonStyle }}
+            disabled={type === 'password' ? !valid || !passwordProp?.passwordvalue?.length : !valid}
           >
-            {buttonText}
+            {buttonProps.buttonText}
           </Button>
         </>
       ) : (
-        <OtpComponent
-          countdown={otpCountDown}
-          handleLogin={handleNextTask}
-          otp={value}
-          otpLength={4}
-          phoneNumber={mobileNumberForOtpScreen}
-          resendOtp={ResetOtpForgotPassworkAction}
-          setOtp={onChange}
-          separator={optBoxSeparator}
-          ResetOtpForgotPassworkPlaceHolder={ResetOtpForgotPassworkPlaceHolder}
-          otpCustomStyle={otpStyles}
-        />
+        otpProps && (
+          <OtpComponent
+            countdown={otpProps.countDownTime}
+            handleLogin={buttonProps.handleNextTask}
+            otp={otpProps?.value || ''}
+            otpLength={4}
+            phoneNumber={otpProps.mobileNumberForOtpScreen}
+            resendOtp={otpProps.handleResendOtpButton}
+            setOtp={otpProps?.onChange}
+            separator={otpProps.optBoxSeparator}
+            ResetOtpForgotPassworkPlaceHolder={otpProps.ResetOtpPlaceHolder}
+            otpCustomStyle={otpProps.styles}
+          />
+        )
       )}
     </Box>
   );

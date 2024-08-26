@@ -14,9 +14,10 @@ import { useConfig } from '../../hooks/useConfig';
 import LanguagePicker from '../../components/language-picker';
 import NewLanguagePicker from '@samagra-x/stencil-molecules/lib/language-picker/languagePicker';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-// import { OTPInput } from 'stencil-molecules/lib/otp-input';
-import InputComponent from '@samagra-x/stencil-molecules/lib/input-component';
-// import ContextProvider from '../../providers/context-provider';
+import InputComponent, {
+  ButtonProps,
+  InputProps,
+} from '@samagra-x/stencil-molecules/lib/input-component';
 
 const LoginPage: React.FC = () => {
   const config = useConfig('component', 'loginPage');
@@ -105,15 +106,15 @@ const LoginPage: React.FC = () => {
         >
           <LanguagePicker />
         </div>
-        <div
+        {/* <div
           style={{
             position: 'absolute',
             top: '16px',
             left: 'calc(100% - 117px)',
             zIndex: 10,
           }}
-        ></div>
-        {showLogo && logo && (
+        ></div> */}
+        {/* {showLogo && logo && (
           <div
             style={{
               height: '400px',
@@ -125,7 +126,7 @@ const LoginPage: React.FC = () => {
           >
             <img data-testid="login-page-img" src={logo} alt="loginPageImg" width={'100%'} />
           </div>
-        )}
+        )} */}
         <div className={styles.form}>
           {/* Form */}
           {/* <Typography
@@ -140,7 +141,7 @@ const LoginPage: React.FC = () => {
               __html: t('label.subtitle'),
             }}
           ></Typography> */}
-          {/*   <Box
+          {/* <Box
             component="form"
             onSubmit={handleLogin}
             sx={{
@@ -167,8 +168,6 @@ const LoginPage: React.FC = () => {
               autoComplete={'phone'}
               autoFocus
             />
-
-            // {/* @ts-ignore 
             <Button
               data-testid="login-button"
               fullWidth
@@ -188,21 +187,29 @@ const LoginPage: React.FC = () => {
             >
               {loading ? <CircularProgress size={24} color="inherit" /> : `${t('label.continue')}`}
             </Button>
-          </Box> 
-          */}
+          </Box> */}
           <InputComponent
-            errorMessage="Mobile Number is required"
-            buttonText={t('label.continue')}
-            handleNextTask={handleLogin}
-            onChange={setInput}
-            placeholder={t('message.enter_mobile')}
-            type="mobile"
-            value={input}
             title={t('label.subtitle')}
-            customStyles={{
-              titleStyle: { color: theme?.primary?.main || 'black', fontWeight: 'bold' },
-              containerStyle: { width: '100%' },
+            type="mobile"
+            titleStyle={{
+              color: theme?.primary?.main || 'black',
+              fontWeight: 'bold',
             }}
+            mainContainerStyle={{ width: '100%' }}
+            buttonProps={
+              {
+                handleNextTask: handleLogin,
+                buttonText: 'Continue',
+              } as ButtonProps
+            }
+            inputProps={
+              {
+                errorMessage: 'Mobile Number is required',
+                value: input,
+                onChange: setInput,
+                placeholder: t('message.enter_mobile'),
+              } as InputProps
+            }
           />
         </div>
       </div>

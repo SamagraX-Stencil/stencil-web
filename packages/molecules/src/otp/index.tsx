@@ -1,6 +1,6 @@
 import { Button, CircularProgress, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import React, { CSSProperties, useState } from 'react';
+import React, { CSSProperties, useEffect, useState } from 'react';
 import { OTPInput } from '../otp-input';
 const styles: { [key: string]: CSSProperties } = {
   main: {
@@ -38,7 +38,6 @@ const styles: { [key: string]: CSSProperties } = {
   //   },
   // },
 };
-
 interface OtpComponentProps {
   phoneNumber?: string;
   handleLogin?: () => Promise<string>;
@@ -68,14 +67,26 @@ const OtpComponent = ({
   otp = '',
   setOtp,
   otpLength = 4,
-  countdown,
+  countdown: initialCountdown = 30,
   resendOtp,
   separator,
   ResetOtpForgotPassworkPlaceHolder,
   otpCustomStyle = {},
 }: OtpComponentProps) => {
   const [loading, setLoading] = useState(false);
+  const [countdown, setCountdown] = useState(initialCountdown);
 
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (countdown > 0) {
+      timer = setInterval(() => {
+        setCountdown((prevCountdown) => prevCountdown - 1);
+      }, 1000);
+    }
+    return () => {
+      if (timer) clearInterval(timer);
+    };
+  }, [countdown]);
   const handleLoginButtonClick = async () => {
     if (!handleLogin) return;
     setLoading(true);
@@ -100,7 +111,7 @@ const OtpComponent = ({
         {/* <Typography variant="h4" textAlign="center" width="90%" color="#1E232C" sx={{ m: 2 }}>
           {title}
         </Typography> */}
-        <Typography variant="body2" textAlign="left" width="100%" color="#838BA1">
+        <Typography variant="body2" textAlign="center" width="100%" color="#838BA1">
           Enter the verification code we just sent on your mobile number
         </Typography>
         <Typography fontWeight="bold" textAlign="center">
@@ -133,10 +144,8 @@ const OtpComponent = ({
               otpInputStyle={otpInputStyle}
             />
           </Box>
-          <div style={{ marginTop: '10px' }}>
-            {countdown ? (
-              countdown
-            ) : 0 > 0 ? (
+          <div style={{ marginTop: '10px', color: '#000' }}>
+            {countdown > 0 ? (
               <Typography>Please wait {countdown} seconds before resending OTP</Typography>
             ) : (
               <>

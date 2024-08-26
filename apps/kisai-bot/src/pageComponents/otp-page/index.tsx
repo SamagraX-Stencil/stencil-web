@@ -16,7 +16,10 @@ import axios from 'axios';
 import { FormattedMessage } from 'react-intl';
 import { IconButton } from '@mui/material';
 import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
-import InputComponent from '@samagra-x/stencil-molecules/lib/input-component';
+import InputComponent, {
+  ButtonProps,
+  OtpProps,
+} from '@samagra-x/stencil-molecules/lib/input-component';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const OtpPage: React.FC = () => {
@@ -208,7 +211,7 @@ const OtpPage: React.FC = () => {
             )}
           </div>
         </div>
-        <InputComponent
+        {/* <InputComponent
           errorMessage=""
           buttonText={t('label.continue')}
           handleNextTask={async () => {
@@ -228,6 +231,34 @@ const OtpPage: React.FC = () => {
           }}
           otpCountDown={30}
           // ResetOtpForgotPassworkAction={}
+        /> */}
+        <InputComponent
+          title="OTP Verification"
+          titleStyle={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'cneter',
+          }}
+          type="otp"
+          buttonProps={
+            {
+              buttonText: t('label.submit'),
+            } as ButtonProps
+          }
+          otpProps={
+            {
+              value: otp,
+              onChange: setOtp,
+              optBoxSeparator: <></>,
+              ResetOtpForgotPlaceHolder: 'Resent Again',
+              handleResendOtpButton: resendOtp,
+
+              mobileNumberForOtpScreen: '9907799970',
+              countDownTime: 30,
+
+              // styles: {},
+            } as OtpProps
+          }
         />
 
         <Button
