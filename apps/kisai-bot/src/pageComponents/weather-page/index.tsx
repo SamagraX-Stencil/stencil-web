@@ -117,7 +117,7 @@ const WeatherPage: React.FC = () => {
         setTelemetrySent(true);
         const msgId = uuidv4();
         await saveTelemetryEvent('0.1', 'E032', 'messageQuery', 'messageSent', {
-          botId: process.env.NEXT_PUBLIC_BOT_ID || '',
+          botId: '74b41966-c74a-43e7-ba43-07f038893cb4',
           orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
           userId: localStorage.getItem('userID') || '',
           phoneNumber: localStorage.getItem('phoneNumber') || '',
@@ -127,7 +127,7 @@ const WeatherPage: React.FC = () => {
           createdAt: Math.floor(new Date().getTime() / 1000),
         });
         await saveTelemetryEvent('0.1', 'E005', 'userQuery', 'userHistory', {
-          botId: process.env.NEXT_PUBLIC_BOT_ID || '',
+          botId: '74b41966-c74a-43e7-ba43-07f038893cb4',
           orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
           userId: localStorage.getItem('userID') || '',
           phoneNumber: localStorage.getItem('phoneNumber') || '',
@@ -139,7 +139,7 @@ const WeatherPage: React.FC = () => {
           did: uuidv4(),
         });
         await saveTelemetryEvent('0.1', 'E006', 'userQuery', 'userInfo', {
-          botId: process.env.NEXT_PUBLIC_BOT_ID || '',
+          botId: '74b41966-c74a-43e7-ba43-07f038893cb4',
           orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
           userId: localStorage.getItem('userID') || '',
           phoneNumber: localStorage.getItem('phoneNumber') || '',
@@ -152,7 +152,7 @@ const WeatherPage: React.FC = () => {
           transformerId: uuidv4(),
         });
         saveTelemetryEvent('0.1', 'E017', 'userQuery', 'responseAt', {
-          botId: process.env.NEXT_PUBLIC_BOT_ID || '',
+          botId: '74b41966-c74a-43e7-ba43-07f038893cb4',
           orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
           userId: localStorage.getItem('userID') || '',
           phoneNumber: localStorage.getItem('phoneNumber') || '',
@@ -163,7 +163,7 @@ const WeatherPage: React.FC = () => {
           createdAt: Math.floor(new Date().getTime() / 1000),
         });
         saveTelemetryEvent('0.1', 'E012', 'userQuery', 'llmResponse', {
-          botId: process.env.NEXT_PUBLIC_BOT_ID || '',
+          botId: '74b41966-c74a-43e7-ba43-07f038893cb4',
           transformerId: uuidv4(),
           orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
           userId: localStorage.getItem('userID') || '',
@@ -179,7 +179,7 @@ const WeatherPage: React.FC = () => {
           isFlowEnd: 'false',
         });
         saveTelemetryEvent('0.1', 'E033', 'messageQuery', 'messageReceived', {
-          botId: process.env.NEXT_PUBLIC_BOT_ID || '',
+          botId: '74b41966-c74a-43e7-ba43-07f038893cb4',
           orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
           userId: localStorage.getItem('userID') || '',
           phoneNumber: localStorage.getItem('phoneNumber') || '',

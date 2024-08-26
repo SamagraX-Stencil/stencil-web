@@ -302,7 +302,7 @@ const ContextProvider: FC<{
               // console.log('useeffect', newMsg.text);
               try {
                 saveTelemetryEvent('0.1', 'E017', 'userQuery', 'responseAt', {
-                  botId: process.env.NEXT_PUBLIC_BOT_ID || '',
+                  botId: '74b41966-c74a-43e7-ba43-07f038893cb4',
                   orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
                   userId: localStorage.getItem('userID') || '',
                   phoneNumber: localStorage.getItem('phoneNumber') || '',

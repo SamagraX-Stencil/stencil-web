@@ -30,33 +30,6 @@ const ChatItem: React.FC<ChatItemPropsType> = ({
     router.push('/chat');
   }, [context, conversationId]);
 
-  const deleteConversation = useCallback(() => {
-    const confirmed = window?.confirm(`${t('label.confirm_delete')}`);
-    if (confirmed) {
-      axios
-        .get(`${process.env.NEXT_PUBLIC_BFF_API_URL}/user/conversations/delete/${conversationId}`, {
-          headers: {
-            authorization: `Bearer ${localStorage.getItem('auth')}`,
-          },
-        })
-        .then((res) => {
-          console.log('deleting conversation');
-          if (conversationId === sessionStorage.getItem('conversationId')) {
-            recordUserLocation();
-            const newConversationId = uuidv4();
-            sessionStorage.setItem('conversationId', newConversationId);
-            context?.setConversationId(newConversationId);
-            context?.setMessages([]);
-          }
-          deleteConversationById(conversationId);
-          setIsConversationDeleted(true);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
-  }, [context, conversationId, deleteConversationById, t]);
-
   return (
     <>
       {!isConversationDeleted && (

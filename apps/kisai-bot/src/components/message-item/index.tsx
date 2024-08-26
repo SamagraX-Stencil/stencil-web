@@ -97,7 +97,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message }) => {
       if (value === 1) {
         context?.newSocket.sendMessage({
           payload: {
-            app: process.env.NEXT_PUBLIC_BOT_ID || '',
+            app: '74b41966-c74a-43e7-ba43-07f038893cb4',
             from: {
               userID: localStorage.getItem('userID'),
             },
@@ -238,7 +238,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message }) => {
       context?.playAudio(url, content);
       setTtsLoader(false);
       saveTelemetryEvent('0.1', 'E015', 'userQuery', 'timesAudioUsed', {
-        botId: process.env.NEXT_PUBLIC_BOT_ID || '',
+        botId: '74b41966-c74a-43e7-ba43-07f038893cb4',
         orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
         userId: localStorage.getItem('userID') || '',
         phoneNumber: localStorage.getItem('phoneNumber') || '',
@@ -265,7 +265,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message }) => {
           },
           {
             headers: {
-              botId: process.env.NEXT_PUBLIC_BOT_ID || '',
+              botId: '74b41966-c74a-43e7-ba43-07f038893cb4',
               orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
               userId: localStorage.getItem('userID') || '',
             },
@@ -275,7 +275,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message }) => {
         const endTime = Date.now();
         const latency = endTime - startTime;
         await saveTelemetryEvent('0.1', 'E045', 'aiToolProxyToolLatency', 't2sLatency', {
-          botId: process.env.NEXT_PUBLIC_BOT_ID || '',
+          botId: '74b41966-c74a-43e7-ba43-07f038893cb4',
           orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
           userId: localStorage.getItem('userID') || '',
           phoneNumber: localStorage.getItem('phoneNumber') || '',
@@ -294,7 +294,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message }) => {
         const endTime = Date.now();
         const latency = endTime - startTime;
         await saveTelemetryEvent('0.1', 'E045', 'aiToolProxyToolLatency', 't2sLatency', {
-          botId: process.env.NEXT_PUBLIC_BOT_ID || '',
+          botId: '74b41966-c74a-43e7-ba43-07f038893cb4',
           orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
           userId: localStorage.getItem('userID') || '',
           phoneNumber: localStorage.getItem('phoneNumber') || '',

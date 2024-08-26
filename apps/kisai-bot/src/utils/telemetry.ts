@@ -16,7 +16,7 @@ const saveTelemetryEvent = async (
 
   try {
     const telemetryData = {
-      generator: process.env.NEXT_PUBLIC_BOT_NAME,
+      generator: 'kmai-dev',
       version,
       timestamp: Math.floor(new Date().getTime() / 1000),
       actorId: localStorage.getItem('userID') || '',

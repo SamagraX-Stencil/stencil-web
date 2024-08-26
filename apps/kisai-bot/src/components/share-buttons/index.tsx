@@ -31,9 +31,9 @@ const ShareButtons = () => {
 
     return axios.get(url, {
       headers: {
-        botId: process.env.NEXT_PUBLIC_BOT_ID || '',
+        botId: '74b41966-c74a-43e7-ba43-07f038893cb4',
         userId: localStorage.getItem('userID'),
-        template: process.env.NEXT_PUBLIC_BOT_NAME?.split('-')?.[0] || 'akai',
+        template: 'kmai-dev'.split('-')?.[0],
       },
     });
   };

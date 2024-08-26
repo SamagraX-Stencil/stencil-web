@@ -35,7 +35,7 @@ const ChatUiWindow: React.FC = () => {
             )}&conversationId=${sessionStorage.getItem('conversationId')}`,
             {
               headers: {
-                botId: process.env.NEXT_PUBLIC_BOT_ID || '',
+                botId: '74b41966-c74a-43e7-ba43-07f038893cb4',
               },
             }
           );
@@ -69,7 +69,7 @@ const ChatUiWindow: React.FC = () => {
       )
       .map((item: any) => ({
         text: (item?.to === 'admin'
-          ? item?.payload?.metaData?.originalText ?? item?.payload?.text
+          ? (item?.payload?.metaData?.originalText ?? item?.payload?.text)
           : item?.payload?.text
         )
           ?.replace(/<end\/>/g, '')
