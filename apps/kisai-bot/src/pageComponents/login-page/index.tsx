@@ -114,7 +114,7 @@ const LoginPage: React.FC = () => {
             zIndex: 10,
           }}
         ></div> */}
-        {/* {showLogo && logo && (
+        {showLogo && logo && (
           <div
             style={{
               height: '400px',
@@ -126,7 +126,7 @@ const LoginPage: React.FC = () => {
           >
             <img data-testid="login-page-img" src={logo} alt="loginPageImg" width={'100%'} />
           </div>
-        )} */}
+        )}
         <div className={styles.form}>
           {/* Form */}
           {/* <Typography
@@ -194,6 +194,7 @@ const LoginPage: React.FC = () => {
             titleStyle={{
               color: theme?.primary?.main || 'black',
               fontWeight: 'bold',
+              fontSize: '28px',
             }}
             mainContainerStyle={{ width: '100%' }}
             buttonProps={
