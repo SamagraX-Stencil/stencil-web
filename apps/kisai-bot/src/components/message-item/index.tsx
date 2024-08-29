@@ -476,7 +476,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message }) => {
                 {content?.data?.position === 'right'
                   ? null
                   : !content?.data?.isEnd && <BlinkingSpinner />}
-                {process.env.NEXT_PUBLIC_DEBUG === 'true' && (
+                {true && (
                   <div
                     style={{
                       color: content?.data?.position === 'right' ? 'var(--font)' : 'yellow',
@@ -906,7 +906,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message }) => {
             <div style={{ display: 'flex' }}>
               <span className={styles.optionsText}>
                 {content?.data?.payload?.text}
-                {process.env.NEXT_PUBLIC_DEBUG === 'true' && (
+                {true && (
                   <div
                     style={{
                       color: 'var(--font)',
@@ -989,7 +989,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message }) => {
                 choices: JSON.parse(content?.text)?.buttons,
                 isWeather: true,
               })} */}
-              {process.env.NEXT_PUBLIC_DEBUG === 'true' && (
+              {true && (
                 <div
                   style={{
                     color: 'var(--font)',
