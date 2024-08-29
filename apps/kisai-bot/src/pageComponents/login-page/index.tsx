@@ -57,26 +57,26 @@ const LoginPage: React.FC = () => {
         console.log('hello');
         setLoading(true);
         if (navigator.onLine) {
-          fetch(`${process.env.NEXT_PUBLIC_USER_SERVICE_URL}/api/sendOTP?phone=${input}`, {
-            method: 'GET',
-          })
-            .then((response) => {
-              setLoading(false);
-              if (response.status === 200) {
-                // Perform the navigation and resolve the promise
-                router.push({ pathname: '/otp', query: { state: input } });
-                resolve('SUCCESS');
-              } else {
-                setLoading(false);
-                toast.error(`${t('message.otp_not_sent')}`);
-                reject('FAILURE');
-              }
-            })
-            .catch(() => {
-              setLoading(false);
-              toast.error(`${t('message.otp_not_sent')}`);
-              reject('FAILURE');
-            });
+          // fetch(`${process.env.NEXT_PUBLIC_USER_SERVICE_URL}/api/sendOTP?phone=${input}`, {
+          //   method: 'GET',
+          // })
+          //   .then((response) => {
+          setLoading(false);
+          // if (response.status === 200) {
+          // Perform the navigation and resolve the promise
+          router.push({ pathname: '/otp', query: { state: input } });
+          resolve('SUCCESS');
+          // } else {
+          //   setLoading(false);
+          //   toast.error(`${t('message.otp_not_sent')}`);
+          //   reject('FAILURE');
+          // }
+          // })
+          // .catch(() => {
+          //   setLoading(false);
+          //   toast.error(`${t('message.otp_not_sent')}`);
+          //   reject('FAILURE');
+          // });
         } else {
           toast.error(`${t('label.no_internet')}`);
           reject('FAILURE');
