@@ -33,7 +33,7 @@ const ShareButtons = () => {
       headers: {
         botId: process.env.NEXT_PUBLIC_BOT_ID || '',
         userId: localStorage.getItem('userID'),
-        template: process.env.NEXT_PUBLIC_BOT_NAME?.split('-')?.[0] || 'akai',
+        template: 'kmai-dev' || 'akai',
       },
     });
   };

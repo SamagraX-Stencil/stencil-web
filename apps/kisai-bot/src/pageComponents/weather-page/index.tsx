@@ -9,6 +9,7 @@ import WeatherAdvisoryPopup from '../../components/weather-advisory-popup';
 import { v4 as uuidv4 } from 'uuid';
 import Menu from '../../components/menu';
 import { ImportedFullPageLoader } from '../../components/fullpage-loader';
+import data from './apiData.json';
 
 const WeatherPage: React.FC = () => {
   const t = useLocalization();
@@ -30,31 +31,8 @@ const WeatherPage: React.FC = () => {
   }, []);
 
   const fetchWeatherData = async () => {
-    const startTime = performance.now();
-    if (!localStorage.getItem('longitude') || !localStorage.getItem('latitude')) return;
     try {
-      const response = await axios.get(process.env.NEXT_PUBLIC_WEATHER_API || '', {
-        params: {
-          latitude: localStorage.getItem('latitude'),
-          longitude: localStorage.getItem('longitude'),
-          provider: config?.provider || 'upcar',
-        },
-      });
-
-      const endTime = performance.now();
-      setFetchTime(endTime - startTime);
-      console.log(response.data);
-      const providers = response.data.message.catalog.providers;
-      // setData(providers);
-
-      // providers.forEach((provider: any) => {
-      //   if(provider?.id === 'upcar') {
-      //     setCrop(provider);
-      //   }else{
-      //     setWeather(provider);
-      //   }
-      // });
-
+      const providers = data;
       providers.forEach((provider: any) => {
         if (provider.id.toLowerCase() === 'ouat') {
           if (provider.category_id === 'crop_advisory_provider') {

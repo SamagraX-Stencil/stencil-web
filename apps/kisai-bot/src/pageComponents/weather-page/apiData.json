@@ -1,0 +1,609 @@
+[
+  {
+    "id": "imd",
+    "category_id": "weather_provider",
+    "categories": [
+      {
+        "id": "current_weather"
+      },
+      {
+        "id": "future_weather"
+      }
+    ],
+    "items": [
+      {
+        "descriptor": {
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/thunder.svg",
+              "type": "image_day"
+            },
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/thunder.svg",
+              "type": "image_night"
+            },
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/thunderstorm.png",
+              "type": "icon"
+            }
+          ]
+        },
+        "time": {
+          "label": "Date of Observation",
+          "timestamp": "2024-08-29"
+        },
+        "locations_ids": ["Bhopal-Arera Hills", "भोपाल-अरेरा हिल्स", "ଭୋପାଳ-ଆରେରା ପାହାଡ"],
+        "category_ids": ["current_weather"],
+        "tags": {
+          "conditions": "Thunderstorm",
+          "conditions_hi": "तूफान",
+          "conditions_or": "ତୁଫାନ",
+          "temp": 25,
+          "humidity": "100",
+          "winddir": "Southeasterly",
+          "winddir_hi": "दक्षिणपूर्व",
+          "winddir_or": "ଦକ୍ଷିଣପୂର୍ବ",
+          "windspeed": 9.4,
+          "cloudcover": 88
+        }
+      },
+      {
+        "descriptor": {
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/CLOUDY.svg",
+              "type": "image_day"
+            },
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/Weather card ( Night ).svg",
+              "type": "image_night"
+            },
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/cloudy.png",
+              "type": "icon"
+            }
+          ]
+        },
+        "time": {
+          "label": "Future Date of Forecast",
+          "timestamp": "2024-08-30"
+        },
+        "location_ids": ["Bhopal-Arera Hills", "भोपाल-अरेरा हिल्स", "ଭୋପାଳ-ଆରେରା ପାହାଡ"],
+        "category_ids": ["future_weather"],
+        "tags": {
+          "temp_max": 30.2,
+          "temp_min": 23.7,
+          "conditions_hi": "बादल",
+          "conditions_or": "ମେଘୁଆ",
+          "conditions": "Cloudy"
+        }
+      },
+      {
+        "descriptor": {
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/CLOUDY.svg",
+              "type": "image_day"
+            },
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/Weather card ( Night ).svg",
+              "type": "image_night"
+            },
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/cloudy.png",
+              "type": "icon"
+            }
+          ]
+        },
+        "time": {
+          "label": "Future Date of Forecast",
+          "timestamp": "2024-08-31"
+        },
+        "location_ids": ["Bhopal-Arera Hills", "भोपाल-अरेरा हिल्स", "ଭୋପାଳ-ଆରେରା ପାହାଡ"],
+        "category_ids": ["future_weather"],
+        "tags": {
+          "temp_max": 29.1,
+          "temp_min": 23.4,
+          "conditions_hi": "बादल",
+          "conditions_or": "ମେଘୁଆ",
+          "conditions": "Cloudy"
+        }
+      },
+      {
+        "descriptor": {
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/Sunny.svg",
+              "type": "image_day"
+            },
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/Weather card ( Night ).svg",
+              "type": "image_night"
+            },
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/clear_sky.png",
+              "type": "icon"
+            }
+          ]
+        },
+        "time": {
+          "label": "Future Date of Forecast",
+          "timestamp": "2024-09-01"
+        },
+        "location_ids": ["Bhopal-Arera Hills", "भोपाल-अरेरा हिल्स", "ଭୋପାଳ-ଆରେରା ପାହାଡ"],
+        "category_ids": ["future_weather"],
+        "tags": {
+          "temp_max": 29.7,
+          "temp_min": 23,
+          "conditions_hi": "साफ़ आसमान",
+          "conditions_or": "ସ୍ୱଚ୍ଛ ଆକାଶ",
+          "conditions": "Sunny"
+        }
+      },
+      {
+        "descriptor": {
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/Sunny.svg",
+              "type": "image_day"
+            },
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/Weather card ( Night ).svg",
+              "type": "image_night"
+            },
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/clear_sky.png",
+              "type": "icon"
+            }
+          ]
+        },
+        "time": {
+          "label": "Future Date of Forecast",
+          "timestamp": "2024-09-02"
+        },
+        "location_ids": ["Bhopal-Arera Hills", "भोपाल-अरेरा हिल्स", "ଭୋପାଳ-ଆରେରା ପାହାଡ"],
+        "category_ids": ["future_weather"],
+        "tags": {
+          "temp_max": 30.5,
+          "temp_min": 23.4,
+          "conditions_hi": "साफ़ आसमान",
+          "conditions_or": "ସ୍ୱଚ୍ଛ ଆକାଶ",
+          "conditions": "Sunny"
+        }
+      }
+    ]
+  },
+  {
+    "id": "upcar",
+    "category_id": "crop_advisory_provider",
+    "categories": [
+      {
+        "id": "general_advisory"
+      },
+      {
+        "id": "crop_specific_advisory"
+      },
+      {
+        "id": "hi_translated"
+      }
+    ],
+    "items": [
+      {
+        "category_ids": ["general_advisory"],
+        "code": "general",
+        "descriptor": {
+          "name": "General Crop Advisory",
+          "long_desc": "In the current scenario of weather in the state, farmers have to manage their agriculture for the next two weeks. The following recommendations are made: - Make good use of irrigation sources in areas of low rainfall for life-saving irrigation. In view of the possibility of less rainfall in the coming week, importance should be given to the cultivation of 'Sri Anna' such as sorghum, millet, ragi, semolina, cowpea, etc. Cultivation of these crops can also protect them from the vagaries of weather. Do not allow waterlogging in pulses and oilseeds crops in western Uttar Pradesh, make proper drainage arrangements. All the farmers should make this program successful by planting trees in their areas and unused land under the Brother-Sister Tree Plantation Program. At present, vaccination against mumps is being done free of cost which will continue till 3rd July. This facility is available free of cost at veterinary clinics. Vaccination against Foot and Mouth Disease (FMD) is being done free of cost in 60 districts from 45 July to 30 August. Medicines for this are available free of cost at veterinary clinics. Fish seed of fish species Katla, Rohu, Nain, Silver carp and Grass carp are present in U.P. Fish. Development is available at Corporation and private sector hatcheries. Hence, contact the District Fisheries Office. Collect fish seeds.",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/General advisory.webp"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory"],
+        "code": "rice",
+        "descriptor": {
+          "name": "rice",
+          "long_desc": "For cultivating basmati rice varieties like Pusa Basmati-1509, Pusa Basmati-1, Pusa-1121, Pusa-1692, etc., in Western Uttar Pradesh, transplant them between 30th June and 15th July. Ensure the seedlings are 20 to 25 days old, transplant at a distance of 20x15 cm, and apply Carbendazim at 1 gram per liter of water before transplanting to prevent disease.\nWeed control can be done using a weedicide like Butachlor at 3 to 5 days after transplanting.\nMaintain cleanliness of the field by removing the water weed carefully.\nFor pest control, spray Thiomethoxam at 10 gm per liter of water 18 to 21 days after transplanting.\nIf the leaves turn yellow, spray Urea at the rate of 500-700 grams per 100 liters of water.\nIn case of a waterlogged area, control the weeds by hand or with a weedicide containing 20% salt solution.\nEnsure a good harvest by following proper irrigation and weed control practices.",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/WHEAT.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory"],
+        "code": "wheat",
+        "descriptor": {
+          "name": "wheat",
+          "long_desc": "Advanced cluster varieties of millets such as Dhanashakti, ICMB-55, W, C. Sow C-75, N.D.F.B-3 (Narendra Fodder Millet-3), Raj-7 and complex varieties 86M-84, ICMH-45, Pusa-322 and Pusa-23.",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/WHEAT.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory"],
+        "code": "maize",
+        "descriptor": {
+          "name": "maize",
+          "long_desc": "Topdressing of 75 kg / ha urea and ensuring drainage when plants reach knee height (on 30-35 day) in maize after weeding and deworming of previously sown maize.\nAtrazine for weed control in maize 800 L at 2 kg / ha within 2 days of sowing. Mix it in water and strain.\nOn the outbreak of the fall armyworm in Makakke. For effective control of 0 to 20% damage, chlorantraniliprole 8. 5% SC0.4 was found. 0. 3 ml of water or spinosad per litre. Water or thiamethoxam at the rate of 2. 6% + lambdacyhalothin at the rate of 9. 5% .5 ml per litre of water should be sprayed.",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/MAIZE.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory"],
+        "code": "arhar",
+        "descriptor": {
+          "name": "arhar",
+          "long_desc": "For better production, grow varieties like Narendra Arhar 2, Malviya 13, Rajeshwer 2, Malviya Vijeta, Pusa 9 (Bahra), etc., before the rainy season. If seeds are not available, use Rhizobium culture to treat the seeds and apply fungicide before sowing.\nFollow proper irrigation practices, especially during flowering and pod development stages.\nApply 4 grams of Trichoderma and 1 gram of Carbendazim per kg of seed before sowing.\nEnsure good weed control and irrigation practices.",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/Arhar.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory"],
+        "code": "urad and moong",
+        "descriptor": {
+          "name": "urad and moong",
+          "long_desc": "Use varieties like Azad Urad 1, Azad Urad 2, Shekhar 1, Shekhar 2, Pant Urad 31, etc., for cultivation.\nWeed control is crucial. Apply herbicides before and after sowing.\nUse proper seed treatment and irrigation practices for a good harvest.\nCultivate varieties like SML 668, PDM 84-139, PS 16, etc., for better yield.\nEnsure proper seed treatment and weed control.\nApply fungicides and herbicides as necessary.",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/WHEAT.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory"],
+        "code": "sesame",
+        "descriptor": {
+          "name": "sesame",
+          "long_desc": "Grow varieties like Pragati, Shekhar, RT 78, etc., for better yield.\nEnsure proper seed treatment and irrigation practices.",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/WHEAT.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory"],
+        "code": "sugarcane",
+        "descriptor": {
+          "name": "sugarcane",
+          "long_desc": "In order to save the sugarcane sown in the autumn season from falling in the monsoon season, offer sugarcane greetings and offer soil to the sugarcane roots.\nFor the first congratulation, when the sugarcane is about 5 feet, tie each clump in the sugarcane lines at a height of 2 feet with the dry leaves at the bottom.\nEgg clusters should be removed and destroyed if there is an outbreak of pyrilla in sugarcane. The crop environment should provide protection to Epiricania melanoleuca, a parasite of the pyrilla pest. For chemical control, cunalphos is 25% EC2L / ha. Dissolved in 800 to 4000 litres of water or chlorpyrifos 20% e.c. 4. 5 litres / ha. Spraying should be done by dissolving in 800 to 000 litres of water.\nCopper oxychloride 0. 2 percent or carbendazim 0. 4 percent for the control of pokka boing disease.\nMake a solution and sprinkle on the leaves.\nWhen symptoms of reddening disease appear on the anterior portion of the middle vein of sugarcane leaves, uproot and destroy the plants. Drench the uprooted area with thiophenate methyl 0. 2%.\nProphenophos 40% + Cypher 4% 750 ml to 625 l for protection against sucker mites. Make a solution in water and sprinkle it on the leaves.\nCarbofuran is 3% granular at 30 kcal / kg in the event of a rodent infestation in sugarcane. Use in conditions of appropriate humidity near the roots of plants at a rate of.\nSurvey-demonstration work is being done by the sugarcane department in which species, area, pedi / plant related information should be recorded.",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/SUGARCANE.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory"],
+        "code": "pulses",
+        "descriptor": {
+          "name": "pulses",
+          "long_desc": "Late maturing varieties of pigeon pea like Narendra pigeon pea-2, Malviya-3 (Miracle), Rajendra pigeon pea-2, Malviya Vikas, Pusa-9 (Bahar), Azad, Narendra pigeon pea. If you have not sown Amar, Bahar, IPA-206, IPA-5-2 yet, then sow the rams as soon as possible.\nOne kg if the seeds are not treated before sowing. 2 g of seeds. Therum, treat with one gram of carbendazim or 4 grams of trichoderma + one gram of carboxin. Before sowing, treat the seeds with a specific rhizobium culture of pigeon pea.",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/Masoor.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory"],
+        "code": "vegetables",
+        "descriptor": {
+          "name": "vegetables",
+          "long_desc": "If kharif crops are not sown, cucumber, bitter gourd, bottle gourd, bitter gourd, pumpkin, lady's finger, rice and radish can be sown.\nThere is still time for okra to be sown in the kharif (rainy) season. Its seed rate is 0 - 2 kg. It is per. And for hybrid varieties, 5 - 8 kg seed is sufficient.\nChloroantraniliprole chemical to protect brinjal crop from stem and fruit borer insect. Got 0. Dissolve the amount in a liter of water and spray at 40-5 day intervals.\nSpray a solution of thiophenate methyl with 1. 00 to 4. 50 ml quantity / l water at an interval of 45 days to prevent phimopsis blight infestation in brinjal crop. Spray the fruits after plucking and do the next plucking after 5 days.",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/Vegetables.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory"],
+        "code": "mushroom",
+        "descriptor": {
+          "name": "mushroom",
+          "long_desc": "For farmers producing mushrooms, prepare the field for August month by end of this month.\nFor information on mushroom production, contact Dr. S.K. Vishwas, Professor, Plant Pathology Department, Chandra Shekhar Azad University of Agriculture and Technology, Kanpur (Mobile: 9452252504), or Narendra Dev University of Agriculture and Technology, Ayodhya, and the Plant Pathology Department, Uttar Pradesh.",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/WHEAT.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory"],
+        "code": "horticulture",
+        "descriptor": {
+          "name": "horticulture",
+          "long_desc": "Plant tissue cultured disease resistant G-9 species for new banana plantations.\nCut off the remaining buds in the banana, leaving one sword leaf and stacking (support) in the fruit plants.\nFarmers who want to plant new gardens of mango, guava, litchi, amla, jackfruit, lemon, jamun, plum, banana, papaya should plant them.\nSpray a solution of copper oxychloride 33 g or streptocycline 600 mg per liter of water into the lemon to prevent canker disease.",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/Horticulture.png"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory"],
+        "code": "animal husbandry",
+        "descriptor": {
+          "name": "animal husbandry",
+          "long_desc": "Do not feed the animals with water collected in the pond holes, otherwise the possibility of internal parasites will increase. When feeding green fodder to animals, make sure that the fodder is always washed and fed so that the soil is more susceptible to internal parasite eggs or larvae.\nKharif is the time for sowing fodder crops, so all the cattle rearers / farmers should prepare the field well and sow improved variety of fodder seeds.\nThe Mobile Veterinary Unit Scheme is being operated by the Department to provide veterinary treatment at the doorsteps of farmers / cattle rearers. To take advantage of this scheme, all the farmers / cattle rearers can call the toll fee helpline no. You can take advantage of the plan by contacting -962.",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/cow.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory"],
+        "code": "fisheries",
+        "descriptor": {
+          "name": "fisheries",
+          "long_desc": "For fish growth, supplements should be used at 4 to 2 percent of the weight of the fish. The fish should be fed at a fixed time.\nHunting is prohibited in the reservoir / rivulets till 3rd August.\nDuring the rainy season, it is necessary to eradicate the aquatic plants of the pond. This plant absorbs the nutrients available in the pond and releases the fish.\nWhile monitoring the acidity of the pond soil, high acidity soil was treated with cow dung (20 to 30 tonnes per hectare). ) or control by adding 5 tons per hectare of gypsum.\nThai mugur fish farming is prohibited. Don't follow it.",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/fish.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory"],
+        "code": "sericulture",
+        "descriptor": {
+          "name": "sericulture",
+          "long_desc": "Use cow dung manure and NPK after weeding, mulching and cleaning grass and other weeds in mulberry plantations / plantations. Aeri pest management work is to start in the second week of December, for this spray castor seeds so that leaves can be obtained on time. In tussar silkworm rearing, insect rearing of the first crop Ampatia has started. Hence, it is advisable for the insect keepers / farmers to take good care of the tussar silkworm and use nylon nets in pest management.",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/sericulture.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory"],
+        "code": "forestry",
+        "descriptor": {
+          "name": "forestry",
+          "long_desc": "Prepare germination beds in the nursery and sow the seeds of mango, gulmohar, mahua, jackfruit, jamun, kanji, neem, etc. early. Implant the sprouted plants in root trainers / bags.",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/forestry.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["general_advisory", "hi_translated"],
+        "code": "general",
+        "descriptor": {
+          "name": "सामान्य फसल परामर्शी",
+          "long_desc": "राज्य में मौसम के वर्तमान परिदृश्य में, किसानों को अगले दो हफ्तों के लिए अपनी कृषि का प्रबंधन करना होगा। निम्नलिखित सिफारिशें की जाती हैंः - जीवन रक्षक सिंचाई के लिए कम वर्षा वाले क्षेत्रों में सिंचाई स्रोतों का अच्छा उपयोग करें। आने वाले सप्ताह में कम वर्षा की संभावना को देखते हुए 'श्री अन्न' जैसे ज्वार, बाजरा, रागी, साबूदाना, मटर आदि की खेती को महत्व दिया जाना चाहिए। इन फसलों की खेती उन्हें मौसम की अनिश्चितताओं से भी बचा सकती है। पश्चिमी उत्तर प्रदेश में दालों और तिलहन की फसलों में जलभराव न होने दें, जल निकासी की उचित व्यवस्था करें। सभी किसानों को भाई-बहन वृक्षारोपण कार्यक्रम के तहत अपने क्षेत्रों और अप्रयुक्त भूमि में पेड़ लगाकर इस कार्यक्रम को सफल बनाना चाहिए। वर्तमान में गालगुंड के खिलाफ टीकाकरण मुफ्त किया जा रहा है जो 3 जुलाई तक जारी रहेगा। यह सुविधा पशु चिकित्सालयों में निःशुल्क उपलब्ध है। 45 जुलाई से 30 अगस्त तक 60 जिलों में पैर और मुंह की बीमारी (एफएमडी) के खिलाफ टीकाकरण मुफ्त किया जा रहा है। इसके लिए दवाएं पशु चिकित्सालयों में मुफ्त में उपलब्ध हैं। उत्तर प्रदेश की मछलियों में कटला, रोहू, नैन, सिल्वर कार्प और ग्रास कार्प प्रजातियों के मछली के बीज पाए जाते हैं। निगम और निजी क्षेत्र की हैचरी में विकास उपलब्ध है। इसलिए, जिला मत्स्य पालन कार्यालय से संपर्क करें। मछली के बीज इकट्ठा करें।",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/General advisory.webp"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory", "hi_translated"],
+        "code": "rice",
+        "descriptor": {
+          "name": "rice",
+          "long_desc": "पश्चिमी उत्तर प्रदेश में बासमती चावल की किस्मों जैसे पूसा बासमती-1509, पूसा बासमती-1, पूसा-1121, पूसा-1692 आदि की खेती के लिए 30 जून से 15 जुलाई के बीच उनका प्रत्यारोपण करें। सुनिश्चित करें कि पौधे 20 से 25 दिन पुराने हैं, 20x15 सेमी की दूरी पर प्रत्यारोपण करें, और रोग को रोकने के लिए प्रत्यारोपण से पहले 1 ग्राम प्रति लीटर पानी पर कार्बेंडाज़िम लगाएं।\nप्रत्यारोपण के 3 से 5 दिनों बाद ब्यूटाक्लोर जैसी खरपतवारनाशक दवा का उपयोग करके खरपतवार नियंत्रण किया जा सकता है।\nपानी के खरपतवार को सावधानीपूर्वक हटाकर खेत की सफाई बनाए रखें।\nकीट नियंत्रण के लिए, प्रत्यारोपण के 18 से 21 दिनों के बाद 10 ग्राम प्रति लीटर पानी पर थियोमेथोक्सम का छिड़काव करें।\nयदि पत्तियाँ पीली हो जाती हैं, तो प्रति 100 लीटर पानी में 500-700 ग्राम की दर से युरिया का छिड़काव करें।\nजलमग्न क्षेत्र के मामले में, खरपतवारों को हाथ से या 20 प्रतिशत नमक के घोल वाले खरपतवारनाशक से नियंत्रित करें।\nउचित सिंचाई और खरपतवार नियंत्रण प्रथाओं का पालन करके अच्छी फसल सुनिश्चित करें।",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/WHEAT.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory", "hi_translated"],
+        "code": "wheat",
+        "descriptor": {
+          "name": "गेहूँ",
+          "long_desc": "बाजरा की उन्नत क्लस्टर किस्में जैसे धनशक्ति, आईसीएमबी-55, डब्ल्यू, सी. सॉ सी-75, N.D.F.B-3 (नरेंद्र चारा बाजरा-3), राज-7 और जटिल किस्में 86एम-84, आईसीएमएच-45, पूसा-322 और पूसा-23।",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/WHEAT.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory", "hi_translated"],
+        "code": "maize",
+        "descriptor": {
+          "name": "मक्का",
+          "long_desc": "75 कि. ग्रा./हेक्टेयर यूरिया का ऊपरी भाग तैयार करना और पहले बोए गए मक्के की निराई और कीड़ा हटाने के बाद मक्के में पानी की निकासी सुनिश्चित करना जब पौधे घुटने की ऊँचाई (30-35 दिन पर) तक पहुँच जाएँ।\nमक्के में खरपतवार नियंत्रण के लिए एट्राज़िन बुवाई के 2 दिनों के भीतर 2 कि. ग्रा./हेक्टेयर पर 800 एल। इसे पानी में मिलाकर छान लें।\nमकक्के में सेना के कीड़े के प्रकोप पर। 0 से 20 प्रतिशत क्षति के प्रभावी नियंत्रण के लिए, क्लोरान्ट्रानिलिप्रोल 8। 5 प्रतिशत SC0.4 पाया गया। 0. 3 मिलीलीटर पानी या स्पिनोसैड प्रति लीटर। 2 की दर से पानी या थायमेथोक्सम। 9 की दर से 6 प्रतिशत + लैम्बडेसिलोथिन। 5 प्रतिशत. 5 मिली प्रति लीटर पानी का छिड़काव किया जाना चाहिए।",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/MAIZE.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory", "hi_translated"],
+        "code": "arhar",
+        "descriptor": {
+          "name": "अरहर",
+          "long_desc": "बेहतर उत्पादन के लिए बारिश के मौसम से पहले नरेंद्र अरहर 2, मालवीय 13, राजेशवर 2, मालवीय विजेता, पूसा 9 (बहरा) आदि किस्मों को उगाएं। यदि बीज उपलब्ध नहीं हैं, तो बीजों के उपचार के लिए राइज़ोबियम कल्चर का उपयोग करें और बुवाई से पहले कवकनाशी का प्रयोग करें।\nविशेष रूप से फूल और फली के विकास के चरणों के दौरान उचित सिंचाई प्रथाओं का पालन करें।\nबुवाई से पहले 4 ग्राम ट्राइकोडर्मा और 1 ग्राम कार्बेंडाज़िम प्रति किलोग्राम बीज लगाएं।\nखरपतवार नियंत्रण और सिंचाई के अच्छे तरीके सुनिश्चित करें।",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/Arhar.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory", "hi_translated"],
+        "code": "urad and moong",
+        "descriptor": {
+          "name": "urad and moong",
+          "long_desc": "खेती के लिए आजाद उड़द 1, आजाद उड़द 2, शेखर 1, शेखर 2, पंत उड़द 31 आदि किस्मों का उपयोग करें।\nखरपतवार नियंत्रण महत्वपूर्ण है। बुवाई से पहले और बाद में जड़ी-बूटियों का उपयोग करें।\nअच्छी फसल के लिए उचित बीज उपचार और सिंचाई पद्धतियों का उपयोग करें।\nबेहतर उपज के लिए एस. एम. एल. 668, पी. डी. एम. 84-139, पी. एस. 16 आदि किस्मों की खेती करें।\nउचित बीज उपचार और खरपतवार नियंत्रण सुनिश्चित करें।\nआवश्यकतानुसार कवकनाशी और जड़ी-बूटियों का उपयोग करें।",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/WHEAT.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory", "hi_translated"],
+        "code": "sesame",
+        "descriptor": {
+          "name": "sesame",
+          "long_desc": "बेहतर उपज के लिए प्रगति, शेखर, आर. टी. 78 आदि किस्मों को उगाएं।\nउचित बीज उपचार और सिंचाई प्रथाओं को सुनिश्चित करें।",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/WHEAT.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory", "hi_translated"],
+        "code": "sugarcane",
+        "descriptor": {
+          "name": "गन्ना",
+          "long_desc": "शरद ऋतु में बोए गए गन्ने को मानसून के मौसम में गिरने से बचाने के लिए, गन्ने की बधाई दें और गन्ने की जड़ों को मिट्टी दें।\nपहली बधाई के लिए, जब गन्ना लगभग 5 फीट का हो, तो प्रत्येक गुच्छे को गन्ने की रेखाओं में 2 फीट की ऊंचाई पर नीचे सूखी पत्तियों के साथ बांधें।\nयदि गन्ने में पायरिला का प्रकोप होता है तो अंडे के गुच्छे को हटा दिया जाना चाहिए और नष्ट कर दिया जाना चाहिए। फसल पर्यावरण को पायरिला कीट के परजीवी एपिरिकेनिया मेलानोलेउका को सुरक्षा प्रदान करनी चाहिए। रासायनिक नियंत्रण के लिए, कुनालफॉस 25 प्रतिशत ईसी2एल/हेक्टेयर है। 800 से 4000 लीटर पानी या क्लोरपायरीफॉस 20 प्रतिशत ई. सी. में घुलनशील। 4. 5 लीटर/हेक्टेयर। छिड़काव 800 से 000 लीटर पानी में घोलकर किया जाना चाहिए।\nकॉपर ऑक्सीक्लोराइड 0. 2 प्रतिशत या कार्बेंडाज़िम 0। पोक्का बोइंग रोग के नियंत्रण के लिए 4 प्रतिशत।\nघोल बना कर पत्तियों पर छिड़के।\nजब गन्ने की पत्तियों की मध्य शिरा के पूर्व भाग पर लाल होने की बीमारी के लक्षण दिखाई देते हैं, तो पौधों को उखाड़ कर नष्ट कर दें। उखाड़े गए क्षेत्र को थियोफेनेट मिथाइल 0 से सुखा लें। 2 प्रतिशत।\nप्रोपेनोफोस 40 प्रतिशत + साइफर 4 प्रतिशत 750 मिली से 625 एल सूक्ष्मजीवों से सुरक्षा के लिए। पानी में घोल बनाकर पत्तियों पर छिड़के।\nगन्ने में कृन्तकों के संक्रमण की स्थिति में कार्बोफुरान 30 किलो कैलोरी प्रति किलोग्राम पर 3 प्रतिशत दानेदार होता है। पौधों की जड़ों के पास उचित आर्द्रता की स्थिति में उपयोग करें।\nगन्ना विभाग द्वारा सर्वेक्षण-प्रदर्शन कार्य किया जा रहा है जिसमें प्रजाति, क्षेत्र, पेड़ी/पौधे से संबंधित जानकारी दर्ज की जानी चाहिए।",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/SUGARCANE.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory", "hi_translated"],
+        "code": "pulses",
+        "descriptor": {
+          "name": "दालें",
+          "long_desc": "अरहर की देर से पकने वाली किस्में जैसे नरेंद्र अरहर-2, मालवीय-3 (चमत्कार), राजेंद्र अरहर-2, मालवीय विकास, पूसा-9 (बहार), आजाद, नरेंद्र अरहर। अगर आपने अभी तक अमर, बहार, आई. पी. ए.-206, आई. पी. ए.-5-2 की बुआई नहीं की है तो जल्द से जल्द मेढ़ों की बुवाई करें।\nअगर बुवाई से पहले बीजों का उपचार नहीं किया जाता है तो एक किलो। 2 ग्राम बीज। थेरम, एक ग्राम कार्बेंडाज़िम या 4 ग्राम ट्राइकोडर्मा + एक ग्राम कार्बोक्सिन के साथ इलाज करें। बुवाई से पहले, बीजों को अरहर के एक विशिष्ट प्रकंद संवर्धन के साथ उपचारित करें।",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/Masoor.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory", "hi_translated"],
+        "code": "vegetables",
+        "descriptor": {
+          "name": "सब्जियां",
+          "long_desc": "अगर खरिफ की फसल नहीं बोई जाती है, तो खीरा, करेला, करेला, करेला, कद्दू, भिंडी, चावल और मूली बोई जा सकती है।\nखरिफ (बरसात) के मौसम में भिंडी बोने के लिए अभी भी समय है। एकर बीज दर 0-2 किलोग्राम छैक। यह प्रति है। और संकर किस्मों के लिए 5-8 किलोग्राम बीज पर्याप्त है।\nबैगन फसल को तना और फल छेदक कीट से बचाने के लिए क्लोरोएंट्रानिलिप्रोल रसायन। 0 मिला। इस राशि को एक लीटर पानी में घोल लें और दिन के अंतराल पर 40-5 स्प्रे करें।\n1 के साथ थियोफेनेट मिथाइल के घोल का छिड़काव करें। 00 से 4 तक। बैंगन की फसल में फिमोप्सिस ब्लाइट संक्रमण को रोकने के लिए 45 दिनों के अंतराल पर 50 मिलीलीटर मात्रा/लीटर पानी। फलों को तोड़ने के बाद छिड़काव करें और 5 दिनों के बाद अगला तोड़ करें।",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/Vegetables.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory", "hi_translated"],
+        "code": "mushroom",
+        "descriptor": {
+          "name": "mushroom",
+          "long_desc": "मशरूम पैदा करने वाले किसानों के लिए, इस महीने के अंत तक अगस्त महीने के लिए खेत तैयार करें।\nमशरूम उत्पादन के बारे में जानकारी के लिए डॉ. एस. के. विश्वास, प्रोफेसर, पादप रोग विज्ञान विभाग, चंद्र शेखर आजाद कृषि और प्रौद्योगिकी विश्वविद्यालय, कानपुर (मोबाइलः 9452252504), या नरेंद्र देव कृषि और प्रौद्योगिकी विश्वविद्यालय, अयोध्या, और पादप रोग विज्ञान विभाग, उत्तर प्रदेश।",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/WHEAT.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory", "hi_translated"],
+        "code": "horticulture",
+        "descriptor": {
+          "name": "बागवानी",
+          "long_desc": "नए केले के बागानों के लिए पादप ऊतक संवर्धित रोग प्रतिरोधी जी-9 प्रजातियाँ।\nकेले में बची हुई कलियों को काट लें, एक तलवार का पत्ता छोड़ दें और फलों के पौधों में ढेर (सहारा) कर दें।\nजो किसान आम, अमरूद, लीची, आंवला, कटहल, नींबू, जामुन, बेर, केला, पपीता के नए बगीचे लगाना चाहते हैं, उन्हें उन्हें लगाना चाहिए।\nकैंसर रोग को रोकने के लिए नींबू में कॉपर ऑक्सीक्लोराइड 33 ग्राम या स्ट्रेप्टोसाइक्लिन 600 मिलीग्राम प्रति लीटर पानी का घोल छिड़कें।",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/Horticulture.png"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory", "hi_translated"],
+        "code": "animal husbandry",
+        "descriptor": {
+          "name": "पशुपालन",
+          "long_desc": "तालाब के छिद्रों में एकत्रित पानी से जानवरों को न खिलाएं, अन्यथा आंतरिक परजीवी की संभावना बढ़ जाएगी। जानवरों को हरा चारा खिलाते समय, सुनिश्चित करें कि चारा हमेशा धोया और खिलाया जाए ताकि मिट्टी आंतरिक परजीवी अंडे या लार्वा के प्रति अधिक संवेदनशील हो।\nखरिफ चारा फसलों की बुवाई का समय है, इसलिए सभी पशुपालकों/किसानों को खेत को अच्छी तरह से तैयार करना चाहिए और बेहतर किस्म के चारे के बीज बोना चाहिए।\nकिसानों/पशुपालकों के दरवाजे पर पशु चिकित्सा उपचार प्रदान करने के लिए विभाग द्वारा मोबाइल पशु चिकित्सा इकाई योजना का संचालन किया जा रहा है। इस योजना का लाभ उठाने के लिए सभी किसान/पशुपालक टोल शुल्क हेल्प लाइन नंबर पर कॉल कर सकते हैं। आप-962 पर संपर्क करके योजना का लाभ उठा सकते हैं।",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/cow.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory", "hi_translated"],
+        "code": "fisheries",
+        "descriptor": {
+          "name": "मत्स्य पालन",
+          "long_desc": "मछली के विकास के लिए, पूरक का उपयोग मछली के वजन के 4 से 2 प्रतिशत पर किया जाना चाहिए। मछलियों को एक निश्चित समय पर खिलाया जाना चाहिए।\n3 अगस्त तक जलाशय/नालियों में शिकार प्रतिबंधित है।\nबरसात के मौसम में तालाब के जलीय पौधों को खत्म करना आवश्यक है। यह पौधा तालाब में उपलब्ध पोषक तत्वों को अवशोषित करता है और मछलियों को छोड़ता है।\nतालाब की मिट्टी की अम्लता की निगरानी करते समय, उच्च अम्लता वाली मिट्टी को गाय के गोबर (20 से 30 टन प्रति हेक्टेयर) से उपचारित किया गया था या 5 टन प्रति हेक्टेयर जिप्सम जोड़कर नियंत्रित किया गया था।\nथाई मुगुर मछली पालन प्रतिबंधित है। इसका पालन न करें।",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/fish.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory", "hi_translated"],
+        "code": "sericulture",
+        "descriptor": {
+          "name": "रेशम उत्पादन",
+          "long_desc": "शहतूत के बागानों/बागानों में घास और अन्य खरपतवारों की निराई, मल्चिंग और सफाई के बाद गोबर की खाद और एन. पी. के. का उपयोग करें। इस स्प्रे अरंडी के बीज के लिए दिसंबर के दूसरे सप्ताह में एरी कीट प्रबंधन का काम शुरू होना है ताकि पत्तियां समय पर प्राप्त की जा सकें। टसर रेशम कीट पालन में पहली फसल अम्पेटिया का कीट पालन शुरू हो गया है। इसलिए, कीटपालकों/किसानों को सलाह दी जाती है कि वे टसर रेशम कीट की अच्छी देखभाल करें और कीट प्रबंधन में नायलॉन जाल का उपयोग करें।",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/sericulture.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "category_ids": ["crop_specific_advisory", "hi_translated"],
+        "code": "forestry",
+        "descriptor": {
+          "name": "वानिकी",
+          "long_desc": "नर्सरी में अंकुरण बेड तैयार करें और आम, गुलमोहर, महुआ, कटहल, जामुन, कांजी, नीम आदि के बीज जल्दी बो दें। अंकुरित पौधों को जड़ प्रशिक्षकों/थैलों में प्रत्यारोपित करें।",
+          "images": [
+            {
+              "url": "https://cdn-api.dev.bhasai.samagra.io/vistaar/public/forestry.jpg"
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

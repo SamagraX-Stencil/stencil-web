@@ -25,21 +25,7 @@ const isObject = (item: any) => {
 }
 
 const fetchOverrideConfig = async () => {
-  try {
-    let deploymentIdConfig = {
-      method: 'get',
-      maxBodyLength: Infinity,
-      url: `${process.env.NEXT_PUBLIC_CONFIG_BASE_URL}`,
-      headers: {
-        accept: 'application/json',
-      },
-    }
-    const deploymentResp = await axios.request(deploymentIdConfig)
 
-    return deploymentResp?.data?.data?.config
-  } catch (err) {
-    console.error(err)
-  }
   return {}
 }
 
