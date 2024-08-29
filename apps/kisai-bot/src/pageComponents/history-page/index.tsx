@@ -102,7 +102,7 @@ const HistoryPage: FC = () => {
         },
         {
           headers: {
-            botId: process.env.NEXT_PUBLIC_BOT_ID || '',
+            botId: '74b41966-c74a-43e7-ba43-07f038893cb4' || '',
           },
         }
       )

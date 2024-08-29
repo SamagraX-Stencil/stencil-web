@@ -16,7 +16,7 @@ const FeedbackPopup: React.FC<any> = ({ setShowFeedbackPopup }) => {
   const [review, setReview] = useState('');
 
   const negativeFeedbackPayload = {
-    app: process.env.NEXT_PUBLIC_BOT_ID || '',
+    app: '74b41966-c74a-43e7-ba43-07f038893cb4' || '',
     messageType: MessageType.FEEDBACK_NEGATIVE,
     messageId: {
       replyId: context?.currentQuery,

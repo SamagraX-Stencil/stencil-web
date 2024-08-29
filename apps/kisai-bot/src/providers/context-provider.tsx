@@ -13,8 +13,6 @@ import { XMessage } from '@samagra-x/xmessage';
 import WelcomePage from '../pageComponents/welcome-page';
 import { ImportedFullPageLoader } from '../components/fullpage-loader';
 
-const URL = process.env.NEXT_PUBLIC_SOCKET_URL || '';
-
 const ContextProvider: FC<{
   config: any;
   locale: any;
@@ -217,31 +215,32 @@ const ContextProvider: FC<{
 
   useEffect(() => {
     if (localStorage.getItem('userID')) {
-      setNewSocket(
-        new UCI(
-          URL,
-          {
-            transportOptions: {
-              polling: {
-                extraHeaders: {
-                  // Authorization: `Bearer ${cookie.access_token}`,
-                  channel: 'akai',
-                },
-              },
-            },
-            path: '',
-            query: {
-              deviceId: localStorage.getItem('userID'),
-            },
-            autoConnect: false,
-            transports: ['polling', 'websocket'],
-            upgrade: true,
-            reconnection: true,
-            timeout: 2000,
-          },
-          onMessageReceived
-        )
-      );
+      //use socket connect to test here
+      // setNewSocket(
+      //   new UCI(
+      //     URL,
+      //     {
+      //       transportOptions: {
+      //         polling: {
+      //           extraHeaders: {
+      //             // Authorization: `Bearer ${cookie.access_token}`,
+      //             channel: 'akai',
+      //           },
+      //         },
+      //       },
+      //       path: '',
+      //       query: {
+      //         deviceId: localStorage.getItem('userID'),
+      //       },
+      //       autoConnect: false,
+      //       transports: ['polling', 'websocket'],
+      //       upgrade: true,
+      //       reconnection: true,
+      //       timeout: 2000,
+      //     },
+      //     onMessageReceived
+      //   )
+      // );
     }
     function cleanup() {
       if (newSocket)
@@ -384,7 +383,7 @@ const ContextProvider: FC<{
       const cId = uuidv4();
       newSocket.sendMessage({
         payload: {
-          app: process.env.NEXT_PUBLIC_BOT_ID || '',
+          app: '74b41966-c74a-43e7-ba43-07f038893cb4' || '',
           payload: {
             text: textToSend?.replace('&', '%26')?.replace(/^\s+|\s+$/g, ''),
             metaData: {
@@ -542,7 +541,7 @@ const ContextProvider: FC<{
               )}&conversationId=${sessionStorage.getItem('conversationId')}`,
               {
                 headers: {
-                  botId: process.env.NEXT_PUBLIC_BOT_ID || '',
+                  botId: '74b41966-c74a-43e7-ba43-07f038893cb4' || '',
                 },
               }
             );
@@ -582,7 +581,7 @@ const ContextProvider: FC<{
           if (secondLastMsg) {
             newSocket.sendMessage({
               payload: {
-                app: process.env.NEXT_PUBLIC_BOT_ID || '',
+                app: '74b41966-c74a-43e7-ba43-07f038893cb4' || '',
                 payload: {
                   text: secondLastMsg.text,
                 },

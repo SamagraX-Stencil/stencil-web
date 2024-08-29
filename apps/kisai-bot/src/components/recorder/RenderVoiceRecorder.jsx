@@ -140,8 +140,8 @@ const RenderVoiceRecorder = ({ setInputMsg, tapToSpeak }) => {
       const resp = await fetch(apiEndpoint, {
         method: 'POST',
         headers: {
-          botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-          orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
+          botId: '74b41966-c74a-43e7-ba43-07f038893cb4' || '',
+          orgId: 'f2070b8a-0491-45cb-9f35-8599d6dd77ef' || '',
           userId: localStorage.getItem('userID') || '',
         },
         body: formData,

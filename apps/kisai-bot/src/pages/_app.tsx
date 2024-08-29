@@ -12,7 +12,6 @@ import FeaturePopup from '../components/feature-popup';
 import Provider from '../providers';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
-import OnBoardingPage from '../pageComponents/onboarding-page';
 import { ImportedFullPageLoader } from '../components/fullpage-loader';
 
 const NavBar = dynamic(() => import('../components/navbar'), {
@@ -65,21 +64,9 @@ const App = ({ Component, pageProps }: AppProps) => {
     handleLoginRedirect();
   }, [handleLoginRedirect]);
 
-  const fetchUser = async () => {
-    try {
-      const userID = localStorage.getItem('userID');
-      const res = await axios.get(`/api/fetchUser?userID=${userID}`);
-      setUser(res?.data?.user);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   useEffect(() => {
     if (!isAuthenticated) {
       login();
-    } else if (process.env.NEXT_PUBLIC_SHOW_ONBOARDING === 'true') {
-      fetchUser();
     }
   }, [isAuthenticated, login]);
 
@@ -88,13 +75,13 @@ const App = ({ Component, pageProps }: AppProps) => {
   }
 
   if (typeof window === 'undefined') return <ImportedFullPageLoader loading />;
-  if (isAuthenticated && user && !user?.data?.profile) {
-    return (
-      <Provider>
-        <OnBoardingPage setUser={setUser} />
-      </Provider>
-    );
-  }
+  // if (isAuthenticated && user && !user?.data?.profile) {
+  //   return (
+  //     <Provider>
+  //       <OnBoardingPage setUser={setUser} />
+  //     </Provider>
+  //   );
+  // }
   return (
     <Provider>
       <>
