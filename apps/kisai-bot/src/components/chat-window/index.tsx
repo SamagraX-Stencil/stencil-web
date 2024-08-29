@@ -24,39 +24,39 @@ const ChatUiWindow: React.FC = () => {
   const context = useContext(AppContext);
   const { isDown, isMsgReceiving } = context;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await context?.fetchIsDown();
-        if (!context?.isDown) {
-          const chatHistory = await axios.get(
-            `${process.env.NEXT_PUBLIC_BFF_API_URL}/history?userId=${localStorage.getItem(
-              'userID'
-            )}&conversationId=${sessionStorage.getItem('conversationId')}`,
-            {
-              headers: {
-                botId: '74b41966-c74a-43e7-ba43-07f038893cb4' || '',
-              },
-            }
-          );
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       await context?.fetchIsDown();
+  //       if (!context?.isDown) {
+  //         const chatHistory = await axios.get(
+  //           `${process.env.NEXT_PUBLIC_BFF_API_URL}/history?userId=${localStorage.getItem(
+  //             'userID'
+  //           )}&conversationId=${sessionStorage.getItem('conversationId')}`,
+  //           {
+  //             headers: {
+  //               botId: '74b41966-c74a-43e7-ba43-07f038893cb4' || '',
+  //             },
+  //           }
+  //         );
 
-          console.log('ghji:', chatHistory);
-          console.log('history:', chatHistory.data);
+  //         console.log('ghji:', chatHistory);
+  //         console.log('history:', chatHistory.data);
 
-          const normalizedChats = normalizedChat(chatHistory?.data);
-          console.log('normalized chats', normalizedChats);
-          if (normalizedChats.length > 0) {
-            context?.setMessages(normalizedChats);
-          }
-        }
-      } catch (error: any) {
-        console.error(error);
-      }
-    };
-    recordUserLocation();
-    !context?.loading && fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [context?.setMessages, context?.fetchIsDown, context?.isDown]);
+  //         const normalizedChats = normalizedChat(chatHistory?.data);
+  //         console.log('normalized chats', normalizedChats);
+  //         if (normalizedChats.length > 0) {
+  //           context?.setMessages(normalizedChats);
+  //         }
+  //       }
+  //     } catch (error: any) {
+  //       console.error(error);
+  //     }
+  //   };
+  //   recordUserLocation();
+  //   !context?.loading && fetchData();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [context?.setMessages, context?.fetchIsDown, context?.isDown]);
 
   const normalizedChat = (chats: any): any => {
     console.log('in normalized', chats);

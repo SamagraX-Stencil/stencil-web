@@ -25,26 +25,6 @@ const OnBoardingPage = (props: any) => {
 
   const fetchList = async (type: string) => {
     try {
-      // const res = await axios.post(
-      // process.env.NEXT_PUBLIC_DATASET_URL +
-      // '/dataset/execute/' +
-      // process.env.NEXT_PUBLIC_ENTITY_DATASET_ID,
-      // {
-      //   sqlQuery: `SELECT * from "prioritized_commodity" where "type"='${type}' and "datasetId" = '${process.env.NEXT_PUBLIC_ENTITY_DATASET_ID}' and "botId"='${'74b41966-c74a-43e7-ba43-07f038893cb4'}' ORDER BY "priority"`,
-      // },
-      // {
-      //   headers: {
-      //     botId: '74b41966-c74a-43e7-ba43-07f038893cb4' || '',
-      //     orgId: "f2070b8a-0491-45cb-9f35-8599d6dd77ef" || '',
-      //   },
-      // }
-      // );
-      // console.log({ res });
-      // if (type === 'crop') {
-      //   setCropList(res?.data?.data);
-      // } else if (type === 'animal') {
-      //   setAnimalList(res?.data?.data);
-      // }
     } catch (err) {
       console.log(err);
     }

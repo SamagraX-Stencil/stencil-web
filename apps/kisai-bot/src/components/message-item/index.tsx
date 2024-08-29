@@ -240,72 +240,73 @@ const MessageItem: FC<MessageItemPropType> = ({ message }) => {
   );
 
   const downloadAudio = useCallback(() => {
-    const fetchAudio = async (text: string) => {
-      const startTime = Date.now();
-      try {
-        const response = await axios.post(
-          `${process.env.NEXT_PUBLIC_AI_TOOLS_API}/text-to-speech`,
-          {
-            text: text,
-            language: context?.locale,
-            messageId: content?.data?.replyId,
-            conversationId: sessionStorage.getItem('conversationId') || '',
-          },
-          {
-            headers: {
-              botId: '74b41966-c74a-43e7-ba43-07f038893cb4' || '',
-              orgId: 'f2070b8a-0491-45cb-9f35-8599d6dd77ef' || '',
-              userId: localStorage.getItem('userID') || '',
-            },
-          }
-        );
-        setAudioFetched(true);
-        const endTime = Date.now();
+    toast.error('download audio is called');
+    // const fetchAudio = async (text: string) => {
+    //   const startTime = Date.now();
+    //   try {
+    //     const response = await axios.post(
+    //       `${process.env.NEXT_PUBLIC_AI_TOOLS_API}/text-to-speech`,
+    //       {
+    //         text: text,
+    //         language: context?.locale,
+    //         messageId: content?.data?.replyId,
+    //         conversationId: sessionStorage.getItem('conversationId') || '',
+    //       },
+    //       {
+    //         headers: {
+    //           botId: '74b41966-c74a-43e7-ba43-07f038893cb4' || '',
+    //           orgId: 'f2070b8a-0491-45cb-9f35-8599d6dd77ef' || '',
+    //           userId: localStorage.getItem('userID') || '',
+    //         },
+    //       }
+    //     );
+    //     setAudioFetched(true);
+    //     const endTime = Date.now();
 
-        // cacheAudio(response.data);
-        return response?.data?.url;
-      } catch (error: any) {
-        console.error('Error fetching audio:', error);
-        setAudioFetched(true);
-        const endTime = Date.now();
-        const latency = endTime - startTime;
+    //     // cacheAudio(response.data);
+    //     return response?.data?.url;
+    //   } catch (error: any) {
+    //     console.error('Error fetching audio:', error);
+    //     setAudioFetched(true);
+    //     const endTime = Date.now();
+    //     const latency = endTime - startTime;
 
-        return null;
-      }
-    };
+    //     return null;
+    //   }
+    // };
 
-    const fetchData = async () => {
-      if (!content?.data?.audio_url && content?.data?.position === 'left') {
-        const toastId = toast.loading(`${t('message.download_audio')}`);
-        setTimeout(() => {
-          toast.dismiss(toastId);
-        }, 1500);
-        const text = content?.data?.card?.content?.cells
-          ? content?.data?.card?.content?.cells
-              ?.map((cell: any) => {
-                const texts = [];
-                if (cell.header) texts.push(cell.header);
-                if (cell.footer) texts.push(cell.footer);
-                return texts.join(' ');
-              })
-              .join(' ')
-          : content?.text;
-        const audioUrl = await fetchAudio(text ?? 'No text found');
+    // const fetchData = async () => {
+    //   if (!content?.data?.audio_url && content?.data?.position === 'left') {
+    //     const toastId = toast.loading(`${t('message.download_audio')}`);
+    //     setTimeout(() => {
+    //       toast.dismiss(toastId);
+    //     }, 1500);
+    //     const text = content?.data?.card?.content?.cells
+    //       ? content?.data?.card?.content?.cells
+    //           ?.map((cell: any) => {
+    //             const texts = [];
+    //             if (cell.header) texts.push(cell.header);
+    //             if (cell.footer) texts.push(cell.footer);
+    //             return texts.join(' ');
+    //           })
+    //           .join(' ')
+    //       : content?.text;
+    //     const audioUrl = await fetchAudio(text ?? 'No text found');
 
-        setTtsLoader(false);
-        if (audioUrl) {
-          content.data.audio_url = audioUrl;
-          handleAudio(audioUrl);
-        } else setTtsLoader(false);
-      }
-    };
+    //     setTtsLoader(false);
+    //     if (audioUrl) {
+    //       content.data.audio_url = audioUrl;
+    //       handleAudio(audioUrl);
+    //     } else setTtsLoader(false);
+    //   }
+    // };
 
-    if (content?.data?.audio_url) {
-      handleAudio(content.data.audio_url);
-    } else {
-      setTtsLoader(true);
-      fetchData();
-    }
+    // if (content?.data?.audio_url) {
+    //   handleAudio(content.data.audio_url);
+    // } else {
+    //   setTtsLoader(true);
+    //   fetchData();
+    // }
   }, [handleAudio, content?.data, content?.text, t]);
 
   // Hide input box if there are buttons

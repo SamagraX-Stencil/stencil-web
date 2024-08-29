@@ -9,55 +9,56 @@ const useTransliteration = (config: any, value: any, setValue: any) => {
   const [cursorPosition, setCursorPosition] = useState(0);
 
   useEffect(() => {
-    if (
-      value.length > 0 &&
-      config?.allowTransliteration &&
-      localStorage.getItem('locale') === config?.transliterationOutputLanguage
-    ) {
-      if (suggestionClicked) {
-        setSuggestionClicked(false);
-        return;
-      }
+    // if (
+    //   value.length > 0 &&
+    //   config?.allowTransliteration &&
+    //   localStorage.getItem('locale') === config?.transliterationOutputLanguage
+    // ) {
+    //   if (suggestionClicked) {
+    //     setSuggestionClicked(false);
+    //     return;
+    //   }
 
-      setSuggestions([]);
+    //   setSuggestions([]);
 
-      const words = value.split(' ');
-      const wordUnderCursor = words.find(
-        (word: any, index: number) =>
-          cursorPosition >= value.indexOf(word) &&
-          cursorPosition <= value.indexOf(word) + word.length
-      );
+    //   const words = value.split(' ');
+    //   const wordUnderCursor = words.find(
+    //     (word: any, index: number) =>
+    //       cursorPosition >= value.indexOf(word) &&
+    //       cursorPosition <= value.indexOf(word) + word.length
+    //   );
 
-      if (!wordUnderCursor) return;
+    //   if (!wordUnderCursor) return;
 
-      const data = JSON.stringify({
-        inputLanguage: config?.transliterationInputLanguage,
-        outputLanguage: config?.transliterationOutputLanguage,
-        input: wordUnderCursor,
-        provider: config?.transliterationProvider || 'bhashini',
-        numSuggestions: config?.transliterationSuggestions || 3,
-      });
+    //   const data = JSON.stringify({
+    //     inputLanguage: config?.transliterationInputLanguage,
+    //     outputLanguage: config?.transliterationOutputLanguage,
+    //     input: wordUnderCursor,
+    //     provider: config?.transliterationProvider || 'bhashini',
+    //     numSuggestions: config?.transliterationSuggestions || 3,
+    //   });
 
-      const axiosConfig = {
-        method: 'post',
-        maxBodyLength: Infinity,
-        url: `${process.env.NEXT_PUBLIC_AI_TOOLS_API}/transliterate`,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        data: data,
-      };
+    //   const axiosConfig = {
+    //     method: 'post',
+    //     maxBodyLength: Infinity,
+    //     url: `${process.env.NEXT_PUBLIC_AI_TOOLS_API}/transliterate`,
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     data: data,
+    //   };
 
-      axios
-        .request(axiosConfig)
-        .then((res) => {
-          setSuggestions(res?.data?.suggestions);
-          console.log('api suggestions', res?.data?.suggestions);
-        })
-        .catch(() => toast.error('Transliteration failed'));
-    } else {
-      setSuggestions([]);
-    }
+    //   axios
+    //     .request(axiosConfig)
+    //     .then((res) => {
+    //       setSuggestions(res?.data?.suggestions);
+    //       console.log('api suggestions', res?.data?.suggestions);
+    //     })
+    //     .catch(() => toast.error('Transliteration failed'));
+    // } else {
+    //   setSuggestions([]);
+    // }
+    toast.success('translation api is missing');
   }, [value, cursorPosition]);
 
   const suggestionHandler = (index: number) => {

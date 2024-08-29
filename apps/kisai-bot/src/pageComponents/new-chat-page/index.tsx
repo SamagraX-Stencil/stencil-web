@@ -47,7 +47,7 @@ const ChatPage: NextPage = () => {
   };
 
   useEffect(() => {
-    context?.fetchIsDown(); // check if server is down
+    // context?.fetchIsDown(); // check if server is down
 
     if (!sessionStorage.getItem('conversationId')) {
       const newConversationId = uuidv4();

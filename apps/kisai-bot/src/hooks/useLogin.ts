@@ -28,7 +28,7 @@ export const useLogin = () => {
         localStorage.getItem('auth') || auth
       );
 
-      if (decodedToken.applicationId !== process.env.NEXT_PUBLIC_USER_SERVICE_APP_ID) {
+      if (decodedToken.applicationId !== 'ef64c9b6-b9d6-4632-99ba-edbd34a0cbc3') {
         removeCookie('access_token', { path: '/' });
         localStorage.clear();
         sessionStorage.clear();

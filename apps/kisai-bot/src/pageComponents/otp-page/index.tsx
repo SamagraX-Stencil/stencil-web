@@ -88,7 +88,7 @@ const OtpPage: React.FC = () => {
           verifyOtp({
             loginId: router.query.state,
             password: otp,
-            applicationId: process.env.NEXT_PUBLIC_USER_SERVICE_APP_ID,
+            applicationId: 'ef64c9b6-b9d6-4632-99ba-edbd34a0cbc3',
             //@ts-ignore
           }).then((res: any) => {
             console.log({ res });
