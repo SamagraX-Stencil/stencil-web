@@ -12,7 +12,6 @@ import { useLocalization } from '../../hooks';
 import { useRouter } from 'next/router';
 import { useConfig } from '../../hooks/useConfig';
 import LanguagePicker from '../../components/language-picker';
-import NewLanguagePicker from '@samagra-x/stencil-molecules/lib/language-picker/languagePicker';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import InputComponent, {
   ButtonProps,

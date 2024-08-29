@@ -5,10 +5,10 @@ import ForumIcon from '@mui/icons-material/Forum';
 import InfoIcon from '@mui/icons-material/Info';
 import CallIcon from '@mui/icons-material/Call';
 import { useColorPalates } from '../../providers/theme-provider/hooks';
-import { FullPageLoader } from '@samagra-x/stencil-molecules/lib/fullpage-loader';
 import { useLocalization } from '../../hooks';
 import { useConfig } from '../../hooks/useConfig';
 import Menu from '../../components/menu';
+import { ImportedFullPageLoader } from '../../components/fullpage-loader';
 
 const NotificationsPage: FC = () => {
   const [isFetching, setIsFetching] = useState(true);
@@ -103,7 +103,7 @@ const NotificationsPage: FC = () => {
   return (
     <>
       <div className={styles.main}>
-        <FullPageLoader
+        <ImportedFullPageLoader
           loading={isFetching}
           color={theme?.primary?.main}
           label="Fetching Notifications"

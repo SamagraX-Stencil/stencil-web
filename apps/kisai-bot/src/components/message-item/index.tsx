@@ -26,14 +26,12 @@ import { useConfig } from '../../hooks/useConfig';
 import { useLocalization } from '../../hooks';
 import { AppContext } from '../../context';
 import axios from 'axios';
-import saveTelemetryEvent from '../../utils/telemetry';
 import BlinkingSpinner from '../blinking-spinner/index';
 import Loader from '../loader';
 import { MessageType, XMessage } from '@samagra-x/xmessage';
 import { v4 as uuidv4 } from 'uuid';
 import router from 'next/router';
-// import TransliterationInput from '../transliteration-input';
-import { TransliterationInput } from '@samagra-x/stencil-molecules/lib/transliteration-input';
+import ImportedTransliterationInput from '../transliteration-input';
 
 const MessageItem: FC<MessageItemPropType> = ({ message }) => {
   const { content, type } = message;
@@ -237,16 +235,6 @@ const MessageItem: FC<MessageItemPropType> = ({ message }) => {
       }
       context?.playAudio(url, content);
       setTtsLoader(false);
-      saveTelemetryEvent('0.1', 'E015', 'userQuery', 'timesAudioUsed', {
-        botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-        orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-        userId: localStorage.getItem('userID') || '',
-        phoneNumber: localStorage.getItem('phoneNumber') || '',
-        conversationId: sessionStorage.getItem('conversationId') || '',
-        messageId: content?.data?.replyId,
-        text: content?.text,
-        timesAudioUsed: 1,
-      });
     },
     [audioFetched, content, context?.playAudio]
   );
@@ -273,19 +261,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message }) => {
         );
         setAudioFetched(true);
         const endTime = Date.now();
-        const latency = endTime - startTime;
-        await saveTelemetryEvent('0.1', 'E045', 'aiToolProxyToolLatency', 't2sLatency', {
-          botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-          orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-          userId: localStorage.getItem('userID') || '',
-          phoneNumber: localStorage.getItem('phoneNumber') || '',
-          conversationId: sessionStorage.getItem('conversationId') || '',
-          text: text,
-          messageId: content?.data?.replyId,
-          timeTaken: latency,
-          createdAt: Math.floor(startTime / 1000),
-          audioUrl: response?.data?.url || 'No audio URL',
-        });
+
         // cacheAudio(response.data);
         return response?.data?.url;
       } catch (error: any) {
@@ -293,18 +269,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message }) => {
         setAudioFetched(true);
         const endTime = Date.now();
         const latency = endTime - startTime;
-        await saveTelemetryEvent('0.1', 'E045', 'aiToolProxyToolLatency', 't2sLatency', {
-          botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-          orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-          userId: localStorage.getItem('userID') || '',
-          phoneNumber: localStorage.getItem('phoneNumber') || '',
-          conversationId: sessionStorage.getItem('conversationId') || '',
-          text: text,
-          msgId: content?.data?.replyId,
-          timeTaken: latency,
-          createdAt: Math.floor(startTime / 1000),
-          error: error?.message || 'Error fetching audio',
-        });
+
         return null;
       }
     };
@@ -784,7 +749,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message }) => {
                     zIndex: 100,
                   }}
                 >
-                  <TransliterationInput
+                  <ImportedTransliterationInput
                     placeholder={t('label.buttons_search_placeholder') || 'Search'}
                     value={searchQuery}
                     setValue={setSearchQuery}
@@ -1128,7 +1093,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message }) => {
                     zIndex: 100,
                   }}
                 >
-                  <TransliterationInput
+                  <ImportedTransliterationInput
                     placeholder={t('label.buttons_search_placeholder') || 'Search'}
                     value={searchQuery}
                     setValue={setSearchQuery}

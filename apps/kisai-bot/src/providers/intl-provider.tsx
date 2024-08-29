@@ -1,12 +1,12 @@
 'use client';
 import React, { FC, ReactElement, useState, useEffect, useContext, useMemo } from 'react';
-import { FullPageLoader } from '@samagra-x/stencil-molecules/lib/fullpage-loader';
 import ContextProvider from './context-provider';
 import { IntlProvider } from 'react-intl';
 import { useConfig } from '../hooks/useConfig';
 import mergeConfigurations from '../utils/mergeConfigurations';
 import { ThemeContext } from './theme-provider/theme-context';
 import router from 'next/router';
+import { ImportedFullPageLoader } from '../components/fullpage-loader';
 
 export const LocaleProvider: FC<{ children: ReactElement }> = ({ children }) => {
   const themeContext = useContext(ThemeContext);
@@ -51,7 +51,8 @@ export const LocaleProvider: FC<{ children: ReactElement }> = ({ children }) => 
   //         setLocaleMsgs(config.translation.en);
   // }, [config]);
 
-  if (typeof window === 'undefined') return <FullPageLoader loading label="Fetching Locale" />;
+  if (typeof window === 'undefined')
+    return <ImportedFullPageLoader loading label="Fetching Locale" />;
   return (
     //@ts-ignore
     <IntlProvider locale={locale} messages={localeMsgs}>

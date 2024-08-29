@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
-const useTransliteration = (config: any, value: any, setValue: any) => {
+const useTransliteration = (config: any, value: any, setValue: any, translationUrl: any) => {
   const [suggestions, setSuggestions] = useState([]);
   const [suggestionClicked, setSuggestionClicked] = useState(false);
   const [activeSuggestion, setActiveSuggestion] = useState(0);
@@ -41,7 +41,7 @@ const useTransliteration = (config: any, value: any, setValue: any) => {
       const axiosConfig = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: `${process.env.NEXT_PUBLIC_AI_TOOLS_API}/transliterate`,
+        url: translationUrl,
         headers: {
           'Content-Type': 'application/json',
         },

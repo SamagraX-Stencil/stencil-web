@@ -10,11 +10,10 @@ import dynamic from 'next/dynamic';
 import { useLogin } from '../hooks';
 import FeaturePopup from '../components/feature-popup';
 import Provider from '../providers';
-// import { InstallModal } from '../components/install-modal';
-import { FullPageLoader } from '@samagra-x/stencil-molecules/lib/fullpage-loader';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import OnBoardingPage from '../pageComponents/onboarding-page';
+import { ImportedFullPageLoader } from '../components/fullpage-loader';
 
 const NavBar = dynamic(() => import('../components/navbar'), {
   ssr: false,
@@ -136,7 +135,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     globalThis.console.log = () => {};
   }
 
-  if (typeof window === 'undefined') return <FullPageLoader loading />;
+  if (typeof window === 'undefined') return <ImportedFullPageLoader loading />;
   if (isAuthenticated && user && !user?.data?.profile) {
     return (
       <Provider>

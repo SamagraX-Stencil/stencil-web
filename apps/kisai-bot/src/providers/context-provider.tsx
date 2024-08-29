@@ -9,12 +9,9 @@ import axios from 'axios';
 import { useCookies } from 'react-cookie';
 import { UCI } from 'socket-package';
 import { XMessage } from '@samagra-x/xmessage';
-// import { FullPageLoader } from '../components/fullpage-loader';
-import { FullPageLoader } from '@samagra-x/stencil-molecules/lib/fullpage-loader';
-// import InputComponent from 'stencil-molecules/lib/input-component';
 
 import WelcomePage from '../pageComponents/welcome-page';
-import saveTelemetryEvent from '../utils/telemetry';
+import { ImportedFullPageLoader } from '../components/fullpage-loader';
 
 const URL = process.env.NEXT_PUBLIC_SOCKET_URL || '';
 
@@ -299,22 +296,6 @@ const ContextProvider: FC<{
               };
 
               updatedMessages.push(newMsg);
-              // console.log('useeffect', newMsg.text);
-              try {
-                saveTelemetryEvent('0.1', 'E017', 'userQuery', 'responseAt', {
-                  botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-                  orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-                  userId: localStorage.getItem('userID') || '',
-                  phoneNumber: localStorage.getItem('phoneNumber') || '',
-                  conversationId: sessionStorage.getItem('conversationId') || '',
-                  messageId: msg.messageId.replyId,
-                  text: '',
-                  timeTaken: 0,
-                  createdAt: Math.floor(new Date().getTime() / 1000),
-                });
-              } catch (err) {
-                console.error(err);
-              }
             }
             return updatedMessages;
           });
@@ -328,30 +309,6 @@ const ContextProvider: FC<{
     },
     [messages]
   );
-
-  useEffect(() => {
-    const postTelemetry = async () => {
-      console.log('MESSAGE:', messages);
-      if (messages.length > 0)
-        try {
-          await saveTelemetryEvent('0.1', 'E033', 'messageQuery', 'messageReceived', {
-            botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-            orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-            userId: localStorage.getItem('userID') || '',
-            phoneNumber: localStorage.getItem('phoneNumber') || '',
-            conversationId: sessionStorage.getItem('conversationId') || '',
-            replyId: messages?.[messages.length - 2]?.messageId,
-            messageId: messages?.[messages.length - 1]?.messageId,
-            text: messages[messages.length - 1]?.text,
-            createdAt: Math.floor(new Date().getTime() / 1000),
-            timeTaken: endTime - startTime,
-          });
-        } catch (err) {
-          console.log(err);
-        }
-    };
-    postTelemetry();
-  }, [endTime]);
 
   console.log('erty:', { conversationId });
 
@@ -488,20 +445,7 @@ const ContextProvider: FC<{
             ]);
           }
         }
-      try {
-        await saveTelemetryEvent('0.1', 'E032', 'messageQuery', 'messageSent', {
-          botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-          orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-          userId: localStorage.getItem('userID') || '',
-          phoneNumber: localStorage.getItem('phoneNumber') || '',
-          conversationId: conversationId || '',
-          messageId: messageId,
-          text: textToSend,
-          createdAt: Math.floor(new Date().getTime() / 1000),
-        });
-      } catch (err) {
-        console.error(err);
-      }
+
       sets2tMsgId('');
     },
     [conversationId, newSocket, removeCookie, s2tMsgId]
@@ -755,7 +699,7 @@ const ContextProvider: FC<{
   //       value=""
   //     />
   //   );
-  if (!config) return <FullPageLoader loading label="Loading configuration.." />;
+  if (!config) return <ImportedFullPageLoader loading label="Loading configuration.." />;
 
   if (showWelcomePage) return <WelcomePage config={config} />;
 

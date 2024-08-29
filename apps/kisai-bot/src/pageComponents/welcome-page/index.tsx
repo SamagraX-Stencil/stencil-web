@@ -1,4 +1,3 @@
-import LanguagePicker from '../../components/language-picker';
 import { Container, IconButton } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useConfig } from '../../hooks/useConfig';
@@ -40,7 +39,6 @@ const WelcomePage = (props: any) => {
           {config?.showTopLeftLogo2 && <img src={config?.topLeftLogo2} height="100%" width="30%" />}
           {config?.showTopLeftLogo3 && <img src={config?.topLeftLogo3} height="100%" width="30%" />}
         </div>
-        {/* <LanguagePicker /> */}
       </div>
       <div className="text-center">
         <div style={{ marginTop: '20%' }}>

@@ -6,14 +6,13 @@ import { useConfig } from '../../hooks/useConfig';
 import { useLocalization } from '../../hooks';
 import { AppContext } from '../../context';
 import axios from 'axios';
-// import { FullPageLoader } from '../../components/fullpage-loader';
-import { FullPageLoader } from '@samagra-x/stencil-molecules/lib/fullpage-loader';
 
 import { useColorPalates } from '../../providers/theme-provider/hooks';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useRouter } from 'next/router';
 import Menu from '../../components/menu';
 import toast from 'react-hot-toast';
+import { ImportedFullPageLoader } from '../../components/fullpage-loader';
 
 const Home: React.FC = () => {
   const t = useLocalization();
@@ -119,7 +118,7 @@ const Home: React.FC = () => {
   };
 
   if (!weather) {
-    return <FullPageLoader loading={!weather} />;
+    return <ImportedFullPageLoader loading={!weather} />;
   }
 
   return (

@@ -11,7 +11,6 @@ import NewLanguagePicker from '@samagra-x/stencil-molecules/lib/language-picker/
 
 const LanguagePicker = () => {
   const config = useConfig('component', 'sidebar');
-  const botConfig = useConfig('component', 'botDetails');
   const context = useContext(AppContext);
   const [activeLanguage, setActiveLanguage] = useState<string>(() => {
     const storedLang = localStorage.getItem('locale');
@@ -40,17 +39,6 @@ const LanguagePicker = () => {
     { name: config?.languageName2, value: config?.languageCode2 },
   ];
   return (
-    // <FormControl
-    //   sx={{
-    //     m: 1,
-    //     background: theme?.primary?.main,
-    //     border: 'none',
-    //     borderRadius: '10px',
-    //     height: '36px',
-    //   }}
-    //   size="small"
-    //   data-testid="language-picker"
-    // >
     <NewLanguagePicker
       activeLanguage={activeLanguage}
       handleLanguageClick={handleChange}
@@ -64,25 +52,6 @@ const LanguagePicker = () => {
         },
       }}
     />
-
-    //   <Select
-    //     value={activeLanguage}
-    //     onChange={handleChange}
-    //     displayEmpty
-    //     inputProps={{ 'aria-label': 'Without label' }}
-    //     sx={{
-    //       color: theme?.primary?.contrastText,
-    //       border: 'none',
-    //       borderRadius: '10px',
-    //       width: '85px',
-    //       height: '36px',
-    //     }}
-    //   >
-    //     {map(languages, (lang) => (
-    //       <MenuItem value={lang?.value}>{lang?.name}</MenuItem>
-    //     ))}
-    //   </Select>
-    // </FormControl>
   );
 };
 

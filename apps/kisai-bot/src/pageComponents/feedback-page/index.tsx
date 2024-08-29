@@ -71,7 +71,7 @@ const FeedbackPage: React.FC = () => {
 
   return (
     <>
-      <Feedback star={5} showRatingBox={true} />
+      <Feedback star={5} showRatingBox={true} showReviewBox={true} />
       <Menu />
     </>
   );

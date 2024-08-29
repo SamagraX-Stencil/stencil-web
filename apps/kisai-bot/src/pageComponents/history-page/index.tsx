@@ -11,8 +11,7 @@ import _ from 'underscore';
 import { ChatItem, HistoryItem } from './index.d';
 import { map } from 'lodash';
 import { useColorPalates } from '../../providers/theme-provider/hooks';
-// import { FullPageLoader } from '../../components/fullpage-loader';
-import { FullPageLoader } from '@samagra-x/stencil-molecules/lib/fullpage-loader';
+import { ImportedFullPageLoader } from '../../components/fullpage-loader';
 
 import { useLocalization } from '../../hooks';
 import axios from 'axios';
@@ -180,7 +179,7 @@ const HistoryPage: FC = () => {
   return (
     <>
       <div className={styles.main}>
-        <FullPageLoader
+        <ImportedFullPageLoader
           loading={isFetching}
           color={theme?.primary?.main}
           label="Fetching History"

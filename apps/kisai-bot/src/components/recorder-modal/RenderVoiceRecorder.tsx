@@ -5,7 +5,6 @@ import { useLocalization } from '../../hooks';
 import { useConfig } from '../../hooks/useConfig';
 import { v4 as uuidv4 } from 'uuid';
 import { AppContext } from '../../context';
-import saveTelemetryEvent from '../../utils/telemetry';
 import { LiveAudioVisualizer } from 'react-audio-visualize';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
@@ -50,13 +49,6 @@ const RenderVoiceRecorder: React.ForwardRefRenderFunction<
   }));
 
   const startRecording = async () => {
-    saveTelemetryEvent('0.1', 'E044', 'micAction', 'micTap', {
-      botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-      orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-      userId: localStorage.getItem('userID') || '',
-      phoneNumber: localStorage.getItem('phoneNumber') || '',
-      conversationId: sessionStorage.getItem('conversationId') || '',
-    });
     IS_RECORDING = true;
     record();
   };
@@ -165,16 +157,6 @@ const RenderVoiceRecorder: React.ForwardRefRenderFunction<
         setInputMsg(rsp_data.text);
         const endTime = Date.now();
         const latency = endTime - startTime;
-        await saveTelemetryEvent('0.1', 'E046', 'aiToolProxyToolLatency', 's2tLatency', {
-          botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-          orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-          userId: localStorage.getItem('userID') || '',
-          phoneNumber: localStorage.getItem('phoneNumber') || '',
-          conversationId: sessionStorage.getItem('conversationId') || '',
-          timeTaken: latency,
-          messageId: s2tMsgId,
-          createdAt: Math.floor(startTime / 1000),
-        });
       } else {
         toast.error(t('message.recorder_error'));
         console.log(resp);
@@ -195,17 +177,6 @@ const RenderVoiceRecorder: React.ForwardRefRenderFunction<
       setIsErrorClicked(false);
       const endTime = Date.now();
       const latency = endTime - startTime;
-      await saveTelemetryEvent('0.1', 'E046', 'aiToolProxyToolLatency', 's2tLatency', {
-        botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-        orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-        userId: localStorage.getItem('userID') || '',
-        phoneNumber: localStorage.getItem('phoneNumber') || '',
-        conversationId: sessionStorage.getItem('conversationId') || '',
-        timeTaken: latency,
-        messageId: s2tMsgId,
-        createdAt: Math.floor(startTime / 1000),
-        error: error instanceof Error ? error.message : t('message.recorder_error'),
-      });
 
       setTimeout(() => {
         if (!isErrorClicked) {

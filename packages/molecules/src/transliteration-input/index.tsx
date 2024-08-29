@@ -4,7 +4,7 @@ import useTransliteration from './useTransliteration-input';
 import { TextareaAutosize, TextareaAutosizeProps } from '@mui/base/TextareaAutosize';
 import { CSSProperties } from 'react';
 
-const styles: {
+const defaultStyles: {
   container: CSSProperties;
   suggestions: CSSProperties;
   suggestion: CSSProperties;
@@ -51,9 +51,16 @@ export interface TransliterationInputPropsType
   placeholder?: string;
   multiline?: boolean;
   rows?: number;
-  cols?: number;
+  columns?: number;
   value: string;
   setValue: (value: string) => void;
+  translationApiEndPoint: string;
+  customCSS?: {
+    container?: CSSProperties;
+    suggestions?: CSSProperties;
+    suggestion?: CSSProperties;
+    active?: CSSProperties;
+  };
 }
 
 const TransliterationInput: React.FC<TransliterationInputPropsType> = ({
@@ -61,10 +68,12 @@ const TransliterationInput: React.FC<TransliterationInputPropsType> = ({
   placeholder,
   multiline = false,
   rows = 1,
-  cols,
+  columns,
   value,
   setValue,
-  ...props
+  translationApiEndPoint,
+  customCSS = {},
+  ...textAreaAutoSizeprops
 }: any) => {
   // const [temp, setTemp] = useState('');
   const {
@@ -73,16 +82,25 @@ const TransliterationInput: React.FC<TransliterationInputPropsType> = ({
     handleInputChange,
     suggestionClickHandler,
     suggestionHandler,
-  } = useTransliteration(config, value, setValue);
+  } = useTransliteration(config, value, setValue, translationApiEndPoint);
+
+  const mergedStyles = {
+    container: { ...defaultStyles.container, ...customCSS.container },
+    suggestions: { ...defaultStyles.suggestions, ...customCSS.suggestions },
+    suggestion: { ...defaultStyles.suggestion, ...customCSS.suggestion },
+    active: { ...defaultStyles.active, ...customCSS.active },
+  };
 
   return (
-    <div style={styles.container}>
-      <div style={styles.suggestions}>
+    <div style={mergedStyles.container}>
+      <div style={mergedStyles.suggestions}>
         {suggestions.map((suggestion, index) => (
           <div
             key={index}
             onClick={() => suggestionClickHandler(suggestion)}
-            className={`${styles.suggestion} ${activeSuggestion === index ? styles.active : ''}`}
+            className={`${mergedStyles.suggestion} ${
+              activeSuggestion === index ? mergedStyles.active : ''
+            }`}
             onMouseEnter={() => suggestionHandler(index)}
           >
             {suggestion}
@@ -103,7 +121,7 @@ const TransliterationInput: React.FC<TransliterationInputPropsType> = ({
         fullWidth
         multiline={multiline}
         rows={multiline ? rows : 1}
-        {...props}
+        {...textAreaAutoSizeprops}
       />
     </div>
   );
