@@ -7,8 +7,7 @@ import { AppContext } from '../../context';
 import { MessageType, XMessage } from '@samagra-x/xmessage';
 import { useConfig } from '../../hooks/useConfig';
 import toast from 'react-hot-toast';
-// import TransliterationInput from '../transliteration-input';
-import { TransliterationInput } from '@samagra-x/stencil-molecules/lib/transliteration-input';
+import ImportedTransliterationInput from '../transliteration-input';
 
 const FeedbackPopup: React.FC<any> = ({ setShowFeedbackPopup }) => {
   const t = useLocalization();
@@ -17,7 +16,7 @@ const FeedbackPopup: React.FC<any> = ({ setShowFeedbackPopup }) => {
   const [review, setReview] = useState('');
 
   const negativeFeedbackPayload = {
-    app: process.env.NEXT_PUBLIC_BOT_ID || '',
+    app: '74b41966-c74a-43e7-ba43-07f038893cb4' || '',
     messageType: MessageType.FEEDBACK_NEGATIVE,
     messageId: {
       replyId: context?.currentQuery,
@@ -59,7 +58,7 @@ const FeedbackPopup: React.FC<any> = ({ setShowFeedbackPopup }) => {
       </div>
       <p>{t('label.comment')}</p>
       <div className={styles.feedbackBox}>
-        <TransliterationInput
+        <ImportedTransliterationInput
           data-testid="feedback-popup-box"
           config={config}
           value={review}

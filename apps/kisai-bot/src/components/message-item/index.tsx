@@ -26,14 +26,12 @@ import { useConfig } from '../../hooks/useConfig';
 import { useLocalization } from '../../hooks';
 import { AppContext } from '../../context';
 import axios from 'axios';
-import saveTelemetryEvent from '../../utils/telemetry';
 import BlinkingSpinner from '../blinking-spinner/index';
 import Loader from '../loader';
 import { MessageType, XMessage } from '@samagra-x/xmessage';
 import { v4 as uuidv4 } from 'uuid';
 import router from 'next/router';
-// import TransliterationInput from '../transliteration-input';
-import { TransliterationInput } from '@samagra-x/stencil-molecules/lib/transliteration-input';
+import ImportedTransliterationInput from '../transliteration-input';
 
 const MessageItem: FC<MessageItemPropType> = ({ message }) => {
   const { content, type } = message;
@@ -97,7 +95,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message }) => {
       if (value === 1) {
         context?.newSocket.sendMessage({
           payload: {
-            app: process.env.NEXT_PUBLIC_BOT_ID || '',
+            app: '74b41966-c74a-43e7-ba43-07f038893cb4' || '',
             from: {
               userID: localStorage.getItem('userID'),
             },
@@ -237,110 +235,78 @@ const MessageItem: FC<MessageItemPropType> = ({ message }) => {
       }
       context?.playAudio(url, content);
       setTtsLoader(false);
-      saveTelemetryEvent('0.1', 'E015', 'userQuery', 'timesAudioUsed', {
-        botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-        orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-        userId: localStorage.getItem('userID') || '',
-        phoneNumber: localStorage.getItem('phoneNumber') || '',
-        conversationId: sessionStorage.getItem('conversationId') || '',
-        messageId: content?.data?.replyId,
-        text: content?.text,
-        timesAudioUsed: 1,
-      });
     },
     [audioFetched, content, context?.playAudio]
   );
 
   const downloadAudio = useCallback(() => {
-    const fetchAudio = async (text: string) => {
-      const startTime = Date.now();
-      try {
-        const response = await axios.post(
-          `${process.env.NEXT_PUBLIC_AI_TOOLS_API}/text-to-speech`,
-          {
-            text: text,
-            language: context?.locale,
-            messageId: content?.data?.replyId,
-            conversationId: sessionStorage.getItem('conversationId') || '',
-          },
-          {
-            headers: {
-              botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-              orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-              userId: localStorage.getItem('userID') || '',
-            },
-          }
-        );
-        setAudioFetched(true);
-        const endTime = Date.now();
-        const latency = endTime - startTime;
-        await saveTelemetryEvent('0.1', 'E045', 'aiToolProxyToolLatency', 't2sLatency', {
-          botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-          orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-          userId: localStorage.getItem('userID') || '',
-          phoneNumber: localStorage.getItem('phoneNumber') || '',
-          conversationId: sessionStorage.getItem('conversationId') || '',
-          text: text,
-          messageId: content?.data?.replyId,
-          timeTaken: latency,
-          createdAt: Math.floor(startTime / 1000),
-          audioUrl: response?.data?.url || 'No audio URL',
-        });
-        // cacheAudio(response.data);
-        return response?.data?.url;
-      } catch (error: any) {
-        console.error('Error fetching audio:', error);
-        setAudioFetched(true);
-        const endTime = Date.now();
-        const latency = endTime - startTime;
-        await saveTelemetryEvent('0.1', 'E045', 'aiToolProxyToolLatency', 't2sLatency', {
-          botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-          orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-          userId: localStorage.getItem('userID') || '',
-          phoneNumber: localStorage.getItem('phoneNumber') || '',
-          conversationId: sessionStorage.getItem('conversationId') || '',
-          text: text,
-          msgId: content?.data?.replyId,
-          timeTaken: latency,
-          createdAt: Math.floor(startTime / 1000),
-          error: error?.message || 'Error fetching audio',
-        });
-        return null;
-      }
-    };
+    toast.error('download audio is called');
+    // const fetchAudio = async (text: string) => {
+    //   const startTime = Date.now();
+    //   try {
+    //     const response = await axios.post(
+    //       `${process.env.NEXT_PUBLIC_AI_TOOLS_API}/text-to-speech`,
+    //       {
+    //         text: text,
+    //         language: context?.locale,
+    //         messageId: content?.data?.replyId,
+    //         conversationId: sessionStorage.getItem('conversationId') || '',
+    //       },
+    //       {
+    //         headers: {
+    //           botId: '74b41966-c74a-43e7-ba43-07f038893cb4' || '',
+    //           orgId: 'f2070b8a-0491-45cb-9f35-8599d6dd77ef' || '',
+    //           userId: localStorage.getItem('userID') || '',
+    //         },
+    //       }
+    //     );
+    //     setAudioFetched(true);
+    //     const endTime = Date.now();
 
-    const fetchData = async () => {
-      if (!content?.data?.audio_url && content?.data?.position === 'left') {
-        const toastId = toast.loading(`${t('message.download_audio')}`);
-        setTimeout(() => {
-          toast.dismiss(toastId);
-        }, 1500);
-        const text = content?.data?.card?.content?.cells
-          ? content?.data?.card?.content?.cells
-              ?.map((cell: any) => {
-                const texts = [];
-                if (cell.header) texts.push(cell.header);
-                if (cell.footer) texts.push(cell.footer);
-                return texts.join(' ');
-              })
-              .join(' ')
-          : content?.text;
-        const audioUrl = await fetchAudio(text ?? 'No text found');
+    //     // cacheAudio(response.data);
+    //     return response?.data?.url;
+    //   } catch (error: any) {
+    //     console.error('Error fetching audio:', error);
+    //     setAudioFetched(true);
+    //     const endTime = Date.now();
+    //     const latency = endTime - startTime;
 
-        setTtsLoader(false);
-        if (audioUrl) {
-          content.data.audio_url = audioUrl;
-          handleAudio(audioUrl);
-        } else setTtsLoader(false);
-      }
-    };
+    //     return null;
+    //   }
+    // };
 
-    if (content?.data?.audio_url) {
-      handleAudio(content.data.audio_url);
-    } else {
-      setTtsLoader(true);
-      fetchData();
-    }
+    // const fetchData = async () => {
+    //   if (!content?.data?.audio_url && content?.data?.position === 'left') {
+    //     const toastId = toast.loading(`${t('message.download_audio')}`);
+    //     setTimeout(() => {
+    //       toast.dismiss(toastId);
+    //     }, 1500);
+    //     const text = content?.data?.card?.content?.cells
+    //       ? content?.data?.card?.content?.cells
+    //           ?.map((cell: any) => {
+    //             const texts = [];
+    //             if (cell.header) texts.push(cell.header);
+    //             if (cell.footer) texts.push(cell.footer);
+    //             return texts.join(' ');
+    //           })
+    //           .join(' ')
+    //       : content?.text;
+    //     const audioUrl = await fetchAudio(text ?? 'No text found');
+
+    //     setTtsLoader(false);
+    //     if (audioUrl) {
+    //       content.data.audio_url = audioUrl;
+    //       handleAudio(audioUrl);
+    //     } else setTtsLoader(false);
+    //   }
+    // };
+
+    // if (content?.data?.audio_url) {
+    //   handleAudio(content.data.audio_url);
+    // } else {
+    //   setTtsLoader(true);
+    //   fetchData();
+    // }
   }, [handleAudio, content?.data, content?.text, t]);
 
   // Hide input box if there are buttons
@@ -511,7 +477,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message }) => {
                 {content?.data?.position === 'right'
                   ? null
                   : !content?.data?.isEnd && <BlinkingSpinner />}
-                {process.env.NEXT_PUBLIC_DEBUG === 'true' && (
+                {true && (
                   <div
                     style={{
                       color: content?.data?.position === 'right' ? 'var(--font)' : 'yellow',
@@ -784,7 +750,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message }) => {
                     zIndex: 100,
                   }}
                 >
-                  <TransliterationInput
+                  <ImportedTransliterationInput
                     placeholder={t('label.buttons_search_placeholder') || 'Search'}
                     value={searchQuery}
                     setValue={setSearchQuery}
@@ -941,7 +907,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message }) => {
             <div style={{ display: 'flex' }}>
               <span className={styles.optionsText}>
                 {content?.data?.payload?.text}
-                {process.env.NEXT_PUBLIC_DEBUG === 'true' && (
+                {true && (
                   <div
                     style={{
                       color: 'var(--font)',
@@ -1024,7 +990,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message }) => {
                 choices: JSON.parse(content?.text)?.buttons,
                 isWeather: true,
               })} */}
-              {process.env.NEXT_PUBLIC_DEBUG === 'true' && (
+              {true && (
                 <div
                   style={{
                     color: 'var(--font)',
@@ -1128,7 +1094,7 @@ const MessageItem: FC<MessageItemPropType> = ({ message }) => {
                     zIndex: 100,
                   }}
                 >
-                  <TransliterationInput
+                  <ImportedTransliterationInput
                     placeholder={t('label.buttons_search_placeholder') || 'Search'}
                     value={searchQuery}
                     setValue={setSearchQuery}

@@ -16,8 +16,7 @@ import { Modal, Box, IconButton, Typography } from '@mui/material';
 import MicIcon from '@mui/icons-material/Mic';
 import styles from './index.module.css';
 import CircularProgress from '@mui/material/CircularProgress';
-// import TransliterationInput from '../../components/transliteration-input';
-import { TransliterationInput } from '@samagra-x/stencil-molecules/lib/transliteration-input';
+import ImportedTransliterationInput from '../../components/transliteration-input';
 
 const ChatPage: NextPage = () => {
   const context = useContext(AppContext);
@@ -48,7 +47,7 @@ const ChatPage: NextPage = () => {
   };
 
   useEffect(() => {
-    context?.fetchIsDown(); // check if server is down
+    // context?.fetchIsDown(); // check if server is down
 
     if (!sessionStorage.getItem('conversationId')) {
       const newConversationId = uuidv4();
@@ -165,7 +164,7 @@ const ChatPage: NextPage = () => {
 
         <form onSubmit={(event) => event?.preventDefault()}>
           <div className={`${`${styles.inputBox} ${styles.inputBoxOpen}`}`}>
-            <TransliterationInput
+            <ImportedTransliterationInput
               data-testid="homepage-input-field"
               config={botConfig}
               style={{ fontFamily: 'NotoSans-Regular' }}

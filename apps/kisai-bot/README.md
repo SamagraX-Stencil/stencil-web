@@ -29,7 +29,6 @@ kisai-bot/
 │   │   ├── golbals.css
 │   │
 │   ├── utils/
-│   │   ├── telemetry.ts
 │   │   ├── location.ts
 │   │   └── ...
 │   └── ...

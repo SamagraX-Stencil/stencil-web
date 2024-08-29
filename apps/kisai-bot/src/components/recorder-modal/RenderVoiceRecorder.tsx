@@ -5,7 +5,6 @@ import { useLocalization } from '../../hooks';
 import { useConfig } from '../../hooks/useConfig';
 import { v4 as uuidv4 } from 'uuid';
 import { AppContext } from '../../context';
-import saveTelemetryEvent from '../../utils/telemetry';
 import { LiveAudioVisualizer } from 'react-audio-visualize';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
@@ -50,13 +49,6 @@ const RenderVoiceRecorder: React.ForwardRefRenderFunction<
   }));
 
   const startRecording = async () => {
-    saveTelemetryEvent('0.1', 'E044', 'micAction', 'micTap', {
-      botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-      orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-      userId: localStorage.getItem('userID') || '',
-      phoneNumber: localStorage.getItem('phoneNumber') || '',
-      conversationId: sessionStorage.getItem('conversationId') || '',
-    });
     IS_RECORDING = true;
     record();
   };
@@ -132,88 +124,68 @@ const RenderVoiceRecorder: React.ForwardRefRenderFunction<
   }
 
   const makeComputeAPICall = async (blob: Blob) => {
-    const startTime = Date.now();
-    const s2tMsgId = uuidv4();
-    console.log('s2tMsgId:', s2tMsgId);
-    try {
-      onProcessingStart();
-      setRecorderStatus('processing');
-      console.log('base', blob);
-      toast.success(t('message.recorder_wait'));
+    toast.success('speech to text api is called with missing api');
+    // const startTime = Date.now();
+    // const s2tMsgId = uuidv4();
+    // console.log('s2tMsgId:', s2tMsgId);
+    // try {
+    //   onProcessingStart();
+    //   setRecorderStatus('processing');
+    //   console.log('base', blob);
+    //   toast.success(t('message.recorder_wait'));
 
-      const apiEndpoint = process.env.NEXT_PUBLIC_AI_TOOLS_API + '/speech-to-text';
-      const formData = new FormData();
-      formData.append('file', blob, 'audio.wav');
-      formData.append('messageId', s2tMsgId);
-      formData.append('conversationId', sessionStorage.getItem('conversationId') || '');
-      formData.append('language', localStorage.getItem('locale') || 'en');
+    //   const apiEndpoint = process.env.NEXT_PUBLIC_AI_TOOLS_API + '/speech-to-text';
+    //   const formData = new FormData();
+    //   formData.append('file', blob, 'audio.wav');
+    //   formData.append('messageId', s2tMsgId);
+    //   formData.append('conversationId', sessionStorage.getItem('conversationId') || '');
+    //   formData.append('language', localStorage.getItem('locale') || 'en');
 
-      const resp = await fetch(apiEndpoint, {
-        method: 'POST',
-        headers: {
-          botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-          orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-          userId: localStorage.getItem('userID') || '',
-        },
-        body: formData,
-      });
+    //   const resp = await fetch(apiEndpoint, {
+    //     method: 'POST',
+    //     headers: {
+    //       botId: '74b41966-c74a-43e7-ba43-07f038893cb4' || '',
+    //       orgId: 'f2070b8a-0491-45cb-9f35-8599d6dd77ef' || '',
+    //       userId: localStorage.getItem('userID') || '',
+    //     },
+    //     body: formData,
+    //   });
 
-      if (resp.ok) {
-        const rsp_data = await resp.json();
-        console.log('hi', rsp_data);
-        if (rsp_data.text === '') throw new Error('Unexpected end of JSON input');
-        setInputMsg(rsp_data.text);
-        const endTime = Date.now();
-        const latency = endTime - startTime;
-        await saveTelemetryEvent('0.1', 'E046', 'aiToolProxyToolLatency', 's2tLatency', {
-          botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-          orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-          userId: localStorage.getItem('userID') || '',
-          phoneNumber: localStorage.getItem('phoneNumber') || '',
-          conversationId: sessionStorage.getItem('conversationId') || '',
-          timeTaken: latency,
-          messageId: s2tMsgId,
-          createdAt: Math.floor(startTime / 1000),
-        });
-      } else {
-        toast.error(t('message.recorder_error'));
-        console.log(resp);
-        setIsErrorClicked(false);
-        setTimeout(() => {
-          if (!isErrorClicked) {
-            setRecorderStatus('idle');
-          }
-        }, 2500);
-      }
-      onProcessingEnd();
-      setRecorderStatus('idle');
-    } catch (error) {
-      console.error(error);
-      onProcessingEnd();
-      setRecorderStatus('error');
-      toast.error(t('message.recorder_error'));
-      setIsErrorClicked(false);
-      const endTime = Date.now();
-      const latency = endTime - startTime;
-      await saveTelemetryEvent('0.1', 'E046', 'aiToolProxyToolLatency', 's2tLatency', {
-        botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-        orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-        userId: localStorage.getItem('userID') || '',
-        phoneNumber: localStorage.getItem('phoneNumber') || '',
-        conversationId: sessionStorage.getItem('conversationId') || '',
-        timeTaken: latency,
-        messageId: s2tMsgId,
-        createdAt: Math.floor(startTime / 1000),
-        error: error instanceof Error ? error.message : t('message.recorder_error'),
-      });
+    //   if (resp.ok) {
+    //     const rsp_data = await resp.json();
+    //     console.log('hi', rsp_data);
+    //     if (rsp_data.text === '') throw new Error('Unexpected end of JSON input');
+    //     setInputMsg(rsp_data.text);
+    //     const endTime = Date.now();
+    //     const latency = endTime - startTime;
+    //   } else {
+    //     toast.error(t('message.recorder_error'));
+    //     console.log(resp);
+    //     setIsErrorClicked(false);
+    //     setTimeout(() => {
+    //       if (!isErrorClicked) {
+    //         setRecorderStatus('idle');
+    //       }
+    //     }, 2500);
+    //   }
+    //   onProcessingEnd();
+    //   setRecorderStatus('idle');
+    // } catch (error) {
+    //   console.error(error);
+    //   onProcessingEnd();
+    //   setRecorderStatus('error');
+    //   toast.error(t('message.recorder_error'));
+    //   setIsErrorClicked(false);
+    //   const endTime = Date.now();
+    //   const latency = endTime - startTime;
 
-      setTimeout(() => {
-        if (!isErrorClicked) {
-          setRecorderStatus('idle');
-        }
-      }, 2500);
-    }
-    context?.sets2tMsgId((prev: any) => s2tMsgId);
+    //   setTimeout(() => {
+    //     if (!isErrorClicked) {
+    //       setRecorderStatus('idle');
+    //     }
+    //   }, 2500);
+    // }
+    // context?.sets2tMsgId((prev: any) => s2tMsgId);
   };
 
   if (config?.showVoiceRecorder === false) {

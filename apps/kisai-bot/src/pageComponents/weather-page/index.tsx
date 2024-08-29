@@ -5,11 +5,11 @@ import { Chip, Grid } from '@mui/material';
 import { useConfig } from '../../hooks/useConfig';
 import { useLocalization } from '../../hooks';
 import axios from 'axios';
-import { FullPageLoader } from '@samagra-x/stencil-molecules/lib/fullpage-loader';
 import WeatherAdvisoryPopup from '../../components/weather-advisory-popup';
-import saveTelemetryEvent from '../../utils/telemetry';
 import { v4 as uuidv4 } from 'uuid';
 import Menu from '../../components/menu';
+import { ImportedFullPageLoader } from '../../components/fullpage-loader';
+import data from './apiData.json';
 
 const WeatherPage: React.FC = () => {
   const t = useLocalization();
@@ -21,7 +21,6 @@ const WeatherPage: React.FC = () => {
   const [selectedCrop, setSelectedCrop] = useState<any>(null);
   const [fetchTime, setFetchTime] = useState(0);
   const [convId, setConvId] = useState(uuidv4());
-  const [telemetrySent, setTelemetrySent] = useState(false);
   console.log({ config });
 
   useEffect(() => {
@@ -32,31 +31,8 @@ const WeatherPage: React.FC = () => {
   }, []);
 
   const fetchWeatherData = async () => {
-    const startTime = performance.now();
-    if (!localStorage.getItem('longitude') || !localStorage.getItem('latitude')) return;
     try {
-      const response = await axios.get(process.env.NEXT_PUBLIC_WEATHER_API || '', {
-        params: {
-          latitude: localStorage.getItem('latitude'),
-          longitude: localStorage.getItem('longitude'),
-          provider: config?.provider || 'upcar',
-        },
-      });
-
-      const endTime = performance.now();
-      setFetchTime(endTime - startTime);
-      console.log(response.data);
-      const providers = response.data.message.catalog.providers;
-      // setData(providers);
-
-      // providers.forEach((provider: any) => {
-      //   if(provider?.id === 'upcar') {
-      //     setCrop(provider);
-      //   }else{
-      //     setWeather(provider);
-      //   }
-      // });
-
+      const providers = data;
       providers.forEach((provider: any) => {
         if (provider.id.toLowerCase() === 'ouat') {
           if (provider.category_id === 'crop_advisory_provider') {
@@ -111,97 +87,6 @@ const WeatherPage: React.FC = () => {
     };
   }, [weather, fetchWeatherData]);
 
-  const sendTelemetry = async (messageId?: string, cropData?: any) => {
-    try {
-      if (weather?.current) {
-        setTelemetrySent(true);
-        const msgId = uuidv4();
-        await saveTelemetryEvent('0.1', 'E032', 'messageQuery', 'messageSent', {
-          botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-          orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-          userId: localStorage.getItem('userID') || '',
-          phoneNumber: localStorage.getItem('phoneNumber') || '',
-          conversationId: convId,
-          messageId: msgId || messageId || '',
-          text: cropData?.descriptor?.name || t('label.weather'),
-          createdAt: Math.floor(new Date().getTime() / 1000),
-        });
-        await saveTelemetryEvent('0.1', 'E005', 'userQuery', 'userHistory', {
-          botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-          orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-          userId: localStorage.getItem('userID') || '',
-          phoneNumber: localStorage.getItem('phoneNumber') || '',
-          conversationId: convId,
-          messageId: msgId || messageId || '',
-          text: cropData?.descriptor?.name || t('label.weather'),
-          createdAt: Math.floor(new Date().getTime() / 1000),
-          timeTaken: 0,
-          did: uuidv4(),
-        });
-        await saveTelemetryEvent('0.1', 'E006', 'userQuery', 'userInfo', {
-          botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-          orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-          userId: localStorage.getItem('userID') || '',
-          phoneNumber: localStorage.getItem('phoneNumber') || '',
-          conversationId: convId,
-          messageId: msgId || messageId || '',
-          text: cropData?.descriptor?.name || t('label.weather'),
-          createdAt: Math.floor(new Date().getTime() / 1000),
-          block: localStorage.getItem('block') || '',
-          district: localStorage.getItem('city') || '',
-          transformerId: uuidv4(),
-        });
-        saveTelemetryEvent('0.1', 'E017', 'userQuery', 'responseAt', {
-          botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-          orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-          userId: localStorage.getItem('userID') || '',
-          phoneNumber: localStorage.getItem('phoneNumber') || '',
-          conversationId: convId || '',
-          messageId: msgId || messageId || '',
-          text: '',
-          timeTaken: 0,
-          createdAt: Math.floor(new Date().getTime() / 1000),
-        });
-        saveTelemetryEvent('0.1', 'E012', 'userQuery', 'llmResponse', {
-          botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-          transformerId: uuidv4(),
-          orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-          userId: localStorage.getItem('userID') || '',
-          phoneNumber: localStorage.getItem('phoneNumber') || '',
-          conversationId: convId || '',
-          replyId: uuidv4(),
-          messageId: msgId || messageId || '',
-          text: cropData?.descriptor?.long_desc || JSON.stringify(weather.current),
-          createdAt: Math.floor(new Date().getTime() / 1000),
-          timeTaken: parseInt(`${fetchTime}`),
-          responseType: `Guided: weather`,
-          isGuided: 'true',
-          isFlowEnd: 'false',
-        });
-        saveTelemetryEvent('0.1', 'E033', 'messageQuery', 'messageReceived', {
-          botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-          orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-          userId: localStorage.getItem('userID') || '',
-          phoneNumber: localStorage.getItem('phoneNumber') || '',
-          conversationId: convId || '',
-          replyId: uuidv4(),
-          messageId: msgId || messageId || '',
-          text: cropData?.descriptor?.long_desc || JSON.stringify(weather.current),
-          createdAt: Math.floor(new Date().getTime() / 1000),
-          timeTaken: parseInt(`${fetchTime}`),
-        });
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    if (!telemetrySent) {
-      sendTelemetry();
-    }
-  }, [weather]);
-
   function getDayAbbreviation(index: number): string {
     const date = new Date();
     const days: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -211,7 +96,7 @@ const WeatherPage: React.FC = () => {
   }
 
   if (!weather || !crop) {
-    return <FullPageLoader loading={!weather || !crop} />;
+    return <ImportedFullPageLoader loading={!weather || !crop} />;
   }
   return (
     <div className={styles.main}>
@@ -568,7 +453,6 @@ const WeatherPage: React.FC = () => {
                 onClick={() => {
                   setShowWeatherAdvisoryPopup(true);
                   setSelectedCrop(ele);
-                  sendTelemetry(uuidv4(), ele);
                 }}
               >
                 <img src={ele?.descriptor?.images?.[0]?.url} alt="" width={80} height={80} />

@@ -25,26 +25,6 @@ const OnBoardingPage = (props: any) => {
 
   const fetchList = async (type: string) => {
     try {
-      const res = await axios.post(
-        process.env.NEXT_PUBLIC_DATASET_URL +
-          '/dataset/execute/' +
-          process.env.NEXT_PUBLIC_ENTITY_DATASET_ID,
-        {
-          sqlQuery: `SELECT * from "prioritized_commodity" where "type"='${type}' and "datasetId" = '${process.env.NEXT_PUBLIC_ENTITY_DATASET_ID}' and "botId"='${process.env.NEXT_PUBLIC_BOT_ID}' ORDER BY "priority"`,
-        },
-        {
-          headers: {
-            botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-            orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-          },
-        }
-      );
-      console.log({ res });
-      if (type === 'crop') {
-        setCropList(res?.data?.data);
-      } else if (type === 'animal') {
-        setAnimalList(res?.data?.data);
-      }
     } catch (err) {
       console.log(err);
     }

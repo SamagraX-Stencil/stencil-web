@@ -6,14 +6,14 @@ import { useConfig } from '../../hooks/useConfig';
 import { useLocalization } from '../../hooks';
 import { AppContext } from '../../context';
 import axios from 'axios';
-// import { FullPageLoader } from '../../components/fullpage-loader';
-import { FullPageLoader } from '@samagra-x/stencil-molecules/lib/fullpage-loader';
 
 import { useColorPalates } from '../../providers/theme-provider/hooks';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useRouter } from 'next/router';
 import Menu from '../../components/menu';
 import toast from 'react-hot-toast';
+import { ImportedFullPageLoader } from '../../components/fullpage-loader';
+import data from './apidata.json';
 
 const Home: React.FC = () => {
   const t = useLocalization();
@@ -32,18 +32,10 @@ const Home: React.FC = () => {
   }, []);
 
   const fetchWeatherData = async () => {
-    const latitude = localStorage.getItem('latitude');
-    const longitude = localStorage.getItem('longitude');
-    if (!latitude || !longitude) return;
-
     try {
-      const response = await axios.get(process.env.NEXT_PUBLIC_WEATHER_API || '', {
-        params: { latitude, longitude },
-      });
+      const providers = data;
 
-      console.log(response.data);
-      const providers = response.data.message.catalog.providers;
-
+      console.log('provider', providers);
       const weatherProvider = providers.find(
         (provider: any) =>
           provider.id.toLowerCase() === 'ouat' && provider.category_id === 'weather_provider'
@@ -119,7 +111,7 @@ const Home: React.FC = () => {
   };
 
   if (!weather) {
-    return <FullPageLoader loading={!weather} />;
+    return <ImportedFullPageLoader loading={!weather} />;
   }
 
   return (

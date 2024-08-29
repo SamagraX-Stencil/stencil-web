@@ -9,14 +9,9 @@ import axios from 'axios';
 import { useCookies } from 'react-cookie';
 import { UCI } from 'socket-package';
 import { XMessage } from '@samagra-x/xmessage';
-// import { FullPageLoader } from '../components/fullpage-loader';
-import { FullPageLoader } from '@samagra-x/stencil-molecules/lib/fullpage-loader';
-// import InputComponent from 'stencil-molecules/lib/input-component';
 
 import WelcomePage from '../pageComponents/welcome-page';
-import saveTelemetryEvent from '../utils/telemetry';
-
-const URL = process.env.NEXT_PUBLIC_SOCKET_URL || '';
+import { ImportedFullPageLoader } from '../components/fullpage-loader';
 
 const ContextProvider: FC<{
   config: any;
@@ -220,31 +215,32 @@ const ContextProvider: FC<{
 
   useEffect(() => {
     if (localStorage.getItem('userID')) {
-      setNewSocket(
-        new UCI(
-          URL,
-          {
-            transportOptions: {
-              polling: {
-                extraHeaders: {
-                  // Authorization: `Bearer ${cookie.access_token}`,
-                  channel: 'akai',
-                },
-              },
-            },
-            path: process.env.NEXT_PUBLIC_SOCKET_PATH || '',
-            query: {
-              deviceId: localStorage.getItem('userID'),
-            },
-            autoConnect: false,
-            transports: ['polling', 'websocket'],
-            upgrade: true,
-            reconnection: true,
-            timeout: 2000,
-          },
-          onMessageReceived
-        )
-      );
+      //use socket connect to test here
+      // setNewSocket(
+      //   new UCI(
+      //     URL,
+      //     {
+      //       transportOptions: {
+      //         polling: {
+      //           extraHeaders: {
+      //             // Authorization: `Bearer ${cookie.access_token}`,
+      //             channel: 'akai',
+      //           },
+      //         },
+      //       },
+      //       path: '',
+      //       query: {
+      //         deviceId: localStorage.getItem('userID'),
+      //       },
+      //       autoConnect: false,
+      //       transports: ['polling', 'websocket'],
+      //       upgrade: true,
+      //       reconnection: true,
+      //       timeout: 2000,
+      //     },
+      //     onMessageReceived
+      //   )
+      // );
     }
     function cleanup() {
       if (newSocket)
@@ -299,22 +295,6 @@ const ContextProvider: FC<{
               };
 
               updatedMessages.push(newMsg);
-              // console.log('useeffect', newMsg.text);
-              try {
-                saveTelemetryEvent('0.1', 'E017', 'userQuery', 'responseAt', {
-                  botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-                  orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-                  userId: localStorage.getItem('userID') || '',
-                  phoneNumber: localStorage.getItem('phoneNumber') || '',
-                  conversationId: sessionStorage.getItem('conversationId') || '',
-                  messageId: msg.messageId.replyId,
-                  text: '',
-                  timeTaken: 0,
-                  createdAt: Math.floor(new Date().getTime() / 1000),
-                });
-              } catch (err) {
-                console.error(err);
-              }
             }
             return updatedMessages;
           });
@@ -328,30 +308,6 @@ const ContextProvider: FC<{
     },
     [messages]
   );
-
-  useEffect(() => {
-    const postTelemetry = async () => {
-      console.log('MESSAGE:', messages);
-      if (messages.length > 0)
-        try {
-          await saveTelemetryEvent('0.1', 'E033', 'messageQuery', 'messageReceived', {
-            botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-            orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-            userId: localStorage.getItem('userID') || '',
-            phoneNumber: localStorage.getItem('phoneNumber') || '',
-            conversationId: sessionStorage.getItem('conversationId') || '',
-            replyId: messages?.[messages.length - 2]?.messageId,
-            messageId: messages?.[messages.length - 1]?.messageId,
-            text: messages[messages.length - 1]?.text,
-            createdAt: Math.floor(new Date().getTime() / 1000),
-            timeTaken: endTime - startTime,
-          });
-        } catch (err) {
-          console.log(err);
-        }
-    };
-    postTelemetry();
-  }, [endTime]);
 
   console.log('erty:', { conversationId });
 
@@ -427,7 +383,7 @@ const ContextProvider: FC<{
       const cId = uuidv4();
       newSocket.sendMessage({
         payload: {
-          app: process.env.NEXT_PUBLIC_BOT_ID || '',
+          app: '74b41966-c74a-43e7-ba43-07f038893cb4' || '',
           payload: {
             text: textToSend?.replace('&', '%26')?.replace(/^\s+|\s+$/g, ''),
             metaData: {
@@ -488,44 +444,31 @@ const ContextProvider: FC<{
             ]);
           }
         }
-      try {
-        await saveTelemetryEvent('0.1', 'E032', 'messageQuery', 'messageSent', {
-          botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-          orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-          userId: localStorage.getItem('userID') || '',
-          phoneNumber: localStorage.getItem('phoneNumber') || '',
-          conversationId: conversationId || '',
-          messageId: messageId,
-          text: textToSend,
-          createdAt: Math.floor(new Date().getTime() / 1000),
-        });
-      } catch (err) {
-        console.error(err);
-      }
+
       sets2tMsgId('');
     },
     [conversationId, newSocket, removeCookie, s2tMsgId]
   );
 
-  const fetchIsDown = useCallback(async () => {
-    try {
-      const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_BFF_API_URL}/health/${
-          config?.component?.botDetails?.healthCheckTime || 5
-        }`
-      );
-      const status = res.data.status;
-      console.log('hie', status);
-      if (status === 'OK') {
-        setIsDown(false);
-      } else {
-        setIsDown(true);
-        console.log('Server status is not OK');
-      }
-    } catch (error: any) {
-      console.error(error);
-    }
-  }, [config?.component?.botDetails?.healthCheckTime]);
+  // const fetchIsDown = useCallback(async () => {
+  //   try {
+  //     const res = await axios.get(
+  //       `${process.env.NEXT_PUBLIC_BFF_API_URL}/health/${
+  //         config?.component?.botDetails?.healthCheckTime || 5
+  //       }`
+  //     );
+  //     const status = res.data.status;
+  //     console.log('hie', status);
+  //     if (status === 'OK') {
+  //       setIsDown(false);
+  //     } else {
+  //       setIsDown(true);
+  //       console.log('Server status is not OK');
+  //     }
+  //   } catch (error: any) {
+  //     console.error(error);
+  //   }
+  // }, [config?.component?.botDetails?.healthCheckTime]);
 
   const normalizedChat = (chats: any): any => {
     console.log('in normalized', chats);
@@ -574,103 +517,103 @@ const ContextProvider: FC<{
     return history;
   };
 
-  useEffect(() => {
-    if (isDown) return;
-    let secondTimer: any = null;
-    let timer: any = null;
-    if (timer || secondTimer) {
-      clearTimeout(secondTimer);
-      clearTimeout(timer);
-    }
-    timer = setTimeout(() => {
-      if (loading) {
-        toast.loading(t('message.taking_longer'), { duration: 3000 });
-      }
-      secondTimer = setTimeout(async () => {
-        fetchIsDown();
-        console.log('log: here');
-        if (loading) {
-          console.log('log:', loading);
-          try {
-            const chatHistory = await axios.get(
-              `${process.env.NEXT_PUBLIC_BFF_API_URL}/history?userId=${localStorage.getItem(
-                'userID'
-              )}&conversationId=${sessionStorage.getItem('conversationId')}`,
-              {
-                headers: {
-                  botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-                },
-              }
-            );
-            console.log('ghji:', chatHistory);
-            console.log('history:', chatHistory.data);
+  // useEffect(() => {
+  //   if (isDown) return;
+  //   let secondTimer: any = null;
+  //   let timer: any = null;
+  //   if (timer || secondTimer) {
+  //     clearTimeout(secondTimer);
+  //     clearTimeout(timer);
+  //   }
+  //   timer = setTimeout(() => {
+  //     if (loading) {
+  //       toast.loading(t('message.taking_longer'), { duration: 3000 });
+  //     }
+  //     secondTimer = setTimeout(async () => {
+  //       // fetchIsDown();
+  //       console.log('log: here');
+  //       if (loading) {
+  //         console.log('log:', loading);
+  //         try {
+  //           const chatHistory = await axios.get(
+  //             `${process.env.NEXT_PUBLIC_BFF_API_URL}/history?userId=${localStorage.getItem(
+  //               'userID'
+  //             )}&conversationId=${sessionStorage.getItem('conversationId')}`,
+  //             {
+  //               headers: {
+  //                 botId: '74b41966-c74a-43e7-ba43-07f038893cb4' || '',
+  //               },
+  //             }
+  //           );
+  //           console.log('ghji:', chatHistory);
+  //           console.log('history:', chatHistory.data);
 
-            if (!chatHistory.data[chatHistory.data.length - 1].response) {
-              chatHistory.data[chatHistory.data.length - 1].response = `${t('message.no_signal')}`;
-            }
-            const normalizedChats = normalizedChat(chatHistory);
-            console.log('normalized chats', normalizedChats);
-            if (normalizedChats.length > 0) {
-              setIsMsgReceiving(false);
-              setLoading(false);
-              setMessages(normalizedChats);
-            }
-          } catch (error: any) {
-            setIsMsgReceiving(false);
-            setLoading(false);
-            console.error(error);
-          }
-        } else if (isMsgReceiving) {
-          console.log('log: here');
-          const secondLastMsg = messages.length > 2 ? messages[messages.length - 2] : null;
-          setMessages((prev: any) => {
-            if (prev.length > 0) {
-              // Create a new array without the last element
-              const updatedMessages = prev.slice(0, -1);
-              // Update the state with the new array
-              return updatedMessages;
-            } else {
-              return prev;
-            }
-          });
-          setLoading(true);
-          console.log('log:', secondLastMsg);
-          if (secondLastMsg) {
-            newSocket.sendMessage({
-              payload: {
-                app: process.env.NEXT_PUBLIC_BOT_ID || '',
-                payload: {
-                  text: secondLastMsg.text,
-                },
-                from: {
-                  userID: localStorage.getItem('userID'),
-                },
-                messageId: {
-                  channelMessageId: sessionStorage.getItem('conversationId'),
-                },
-              } as Partial<XMessage>,
-            });
-          }
-        } else {
-          setLoading(false);
-          setIsMsgReceiving(false);
-        }
-      }, config?.component?.botDetails?.timer2 || 45000);
-    }, config?.component?.botDetails?.timer1 || 30000);
+  //           if (!chatHistory.data[chatHistory.data.length - 1].response) {
+  //             chatHistory.data[chatHistory.data.length - 1].response = `${t('message.no_signal')}`;
+  //           }
+  //           const normalizedChats = normalizedChat(chatHistory);
+  //           console.log('normalized chats', normalizedChats);
+  //           if (normalizedChats.length > 0) {
+  //             setIsMsgReceiving(false);
+  //             setLoading(false);
+  //             setMessages(normalizedChats);
+  //           }
+  //         } catch (error: any) {
+  //           setIsMsgReceiving(false);
+  //           setLoading(false);
+  //           console.error(error);
+  //         }
+  //       } else if (isMsgReceiving) {
+  //         console.log('log: here');
+  //         const secondLastMsg = messages.length > 2 ? messages[messages.length - 2] : null;
+  //         setMessages((prev: any) => {
+  //           if (prev.length > 0) {
+  //             // Create a new array without the last element
+  //             const updatedMessages = prev.slice(0, -1);
+  //             // Update the state with the new array
+  //             return updatedMessages;
+  //           } else {
+  //             return prev;
+  //           }
+  //         });
+  //         setLoading(true);
+  //         console.log('log:', secondLastMsg);
+  //         if (secondLastMsg) {
+  //           newSocket.sendMessage({
+  //             payload: {
+  //               app: '74b41966-c74a-43e7-ba43-07f038893cb4' || '',
+  //               payload: {
+  //                 text: secondLastMsg.text,
+  //               },
+  //               from: {
+  //                 userID: localStorage.getItem('userID'),
+  //               },
+  //               messageId: {
+  //                 channelMessageId: sessionStorage.getItem('conversationId'),
+  //               },
+  //             } as Partial<XMessage>,
+  //           });
+  //         }
+  //       } else {
+  //         setLoading(false);
+  //         setIsMsgReceiving(false);
+  //       }
+  //     }, config?.component?.botDetails?.timer2 || 45000);
+  //   }, config?.component?.botDetails?.timer1 || 30000);
 
-    return () => {
-      clearTimeout(timer);
-      clearTimeout(secondTimer);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    isDown,
-    isMsgReceiving,
-    loading,
-    t,
-    config?.component?.botDetails?.timer1,
-    config?.component?.botDetails?.timer2,
-  ]);
+  //   return () => {
+  //     clearTimeout(timer);
+  //     clearTimeout(secondTimer);
+  //   };
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [
+  //   isDown,
+  //   isMsgReceiving,
+  //   loading,
+  //   t,
+  //   config?.component?.botDetails?.timer1,
+  //   config?.component?.botDetails?.timer2,
+  // ]);
 
   const values = useMemo(
     () => ({
@@ -687,7 +630,7 @@ const ContextProvider: FC<{
       setConversationId,
       newSocket,
       isDown,
-      fetchIsDown,
+      // fetchIsDown,
       showFeedbackPopup,
       setShowFeedbackPopup,
       currentQuery,
@@ -720,7 +663,7 @@ const ContextProvider: FC<{
       setConversationId,
       newSocket,
       isDown,
-      fetchIsDown,
+      // fetchIsDown,
       showFeedbackPopup,
       setShowFeedbackPopup,
       currentQuery,
@@ -755,7 +698,7 @@ const ContextProvider: FC<{
   //       value=""
   //     />
   //   );
-  if (!config) return <FullPageLoader loading label="Loading configuration.." />;
+  if (!config) return <ImportedFullPageLoader loading label="Loading configuration.." />;
 
   if (showWelcomePage) return <WelcomePage config={config} />;
 

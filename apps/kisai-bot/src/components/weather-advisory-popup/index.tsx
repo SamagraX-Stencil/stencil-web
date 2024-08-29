@@ -31,30 +31,31 @@ const WeatherAdvisoryPopup = (props: any) => {
         setIsPlaying(true);
       }
     } else {
-      const url = await fetchAudio(props?.advisory?.descriptor?.long_desc);
-      if (url) {
-        const audio = new Audio(url);
-        audio.playbackRate = config?.component?.botDetails?.audioPlayback || 1.5;
+      toast.success('audio playing api is missing');
+      // const url = await fetchAudio(props?.advisory?.descriptor?.long_desc);
+      // if (url) {
+      //   const audio = new Audio(url);
+      //   audio.playbackRate = config?.component?.botDetails?.audioPlayback || 1.5;
 
-        audio.addEventListener('ended', () => {
-          setAudioElement(null);
-          setIsPlaying(false);
-        });
+      //   audio.addEventListener('ended', () => {
+      //     setAudioElement(null);
+      //     setIsPlaying(false);
+      //   });
 
-        audio
-          .play()
-          .then(() => {
-            console.log('Audio played:', url);
-            setAudioElement(audio);
-            setIsPlaying(true);
-          })
-          .catch((error) => {
-            setAudioElement(null);
-            setIsPlaying(false);
-            toast.error(t('message.no_link'));
-            console.error('Error playing audio:', error);
-          });
-      }
+      //   audio
+      //     .play()
+      //     .then(() => {
+      //       console.log('Audio played:', url);
+      //       setAudioElement(audio);
+      //       setIsPlaying(true);
+      //     })
+      //     .catch((error) => {
+      //       setAudioElement(null);
+      //       setIsPlaying(false);
+      //       toast.error(t('message.no_link'));
+      //       console.error('Error playing audio:', error);
+      //     });
+      // }
     }
   };
 
@@ -65,31 +66,33 @@ const WeatherAdvisoryPopup = (props: any) => {
   };
 
   const fetchAudio = async (text: string) => {
-    const toastId = toast.loading(`${t('message.download_audio')}`);
-    try {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_AI_TOOLS_API}/text-to-speech`,
-        {
-          text: text,
-          language: localStorage.getItem('locale'),
-          disableTelemetry: true,
-        },
-        {
-          headers: {
-            botId: process.env.NEXT_PUBLIC_BOT_ID || '',
-            orgId: process.env.NEXT_PUBLIC_ORG_ID || '',
-            userId: localStorage.getItem('userID') || '',
-          },
-        }
-      );
-      toast.dismiss(toastId);
-      return response?.data?.url;
-    } catch (error: any) {
-      toast.dismiss(toastId);
-      toast.error(t('message.no_link'));
-      console.error('Error fetching audio:', error);
-      return null;
-    }
+    toast.success('text to speech api is missing');
+    // const toastId = toast.loading(`${t('message.download_audio')}`);
+    // try {
+    //   const response = await axios.post(
+    //     `${process.env.NEXT_PUBLIC_AI_TOOLS_API}/text-to-speech`,
+    //     {
+    //       text: text,
+    //       language: localStorage.getItem('locale'),
+    //       disableTelemetry: true,
+    //     },
+    //     {
+    //       headers: {
+    //         botId: '74b41966-c74a-43e7-ba43-07f038893cb4' || '',
+    //         orgId: 'f2070b8a-0491-45cb-9f35-8599d6dd77ef' || '',
+    //         userId: localStorage.getItem('userID') || '',
+    //       },
+    //     }
+    //   );
+    //   toast.dismiss(toastId);
+    //   return response?.data?.url;
+    // } catch (error: any) {
+    //   toast.dismiss(toastId);
+    //   toast.error(t('message.no_link'));
+    //   console.error('Error fetching audio:', error);
+    //   return null;
+    // }
+    return null;
   };
 
   const theme = useColorPalates();

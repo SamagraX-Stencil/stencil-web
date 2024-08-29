@@ -15,7 +15,7 @@ const LocationInput = (props: any) => {
   const theme = useColorPalates();
 
   const { ref: materialRef } = usePlacesWidget({
-    apiKey: process.env.NEXT_PUBLIC_GOOGLE_KEY,
+    apiKey: 'AIzaSyD6gvLgx3T5aslhqfKxyZRX7ryOm5XQUYI',
     onPlaceSelected: (place) => {
       console.log(place);
       setInputValue(place);
@@ -28,7 +28,7 @@ const LocationInput = (props: any) => {
 
   const fetchLocation = async (lat: any, long: any) => {
     try {
-      let res: any = await fetch(`https://geoip.samagra.io/georev?lat=${lat}&lon=${long}`);
+      let res: any = await fetch(`https://geoip.samagra.io/georev?lat=23.2423424&lon=77.4242304`);
       res = await res.json();
       console.log(res);
       props?.setOnboardingData((prev: any) => ({
