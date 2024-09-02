@@ -165,7 +165,7 @@ const OtpComponent = ({
               </>
             )}
           </div>
-          <div
+          {/* <div
             style={{
               marginTop: '10px',
               marginBottom: '10px',
@@ -210,7 +210,7 @@ const OtpComponent = ({
             >
               {loading ? <CircularProgress size={24} color="inherit" /> : 'Login'}
             </Button>
-          </div>
+          </div> */}
         </Box>
       </div>
     </div>

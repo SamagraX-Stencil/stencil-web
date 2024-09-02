@@ -144,7 +144,7 @@ const OtpPage: React.FC = () => {
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
       ></meta>
       <div className={styles.rightColumn}>
-        <div style={{ width: '100%', height: '100%' }}>
+        <div style={{ width: '100%' }}>
           <div className="d-flex pt-2 align-items-center justify-content-center mt-2 w-100">
             <IconButton
               aria-label="fingerprint"
@@ -170,8 +170,46 @@ const OtpPage: React.FC = () => {
               {t('message.otp_verification')}
             </Typography>
           </div>
+          <div
+            style={{
+              marginTop: '20px',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <InputComponent
+              // title="OTP Verification"
+              // titleStyle={{
+              //   display: 'flex',
+              //   justifyContent: 'center',
+              //   alignItems: 'cneter',
+              // }}
+              type="otp"
+              buttonProps={
+                {
+                  buttonText: t('label.submit'),
+                  handleNextTask: handleLogin,
+                } as ButtonProps
+              }
+              otpProps={
+                {
+                  value: otp,
+                  onChange: setOtp,
+                  optBoxSeparator: <></>,
+                  ResetOtpForgotPlaceHolder: 'Resent Again',
+                  handleResendOtpButton: resendOtp,
+
+                  mobileNumberForOtpScreen: '9907799970',
+                  countDownTime: 30,
+
+                  // styles: {},
+                } as OtpProps
+              }
+            />
+          </div>
           {/* Form */}
-          <Typography
+          {/* <Typography
             data-testid="otp-verification-line2"
             variant="subtitle1"
             textAlign="center"
@@ -187,11 +225,11 @@ const OtpPage: React.FC = () => {
                 b: (chunks) => <b>{chunks}</b>,
               }}
             />
-          </Typography>
-          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+          </Typography> */}
+          {/* <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             <OTPInput separator={<></>} value={otp} onChange={setOtp} length={otpLength} />
-          </Box>
-          <div style={{ margin: '10px', textAlign: 'center' }} data-testid="resend-otp">
+          </Box> */}
+          {/* <div style={{ margin: '10px', textAlign: 'center' }} data-testid="resend-otp">
             {countdown > 0 ? (
               <span>
                 <FormattedMessage
@@ -217,7 +255,7 @@ const OtpPage: React.FC = () => {
                 </Typography>
               </>
             )}
-          </div>
+          </div> */}
         </div>
         {/* <InputComponent
           errorMessage=""
@@ -240,17 +278,12 @@ const OtpPage: React.FC = () => {
           otpCountDown={30}
           // ResetOtpForgotPassworkAction={}
         /> */}
-        <InputComponent
-          title="OTP Verification"
-          titleStyle={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'cneter',
-          }}
+        {/* <InputComponent
           type="otp"
           buttonProps={
             {
               buttonText: t('label.submit'),
+              handleNextTask: handleLogin,
             } as ButtonProps
           }
           otpProps={
@@ -267,9 +300,9 @@ const OtpPage: React.FC = () => {
               // styles: {},
             } as OtpProps
           }
-        />
+        /> */}
 
-        <Button
+        {/* <Button
           data-testid="otp-submit-button"
           fullWidth
           variant="contained"
@@ -288,7 +321,7 @@ const OtpPage: React.FC = () => {
           endIcon={<ArrowForwardIcon />}
         >
           {loading ? <CircularProgress size={24} color="inherit" /> : `${t('label.submit')}`}
-        </Button>
+        </Button> */}
       </div>
     </>
   );

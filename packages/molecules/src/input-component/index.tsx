@@ -133,18 +133,31 @@ const InputComponent: React.FC<LoginProps> = ({
         </>
       ) : (
         otpProps && (
-          <OtpComponent
-            countdown={otpProps.countDownTime}
-            handleLogin={buttonProps.handleNextTask}
-            otp={otpProps?.value || ''}
-            otpLength={4}
-            phoneNumber={otpProps.mobileNumberForOtpScreen}
-            resendOtp={otpProps.handleResendOtpButton}
-            setOtp={otpProps?.onChange}
-            separator={otpProps.optBoxSeparator}
-            ResetOtpForgotPassworkPlaceHolder={otpProps.ResetOtpPlaceHolder}
-            otpCustomStyle={otpProps.styles}
-          />
+          <>
+            <OtpComponent
+              countdown={otpProps.countDownTime}
+              handleLogin={buttonProps.handleNextTask}
+              otp={otpProps?.value || ''}
+              otpLength={4}
+              phoneNumber={otpProps.mobileNumberForOtpScreen}
+              resendOtp={otpProps.handleResendOtpButton}
+              setOtp={otpProps?.onChange}
+              separator={otpProps.optBoxSeparator}
+              ResetOtpForgotPassworkPlaceHolder={otpProps.ResetOtpPlaceHolder}
+              otpCustomStyle={otpProps.styles}
+            />
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={buttonProps.handleNextTask}
+              fullWidth
+              size="large"
+              sx={{ mt: 2, height: '40px', width: '90%', ...buttonProps.buttonStyle }}
+              disabled={otpProps?.value?.length < 4}
+            >
+              {buttonProps.buttonText}
+            </Button>
+          </>
         )
       )}
     </Box>
