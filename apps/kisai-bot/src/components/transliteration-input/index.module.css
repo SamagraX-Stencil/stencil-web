@@ -1,0 +1,28 @@
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.suggestions {
+  position: absolute;
+  z-index: 1000;
+  display: flex;
+  min-width: 50px;
+  width: auto;
+  top: -30px;
+  left: 10px;
+  background-color: white;
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.suggestion {
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.active {
+  background-color: #65c3d7;
+  color: white;
+}

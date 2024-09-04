@@ -1,0 +1,40 @@
+.main {
+  margin: 1vh 0 1vh 1vh;
+  overflow-x: hidden;
+  overflow-y: scroll !important;
+  width: 98%;
+  position: fixed;
+  bottom: 1vh;
+  top: 100px;
+  font: sans-serif;
+}
+.main::-webkit-scrollbar {
+  width: 4px;
+  height: 6px;
+}
+.main::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+}
+.main::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+.main::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+.main::-webkit-scrollbar-thumb:active {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.manualButtons {
+  display: flex;
+  justify-content: center;
+}
+
+.dialerBox {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.16);
+  padding-bottom: 1vh;
+}

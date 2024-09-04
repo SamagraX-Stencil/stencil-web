@@ -3,6 +3,7 @@
   "globalDependencies": ["**/.env.*local"],
   "tasks": {
     "build": {
+      "cache": false,
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
@@ -10,7 +11,7 @@
       "dependsOn": ["^lint"]
     },
     "dev": {
-      "cache": true,
+      "cache": false,
       "persistent": false
     },
     "storybook": {

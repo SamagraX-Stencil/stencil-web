@@ -10,8 +10,7 @@
     "coming-soon-page",
     "home-page",
     "launch-page",
-    "on-boarding-page",
-    "weather-page"
+    "on-boarding-page"
   ],
   "molecules": [
     "otp-input",
@@ -19,5 +18,6 @@
     "share-buttons",
     "voice-recorder",
     "json-to-table"
-  ]
+  ],
+  "letter": ["weather-page"]
 }

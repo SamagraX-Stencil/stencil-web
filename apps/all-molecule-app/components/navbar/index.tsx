@@ -13,7 +13,7 @@ import SearchIcon from '@mui/icons-material/Search'
 import { useCallback, useState } from 'react'
 import { Sidebar } from '../sidebar'
 import ThemePicker from '../theme-picker'
-import { useColorPalates } from '@samagra-x/stencil-hooks'
+import { useColorPalates } from '../../provider/theme-provider/hooks'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',

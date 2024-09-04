@@ -3,7 +3,6 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import { Home, Menu } from '@mui/icons-material';
-
 import Typography from '@mui/material/Typography';
 import { Sidebar } from '../sidebar/index';
 // import ThemePicker from '../../components/theme-picker'
@@ -11,14 +10,15 @@ import { useColorPalates, useUiConfig } from '@samagra-x/stencil-hooks';
 
 const Navbar: React.FC = () => {
   const config = useUiConfig('component', 'navbar');
-
   const theme = useColorPalates();
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen); // Toggle sidebar state
   };
+
   console.log('config from nav: ', config);
+
   return (
     <>
       <AppBar position="static" sx={{ background: theme.primary.dark }}>

@@ -1,0 +1,38 @@
+.faqContainer {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.faqItem {
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.faqBox {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #51586b;
+  background-color: #fff;
+}
+
+.faqBox h3 {
+  font-size: 14px;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.knowMoreButton {
+  margin-top: 15px;
+}
+
+.knowMoreButton button {
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}

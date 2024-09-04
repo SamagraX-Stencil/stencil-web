@@ -6,15 +6,17 @@ import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
 import { toast } from 'react-hot-toast';
 import { OTPInput } from '@samagra-x/stencil-molecules';
-import { useColorPalates, useUiConfig } from '@samagra-x/stencil-hooks';
+// import { useColorPalates, useUiConfig } from '@samagra-x/stencil-hooks';
 
 const OtpPage: React.FC = () => {
-  const config = useUiConfig('component', 'otpPage');
+  // const config = useUiConfig('component', 'otpPage');
+  // const theme = useColorPalates();
+  const config = {};
+  const theme = {};
 
   const [otp, setOtp] = useState('');
   const [loading, setLoading] = useState(false);
   const [countdown, setCountdown] = useState(0);
-  const theme = useColorPalates();
   const phNo = 9999999999; // update number here
   const handleLogin = useCallback(
     (e: React.FormEvent) => {

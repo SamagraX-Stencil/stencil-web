@@ -1,10 +1,53 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
+import styled from 'styled-components';
 import JSONToTableUtils, { JSONObjectType, JSONObjectKeys } from './utils';
-import './style.css';
-export interface IJsonToTableProps {
+import { capitalize } from 'lodash';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+
+const StyledTableContainer = styled(TableContainer)`
+  .json-to-table td,
+  .json-to-table th {
+    padding: 5px;
+    border: 1px solid rgb(190, 190, 190);
+  }
+
+  .json-to-table td {
+    text-align: left;
+  }
+
+  .json-to-table tr:nth-child(even) {
+    background-color: #eee;
+  }
+
+  .json-to-table th[scope='col'] {
+    background-color: #696969;
+    color: #fff;
+  }
+
+  .json-to-table th[scope='row'] {
+    background-color: #d7d9f2;
+  }
+
+  .json-to-table caption {
+    caption-side: bottom;
+  }
+
+  .json-to-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: sans-serif;
+    font-size: 0.8rem;
+  }
+`;
+
+interface IJsonToTableProps {
   id?: string;
-  json: any; // Consider specifying a more detailed type depending on your JSON structure
+  json: any;
   styles?: React.CSSProperties;
 }
 
@@ -25,29 +68,29 @@ export const JsonToTable: React.FC<IJsonToTableProps> = ({ json, id, styles }) =
     switch (objType) {
       case JSONObjectType.ObjectWithNonNumericKeys:
         tmp = header ? (
-          <table key={`__j2t_tableObj${idx}`}>
-            <tbody key={`__j2t_bObj${idx}`}>{renderRows(obj)}</tbody>
-          </table>
+          <Table key={`__j2t_TableObj${idx}`}>
+            <TableBody key={`__j2t_bObj${idx}`}>{renderRows(obj)}</TableBody>
+          </Table>
         ) : (
           renderRows(obj)
         );
         break;
       case JSONObjectType.Array:
         tmp = header ? (
-          <table key={`__j2t_tableArr${idx}`}>
-            <tbody key={`__j2t_bArr${idx}`}>{parseArray(obj)}</tbody>
-          </table>
+          <Table key={`__j2t_TableArr${idx}`}>
+            <TableBody key={`__j2t_bArr${idx}`}>{parseArray(obj)}</TableBody>
+          </Table>
         ) : (
           parseArray(obj)
         );
         break;
       default:
-        tmp = <></>; // Handle other cases or default to an empty fragment
+        tmp = <></>;
     }
 
     phrase.push(tmp);
     return header ? (
-      <tr key={`__j2t_trObj${idx}`}>{renderCell({ content: phrase, colspan: 2 })}</tr>
+      <TableRow key={`__j2t_trObj${idx}`}>{renderCell({ content: phrase, colspan: 2 })}</TableRow>
     ) : (
       phrase
     );
@@ -67,46 +110,51 @@ export const JsonToTable: React.FC<IJsonToTableProps> = ({ json, id, styles }) =
     isHeader?: boolean;
     key?: any;
   }): JSX.Element => {
-    const valueDisplay = isHeader ? (
-      <strong>{getCellValue(content)}</strong>
-    ) : (
-      getCellValue(content)
-    );
+    const valueDisplay = getCellValue(content);
     return (
-      <td colSpan={colspan} key={`__j2t_td${content}`}>
-        {valueDisplay}
-      </td>
+      <TableCell colSpan={colspan} key={`__j2t_td${content}`}>
+        {isHeader ? <strong>{capitalize(valueDisplay)}</strong> : capitalize(valueDisplay)}
+      </TableCell>
     );
   };
 
   const renderHeader = (labels: string[]): JSX.Element => {
     return (
-      <tr key={`__j2t_trHeader`}>
-        {labels.map((v, index) => renderCell({ content: v, key: `header-${index}` }))}
-      </tr>
+      <TableRow key={`__j2t_trHeader`}>
+        {labels.map((v, index) =>
+          renderCell({
+            content: v,
+            key: `header-${index}`,
+            isHeader: true,
+          }),
+        )}
+      </TableRow>
     );
   };
 
   const renderValues = (values: any[]): JSX.Element => {
     return (
-      <tr key={`__j2t_trArrString`}>
+      <TableRow key={`__j2t_trArrString`}>
         {values.map((k, index) => renderCell({ content: k, key: `value-${index}` }))}
-      </tr>
+      </TableRow>
     );
   };
 
   const renderRowValues = (anArray: any[], labels: string[]): JSX.Element[] => {
     return anArray.map((item, idx) => {
       return (
-        <tr key={`__j2t_Arr${idx}`}>
+        <TableRow key={`__j2t_Arr${idx}`}>
           {labels.map((k, index) => {
             const isValuePrimitive =
               JSONToTableUtils.getObjectType(item[k]) === JSONObjectType.Primitive;
             return isValuePrimitive
-              ? renderCell({ content: item[k], key: `item-${idx}-${index}` })
+              ? renderCell({
+                  content: item[k],
+                  key: `item-${idx}-${index}`,
+                })
               : renderObject(item[k], k, idx);
           })}
-        </tr>
+        </TableRow>
       );
     });
   };
@@ -128,12 +176,12 @@ export const JsonToTable: React.FC<IJsonToTableProps> = ({ json, id, styles }) =
       const value = obj[k];
       const isValuePrimitive = JSONToTableUtils.getObjectType(value) === JSONObjectType.Primitive;
       return isValuePrimitive ? (
-        <tr key={`__j2t_tr${idx}`}>
-          <td>
+        <TableRow key={`__j2t_tr${idx}`}>
+          <TableCell>
             <strong>{k}</strong>
-          </td>
-          <td>{value}</td>
-        </tr>
+          </TableCell>
+          <TableCell>{capitalize(value)}</TableCell>
+        </TableRow>
       ) : (
         renderObject(value, k, idx)
       );
@@ -143,16 +191,18 @@ export const JsonToTable: React.FC<IJsonToTableProps> = ({ json, id, styles }) =
   const renderRowHeader = (label: string): JSX.Element => {
     return (
       <div key={`__j2t_rw${label}`}>
-        <strong>{label}</strong>
+        <strong>{capitalize(label)}</strong>
       </div>
     );
   };
 
   return (
-    <div className={'json-to-table'} style={styles} id={id}>
-      <table key={`__j2t_root_table`}>
-        <tbody key={`__j2t_root_tbody`}>{renderObject(json, undefined, 0)}</tbody>
-      </table>
-    </div>
+    <StyledTableContainer style={styles} id={id}>
+      <div className="json-to-table">
+        <Table stickyHeader key={`__j2t_root_Table`} size="small">
+          <TableBody key={`__j2t_root_tbody`}>{renderObject(json, undefined, 0)}</TableBody>
+        </Table>
+      </div>
+    </StyledTableContainer>
   );
 };
