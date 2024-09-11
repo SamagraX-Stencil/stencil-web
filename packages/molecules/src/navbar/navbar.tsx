@@ -1,8 +1,9 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import { Home, Menu } from '@mui/icons-material';
+import { Home, Menu, ArrowBack } from '@mui/icons-material';
 import Typography from '@mui/material/Typography';
 
 type Icon = {
@@ -19,6 +20,8 @@ type NavbarProps = {
   showHomeIcon?: boolean;
   centerLogoIcons?: Icon[];
   rightLogoIcons?: Icon[];
+  backIconRoutes?: string[];  
+  noMenuOrBackRoutes?: string[];  
   style?: {
     appBar?: object;
     toolbar?: object;
@@ -38,26 +41,50 @@ const NewNavbar: React.FC<NavbarProps> = ({
   leftHomeIcon = [],
   centerLogoIcons = [],
   rightLogoIcons = [],
+  backIconRoutes = [],
+  noMenuOrBackRoutes = [],  
   style = {},
   children,
 }) => {
+  const router = useRouter();
+
+  const isBackRoute = backIconRoutes.includes(router.pathname); 
+   const hideMenuAndBack = noMenuOrBackRoutes.includes(router.pathname);  
   return (
     <>
       <AppBar position="static" sx={{ ...style.appBar }}>
         <Toolbar style={{ display: 'flex', justifyContent: 'space-between', ...style.toolbar }}>
           <div style={{ display: 'flex', alignItems: 'center', ...style.leftSection }}>
-            {showHamburgerMenu && (
-              <IconButton
-                size="large"
-                edge="start"
-                color="primary"
-                aria-label="open drawer"
-                sx={{ mr: 2, width: '50px', height: '50px' }}
-                onClick={onToggle}
-              >
-                <Menu sx={{ fontSize: '50px' }} />
-              </IconButton>
+            {!hideMenuAndBack && (
+              <>
+                {isBackRoute ? (
+                  <IconButton
+                    size="large"
+                    edge="start"
+                    color="primary"
+                    aria-label="go back"
+                    sx={{ mr: 2, width: '50px', height: '50px' }}
+                    onClick={() => router.push('/')}  
+                  >
+                    <ArrowBack sx={{ fontSize: '50px' }} />
+                  </IconButton>
+                ) : (
+                  showHamburgerMenu && (
+                    <IconButton
+                      size="large"
+                      edge="start"
+                      color="primary"
+                      aria-label="open drawer"
+                      sx={{ mr: 2, width: '50px', height: '50px' }}
+                      onClick={onToggle}
+                    >
+                      <Menu sx={{ fontSize: '50px' }} />
+                    </IconButton>
+                  )
+                )}
+              </>
             )}
+
             {showHomeIcon && (
               <div>
                 <IconButton
@@ -118,11 +145,9 @@ const NewNavbar: React.FC<NavbarProps> = ({
               ))}
             </div>
           )}
-          {/* <ThemePicker /> */}
         </Toolbar>
       </AppBar>
 
-      {/* <Sidebar isOpen={isOpen} onToggle={onToggle} /> */}
       {children}
     </>
   );
