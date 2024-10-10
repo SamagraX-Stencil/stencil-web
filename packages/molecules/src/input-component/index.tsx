@@ -29,6 +29,7 @@ export interface OtpProps {
   mobileNumberForOtpScreen: string;
   optBoxSeparator?: React.ReactNode;
   ResetOtpPlaceHolder?: string;
+  otpDidntReceiveText?: string;
   styles?: {
     titleStyle?: CSSProperties;
     subtitleStyle?: CSSProperties;
@@ -75,14 +76,29 @@ const InputComponent: React.FC<LoginProps> = ({
 }) => {
   const [valid, setValid] = useState(true);
   return (
-    <Box display="flex" flexDirection="column" justifyContent="center" sx={mainContainerStyle}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        ...mainContainerStyle,
+      }}
+    >
       {title && (
-        <Typography variant="h4" gutterBottom sx={titleStyle}>
+        <Typography variant="h4" gutterBottom sx={{ textAlign: 'center', ...titleStyle }}>
           {title}
         </Typography>
       )}
       {type !== 'otp' ? (
-        <>
+        <div
+          style={{
+            display: 'flex',
+            height: '100%',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+          }}
+        >
           {inputProps && (
             <LoginInput
               type={type}
@@ -130,10 +146,18 @@ const InputComponent: React.FC<LoginProps> = ({
           >
             {buttonProps.buttonText}
           </Button>
-        </>
+        </div>
       ) : (
         otpProps && (
-          <>
+          <div
+            style={{
+              display: 'flex',
+              height: '100%',
+              justifyContent: 'space-between',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
             <OtpComponent
               countdown={otpProps.countDownTime}
               handleLogin={buttonProps.handleNextTask}
@@ -143,7 +167,7 @@ const InputComponent: React.FC<LoginProps> = ({
               resendOtp={otpProps.handleResendOtpButton}
               setOtp={otpProps?.onChange}
               separator={otpProps.optBoxSeparator}
-              ResetOtpForgotPassworkPlaceHolder={otpProps.ResetOtpPlaceHolder}
+              otpDidntReceiveText={otpProps?.otpDidntReceiveText}
               otpCustomStyle={otpProps.styles}
             />
             <Button
@@ -157,7 +181,7 @@ const InputComponent: React.FC<LoginProps> = ({
             >
               {buttonProps.buttonText}
             </Button>
-          </>
+          </div>
         )
       )}
     </Box>

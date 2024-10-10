@@ -19,7 +19,7 @@ import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRound
 import InputComponent, {
   ButtonProps,
   OtpProps,
-} from '@samagra-x/stencil-molecules/lib/input-component';
+} from '@samagra-x/stencil-molecules/lib/input-component2';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const OtpPage: React.FC = () => {
@@ -144,7 +144,16 @@ const OtpPage: React.FC = () => {
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
       ></meta>
       <div className={styles.rightColumn}>
-        <div style={{ width: '100%' }}>
+        <div
+          style={{
+            width: '100%',
+            height: '100%',
+            // display: 'flex',
+            // justifyContent: 'center',
+            // alignContent: 'center',
+            // flexDirection: 'column',
+          }}
+        >
           <div className="d-flex pt-2 align-items-center justify-content-center mt-2 w-100">
             <IconButton
               aria-label="fingerprint"
@@ -153,7 +162,7 @@ const OtpPage: React.FC = () => {
                 width: '40px',
                 borderRadius: '12px',
                 border: '1px solid #E8ECF4',
-                m: 1,
+                ml: 1,
               }}
               onClick={() => router.push('/login')}
             >
@@ -165,26 +174,13 @@ const OtpPage: React.FC = () => {
               textAlign="center"
               width="90%"
               color="#1E232C"
-              sx={{ m: 1 }}
+              sx={{ m: 1, mr: 6 }}
             >
               {t('message.otp_verification')}
             </Typography>
           </div>
-          <div
-            style={{
-              marginTop: '20px',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
+          <div className={styles.form}>
             <InputComponent
-              // title="OTP Verification"
-              // titleStyle={{
-              //   display: 'flex',
-              //   justifyContent: 'center',
-              //   alignItems: 'cneter',
-              // }}
               type="otp"
               buttonProps={
                 {
@@ -194,6 +190,11 @@ const OtpPage: React.FC = () => {
               }
               otpProps={
                 {
+                  otpDidntReceiveText: t('message.didnt_receive'),
+                  resendOtpText: t('message.resend_again'),
+                  // otpDidntReceiveText={t('message.didnt_receive')},
+                  // resendOtpText={t('message.resend_again')},
+                  waitMessage: 'message.wait_minutes',
                   value: otp,
                   onChange: setOtp,
                   optBoxSeparator: <></>,
@@ -201,127 +202,17 @@ const OtpPage: React.FC = () => {
                   handleResendOtpButton: resendOtp,
 
                   mobileNumberForOtpScreen: '9907799970',
-                  countDownTime: 30,
-
-                  // styles: {},
+                  countDownTime: 0,
+                  textBeforeOtpBox: 'message.otp_message',
+                  styles: {
+                    resendTextStyle: { color: theme?.primary?.main },
+                  },
                 } as OtpProps
               }
             />
           </div>
           {/* Form */}
-          {/* <Typography
-            data-testid="otp-verification-line2"
-            variant="subtitle1"
-            textAlign="center"
-            color="#1E232C"
-            sx={{ m: 2 }}
-          >
-            <FormattedMessage
-              id="message.otp_message"
-              defaultMessage="We will send you a 4 digit one time password on this mobile number <br><b>{mobile}</b>"
-              values={{
-                mobile: mobile,
-                br: (chunks) => <br />,
-                b: (chunks) => <b>{chunks}</b>,
-              }}
-            />
-          </Typography> */}
-          {/* <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-            <OTPInput separator={<></>} value={otp} onChange={setOtp} length={otpLength} />
-          </Box> */}
-          {/* <div style={{ margin: '10px', textAlign: 'center' }} data-testid="resend-otp">
-            {countdown > 0 ? (
-              <span>
-                <FormattedMessage
-                  id="message.wait_minutes"
-                  defaultMessage="Please wait {countdown} seconds before resending OTP"
-                  values={{ countdown }}
-                />
-              </span>
-            ) : (
-              <>
-                <Typography variant="subtitle1" align="center" color="#838BA1">
-                  {t('message.didnt_receive')} &nbsp;
-                  <p
-                    onClick={resendOtp}
-                    style={{
-                      color: theme?.primary?.main || '#3da156',
-                      fontWeight: 'bold',
-                      cursor: 'pointer',
-                    }}
-                  >
-                    {t('message.resend_again')}
-                  </p>
-                </Typography>
-              </>
-            )}
-          </div> */}
         </div>
-        {/* <InputComponent
-          errorMessage=""
-          buttonText={t('label.continue')}
-          handleNextTask={async () => {
-            return 'success';
-          }}
-          onChange={setOtp}
-          placeholder={t('message.enter_mobile')}
-          type="otp"
-          ResetOtpForgotPassworkPlaceHolder="Forgot Password"
-          value={otp}
-          // title={t('message.otp_verification')}
-          customStyles={{
-            titleStyle: {
-              textAlign: 'center',
-            },
-            containerStyle: { width: '100%' },
-          }}
-          otpCountDown={30}
-          // ResetOtpForgotPassworkAction={}
-        /> */}
-        {/* <InputComponent
-          type="otp"
-          buttonProps={
-            {
-              buttonText: t('label.submit'),
-              handleNextTask: handleLogin,
-            } as ButtonProps
-          }
-          otpProps={
-            {
-              value: otp,
-              onChange: setOtp,
-              optBoxSeparator: <></>,
-              ResetOtpForgotPlaceHolder: 'Resent Again',
-              handleResendOtpButton: resendOtp,
-
-              mobileNumberForOtpScreen: '9907799970',
-              countDownTime: 30,
-
-              // styles: {},
-            } as OtpProps
-          }
-        /> */}
-
-        {/* <Button
-          data-testid="otp-submit-button"
-          fullWidth
-          variant="contained"
-          sx={{
-            textTransform: 'none',
-            m: 2,
-            height: '60px',
-            fontSize: '16px',
-            p: 1,
-            background: theme?.primary?.main,
-            borderRadius: '10px',
-            width: '90%',
-          }}
-          onClick={handleLogin}
-          disabled={loading}
-          endIcon={<ArrowForwardIcon />}
-        >
-          {loading ? <CircularProgress size={24} color="inherit" /> : `${t('label.submit')}`}
-        </Button> */}
       </div>
     </>
   );
