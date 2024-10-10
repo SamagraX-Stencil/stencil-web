@@ -9,7 +9,7 @@ import {
   IconButton,
 } from '@mui/material';
 import { ExpandLess, StarBorder, ExpandMore, ErrorOutline, Delete } from '@mui/icons-material';
-import { ListType } from './types';
+import { ListType, ListItemType } from './types';
 import { map } from 'lodash';
 import { Avatar, Divider, ListItem, ListItemAvatar, Typography } from '@mui/material';
 import { useBotConfig } from '@samagra-x/stencil-hooks';
