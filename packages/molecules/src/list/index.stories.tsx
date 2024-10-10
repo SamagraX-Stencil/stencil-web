@@ -24,7 +24,7 @@ const meta = {
   ],
 } satisfies Meta<typeof List>;
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+// export default meta;
+// type Story = StoryObj<typeof meta>;
 
-export const ListComponent: Story = {};
+// export const ListComponent: Story = {};
