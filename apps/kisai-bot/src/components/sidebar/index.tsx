@@ -8,8 +8,6 @@ import router from 'next/router';
 import { useCookies } from 'react-cookie';
 import { AppContext } from '../../context';
 import { useLocalization } from '../../hooks';
-import BhashiniImg from '../../assets/images/bhashinilogo.png';
-import darshanLogo from '../../assets/images/darshan-logo.png';
 import styles from './style.module.css';
 import Image from 'next/image';
 import NewSidebar from '@samagra-x/stencil-molecules/lib/sidebar/sidebar';
@@ -35,7 +33,6 @@ export const Sidebar = ({ isOpen, onToggle }: { isOpen: boolean; onToggle: () =>
   }, [activeLanguage, context]);
 
   const handleLanguageClick = (event: SelectChangeEvent<string>) => {
-    console.log('hjhjhjhjhj', event);
     setActiveLanguage(event.target.value);
     localStorage.setItem('locale', event.target.value);
     onToggle();
@@ -49,15 +46,17 @@ export const Sidebar = ({ isOpen, onToggle }: { isOpen: boolean; onToggle: () =>
     router.push('/login');
     if (typeof window !== 'undefined') window.location.reload();
   }
+ const phoneNumber = localStorage.getItem('phoneNumber') || '';
 
-  console.log('debug', { config });
+ const profileText = `${t('label.welcome')}${phoneNumber ? `  ${phoneNumber}` : ''}`;
+ 
   return (
     <NewSidebar
       isOpen={isOpen}
       onToggle={onToggle}
       showProfileIcon={true}
       showLangSwitcher={true}
-      profileText={t('label.welcome')}
+      profileText={profileText}
       links={[
         {
           label: t(`label.chats`),
@@ -153,8 +152,16 @@ export const Sidebar = ({ isOpen, onToggle }: { isOpen: boolean; onToggle: () =>
               width: '100%',
             }}
           >
-            {config?.showBhashiniLogo && <Image src={BhashiniImg} alt="" width={180} height={45} />}
-            {config?.showDarshanLogo && <Image src={darshanLogo} alt="" width={55} height={45} />}
+                {config?.footerLogo && (
+                  <img
+        src={config?.footerLogo}
+        alt="footer-logo"
+        width={config?.footerLogoWidth || 180}
+        height={config?.footerLogoHeight || 45}
+      />
+    )}
+
+            
           </div>
         </div>
       )}

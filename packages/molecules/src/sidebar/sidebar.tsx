@@ -6,12 +6,12 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
+import Typography from '@mui/material/Typography'; 
 import router from 'next/router';
 
 import { Logout, AccountCircle, ArrowBack, ChevronRight } from '@mui/icons-material';
 import NewLanguagePicker from '../language-picker/languagePicker';
-import { SelectChangeEvent } from '@mui/material';
+import { ListItemText, SelectChangeEvent } from '@mui/material';
 
 type Link = {
   label: string;
@@ -122,7 +122,10 @@ const NewSidebar: React.FC<SidebarProps> = ({
                     <ListItemIcon>
                       <AccountCircle sx={{ fontSize: '50px', ...style.icon }} />
                     </ListItemIcon>
-                    <ListItemText primary={profileText} sx={style.profileText} />
+                    <Box sx={{ ...style.profileText }}>
+                      <Typography variant="h6">{profileText}</Typography>
+                 
+                    </Box>
                   </ListItemButton>
                 </ListItem>
                 <Divider sx={{ backgroundColor: '#999' }} />
