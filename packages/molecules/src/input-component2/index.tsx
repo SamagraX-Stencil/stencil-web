@@ -149,11 +149,13 @@ const InputComponent: React.FC<LoginProps> = ({
           fullWidth
           size="large"
           sx={{
+            textTransform: 'none',
             mt: 2,
             p: 1,
             height: '60px',
-            width: '100%',
             fontSize: '16px',
+            borderRadius: '10px',
+
             ...buttonProps?.buttonStyle,
           }}
           disabled={type === 'password' ? !valid || !passwordProp?.passwordvalue?.length : !valid}

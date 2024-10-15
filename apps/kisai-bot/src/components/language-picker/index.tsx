@@ -49,6 +49,10 @@ const LanguagePicker = () => {
           border: 'none',
           borderRadius: '10px',
           height: '36px',
+          color: '#fff',
+        },
+        selectStyle: {
+          color: theme?.primary?.contrastText,
         },
       }}
     />

@@ -113,7 +113,7 @@ const LoginPage: React.FC = () => {
               height: '400px',
               overflow: 'hidden',
               objectFit: 'cover',
-              maxWidth: '400px',
+              maxWidth: '415px',
               margin: '0 auto',
             }}
           >
@@ -126,10 +126,11 @@ const LoginPage: React.FC = () => {
             type="mobile"
             titleStyle={{
               color: theme?.primary?.main || 'black',
+              fontSize: '34px',
             }}
             buttonProps={{
               handleNextTask: handleLogin,
-              buttonText: 'Continue',
+              buttonText: t('label.continue'),
             }}
             inputProps={{
               errorMessage: 'Mobile Number is required',

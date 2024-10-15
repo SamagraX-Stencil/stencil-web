@@ -110,6 +110,7 @@ const LoginInput: React.FC<InputProps> = ({
       inputProps={{
         maxLength: getMaxLength(),
       }}
+      required={true}
       fullWidth
       autoFocus
       error={!valid}
