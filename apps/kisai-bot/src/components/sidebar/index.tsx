@@ -9,7 +9,6 @@ import { useCookies } from 'react-cookie';
 import { AppContext } from '../../context';
 import { useLocalization } from '../../hooks';
 import styles from './style.module.css';
-import Image from 'next/image';
 import NewSidebar from '@samagra-x/stencil-molecules/lib/sidebar/sidebar';
 import { SelectChangeEvent } from '@mui/material';
 
@@ -46,17 +45,21 @@ export const Sidebar = ({ isOpen, onToggle }: { isOpen: boolean; onToggle: () =>
     router.push('/login');
     if (typeof window !== 'undefined') window.location.reload();
   }
- const phoneNumber = localStorage.getItem('phoneNumber') || '';
+  
+  const phoneNumber = localStorage.getItem('phoneNumber') || '';
 
- const profileText = `${t('label.welcome')}${phoneNumber ? `  ${phoneNumber}` : ''}`;
- 
   return (
     <NewSidebar
       isOpen={isOpen}
       onToggle={onToggle}
       showProfileIcon={true}
       showLangSwitcher={true}
-      profileText={profileText}
+      profileText={
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+          <span style={{ fontSize: '14px'}}>{t('label.welcome')}</span>
+          {phoneNumber && <span style={{ fontSize: '14px' }}>{phoneNumber}</span>}
+        </div>
+      }
       links={[
         {
           label: t(`label.chats`),
@@ -152,16 +155,14 @@ export const Sidebar = ({ isOpen, onToggle }: { isOpen: boolean; onToggle: () =>
               width: '100%',
             }}
           >
-                {config?.footerLogo && (
-                  <img
-        src={config?.footerLogo}
-        alt="footer-logo"
-        width={config?.footerLogoWidth || 180}
-        height={config?.footerLogoHeight || 45}
-      />
-    )}
-
-            
+            {config?.footerLogo && (
+              <img
+                src={config?.footerLogo}
+                alt="footer-logo"
+                width={config?.footerLogoWidth || 180}
+                height={config?.footerLogoHeight || 45}
+              />
+            )}
           </div>
         </div>
       )}

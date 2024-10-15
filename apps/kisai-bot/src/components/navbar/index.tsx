@@ -36,8 +36,8 @@ const Navbar: React.FC = () => {
       onToggle={toggleSidebar}
       isOpen={isSidebarOpen}
       showHamburgerMenu={true}
-      backIconRoutes={['/faq', '/history']}
-      noMenuOrBackRoutes={['/feedback']}
+      backIconRoutes={['/faq', '/history', '/feedback']}
+      noMenuOrBackRoutes={[]}
       centerLogoIcons={[
         {
           id: 'logo1',
