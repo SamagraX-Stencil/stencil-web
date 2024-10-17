@@ -5,7 +5,8 @@ import { CircularProgress, Divider } from '@mui/material';
 
 type ShareButtonProps = {
   allowDownloadChat?: boolean;
-  handleButton: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, type: string) => void;
+  handleDownloadButton: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  handleShareButton: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   allowShareChat?: boolean;
   shareLoader?: boolean;
   downloadLoader?: boolean;
@@ -20,7 +21,8 @@ type ShareButtonProps = {
 
 const ShareButtons: React.FC<ShareButtonProps> = ({
   allowDownloadChat = false,
-  handleButton,
+  handleDownloadButton,
+  handleShareButton,
   allowShareChat = false,
   shareLoader,
   downloadLoader,
@@ -44,7 +46,7 @@ const ShareButtons: React.FC<ShareButtonProps> = ({
         >
           {allowShareChat && (
             <div
-              onClick={(e) => handleButton(e, 'share')}
+              onClick={handleShareButton}
               style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -66,35 +68,19 @@ const ShareButtons: React.FC<ShareButtonProps> = ({
                   <CircularProgress size="20px" />
                 </div>
               ) : (
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    ...style.icon,
-                  }}
-                >
+                <div style={{ ...style.icon }}>
                   <Share />
                 </div>
               )}
-              <p
-                style={{
-                  fontSize: '10px',
-                  margin: 0,
-                  fontFamily: 'Mulish-bold',
-                  ...style.text,
-                }}
-              >
+              <p style={{ fontSize: '10px', margin: 0, fontFamily: 'Mulish-bold', ...style.text }}>
                 Share
               </p>
             </div>
           )}
-          {/* Only render divider when both share and download allowed */}
           {allowDownloadChat && allowShareChat && <Divider style={style.divider} />}
           {allowDownloadChat && (
             <div
-              onClick={(e) => handleButton(e, 'download')}
+              onClick={handleDownloadButton}
               style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -103,7 +89,6 @@ const ShareButtons: React.FC<ShareButtonProps> = ({
                 ...style.button,
               }}
             >
-              {/* Download */}
               {downloadLoader ? (
                 <div
                   style={{
@@ -117,26 +102,11 @@ const ShareButtons: React.FC<ShareButtonProps> = ({
                   <CircularProgress size="20px" />
                 </div>
               ) : (
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    ...style.icon,
-                  }}
-                >
+                <div style={{ ...style.icon }}>
                   <FileDownloadOutlined />
                 </div>
               )}
-              <p
-                style={{
-                  fontSize: '10px',
-                  margin: 0,
-                  fontFamily: 'Mulish-bold',
-                  ...style.text,
-                }}
-              >
+              <p style={{ fontSize: '10px', margin: 0, fontFamily: 'Mulish-bold', ...style.text }}>
                 Download
               </p>
             </div>
