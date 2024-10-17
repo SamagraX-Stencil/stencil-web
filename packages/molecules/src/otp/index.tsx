@@ -2,10 +2,14 @@ import { Button, CircularProgress, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { CSSProperties, useEffect, useState } from 'react';
 import { OTPInput } from '../otp-input';
+import { FormattedMessage } from 'react-intl';
+
 const styles: { [key: string]: CSSProperties } = {
   main: {
     display: 'flex',
     width: '100vw',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   logo: {
     padding: '40px',
@@ -40,37 +44,37 @@ const styles: { [key: string]: CSSProperties } = {
 };
 interface OtpComponentProps {
   phoneNumber?: string;
+  textBeforeOtpBox?: string;
+  waitMessage?: string;
   handleLogin?: () => Promise<string>;
   otp?: string;
   setOtp?: any;
   otpLength?: number;
+  otpDidntReceiveText?: string;
+  resendOtpText?: string;
   countdown?: number;
   resendOtp?: () => void;
   separator?: React.ReactNode;
-  ResetOtpForgotPassworkPlaceHolder?: string;
   otpCustomStyle?: {
     mainStyle?: CSSProperties;
     formStyle?: CSSProperties;
     otpInputStyle?: CSSProperties;
-    backButtonStyle?: CSSProperties;
-    loginButtonStyle?: CSSProperties;
-    titleStyle?: CSSProperties;
-    subtitleStyle?: CSSProperties;
-    phoneNumberStyle?: CSSProperties;
-    countdownStyle?: CSSProperties;
     resendTextStyle?: CSSProperties;
   };
 }
 const OtpComponent = ({
   phoneNumber,
+  textBeforeOtpBox,
+  waitMessage,
   handleLogin,
+  otpDidntReceiveText,
+  resendOtpText,
   otp = '',
   setOtp,
   otpLength = 4,
   countdown: initialCountdown = 30,
   resendOtp,
   separator,
-  ResetOtpForgotPassworkPlaceHolder,
   otpCustomStyle = {},
 }: OtpComponentProps) => {
   const [loading, setLoading] = useState(false);
@@ -98,122 +102,74 @@ const OtpComponent = ({
     mainStyle = {},
     formStyle = {},
     otpInputStyle = {},
-    backButtonStyle = {},
-    loginButtonStyle = {},
+    resendTextStyle = {},
   } = otpCustomStyle;
   const mergedStyles = {
     main: { ...styles.main, ...mainStyle },
     form: { ...styles.form, ...formStyle },
   };
   return (
-    <div style={mergedStyles.main}>
-      <div style={mergedStyles.form}>
-        {/* <Typography variant="h4" textAlign="center" width="90%" color="#1E232C" sx={{ m: 2 }}>
-          {title}
-        </Typography> */}
-        <Typography variant="body2" textAlign="center" width="100%" color="#838BA1">
-          Enter the verification code we just sent on your mobile number
-        </Typography>
-        <Typography fontWeight="bold" textAlign="center">
-          +91-{phoneNumber}
-        </Typography>
-
-        <Box
-          component="form"
-          onSubmit={handleLogin}
-          sx={{
-            mt: 1,
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+    <>
+      <Typography
+        data-testid="otp-verification-line2"
+        variant="subtitle1"
+        textAlign="center"
+        color="#1E232C"
+        sx={{ m: 2 }}
+      >
+        <FormattedMessage
+          id={textBeforeOtpBox}
+          defaultMessage=""
+          values={{
+            mobile: phoneNumber,
+            br: (chunks) => <br />,
+            b: (chunks) => <b>{chunks}</b>,
           }}
-        >
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 2,
-            }}
-          >
-            <OTPInput
-              separator={separator || <>-</>}
-              value={otp || ''}
-              onChange={setOtp}
-              length={otpLength || 4}
-              otpInputStyle={otpInputStyle}
+        />
+      </Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'center', ...otpInputStyle }}>
+        <OTPInput
+          separator={separator}
+          value={otp}
+          onChange={(value) => {
+            setOtp(value);
+            // setOtpError(false);
+          }}
+          length={otpLength}
+        />
+      </Box>
+      {/* {otpError && (
+        <Typography color="error" variant="subtitle2" align="center" sx={{ mt: 1 }}>
+          {t('message.invalid_otp')}
+        </Typography>
+      )} */}
+      <div style={{ margin: '10px', textAlign: 'center' }} data-testid="resend-otp">
+        {countdown > 0 ? (
+          <span>
+            <FormattedMessage
+              id={waitMessage}
+              defaultMessage="Please wait {countdown} seconds before resending OTP"
+              values={{ countdown }}
             />
-          </Box>
-          <div style={{ marginTop: '10px', color: '#000' }}>
-            {countdown > 0 ? (
-              <Typography>Please wait {countdown} seconds before resending OTP</Typography>
-            ) : (
-              <>
-                <Typography variant="body2" align="center" color="#838BA1">
-                  Didn't receive the OTP? &nbsp;
-                  <p
-                    onClick={resendOtp}
-                    style={{
-                      // color: '#000',
-                      fontWeight: 'bold',
-                      cursor: 'pointer',
-                    }}
-                  >
-                    {ResetOtpForgotPassworkPlaceHolder}
-                  </p>
-                </Typography>
-              </>
-            )}
-          </div>
-          {/* <div
-            style={{
-              marginTop: '10px',
-              marginBottom: '10px',
-              display: 'flex',
-              gap: '10px',
-              width: '100%',
-            }}
-          >
-            <Button
-              variant="contained"
-              type="button"
-              sx={{
-                textTransform: 'none',
-
-                p: 1,
-                mt: 5,
-                mb: 4,
-                // background: config?.theme.secondaryColor.value,
-                background: '#000',
-                borderRadius: '10px',
-                width: '50%',
-                ...backButtonStyle,
+          </span>
+        ) : (
+          <Typography variant="subtitle1" align="center" color="#838BA1">
+            {otpDidntReceiveText} &nbsp;
+            <p
+              onClick={resendOtp}
+              style={{
+                // color: theme?.primary?.main || '#3da156',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                ...resendTextStyle,
               }}
             >
-              Back
-            </Button>
-            <Button
-              type="submit"
-              variant="contained"
-              sx={{
-                textTransform: 'none',
-                mt: 5,
-                mb: 4,
-                p: 1,
-
-                borderRadius: '10px',
-                width: '50%',
-                ...loginButtonStyle,
-              }}
-              onClick={handleLoginButtonClick}
-              disabled={loading || otp.length < otpLength}
-            >
-              {loading ? <CircularProgress size={24} color="inherit" /> : 'Login'}
-            </Button>
-          </div> */}
-        </Box>
+              {resendOtpText}
+            </p>
+          </Typography>
+        )}
       </div>
-    </div>
+    </>
   );
 };
 

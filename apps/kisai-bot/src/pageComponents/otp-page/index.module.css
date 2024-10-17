@@ -7,3 +7,28 @@
   padding: 0px;
   height: 100dvh;
 }
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 0.9;
+  width: 100%;
+  margin: auto;
+}
+
+@media (max-width: 768px) {
+  .rightColumn {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100dvh;
+  }
+  .form {
+    width: 100%;
+    height: 98%;
+    justify-content: flex-start;
+    align-items: center;
+    margin: auto;
+  }
+}

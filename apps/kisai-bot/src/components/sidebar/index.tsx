@@ -8,11 +8,8 @@ import router from 'next/router';
 import { useCookies } from 'react-cookie';
 import { AppContext } from '../../context';
 import { useLocalization } from '../../hooks';
-import BhashiniImg from '../../assets/images/bhashinilogo.png';
-import darshanLogo from '../../assets/images/darshan-logo.png';
 import styles from './style.module.css';
-import Image from 'next/image';
-import NewSidebar from '@samagra-x/stencil-molecules/lib/sidebar/sidebar';
+import { Sidebar as ImportedSidebar } from '@samagra-x/stencil-molecules/lib';
 import { SelectChangeEvent } from '@mui/material';
 
 export const Sidebar = ({ isOpen, onToggle }: { isOpen: boolean; onToggle: () => void }) => {
@@ -35,7 +32,6 @@ export const Sidebar = ({ isOpen, onToggle }: { isOpen: boolean; onToggle: () =>
   }, [activeLanguage, context]);
 
   const handleLanguageClick = (event: SelectChangeEvent<string>) => {
-    console.log('hjhjhjhjhj', event);
     setActiveLanguage(event.target.value);
     localStorage.setItem('locale', event.target.value);
     onToggle();
@@ -50,14 +46,20 @@ export const Sidebar = ({ isOpen, onToggle }: { isOpen: boolean; onToggle: () =>
     if (typeof window !== 'undefined') window.location.reload();
   }
 
-  console.log('debug', { config });
+  const phoneNumber = localStorage.getItem('phoneNumber') || '';
+
   return (
-    <NewSidebar
+    <ImportedSidebar
       isOpen={isOpen}
       onToggle={onToggle}
       showProfileIcon={true}
       showLangSwitcher={true}
-      profileText={t('label.welcome')}
+      profileText={
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+          <span style={{ fontSize: '14px' }}>{t('label.welcome')}</span>
+          {phoneNumber && <span style={{ fontSize: '14px' }}>{phoneNumber}</span>}
+        </div>
+      }
       links={[
         {
           label: t(`label.chats`),
@@ -153,12 +155,18 @@ export const Sidebar = ({ isOpen, onToggle }: { isOpen: boolean; onToggle: () =>
               width: '100%',
             }}
           >
-            {config?.showBhashiniLogo && <Image src={BhashiniImg} alt="" width={180} height={45} />}
-            {config?.showDarshanLogo && <Image src={darshanLogo} alt="" width={55} height={45} />}
+            {config?.footerLogo && (
+              <img
+                src={config?.footerLogo}
+                alt="footer-logo"
+                width={config?.footerLogoWidth || 180}
+                height={config?.footerLogoHeight || 45}
+              />
+            )}
           </div>
         </div>
       )}
-    </NewSidebar>
+    </ImportedSidebar>
   );
 };
 

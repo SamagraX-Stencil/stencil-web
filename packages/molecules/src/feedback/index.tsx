@@ -50,14 +50,14 @@ const Feedback: React.FC<FeedbackProps> = ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        minHeight: '100vh',
+        minHeight: '60vh',
       }}
     >
       <Box
         style={{
           textAlign: 'center',
           width: '100%',
-          maxWidth: '600px',
+          maxWidth: '1200px',
           padding: '2rem',
           borderRadius: '10px',
         }}
@@ -68,11 +68,11 @@ const Feedback: React.FC<FeedbackProps> = ({
             sx={{
               fontSize: '5vh',
               fontWeight: 'bold',
-              color: '#1976d2', // primary.main color
+              color: '#f5952f', // primary.main color
               ...customStyles.heading,
             }}
           >
-            Feedback
+            Feedback 
           </Typography>
         </Box>
 
@@ -86,7 +86,7 @@ const Feedback: React.FC<FeedbackProps> = ({
                 ...customStyles.rating,
               }}
             >
-              Rating
+              Do you find it useful?
             </Typography>
 
             <Rating
@@ -109,20 +109,20 @@ const Feedback: React.FC<FeedbackProps> = ({
                 ...customStyles.rating,
               }}
             >
-              Please provide a rating.
+              Tap a Star to Rate.
             </Typography>
             <Button
               data-testid="feedback-rating-button"
               variant="contained"
               sx={{
                 mt: 2,
-                backgroundColor: '#1976d2',
+                backgroundColor: '#f5952f',
                 fontWeight: 'bold',
                 borderRadius: '10rem',
                 fontSize: '1.5vh',
                 p: 1.5,
                 '&:hover': {
-                  backgroundColor: '#115293', // primary.dark color
+                  backgroundColor: '#f5952f', // primary.dark color
                 },
                 ...customStyles.submitButton,
               }}
@@ -144,21 +144,21 @@ const Feedback: React.FC<FeedbackProps> = ({
                 ...customStyles.review,
               }}
             >
-              Review
+             Write your review (optional)
             </Typography>
             <TextField
               data-testid="feedback-review-component"
               placeholder="Write your review here"
-              value={review}
               multiline
-              rows={4}
+              rows={8}
               variant="outlined"
               fullWidth
               onChange={(e) => onChangeReview(e.target.value)}
-              sx={{
-                border: '2px solid #1976d2',
-                ...customStyles.review,
-              }}
+               sx={{
+    border: '2px solid #f5952f',
+    width: '100%',  
+    maxWidth: '1200px',  
+  }}
             />
             <Button
               id="reviewBtn"
@@ -166,13 +166,13 @@ const Feedback: React.FC<FeedbackProps> = ({
               data-testid="feedback-review-button"
               sx={{
                 mt: 2,
-                backgroundColor: '#1976d2',
+                backgroundColor: '#f5952f',
                 fontWeight: 'bold',
                 borderRadius: '10rem',
                 fontSize: '1.5vh',
                 p: 1.5,
                 '&:hover': {
-                  backgroundColor: '#115293',
+                  backgroundColor: '#f5952f',
                 },
                 ...customStyles.submitButton,
               }}

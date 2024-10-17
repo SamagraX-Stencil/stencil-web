@@ -7,7 +7,7 @@ import { useColorPalates } from '../../providers/theme-provider/hooks';
 import { useConfig } from '../../hooks/useConfig';
 import { AppContext } from '../../context';
 import router from 'next/router';
-import NewLanguagePicker from '@samagra-x/stencil-molecules/lib/language-picker/languagePicker';
+import { LanguagePicker as NewLanguagePicker } from '@samagra-x/stencil-molecules/lib/';
 
 const LanguagePicker = () => {
   const config = useConfig('component', 'sidebar');
@@ -49,6 +49,10 @@ const LanguagePicker = () => {
           border: 'none',
           borderRadius: '10px',
           height: '36px',
+          color: '#fff',
+        },
+        selectStyle: {
+          color: theme?.primary?.contrastText,
         },
       }}
     />

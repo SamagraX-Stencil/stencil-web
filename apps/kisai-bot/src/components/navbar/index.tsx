@@ -5,7 +5,7 @@ import Sidebar from '../sidebar';
 import { AppContext } from '../../context';
 import { useLocalization } from '../../hooks';
 import toast from 'react-hot-toast';
-import Nav from '@samagra-x/stencil-molecules/lib/navbar/navbar';
+import { Navbar as ImportedNavbar } from '@samagra-x/stencil-molecules/lib';
 
 const Navbar: React.FC = () => {
   const router = useRouter();
@@ -32,10 +32,12 @@ const Navbar: React.FC = () => {
   if (router.pathname === '/login' || router.pathname === '/otp') return null;
 
   return (
-    <Nav
+    <ImportedNavbar
       onToggle={toggleSidebar}
       isOpen={isSidebarOpen}
       showHamburgerMenu={true}
+      backIconRoutes={['/faq', '/history', '/feedback']}
+      noMenuOrBackRoutes={[]}
       centerLogoIcons={[
         {
           id: 'logo1',
@@ -62,7 +64,7 @@ const Navbar: React.FC = () => {
       }}
     >
       <Sidebar isOpen={isSidebarOpen} onToggle={toggleSidebar} />
-    </Nav>
+    </ImportedNavbar>
   );
 };
 

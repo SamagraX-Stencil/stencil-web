@@ -13,10 +13,11 @@ import { useRouter } from 'next/router';
 import { useConfig } from '../../hooks/useConfig';
 import LanguagePicker from '../../components/language-picker';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import InputComponent, {
-  ButtonProps,
-  InputProps,
-} from '@samagra-x/stencil-molecules/lib/input-component';
+import { LoginComponent } from '@samagra-x/stencil-molecules';
+// , {
+//   ButtonProps,
+//   InputProps,
+// }
 
 const LoginPage: React.FC = () => {
   const config = useConfig('component', 'loginPage');
@@ -105,21 +106,14 @@ const LoginPage: React.FC = () => {
         >
           <LanguagePicker />
         </div>
-        {/* <div
-          style={{
-            position: 'absolute',
-            top: '16px',
-            left: 'calc(100% - 117px)',
-            zIndex: 10,
-          }}
-        ></div> */}
+
         {showLogo && logo && (
           <div
             style={{
               height: '400px',
               overflow: 'hidden',
               objectFit: 'cover',
-              maxWidth: '400px',
+              maxWidth: '415px',
               margin: '0 auto',
             }}
           >
@@ -127,89 +121,23 @@ const LoginPage: React.FC = () => {
           </div>
         )}
         <div className={styles.form}>
-          {/* Form */}
-          {/* <Typography
-            data-testid="login-page-title"
-            component="h1"
-            variant="h4"
-            fontWeight={'bold'}
-            textAlign="center"
-            width="100%"
-            color={theme?.primary?.main || 'black'}
-            dangerouslySetInnerHTML={{
-              __html: t('label.subtitle'),
-            }}
-          ></Typography> */}
-          {/* <Box
-            component="form"
-            onSubmit={handleLogin}
-            sx={{
-              mt: 1,
-              width: '100%',
-              textAlign: 'center',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              height: '100%',
-            }}
-          >
-            <TextField
-              data-testid="mobile-input"
-              margin="normal"
-              error={!valid}
-              required
-              fullWidth
-              value={input}
-              helperText={!valid ? errorMessage : ''}
-              onChange={handleInput}
-              label={t('message.enter_mobile')}
-              name={'phone'}
-              autoComplete={'phone'}
-              autoFocus
-            />
-            <Button
-              data-testid="login-button"
-              fullWidth
-              variant="contained"
-              sx={{
-                textTransform: 'none',
-                mt: 2,
-                height: '60px',
-                fontSize: '16px',
-                p: 1,
-                background: theme?.primary?.main,
-                borderRadius: '10px',
-              }}
-              onClick={handleLogin}
-              disabled={!valid || loading}
-              endIcon={<ArrowForwardIcon />}
-            >
-              {loading ? <CircularProgress size={24} color="inherit" /> : `${t('label.continue')}`}
-            </Button>
-          </Box> */}
-          <InputComponent
+          <LoginComponent
             title={t('label.subtitle')}
             type="mobile"
             titleStyle={{
               color: theme?.primary?.main || 'black',
-              fontWeight: 'bold',
-              fontSize: '28px',
+              fontSize: '34px',
             }}
-            mainContainerStyle={{ width: '100%' }}
-            buttonProps={
-              {
-                handleNextTask: handleLogin,
-                buttonText: 'Continue',
-              } as ButtonProps
-            }
-            inputProps={
-              {
-                errorMessage: 'Mobile Number is required',
-                value: input,
-                onChange: setInput,
-                placeholder: t('message.enter_mobile'),
-              } as InputProps
-            }
+            buttonProps={{
+              handleNextTask: handleLogin,
+              buttonText: t('label.continue'),
+            }}
+            inputProps={{
+              errorMessage: 'Mobile Number is required',
+              value: input,
+              onChange: setInput,
+              placeholder: t('message.enter_mobile'),
+            }}
           />
         </div>
       </div>

@@ -1,89 +1,58 @@
 // @ts-ignore
-import React, { useMemo, useState } from 'react';
+import React from 'react';
 import { FileDownloadOutlined, Share } from '@mui/icons-material';
-import { toast } from 'react-hot-toast';
 import { CircularProgress, Divider } from '@mui/material';
-import { useColorPalates } from '@samagra-x/stencil-hooks';
-import { useUiConfig } from '@samagra-x/stencil-hooks';
 
-const ShareButtons = () => {
-  const config = useUiConfig('component', 'shareButton');
-
-  const theme = useColorPalates();
-
-  // @ts-ignore
-  const secondaryColor = useMemo(() => {
-    return theme?.primary?.light;
-  }, [theme?.primary?.light]);
-
-  const primaryColor = useMemo(() => {
-    return theme?.primary?.main;
-  }, [theme?.primary?.main]);
-
-  const [shareLoader, setShareLoader] = useState(false);
-  const [downloadLoader, setDownloadLoader] = useState(false);
-
-  // @ts-ignore
-  const downloadChat = async (type: string) => {
-    // perform your download chat logic here
+type ShareButtonProps = {
+  allowDownloadChat?: boolean;
+  handleDownloadButton: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  handleShareButton: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  allowShareChat?: boolean;
+  shareLoader?: boolean;
+  downloadLoader?: boolean;
+  style?: {
+    container?: object;
+    button?: object;
+    icon?: object;
+    text?: object;
+    divider?: object;
   };
+};
 
-  const downloadShareHandler = async (type: string) => {
-    try {
-      if (type === 'download') {
-        setDownloadLoader(true);
-      } else {
-        setShareLoader(true);
-      }
-
-      if (type === 'download') {
-        setDownloadLoader(false);
-
-        setTimeout(() => {
-          toast.success('Downloading...');
-        }, 2000);
-      } else if (type === 'share') {
-        setShareLoader(false);
-        setTimeout(() => {
-          toast.success('Share successful');
-        }, 2000);
-      } else {
-        toast.error("Your system doesn't support sharing this file.");
-        setDownloadLoader(false);
-        setShareLoader(false);
-      }
-    } catch (error: any) {
-      setDownloadLoader(false);
-      setShareLoader(false);
-
-      toast.error('Error while performing');
-    }
-  };
-
+const ShareButtons: React.FC<ShareButtonProps> = ({
+  allowDownloadChat = false,
+  handleDownloadButton,
+  handleShareButton,
+  allowShareChat = false,
+  shareLoader,
+  downloadLoader,
+  style = {},
+}) => {
   return (
     <>
-      {(config?.allowDownloadChat || config?.allowShareChat) && (
+      {(allowDownloadChat || allowShareChat) && (
         <div
           style={{
-            // position: 'absolute',
-            position: 'relative', // just to show them on website, ideally should keep absolute to stick them to right side
+            position: 'absolute',
             right: 0,
-            top: '40%',
-            background: 'white',
+            top: '15%',
+            background: 'rgba(255, 255, 255, 0.2)',
             padding: '5px',
             borderRadius: '5px 0 0 5px',
             boxShadow:
               'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px',
+            ...style.container,
           }}
         >
-          {config?.allowShareChat && (
+          {allowShareChat && (
             <div
-              onClick={() => downloadShareHandler('share')}
+              onClick={handleShareButton}
               style={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 cursor: 'pointer',
+                ...style.button,
               }}
             >
               {shareLoader ? (
@@ -99,42 +68,27 @@ const ShareButtons = () => {
                   <CircularProgress size="20px" />
                 </div>
               ) : (
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}
-                >
-                  <Share sx={{ color: primaryColor }} />
+                <div style={{ ...style.icon }}>
+                  <Share />
                 </div>
               )}
-              <p
-                style={{
-                  fontSize: '10px',
-                  margin: 0,
-                  color: theme?.primary?.dark,
-                  fontFamily: 'Mulish-bold',
-                }}
-              >
+              <p style={{ fontSize: '10px', margin: 0, fontFamily: 'Mulish-bold', ...style.text }}>
                 Share
               </p>
             </div>
           )}
-          {/* Only render divider when both share and download allowed */}
-          {config?.allowDownloadChat && config?.allowShareChat && <Divider />}
-          {config?.allowDownloadChat && (
+          {allowDownloadChat && allowShareChat && <Divider style={style.divider} />}
+          {allowDownloadChat && (
             <div
-              onClick={() => downloadShareHandler('download')}
+              onClick={handleDownloadButton}
               style={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 cursor: 'pointer',
+                ...style.button,
               }}
             >
-              {/* Download */}
               {downloadLoader ? (
                 <div
                   style={{
@@ -148,25 +102,11 @@ const ShareButtons = () => {
                   <CircularProgress size="20px" />
                 </div>
               ) : (
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}
-                >
-                  <FileDownloadOutlined sx={{ color: primaryColor }} />
+                <div style={{ ...style.icon }}>
+                  <FileDownloadOutlined />
                 </div>
               )}
-              <p
-                style={{
-                  fontSize: '10px',
-                  margin: 0,
-                  color: theme?.primary?.dark,
-                  fontFamily: 'Mulish-bold',
-                }}
-              >
+              <p style={{ fontSize: '10px', margin: 0, fontFamily: 'Mulish-bold', ...style.text }}>
                 Download
               </p>
             </div>

@@ -103,13 +103,14 @@ const LoginInput: React.FC<InputProps> = ({
       type={getType()}
       value={value}
       onChange={(e) => handleInputChange(e.target.value)}
-      placeholder={placeholder}
+      label={placeholder}
       variant="outlined"
       sx={{ width: '100%', ...inputstyle }}
       defaultValue={value}
       inputProps={{
         maxLength: getMaxLength(),
       }}
+      required={true}
       fullWidth
       autoFocus
       error={!valid}

@@ -1,4 +1,4 @@
-import { FullPageLoader } from '@samagra-x/stencil-molecules/lib/fullpage-loader';
+import { FullPageLoader } from '@samagra-x/stencil-molecules/lib';
 
 interface FullPageLoaderProps {
   loading: boolean;
