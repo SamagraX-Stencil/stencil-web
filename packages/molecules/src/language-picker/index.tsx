@@ -4,45 +4,56 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { map } from 'lodash';
 
-import { useColorPalates } from '@samagra-x/stencil-hooks';
-const LanguagePicker = () => {
-  const [activeLanguage, setActiveLanguage] = React.useState('en');
+type Language = {
+  name: string;
+  value: string;
+};
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setActiveLanguage(event.target.value);
+type LanguagePickerProps = {
+  languages: Language[];
+  activeLanguage: string;
+  handleLanguageClick: (event: SelectChangeEvent<string>) => void;
+  style?: {
+    formControlStyle?: object;
+    selectStyle?: object;
+    menuItemStyle?: object;
   };
-  const theme = useColorPalates();
+};
 
-  const languages = [
-    { name: 'Eng', value: 'en' },
-    { name: 'हिंदी', value: 'hi' },
-  ];
+const LanguagePicker: React.FC<LanguagePickerProps> = ({
+  languages,
+  activeLanguage,
+  handleLanguageClick,
+  style = {},
+}) => {
   return (
     <FormControl
       sx={{
         m: 1,
-        background: theme.primary.main,
         border: 'none',
         borderRadius: '10px',
         height: '36px',
+        ...style.formControlStyle,
       }}
       size="small"
     >
       <Select
         value={activeLanguage}
-        onChange={handleChange}
+        onChange={handleLanguageClick}
         displayEmpty
         inputProps={{ 'aria-label': 'Without label' }}
         sx={{
-          color: theme.primary.dark,
           border: 'none',
           borderRadius: '10px',
           width: '85px',
           height: '36px',
+          ...style.selectStyle,
         }}
       >
         {map(languages, (lang) => (
-          <MenuItem value={lang?.value}>{lang?.name}</MenuItem>
+          <MenuItem value={lang?.value} sx={{ ...style.menuItemStyle }}>
+            {lang?.name}
+          </MenuItem>
         ))}
       </Select>
     </FormControl>

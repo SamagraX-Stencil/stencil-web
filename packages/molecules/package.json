@@ -1,6 +1,6 @@
 {
   "name": "@samagra-x/stencil-molecules",
-  "version": "0.0.24",
+  "version": "0.1.0",
   "description": "The React library to build fast React Application",
   "main": "lib/index.js",
   "module": "es/index.js",

@@ -143,7 +143,7 @@ export const ChatUI: React.FC = () => {
         placeholder={placeholder}
       />
 
-      <ShareButtons />
+      {/* <ShareButtons /> */}
     </div>
   );
 };

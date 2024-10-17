@@ -1,42 +1,91 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useRouter } from 'next/router';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import { Home, Menu } from '@mui/icons-material';
+import { Home, Menu, ArrowBack } from '@mui/icons-material';
 import Typography from '@mui/material/Typography';
-import { Sidebar } from '../sidebar/index';
-// import ThemePicker from '../../components/theme-picker'
-import { useColorPalates, useUiConfig } from '@samagra-x/stencil-hooks';
 
-const Navbar: React.FC = () => {
-  const config = useUiConfig('component', 'navbar');
-  const theme = useColorPalates();
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
+type Icon = {
+  id: string;
+  src: string;
+};
 
-  const toggleSidebar = () => {
-    setSidebarOpen(!isSidebarOpen); // Toggle sidebar state
+type NavbarProps = {
+  brandName?: string;
+  onToggle: () => void;
+  isOpen: boolean;
+  showHamburgerMenu?: boolean;
+  leftHomeIcon?: Icon[];
+  showHomeIcon?: boolean;
+  centerLogoIcons?: Icon[];
+  rightLogoIcons?: Icon[];
+  backIconRoutes?: string[];
+  noMenuOrBackRoutes?: string[];
+  style?: {
+    appBar?: object;
+    toolbar?: object;
+    leftSection?: object;
+    centerSection?: object;
+    rightSection?: object;
   };
+  children?: React.ReactNode;
+};
 
-  console.log('config from nav: ', config);
+const Navbar: React.FC<NavbarProps> = ({
+  brandName,
+  onToggle,
+  isOpen,
+  showHamburgerMenu = true,
+  showHomeIcon = false,
+  leftHomeIcon = [],
+  centerLogoIcons = [],
+  rightLogoIcons = [],
+  backIconRoutes = [],
+  noMenuOrBackRoutes = [],
+  style = {},
+  children,
+}) => {
+  const router = useRouter();
 
+  const isBackRoute = backIconRoutes.includes(router.pathname);
+  const hideMenuAndBack = noMenuOrBackRoutes.includes(router.pathname);
   return (
     <>
-      <AppBar position="static" sx={{ background: theme.primary.dark }}>
-        <Toolbar style={{ display: 'flex-start', justifyContent: 'space-between' }}>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            {config.showHamburgerMenu && (
-              <IconButton
-                size="large"
-                edge="start"
-                color="primary"
-                aria-label="open drawer"
-                sx={{ mr: 2 }}
-                onClick={toggleSidebar}
-              >
-                <Menu />
-              </IconButton>
+      <AppBar position="static" sx={{ ...style.appBar }}>
+        <Toolbar style={{ display: 'flex', justifyContent: 'space-between', ...style.toolbar }}>
+          <div style={{ display: 'flex', alignItems: 'center', ...style.leftSection }}>
+            {!hideMenuAndBack && (
+              <>
+                {isBackRoute ? (
+                  <IconButton
+                    size="large"
+                    edge="start"
+                    color="primary"
+                    aria-label="go back"
+                    sx={{ mr: 2, width: '50px', height: '50px' }}
+                    onClick={() => router.push('/')}
+                  >
+                    <ArrowBack sx={{ fontSize: '50px' }} />
+                  </IconButton>
+                ) : (
+                  showHamburgerMenu && (
+                    <IconButton
+                      size="large"
+                      edge="start"
+                      color="primary"
+                      aria-label="open drawer"
+                      sx={{ mr: 2, width: '50px', height: '50px' }}
+                      onClick={onToggle}
+                    >
+                      <Menu sx={{ fontSize: '50px' }} />
+                    </IconButton>
+                  )
+                )}
+              </>
             )}
-            {config.showHomeIcon && (
+
+            {showHomeIcon && (
               <div>
                 <IconButton
                   color="primary"
@@ -47,10 +96,10 @@ const Navbar: React.FC = () => {
                 >
                   <Home />
                 </IconButton>
-                {config.leftHomeIcon && (
+                {leftHomeIcon && (
                   <img
-                    src={config.leftHomeIcon.src}
-                    alt={`Left Home Icon ${config.leftHomeIcon.id}`}
+                    src={leftHomeIcon[0]?.src}
+                    alt={`Left Home Icon ${leftHomeIcon[0]?.id}`}
                     style={{ maxHeight: '48px' }}
                   />
                 )}
@@ -64,28 +113,29 @@ const Navbar: React.FC = () => {
               flexDirection: 'column',
               alignItems: 'center',
               flex: 1,
+              ...style.centerSection,
             }}
           >
-            {config.logos.showCenterLogos &&
-              config.logos.centerLogoIcons.map((logo: { id: string; src: string }) => (
+            {centerLogoIcons &&
+              centerLogoIcons.map((logo: { id: string; src: string }) => (
                 <img
                   key={logo.id}
                   src={logo.src}
                   alt={`Logo ${logo.id}`}
-                  style={{ maxHeight: '48px' }}
+                  style={{ maxHeight: '60px' }}
                 />
               ))}
 
-            {config.brandName && (
+            {brandName && (
               <Typography variant="h6" color="inherit" sx={{ marginTop: 1, fontSize: '1.5rem' }}>
-                {config.brandName}
+                {brandName}
               </Typography>
             )}
           </div>
 
-          {config.logos.showRightLogos && (
-            <div>
-              {config.logos.rightLogoIcons.map((logo: { id: string; src: string }) => (
+          {rightLogoIcons && (
+            <div style={style.rightSection}>
+              {rightLogoIcons?.map((logo: { id: string; src: string }) => (
                 <img
                   key={logo.id}
                   src={logo.src}
@@ -95,11 +145,10 @@ const Navbar: React.FC = () => {
               ))}
             </div>
           )}
-          {/* <ThemePicker /> */}
         </Toolbar>
       </AppBar>
 
-      <Sidebar isOpen={isSidebarOpen} onToggle={toggleSidebar} />
+      {children}
     </>
   );
 };

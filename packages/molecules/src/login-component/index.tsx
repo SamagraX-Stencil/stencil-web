@@ -5,7 +5,7 @@ import OtpComponent from '../otp';
 import DOMPurify from 'dompurify';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-type InputType = 'mobile' | 'password' | 'email' | 'aadhaar' | 'otp' | 'username';
+export type InputType = 'mobile' | 'password' | 'email' | 'aadhaar' | 'otp' | 'username';
 
 export interface ButtonProps {
   handleNextTask: () => Promise<string>;
@@ -64,7 +64,7 @@ export interface LoginProps {
   otpProps?: OtpProps;
   passwordProp?: PasswordProps;
 }
-const InputComponent: React.FC<LoginProps> = ({
+const LoginComponent: React.FC<LoginProps> = ({
   title,
   type,
   mainContainerStyle,
@@ -168,4 +168,4 @@ const InputComponent: React.FC<LoginProps> = ({
   );
 };
 
-export default InputComponent;
+export default LoginComponent;

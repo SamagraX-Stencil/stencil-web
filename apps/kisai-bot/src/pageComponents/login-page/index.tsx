@@ -13,7 +13,7 @@ import { useRouter } from 'next/router';
 import { useConfig } from '../../hooks/useConfig';
 import LanguagePicker from '../../components/language-picker';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import InputComponent from '@samagra-x/stencil-molecules/lib/input-component2';
+import { LoginComponent } from '@samagra-x/stencil-molecules';
 // , {
 //   ButtonProps,
 //   InputProps,
@@ -121,7 +121,7 @@ const LoginPage: React.FC = () => {
           </div>
         )}
         <div className={styles.form}>
-          <InputComponent
+          <LoginComponent
             title={t('label.subtitle')}
             type="mobile"
             titleStyle={{

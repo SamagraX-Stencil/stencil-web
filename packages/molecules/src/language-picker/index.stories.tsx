@@ -22,4 +22,4 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const LanguagePickerComponent: Story = {};
+// export const LanguagePickerComponent: Story = {};

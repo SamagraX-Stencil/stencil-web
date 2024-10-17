@@ -4,8 +4,12 @@ import { AppContext } from '../../context';
 import { useLocalization } from '../../hooks';
 import { useColorPalates } from '../../providers/theme-provider/hooks';
 import { useConfig } from '../../hooks/useConfig';
+<<<<<<< Updated upstream
 import NewShareButtons from '@samagra-x/stencil-molecules/lib/share-buttons/shareButtons';
 
+=======
+import { ShareButtons as ImportedShareButton } from '@samagra-x/stencil-molecules/lib';
+>>>>>>> Stashed changes
 const ShareButtons = () => {
   const config = useConfig('component', 'share-buttons');
   const theme = useColorPalates();
@@ -43,7 +47,7 @@ const ShareButtons = () => {
   };
 
   return (
-    <NewShareButtons
+    <ImportedShareButton
       allowDownloadChat={config?.allowDownloadChat}
       handleDownloadButton={handleDownloadButton}
       handleShareButton={handleShareButton}

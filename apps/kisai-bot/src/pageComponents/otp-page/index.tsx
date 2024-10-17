@@ -16,10 +16,7 @@ import axios from 'axios';
 import { FormattedMessage } from 'react-intl';
 import { IconButton } from '@mui/material';
 import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
-import InputComponent, {
-  ButtonProps,
-  OtpProps,
-} from '@samagra-x/stencil-molecules/lib/input-component2';
+import { LoginComponent, ButtonProps, OtpProps } from '@samagra-x/stencil-molecules';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const OtpPage: React.FC = () => {
@@ -180,7 +177,7 @@ const OtpPage: React.FC = () => {
             </Typography>
           </div>
           <div className={styles.form}>
-            <InputComponent
+            <LoginComponent
               type="otp"
               buttonProps={
                 {

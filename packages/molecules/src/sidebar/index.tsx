@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -6,152 +6,169 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
+import Typography from '@mui/material/Typography';
+import router from 'next/router';
 
-import {
-  Logout,
-  Feedback,
-  Help,
-  History,
-  AccountCircle,
-  ArrowBack,
-  ChevronRight,
-} from '@mui/icons-material';
-import configObj from '@samagra-x/stencil-config-manager';
+import { Logout, AccountCircle, ArrowBack, ChevronRight } from '@mui/icons-material';
+import LanguagePicker from '../language-picker';
+import { ListItemText, SelectChangeEvent } from '@mui/material';
 
-export const Sidebar = ({ isOpen, onToggle }: { isOpen: boolean; onToggle: () => void }) => {
-  const [config, setConfig] = useState<{
-    showLangSwitcher: boolean;
-    languages: { code: string; label: string }[];
-    showProfileIcon: boolean;
-    profileText: string;
-    links: { label: string; icon: string; route: string }[];
-    showLogoutButton: boolean;
-    logoutButtonLabel: string;
-  } | null>(null);
-  const [activeLanguage, setActiveLanguage] = useState<string>('en');
-  useEffect(() => {
-    if (configObj && configObj.component && configObj.component.sidebar) {
-      setConfig(configObj.component.sidebar);
-    }
-  }, []);
+type Link = {
+  label: string;
+  icon: React.ReactElement;
+  route: string;
+};
 
-  const handleLanguageClick = (langCode: string) => {
-    setActiveLanguage(langCode);
-    onToggle();
-  };
-  // useEffect(() => {
-  //   console.log(activeLanguage, 'ankit')
-  //   setLocale(activeLanguage)
-  // }, [activeLanguage])
+type Language = {
+  name: string;
+  value: string;
+};
 
+type SidebarStyle = {
+  sidebar?: React.CSSProperties;
+  drawer?: React.CSSProperties;
+  list?: React.CSSProperties;
+  listItem?: React.CSSProperties;
+  listItemButton?: React.CSSProperties;
+  profileText?: React.CSSProperties;
+  icon?: React.CSSProperties;
+};
+
+type LangStyle = {
+  formControlStyle?: object;
+  selectStyle?: object;
+  menuItemStyle?: object;
+};
+
+type SidebarPropsBase = {
+  isOpen: boolean;
+  onToggle: () => void;
+  showProfileIcon?: boolean;
+  showLangSwitcher?: boolean;
+  profileText?: string;
+  links: Link[];
+  handleLogOutButton: () => void;
+  style?: SidebarStyle;
+  children?: React.ReactNode;
+};
+
+type SidebarPropsWithLangSwitcher = SidebarPropsBase & {
+  showLangSwitcher: true;
+  languages: Language[];
+  activeLanguage: string;
+  handleLanguageClick: (event: SelectChangeEvent<string>) => void;
+  langPickerStyle?: LangStyle;
+};
+
+type SidebarPropsWithoutLangSwitcher = SidebarPropsBase & {
+  showLangSwitcher?: false;
+  languages?: never;
+  activeLanguage?: never;
+  handleLanguageClick?: never;
+  langPickerStyle?: never;
+};
+
+type SidebarProps = SidebarPropsWithLangSwitcher | SidebarPropsWithoutLangSwitcher;
+
+const Sidebar: React.FC<SidebarProps> = ({
+  isOpen,
+  onToggle,
+  showProfileIcon = false,
+  showLangSwitcher = false,
+  profileText,
+  links = [],
+  handleLogOutButton,
+  languages,
+  activeLanguage,
+  handleLanguageClick,
+  langPickerStyle,
+  style = {},
+  children,
+}) => {
   const handleItemClick = () => {
     onToggle();
   };
 
   return (
-    <div>
-      <Drawer open={isOpen} onClose={onToggle}>
-        <Box sx={{ width: 250 }} role="presentation">
-          {config && (
-            <List>
-              {config.showLangSwitcher && (
-                <ListItem disablePadding>
-                  <ListItemButton onClick={handleItemClick}>
+    <div style={style.sidebar}>
+      <Drawer open={isOpen} onClose={onToggle} sx={{ '& .MuiDrawer-paper': { ...style.drawer } }}>
+        <Box sx={{ ...style.list }} role="presentation">
+          <List>
+            {showLangSwitcher && (
+              <ListItem disablePadding>
+                <ListItemButton
+                  onClick={handleItemClick}
+                  sx={{ display: 'flex', justifyContent: 'space-between' }}
+                >
+                  <ListItemIcon>
+                    <ArrowBack sx={{ fontSize: '35px', ...style.icon }} />
+                  </ListItemIcon>
+                  {languages && (
+                    <LanguagePicker
+                      languages={languages}
+                      activeLanguage={activeLanguage}
+                      handleLanguageClick={handleLanguageClick}
+                      style={langPickerStyle}
+                    />
+                  )}
+                </ListItemButton>
+              </ListItem>
+            )}
+
+            {showProfileIcon && (
+              <div>
+                <ListItem disablePadding sx={{ marginBottom: '10px' }}>
+                  <ListItemButton sx={style.listItemButton}>
                     <ListItemIcon>
-                      <ArrowBack />
+                      <AccountCircle sx={{ fontSize: '50px', ...style.icon }} />
                     </ListItemIcon>
-                    <div
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'flex-end',
-                        width: '100%',
-                      }}
-                    >
-                      {config.languages.map((lang, index) => (
-                        <button
-                          key={index}
-                          id={lang.code}
-                          className={`Sidemenu_button ${
-                            lang.code === activeLanguage ? 'active' : ''
-                          }`}
-                          style={{
-                            borderTopLeftRadius: index === 0 ? '10px' : '0',
-                            borderBottomLeftRadius: index === 0 ? '10px' : '0',
-                            borderTopRightRadius:
-                              index === config.languages.length - 1 ? '10px' : '0',
-                            borderBottomRightRadius:
-                              index === config.languages.length - 1 ? '10px' : '0',
-                            backgroundColor: lang.code === activeLanguage ? '#00FF00' : '#FFFFFF',
-                            border: '1px solid #000',
-                            width: '60px',
-                            height: '30px',
-                            padding: '5px',
-                          }}
-                          onClick={() => handleLanguageClick(lang.code)}
-                        >
-                          {lang.label}
-                        </button>
-                      ))}
-                    </div>
+                    <Box sx={{ ...style.profileText }}>
+                      <Typography variant="h6">{profileText}</Typography>
+                    </Box>
                   </ListItemButton>
                 </ListItem>
-              )}
+                <Divider sx={{ backgroundColor: '#999' }} />
+              </div>
+            )}
 
-              {config.showProfileIcon && (
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemIcon>
-                      <AccountCircle />
-                    </ListItemIcon>
-                    <ListItemText primary={config.profileText} />
+            {links.map((link, index) => (
+              <div key={index}>
+                <ListItem
+                  disablePadding
+                  sx={style.listItem}
+                  onClick={() => {
+                    handleItemClick();
+                    router.push(link.route);
+                  }}
+                >
+                  <ListItemButton sx={style.listItemButton}>
+                    <ListItemIcon sx={{ ...style.icon }}>{link.icon}</ListItemIcon>
+                    <ListItemText primary={link.label} sx={style.profileText} />
+                    <ChevronRight sx={{ fontSize: '35px' }} />
                   </ListItemButton>
                 </ListItem>
-              )}
+                <Divider sx={{ backgroundColor: '#999' }} />
+              </div>
+            ))}
 
-              {config.links.map((link, index) => (
-                <div key={index}>
-                  <ListItem disablePadding sx={{ paddingTop: '10px', paddingBottom: '10px' }}>
-                    <ListItemButton>
-                      <ListItemIcon>{getIconComponent(link.icon)}</ListItemIcon>
-                      <ListItemText primary={link.label} />
-                      <ChevronRight />
-                    </ListItemButton>
-                  </ListItem>
-                  <Divider />
-                </div>
-              ))}
-
-              {config.showLogoutButton && (
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemIcon>
-                      <Logout />
-                    </ListItemIcon>
-                    <ListItemText primary={config.logoutButtonLabel} />
-                    <ChevronRight />
-                  </ListItemButton>
-                </ListItem>
-              )}
-            </List>
-          )}
+            <ListItem disablePadding>
+              <ListItemButton
+                onClick={handleLogOutButton}
+                sx={{ marginTop: '10px', ...style.listItemButton }}
+              >
+                <ListItemIcon>
+                  <Logout sx={{ fontSize: '35px', ...style.icon }} />
+                </ListItemIcon>
+                <ListItemText primary={'Log Out'} />
+                <ChevronRight sx={{ fontSize: '35px' }} />
+              </ListItemButton>
+            </ListItem>
+          </List>
+          {children}
         </Box>
       </Drawer>
     </div>
   );
-};
-
-const getIconComponent = (iconName: string) => {
-  switch (iconName) {
-    case 'HistoryIcon':
-      return <History />;
-    case 'HelpIcon':
-      return <Help />;
-    case 'FeedbackIcon':
-      return <Feedback />;
-    default:
-      return null;
-  }
 };
 
 export default Sidebar;

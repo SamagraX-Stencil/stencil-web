@@ -9,7 +9,7 @@ import { useCookies } from 'react-cookie';
 import { AppContext } from '../../context';
 import { useLocalization } from '../../hooks';
 import styles from './style.module.css';
-import NewSidebar from '@samagra-x/stencil-molecules/lib/sidebar/sidebar';
+import { Sidebar as ImportedSidebar } from '@samagra-x/stencil-molecules/lib';
 import { SelectChangeEvent } from '@mui/material';
 
 export const Sidebar = ({ isOpen, onToggle }: { isOpen: boolean; onToggle: () => void }) => {
@@ -45,18 +45,18 @@ export const Sidebar = ({ isOpen, onToggle }: { isOpen: boolean; onToggle: () =>
     router.push('/login');
     if (typeof window !== 'undefined') window.location.reload();
   }
-  
+
   const phoneNumber = localStorage.getItem('phoneNumber') || '';
 
   return (
-    <NewSidebar
+    <ImportedSidebar
       isOpen={isOpen}
       onToggle={onToggle}
       showProfileIcon={true}
       showLangSwitcher={true}
       profileText={
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-          <span style={{ fontSize: '14px'}}>{t('label.welcome')}</span>
+          <span style={{ fontSize: '14px' }}>{t('label.welcome')}</span>
           {phoneNumber && <span style={{ fontSize: '14px' }}>{phoneNumber}</span>}
         </div>
       }
@@ -166,7 +166,7 @@ export const Sidebar = ({ isOpen, onToggle }: { isOpen: boolean; onToggle: () =>
           </div>
         </div>
       )}
-    </NewSidebar>
+    </ImportedSidebar>
   );
 };
 
